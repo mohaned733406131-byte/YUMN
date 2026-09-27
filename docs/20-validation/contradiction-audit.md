@@ -3,7 +3,7 @@ document_id: DOC-VAL-004
 title: AUD-02 — Contradiction Audit (CT-01…CT-20)
 category: 20-validation
 status: approved
-version: 1.1
+version: 1.3
 created: 2026-09-27
 updated: 2026-09-27
 author: analysis-agent
@@ -32,10 +32,10 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 | # | Contradiction | Severity | Where (file §section) | Evidence (IDs / tags) | Status |
 |---|---|---|---|---|---|
 | `CT-01` | Constraint pairwise review: no constraint conflicts with another | — (`PASS`) | `00-project-overview/project-constraints.md:89` | mandated entry; 26 `C-NN` reviewed pairwise, 0 conflicts — `VERIFIED` | **`PASS`** |
-| `CT-02` | Two health-probe path spellings are both declared canonical | `MEDIUM` | `15-deployment/health-checks.md:23-24` vs `07-api/endpoints/admin.md:115-116` | `API-ADM-042/043`, `BR-PLT-07` — `VERIFIED` | `OPEN` |
-| `CT-03` | `health-checks.md` cites `TC-001` as authority for `/healthz`, but `TC-001` asserts `/health/ready` | `LOW` | `15-deployment/health-checks.md:36` vs `13-testing/test-cases/TC-001.md:27` | `TC-001`, `API-ADM-043` — `VERIFIED` | `OPEN` |
-| `CT-04` | Queue register disagrees with its consumer document (1 of 17 names match) | `HIGH` | `04-architecture/data-flow.md:54-70` vs `06-backend/background-processing.md:25-49` | `BR-PLT-01`, `C-20` — `VERIFIED` | `OPEN` |
-| `CT-05` | Naming document's own queue example names a non-existent queue | `LOW` | `22-glossary/naming-conventions.md:167` vs `06-backend/background-processing.md:48` | `b03.platform.webhook.send` vs `b13.platform.webhook.send` — `VERIFIED` | `OPEN` |
+| `CT-02` | Two health-probe path spellings are both declared canonical | `MEDIUM` | `15-deployment/health-checks.md:23-24` vs `07-api/endpoints/admin.md:115-116` | `API-ADM-042/043`, `BR-PLT-07` — `VERIFIED` | **`RESOLVED` 2026-09-27** (`REC-05`) |
+| `CT-03` | `health-checks.md` cites `TC-001` as authority for `/healthz`, but `TC-001` asserts `/health/ready` | `LOW` | `15-deployment/health-checks.md:36` vs `13-testing/test-cases/TC-001.md:27` | `TC-001`, `API-ADM-043` — `VERIFIED` | **`RESOLVED` 2026-09-27** (`REC-05`) |
+| `CT-04` | Queue register disagrees with its consumer document (1 of 17 names match) | `HIGH` | `04-architecture/data-flow.md:54-70` vs `06-backend/background-processing.md:25-49` | `BR-PLT-01`, `C-20` — `VERIFIED` | **`RESOLVED` 2026-09-27** (`REC-06` — both queue owners now use the single register: `data-flow.md` v1.1, `background-processing.md` v1.1, register 25 → 30 rows) |
+| `CT-05` | Naming document's own queue example names a non-existent queue | `LOW` | `22-glossary/naming-conventions.md:167` vs `06-backend/background-processing.md:48` | `b03.platform.webhook.send` vs `b13.platform.webhook.send` — `VERIFIED` | **`RESOLVED` 2026-09-27** (`REC-06` — `naming-conventions.md` v1.2 §7 example now `b13.platform.webhook.send`) |
 | `CT-06` | Notification `category` vocabulary: 4 DB values vs 7 API values, no shared mapping | `HIGH` | `08-database/entities/notification.md:29` vs `07-api/endpoints/notifications.md:27` | `notification_category`, `BR-NTF-05`, `AC-FR017-01` — `VERIFIED` | `OPEN` |
 | `CT-07` | KYC status: API has `IN_REVIEW`, the database enum does not | `MEDIUM` | `08-database/entities/store.md:33` + `constraints-and-integrity.md:91` vs `07-api/endpoints/admin.md:38`, `:40`, `07-api/error-model.md:150` | `kyc_status`, `KYC_IN_REVIEW`, `BR-VND-03` — `VERIFIED` | `OPEN` |
 | `CT-08` | Top-up status has three incompatible vocabularies (API / adapter / DB) | `MEDIUM` | `07-api/endpoints/wallet.md:29-30` vs `10-integrations/wallet-providers.md:51` vs `08-database/constraints-and-integrity.md:85` | `API-WAL-003/004`, `INT-REQ-008`, `payment_state` — `VERIFIED` | `OPEN` |
@@ -62,19 +62,21 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 - **Check performed:** all 26 `C-NN` read against `naming-conventions.md:65` allocation and the constraint conflict-check section; no second document asserts a conflicting constraint pair.
 - **Outcome:** `PASS` — the mandated entry exists with the mandated outcome. Status `CLOSED`.
 
-### `CT-02` — Health-probe paths · `MEDIUM` · `OPEN`
+### `CT-02` — Health-probe paths · `MEDIUM` · **`RESOLVED` 2026-09-27**
 
-- **Statement A:** `15-deployment/health-checks.md:23-24` — "`GET /healthz` | Is the process alive? …" / "`GET /readyz` | Should this instance serve requests? …"; and `:36` — "Infrastructure probes use **`/healthz`** and **`/readyz`** — the paths fixed by `BR-PLT-07`, `NFR-005`, `NFR-020` … The API therefore serves **both** path spellings during v1; a single spelling must be chosen by a canon reconciliation before implementation (`20-validation/contradiction-audit.md`)."
+- **Statement A:** `15-deployment/health-checks.md:23-24` — "`GET /healthz` | Is the process alive? …" / "`GET /readyz` | Should this instance serve requests? …"; and `:36` — "Infrastructure probes use **`/healthz`** and **`/readyz`** … The API therefore serves **both** path spellings during v1; a single spelling must be chosen by a canon reconciliation before implementation (`20-validation/contradiction-audit.md`)."
 - **Statement B:** `07-api/endpoints/admin.md:115-116` — "API-ADM-042 | `GET /health/live` | Public | Liveness …" / "API-ADM-043 | `GET /health/ready` | Public | Readiness …"
-- **Why both cannot stand:** the same two probes are specified under different paths in two `source_of_truth` documents, with no mapping row; `health-checks.md:36` already defers the decision to this file.
-- **Owning document(s):** `15-deployment/health-checks.md` and `07-api/endpoints/admin.md` (one spelling + one mapping row, then `BR-PLT-07` re-cited).
+- **Why both could not stand:** the same two probes were specified under different paths in two `source_of_truth` documents, with no mapping row; `health-checks.md:36` deferred the decision to this file.
+- **Owning document(s):** `15-deployment/health-checks.md` and `07-api/endpoints/admin.md`.
+- **Resolution (`REC-05`, `TD-06`, 2026-09-27):** canon fixed at `/healthz` + `/readyz` per `BR-PLT-07`. `07-api/endpoints/admin.md` **v1.1** — `API-ADM-042/043` rows repathed; `15-deployment/health-checks.md` **v1.1** — §1.1 rewritten from "open reconciliation" to the declared canon; `TC-001`, `TC-031`, `TC-057`, `TC-065` **v1.1** — preconditions repathed. Repo-wide re-search for `/health/live` + `/health/ready` returns zero platform hits (only MinIO's vendor probe `/minio/health/live` remains, explicitly excluded from the `REC-05` acceptance criterion). Propagation logged in `consistency-audit.md` §4.
 
-### `CT-03` — Miscited test case · `LOW` · `OPEN`
+### `CT-03` — Miscited test case · `LOW` · **`RESOLVED` 2026-09-27**
 
 - **Statement A:** `15-deployment/health-checks.md:36` — the paths are "fixed by … and `13-testing/test-cases/TC-001.md`."
 - **Statement B:** `13-testing/test-cases/TC-001.md:27` — "`GET /health/ready` returns 200 on the API base `/api/v1`."
-- **Why both cannot stand:** the cited test case does not exercise `/healthz`; it exercises the API spelling. Either the citation or the test case is wrong.
-- **Owning document:** `15-deployment/health-checks.md` (citation) — resolve together with `CT-02`.
+- **Why both could not stand:** the cited test case did not exercise `/healthz`; it exercised the retired API spelling.
+- **Owning document:** `15-deployment/health-checks.md` (citation) — resolved together with `CT-02`.
+- **Resolution (`REC-05`, 2026-09-27):** `TC-001` **v1.1** now asserts the canon readiness gate `GET /readyz`, and `health-checks.md` v1.1 §1.1 cites it precisely as the readiness assertion while attributing both paths to `BR-PLT-07`/`NFR-005`/`NFR-020` — citation and test case now agree.
 
 ### `CT-04` — Queue registers · `HIGH` · `OPEN`
 
@@ -203,19 +205,19 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 ## 3. Coverage & Statistics
 
 - Files examined: **~40** directly cited files (each quoted line re-read in context), out of 433 in scope at sweep time; seeded by `AUD-01` failing checks `CHK-16`, `CHK-19`, `CHK-20`, `CHK-21`, `CHK-22`, `CHK-23`, `CHK-24`, `CHK-25`, `CHK-12`, `CHK-13`, `CHK-14`, `CHK-31`.
-- Checks run: **20** — passed 1 (`CT-01`), failed 19 (all recorded `OPEN`).
+- Checks run: **20** — passed 1 (`CT-01`), failed 19 at audit; 2026-09-27 re-run: `CT-04`/`CT-05` conditions now pass → passed 3, 15 recorded `OPEN`.
 - ID references verified: 20 statement pairs, every one with `file:line`; **0** fabricated or assumed citations.
-- Contradictions by severity: `CRITICAL` 0 · `HIGH` 3 (`CT-04`, `CT-06`, `CT-11`) · `MEDIUM` 10 · `LOW` 6 · `PASS` 1.
-- Series in scope: `CT-NN` issued 20 · open 19 · resolved 0 · passed 1.
+- Contradictions by severity (issued): `CRITICAL` 0 · `HIGH` 3 (`CT-04` resolved, `CT-06`, `CT-11` open) · `MEDIUM` 10 · `LOW` 6 (`CT-05` resolved) · `PASS` 1.
+- Series in scope: `CT-NN` issued 20 · open 15 · resolved 4 (`CT-02`, `CT-03` — `REC-05`; `CT-04`, `CT-05` — `REC-06`, all 2026-09-27) · passed 1.
 - Cross-graded against the sibling audits: `CT-18` = `CRIT-03(a)`, `CT-19` = `CRIT-03(c)`, `CT-08` = `CRIT-03(b)`, `CT-04` = `CRIT-04`, `CT-11`/`CT-12` adjacent to `CRIT-05` (`critical-findings.md:51-53`). Severities here grade the *document conflict*; `critical-findings.md` grades gate impact. `CT-20` (payout state domain) is not covered by any `CRIT-*` row.
 
 ---
 
 ## 4. Verdict & Sign-off
 
-- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit ran to completion with every conflict evidenced; 19 remain `OPEN` because fixing them is the owning documents' job (root README §9.5 forbids local fixes here).
-- **Unresolved contradictions / gaps:** `CT-02`…`CT-20` (`OPEN`); `CT-01` `PASS`/`CLOSED`. Cross-links: `GAP-01…GAP-12` (`missing-information.md`), findings 6–17, 22, 24 (`consistency-audit.md`).
-- **Required follow-up — owning documents that must change, in propagation order (root README §9.4), edits NOT made by this audit:** `04-architecture/data-flow.md` (`CT-04`) · `07-api/endpoints/notifications.md` + `08-database/entities/notification.md` (`CT-06`) · `02-requirements/acceptance-criteria.md` (`CT-11`, `CT-12`) · `15-deployment/health-checks.md` + `07-api/endpoints/admin.md` (`CT-02`, `CT-03`) · `07-api/endpoints/wallet.md` (`CT-08`, `CT-09`, `CT-18`, `CT-19`, `CT-20`) + `08-database/entities/payment.md` (`CT-18`, `CT-19`) + `08-database/constraints-and-integrity.md` (`CT-20`) · `04-architecture/architecture-decisions-reference.md` (`CT-14`) · `16-data/retention-and-archival.md` + `12-non-functional/compliance-and-legal.md` (`CT-15`) · `07-api/endpoints/admin.md` + `07-api/error-model.md` (`CT-07`) · `22-glossary/naming-conventions.md` (`CT-05`, `CT-16`, `CT-17`) · `15-deployment/production-readiness.md` (`CT-13`) · `07-api/endpoints/returns.md` (`CT-10`). After each change: bump `version`, add the §9.2 row, re-run the linked `AUD-01` checks, log the propagation.
+- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit ran to completion with every conflict evidenced; 15 remain `OPEN` because fixing them is the owning documents' job (root README §9.5 forbids local fixes here). `CT-02`/`CT-03` were closed under `REC-05`, `CT-04`/`CT-05` under `REC-06`, by the owning documents' change sets on 2026-09-27.
+- **Unresolved contradictions / gaps:** `CT-06`…`CT-20` (`OPEN`); `CT-01` `PASS`/`CLOSED`; `CT-02`, `CT-03`, `CT-04`, `CT-05` `RESOLVED` 2026-09-27. Cross-links: `GAP-01…GAP-12` (`missing-information.md`), findings 6–11, 13, 14, 15, 16, 17, 22, 24 (`consistency-audit.md`) — finding 12 closed alongside `CT-02`/`CT-03`.
+- **Required follow-up — owning documents that must change, in propagation order (root README §9.4), edits NOT made by this audit:** ~~`15-deployment/health-checks.md` + `07-api/endpoints/admin.md` (`CT-02`, `CT-03`)~~ **done 2026-09-27 (`REC-05`, both docs v1.1 + `TC-001/031/057/065` v1.1)** · ~~`04-architecture/data-flow.md` + `06-backend/background-processing.md` + `10-integrations/*` + `13-testing/TC-061/063/064/107` (`CT-04`)~~ **done 2026-09-27 (`REC-06`)** · `07-api/endpoints/notifications.md` + `08-database/entities/notification.md` (`CT-06`) · `02-requirements/acceptance-criteria.md` (`CT-11`, `CT-12`) · `07-api/endpoints/wallet.md` (`CT-08`, `CT-09`, `CT-18`, `CT-19`, `CT-20`) + `08-database/entities/payment.md` (`CT-18`, `CT-19`) + `08-database/constraints-and-integrity.md` (`CT-20`) · `04-architecture/architecture-decisions-reference.md` (`CT-14`) · `16-data/retention-and-archival.md` + `12-non-functional/compliance-and-legal.md` (`CT-15`) · `07-api/endpoints/admin.md` + `07-api/error-model.md` (`CT-07`) · `22-glossary/naming-conventions.md` (~~`CT-05`~~ done 2026-09-27; `CT-16`, `CT-17`) · `15-deployment/production-readiness.md` (`CT-13`) · `07-api/endpoints/returns.md` (`CT-10`). After each change: bump `version`, add the §9.2 row, re-run the linked `AUD-01` checks, log the propagation.
 - **Sign-off:** analysis-agent, 2026-09-27.
 
 ---
@@ -226,3 +228,5 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial baseline: `CT-01` recorded `PASS`; `CT-02…CT-17` opened with exact conflicting statements | Root README §9.5 / §10 item 42; `project-constraints.md:89` (`CT-01` mandate); `DOC-TPL-011` |
 | 1.1 | 2026-09-27 | `CT-18` (`payment` `RELEASED`), `CT-19` (refund status set), `CT-20` (payout state domain) opened after the money-path re-read; `CT-04` gains the intra-file `b10.notification.delivery.*` evidence; statistics re-issued (20 checks: 1 pass / 19 open) and cross-grades to `CRIT-03(a)(c)` / `CRIT-04` / `CRIT-05` recorded | `AUD-01` check `CHK-31`; cross-ref `critical-findings.md` `CRIT-03`; root README §9.5 |
+| 1.2 | 2026-09-27 | `CT-02`, `CT-03` → `RESOLVED` (health-path canon `/healthz` + `/readyz` applied in `admin.md` v1.1, `health-checks.md` v1.1, `TC-001/031/057/065` v1.1); statistics re-issued (open 17 / resolved 2); follow-up list updated | `REC-05` / `TD-06` pay-down; root README §9.5 (resolution recorded, rows kept) |
+| 1.3 | 2026-09-27 | `CT-04`, `CT-05` → `RESOLVED` (single 30-row queue register adopted: `data-flow.md` v1.1, `background-processing.md` v1.1, `naming-conventions.md` v1.2, `search.md`, `10-integrations/*`, `TC-061/063/064/107`); statistics re-issued (open 15 / resolved 4); follow-up list updated | `REC-06` / `TD-07` pay-down; root README §9.5 (resolution recorded, rows kept) |

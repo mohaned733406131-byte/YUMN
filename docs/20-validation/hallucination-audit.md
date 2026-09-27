@@ -3,7 +3,7 @@ document_id: DOC-VAL-005
 title: AUD-04 — Hallucination Audit (unsupported claims across docs/)
 category: 20-validation
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-27
 updated: 2026-09-27
 author: analysis-agent
@@ -44,13 +44,13 @@ Evidence tags and severities follow root README §9/§10: `CRITICAL · HIGH · M
 
 | ID | Severity | Claim under audit | Re-count result | Evidence | Status |
 |---|---|---|---|---|---|
-| HAL-01 | CRITICAL | "114 test cases (`TC-001`…`TC-114`)" — `13-testing/README.md:86`, `:88`, `:111`, `:112`, `:29`; `13-testing/test-cases/README.md:15`, `:64`, `:65`, `:86`, `:102` | **False**: `13-testing/test-cases/` holds 104 files = `README.md` + `TC-001.md`…`TC-103.md` (103 test cases) | VERIFIED (mechanical directory count, 2026-09-27) | OPEN |
+| HAL-01 | CRITICAL | "114 test cases (`TC-001`…`TC-114`)" — `13-testing/README.md:86`, `:88`, `:111`, `:112`, `:29`; `13-testing/test-cases/README.md:15`, `:64`, `:65`, `:86`, `:102` | **False**: `13-testing/test-cases/` holds 104 files = `README.md` + `TC-001.md`…`TC-103.md` (103 test cases) | VERIFIED (mechanical directory count, 2026-09-27) | RESOLVED (2026-09-27 — `TC-104`…`TC-114` authored; directory now holds `README.md` + 114 `TC-*.md`, so the cited claims are true; `REC-03`/`TD-04` paid) |
 | HAL-02 | HIGH | "none of the ADR files listed below exist yet … the directory is currently empty" — `04-architecture/architecture-decisions-reference.md:19`; §1 statuses `RESERVED — not yet written` (`:25`–`:34`) | **False**: `18-decisions/ADR/` holds `ADR-001.md`…`ADR-010.md` (10 files); `18-decisions/decision-log.md:77` already records that the index "must be re-synced" | VERIFIED | OPEN |
 | HAL-03 | HIGH | Provenance: structure "came from `archdoc.md`" and content was "archived … under `archive/` at the repository root" — `docs/README.md:33`, `docs/README.md:35`; repeated in `21-completion/recommendations.md:29` and `21-completion/technical-debt.md:35` | **Unsupported**: `E:\YUMN\archdoc.md` is 0 bytes; `E:\YUMN\archive\` does not exist | INSUFFICIENT EVIDENCE (source artifact empty, archive absent) | OPEN |
 | HAL-04 | HIGH | Test cases cite business rules `BR-INV-01`…`BR-INV-05` — `13-testing/test-cases/TC-018.md:51,61,62`, `TC-019.md:50,52,61,62`, `TC-020.md:49,61` | **Undefined IDs**: `01-business-analysis/business-rules.md` defines 99 rules across 14 prefixes (`AUTH, CAT, CRT, ESC, FIN, NTF, ORD, PAY, PLT, PRM, RET, REV, SHP, VND`); no `BR-INV-*` domain exists | VERIFIED (regex over owning register) | OPEN |
 | HAL-05 | HIGH | `FR-015`…`FR-020` acceptance criteria carry the same IDs as the registry but **different text** — files vs `02-requirements/acceptance-criteria.md` | **16 of 24** cited AC entries disagree with the registry row of the same ID (FR-015 4/4, FR-017 4/4, FR-018 3/4, FR-019 2/4, FR-020 2/4, FR-016 1/4). Example: `FR-015.md` `AC-FR015-01` = code→DELIVERED; registry `AC-FR015-01` = fee computation (fee criterion dropped entirely) | VERIFIED (ID-by-ID text comparison) | OPEN |
 | HAL-06 | MEDIUM | "single, authoritative registry of every acceptance criterion (`AC-*`)" — `02-requirements/acceptance-criteria.md:17` | **Incomplete**: the registry never mentions `AC-S-04`, `AC-S-12`, `AC-S-21` (21 of 24 success criteria referenced). `AC-S-04` (UAT sign-off) is consumed as a gate criterion by `21-completion/quality-gates.md:139` and cited by `02-requirements/non-functional/NFR-015.md` — neither of which the registry covers | VERIFIED (set difference of ID sequences) | OPEN |
-| HAL-07 | MEDIUM | Registry defines 5 ACs for 14 functional requirements; every FR file cites exactly 4 (`02-requirements/functional/README.md:61` codifies `-01 … -04`) | **14 registry ACs never cited**: 94 `AC-FR*` rows defined vs 80 distinct cited across the 20 FR files (the `-05` row of FR001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017) | VERIFIED (regex counts, both sides) | OPEN |
+| HAL-07 | MEDIUM | Registry defines 5 ACs for 14 functional requirements; every FR file cites exactly 4 (`02-requirements/functional/README.md:61` codifies `-01 … -04`) | **14 registry ACs never cited**: 94 `AC-FR*` rows defined vs 80 distinct cited across the 20 FR files (the `-05` row of FR001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017) | VERIFIED (regex counts, both sides) | RESOLVED (2026-09-27 — all 14 `-05` references added to their FR files, `functional/README.md` rule extended; re-count 94/94 cited; `REC-04`/`TD-05` paid) |
 | HAL-08 | MEDIUM | Requirement files restate the registry's parenthetical rule ID: `02-requirements/integration/INT-REQ-006.md:17` quotes `(BR-PLT-05)`; `INT-REQ-002.md:17` quotes `(BR-PAY-07)` | **Misquotes**: `02-requirements/requirements-overview.md:130` says `(BR-PLT-02)` and `:126` says `(BR-PAY-04)`. (`BR-PLT-05` is the Arabic-localisation rule; `BR-PAY-07` is the refund-credit rule.) Both files carry a corrective "Rule text of record" line — the summary and the quote still disagree | VERIFIED | OPEN |
 | HAL-09 | MEDIUM | "`07-api/` — not yet authored", "`08-database/` — not yet authored", "`13-testing/` — not yet authored" — `04-architecture/README.md:70`, `:71`, `:72` and `03-system-analysis/README.md:82`, `:83`, `:84` | **Stale**: those domains hold 19, 25 and 109 files respectively; `API-*` (221 IDs), `DB-*` and `TC-*` registries all exist | VERIFIED | OPEN |
 | HAL-10 | MEDIUM | Completeness assertions computed over a domain that does not exist: "traceability with 0 gaps" — `13-testing/README.md:29` (G-TEST-1); "`114 TCs → FR families` … traceability" — `13-testing/test-cases/README.md:86`, `:104`; "`19-traceability/`" citations in `02-requirements/acceptance-criteria.md:502`, `00-project-overview/success-criteria.md:25` | **Unsupported at audit time**: `docs/19-traceability/` absent (0 files), so no matrix exists that could establish "0 gaps" | INSUFFICIENT EVIDENCE (asserted about a non-existent artifact) | OPEN |
@@ -58,7 +58,7 @@ Evidence tags and severities follow root README §9/§10: `CRITICAL · HIGH · M
 | HAL-12 | LOW | Path citations that cannot resolve: `00-project-overview/actors-and-roles.md:81` cites `07-api/authorization.md` (no such file — the domain has `07-api/endpoints/auth.md` and `06-backend/authorization.md`); `22-glossary/naming-conventions.md:36,37,38,148` cite `use-cases/UC-040.md`, `workflows/workflow-012.md`, `entities/wallet_transaction.md`, `endpoints/orders.md`, `endpoints/wallet.md`, `entities/return_request.md` without a domain prefix; `23-templates/{requirement,test-case,use-case,workflow}-template.md:17` cite `functional/FR-013.md`, `test-cases/TC-001.md`, `use-cases/UC-001.md`, `workflows/workflow-001.md` the same way | **11 citations broken** under root README §11 ("every path cited … resolves") | VERIFIED (path resolution pass, 2026-09-27) | OPEN |
 | HAL-13 | LOW | "Documentation Status: APPROVED — analysis complete" — `docs/README.md:22`, alongside a domain map that lists `19-traceability/` and `20-validation/` (`docs/README.md:62`, `:63`) as if present | **Premature at audit time**: both domains were absent when scanned (their README links broken); status is only defensible once the two domains land | VERIFIED at audit time | OPEN |
 
-Severity totals: **CRITICAL 1 · HIGH 4 · MEDIUM 5 · LOW 3 = 13 open findings.**
+Severity totals (as recorded at audit): **CRITICAL 1 · HIGH 4 · MEDIUM 5 · LOW 3 = 13 findings** — **11 open** after `HAL-01` and `HAL-07` → `RESOLVED` (2026-09-27).
 
 ---
 
@@ -69,7 +69,7 @@ Severity totals: **CRITICAL 1 · HIGH 4 · MEDIUM 5 · LOW 3 = 13 open findings.
 - **Claim:** `13-testing/README.md:29` ("114 TCs mapped to FR families; traceability with 0 gaps"), `:86` ("114 individual test cases (`TC-001`…`TC-114`)"), `:88` (§5 "Locked Test-Case Allocation (`TC-001 … TC-114`)"), `:111`–`:112` (row `TC-105–114`, total `114`); mirrored in `13-testing/test-cases/README.md:15`, `:64`–`:65`, `:86`, `:102`; consumed by `13-testing/test-plans.md:44` (PLAN-18 targets `TC-105–114`).
 - **Evidence:** directory listing of `13-testing/test-cases/` = 104 files (1 `README.md` + `TC-001.md` … `TC-103.md`). No `TC-104.md`…`TC-114.md` exists.
 - **Why it matters:** the locked allocation assigns FR-020 (platform administration/moderation/audit) a block `TC-105–114` that does not exist, so FR-020's ACs have **zero** test cases in the locked plan; PLAN-18 has no cases to execute; `AC-S-01`/`AC-S-03` (0-gap traceability) cannot be evidenced from an overstated inventory.
-- **Remediation owner:** author of `13-testing/`. Recorded, not fixed, here (see `20-validation/critical-findings.md` CRIT-02 for the gate impact).
+- **Remediation owner:** author of `13-testing/`. Recorded, not fixed, here (see `20-validation/critical-findings.md` CRIT-02 for the gate impact). **Fixed 2026-09-27:** the 11 cases were authored (`TC-104`…`TC-114`), a re-count returns 114 `TC-*.md` files, and every cited `TC-` ID resolves — status flipped to `RESOLVED` in the same change set (`REC-03`).
 
 ### HAL-02 — ADR index says "currently empty" while 10 ADRs exist (HIGH)
 
@@ -111,8 +111,8 @@ Six requirement files cite AC IDs whose text no longer matches `02-requirements/
 
 ### HAL-07 — 14 registry FR acceptance criteria are orphaned (MEDIUM)
 
-- Defined vs cited (both sides regex-counted): **94 defined / 80 distinct cited**; every FR file cites exactly 4 ACs; `02-requirements/functional/README.md:61` codifies the `-01 … -04` pattern as house style, which is why the `-05` rows of FR001, FR002, FR003, FR004, FR006, FR008, FR009, FR010, FR011, FR012, FR013, FR014, FR015, FR017 are never cited by their own requirement file.
-- NFR (40/40), SR (50/50), DR (32/32) and IR (33/33) citation counts **match** their registry sections exactly — the gap is functional-only.
+- Defined vs cited (both sides regex-counted): **94 defined / 80 distinct cited**; every FR file cites exactly 4 ACs; `02-requirements/functional/README.md:61` codifies the `-01 … -04` pattern as house style, which is why the `-05` rows of FR001, FR002, FR003, FR004, FR006, FR008, FR009, FR010, FR011, FR012, FR013, FR014, FR015, FR017 are never cited by their own requirement file. **Fixed 2026-09-27:** the 14 references were added (condensed per registry §7), the README rule extended, and the re-count returns 94/94 — status flipped to `RESOLVED` in the `REC-04` change set.
+- NFR (40/40), SR (50/50), DR (32/32) and IR (33/33) citation counts **match** their registry sections exactly — the gap is functional-only (and, since 2026-09-27, closed).
 
 ### HAL-08 — Requirement files misquote the registry's rule IDs (MEDIUM)
 
@@ -159,9 +159,9 @@ Verified broken (root README §11 rule): `actors-and-roles.md:81` → `07-api/au
 
 ## Verdict & Sign-off
 
-- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit itself is complete and reproducible; 13 findings are open in the audited corpus, 1 of them CRITICAL (HAL-01) and 4 HIGH
-- **Unresolved contradictions / gaps:** HAL-01…HAL-13 all `OPEN`; CRIT roll-ups at `20-validation/critical-findings.md` (CRIT-02, CRIT-05, CRIT-06, CRIT-08); GAP series owned by `20-validation/missing-information.md` — no GAP rows minted here
-- **Required follow-up:** `13-testing/` (HAL-01), `04-architecture/` (HAL-02, HAL-09), `docs/README.md` + `21-completion/` (HAL-03), `01-business-analysis/` + `13-testing/test-cases/` (HAL-04), `02-requirements/functional/` + `acceptance-criteria.md` (HAL-05, HAL-06, HAL-07), `02-requirements/integration/` (HAL-08), `03-system-analysis/` (HAL-09), `13-testing/` + `00-project-overview/` (HAL-10), domain authors named in HAL-11…HAL-13 — root README §9.5: fixes are propagated by the owning document, never locally
+- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit itself is complete and reproducible; 11 of 13 findings remain open in the audited corpus (0 CRITICAL — `HAL-01` resolved 2026-09-27 — 4 HIGH, 4 MEDIUM, 3 LOW)
+- **Unresolved contradictions / gaps:** `HAL-02`…`HAL-06`, `HAL-08`…`HAL-13` all `OPEN`, `HAL-01` and `HAL-07` `RESOLVED` (2026-09-27); CRIT roll-ups at `20-validation/critical-findings.md` (`CRIT-02` now `RESOLVED`, plus open `CRIT-05`, `CRIT-06`, `CRIT-08`); GAP series owned by `20-validation/missing-information.md` — no GAP rows minted here
+- **Required follow-up:** `13-testing/` (~~HAL-01~~ done), `04-architecture/` (HAL-02, HAL-09), `docs/README.md` + `21-completion/` (HAL-03), `01-business-analysis/` + `13-testing/test-cases/` (HAL-04), `02-requirements/functional/` + `acceptance-criteria.md` (HAL-05, HAL-06, ~~HAL-07~~ done), `02-requirements/integration/` (HAL-08), `03-system-analysis/` (HAL-09), `13-testing/` + `00-project-overview/` (HAL-10), domain authors named in HAL-11…HAL-13 — root README §9.5: fixes are propagated by the owning document, never locally
 - **Sign-off:** analysis-agent (author), 2026-09-27 — sponsor/QA countersignature recorded with the Gate 0 review (`21-completion/quality-gates.md` §3)
 
 ## Change History
@@ -169,3 +169,5 @@ Verified broken (root README §11 rule): `actors-and-roles.md:81` → `07-api/au
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 43,45,48 + DOC-REQ-001 |
+| 1.1 | 2026-09-27 | `HAL-01` → `RESOLVED` (11 missing TCs authored; re-count = 114); severity totals, §HAL-01 note and verdict re-scoped to 12 open findings | `REC-03` pay-down change set (session 003) — findings flipped, never deleted (DOC-TPL-011 #3) |
+| 1.2 | 2026-09-27 | `HAL-07` → `RESOLVED` (14 `-05` references added; 94/94 cited); totals/verdict re-scoped to 11 open findings | `REC-04` pay-down change set (session 003) — same-change-set propagation |
