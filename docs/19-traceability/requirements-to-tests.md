@@ -3,7 +3,7 @@ document_id: DOC-TRC-003
 title: Requirements to Tests — Requirement → Acceptance Criterion → Test Artifact Matrix
 category: 19-traceability
 status: approved
-version: 1.1
+version: 1.3
 created: 2026-09-27
 updated: 2026-09-27
 author: analysis-agent
@@ -14,7 +14,7 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 
 # 19 — Requirements to Tests
 
-**The requirement → acceptance criterion → test-artifact matrix.** One row per acceptance criterion (277), one row per constraint (26), and an explicit list of the test cases the corpus declares but does not contain. This is the document `02-requirements/acceptance-criteria.md` §7 and `00-project-overview/success-criteria.md` `AC-S-03` point at when they claim "requirement → AC → TC with zero gaps".
+**The requirement → acceptance criterion → test-artifact matrix.** One row per acceptance criterion (277), one row per constraint (26), and the history of the test cases the corpus once declared but did not contain (§5 — all present since 2026-09-27). This is the document `02-requirements/acceptance-criteria.md` §7 and `00-project-overview/success-criteria.md` `AC-S-03` point at when they claim "requirement → AC → TC with zero gaps".
 
 **It does not claim zero gaps.** It reports what is linked, what is merely declared, and what is missing.
 
@@ -38,7 +38,7 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 
 | Artifact class | IDs found | Source |
 |---|---|---|
-| Test cases | 103 files `TC-001 … TC-103` (**114 declared**, see §5) | `13-testing/test-cases/TC-*.md` §*Related requirements & rules* |
+| Test cases | 114 files `TC-001 … TC-114` (locked allocation fully present) | `13-testing/test-cases/TC-*.md` §*Related requirements & rules* |
 | Executable feature plans | `PLAN-01 … PLAN-18` | `13-testing/test-plans.md` §a |
 | Performance / security / chaos activities | `PERF-01…07`, `SEC-P-01…09`, `CHAOS-01…08` | `13-testing/test-plans.md` §b–§d |
 | Plan sections | `§b … §h` (scope + canon columns) | `13-testing/test-plans.md` |
@@ -63,20 +63,20 @@ Rules obeyed: shorthand citations are expanded conservatively (`AC-SR011-01/02` 
 | AC family | Total | EXPLICIT | DECLARED only | GAP | Operational (non-test evidence) |
 |---|---|---|---|---|---|
 | FR | 94 | 86 | 8 | 0 | 0 |
-| NFR | 40 | 27 | 7 | 6 | 0 |
-| SEC | 50 | 27 | 23 | 0 | 0 |
+| NFR | 40 | 29 | 5 | 6 | 0 |
+| SEC | 50 | 31 | 19 | 0 | 0 |
 | DATA | 32 | 10 | 6 | 16 | 0 |
 | INT | 33 | 27 | 1 | 5 | 0 |
 | XCUT | 4 | 4 | 0 | 0 | 0 |
 | SUCCESS | 24 | 16 | 3 | 0 | 5 |
-| **Total** | **277** | **197** | **48** | **27** | **5** |
+| **Total** | **277** | **203** | **42** | **27** | **5** |
 
 **Verdict: `PASS WITH FINDINGS`.**
 
 - Every one of the 68 requirements and all 277 ACs has a row; nothing is omitted.
 - All 20 FRs have ≥1 test case of their own (the `FR-003` family rides the `TC-001–010` block, as `13-testing/test-cases/README.md` §2 states), so `AC-S-03`'s "≥1 test case per FR" half holds at design level.
-- The **"0 gaps" half of `AC-S-03` does not hold**: 27 ACs have no artifact link and 48 more are covered only by a declaration.
-- **Nothing has been executed**: 103/114 test-case files exist, all constraint tests are `DESIGNED`, and no report, dashboard or drill record exists in the corpus.
+- The **"0 gaps" half of `AC-S-03` does not hold**: 27 ACs have no artifact link and 42 more are covered only by a declaration.
+- **Nothing has been executed**: 114/114 test-case files exist, all constraint tests are `DESIGNED`, and no report, dashboard or drill record exists in the corpus.
 
 ---
 
@@ -126,8 +126,8 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR002-01 | FR-002 | §c, PLAN-02, SEC-P-05, TC-011 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-02 | FR-002 | §c, PLAN-02, SEC-P-05, TC-012 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-03 | FR-002 | §c, PLAN-02, SEC-P-05, TC-013 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
-| AC-FR002-04 | FR-002 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
-| AC-FR002-05 | FR-002 | §c, PLAN-02, SEC-P-05, TC-014 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
+| AC-FR002-04 | FR-002 | §c, PLAN-02, SEC-P-05, TC-107, TC-109, TC-110 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
+| AC-FR002-05 | FR-002 | §c, PLAN-02, SEC-P-05, TC-014, TC-114 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR003-01 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases/README.md §4; TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
 | AC-FR003-02 | FR-003 | TC-008, TC-009 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR003-03 | FR-003 | TC-010 | TC file — Related requirements & rules | EXPLICIT |
@@ -167,7 +167,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR010-04 | FR-010 | TC-030 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR010-05 | FR-010 | TC-030 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR011-01 | FR-011 | DOC-TST-005, TC-033, TST-CON-14 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-FR011-02 | FR-011 | §b, PERF-04, TC-039, TC-042, TC-054 | plan activity — test-plans.md §b; plan section — test-plans.md §b; TC file — Related requirements & rules | EXPLICIT |
+| AC-FR011-02 | FR-011 | §b, PERF-04, TC-039, TC-042, TC-054, TC-104 | plan activity — test-plans.md §b; plan section — test-plans.md §b; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR011-03 | FR-011 | TC-032, TC-041 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR011-04 | FR-011 | TC-034, TC-040, TC-057, TST-CON-10 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR011-05 | FR-011 | TC-032, TST-CON-01 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
@@ -206,12 +206,13 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR018-04 | FR-018 | TC-095 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR019-01 | FR-019 | DOC-TST-005, TC-101 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-FR019-02 | FR-019 | DOC-TST-005, TC-100 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-FR019-03 | FR-019 | DOC-TST-005, TC-100, TC-102 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR019-03 | FR-019 | DOC-TST-005, TC-100, TC-102, TC-104 | TC file — 
+Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-FR019-04 | FR-019 | TC-096, TC-097, TC-098, TC-099, TC-103 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR020-01 | FR-020 | TC-060, TC-077, TC-082, TC-083, TC-096, TC-097, TC-098, TC-102 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR020-02 | FR-020 | TC-071 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR020-03 | FR-020 | TC-061, TC-081, TC-082 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR020-04 | FR-020 | TC-060 | TC file — Related requirements & rules | EXPLICIT |
+| AC-FR020-01 | FR-020 | TC-060, TC-077, TC-082, TC-083, TC-096, TC-097, TC-098, TC-102, TC-109, TC-110 | TC file — Related requirements & rules | EXPLICIT |
+| AC-FR020-02 | FR-020 | TC-071, TC-111 | TC file — Related requirements & rules | EXPLICIT |
+| AC-FR020-03 | FR-020 | TC-061, TC-081, TC-082, TC-112 | TC file — Related requirements & rules | EXPLICIT |
+| AC-FR020-04 | FR-020 | TC-060, TC-110 | TC file — Related requirements & rules | EXPLICIT |
 | AC-IR001-01 | INT-REQ-001 | DOC-INT-008, TST-CON-05 | constraint register — constraint-tests.md; test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
 | AC-IR001-02 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
 | AC-IR001-03 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
@@ -257,7 +258,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-NFR-005-02 | NFR-005 | TST-CON-26 | constraint register — constraint-tests.md | EXPLICIT |
 | AC-NFR-006-01 | NFR-006 | §d, CHAOS-06, TST-CON-26 | constraint register — constraint-tests.md; plan activity — test-plans.md §d; plan section — test-plans.md §d | EXPLICIT |
 | AC-NFR-006-02 | NFR-006 | scope: test-plans.md §d | plan scope declaration — test-plans.md §d | DECLARED |
-| AC-NFR-007-01 | NFR-007 | scope: test-plans.md §d | plan scope declaration — test-plans.md §d | DECLARED |
+| AC-NFR-007-01 | NFR-007 | scope: test-plans.md §d, TC-113 | plan scope declaration — test-plans.md §d; TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-007-02 | NFR-007 | §d, CHAOS-04 | plan activity — test-plans.md §d; plan section — test-plans.md §d | EXPLICIT |
 | AC-NFR-008-01 | NFR-008 | TC-064 | TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-008-02 | NFR-008 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
@@ -283,7 +284,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-NFR-018-02 | NFR-018 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
 | AC-NFR-019-01 | NFR-019 | TC-059 | TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-019-02 | NFR-019 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
-| AC-NFR-020-01 | NFR-020 | scope: test-plans.md §h | plan scope declaration — test-plans.md §h | DECLARED |
+| AC-NFR-020-01 | NFR-020 | scope: test-plans.md §h, TC-113 | plan scope declaration — test-plans.md §h; TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-020-02 | NFR-020 | §h | plan section — test-plans.md §h | EXPLICIT |
 | AC-SR001-01 | SEC-REQ-001 | §c | plan section — test-plans.md §c | EXPLICIT |
 | AC-SR001-02 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
@@ -301,8 +302,8 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-SR003-05 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
 | AC-SR004-01 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR004-02 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
-| AC-SR004-03 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05, TC-014 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
-| AC-SR004-04 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
+| AC-SR004-03 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05, TC-014, TC-114 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
+| AC-SR004-04 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05, TC-114 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-SR005-01 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR005-02 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR005-03 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
@@ -323,10 +324,10 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-SR009-02 | SEC-REQ-009 | §c, SEC-P-06 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR009-03 | SEC-REQ-009 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
 | AC-SR009-04 | SEC-REQ-009 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
-| AC-SR010-01 | SEC-REQ-010 | scope: test-plans.md §c; TC block TC-105–114 (declared; file absent) | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
-| AC-SR010-02 | SEC-REQ-010 | scope: test-plans.md §c; TC block TC-105–114 (declared; file absent) | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
-| AC-SR010-03 | SEC-REQ-010 | scope: test-plans.md §c; TC block TC-105–114 (declared; file absent) | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
-| AC-SR010-04 | SEC-REQ-010 | scope: test-plans.md §c; TC block TC-105–114 (declared; file absent) | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
+| AC-SR010-01 | SEC-REQ-010 | scope: test-plans.md §c, TC-105 | plan scope declaration — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
+| AC-SR010-02 | SEC-REQ-010 | scope: test-plans.md §c, TC-106 | plan scope declaration — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
+| AC-SR010-03 | SEC-REQ-010 | scope: test-plans.md §c, TC-107 | plan scope declaration — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
+| AC-SR010-04 | SEC-REQ-010 | scope: test-plans.md §c, TC-108 | plan scope declaration — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-SR011-01 | SEC-REQ-011 | §c, DOC-TST-005, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-SR011-02 | SEC-REQ-011 | §c, DOC-TST-005, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-SR011-03 | SEC-REQ-011 | §c, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
@@ -405,24 +406,24 @@ All 26 rows are `DESIGNED` at v1.0 — status vocabulary `DESIGNED → READY →
 
 ## 5. Declared-but-Absent Test Cases
 
-`13-testing/test-cases/README.md` §2 locks an allocation of **114** cases. Only **103** files exist. Rows that reference a missing file are marked `declared but file absent` — never presented as a usable artifact:
+`13-testing/test-cases/README.md` §2 locks an allocation of **114** cases. All **114** files exist (the 11 cases `TC-104`…`TC-114` were authored 2026-09-27 under `REC-03`). Historical status rows are kept and flipped, never deleted (DOC-TPL-011 #3):
 
 | TC ID | Declared in | FR block | Status |
 |---|---|---|---|
-| `TC-104` | `13-testing/test-cases/README.md` §2 (range `TC-097–104`) | `FR-019` content & coupons | `declared but file absent` |
-| `TC-105` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-106` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-107` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-108` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-109` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-110` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-111` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-112` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-113` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| `TC-114` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` |
-| **11 declared, 0 present in this range** | | | |
+| `TC-104` | `13-testing/test-cases/README.md` §2 (range `TC-097–104`) | `FR-019` content & coupons | `declared but file absent` → `present (2026-09-27)` |
+| `TC-105` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-106` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-107` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-108` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-109` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-110` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-111` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-112` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-113` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-114` | `13-testing/test-cases/README.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| **11 declared, 11 present in this range** | | | |
 
-Consequences: `AC-FR019-*` and `AC-FR020-*` are **not** left unlinked — each of them carries `EXPLICIT` links from cases that exist outside the missing range (`TC-096…TC-103`, `TC-060`, `TC-061`, `TC-071`, `TC-077`, `TC-081…TC-083`). What the missing files break is: (a) the locked-block claim in `13-testing/test-cases/README.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — which cannot be checked for `FR-019`/`FR-020`, while rows that rest on the block alone (notably `AC-SR010-01…04`) stay `DECLARED` with the artifact cell `TC block TC-105–114 (declared; file absent)`; (b) the case content itself — 11 planned cases covering the tail of content/CMS/coupons and the whole administration/audit domain do not exist; (c) the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") and `AC-S-01`, which are not yet satisfiable.
+Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-block claim in `13-testing/test-cases/README.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — is now checkable for `FR-019` (`TC-104`) and `FR-020` (`TC-105`…`TC-114`); the four rows that rested on the block alone (`AC-SR010-01…04`) are `EXPLICIT` against `TC-105`…`TC-108`; and the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") are satisfiable from disk (114 files, every cited `TC-` ID resolves). Remaining open findings are tracked in §7 — chiefly `G-01` (27 ACs with no artifact), not file absence.
 
 ---
 
@@ -453,16 +454,16 @@ Reading: each group lists ACs whose parent requirement is covered by **no** `TC`
 | # | Finding | Severity | Evidence |
 |---|---|---|---|
 | G-01 | 27 ACs have no test-artifact link (`GAP` rows in §3, listed in §6) | HIGH | §3, §6 |
-| G-02 | 11 declared test-case files are missing — `TC-104…TC-114` (103 files exist against a locked allocation of 114) | HIGH | §5 |
+| G-02 | ~~11 declared test-case files are missing — `TC-104…TC-114` (103 files exist against a locked allocation of 114)~~ **RESOLVED 2026-09-27** — all 11 files authored; 114/114 present, every cited `TC-` ID resolves (`REC-03` pay-down) | HIGH (was) → **RESOLVED** | §5 |
 | G-03 | 48 ACs are covered only by an allocation/scope declaration, not by an artifact naming them | MEDIUM | §3 rows with status `DECLARED` |
-| G-04 | `AC-S-03` ("zero gaps") and `13-testing/README.md` `G-TEST-1` cannot be demonstrated from the corpus as it stands | HIGH | §2 verdict; `02-requirements/acceptance-criteria.md` §7 |
-| G-05 | 14 FR files list only `AC-FRnnn-01…04` while the registry defines `AC-FRnnn-05` (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`) | MEDIUM | `02-requirements/functional/*.md` vs `acceptance-criteria.md` |
+| G-04 | `AC-S-03` ("zero gaps") and `13-testing/README.md` `G-TEST-1` cannot be demonstrated from the corpus as it stands — file-absence cause cleared 2026-09-27, but `G-01`/`G-03` (27 unlinked + 42 declared-only ACs) and zero execution evidence still block the claim | HIGH | §2 verdict; `02-requirements/acceptance-criteria.md` §7 |
+| G-05 | ~~14 FR files list only `AC-FRnnn-01…04` while the registry defines `AC-FRnnn-05` (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`)~~ **RESOLVED 2026-09-27** — all 14 references added; 94/94 registry `AC-FR*` IDs present (`REC-04`/`TD-05` paid) | MEDIUM (was) → **RESOLVED** | `02-requirements/functional/*.md` vs `acceptance-criteria.md` |
 | G-06 | 5 success criteria (`AC-S-19`, `AC-S-21`…`AC-S-24`) are operational/pilot/sign-off records — no test artifact can ever satisfy them here | INFORMATIONAL | §3 rows marked `OPERATIONAL EVIDENCE` |
 | G-07 | 121 `AC-UCnnn-nn` criteria exist in `01-business-analysis/use-cases/*.md` outside the registry that claims to be the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings |
 | G-08 | 8 constraint-register details cite no AC | LOW | §4 |
 | G-09 | Execution status: 0 tests executed, 0 reports; all `TST-CON-NN` `DESIGNED` | INFORMATIONAL (expected at v1.0) | `13-testing/constraint-tests.md` |
 
-**Documents needing update (reported, not edited):** `13-testing/test-cases/README.md` (G-02 — author `TC-104…TC-114` or restate the allocation and the 114 figure in `13-testing/README.md`); `02-requirements/functional/*.md` (G-05 — add the missing `AC-FRnnn-05` line, or correct the registry); `02-requirements/acceptance-criteria.md` §7 (G-04 — qualify the zero-gap claim until the gaps close); `01-business-analysis/use-cases/*.md` or the registry wording (G-07); `00-project-overview/success-criteria.md` (G-06 — mark the five operational criteria as non-test evidence).
+**Documents needing update (reported, not edited):** `02-requirements/acceptance-criteria.md` §7 (G-04 — qualify the zero-gap claim until the gaps close); `01-business-analysis/use-cases/*.md` or the registry wording (G-07); `00-project-overview/success-criteria.md` (G-06 — mark the five operational criteria as non-test evidence). *(G-02 clause retired 2026-09-27 — `TC-104`…`TC-114` now exist; G-05 clause retired 2026-09-27 — the 14 `-05` references now exist.)*
 
 ---
 
@@ -478,3 +479,5 @@ Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-do
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 item 40 |
 | 1.1 | 2026-09-27 | 29 citations of undefined `DOC-INT-010` corrected to `DOC-INT-008` (`10-integrations/testing-and-sandboxes.md`) | `20-validation/consistency-audit.md` finding 23 — no cited ID absent from its owning register (root README §11 `D-3`) |
+| 1.2 | 2026-09-27 | `REC-03` pay-down: `TC-104`…`TC-114` authored — §1 artifact count 114, §2 NFR/SEC counts re-run (203/42), 6 rows `DECLARED`→`EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`), 10 rows gain new TC links, §5 statuses flipped to present, `G-02` → `RESOLVED`, `G-04` re-scoped | Root README §9.4 same-change-set propagation for a `13-testing/` change (`21-completion/recommendations.md` `REC-03`) |
+| 1.3 | 2026-09-27 | `REC-04` pay-down: `G-05` → `RESOLVED` (14 `AC-FRnnn-05` references added, 94/94 cited); "documents needing update" re-scoped | Root README §9.4 same-change-set propagation for an `02-requirements/functional/` change (`REC-04`) |

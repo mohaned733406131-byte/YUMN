@@ -3,7 +3,7 @@ document_id: DOC-SA-001
 title: 03 System Analysis — README
 category: 03-system-analysis
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
 updated: 2026-09-26
 author: analysis-agent
@@ -79,9 +79,9 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Logical data flows | `DF-NN` | `DF-12` | `data-flow.md` |
 | Logical components | `LC-NN` | `LC-04` | `logical-components.md` |
 | Sequence flows | `SQ-NN` | `SQ-03` | `sequence-flows.md` |
-| API endpoint groups | `API-<GROUP>-NNN` | `API-TOP-*` (top-up group, cited by `C-05`) | registry `07-api/` — not yet authored; never cite an endpoint ID that is not in that registry |
-| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `08-database/` — not yet authored; here stores are conceptual (`DS1…DS16`) |
-| Test cases | `TC-NNN` | — | registry `13-testing/` — not yet authored; here verification is described by scenario, not by TC ID |
+| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `07-api/endpoints/README.md` — 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints; never cite an endpoint ID that is not in that registry |
+| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `08-database/entities/README.md` — `DB-001…DB-018`, one file per entity; here stores are conceptual (`DS1…DS16`) |
+| Test cases | `TC-NNN` | `TC-104` | registry `13-testing/test-cases/README.md` — `TC-001…TC-114`; here verification is described by scenario and cited by `TC-` ID |
 
 Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` per root README §8.
 
@@ -110,3 +110,4 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Registry stub rows replaced: the three stale `07-api/`/`08-database/`/`13-testing/` registry stub rows now point at the real registries with paths, ID ranges and real examples (`API-WAL-003`, `DB-001…DB-018`, `TC-001…TC-114`) | `REC-08`/`TD-09` pay-down — stale stubs caused the stop-or-invent-ID failure mode root README §5 forbids |

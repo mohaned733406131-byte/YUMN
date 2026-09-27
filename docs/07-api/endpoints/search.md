@@ -3,9 +3,9 @@ document_id: DOC-API-010
 title: API-SRC — Search & Discovery (FR-009)
 category: 07-api
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: false
 related_requirements: [FR-009, FR-004, FR-005, FR-019, NFR-001, NFR-004, NFR-007, NFR-013, BR-CAT-03, BR-CAT-06, BR-PLT-01, BR-PLT-02]
@@ -32,7 +32,7 @@ Arabic-aware full-text search over Elasticsearch (`DEP-04`): alef/ya/ta-marbuta 
 
 - **Zero-result behavior** (`200 with empty `items``): the response still includes `facets` (so the UI can offer "relax filters") plus `meta.didYouMean` — the best suggestion from the suggest endpoint — and `meta.popularCategories` (top 5 by product count) as fallback navigation. Zero results are **never** an error status.
 - **Degradation** (`NFR-007`): if Elasticsearch is unreachable the gateway attempts a cached-query replay for `relevance`/`newest` sorts and sets `meta.degraded = true`; when no cached answer exists the endpoint returns **503 `SEARCH_UNAVAILABLE`** and clients fall back to category browse (`GET /categories/{slug}`, `API-CAT-002`) — browsing never depends on ES.
-- **Index synchronization** (`BR-PLT-01/02`): catalog writes enqueue `b02.product.index` jobs (3 retries, exponential backoff, DLQ alert) — freshness is eventually consistent; `newest` sort reflects index time.
+- **Index synchronization** (`BR-PLT-01/02`): catalog writes enqueue `b02.catalog.index` jobs (3 retries, exponential backoff, DLQ alert) — freshness is eventually consistent; `newest` sort reflects index time.
 - **Arabic analysis** (`C-24`, `AC-FR009-01`): `q` is passed verbatim; normalization (variant letters, diacritics, stemming) happens in the ES analyzer — clients must not pre-normalize or transliterate.
 - **Visibility**: `BR-CAT-06` ACTIVE-only and `BR-VND-04` suspended-store exclusion are enforced at index time **and** re-checked at query time (belt-and-braces for `AC-FR009-02`).
 - **Performance** (`NFR-001`, `C-25`): p95 < 200 ms at 10,000 concurrent users; aggregations cached in Redis keyed by `(query, filters, locale)` for ≥ 80% hit ratio (`NFR-004`).
@@ -48,3 +48,6 @@ All three endpoints are GETs (side-effect free, idempotent). `API-SRC-001` uses 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Index-sync queue name corrected: `b02.product.index` → `b02.catalog.index` per the canonical register | `REC-06`/`TD-07` pay-down — queue names must appear verbatim in `06-backend/background-processing.md` §1 |
+
+

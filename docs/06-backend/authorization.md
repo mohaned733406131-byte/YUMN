@@ -3,9 +3,9 @@ document_id: DOC-BE-004
 title: Authorization — Implementation Placement (FR-002, SEC-REQ-004)
 category: 06-backend
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: false
 related_requirements: [FR-002, FR-020, SEC-REQ-004, SEC-REQ-010, DATA-REQ-008]
@@ -109,7 +109,7 @@ Emitted via `shared/events` → `b13-platform` audit writer; audit table is appe
 |---|---|
 | Unit | permission registry resolution, ownership predicate logic |
 | Integration | each endpoint class called with wrong role → 403; foreign ID → 404 |
-| Conformance (CI) | RBAC matrix ↔ guard decorators diff must be empty |
+| Conformance (CI) | RBAC matrix ↔ guard decorators ↔ API role register (`07-api/api-conventions.md` §4) ↔ `user_role.role` enum diff must be empty — asserted against the cross-layer mapping at `09-security/rbac.md` §8 |
 | Security tests | TC-011…TC-014 (cross-user, cross-store, staff escalation, direct API bypass) |
 | Regression | every `SEC-REQ-004` test in `02-requirements/security/` |
 
@@ -118,3 +118,4 @@ Emitted via `shared/events` → `b13-platform` audit writer; audit table is appe
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Conformance (CI) row extended from matrix ↔ decorators to a four-way assertion (matrix ↔ decorators ↔ API role register ↔ `user_role.role` enum) against `09-security/rbac.md` §8 | `REC-07`/`TD-08` pay-down — cross-layer parity now has an explicit test definition |

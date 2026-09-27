@@ -3,9 +3,9 @@ document_id: DOC-API-019
 title: API-ADM — Platform Administration, Roles, Audit, Tickets & Health (FR-002, FR-019, FR-020)
 category: 07-api
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: false
 related_requirements: [FR-002, FR-019, FR-020, FR-007, FR-013, FR-014, FR-015, FR-016, NFR-007, NFR-019, SEC-REQ-004, SEC-REQ-005, SEC-REQ-010, SEC-REQ-012, DATA-REQ-007, DATA-REQ-008, BR-PLT-06, BR-PLT-07, BR-VND-03, BR-VND-04, BR-PAY-04, BR-PAY-09, BR-RET-05, BR-SHP-03, BR-ORD-10, BR-REV-04]
@@ -112,8 +112,8 @@ Deny-by-default RBAC (`FR-002`): every write requires the exact role; `MODERATOR
 
 | ID | Method & Path | Roles | Purpose | Key request → response | Key errors | Related IDs |
 |---|---|---|---|---|---|---|
-| API-ADM-042 | `GET /health/live` | Public | Liveness: process up, no dependency checks — polled by the orchestrator | → `200 { status: "UP", version, uptimeSeconds }` | `SERVICE_UNAVAILABLE` (process in shutdown) | FR-020, `BR-PLT-07`, NFR-007 |
-| API-ADM-043 | `GET /health/ready` | Public | Readiness: Postgres, Redis, BullMQ, Elasticsearch, providers reachable within budget; gates traffic (`BR-PLT-07`) | → `200 { status: "READY", checks: [ { name, status: "UP"\|"DOWN", latencyMs } ] }` — any DOWN ⇒ `503` + `SERVICE_UNAVAILABLE`, degraded search flips to category-browse fallback (`NFR-007`) | `SERVICE_UNAVAILABLE` (503 with per-check detail; never leaks hostnames — `SEC-REQ-008`) | FR-020, `BR-PLT-07`, NFR-007, `BR-ESC-07` |
+| API-ADM-042 | `GET /healthz` | Public | Liveness: process up, no dependency checks — polled by the orchestrator | → `200 { status: "UP", version, uptimeSeconds }` | `SERVICE_UNAVAILABLE` (process in shutdown) | FR-020, `BR-PLT-07`, NFR-007 |
+| API-ADM-043 | `GET /readyz` | Public | Readiness: Postgres, Redis, BullMQ, Elasticsearch, providers reachable within budget; gates traffic (`BR-PLT-07`) | → `200 { status: "READY", checks: [ { name, status: "UP"\|"DOWN", latencyMs } ] }` — any DOWN ⇒ `503` + `SERVICE_UNAVAILABLE`, degraded search flips to category-browse fallback (`NFR-007`) | `SERVICE_UNAVAILABLE` (503 with per-check detail; never leaks hostnames — `SEC-REQ-008`) | FR-020, `BR-PLT-07`, NFR-007, `BR-ESC-07` |
 
 ## 2. Behavior Notes
 
@@ -141,3 +141,4 @@ Mandatory idempotency key: `API-ADM-035` (`BR-PLT-03`). Settings writes use opti
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | `API-ADM-042/043` paths `/health/live` + `/health/ready` → `/healthz` + `/readyz` | `REC-05`/`TD-06` health-path canonization to the `BR-PLT-07` spelling used by probes/CI/monitoring; closes `CT-02` |
