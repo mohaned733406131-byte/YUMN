@@ -3,9 +3,9 @@ document_id: DOC-FR-000
 title: Functional Requirements — README (FR-001 … FR-020)
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020]
@@ -58,7 +58,7 @@ This directory holds the **detailed specification of the 20 functional requireme
 
 - Files: `FR-NNN.md` with a zero-padded three-digit number matching the registry exactly (`FR-001.md` … `FR-020.md`); never `final.md`, `latest.md`, or any variant that does not carry the FR ID.
 - Document IDs: `DOC-FR-NNN`, allocated 000 (this README) and 001…020 (one per FR).
-- Acceptance criteria: `AC-FRnnn-01 … -04` — the numeric part matches the FR with no padding beyond three digits (`AC-FR012-01`).
+- Acceptance criteria: `AC-FRnnn-01 … -04`, plus `-05` where `02-requirements/acceptance-criteria.md` defines a fifth row (14 FRs) — the numeric part matches the FR with no padding beyond three digits (`AC-FR012-01`); files reference (never rewrite) the registry text.
 - Never reuse a retired ID; a superseded requirement keeps its ID with status `SUPERSEDED`.
 
 ## Quality Rules
@@ -72,3 +72,9 @@ This directory holds the **detailed specification of the 20 functional requireme
 ## Related Directories
 
 `../requirements-overview.md` (registry) · `../non-functional/` (NFR-001…020) · `../security/` (SEC-REQ-001…012) · `../data/` · `../integration/` · `../../01-business-analysis/` (rules) · `../../03-system-analysis/` (behavior) · `../../13-testing/` (verification)
+
+## Change History
+
+| Version | Date | Change | Reason |
+|---|---|---|---|
+| 1.1 | 2026-09-27 | -01 … -04 naming rule extended to the registry's fifth `AC-FRnnn-05` rows | `REC-04` pay-down (`TD-05`) — same change set as the 14 FR files |
