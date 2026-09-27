@@ -3,7 +3,7 @@ document_id: DOC-PHA-018
 title: Phase Audit & Tracking — analysis
 category: phases
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -28,7 +28,7 @@ related_requirements: []
 | G6 Security | 0 CRIT/HIGH; 0 secrets | **FAIL (design)** | 1 CRITICAL + 4 HIGH open (`SEC-011`, `SEC-001/004/012/015`); secrets in repo = 0 (tree scan), gitleaks binary unavailable → scan BLOCKED |
 | G7 Performance | budgets met | **BLOCKED** | k6 invocation not bound; no system to measure |
 | G8 Docs | artifacts exist/linked/current | **PASS** | `python senior-rules/validators/validate.py .` → `RESULT: PASS — structure healthy` (0 broken links) |
-| G9 Git | committed, pushed, CI green | **PASS at session close** | conventional commits on `session-005` → `main` (hashes in session-005 evidence) |
+| G9 Git | committed, pushed, CI green | **PASS at session close** | 7 grouped conventional commits on `session-005`, `main` fast-forwarded, both pushed (`eb59510`, `6262090`, `e55b520`, `c3228fd`, `f8ca98d`, `039cd95`, + closing evidence commit); CI = none exists (no source tree → N/A, not faked); **pending:** `origin/master` deletion (still GitHub default branch — switch default, then delete) |
 
 **Status: INCOMPLETE as a build phase / DONE as an analysis phase** — gates G1–G7 are `BLOCKED`, not PASS (DOD-10; never faked per GEN-03).
 
@@ -38,7 +38,7 @@ related_requirements: []
 |---|---|---|---|---|---|
 | F-01 | CRITICAL | No `docs/sessions/` files existed for sessions 001–004 | SES-01 | **FIXED** | `docs/sessions/session-001…005.md` + `session_track.md` `Session file` column |
 | F-02 | CRITICAL | 88 changes from sessions 002–004 uncommitted/unpushed | SES-04, DOD-09 | **FIXED** | grouped conventional commits + push, session 005 |
-| F-03 | HIGH | Branch `master` contradicted adapter `main`-only convention | VCS-01 | **FIXED** | `master` → `main` renamed, `session-005` branch created |
+| F-03 | HIGH | Branch `master` contradicted adapter `main`-only convention | VCS-01 | **FIXED (one server-side step pending)** | local `master` → `main` renamed, `session-005` created, both pushed; `origin/master` deletion rejected until GitHub default branch switches to `main` (no `gh` CLI — user/settings action) |
 | F-04 | CRITICAL | Phase 0 `COMPLETE` with no `docs/phases/` artifact set | DOC-02 | **FIXED** | `docs/phases/` + `analysis/` 16/16 artifacts |
 | F-05 | HIGH | `archdoc.md` 0 bytes cited as governing structure spec | SPE-03 (`D-10`) | **PARTIAL** | citations in `docs/README.md` §1/§3 made honest; file content never existed in git — sponsor decision (restore vs. drop) still open |
 | F-06 | MEDIUM | YUMN_RULES rule count reported as 77 (actually 94) | SPE-03 | **FIXED** | `all_in_one_track.md`, `session_track.md` corrected |
@@ -68,10 +68,11 @@ related_requirements: []
 
 - [x] All base + docs + sessions md files updated for this change set (session files, phase set, `session_track.md`, `memory.md`, `all_in_one_track.md`, `development_phases_entry.md`, `docs/README.md`, `naming-conventions.md`, `consistency-audit.md` propagation row)
 - [x] Validator run: `RESULT: PASS — structure healthy` (pasted in session-005 file)
-- [ ] Committed & pushed: **hashes recorded in `docs/sessions/session-005-rules-compliance-audit.md` at session close**
+- [x] Committed & pushed: **7 commits — `eb59510`, `6262090`, `e55b520`, `c3228fd`, `f8ca98d`, `039cd95`, + closing evidence commit; full table in `docs/sessions/session-005-rules-compliance-audit.md` `# Commit evidence`; `origin/master` deletion pending default-branch switch**
 
 ## Change History
 
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 16 / AUD-01…06, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | G9 + §6 evidence filled with real commit hashes; F-03 annotated (remote `master` deletion pending default-branch switch) | analysis-agent |

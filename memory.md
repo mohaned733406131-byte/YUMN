@@ -47,7 +47,7 @@ days · KYC decision ≤48 h · inspection ≤72 h · OTP 6-digit/5-min/3-attemp
 
 > **2026-09-27:** canonical defect registers now live in `docs/20-validation/` (`CRIT-01…10`, `CT-01…20`, `HAL-01…13`, `GAP-01…12`, consistency findings 1–25) and `docs/21-completion/` (`TD-01…10`, `REC-01…15`). Rows below are this repo's durable session snapshot; status per row.
 >
-> **2026-09-28 (session 005 snapshot):** rules-compliance audit findings `F-01…F-10` live in `docs/phases/analysis/phase-audit.md` (canonical) — F-01/02/03/04/06/08 FIXED, F-05 partial (`D-10`), F-07 open (validator amendment proposed), F-09/F-10 sponsor-owned. Deltas: `D-15` resolved (phase folder created — reversal logged), `D-16` opened (`describ.md`), `D-10` → PARTIAL. `docs/sessions/` (DOC-SES-000…005) and `docs/phases/` (DOC-PHA-001…018) now exist; validator `PASS — structure healthy`; 69 audit findings + Gate 0 `FAIL` unchanged (sponsor-owned).
+> **2026-09-28 (session 005 snapshot):** rules-compliance audit findings `F-01…F-10` live in `docs/phases/analysis/phase-audit.md` (canonical) — F-01/02/03/04/06/08 FIXED, F-05 partial (`D-10`), F-07 open (validator amendment proposed), F-09/F-10 sponsor-owned. Deltas: `D-15` resolved (phase folder created — reversal logged), `D-16` opened (`describ.md`), `D-10` → PARTIAL. `docs/sessions/` (DOC-SES-000…005) and `docs/phases/` (DOC-PHA-001…018) now exist; validator `PASS — structure healthy`; 69 audit findings + Gate 0 `FAIL` unchanged (sponsor-owned). Git: 7 grouped commits, `master` → `main` + `session-005` pushed — **`origin/master` deletion pending** (still GitHub default branch; switch default in repo settings, then delete).
 
 | # | Defect | Severity | Evidence | Disposition needed |
 |---|---|---|---|---|

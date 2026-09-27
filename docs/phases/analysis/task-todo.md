@@ -3,7 +3,7 @@ document_id: DOC-PHA-004
 title: Task Todo — phase 0 master (analysis)
 category: phases
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -30,7 +30,7 @@ related_requirements: []
 - [x] 9. Create `docs/phases/analysis/` — 16/16 artifacts, template-conformant (DOC-02/DOC-03)
 - [x] 10. Fix stale claims: YUMN rule count 77 → 94; `archdoc.md` citation honesty (SPE-03)
 - [x] 11. Re-run `python senior-rules/validators/validate.py .` → PASS (DOD-08)
-- [ ] 12. Conventional commits + push, branch `session-005` — **executed at session close (DOD-09)**
+- [x] 12. Conventional commits + push, branch `session-005` — **DONE (DOD-09): `eb59510`, `6262090`, `e55b520`, `c3228fd`, `f8ca98d`, `039cd95`, + closing evidence commit; `main` fast-forwarded; both pushed. One server-side step pending: `origin/master` deletion (still GitHub default branch)**
 
 ## Wiring verification (rules 6–7)
 
@@ -48,8 +48,15 @@ related_requirements: []
 - [ ] G6 Security: audit + scans → **BLOCKED for code**; design audit delivered — but `SEC-001…015` all OPEN (1 CRITICAL, 4 HIGH) → not PASS
 - [ ] G7 Performance: budgets met → **BLOCKED** — k6 invocation not yet bound
 - [x] G8 Docs: artifacts updated in same commit → validator `RESULT: PASS — structure healthy`
-- [ ] G9 Git: conventional commit pushed → **DONE at session close (step 12)**
+- [x] G9 Git: conventional commit pushed → **DONE (step 12): 7 commits on `session-005`, `main` fast-forwarded, both pushed; hashes in session-005 `# Commit evidence`; `origin/master` deletion pending default-branch switch; CI = none exists (N/A, not faked)**
 
 ## Status
 
 **DONE for an analysis-only phase** · G1–G7 `BLOCKED (reason: no implementation exists — phase 0 is documentation-only; see `_index.md` §Status honesty)` · G8 `PASS (validator)` · G9 `verified in session-005 evidence`.
+
+## Change History
+
+| Date | Version | Change | Author |
+|---|---|---|---|
+| 2026-09-28 | 1.0 | Initial creation (CORE-03 item 2, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | Step 12 + G9 checked with real commit hashes; `origin/master` pending-deletion noted | analysis-agent |

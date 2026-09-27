@@ -93,7 +93,20 @@ Filled after the commit sequence in this same session (see `session_track.md` ro
 
 <!-- COMMIT-EVIDENCE-START -->
 
-(to be filled after push — hashes recorded here and in `session_track.md` row 005)
+| # | Hash | Message (governing IDs) |
+|---|---|---|
+| 1 | `eb59510` | `chore(rules): drop installed ADMR source tree (senior-implementation-rules-master/)` — `SES-04`, `DOD-09` |
+| 2 | `6262090` | `test(docs): complete 114-case suite — TC-104…TC-114 + canon updates in TC files` — `REC-03`, `REC-05`, `REC-06`, `TD-04`, `TD-06`, `HAL-01`, `CRIT-02`, `G-02` |
+| 3 | `e55b520` | `feat(requirements): cite registry AC-FRnnn-05 across all functional FR files (REC-04)` — `REC-04`, `TD-05`, `HAL-07`, `G-05` |
+| 4 | `c3228fd` | `feat(docs): role mapping, queue register, stub rows, health canon consumers (sessions 003-004)` — `REC-05…08`, `TD-07…09`, `CT-04/05`, `CRIT-04`, `CHK-16/18/20` |
+| 5 | `f8ca98d` | `fix(validation): roll up audit registers after REC-03…REC-09 pay-downs (sessions 003-004)` — `AUD-01`, `REC-03…09`, `TD-04…10`, `HAL-01/07`, `CRIT-02/04`, `CT-02…05` |
+| 6 | `039cd95` | `feat(sessions,phases): session work files + phase-0 artifact set; audit F-01..F-08 remediated` — `SES-01`, `SES-03`, `DOC-02`, `SPE-03`, `SPE-05`, `VCS-01`, `DOD-09`, `D-15`, `D-16`, `F-01…F-08` |
+| 7 | (this file) | `docs(session-005): record commit evidence and close the session` — `SES-01`, `SES-04`, `DOD-09` |
+
+- Branch: work committed on **`session-005`**; `main` (renamed from `master`) fast-forwarded to it; **both pushed** to `origin` (`main`, `session-005`).
+- **G9 verification:** `git log --oneline` shows all 7 commits; `git ls-remote --heads origin` shows `main` + `session-005` at the session tip; CI = none exists (no source tree) — G9's "CI green" clause is `N/A` (documented, not faked).
+- **Known follow-up:** deleting `origin/master` was **rejected by the server** (it is still GitHub's default branch; no `gh` CLI available). One click needed: GitHub → Settings → General → Default branch → switch to `main`, then delete `master` — or `gh repo edit mohaned733406131-byte/YUMN --default-branch main && git push origin --delete master`. Tracked as pending in `session_track.md` row 005 / `prompt-next.md`.
+- **Not committed:** `describ.md` (0-byte, untracked) — `D-16`, sponsor decision (delete vs restore).
 
 <!-- COMMIT-EVIDENCE-END -->
 

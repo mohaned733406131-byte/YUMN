@@ -16,8 +16,9 @@ in [`docs/phases/analysis/phase-audit.md`](docs/phases/analysis/phase-audit.md):
   with provenance notes + session-005 authored.
 - **F-02** all work from sessions 001–005 committed and pushed (grouped conventional commits,
   hashes in session-005 `# Commit evidence` + `session_track.md` row 005).
-- **F-03** branch `master` → **`main`**; work branch **`session-005`** (both pushed;
-  `origin/master` deleted).
+- **F-03** branch `master` → **`main`**; work branch **`session-005`** (both pushed). ⚠ **one step
+  pending:** `origin/master` deletion was rejected (still GitHub's default branch; no `gh` here) —
+  switch default branch to `main` in repo settings, then delete `master`.
 - **F-04 / D-15** `docs/phases/` created — 16/16 CORE-03 artifacts + `_index.md` + `README.md`
   (`DOC-PHA-001…018`). This **reversed** the earlier "leave phase folder as-is" decision per the
   user's "create all folder or file that require" instruction (logged in `memory.md` §4).
