@@ -7,11 +7,12 @@ Rule binding: `senior-rules/ENTRY.md` §5 + `senior-rules/RULES.md` DOC-02 (ever
 
 | Phase | Slug | Status | Evidence |
 |---|---|---|---|
-| 0 — Analysis & rule adoption | `analysis` | **COMPLETE (analysis)** | `docs/` APPROVED v1.0 (21 of 24 domains authored); `senior-rules/` installed + bound (`RULES_HINTS.md`, `YUMN_RULES.md`) |
-| 1 — Bootstrap & repo skeleton | `bootstrap` | NOT STARTED | — |
+| 0 — Analysis & rule adoption | `analysis` | **COMPLETE (analysis)** | `docs/` APPROVED v1.x (24 domains); `senior-rules/` installed + bound (`RULES_HINTS.md`, `YUMN_RULES.md` 94 rules); phase artifact set **16/16** at [`docs/phases/analysis/_index.md`](docs/phases/analysis/_index.md) |
+| 1 — Bootstrap & repo skeleton | `bootstrap` | NOT STARTED | — (folder created when the phase is scheduled) |
 | 2+ — Feature implementation | — | NOT STARTED | — |
 
-No phase folder exists yet under `docs/phases/` — phase documentation (DOC-02) begins with **Phase 1**.
+`docs/phases/` exists: phase 0 artifacts were authored retrospectively 2026-09-28 (session 005, DOC-02);
+the phase-1 folder is created when Phase 1 is scheduled. Roll-up: `docs/phases/README.md` → this file → `all_in_one_track.md` (DOC-04).
 
 ## Gate 0 — pre-implementation gates (all currently OPEN)
 

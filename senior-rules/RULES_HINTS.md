@@ -10,6 +10,7 @@ License: GPL-3.0
 ## 1. System identity
 - Name: **yumn (يُمن)** — multi-vendor e-commerce marketplace for Yemen · Version: **0.1.0** (analysis complete, pre-implementation) · Rules version pinned: **2.0.0**
 - Pin source: `senior-rules/VERSION` = `2.0.0`. ⚠ `senior-rules/CHANGELOG.md` shows a later `[2.1.0]` entry — at session start (GEN-08) reconcile VERSION ↔ CHANGELOG and re-read changed rules before working; do not silently assume either value.
+  - **GEN-08 reconciliation (session 003, 2026-09-27):** pin stays **2.0.0**. The `[2.1.0]` entry is packaging-only (`.ai-rules`→`senior-rules` reference renames, npm installer, README updates) — it changes **no rule IDs, severities, or rule text**, so there are no changed rules to re-read. The renames it describes are already present in this installed copy. Defect `D-13` → `RESOLVED 2026-09-27`.
 - Knowledge base: `docs/` (24-domain analysis, `APPROVED` v1.0). No implementation exists yet — nothing in `docs/` is `VERIFIED`.
 - Language of record: English. Product locales: `ar` (default, RTL) + `en` only.
 
@@ -53,7 +54,7 @@ License: GPL-3.0
 - Base dirs: backend `api/src/blocks/b01-identity … b13-platform/`, `api/src/shared/`, `api/src/integrations/`, `api/src/jobs/`, `api/src/prisma/` · tests `api/test/` · web `apps/web-customer/`, `apps/web-vendor/`, `apps/web-admin/` · mobile `apps/mobile-customer/`, `apps/mobile-courier/` · shared `packages/{api-sdk,ui,validation,i18n,design-tokens,config-eslint,config-ts}` · docs `docs/<NN-domain>/` · rules `senior-rules/`
 - **Canonical repo tree = `05-frontend/frontend-architecture.md` §1 + `06-backend/backend-architecture.md` §1** (root `api/`, `apps/<shell>/`, `packages/*`). ⚠ Ops documents cite a different spelling (`apps/api`, `apps/web`, `apps/mobile/**`) — treat those as defects to correct (rule `SPE-04`), not as authority.
 - Entry files present: `senior-rules/ENTRY.md`, `senior-rules/RULES.md`, `senior-rules/RULES_HINTS.md` (this file), `senior-rules/YUMN_RULES.md`, `senior-rules/CHANGELOG.md`, `senior-rules/VERSION`, root `AGENTS.md`. Root `session_track.md`, `development_phases_entry.md`, `all_in_one_track.md`, `architecture.md`, `mind_map.md`, `memory.md` are required by DOC-01 and are **pending creation** — status honesty: validator will report them `FAIL` until they exist.
-- Main security spec: `docs/09-security/` (`threat-model.md`, `security-controls.md`, `rbac.md`, `security-findings.md` = `SEC-001…SEC-016`)
+- Main security spec: `docs/09-security/` (`threat-model.md`, `security-controls.md`, `rbac.md`, `security-findings.md` = `SEC-001…SEC-015` — corrected from `…SEC-016` on 2026-09-28, session 005: the register holds 15 findings, `SEC-016` is only a forward-sequence note; factual correction, no rule text/severity changed, pin stays `2.0.0`)
 - Main architecture file: `docs/04-architecture/architecture-overview.md` (ADRs in `docs/18-decisions/ADR/ADR-001…010`)
 - Requirements/source IDs: `docs/02-requirements/` (68 reqs), `docs/01-business-analysis/business-rules.md` (99 `BR-*`), `docs/00-project-overview/project-constraints.md` (`C-01…C-26`)
 
