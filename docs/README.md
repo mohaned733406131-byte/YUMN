@@ -3,11 +3,12 @@ document_id: DOC-ROOT-001
 title: yumn Analysis Documentation — Master Index
 category: root
 status: approved
-version: 1.1
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
+related_requirements: []
 related_documents: []
 ---
 
@@ -17,8 +18,8 @@ related_documents: []
 |---|---|
 | Project Name | **yumn** (Arabic: يُمن) |
 | Project Description | Multi-vendor e-commerce marketplace for Yemen — Arabic-first (RTL), wallet-only payments, custom-built |
-| Documentation Version | 1.1 |
-| Last Updated | 2026-09-27 |
+| Documentation Version | 1.3 |
+| Last Updated | 2026-09-28 |
 | Documentation Status | APPROVED — analysis complete, ready for design/implementation planning |
 | Project Status | ANALYZED (pre-implementation) |
 | Language | English (single language of record) |
@@ -30,9 +31,9 @@ related_documents: []
 This repository is the **single, self-contained analysis knowledge base** for the yumn platform. It was produced from scratch using:
 
 - **Methodology:** `command.md` — *Comprehensive Software Project Analysis & Validation Agent* (56 analysis areas, 48-part final structure, evidence rules, absolute rules).
-- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules).
+- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules). ⚠ **`archdoc.md` is a 0-byte placeholder** — its content never existed in git history (defect `D-10`, `memory.md`); the 24-domain structure this README implements is recorded here until the sponsor restores or retires the file.
 
-Both governing documents are archived with all prior material under `archive/` at the repository root. Nothing inside `docs/` references archived content: this analysis is independent, evidence-tagged, and internally consistent.
+`command.md` is the governing methodology document (28.7 KB, present). The claim that both governing documents are "archived under `archive/`" is **not verifiable — `archive/` does not exist** in this repository; treat it as an unproven statement (`SPE-03`) until evidence appears. Nothing inside `docs/` references archived content: this analysis is independent, evidence-tagged, and internally consistent.
 
 ---
 
@@ -65,11 +66,13 @@ Both governing documents are archived with all prior material under `archive/` a
 | 22 | [glossary](22-glossary/README.md) | Terminology | Canonical term names, business/technical terms, naming conventions |
 | 23 | [templates](23-templates/README.md) | Templates | Reusable templates for every document type |
 
+**Process folders (not analysis domains):** [`phases/`](phases/README.md) — per-phase artifact sets (CORE-03/DOC-02, phase 0 created 2026-09-28) · [`sessions/`](sessions/README.md) — session work files with evidence (SES-01, created 2026-09-28). They carry `DOC-PHA-*` / `DOC-SES-*` IDs and are registered here so no document is an orphan (SPE-05).
+
 ---
 
 ## 3. How to Navigate
 
-**Human readers** — follow the reading order below (matches `archdoc.md` §38):
+**Human readers** — follow the reading order below:
 
 ```text
 1.  docs/README.md                      (this file)
@@ -295,3 +298,14 @@ A document is complete only if it passes the quality gate (purpose, scope, termi
 ---
 
 *End of root index. Next: [00-project-overview/README.md](00-project-overview/README.md)*
+
+---
+
+## Change History
+
+| Date | Version | Change | Author |
+|---|---|---|---|
+| 2026-09-26 | 1.0 | Initial publication of the master index | analysis-agent |
+| 2026-09-27 | 1.1 | §5 AUD-NN validation-audit ID row (registration for domain 20) | analysis-agent |
+| 2026-09-28 | 1.2 | §1 `archdoc.md`/`archive/` claims corrected to honest state (defect `D-10`, SPE-03); §2 process-folder note (`phases/`, `sessions/`); §3 unverifiable `archdoc.md §38` reference removed | analysis-agent |
+| 2026-09-28 | 1.3 | related_requirements: [] frontmatter key added (session 006 sweep: CHK-01) | analysis-agent |

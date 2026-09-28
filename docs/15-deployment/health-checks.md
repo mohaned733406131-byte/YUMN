@@ -3,9 +3,9 @@ document_id: DOC-DPL-005
 title: Health Checks & Readiness Model
 category: 15-deployment
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-005, NFR-007, NFR-020, INT-REQ-007]
@@ -31,9 +31,9 @@ Two probes, two questions: **is the process alive?** (`/healthz`) and **should i
 | Timing budget | Each probe ≤ 1 s total; individual dependency checks have a **150 ms budget** and are executed concurrently (`INFERENCE`) |
 | Version in payload | `version` = image tag/commit, so smoke tests can assert the deployed build |
 
-### 1.1 Path naming note (open reconciliation)
+### 1.1 Path naming note (canon reconciled 2026-09-27)
 
-Infrastructure probes use **`/healthz`** and **`/readyz`** — the paths fixed by `BR-PLT-07`, `NFR-005`, `NFR-020`, `04-architecture/deployment-view.md`, and `13-testing/test-cases/TC-001.md`. The API endpoint register specifies the same two checks at `GET /health/live` (API-ADM-042) and `GET /health/ready` (API-ADM-043) with identical semantics. The API therefore serves **both** path spellings during v1; a single spelling must be chosen by a canon reconciliation before implementation (`20-validation/contradiction-audit.md`).
+The single canonical spelling is **`/healthz`** and **`/readyz`**, fixed by `BR-PLT-07`, `NFR-005`, `NFR-020`, `04-architecture/deployment-view.md`, `04-architecture/component-view.md`, and asserted by `13-testing/test-cases/TC-001.md` (readiness gate) — the API endpoint register now specifies the same two checks at `GET /healthz` (API-ADM-042) and `GET /readyz` (API-ADM-043) with identical semantics. The former API-prefixed probe spellings (verbatim text preserved in `20-validation/contradiction-audit.md` entry `CT-02`) were retired from the contract and the four affected test cases (`TC-001`, `TC-031`, `TC-057`, `TC-065`) on 2026-09-27 under `REC-05`/`TD-06`; the only non-register `/health/…` substring left in the repository is MinIO's own vendor probe (`14-devops-infrastructure/docker-compose.md`), which is not a platform path. Reconciliation recorded in `20-validation/contradiction-audit.md` (`CT-02`, `CT-03` → `RESOLVED`).
 
 ## 2. Readiness — Required vs Degraded Checks
 
@@ -171,3 +171,4 @@ migrate (one-shot) ─► must succeed before api/worker restart   (depends_on: 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | §1.1 rewritten: `/healthz` + `/readyz` declared the single canon; open-reconciliation note retired | `REC-05`/`TD-06` — canonization against `BR-PLT-07`; closes `CT-02`/`CT-03` |

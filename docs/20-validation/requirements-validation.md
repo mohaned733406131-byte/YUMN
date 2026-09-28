@@ -3,7 +3,7 @@ document_id: DOC-VAL-007
 title: AUD-07 — Requirements Validation (68 requirements, 5 categories)
 category: 20-validation
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-27
 updated: 2026-09-27
 author: analysis-agent
@@ -71,23 +71,23 @@ Structure column = fields present out of the 9 §6 fields. AC cited = distinct A
 
 | ID | Structure | AC cited | IDs resolve | Content (7-Q) | Verdict | Notes |
 |---|---|---|---|---|---|---|
-| FR-001 | 8/9 | 4 | OK | ✓ sampled | PASS WITH FINDINGS | Registry `AC-FR001-05` never cited (RVF-04) |
-| FR-002 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR002-05` orphaned (RVF-04) |
-| FR-003 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR003-05` orphaned (RVF-04) |
-| FR-004 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR004-05` orphaned (RVF-04) |
+| FR-001 | 8/9 | 5 | OK | ✓ sampled | **PASS** | `AC-FR001-05` cited 2026-09-27 (`REC-04`) |
+| FR-002 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR002-05` cited 2026-09-27 (`REC-04`); content not sampled |
+| FR-003 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR003-05` cited 2026-09-27 (`REC-04`); content not sampled |
+| FR-004 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR004-05` cited 2026-09-27 (`REC-04`); content not sampled |
 | FR-005 | 8/9 | 4 | OK | ✓ sampled | **PASS** | Clean: structure, content and registry alignment all hold |
-| FR-006 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR006-05` orphaned (RVF-04) |
+| FR-006 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR006-05` cited 2026-09-27 (`REC-04`); content not sampled |
 | FR-007 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | No mechanical finding; content not sampled |
-| FR-008 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR008-05` orphaned (RVF-04) |
-| FR-009 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR009-05` orphaned (RVF-04) |
-| FR-010 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR010-05` orphaned (RVF-04) |
-| FR-011 | 8/9 | 4 | OK | ✓ sampled | PASS WITH FINDINGS | `AC-FR011-05` orphaned (RVF-04) |
-| FR-012 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR012-05` orphaned (RVF-04) |
-| FR-013 | 8/9 | 4 | OK | ✓ sampled | PASS WITH FINDINGS | `AC-FR013-05` orphaned (RVF-04); money-path core |
-| FR-014 | 8/9 | 4 | OK | INSUFFICIENT EVIDENCE | PASS WITH FINDINGS | `AC-FR014-05` orphaned (RVF-04) |
-| FR-015 | 8/9 | 4 | OK | ⚠ sampled | PASS WITH FINDINGS | 4/4 AC texts differ from registry + `AC-FR015-05` orphaned (RVF-04) |
+| FR-008 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR008-05` cited 2026-09-27 (`REC-04`); content not sampled |
+| FR-009 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR009-05` cited 2026-09-27 (`REC-04`); content not sampled |
+| FR-010 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR010-05` cited 2026-09-27 (`REC-04`); content not sampled |
+| FR-011 | 8/9 | 5 | OK | ✓ sampled | **PASS** | `AC-FR011-05` cited 2026-09-27 (`REC-04`) |
+| FR-012 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR012-05` cited 2026-09-27 (`REC-04`); content not sampled |
+| FR-013 | 8/9 | 5 | OK | ✓ sampled | **PASS** | `AC-FR013-05` cited 2026-09-27 (`REC-04`); money-path core |
+| FR-014 | 8/9 | 5 | OK | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | `AC-FR014-05` cited 2026-09-27 (`REC-04`); content not sampled |
+| FR-015 | 8/9 | 5 | OK | ⚠ sampled | PASS WITH FINDINGS | 4/4 AC texts differ from registry (RVF-04); `AC-FR015-05` cited 2026-09-27 |
 | FR-016 | 8/9 | 4 | OK | ⚠ sampled | PASS WITH FINDINGS | `AC-FR016-02` differs from registry (RVF-04) |
-| FR-017 | 8/9 | 4 | OK | ⚠ sampled | PASS WITH FINDINGS | 4/4 AC texts renumbered; registry `AC-FR017-05` (opt-out) uncited; `-05` orphan (RVF-04) |
+| FR-017 | 8/9 | 5 | OK | ⚠ sampled | PASS WITH FINDINGS | 4/4 AC texts renumbered (RVF-04); `AC-FR017-05` (opt-out) cited 2026-09-27 |
 | FR-018 | 8/9 | 4 | OK | ⚠ sampled | PASS WITH FINDINGS | 3/4 AC texts differ; file `AC-FR018-04` (DLQ alert) absent from registry (RVF-04) |
 | FR-019 | 8/9 | 4 | OK | ⚠ sampled | PASS WITH FINDINGS | 2/4 AC texts differ (RVF-04) |
 | FR-020 | 8/9 | 4 | OK | ⚠ sampled | PASS WITH FINDINGS | 2/4 differ; registry `AC-FR020-04` uncited (RVF-04) |
@@ -169,7 +169,7 @@ Structure column = fields present out of the 9 §6 fields. AC cited = distinct A
 | RVF-01 | The `source` field mandated by §6 is absent from every requirement file | HIGH | `02-requirements/requirements-overview.md:138` vs all 68 files in `02-requirements/{functional,non-functional,security,data,integration}/` | 0/68 files carry `**Source**` (M1) — `VERIFIED` | OPEN |
 | RVF-02 | 36 of 68 files carry no `priority`, though §6 mandates it; the registry tables for those categories have no priority column either | HIGH | `non-functional/` 0/20, `data/` 0/8, `integration/` 0/8; `requirements-overview.md` §2/§4/§5 | 32/68 have priority (FR 20 + SEC 12) — `VERIFIED` | OPEN |
 | RVF-03 | The 9-field contract is only met by the functional category; each other category misses a stable subset (SEC: dependencies/preconditions/expected; NFR: preconditions/expected + heading drift for acceptance criteria; DATA/INT: rationale/dependencies) | MEDIUM | §2 matrix above | Structure 8/9 (FR) vs 5/9 (SEC, NFR) vs 3/9 (DATA, INT) — `VERIFIED` | OPEN |
-| RVF-04 | Functional acceptance criteria diverge from their registry: 16 of 24 cited ACs in the `FR-015`–`FR-020` files mean something different than the registry row of the same ID, and 14 registry `AC-FR*-05` rows are never cited by their own file | HIGH | `FR-015.md`…`FR-020.md` in `02-requirements/functional/` `## Acceptance Criteria`; `02-requirements/functional/README.md:61`; `02-requirements/acceptance-criteria.md` FR rows | 94 defined / 80 cited; per-file mismatches FR-015 4/4, FR-017 4/4, FR-018 3/4, FR-019 2/4, FR-020 2/4, FR-016 1/4 — `VERIFIED`; rolled up as HAL-05/HAL-07 and CRIT-05 | OPEN |
+| RVF-04 | Functional acceptance criteria diverge from their registry: 16 of 24 cited ACs in the `FR-015`–`FR-020` files mean something different than the registry row of the same ID, and 14 registry `AC-FR*-05` rows are never cited by their own file | HIGH | `FR-015.md`…`FR-020.md` in `02-requirements/functional/` `## Acceptance Criteria`; `02-requirements/functional/README.md:61`; `02-requirements/acceptance-criteria.md` FR rows | 94 defined / 94 cited (was 80; `-05` orphans closed 2026-09-27); per-file mismatches FR-015 4/4, FR-017 4/4, FR-018 3/4, FR-019 2/4, FR-020 2/4, FR-016 1/4 — `VERIFIED`; rolled up as HAL-05 (open) / HAL-07 (RESOLVED) and CRIT-05 | OPEN (partial 2026-09-27 — `-05` orphan clause cleared by `REC-04`; text-divergence clause remains) |
 | RVF-05 | `AC-S-04`, `AC-S-12`, `AC-S-21` are defined and consumed (NFR-015, Gate 2 checklist) but absent from the file that claims to be the registry of every AC | MEDIUM | `acceptance-criteria.md:17` vs `00-project-overview/success-criteria.md` rows | 24 defined / 21 referenced; set difference = `AC-S-04, AC-S-12, AC-S-21` — `VERIFIED`; same as HAL-06 | OPEN |
 | RVF-06 | Two integration requirements misquote their own registry's parenthetical rule ID | MEDIUM | `integration/INT-REQ-002.md:17` (`BR-PAY-07` vs `requirements-overview.md:126` `BR-PAY-04`); `integration/INT-REQ-006.md:17` (`BR-PLT-05` vs `:130` `BR-PLT-02`) | `VERIFIED`; same as HAL-08 | OPEN |
 | RVF-07 | Content coverage of this audit: 50 of 68 files were not content-sampled, so 7-question verdicts for them are `INSUFFICIENT EVIDENCE` (structural checks still ran on all 68) | LOW | §3 tables, Content column | 18/68 sampled — `VERIFIED` (self-declared limitation) | OPEN |
@@ -190,8 +190,8 @@ Severity totals: **HIGH 3 (RVF-01, RVF-02, RVF-04) · MEDIUM 3 (RVF-03, RVF-05, 
 ## Verdict & Sign-off
 
 - **Gate:** `PASS WITH FINDINGS` (root README §11) — the requirement set is complete in the sense that all 68 files exist, all cite acceptance criteria, and every cross-reference resolves; it fails its own §6 field contract outside the functional category and its AC registry alignment for six functional files
-- **Unresolved contradictions / gaps:** RVF-01…RVF-07 all `OPEN`; linked to HAL-05/HAL-06/HAL-07/HAL-08 (`20-validation/hallucination-audit.md`) and CRIT-05 (`20-validation/critical-findings.md`); GAP-series product decisions are owned by `20-validation/missing-information.md` — none minted here
-- **Required follow-up:** `02-requirements/requirements-overview.md` §6 owners (RVF-01, RVF-02, RVF-03 — either amend the contract or backfill the fields), `02-requirements/functional/` + `acceptance-criteria.md` (RVF-04), `acceptance-criteria.md` + `success-criteria.md` (RVF-05), `02-requirements/integration/` (RVF-06); propagation per root README §9.5 — the owning document changes, this audit only records
+- **Unresolved contradictions / gaps:** RVF-01…RVF-07 open (`RVF-04` partial since 2026-09-27); linked to HAL-05 (open), HAL-06/HAL-08 (open), HAL-07 (`RESOLVED`) (`20-validation/hallucination-audit.md`) and CRIT-05 (open, partial) (`20-validation/critical-findings.md`); GAP-series product decisions are owned by `20-validation/missing-information.md` — none minted here
+- **Required follow-up:** `02-requirements/requirements-overview.md` §6 owners (RVF-01, RVF-02, RVF-03 — either amend the contract or backfill the fields), `02-requirements/functional/` + `acceptance-criteria.md` (RVF-04 — `-05` clause done, text drift remains), `acceptance-criteria.md` + `success-criteria.md` (RVF-05), `02-requirements/integration/` (RVF-06); propagation per root README §9.5 — the owning document changes, this audit only records
 - **Sign-off:** analysis-agent (author), 2026-09-27 — requirements sign-off remains with the sponsor (`00-project-overview/project-charter.md:87`, `21-completion/final-acceptance.md`)
 
 ## Change History
@@ -199,3 +199,4 @@ Severity totals: **HIGH 3 (RVF-01, RVF-02, RVF-04) · MEDIUM 3 (RVF-03, RVF-05, 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 43,45,48 + DOC-REQ-001 |
+| 1.1 | 2026-09-27 | 14 functional rows: AC cited 4→5 and orphan notes cleared (verdicts re-graded per row); RVF-04 → partial (-05 clause cleared, text drift open); verdict/follow-up re-scoped | REC-04 pay-down change set (session 003) — root README §9.4 consumer re-sync |

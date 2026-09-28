@@ -10,7 +10,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | [senior-rules/ENTRY.md](senior-rules/ENTRY.md) | Master rule file — read first, always |
 | [senior-rules/RULES.md](senior-rules/RULES.md) | Master rule catalog (GEN…ADP) |
 | [senior-rules/RULES_HINTS.md](senior-rules/RULES_HINTS.md) | yumn adapter: stack, commands, paths, overrides |
-| [senior-rules/YUMN_RULES.md](senior-rules/YUMN_RULES.md) | yumn project rules (MNY…SPE, 77 rules) |
+| [senior-rules/YUMN_RULES.md](senior-rules/YUMN_RULES.md) | yumn project rules (MNY…SPE, **94** rules — count corrected 2026-09-28, session 005) |
 | [senior-rules/CHANGELOG.md](senior-rules/CHANGELOG.md) · [VERSION](senior-rules/VERSION) | Rule version control |
 | [AGENTS.md](AGENTS.md) | AI instruction to read ENTRY.md before work |
 
@@ -19,11 +19,12 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | File | Purpose |
 |---|---|
 | [session_track.md](session_track.md) | Session ledger, resume points, resume prompts (SES-02/04) |
+| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…006` with evidence (SES-01) |
 | [development_phases_entry.md](development_phases_entry.md) | Phase status, Gate 0 state (DOC-01/02) |
 | [memory.md](memory.md) | Durable facts + known-defect register (DOC-01) |
 | [mind_map.md](mind_map.md) | Repository navigation (DOC-01) |
 | [architecture.md](architecture.md) | Canonical architecture pointer (DOC-01) |
-| `docs/phases/<slug>/` | Per-phase artifact set — **not yet created** (begins Phase 1) |
+| [docs/phases/](docs/phases/README.md) | Per-phase artifact sets — **phase 0 `analysis/` 16/16 created 2026-09-28 (session 005)**; Phase 1 folder when scheduled |
 
 ## Knowledge base (analysis source of truth)
 
@@ -42,6 +43,11 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 Tracked in [memory.md](memory.md) §Known defects and — canonically — in
 [docs/20-validation/](docs/20-validation/README.md) (`CRIT-NN`, `CT-NN`, `HAL-NN`, `GAP-01…GAP-12`)
 plus [docs/21-completion/recommendations.md](docs/21-completion/recommendations.md) (`REC-NN`).
-Domains `19/20/21` were authored 2026-09-27 (resolved); open: FR↔AC rewrites,
-declared-but-absent test cases (`TC-104…114`), money-path enum drift, sponsor baselines (`ASM-14`).
+Domains `19/20/21` were authored 2026-09-27 (resolved); `TC-104…114` authored (resolved, session 003);
+FR↔AC `-05` references added (resolved, session 004 — AC *text-drift* half still open under `HAL-05`/`RVF-04`).
+Change-control sweep completed (session 006): 31-check re-run 18/2/11 on 479 files, deferred findings
+(a)–(f) filed (finding 26, `CT-21`, `CT-22`, `HAL-15` new), roll-up **71 open**, F-07 fixed
+(`validate.py` covers both rule catalogs, `VERSION` 2.2.0).
+Still open: money-path enum drift (`D-06`/`SPE-04`), API-promised storage (`D-07`), the `ORD-08` race (`D-12`),
+71 audit findings, sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`).
 Rule `SPE-03` forbids claiming any of these as done.

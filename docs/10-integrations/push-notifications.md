@@ -3,9 +3,9 @@ document_id: DOC-INT-006
 title: Push Notifications — FCM & APNs Integration
 category: 10-integrations
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: false
 related_requirements: [FR-017, FR-003, INT-REQ-004, INT-REQ-008, NFR-013]
@@ -21,7 +21,7 @@ Push delivery for the React Native apps (Android via **FCM**, iOS via **APNs**) 
 ```text
 domain event (order · delivery · return · escrow · KYC · store)
    → notification rules engine (category, channel set, locale, preferences)
-   → BullMQ job  b10.notification.send          (BR-PLT-01, 3× retry → DLQ, BR-PLT-02)
+   → BullMQ job  b10.notification.delivery          (BR-PLT-01, 3× retry → DLQ, BR-PLT-02)
    → PushPort.send(deviceTokens[], payload)
         ├─ FcmAdapter  (service account, env S-08)
         └─ ApnsAdapter (.p8 key, env S-08, HTTP/2)
@@ -123,3 +123,6 @@ Canonical contract lives in `07-api/endpoints/notifications.md`; the push payloa
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Pipeline queue name corrected: `b10.notification.send` → `b10.notification.delivery` per the canonical register | `REC-06`/`TD-07` pay-down |
+
+
