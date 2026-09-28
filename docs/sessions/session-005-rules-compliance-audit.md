@@ -3,11 +3,12 @@ document_id: DOC-SES-005
 title: Session 005 — rules-compliance audit + SES-01/DOC-02/VCS remediation
 category: sessions
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
 source_of_truth: false
+related_requirements: []
 related_documents: [DOC-SES-000, DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-004, DOC-PHA-001, DOC-PHA-002, DOC-ROOT-001, DOC-GL-003, DOC-VAL-003]
 ---
 
@@ -29,7 +30,7 @@ The full table with severities, rule IDs and disposition lives in [`docs/phases/
 | F-04 | CRITICAL | Phase 0 `COMPLETE` with no `docs/phases/` artifact set | DOC-02 | **FIXED** — 16/16 artifacts + `_index.md` + `README.md` |
 | F-05 | HIGH | `archdoc.md` 0 bytes cited as governing structure spec | SPE-03 (`D-10`) | **PARTIAL** — citations honest; sponsor decision still open |
 | F-06 | MEDIUM | Rule count reported as 77 (actually 94) | SPE-03 | **FIXED** — `all_in_one_track.md`, `session_track.md` |
-| F-07 | MEDIUM | Validator checks ID uniqueness only in `RULES.md` | verification coverage | **OPEN** — amendment proposed, not hot-fixed (manual: 94/94 unique) |
+| F-07 | MEDIUM | Validator checks ID uniqueness only in `RULES.md` | verification coverage | **FIXED 2026-09-28 (session 006)** — §0.5 amendment applied (`validate.py` check 5 → both catalogs, 77 + 94; `VERSION` 2.2.0); was "proposed, not hot-fixed" (manual: 94/94 unique) |
 | F-08 | LOW | No terminal-session names recorded | SES-03 | **FIXED** — named sessions from 005 |
 | F-09 | HIGH | `SEC-001…015` all open (1 CRIT, 4 HIGH) | SEC-04/AUD-02 | **OPEN — sponsor/Gate 0** |
 | F-10 | MEDIUM | 69 open findings across seven audits; Gate 0 `FAIL` | AUD-02 | **OPEN — sponsor items `REC-11…13`** |
@@ -76,7 +77,7 @@ RESULT: FAIL — 1 finding(s)
 (resolved by authoring this file; next run PASS)
 ```
 
-**Manual verification (F-07 gap coverage):** `YUMN_RULES.md` ID column checked manually — 94/94 unique (validator only enforces `RULES.md`'s 77; amendment proposed via `core/00` §0.5, not applied).
+**Manual verification (F-07 gap coverage):** `YUMN_RULES.md` ID column checked manually — 94/94 unique (validator only enforced `RULES.md`'s 77 at the time; amendment proposed via `core/00` §0.5, **applied 2026-09-28 in session 006** — see the F-07 row above and `senior-rules/CHANGELOG.md` `[2.2.0]`).
 
 ## Findings / blockers (state at close)
 
@@ -115,3 +116,11 @@ Filled after the commit sequence in this same session (see `session_track.md` ro
 - `session_track.md` updated: yes (row 005 + log block + resume → session 006).
 - `memory.md` updated: yes (F-05 partial, `D-16`, phase-folder reversal log, session snapshot).
 - Resume prompt produced: yes — `prompt-next.md` rewritten as session-006 handoff.
+
+## Change History
+
+| Date | Version | Change | Author |
+|---|---|---|---|
+| 2026-09-28 | 1.0 | Initial creation (SES-01 reconstruction, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | related_requirements: [] frontmatter key and this Change History section added (session 006 sweep: CHK-01, CHK-05) | analysis-agent |
+| 2026-09-28 | 1.2 | F-07 flipped to FIXED — the §0.5 amendment it proposed was applied in session 006 (`validate.py` + `VERSION` 2.2.0 + `CHANGELOG`) | analysis-agent |

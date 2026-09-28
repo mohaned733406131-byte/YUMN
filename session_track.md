@@ -1,6 +1,6 @@
 # session_track — Session Ledger (SES-02)
 
-Resume point: **session 006** · Rule set: ADMR `2.0.0` + `senior-rules/YUMN_RULES.md` (94 rules)
+Resume point: **session 007** · Rule set: ADMR `2.2.0` (F-07 amendment; rule text unchanged since `2.0.0`) + `senior-rules/YUMN_RULES.md` (94 rules)
 
 | # | Date | Status | Tasks completed | Next task | Blockers | Session file |
 |---|---|---|---|---|---|---|
@@ -9,6 +9,7 @@ Resume point: **session 006** · Rule set: ADMR `2.0.0` + `senior-rules/YUMN_RUL
 | 003 | 2026-09-27 | CLOSED | ① GEN-08 version reconciliation (pin 2.0.0; D-13 RESOLVED). ② `REC-05` PAID — health canon `/healthz` + `/readyz` (7 files). ③ `REC-03` PAID — authored `TC-104`…`TC-114` (114/114 TCs, all cited IDs resolve). ④ Same-change-set propagation across 9 registers. | `REC-04` (FR AC refs), `REC-08` (stub rows), `REC-07` (role mapping), `REC-06` (queue register), then the change-control sweep. | 78 open findings; Gate 0 `FAIL` (`CRIT-01`); sweep backlog `BR-PRM-07` / Moderator conflict / J10 cadence. | [session-003-health-canon-and-tc-inventory.md](docs/sessions/session-003-health-canon-and-tc-inventory.md) |
 | 004 | 2026-09-27 | CLOSED | ① `REC-04` PAID — 94/94 registry `AC-FR*` cited by FR files. ② `REC-08` PAID — 6 stub rows rewritten. ③ `REC-07` PAID — `rbac.md` §8 four-way role mapping. ④ `REC-06` PAID — single 30-row queue register, repo scan 0 violations. ⑤ Propagation catch-up (finding 12 / `CHK-20`), roll-up → 69 open findings. | **Change-control sweep** (re-run 7 audits, add deferred findings (a)–(f)), then `REC-01/02/10/14/15`. | 69 open findings; Gate 0 sponsor-blocked (`REC-11…13`); work uncommitted (remediated in session 005). | [session-004-rec-paydowns.md](docs/sessions/session-004-rec-paydowns.md) |
 | 005 | 2026-09-28 | CLOSED | ① Rules-compliance audit → `F-01…F-10` (canonical: `docs/phases/analysis/phase-audit.md`). ② `docs/sessions/` created (DOC-SES-000…005; 001–004 reconstructed w/ provenance). ③ `docs/phases/` created — 16/16 CORE-03 artifacts (DOC-PHA-001…018); reversal of "leave as-is" logged (`D-15` RESOLVED). ④ Fixes: 77 → 94 counts, `docs/README.md` v1.2 honesty (`D-10` PARTIAL, `D-16` opened), `RULES_HINTS.md` §4 `SEC-015`. ⑤ Registrations: naming-conventions v1.3 (`PHA`/`SES`), consistency-audit v1.10 propagation row, `memory.md` snapshot. ⑥ VCS: grouped commits (7), `master` → `main`, branch `session-005`, pushed — `origin/master` deletion pending (still GitHub default branch). ⑦ Validator → **PASS**. | **Change-control sweep** (re-run 7 audits incl. deferred 31-check re-run, add findings (a)–(f)), then F-07 validator amendment, then `REC-01/02/10/14/15`. | 69 open findings; Gate 0 sponsor-blocked (`REC-11…13`); `SEC-001…015` all open; F-07 open; `D-10`/`D-16` sponsor decisions. | [session-005-rules-compliance-audit.md](docs/sessions/session-005-rules-compliance-audit.md) |
+| 006 | 2026-09-28 | CLOSED | ① **31-check scripted re-run** on 479 files → **18 PASS / 2 PWF / 11 FAIL** (`CHK-01`, `CHK-06`, `CHK-15` flip to PASS; `CHK-05` 49 → 48). ② Sweep fixes: `related_requirements: []` + `## Change History` on session files/READMEs (findings 1 → RESOLVED); `GAP-07…12` pointer rows in `project-scope.md` v1.1 (finding 9 → RESOLVED); `DOC-REQ-010` → `DOC-NFD-001` (finding 28); queue token → `b10.notification.delivery` (finding 27). ③ Deferred findings (a)–(f) filed: (a) → consistency **finding 26** (HIGH OPEN), (b) → `CT-21`, (c) disproved → `HAL-14` RESOLVED, (d) → `CT-22`, (e) → `HAL-15`, (f) re-verified OPEN. ④ Registers re-synced: consistency **v1.11** (28 findings, 15/13), contradiction **v1.4** (CT-01…22, 17 open), hallucination **v1.3** (HAL-01…15, 12 open), analysis-validation **v1.5** (**71 open**). ⑤ **F-07 FIXED** via core/00 §0.5: `validate.py` check 5 → both catalogs (77+94); `VERSION` → **2.2.0**, `CHANGELOG` `[2.2.0]`, `RULES_HINTS` §1 pin → 2.2.0. ⑥ Tracked: sessions/README row 006, session-006 file (DOC-SES-006), `memory.md` snapshot, `prompt-next.md` → 007. ⑦ Validator → **PASS** (incl. `yumn rule ids unique (94)`). | Assistant-side `REC-01/02/10/14/15` (`TD-01…03` open), then surface sponsor blockers, then implementation bootstrap per Gate 0. | 71 open findings; Gate 0 sponsor-blocked (`REC-11…13`); `SEC-001…015` all open; `D-10`/`D-16` sponsor decisions; `origin/master` deletion pending. | [session-006-change-control-sweep.md](docs/sessions/session-006-change-control-sweep.md) |
 
 ## Session log
 
@@ -201,3 +202,43 @@ Intermediate honest run: `FAIL link — docs\sessions\README.md -> session-005-r
 
 **Resume prompt for session 006 (paste this to continue; also in `prompt-next.md`):**
 > Continue yumn work under `senior-rules/ENTRY.md` + `RULES_HINTS.md` (read both first; confirm VERSION pin per GEN-08). Resume point: `session_track.md` session 005 — audit done (F-01…F-10), `docs/sessions/` + `docs/phases/` exist, validator `PASS — structure healthy`, work committed/pushed on `session-005` (branch `main` renamed from `master`). Next = **the change-control sweep**: (a) re-run all seven audits fresh including the deferred 31-check consistency re-run (corpus +24 files), (b) add the six deferred findings (a)–(f) (listed in `prompt-next.md` §3A2) to their owning registers with evidence + version bump + CH row, (c) F-07 validator amendment (extend ID-uniqueness to `YUMN_RULES.md` via `core/00` §0.5), (d) `python senior-rules/validators/validate.py .` → PASS, (e) update `session_track.md` + `memory.md` + author `docs/sessions/session-006-*.md`. After the sweep: `REC-01/02/10/14/15` assistant-side; Gate 0 stays sponsor-blocked (`REC-11…13`, `D-10`/`D-16`, `SEC-001…015`).
+
+---
+
+### Session 006 — 2026-09-28 — change-control sweep + F-07 validator amendment
+
+**Work performed** (each change set = version bump + `## Change History` row + propagation row in `20-validation/consistency-audit.md` §4)
+
+- **31-check scripted re-run** (deferred at v1.10) on the **479**-file corpus → **18 PASS · 2 PASS WITH FINDINGS · 11 FAIL**. Flips: `CHK-01` (all 479 files carry the 11 frontmatter keys), `CHK-06` (24/24 root-README targets resolve), `CHK-15` (12 cited `GAP-*` = 12 registered). `CHK-05` 49 → **48** files missing `## Change History` (finding 2, still `OPEN`); `CHK-07` 486 cited / 479 defined — 7 undefined, all meta or same-set-fixed (**0 real orphans**); `CHK-17` 17/17 order states; `CHK-20` legacy hits are CH rows documenting the rename (meta).
+- **Sweep fixes:** `related_requirements: []` + `## Change History` added to the 5 session files, `sessions/README.md`, root `docs/README.md` (v1.3) → **finding 1 `RESOLVED`**; `project-scope.md` v1.1 uncertain-scope table extended with `GAP-07`…`GAP-12` pointer rows → **finding 9 `RESOLVED`**; `phases/analysis/non-functional-requirements.md` v1.1 `DOC-REQ-010` → `DOC-NFD-001` (**finding 28**, `RESOLVED`); `phases/analysis/sequence-diagrams.md` v1.1 `b07.order.confirmation.enqueue` → `b10.notification.delivery` (**finding 27**, `RESOLVED`).
+- **Deferred findings (a)–(f) landed in owning registers** (evidence re-verified first): (a) Moderator read conflict → **consistency finding 26** (`HIGH`, `OPEN` — `admin.md:70,77` grant vs `rbac.md:58,60` deny + `UC-036:54`); (b) J10 cadence → **`CT-21`** (`MEDIUM`, `OPEN` — `data-quality.md:84` Hourly vs `mitigation-plans.md:46` Nightly / `implementation-roadmap.md:188` nightly / `risk-register.md:79` daily); (c) `BR-PRM-07` **disproved** → **`HAL-14` `RESOLVED`** (grep: cited nowhere; `business-rules.md` defines `BR-PRM-01…06` completely; `session-003`/`session-004` annotated); (d) `ipHash` vs `ip` → **`CT-22`** (`MEDIUM`, `OPEN` — `admin.md:77,125` vs `audit_log.md:40`); (e) `API-TOP` phantom group → **`HAL-15`** (`MEDIUM`, `OPEN` — `project-constraints.md:27`, `functional-analysis.md:167`, `constraint-tests.md:84` + `19-traceability/README.md:141` F-06; real group `API-WAL-003/004`); (f) re-verified `HAL-05`/`RVF-04`/`CRIT-05` still `OPEN`.
+- **Registers re-synced:** `consistency-audit.md` **v1.11** (re-run results, findings 1/9 flips, findings 26–28, §3/§4/§5/§6 → 15 `OPEN`/13 `RESOLVED`), `contradiction-audit.md` **v1.4** (`CT-01…CT-22`, 17 open), `hallucination-audit.md` **v1.3** (`HAL-01…HAL-15`, 12 open), `analysis-validation.md` **v1.5** (roll-up **71 open** = 15+17+12+12+8+7; `AVF-10`; verdict/follow-up).
+- **F-07 amendment (`core/00` §0.5, never a hot-patch):** `senior-rules/validators/validate.py` check 5 refactored into `check_rule_ids()` and run against **both** `RULES.md` (77 IDs) and `YUMN_RULES.md` (94 IDs — MNY/ESC/ORD/IDT/STK/SHP/RET/RTL/API/DAT/OPS/PRF/SPE), with a new zero-IDs-parse FAIL guard; `VERSION` 2.0.0 → **2.2.0** (MINOR); `CHANGELOG.md` `[2.2.0]` (rationale + pre-existing 2.0.0↔[2.1.0] drift recorded, not silently reconciled); `RULES_HINTS.md` §1 pin → 2.2.0 with a GEN-08 session-006 reconciliation note (no rule IDs/severities/text changed). F-07 flipped `OPEN` → **`FIXED`** (`phase-audit.md` v1.2, `session-005` v1.2).
+- **Operational incident:** the first fix script's PS function named `RD` resolved to the `rd` alias (`Remove-Item`) and **deleted 10 files** — recovered with `git restore` (all committed at the session-005 tip); v2 script uses alias-safe names + null-content guard. Logged in `memory.md` + `prompt-next.md` §5.
+
+**Evidence**
+```text
+python senior-rules/validators/validate.py .
+
+ADMR validator — repo: E:\YUMN
+  PASS  rules-dir exists
+  PASS  signatures (29 files start with 'Kimi')
+  PASS  entry file: ENTRY.md / RULES.md / CHANGELOG.md / VERSION
+  PASS  entry file: session_track.md / development_phases_entry.md / all_in_one_track.md
+  PASS  entry file: architecture.md / memory.md / mind_map.md / agents.md / RULES_HINTS.md
+  PASS  markdown links (0 broken)
+  PASS  rule ids unique (77 rules in RULES.md)
+  PASS  yumn rule ids unique (94 rules in YUMN_RULES.md)
+  PASS  forbidden UI calls in source (0)
+------------------------------------------------------------
+RESULT: PASS — structure healthy
+
+31-check sweep re-run (479 files): 18 PASS / 2 PWF / 11 FAIL; flips CHK-01, CHK-06, CHK-15
+consistency findings: 28 total — 15 OPEN / 13 RESOLVED
+open findings total: 71 = 15 consistency + 17 contradiction + 12 gap + 12 hallucination + 8 critical + 7 requirement-validation
+```
+
+**Status honesty (DOD-10):** validator `PASS — structure healthy` including the new 94-rule YUMN catalog check. Open findings rose 69 → **71** (four net new: findings 26, `CT-21`, `CT-22`, `HAL-15`; two closed: findings 1, 9; plus findings 27/28 minted-and-closed same set; `HAL-14` closed as a disproved claim). Gate 0 still `FAIL` (`CRIT-01`, sponsor-owned); `SEC-001…015` all `OPEN`; `CHK-05` residual 48 files; secret scan `BLOCKED`; `D-10`/`D-16` sponsor decisions; `origin/master` deletion pending default-branch switch.
+
+**Resume prompt for session 007 (paste this to continue; also in `prompt-next.md`):**
+> Continue yumn work under `senior-rules/ENTRY.md` + `RULES_HINTS.md` (read both first; confirm VERSION pin per GEN-08 — now **2.2.0**). Resume point: `session_track.md` session 006 — sweep complete: 31-check re-run 18/2/11 on 479 files, deferred findings (a)–(f) filed (finding 26, `CT-21`, `CT-22`, `HAL-15` new; findings 1/9/27/28 + `HAL-14` resolved), roll-up **71 open**, F-07 FIXED (`validate.py` covers 77+94 rule IDs), validator `PASS — structure healthy`, work on branch `session-006`. Next: (a) assistant-side recommendations `REC-01`, `REC-02`, `REC-10`, `REC-14`, `REC-15` (`TD-01…03` open; `REC-15` = CI enforcement — no CI exists yet); (b) surface sponsor blockers `REC-11…13` (`ASM-14`, `DEP-05/06`, `DEP-10`), `D-10`/`D-16`, `SEC-001…015`; (c) only then implementation bootstrap per `development_phases_entry.md` Gate 0 (`docs/phases/bootstrap/`). Never green-wash Gate 0/DOD gates (DOD-10); re-run `python senior-rules/validators/validate.py .` after every change set.

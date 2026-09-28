@@ -19,7 +19,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | File | Purpose |
 |---|---|
 | [session_track.md](session_track.md) | Session ledger, resume points, resume prompts (SES-02/04) |
-| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…005` with evidence (SES-01) |
+| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…006` with evidence (SES-01) |
 | [development_phases_entry.md](development_phases_entry.md) | Phase status, Gate 0 state (DOC-01/02) |
 | [memory.md](memory.md) | Durable facts + known-defect register (DOC-01) |
 | [mind_map.md](mind_map.md) | Repository navigation (DOC-01) |
@@ -45,6 +45,9 @@ Tracked in [memory.md](memory.md) §Known defects and — canonically — in
 plus [docs/21-completion/recommendations.md](docs/21-completion/recommendations.md) (`REC-NN`).
 Domains `19/20/21` were authored 2026-09-27 (resolved); `TC-104…114` authored (resolved, session 003);
 FR↔AC `-05` references added (resolved, session 004 — AC *text-drift* half still open under `HAL-05`/`RVF-04`).
+Change-control sweep completed (session 006): 31-check re-run 18/2/11 on 479 files, deferred findings
+(a)–(f) filed (finding 26, `CT-21`, `CT-22`, `HAL-15` new), roll-up **71 open**, F-07 fixed
+(`validate.py` covers both rule catalogs, `VERSION` 2.2.0).
 Still open: money-path enum drift (`D-06`/`SPE-04`), API-promised storage (`D-07`), the `ORD-08` race (`D-12`),
-69 audit findings, sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`).
+71 audit findings, sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`).
 Rule `SPE-03` forbids claiming any of these as done.

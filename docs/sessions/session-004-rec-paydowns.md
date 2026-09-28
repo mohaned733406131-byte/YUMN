@@ -3,11 +3,12 @@ document_id: DOC-SES-004
 title: Session 004 — REC-04/08/07/06 pay-down (FR AC refs, stub rows, role mapping, queue register)
 category: sessions
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
 source_of_truth: false
+related_requirements: []
 related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-005]
 ---
 
@@ -53,9 +54,17 @@ QUEUE-NAME SCAN: PASS - 0 violations, 439 files scanned, 124 DB-column refs skip
 ## Findings / blockers
 - Open findings: **69** = 16 consistency + 15 contradiction + 12 gap + 11 hallucination + 8 critical + 7 requirement-validation; Gate 0 `FAIL` (`CRIT-01`, sponsor-owned).
 - Pay-down queue: `REC-03…REC-09` PAID; `REC-01`, `REC-02`, `REC-10`…`REC-15` remain (`REC-11…13` sponsor-owned).
-- Deferred sweep items (a)–(f): Moderator audit-read conflict; J10 cadence; `BR-PRM-07` orphan; `ipHash` vs `ip`; `API-TOP` phantom group ×4 files; D-02 AC text-drift half.
+- Deferred sweep items (a)–(f): Moderator audit-read conflict; J10 cadence; `BR-PRM-07` orphan; `ipHash` vs `ip`; `API-TOP` phantom group ×4 files; D-02 AC text-drift half. **(Session-006 outcome 2026-09-28: (a) → consistency finding 26 `OPEN`; (b) → `CT-21` `OPEN`; (c) disproved → `HAL-14` `RESOLVED`; (d) → `CT-22` `OPEN`; (e) → `HAL-15` `OPEN`; (f) re-verified — `HAL-05`/`RVF-04`/`CRIT-05` still `OPEN`.)**
 - **Not done in this session:** none of sessions 002–004 were committed or pushed (SES-04/DOD-09 violation) — remediated in session 005.
 
 ## Handoff
 - `session_track.md` updated: yes (row 004 + log block).
 - Resume prompt produced: yes — session-004 block in [session_track.md](../../session_track.md) and `prompt-next.md`.
+
+## Change History
+
+| Date | Version | Change | Author |
+|---|---|---|---|
+| 2026-09-28 | 1.0 | Initial creation (SES-01 reconstruction, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | related_requirements: [] frontmatter key and this Change History section added (session 006 sweep: CHK-01, CHK-05) | analysis-agent |
+| 2026-09-28 | 1.2 | Deferred items (a)–(f) outcome recorded inline: finding 26, `CT-21`, `HAL-14` (disproved), `CT-22`, `HAL-15`; (f) re-verified open | Session-006 sweep (deferred-findings mandate) |

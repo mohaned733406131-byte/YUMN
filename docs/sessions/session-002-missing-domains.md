@@ -3,11 +3,12 @@ document_id: DOC-SES-002
 title: Session 002 — author the three missing domains (D-01/D-14)
 category: sessions
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
 source_of_truth: false
+related_requirements: []
 related_documents: [DOC-SES-001, DOC-SES-003, DOC-SES-004, DOC-SES-005]
 ---
 
@@ -58,3 +59,10 @@ RESULT: PASS — structure healthy
 ## Handoff
 - `session_track.md` updated: yes (row 002 + log block).
 - Resume prompt produced: yes — session-002 block in [session_track.md](../../session_track.md) (superseded by the session-003/004/005 prompts).
+
+## Change History
+
+| Date | Version | Change | Author |
+|---|---|---|---|
+| 2026-09-28 | 1.0 | Initial creation (SES-01 reconstruction, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | related_requirements: [] frontmatter key and this Change History section added (session 006 sweep: CHK-01, CHK-05) | analysis-agent |

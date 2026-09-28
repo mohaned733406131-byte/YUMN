@@ -3,12 +3,13 @@ document_id: DOC-SES-000
 title: Sessions Index — session work files (SES-01)
 category: sessions
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
-related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-004, DOC-SES-005]
+related_requirements: []
+related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-004, DOC-SES-005, DOC-SES-006]
 ---
 
 # docs/sessions — Session Work Files (SES-01)
@@ -28,6 +29,7 @@ from `senior-rules/templates/TEMPLATE_session_work.md`). The resume index is
 | 003 | [session-003-health-canon-and-tc-inventory.md](session-003-health-canon-and-tc-inventory.md) | 2026-09-27 | CLOSED | `REC-05` health canon, `REC-03` TC-104…114 |
 | 004 | [session-004-rec-paydowns.md](session-004-rec-paydowns.md) | 2026-09-27 | CLOSED | `REC-04/06/07/08` pay-downs |
 | 005 | [session-005-rules-compliance-audit.md](session-005-rules-compliance-audit.md) | 2026-09-28 | CLOSED | Rules-compliance audit + SES-01/DOC-02/VCS remediation |
+| 006 | [session-006-change-control-sweep.md](session-006-change-control-sweep.md) | 2026-09-28 | CLOSED | Change-control sweep (31-check re-run, deferred findings (a)–(f)) + F-07 amendment |
 
 ## Notes
 
@@ -41,3 +43,5 @@ from `senior-rules/templates/TEMPLATE_session_work.md`). The resume index is
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation — SES-01 remediation, sessions 001–005 (session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | related_requirements: [] frontmatter key added (session 006 sweep: CHK-01) | analysis-agent |
+| 2026-09-28 | 1.2 | Registry row 006 + `DOC-SES-006` added (session 006 close, SPE-05) | analysis-agent |

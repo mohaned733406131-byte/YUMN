@@ -3,11 +3,12 @@ document_id: DOC-SES-003
 title: Session 003 — REC-05 health canon + REC-03 test-case inventory
 category: sessions
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
 source_of_truth: false
+related_requirements: []
 related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-004, DOC-SES-005]
 ---
 
@@ -44,8 +45,16 @@ RESULT: PASS — structure healthy
 
 ## Findings / blockers
 - Open findings after this session: 78 (19 consistency + 19 contradiction + 12 gap + 12 hallucination + 9 critical + 7 requirement-validation); Gate 0 still `FAIL` (`CRIT-01`, sponsor-owned).
-- Sweep backlog logged for session 004: `BR-PRM-07` orphan citation; Moderator settings/audit-read conflict; J10 cadence.
+- Sweep backlog logged for session 004: `BR-PRM-07` orphan citation; Moderator settings/audit-read conflict; J10 cadence. **(Session-006 re-verification 2026-09-28: `BR-PRM-07` is cited nowhere in the corpus and `business-rules.md` defines `BR-PRM-01…06` completely — this backlog entry was a false positive, recorded and closed as `HAL-14` `RESOLVED`; the other two items landed as consistency finding 26 and `CT-21`.)**
 
 ## Handoff
 - `session_track.md` updated: yes (row 003 + log block).
 - Resume prompt produced: yes — session-003 block in [session_track.md](../../session_track.md).
+
+## Change History
+
+| Date | Version | Change | Author |
+|---|---|---|---|
+| 2026-09-28 | 1.0 | Initial creation (SES-01 reconstruction, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | related_requirements: [] frontmatter key and this Change History section added (session 006 sweep: CHK-01, CHK-05) | analysis-agent |
+| 2026-09-28 | 1.2 | Sweep-backlog line corrected: `BR-PRM-07` orphan disproved (→ `HAL-14` `RESOLVED`); other two backlog items landed as consistency finding 26 and `CT-21` | Session-006 sweep re-verification (deferred item (c)) |
