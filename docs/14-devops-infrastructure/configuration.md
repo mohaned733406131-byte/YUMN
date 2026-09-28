@@ -3,9 +3,9 @@ document_id: DOC-OPS-005
 title: Configuration Management & Environment Variable Inventory
 category: 14-devops-infrastructure
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-020, SEC-REQ-007, DATA-REQ-003]
@@ -175,7 +175,21 @@ Flags are **operational switches**, not configuration of business rules. Busines
 | `maintenance_mode` | off | Routes non-critical traffic to the maintenance page; health endpoints stay live | `NFR-020`, `DOC-DPL-003` |
 | `new_vendor_registration_enabled` | on | Throttle intake during KYC backlog | `FR-007` |
 
-Flag lifecycle: **add** = new row + default in the register; **retire** = remove code usage first, then remove the row (dead flags are technical debt tracked in `21-completion/technical-debt.md`).
+Flag lifecycle: **add** = new row + default in the register · **active** = row in force · **retire** = remove code usage first, then remove the row (a dead flag is technical debt and is recorded in `21-completion/technical-debt.md` **before** the row disappears) · **retired** = row removed; the flag name is never reused. **Sweep cadence: quarterly** — every flag in §4.1 is checked against code usage; any dead row is dispositioned in `21-completion/technical-debt.md` before removal (`REC-10`, `TD-01`).
+
+### 4.2 Flag sweep record (dated, per-flag disposition)
+
+| Date | Flag (§4.1) | Disposition | Evidence |
+|---|---|---|---|
+| 2026-09-28 | `search_suggestions_enabled` | `RETAIN` — pre-implementation baseline; no code usage exists to remove | no `api/`, `apps/`, or `packages/` tree in the repo (`SPE-03`); re-sweep at first code, then quarterly |
+| 2026-09-28 | `auto_accept_orders_enabled` | `RETAIN` — pre-implementation baseline; no code usage exists to remove | as above |
+| 2026-09-28 | `reviews_bulk_moderation_enabled` | `RETAIN` — pre-implementation baseline; no code usage exists to remove | as above |
+| 2026-09-28 | `bank_topup_enabled` | `RETAIN` — pre-implementation baseline; no code usage exists to remove | as above |
+| 2026-09-28 | `instant_topup_enabled` | `RETAIN` — pre-implementation baseline; no code usage exists to remove | as above |
+| 2026-09-28 | `maintenance_mode` | `RETAIN` — pre-implementation baseline; no code usage exists to remove | as above |
+| 2026-09-28 | `new_vendor_registration_enabled` | `RETAIN` — pre-implementation baseline; no code usage exists to remove | as above |
+
+Sweep result: **0 dead rows** (nothing to remove); next sweep due at first implementation code, then on the quarterly cadence (`REC-10` acceptance evidence).
 
 ## 5. Config Drift Prevention
 
@@ -205,3 +219,4 @@ Flag lifecycle: **add** = new row + default in the register; **retire** = remove
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | §4.1 flag lifecycle gains explicit **retire/retired** states and a **quarterly sweep cadence**; new §4.2 dated sweep record with per-flag dispositions (baseline: 0 dead rows, pre-implementation) | `REC-10` / `TD-01` pay-down — the lifecycle's dead-flag rule needed a home, state, and cadence (`FEATURE_FLAGS_DEFAULT_MODE=off` fail-closed hides leftovers) |

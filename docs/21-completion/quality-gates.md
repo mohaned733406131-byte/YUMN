@@ -3,9 +3,9 @@ document_id: DOC-CMP-004
 title: Quality Gates — Gate 0 to Gate 3
 category: 21-completion
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-013, NFR-001, NFR-005, NFR-019, SEC-REQ-012, DATA-REQ-004]
@@ -172,17 +172,18 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 
 ## 7. Gate Summary & Current Status
 
-| Gate | Guards | Owner / chair | Outcome recorded in | Status as of 2026-09-27 |
-|---|---|---|---|---|
-| Gate 0 | Start of implementation | **Project sponsor** | This file + `20-validation/analysis-validation.md` | `PENDING` — prerequisites `INSUFFICIENT EVIDENCE` (`ASM-14`, `DEP-05`, `DEP-06`, `DEP-10`) |
-| Gate 1 | Phase 1 → Phase 2 | Technical lead (sponsor for CRITICAL acceptances) | This file | `PENDING` — no implementation exists |
-| Gate 2 | Phase 2 → Launch | Project sponsor | This file + `15-deployment/production-readiness.md` §9 | `PENDING` — production-readiness 0/52 rows `DONE` |
-| Gate 3 | Post-launch closure → acceptance | Project sponsor + product owner | This file + `20-validation/analysis-validation.md` | `PENDING` — platform not launched |
+| Gate | Guards | Owner / chair | Outcome (recorded 2026-09-28) | Findings / severity behind the outcome | Outcome recorded in |
+|---|---|---|---|---|---|
+| Gate 0 | Start of implementation | **Project sponsor** | **`FAIL`** | `CRIT-01` (**CRITICAL**) — `ASM-14` baselines `INSUFFICIENT EVIDENCE`; `DEP-05`/`DEP-06` `NOT STARTED` (G-R3), `DEP-10` not started; charter sign-off `PENDING` (0.6); `AVF-02` (`VERIFIED`, roll-up `CRITICAL`) | This file + `20-validation/analysis-validation.md` (`AVF-02`) |
+| Gate 1 | Phase 1 → Phase 2 | Technical lead (sponsor for CRITICAL acceptances) | **`FAIL`** — not presented; entry criterion (Gate 0 `PASS`) unmet | Gate 0 block stands; no implementation exists (`SPE-03`) — zero evidence for checks 1.1–1.9 | This file |
+| Gate 2 | Phase 2 → Launch | Project sponsor | **`FAIL`** — not presented; entry criterion unmet | Gate 0/1 blocks stand; production-readiness 0/52 rows `DONE` | This file + `15-deployment/production-readiness.md` §9 |
+| Gate 3 | Post-launch closure → acceptance | Project sponsor + product owner | **`FAIL`** — not presented; entry criterion unmet | Gate 0–2 blocks stand; platform not launched; all `AC-S-*` `PENDING` | This file + `20-validation/analysis-validation.md` |
 
-Honesty rule: **no gate has been run, and none can pass today** — no implementation exists (root README §6: no document is `VERIFIED`). Records of future outcomes are created when the evidence exists; this file defines what will be judged, not what has been.
+Honesty rule: **no gate review has been convened, and none can pass today** — no implementation exists (root README §6: no document is `VERIFIED`). The outcomes above are the §1 **`FAIL` = block** state read from current evidence: Gate 0 fails its own criteria today (`AVF-02`, `VERIFIED`), and Gates 1–3 are blocked behind it, so none of the guarded transitions happens. Re-presentation requires new evidence, not argument (§1); a future `PASS` / `PASS WITH FINDINGS` is recorded here only when its evidence artifacts exist — this file defines what will be judged, not what has passed.
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
+| 1.1 | 2026-09-28 | §7 rewritten: every gate record now carries an explicit §1 outcome (`FAIL`) with findings/severities and evidence links; honesty note re-scoped to "no review convened, block stands" | `REC-14` pay-down — gate discipline requires recorded outcomes; never green-washed (DOD-10): Gate 0 fails its own criteria today (`AVF-02`) |
