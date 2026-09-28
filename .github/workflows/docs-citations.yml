@@ -1,0 +1,27 @@
+name: docs-citations
+
+# REC-15 — citation discipline CI: structure validator + citation check.
+# Fails the build on any dangling ID (FR/TC/BR/RISK/ASM/DEP/GAP/AC/SEC/
+# SEC-REQ/REC/TD cited but not defined) or unresolvable backticked path.
+# Owner rule set: tools/check_citations.py (exceptions are explicit
+# allowlists there, each annotated with the finding that documents it).
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  citations:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Structure validator (senior-rules)
+        run: python senior-rules/validators/validate.py .
+
+      - name: Citation check (REC-15)
+        run: python tools/check_citations.py

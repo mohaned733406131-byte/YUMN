@@ -3,9 +3,9 @@ document_id: DOC-API-001
 title: API Contract Domain — Overview, Versioning & File Map
 category: 07-api
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, NFR-001, NFR-013, SEC-REQ-004, SEC-REQ-009]
@@ -104,7 +104,7 @@ Every FR is reachable through at least one endpoint group; every endpoint belong
 2. Read `error-model.md` — every endpoint's "Errors" column lists error **codes**; the envelope and HTTP status mapping are defined only in `error-model.md`.
 3. Read `pagination.md` before implementing any list endpoint — the pagination mode (cursor/offset) is fixed per endpoint family.
 4. Open the group file under `endpoints/` for the endpoint table: method, path, roles, request/response essentials, errors, and related FR/BR/SEC IDs.
-5. Cross-check state-sensitive behavior against `03-system-analysis/state-transitions.md` (17 states, `409 STATE_CONFLICT`) and `01-business-analysis/business-rules.md` (99 rules).
+5. Cross-check state-sensitive behavior against `03-system-analysis/state-transitions.md` (17 states, `409 STATE_CONFLICT`) and `01-business-analysis/business-rules.md` (104 rules).
 
 ---
 
@@ -122,3 +122,4 @@ Every FR is reachable through at least one endpoint group; every endpoint belong
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Checklist item 5 count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |

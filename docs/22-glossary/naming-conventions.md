@@ -3,9 +3,9 @@ document_id: DOC-GL-003
 title: Naming Conventions
 category: 22-glossary
 status: approved
-version: 1.1
+version: 1.4
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -39,6 +39,7 @@ Two global rules override everything below (root README §5):
 | Filled vs template files | Templates live only in `23-templates/` and contain `<angle-bracket placeholders>`; no other file may contain them | `23-templates/test-case-template.md` vs `13-testing/test-cases/TC-001.md` |
 | Cross-links | Relative Markdown links from the linking file; reference by **ID** in prose, never by copied definition | `[terminology.md](terminology.md)`, "see `BR-ESC-02`" |
 | Banned names | version/position words instead of meaning | `final.md`, `latest.md`, `draft2.md`, `Untitled.md`, `copy-of-*.md` |
+| Process folders (not domains) | `phases/` holds `README.md` + `<slug>/_index.md` + the 16 CORE-03 artifacts (kebab-case); `sessions/` holds `README.md` + `session-NNN-<slug>.md` (zero-padded, sequential, never reused) | `phases/analysis/implementation-plan.md`, `sessions/session-005-rules-compliance-audit.md` (CORE-03; `senior-rules/core/02` §2.1); IDs `DOC-PHA-NNN` / `DOC-SES-NNN` |
 
 > `INFERENCE` (filenames for entities/endpoints/workflows): stated here as a rule because it is the *observed uniform* across those directories; the owning documents define content, not the extension mechanics.
 
@@ -47,7 +48,7 @@ Two global rules override everything below (root README §5):
 | Rule | Value | Source |
 |---|---|---|
 | Required block | `document_id`, `title`, `category` (= directory name), `status`, `version`, `created`, `updated`, `author`, `source_of_truth`, `related_requirements`, `related_documents` | root README §7 |
-| ID in frontmatter | `DOC-<CAT>-NNN`, e.g. `DOC-GL-003`; `<CAT>` is the domain's registered short code (`ROOT OVR BA REQ SA ARCH BE API DB DBE RSK GL TPL TST CMP VAL TRC …` observed in canon) | root README §5 |
+| ID in frontmatter | `DOC-<CAT>-NNN`, e.g. `DOC-GL-003`; `<CAT>` is the domain's registered short code (`ROOT OVR BA REQ SA ARCH BE API DB DBE RSK GL TPL TST CMP VAL TRC PHA SES …` — `PHA`/`SES` registered 2026-09-28 for `phases/`/`sessions/`) | root README §5 |
 | Status vocabulary | `DRAFT · UNDER_REVIEW · APPROVED · IMPLEMENTED · VERIFIED · SUPERSEDED · DEPRECATED · REJECTED` (all caps in values; frontmatter uses lowercase `approved`) | root README §6 |
 | `source_of_truth` | `true` only for the authoritative document of its concept; registries of supporting detail (entity files, TC files) use `false` | root README §4, §7 |
 | Change history | Every file ends with `## Change History` table `| Version | Date | Change | Reason |`; version bumps on every change, never silent edits | root README §9.1–2 |
@@ -75,7 +76,7 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | Security requirements | `SEC-REQ-NNN` | `SEC-REQ-007` | 3 | `02-requirements/security/` | `SEC-REQ-001…012` |
 | Data requirements | `DATA-REQ-NNN` | `DATA-REQ-008` | 3 | `02-requirements/data/` | `DATA-REQ-001…008` |
 | Integration requirements | `INT-REQ-NNN` | `INT-REQ-005` | 3 | `02-requirements/integration/` | `INT-REQ-001…008` |
-| Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-02` | 2 | `01-business-analysis/business-rules.md` | 14 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN`), 99 rules |
+| Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-02` | 2 | `01-business-analysis/business-rules.md` | 15 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`), 104 rules |
 | Use cases | `UC-NNN` | `UC-026` | 3 | `01-business-analysis/use-cases/` | `UC-001…UC-040` |
 | Workflows | `WF-NNN` | `WF-003` | 3 | `01-business-analysis/workflows/` | `WF-001…WF-012` |
 | Blocks | `B01…B13` | `B07` | 2 (no dash) | `00-project-overview/project-context.md` | 13 blocks |
@@ -164,7 +165,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 
 ## 7. Queues, Jobs & Events (`06-backend/background-processing.md`)
 
-- Queue: **`{block}.{entity}.{action}`** — `b02.inventory.expire`, `b07.escrow.release`, `b03.platform.webhook.send` (lowercase, dot-separated; CI check per `BR-PLT-01`).
+- Queue: **`{block}.{entity}.{action}`** — `b02.inventory.expire`, `b07.escrow.release`, `b13.platform.webhook.send` (lowercase, dot-separated; CI check per `BR-PLT-01`).
 - Domain event type: **PascalCase past tense** — `OrderConfirmed`, `OtpRequested`, `WalletCredited`; payload carries **IDs only**, never amounts or PII.
 - Job/reconciliation identifiers: `J1` … `J12` (allocation: `06-backend/background-processing.md`, `16-data/data-quality.md`).
 - Retries: 3× exponential backoff → **DLQ** + alert; job names never encode secrets.
@@ -234,3 +235,8 @@ Enforcement points in canon: CI lint for RTL/logical CSS (`05-frontend/rtl-and-s
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-27 | `AUD-NN` row → `VERIFIED` (minted in `20-validation/README.md` §2); gap range → `GAP-01…GAP-12`; short-code list gains `VAL`, `TRC` | `19-traceability/`, `20-validation/`, `21-completion/` authored — pending registrations executed (root README §9) |
+| 1.2 | 2026-09-27 | §7 queue example corrected: `b03.platform.webhook.send` → `b13.platform.webhook.send` (matches the register) | `REC-06`/`TD-07` pay-down — closes `CT-05`/consistency finding 17 (`CHK-25`) |
+| 1.3 | 2026-09-28 | §1 process-folder naming row (`phases/`, `sessions/`); §2 short codes gain `PHA`, `SES` | SES-01/DOC-02 remediation — `docs/sessions/` + `docs/phases/` created, IDs registered (SPE-05, session 005) |
+| 1.4 | 2026-09-28 | §3 `BR` row: 14 → **15 domains** (+`INV`), 99 → **104 rules** | `CRIT-06`/`HAL-04` pay-down (session 008) — `business-rules.md` v1.1 registered `BR-INV-01…05`; ID-series allocation row kept in sync (SPE-05) |
+
+

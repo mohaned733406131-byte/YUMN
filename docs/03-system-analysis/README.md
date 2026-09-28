@@ -3,9 +3,9 @@ document_id: DOC-SA-001
 title: 03 System Analysis — README
 category: 03-system-analysis
 status: approved
-version: 1.0
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-011, FR-012, FR-015]
@@ -34,6 +34,7 @@ It sits between `02-requirements/` (what the system *must* do — static stateme
 | [edge-cases.md](edge-cases.md) | DOC-SA-008 | Edge cases per domain (`EC-NN`) with expected system behavior and the `BR-*` / `C-*` references that govern them |
 | [failure-modes.md](failure-modes.md) | DOC-SA-009 | Failure modes (`FM-NN`) and analysis-level handling: provider outage, idempotency, double-debit, code mismatch, webhook retries, oversell |
 | [state-transitions.md](state-transitions.md) | DOC-SA-010 | **The canonical 17-state order machine (`C-09`) — single source of truth for states and transitions** (pre-existing) |
+| [erp-finance-departments.md](erp-finance-departments.md) | DOC-SA-011 | Finance/ERP department surface: platform + per-merchant books, six departments (accounts, sales, purchases, inventory, reports, periods), dept↔staff map, period-close mechanics, phasing — approved via `plan-develop.md` §8 (`D2`/`D3`/`D11`) |
 
 ## How 03 Differs From 04-Architecture
 
@@ -63,7 +64,7 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Direction | Directory | What flows |
 |---|---|---|
 | Consumes | `00-project-overview/` | Actors `ACT-01…ACT-07`, constraints `C-01…C-26`, blocks `B01…B13`, scope exclusions |
-| Consumes | `01-business-analysis/` | 99 rules `BR-*`, processes `BP-01…BP-15`, workflows `WF-001…WF-012`, use cases `UC-001…UC-040` |
+| Consumes | `01-business-analysis/` | 104 rules `BR-*`, processes `BP-01…BP-15`, workflows `WF-001…WF-012`, use cases `UC-001…UC-040` |
 | Consumes | `02-requirements/` | All 68 `FR-*` / `NFR-*` / `SEC-REQ-*` / `DATA-REQ-*` / `INT-REQ-*` |
 | Feeds | `04-architecture/` | Logical components become modules; flows become technical data flows |
 | Feeds | `07-api/`, `08-database/` | Behavior contracts become endpoints; conceptual stores become schemas `b01…b13` |
@@ -79,9 +80,9 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Logical data flows | `DF-NN` | `DF-12` | `data-flow.md` |
 | Logical components | `LC-NN` | `LC-04` | `logical-components.md` |
 | Sequence flows | `SQ-NN` | `SQ-03` | `sequence-flows.md` |
-| API endpoint groups | `API-<GROUP>-NNN` | `API-TOP-*` (top-up group, cited by `C-05`) | registry `07-api/` — not yet authored; never cite an endpoint ID that is not in that registry |
-| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `08-database/` — not yet authored; here stores are conceptual (`DS1…DS16`) |
-| Test cases | `TC-NNN` | — | registry `13-testing/` — not yet authored; here verification is described by scenario, not by TC ID |
+| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `07-api/endpoints/README.md` — 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints; never cite an endpoint ID that is not in that registry |
+| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `08-database/entities/README.md` — `DB-001…DB-018`, one file per entity; here stores are conceptual (`DS1…DS16`) |
+| Test cases | `TC-NNN` | `TC-104` | registry `13-testing/test-cases/README.md` — `TC-001…TC-114`; here verification is described by scenario and cited by `TC-` ID |
 
 Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` per root README §8.
 
@@ -104,9 +105,13 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | "How does the order flow end to end?" | `sequence-flows.md` (DOC-SA-007) | `01-business-analysis/workflows/` for step tables |
 | "What can go wrong?" | `edge-cases.md` (DOC-SA-008) | `failure-modes.md` (DOC-SA-009) |
 | "What are the exact order states?" | `state-transitions.md` (DOC-SA-010) | `13-testing/` for the state-machine suite |
+| "How are the finance/ERP departments organised?" | `erp-finance-departments.md` (DOC-SA-011) | `09-security/rbac.md` §11 for the permission model; `plan-develop.md` §4 for connector mechanics |
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Registry stub rows replaced: the three stale `07-api/`/`08-database/`/`13-testing/` registry stub rows now point at the real registries with paths, ID ranges and real examples (`API-WAL-003`, `DB-001…DB-018`, `TC-001…TC-114`) | `REC-08`/`TD-09` pay-down — stale stubs caused the stop-or-invent-ID failure mode root README §5 forbids |
+| 1.2 | 2026-09-28 | Contents + reading-order rows added for `erp-finance-departments.md` (`DOC-SA-011`, minted here) | `plan-develop.md` §8 approval implementation (session 007) — new analysis document registered in its domain index (SPE-05) |
+| 1.3 | 2026-09-28 | Consumes row count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |

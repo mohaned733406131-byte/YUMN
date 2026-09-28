@@ -3,9 +3,9 @@ document_id: DOC-BE-006
 title: Background Processing — BullMQ Queues, Jobs & Scheduling
 category: 06-backend
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: false
 related_requirements: [FR-014, FR-017, FR-018, FR-009, NFR-007, NFR-008, NFR-014, INT-REQ-006]
@@ -47,6 +47,11 @@ All asynchronous work runs on **BullMQ over Redis 7** — the only job system (`
 | `b12.content.publish` | B12 | admin CMS | ISR revalidation ping + cache purge |
 | `b13.platform.webhook.send` | B13 | events | signed outbound webhooks (`INT-REQ-006`) |
 | `b13.platform.audit.retention` | B13 | scheduler | retention housekeeping (DATA-REQ-003) |
+| `b07.wallet.credit` | B07 | top-up/bank verify | wallet credit posting for verified top-ups (`BR-PAY-04`); queue-depth alert (`BR-PLT-02`) |
+| `b08.shipping.code-issue` | B08 | delivery (OUT_FOR_DELIVERY) | issue 6-digit code to buyer via notifications (`BR-SHP-02`, `C-16`) |
+| `b09.return.decision-escalate` | B09 | return module | 48-h escalation to admin review (DOC-SA-010 §2) |
+| `b10.notification.delivery` | B10 | fanout | per-channel provider dispatch — SMS primary, WhatsApp failover, push (channel = job lane, not a separate queue) (`BR-NTF-03`, `INT-REQ-003`); receipts logged |
+| `b13.ticket.auto-close` | B13 | admin module | DLQ triage alerts + ticket housekeeping (`BR-PLT-02`, `INT-REQ-007`) |
 
 ## 2. Notification Fan-Out (FR-017, BR-NTF-*)
 
@@ -56,7 +61,7 @@ domain event (OrderConfirmed, OtpRequested, WalletCredited, …)
       → resolve recipients + locale (user preference, ar default — BR-NTF-04)
       → preference check (security notices non-disableable — BR-NTF-02)
       → per-channel child jobs:
-           b10.notification.template-render → b10.notification.delivery.{sms|whatsapp|push}
+           b10.notification.template-render → b10.notification.delivery (channel = job lane: sms | whatsapp | push)
            in-app: direct DB write (always)
       → SMS primary; provider timeout/error → WhatsApp failover (BR-NTF-03, INT-REQ-003)
       → delivery receipts logged
@@ -160,3 +165,4 @@ domain event (OrderConfirmed, OtpRequested, WalletCredited, …)
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Register extended 25 → 30 rows (`b07.wallet.credit`, `b08.shipping.code-issue`, `b09.return.decision-escalate`, `b10.notification.delivery`, `b13.ticket.auto-close`); §2 delivery lanes restated as lanes of the registered `b10.notification.delivery` queue | `REC-06`/`TD-07` pay-down — single queue register of record (also closes `CRIT-04` intra-file clause) |

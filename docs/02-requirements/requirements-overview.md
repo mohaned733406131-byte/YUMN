@@ -3,7 +3,7 @@ document_id: DOC-REQ-001
 title: Requirements Overview (Canonical ID Registry)
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
 updated: 2026-09-26
 author: analysis-agent
@@ -137,8 +137,19 @@ Expands to `02-requirements/integration/INT-REQ-nnn.md`; contracts in `10-integr
 
 Every requirement file must pass the 7-question quality test (clarity, completeness, consistency, feasibility, testability, necessity, traceability) and carry: description, source, priority, rationale, dependencies, preconditions, expected result, acceptance criteria, verification method. Weak entries are flagged in `20-validation/requirements-validation.md`.
 
+## 7. Approved Backlog (pointer — not yet `FR-*`)
+
+> Approved 2026-09-28 by the administrator (`plan-develop.md` v1.2 §8 `D9`/`D10`). The canonical
+> rows live in [`plan-develop.md`](../../plan-develop.md): modifications `M-01…M-25` (§1),
+> proposed features `P-01…P-20` (§2), the 59-row completeness checklist (§3), and the
+> admin/role/ERP decisions (§4–§6). **Nothing in this backlog is a requirement yet** — each row
+> converts to an `FR-*` (or `NFR-*`/`INT-REQ-*`) with acceptance criteria **at its build wave**,
+> never earlier (`SPE-03` / `D-02` / `plan-develop.md` §0.4). Coverage mapping after conversion
+> belongs in `19-traceability/`.
+
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial registry (68 requirements) | Initial analysis |
+| 1.1 | 2026-09-28 | New §7 approved-backlog pointer to `plan-develop.md` (no `FR-*` minted — wave discipline) | `plan-develop.md` v1.2 §8 approval implementation (session 007, `D9`/`D10`) |

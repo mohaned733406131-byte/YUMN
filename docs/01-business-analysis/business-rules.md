@@ -3,9 +3,9 @@ document_id: DOC-BA-005
 title: Business Rules (BR Registry)
 category: 01-business-analysis
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016]
@@ -14,9 +14,9 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 
 # Business Rules — Canonical Registry
 
-**Single source of truth for all business rules.** Rule IDs: `BR-<DOMAIN>-NN`. Domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN`. Rules are enforced by backend services and verified by test cases (`13-testing/`); rules never contradict constraints (`C-01…C-26`).
+**Single source of truth for all business rules.** Rule IDs: `BR-<DOMAIN>-NN`. Domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`. Rules are enforced by backend services and verified by test cases (`13-testing/`); rules never contradict constraints (`C-01…C-26`).
 
-**99 rules.**
+**104 rules.**
 
 ---
 
@@ -189,6 +189,16 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-FIN-04 | Vendors receive a monthly statement: sales, commission, refunds, payouts, adjustments. |
 | BR-FIN-05 | All monetary rounding is half-up to whole YER at each sub-order level; rounding differences are posted to a platform rounding account. |
 
+## INV — Inventory & Stock Reservations (5)
+
+| ID | Rule |
+|---|---|
+| BR-INV-01 | A successful reservation holds stock atomically: on-hand stock is never oversold, one `stock_reservation` row is created per reserved cart line, and the reservation either commits (payment success → permanent deduction) or releases (expiry or cancellation) — reserve → commit/release (`FR-005`, `C-13`, `08-database/entities/inventory.md`). |
+| BR-INV-02 | Stock invariant at all times: `stock ≥ reservedQuantity ≥ 0` (`qty_on_hand ≥ qty_reserved ≥ 0`, `qty_available` generated) — reserved quantity never exceeds on-hand stock and never goes negative (`BR-CAT-07`, `DATA-REQ-001`, `ck_inventory_no_negative`). |
+| BR-INV-03 | Live reservations are protected: a manual stock adjustment that would set stock below active reservations is rejected with `409 STOCK_BELOW_RESERVATIONS`; the DB row stays unchanged (no partial writes) (`07-api/error-model.md`, `UC-018`). |
+| BR-INV-04 | Unpaid reservations expire after 15 minutes: the TTL sweeper releases held quantity exactly once (status-guarded — a re-run never double-releases), the reservation moves to `RELEASED`, and a `RELEASE_TTL` ledger row records actor `SYSTEM` with a timestamp (`C-13`, `BR-CRT-02`, `FR-005`). |
+| BR-INV-05 | Every inventory mutation (reserve, consume, release, manual adjustment, cancellation restoration) appends an append-only ledger row carrying actor, reason, delta and timestamp; corrections are new rows, never edits — the events the reconciliation job compares `qty_on_hand` against (`BR-PLT-06`, `FR-005`, `API-CAT-016`). |
+
 ---
 
 ## Rule Consistency Statement
@@ -200,3 +210,4 @@ Every rule above is traceable to at least one `FR-*` and is compatible with `C-0
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial registry (99 rules) | Initial analysis |
+| 1.1 | 2026-09-28 | `INV` domain added — `BR-INV-01`…`BR-INV-05` (stock reservation lifecycle, `stock ≥ reserved ≥ 0` invariant, reservation-protected adjustment, 15-min TTL release, append-only mutation ledger); 99 → 104 rules, 14 → 15 domains | `CRIT-06`/`HAL-04` pay-down (session 008, owner-approved registration): the five IDs were cited by `TC-018`/`TC-019`/`TC-020` and undefined; wording derived from approved sources (`entities/inventory.md`, `C-13`, `BR-CAT-07`, `BR-CRT-02`, `error-model.md`, `API-CAT-016`) — never invented behavior |

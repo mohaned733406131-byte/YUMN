@@ -3,7 +3,7 @@ document_id: DOC-CMP-010
 title: Final Acceptance — Sign-off & Evidence Requirements
 category: 21-completion
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-27
 updated: 2026-09-27
 author: analysis-agent
@@ -105,10 +105,10 @@ Signatures are recorded with name, role, and date; each signer owns the evidence
 
 | Requirement | State | Blocker |
 |---|---|---|
-| Layer A final quality assessment | Not started | `20-validation/` not authored (`TD-10` / REC-09) |
+| Layer A final quality assessment | Authored — `AUD-06` `PASS WITH FINDINGS` (2026-09-27) | Counts are a snapshot; re-run all seven audits at Gate 0 (`quality-gates.md` check 0.7) |
 | Gate history | 0 of 4 run (all `PENDING`) | Gate 0 prerequisites `INSUFFICIENT EVIDENCE` (`ASM-14`, `DEP-05`, `DEP-06`, `DEP-10`) |
 | `AC-S-01…24` | All `PENDING` | No implementation, no test evidence (root README §6) |
-| Debt/recommendations | 10 `TD-NN` `OPEN`; 15 `REC-NN` unaccepted | REC-03…REC-05, REC-09 are P0 |
+| Debt/recommendations | 7 `TD-NN` `OPEN`; 12 `REC-NN` unaccepted (paid: `TD-04`/`TD-06`/`TD-10` ↔ `REC-03`/`REC-05`/`REC-09`) | Remaining P0: `REC-04`; sponsor-owned `REC-11`…`REC-13` |
 | Compliance pack | 0 of 10 items on file | `DEP-09` Not started, `DEP-10` Not started |
 | Production readiness | 0 of 52 rows `DONE` | Platform not built |
 
@@ -119,3 +119,4 @@ Signatures are recorded with name, role, and date; each signer owns the evidence
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
+| 1.1 | 2026-09-27 | Readiness snapshot re-synced: Layer A row (assessment authored), debt/recommendations row (7 `TD` open / 12 `REC` unaccepted after `REC-03`/`TD-04` closure) | `REC-03` pay-down change set — root README §9.4 same-change-set propagation |

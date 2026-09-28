@@ -3,9 +3,9 @@ document_id: DOC-INT-001
 title: Integration Layer Architecture (Ports, Async, Degradation)
 category: 10-integrations
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: true
 related_requirements: [INT-REQ-001, INT-REQ-003, INT-REQ-004, INT-REQ-005, INT-REQ-006, INT-REQ-007, INT-REQ-008]
@@ -116,7 +116,7 @@ initial attempt ──fail──► retry 1 (~1 min) ──fail──► retry 2
 |---|---|---|
 | RED metrics per endpoint | request rate, error ratio, duration for API + webhook routes | Prometheus scrape of internal-only `/metrics` ports |
 | Integration-specific counters | provider send success/fail, failover count, callback verify failures (401s), circuit state, DLR latency | Prometheus, label allowlist only |
-| Queue/DLQ depth | `b07.wallet.credit`, `b10.notification.send`, DLQ sizes | Prometheus → alert (`BR-PLT-02`) |
+| Queue/DLQ depth | `b07.wallet.credit`, `b10.notification.delivery`, DLQ sizes | Prometheus → alert (`BR-PLT-02`) |
 | Reconciliation mismatches | ledger vs provider statement deltas (`DATA-REQ-006`) | Prometheus → finance alert |
 | Rate-limit signals | 429 counts per route (`SEC-REQ-009` R5) | Prometheus → abuse alert |
 | Dashboards | per-provider health, queue/DLQ, database, reconciliation status | Grafana |
@@ -139,3 +139,6 @@ initial attempt ──fail──► retry 1 (~1 min) ──fail──► retry 2
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Monitored queue name corrected: `b10.notification.send` → `b10.notification.delivery` (`b07.wallet.credit` now registered in §1) | `REC-06`/`TD-07` pay-down |
+
+

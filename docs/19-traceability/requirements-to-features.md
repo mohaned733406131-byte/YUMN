@@ -3,9 +3,9 @@ document_id: DOC-TRC-002
 title: Requirements to Features — Objective & Feature Traceability Matrix
 category: 19-traceability
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-013, FR-020, NFR-001, SEC-REQ-001, DATA-REQ-007, INT-REQ-001]
@@ -83,7 +83,7 @@ Notes on Matrix A:
 | FR-010 | OBJ-01, OBJ-04, OBJ-12 | B05 | API-CRT | API-CRT-001, API-CRT-002, API-CRT-003 +4 more | DB-007 cart | UC-009, UC-010, UC-011 / WF-002, WF-003 | BR-CRT-01, BR-CRT-02, BR-CRT-03, BR-CRT-04, BR-CRT-05 +1 more | Critical |
 | FR-011 | OBJ-01, OBJ-02, OBJ-12 | B05 | API-ORD | API-CNT-003, API-CNT-004, API-CNT-015 +10 more | DB-007 cart, DB-008 order, DB-009 payment | UC-011 / WF-003, WF-012 | BR-CRT-04, BR-CRT-05, BR-CRT-06, BR-FIN-01, BR-FIN-02 +9 more | Critical |
 | FR-012 | OBJ-01, OBJ-02, OBJ-08, OBJ-12 | B06 | API-ORD | API-ORD-003, API-ORD-004, API-ORD-005 +10 more | DB-008 order | UC-012, UC-013, UC-019, UC-020 +3 more / WF-004, WF-005, WF-007, WF-008 +1 more | BR-ORD-01, BR-ORD-10 | Critical |
-| FR-013 | OBJ-02, OBJ-12 | B07 | API-WAL | API-ADM-030, API-ADM-031, API-ADM-032 +11 more | DB-009 payment, DB-010 wallet, DB-011 wallet_transaction | UC-011, UC-034 / WF-003, WF-009, WF-010, WF-012 | BR-PAY-01, BR-PAY-02, BR-PAY-03, BR-PAY-04, BR-PAY-05 +5 more | Critical |
+| FR-013 | OBJ-02, OBJ-12 | B07 | API-WAL | API-ADM-030, API-ADM-031, API-ADM-032 +11 more | DB-009 payment, DB-010 wallet, DB-011 wallet_transaction | UC-011, UC-034, UC-041, UC-042 / WF-003, WF-009, WF-010, WF-012 | BR-PAY-01, BR-PAY-02, BR-PAY-03, BR-PAY-04, BR-PAY-05 +5 more | Critical |
 | FR-014 | OBJ-02, OBJ-12 | B07 | API-WAL | API-ANL-004, API-ANL-009, API-VND-020 +6 more | DB-011 wallet_transaction, DB-012 escrow | UC-022, UC-039 / WF-006, WF-008 | BR-ESC-01, BR-ESC-02, BR-ESC-03, BR-ESC-04, BR-ESC-05 +5 more | Critical |
 | FR-015 | OBJ-01, OBJ-07 | B08 | API-SHP | API-ORD-010, API-RET-008, API-SHP-001 +16 more | DB-013 shipment | UC-013, UC-020, UC-025, UC-026 +4 more / WF-005 | BR-ORD-08, BR-ORD-09, BR-SHP-01, BR-SHP-02, BR-SHP-03 +4 more | Critical |
 | FR-016 | OBJ-01, OBJ-02, OBJ-12 | B09 | API-RET | API-RET-001, API-RET-002, API-RET-003 +15 more | DB-014 return_request | UC-021, UC-033 / WF-007 | BR-PAY-06, BR-PAY-07, BR-PAY-08, BR-RET-01, BR-RET-02 +5 more | Critical |
@@ -177,7 +177,7 @@ Interpretation: the functional spine (20 FRs) is fully linked to use cases, work
 |---|---|---|---|
 | T-01 | **31 requirements serve no objective in the matrix**: every `SEC-REQ`, `DATA-REQ`, `INT-REQ` (28) plus `NFR-015`, `NFR-016`, `NFR-020` are referenced by no objective row and by no `OBJ-NN` mention in their own file | MEDIUM | Matrix B *Objective(s)* column |
 | T-02 | **36 requirements define no priority**: all `NFR-*`, `DATA-REQ-*`, `INT-REQ-*` files lack a priority field (only FR registry §1 and `SEC-REQ-*` headers carry one) | LOW | Matrix B *Priority* column; `02-requirements/non-functional/*.md` |
-| T-03 | **No UC/WF trace exists for cross-cutting requirements**: all 40 UC and all 12 workflow frontmatters list `FR-*` only | LOW | frontmatter scan of `use-cases/` and `workflows/` |
+| T-03 | **No UC/WF trace exists for cross-cutting requirements**: all 42 UC and all 12 workflow frontmatters list `FR-*` only | LOW | frontmatter scan of `use-cases/` and `workflows/` |
 | T-04 | **26 requirements touch no registered API group and 24 touch no endpoint** — including `SEC-REQ-007`, `SEC-REQ-012`, `DATA-REQ-004/005`, `INT-REQ-006/007/008`, which are verified elsewhere by plans/drills but not by an endpoint link | MEDIUM | Matrix B; `07-api/README.md` §4 |
 | T-05 | **Two objectives have no functional or verification trace**: `OBJ-09` (quality velocity) and `OBJ-10` (maintainability) are named only by `NFR-009`/`NFR-010` — no `FR-*`, use case, workflow or test case cites them, although `OBJ-09`'s measurable (a release-gating test suite) is a testing concern; `OBJ-11`'s measurable is `INSUFFICIENT EVIDENCE` (`ASM-14`) | LOW | Matrix A; search of `13-testing/` for `OBJ-09`/`OBJ-10` returns nothing |
 | T-06 | **No stakeholder → objective/requirement map exists** in `00-project-overview/stakeholders.md` (table has `STK-01…STK-15` with goals, no `OBJ-*`/`FR-*` column), so a stakeholder trace cannot be built without inventing links | LOW | file read |
@@ -199,3 +199,5 @@ Follow `README.md` §6: any change to an objective, requirement, endpoint, entit
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 item 40 |
+| 1.1 | 2026-09-28 | FR-013 UC column gains `UC-041`, `UC-042` (new session-007 use cases) | Session-007 UC gap — traceability must cover every UC (`CHK` series); root README §9 change management |
+| 1.2 | 2026-09-28 | `T-03` evidence re-synced: 40 → **42 UC** (`UC-041`/`UC-042`, added session 007 — finding status unchanged, LOW `OPEN`) | Count/dashboard propagation catch-up (session 008 close) — direct count of `use-cases/UC-*.md` = 42 |

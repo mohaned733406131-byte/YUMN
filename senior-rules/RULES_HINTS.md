@@ -8,8 +8,10 @@ License: GPL-3.0
 > core rule files under `senior-rules/core/`, `RULES.md`, `ENTRY.md` are never modified (ADP-03).
 
 ## 1. System identity
-- Name: **yumn (يُمن)** — multi-vendor e-commerce marketplace for Yemen · Version: **0.1.0** (analysis complete, pre-implementation) · Rules version pinned: **2.0.0**
-- Pin source: `senior-rules/VERSION` = `2.0.0`. ⚠ `senior-rules/CHANGELOG.md` shows a later `[2.1.0]` entry — at session start (GEN-08) reconcile VERSION ↔ CHANGELOG and re-read changed rules before working; do not silently assume either value.
+- Name: **yumn (يُمن)** — multi-vendor e-commerce marketplace for Yemen · Version: **0.1.0** (analysis complete, pre-implementation) · Rules version pinned: **2.2.0**
+- Pin source: `senior-rules/VERSION` = `2.2.0`. At session start (GEN-08) confirm VERSION ↔ CHANGELOG ↔ this pin agree and re-read changed rules before working.
+  - **GEN-08 reconciliation (session 003, 2026-09-27):** pin **2.0.0**. The `[2.1.0]` entry is packaging-only (`.ai-rules`→`senior-rules` reference renames, npm installer, README updates) — it changes **no rule IDs, severities, or rule text**. Defect `D-13` → `RESOLVED 2026-09-27`.
+  - **GEN-08 reconciliation (session 006, 2026-09-28):** pin **2.0.0 → 2.2.0**. `[2.2.0]` (MINOR) is the F-07 amendment: `validators/validate.py` check 5 now enforces rule-ID uniqueness in **both** `RULES.md` (77) and `YUMN_RULES.md` (94). Validator/tooling change only — **no rule IDs, severities, or rule text changed**; nothing to re-read beyond `CHANGELOG.md` `[2.2.0]`. (Pre-existing `VERSION` 2.0.0 vs `[2.1.0]` drift recorded in that entry, not silently reconciled.) npm package stays `v2.0.0` (`AGENTS.md` line is the published-package fact).
 - Knowledge base: `docs/` (24-domain analysis, `APPROVED` v1.0). No implementation exists yet — nothing in `docs/` is `VERIFIED`.
 - Language of record: English. Product locales: `ar` (default, RTL) + `en` only.
 
@@ -53,9 +55,9 @@ License: GPL-3.0
 - Base dirs: backend `api/src/blocks/b01-identity … b13-platform/`, `api/src/shared/`, `api/src/integrations/`, `api/src/jobs/`, `api/src/prisma/` · tests `api/test/` · web `apps/web-customer/`, `apps/web-vendor/`, `apps/web-admin/` · mobile `apps/mobile-customer/`, `apps/mobile-courier/` · shared `packages/{api-sdk,ui,validation,i18n,design-tokens,config-eslint,config-ts}` · docs `docs/<NN-domain>/` · rules `senior-rules/`
 - **Canonical repo tree = `05-frontend/frontend-architecture.md` §1 + `06-backend/backend-architecture.md` §1** (root `api/`, `apps/<shell>/`, `packages/*`). ⚠ Ops documents cite a different spelling (`apps/api`, `apps/web`, `apps/mobile/**`) — treat those as defects to correct (rule `SPE-04`), not as authority.
 - Entry files present: `senior-rules/ENTRY.md`, `senior-rules/RULES.md`, `senior-rules/RULES_HINTS.md` (this file), `senior-rules/YUMN_RULES.md`, `senior-rules/CHANGELOG.md`, `senior-rules/VERSION`, root `AGENTS.md`. Root `session_track.md`, `development_phases_entry.md`, `all_in_one_track.md`, `architecture.md`, `mind_map.md`, `memory.md` are required by DOC-01 and are **pending creation** — status honesty: validator will report them `FAIL` until they exist.
-- Main security spec: `docs/09-security/` (`threat-model.md`, `security-controls.md`, `rbac.md`, `security-findings.md` = `SEC-001…SEC-016`)
+- Main security spec: `docs/09-security/` (`threat-model.md`, `security-controls.md`, `rbac.md`, `security-findings.md` = `SEC-001…SEC-015` — corrected from `…SEC-016` on 2026-09-28, session 005: the register holds 15 findings, `SEC-016` is only a forward-sequence note; factual correction, no rule text/severity changed, pin stays `2.0.0`)
 - Main architecture file: `docs/04-architecture/architecture-overview.md` (ADRs in `docs/18-decisions/ADR/ADR-001…010`)
-- Requirements/source IDs: `docs/02-requirements/` (68 reqs), `docs/01-business-analysis/business-rules.md` (99 `BR-*`), `docs/00-project-overview/project-constraints.md` (`C-01…C-26`)
+- Requirements/source IDs: `docs/02-requirements/` (68 reqs), `docs/01-business-analysis/business-rules.md` (104 `BR-*` — count corrected 2026-09-28, session 008: `BR-INV-01…05` registered), `docs/00-project-overview/project-constraints.md` (`C-01…C-26`)
 
 ## 5. Conventions
 - Branch prefix: `main` only long-lived; short-lived `feat/<ID>-<slug>`, `fix/<ID>-<slug>`, `chore/…`, `docs/<topic>`; PR-only; linear history (squash/rebase); force-push blocked on `main`

@@ -3,9 +3,9 @@ document_id: DOC-UC-000
 title: UC-000 — Use Case Index & Template
 category: 01-business-analysis
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-011, FR-012, FR-015, FR-020]
@@ -42,7 +42,7 @@ Body sections, in fixed order (45–70 lines per file):
 
 Priority scale: **P0** = must-have for launch (core money/fulfillment path), **P1** = important, **P2** = valuable but deferrable.
 
-## 2. Use Case Index (40 use cases)
+## 2. Use Case Index (42 use cases)
 
 | ID | Title | Actor | Block | FR refs | Priority |
 |---|---|---|---|---|---|
@@ -86,21 +86,23 @@ Priority scale: **P0** = must-have for launch (core money/fulfillment path), **P
 | UC-038 | Review Flagged Content | Moderator | B13 | FR-006, FR-017, FR-020 | P1 |
 | UC-039 | Auto-Release Escrow After 7 Days | System | B07 | FR-014 | P0 |
 | UC-040 | Send OTP with Provider Failover | System | B10 | FR-001, FR-017 | P0 |
+| UC-041 | Top Up Wallet | Customer | B07 | FR-013, FR-017 | P0 |
+| UC-042 | View Wallet Statement | Customer | B07 | FR-013 | P1 |
 
 ## 3. Totals per Actor
 
 | Actor | Use Cases | Range |
 |---|---|---|
-| Customer (ACT-01) | 14 | UC-001 … UC-014 |
+| Customer (ACT-01) | 16 | UC-001 … UC-014, UC-041 … UC-042 |
 | Vendor (ACT-02) | 10 | UC-015 … UC-024 |
 | Delivery Provider (ACT-03) | 6 | UC-025 … UC-030 |
 | Admin (ACT-04) | 6 | UC-031 … UC-036 |
 | Super Admin (ACT-05) | 1 | UC-037 |
 | Moderator (ACT-06) | 1 | UC-038 |
 | System (ACT-07) | 2 | UC-039, UC-040 |
-| **Total** | **40** | UC-001 … UC-040 |
+| **Total** | **42** | UC-001 … UC-042 |
 
-Priority totals: P0 = 17, P1 = 18, P2 = 5. Block coverage: B01 (5), B02 (4), B03 (4), B04 (2), B05 (3), B06 (4), B07 (3), B08 (7), B09 (1), B10 (1), B11 (0 — covered via `FR-018` reporting inside UC-022), B12 (1), B13 (5).
+Priority totals: P0 = 18, P1 = 19, P2 = 5. Block coverage: B01 (5), B02 (4), B03 (4), B04 (2), B05 (3), B06 (4), B07 (5), B08 (7), B09 (1), B10 (1), B11 (0 — covered via `FR-018` reporting inside UC-022), B12 (1), B13 (5).
 
 ## 4. Related Documents
 
@@ -114,3 +116,4 @@ Priority totals: P0 = 17, P1 = 18, P2 = 5. Block coverage: B01 (5), B02 (4), B03
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial index (40 use cases) | Initial analysis |
+| 1.1 | 2026-09-28 | `UC-041` (Top Up Wallet, customer funding leg) and `UC-042` (View Wallet Statement) added; totals → 42 use cases (Customer 16, P0 18, P1 19, B07 5) | Session-007 UC gap from `describ.md` §8: only the admin top-up half (`UC-034`) existed and `FR-013`'s statement had no use case to trace to (root README §10) |

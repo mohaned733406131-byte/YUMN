@@ -107,22 +107,37 @@ def main():
     if broken == 0:
         ok("markdown links (0 broken)")
 
-    # 5. Rule-ID uniqueness in RULES.md
-    rules_md = os.path.join(rules_dir, "RULES.md")
-    flat = []
-    if os.path.isfile(rules_md):
-        with open(rules_md, encoding="utf-8") as f:
+    # 5. Rule-ID uniqueness in RULES.md and in the project catalog YUMN_RULES.md
+    #    (amendment F-07, core/00_meta_rules.md §0.5 — scope extended, no hot-patch)
+    def check_rule_ids(fname, pattern, label):
+        path = os.path.join(rules_dir, fname)
+        if not os.path.isfile(path):
+            bad(fname, "missing")
+            return
+        ids = []
+        with open(path, encoding="utf-8") as f:
             for line in f:
-                m = re.match(r"^\|\s*((?:GEN|SES|DOC|DOD|IMP|SEC|TST|LOG|UI|VCS|AUD|COM|ADP)-\d{2})\s*\|", line)
+                m = re.match(pattern, line)
                 if m:
-                    flat.append(m.group(1))
-        dupes = {i for i in flat if flat.count(i) > 1}
-        if dupes:
-            bad("rule ids", f"duplicated IDs: {sorted(dupes)}")
+                    ids.append(m.group(1))
+        dupes = {i for i in ids if ids.count(i) > 1}
+        if not ids:
+            bad(label, f"no rule IDs parsed from {fname}")
+        elif dupes:
+            bad(label, f"duplicated IDs in {fname}: {sorted(dupes)}")
         else:
-            ok(f"rule ids unique ({len(set(flat))} rules)")
-    else:
-        bad("RULES.md", "missing")
+            ok(f"{label} unique ({len(set(ids))} rules in {fname})")
+
+    check_rule_ids(
+        "RULES.md",
+        r"^\|\s*((?:GEN|SES|DOC|DOD|IMP|SEC|TST|LOG|UI|VCS|AUD|COM|ADP)-\d{2})\s*\|",
+        "rule ids",
+    )
+    check_rule_ids(
+        "YUMN_RULES.md",
+        r"^\|\s*([A-Z][A-Z0-9]{1,7}-\d{2})\s*\|",
+        "yumn rule ids",
+    )
 
     # 6. Forbidden UI calls in product source (not docs, not tests)
     src_dirs = ["src", "app", "web", "frontend", "client", "pages", "components"]

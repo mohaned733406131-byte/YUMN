@@ -164,7 +164,7 @@ Per-block analysis of what the system does: for each of the 13 blocks (`B01…B1
 
 ## Verification
 
-Each block section is checked by: requirement coverage (`19-traceability/` maps `FR-* → BR-* → block`), negative tests for every listed validation (`13-testing/`), and the constraint tests `TST-CON-01…TST-CON-26` for the constraints cited here. Endpoint-level verification uses the API groups that will be registered in `07-api/` (e.g. the top-up group `API-TOP-*` cited by `C-05`); data-level verification uses schemas `b01…b13` registered in `08-database/`. Behavioral sequences for the five headline flows are in `sequence-flows.md` (DOC-SA-007).
+Each block section is checked by: requirement coverage (`19-traceability/` maps `FR-* → BR-* → block`), negative tests for every listed validation (`13-testing/`), and the constraint tests `TST-CON-01…TST-CON-26` for the constraints cited here. Endpoint-level verification uses the API groups that will be registered in `07-api/` (e.g. the wallet top-up group `API-WAL-003/004` cited by `C-05`); data-level verification uses schemas `b01…b13` registered in `08-database/`. Behavioral sequences for the five headline flows are in `sequence-flows.md` (DOC-SA-007).
 
 ## Change History
 

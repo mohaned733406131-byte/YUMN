@@ -3,9 +3,9 @@ document_id: DOC-BE-001
 title: Backend Domain Overview & File Index
 category: 06-backend
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-011, FR-012, FR-013, NFR-001, NFR-007, NFR-008, NFR-009, NFR-014]
@@ -81,7 +81,7 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | Direction | Document | Dictates |
 |---|---|---|
 | Upstream | `02-requirements/requirements-overview.md` | FR/NFR/SEC/INT IDs implemented here |
-| Upstream | `01-business-analysis/business-rules.md` | all 99 BR rules — enforced, never redefined |
+| Upstream | `01-business-analysis/business-rules.md` | all 104 BR rules — enforced, never redefined |
 | Upstream | `03-system-analysis/state-transitions.md` | authoritative transition table |
 | Upstream | `00-project-overview/project-constraints.md` | `C-01…C-26` hard boundaries |
 | Peer | `07-api/` | endpoint contracts + error model this code exposes |
@@ -103,3 +103,4 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Upstream row count sync: 99 → **104 BR rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |

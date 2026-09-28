@@ -3,9 +3,9 @@ document_id: DOC-INT-005
 title: WhatsApp Business — Template Notifications Contract
 category: 10-integrations
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-27
 author: analysis-agent
 source_of_truth: false
 related_requirements: [INT-REQ-004, INT-REQ-003, INT-REQ-006, FR-001, FR-017]
@@ -51,7 +51,7 @@ Rules:
 ## 3. Sending Path
 
 ```text
-domain event → BullMQ job (b10.notification.send, BR-PLT-01)
+domain event → BullMQ job (b10.notification.delivery, BR-PLT-01)
    → WhatsAppPort.sendTemplate(name, phone, params, locale)   [10 s timeout]
    → adapter calls Business API  (credentials: env only, S-07)
    → status callbacks arrive as signed webhooks (INT-REQ-006)
@@ -124,3 +124,6 @@ Recipient phone, approved template name + parameters (order reference, status, a
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-27 | Pipeline queue name corrected: `b10.notification.send` → `b10.notification.delivery` per the canonical register | `REC-06`/`TD-07` pay-down |
+
+
