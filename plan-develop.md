@@ -310,6 +310,13 @@ design the *slot* inventory first (banners exist), the auction/billing later.
 | 50 | Ops | SLO/error-budget dashboards for the new surfaces | ENH | M | `INT-REQ-007` stack exists |
 | 51 | Ops | Runbooks + admin procedures for each new department | NEW | M | Gate-2 readiness rows |
 | 52 | Data | Reporting indexes/migrations for all new tables (forward-only) | ENH | H | `DATA-REQ-005`, no `migrate down` |
+| 53 | ERP·Accounts | Chart of accounts + mapping registry, partner accounts, AR/AP aging (platform **and** per-merchant books) | NEW | H | §4.2 dept 1; `P-02` |
+| 54 | ERP·Sales | Invoice register, credit notes, per-store sales journal & revenue reports | NEW | H | §4.2 dept 2; `P-01` |
+| 55 | ERP·Purchases | Platform opex bills (queue → four-eyes approval → payment record); vendor PO → goods receipt → supplier bill | NEW | M | §4.2 dept 3; never marketplace money |
+| 56 | ERP·Inventory | Stock-health views, adjustment approval; optional valuation (FIFO/AVCO) + locations for merchants | NEW | M/L | §4.2 dept 4; `b02` stays SoR |
+| 57 | ERP·Reports | TB/P&L/BS/cash-flow/VAT packs (platform) + merchant statement/invoice/tax packs | NEW | H | §4.2 dept 5; `P-02`/`P-03` |
+| 58 | ERP·Periods | Fiscal calendar, open/adjust/close/lock, close checklist, year-end carry-forward, report cutoffs | NEW | H | §4.2 dept 6; lock = `SUPER_ADMIN`, audited |
+| 59 | ERP·Surfaces | Admin "Finance & ERP" console area + vendor-portal Finance extensions (invoices, tax, purchases) | NEW | M | §4.2 + §5.4 |
 
 **Non-functional additions that ride along with every row above:** Arabic-first RTL rendering and
 `ar`+`en` parity (`C-24`), WCAG 2.1 AA ≥95% automated pass (`NFR-011`), p95 budgets
@@ -332,7 +339,8 @@ design the *slot* inventory first (banners exist), the auction/billing later.
 | **Tax** | VAT 15% computation & collection | **yumn**; reporting to ERP / filing tool | `P-03` |
 | **Inventory** | Stock per product (marketplace, vendor-owned) | **yumn** (`b02`) — ERP only if a vendor separately runs one | optional sync |
 | **Payouts/settlements** | Escrow release → payout batch → execution | **yumn** | `P-04` → ERP payment records |
-| **HR/payroll, procurement, manufacturing** | — | out of scope v1 | explicitly excluded |
+| **Purchases (AP)** | Platform operating bills (infra, SMS/WhatsApp, provider fees); vendor supplier procurement (PO → receipt → bill) | **ERP / new domain** — never marketplace money | §4.2 department plan |
+| **HR/payroll, manufacturing, POS** | — | out of scope v1 | explicitly excluded |
 
 **Non-negotiable integrity rule:** the append-only double-entry ledger stays the single writer of
 marketplace money (`BR-PAY-06`, `NFR-008`, `LedgerService.post` = only money writer, forbidden
@@ -340,7 +348,63 @@ pattern `F7` in [`module-boundaries.md`](docs/04-architecture/module-boundaries.
 writes** to `b07`; it receives postings and returns nothing money-shaped. Reconciliation is one-way
 asserted: `J1`/`J2` inside yumn, plus a new daily "ledger ↔ ERP journal" diff report.
 
-### 4.2 Options considered
+### 4.2 Departmental coverage — accounts, sales, purchases, inventory, reports & periods (platform **and** merchants)
+
+**Operating model — two sets of books, one ledger of truth.** yumn keeps a *platform book* plus one
+*merchant book per store* as sub-ledgers of the same append-only ledger; the ERP (in-platform core
+under Option A, satellite under Option B) holds the general ledger those sub-ledgers post into.
+Every department below is therefore **multi-tenant by construction**: platform administrators see and
+operate the whole book; each merchant sees only their own slice (ownership rules `DATA-REQ-008`,
+`BR-ORD-09` — foreign data ⇒ 404, never 403-leak).
+
+| ERP department | Platform administrator scope | Merchant scope | Core objects / sources | Phase |
+|---|---|---|---|---|
+| **1. Accounts (CoA, AR/AP, partner accounts)** | Chart of accounts + account mapping (`P-02`), platform receivables (commission, fees, VAT collected), platform payables (vendor payouts, delivery-provider settlements, supplier bills), partner master (vendors, couriers, providers), AR/AP aging | Receivable from the platform = released escrow − commission − refunds (the "payable balance" already surfaced in `API-ANL-004`); own supplier AP **iff** purchases module enabled | mapping tables, ledger postings, `payout`, `escrow` | Phase 1 |
+| **2. Sales** | Master/sub-orders, invoices & credit notes (`P-01`), refunds, GMV & commission revenue reports, invoice register, VAT collected | Own sub-orders, invoices issued on their behalf (downloadable copy), returns → credit notes, per-store sales journal | `b06` orders, `P-01` documents, `b09` returns | Phase 1 |
+| **3. Purchases (AP)** | Platform operating procurement: bill for infra/hosting, SMS/WhatsApp credits, provider fees, partner services → approval → bill → payment record | Supplier procurement: purchase order → goods receipt → supplier bill → payment status (their money moves **outside** yumn; yumn only records it) | **new** `purchase_order`, `goods_receipt`, `supplier_bill`, `vendor_bill_payment` (ERP domain — not marketplace money, no `b07` writes) | Platform AP Phase 1–2 · merchant procurement Phase 2 (or native if Option B) |
+| **4. Inventory** | None as stock (the platform holds no inventory — `business-model.md`); aggregate stock-health metrics only | yumn `b02.inventory` stays the operational source of truth (on-hand/reserved/available, 15-min TTL `C-13`, no-negative checks); ERP layer adds locations, valuation (FIFO/AVCO), adjustments/losses, stock-move history and its journal impact | `b02` (SoR) → optional snapshot sync to ERP; **never** ERP → yumn availability (prevents oversell) | Snapshot Phase 1–2; valuation Phase 2 |
+| **5. Accounting reports** | Trial balance, P&L, balance sheet, cash flow, VAT return (`P-03`), commission/fee revenue, payout & provider reconciliation, month-end close pack | Monthly statement (`BR-FIN-04`, `API-ANL-004/005`), invoice register, tax summary, AR/AP aging (if purchases on), inventory valuation report | read models over ledger + documents (`B11` pattern) | Phase 1 |
+| **6. Periods & close** | Fiscal calendar (12 periods + year), open → adjust → close → lock, cutoff rules, close checklist with an owner per department, year-end carry-forward, period-boundary report locks | Statement period aligned to platform period; their books "close" read-only when the platform period closes (they may still download) | **new** `fiscal_period`, `close_checklist_item`, `period_lock` (SUPER_ADMIN action, audited `BR-PLT-06`) | Phase 1 |
+
+**Department ↔ staff mapping** (keeps §5.2 `ORG-*` org-departments as the *permission* model and this
+table as the *module* model — they compose, they do not duplicate):
+
+| ERP department | Owning org (platform) | Merchant-facing role | Guard |
+|---|---|---|---|
+| Accounts | `ORG-01` Finance (+ `ROLE-02` read-only auditor) | Vendor **Owner/Manager** | no ledger writes for anyone (`rbac` rows 15/16) |
+| Sales | `ORG-01` (finance views) + `ORG-02` (merchant ops views) | Owner/Manager | invoices immutable once issued; void = credit note + audit |
+| Purchases | `ORG-01` (opex approval) | Owner/Manager (`Editor` read) | payment is a **record**, never executed through yumn |
+| Inventory | `ORG-02` oversight | Owner/Editor | `b02` stays operational SoR; valuation ≠ availability |
+| Reports | `ORG-01`, `ORG-08` Executive (read-only) | Owner (own store only) | exports obey CSV rules; totals carry `totalsMeta` |
+| Periods & close | `ORG-01` proposes, **`SUPER_ADMIN` locks** | — (read-only) | lock is audited; late entries only via adjustment journals |
+
+**Administration surfaces**
+
+- *Platform admin console (new "Finance & ERP" area):* tabs for **Accounts** (CoA mapping, partners,
+  aging), **Sales** (invoice register, credit notes), **Purchases** (bill queue with four-eyes
+  approval, PO list), **Inventory** (read-only stock health + adjustments approval), **Reports**
+  (run/export, scheduled delivery), **Periods** (calendar, checklist, lock), **Sync monitor**
+  (outbox depth, held/review/resolved exceptions, mapping drift) — every mutation returns an
+  `auditId`, actions stay inside §5.5 UX guardrails.
+- *Vendor portal:* extend the existing Finance area (`UC-022`) with **Invoices**, **Tax summary**,
+  and — when enabled — **Purchases** (PO/bill entry) and **Stock valuation**; statements and
+  balance/escrow/payout views already exist.
+- *Interfaces:* admin endpoints follow the `API-ADM` group conventions; merchant endpoints follow
+  `API-ANL`/`API-WAL` scoping (own store, foreign ⇒ 404).
+
+**Period-close mechanics (non-negotiables):** ledger stays append-only — corrections are
+compensating entries only (`DATA-REQ-007`, `LedgerService.post` = single writer, forbidden pattern
+`F7`); a locked period rejects connector journals (queue them as adjustment-period entries, never
+overwrite); close cadence settles together with the open `CT-21` decision (hourly vs nightly vs
+daily chain/`J10` verification) so one answer drives all batch timings; `J1`/`J2` must be green
+**before** a period may be locked.
+
+**Phasing:** Phase 1 = departments 1, 2, 5, 6 skeleton + platform purchase-bill capture ·
+Phase 1–2 = department 3 approval flow + inventory snapshots (`P-10` ops view) ·
+Phase 2 = merchant procurement & valuation depth (or adopt Option B ERP natively) · all of it stays
+behind the connector port so switching Option A → B is configuration, not re-platform.
+
+### 4.3 Options considered
 
 | Option | Description | Pros | Cons | Verdict |
 |---|---|---|---|---|
@@ -348,7 +412,7 @@ asserted: `J1`/`J2` inside yumn, plus a new daily "ledger ↔ ERP journal" diff 
 | **B. Self-hosted ERP satellite (Odoo / ERPNext)** | Add one Compose service; yumn talks to it through a dedicated adapter module | Mature accounting/invoicing/CoA; Odoo uses PostgreSQL (aligns with `C-19`); ERPNext/MariaDB would clash with the "PostgreSQL only" rule of record; both are self-hostable | Second system to secure, back up, upgrade; dual UIs for staff; 99.99% availability target (`C-26`) now covers it; data-residency question `GAP-11` applies; staff training | **v2 option** — keep the connector port ready (Option A already includes it) |
 | **C. SaaS/enterprise ERP via iPaaS (NetSuite, Dynamics, …)** | Cloud ERP + integration platform | Fastest accounting maturity | Cross-border data (`GAP-11`), connectivity/cost realities in Yemen, violates the spirit of self-hosted `C-22` operations, no offline tolerance | **Not viable for v1** |
 
-### 4.3 Integration mechanics (applies to A and B)
+### 4.4 Integration mechanics (applies to A and B)
 
 - **Pattern:** transactional outbox table written **in the same DB transaction** as the domain change
   (order placed, escrow released, payout executed, invoice issued) → BullMQ job publishes to the
@@ -384,14 +448,19 @@ asserted: `J1`/`J2` inside yumn, plus a new daily "ledger ↔ ERP journal" diff 
 - **Verification:** contract tests against a sandbox ERP, seeded-mismatch detection (same discipline as
   `J1`/`J2`), and a Gate-2 end-to-end "money cycle audit" that includes the ERP journal diff.
 
-### 4.4 Sequencing
+### 4.5 Sequencing
 
 1. **Phase 0 (now):** decide Option A vs B (§8), settle `GAP-13` (it changes what must be journalized
    at all), open `DEP-09` (VAT opinion) — invoicing fields depend on it.
-2. **Phase 1:** `P-01` invoicing + `P-02` account mapping + outbox infrastructure (the connector spine).
-3. **Phase 1–2:** `P-03` tax reports, `P-04` settlement runs, ERP journal diff report.
-4. **Phase 2 / v2:** full ERP satellite (Option B) if accounting volume justifies it — connector port
-   already in place, no re-platform.
+2. **Phase 1:** department skeleton for **accounts, sales, reports, periods** (§4.2 depts 1/2/5/6) +
+   `P-01` invoicing + `P-02` account mapping + outbox infrastructure (the connector spine) + platform
+   purchase-bill capture (dept 3 start).
+3. **Phase 1–2:** purchase-bill approval flow + inventory snapshots (depts 3/4), `P-03` tax reports,
+   `P-04` settlement runs, ERP journal diff report, admin "Finance & ERP" console + vendor-portal
+   finance extensions.
+4. **Phase 2 / v2:** merchant procurement & stock-valuation depth (dept 3/4 full), then full ERP
+   satellite (Option B) if accounting volume justifies it — connector port already in place, no
+   re-platform.
 
 ---
 
@@ -464,7 +533,10 @@ documents, categories/attributes/slug redirects, products (override/unlist), cou
 pages, notification templates, shipping zones/rates, delivery providers (new), wallets (freeze only),
 top-ups, escrow views, payouts, invoices (new), tax config (new), ERP mappings (new), integrations
 (webhook endpoints, provider credentials), feature flags, audit log, tickets, disputes, moderation
-queue, risk rules, retention jobs, health/metrics links.
+queue, risk rules, retention jobs, health/metrics links, **plus the ERP department surface:**
+chart-of-accounts mapping, partner accounts, invoice register & credit notes, purchase-bill queue,
+inventory adjustments, fiscal periods (open/close/lock), close checklist, report runs, connector
+sync monitor (§4.2).
 
 ### 5.5 Admin UX requirements (all screens)
 
@@ -543,7 +615,7 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 | # | Decision | Options | Recommended |
 |---|---|---|---|
 | D1 | `GAP-13` — does `describ.md` **amend** `C-04/05/06/12`, the no-P2P principle and `rbac` rows 15/16, or is the spec **re-scoped** to canon? | amend / re-scope / mixed (per-row) | **Mixed:** accept `M-02` (extra wallets) and `M-03` (optional email); decide `M-01`/`M-04`/`M-06`/`M-07` on their own merits with security & finance review |
-| D2 | ERP strategy | A in-platform · B self-hosted satellite · C SaaS | **A now, connector-port ready for B later** (§4.2) |
+| D2 | ERP strategy | A in-platform · B self-hosted satellite · C SaaS | **A now, connector-port ready for B later** (§4.3) |
 | D3 | ERP block placement | extend `B07`+`B13` vs new block **B14** | start inside existing boundaries; promote to `B14` only when size forces it (both paths need change control) |
 | D4 | Departments & staff profiles | bundles inside `ADMIN` vs new actors | **bundles inside `ADMIN`** (§6.2) |
 | D5 | Wishlist | implement (`P-11`) vs delete route (`M-17`) | **implement** (small, removes a dead-element DOD risk) |
@@ -552,6 +624,7 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 | D8 | `GAP-05` vendor plans · `GAP-04` loyalty · `GAP-07` fleets | defer / include | **defer plans & loyalty**; build the **fleet registry skeleton** (`P-09`) since ops needs it |
 | D9 | Approve §1 HIGH set as the pre-build backlog and §3 as the v1 completeness checklist | yes / amend | — |
 | D10 | On approval, authorize register propagation (FR registry, `rbac.md`, `project-scope.md`, constraints, ADRs) under change control | yes | — |
+| D11 | ERP department depth for v1: accounts/sales/reports/periods only, **or** also platform purchases + inventory snapshots | core-only / core+ (recommended) | **core+ (§4.2 phasing)** — merchant procurement & valuation stay Phase 2 |
 
 ---
 
@@ -603,3 +676,4 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-28 | Initial draft: modification register `M-01…M-25`, proposals `P-01…P-20`, 52-row completeness checklist, ERP integration design, admin/department model, role proposals, approval decisions D1–D10 | Session 007 — development & planning manager deliverable requested by the sponsor for review before any work |
+| 1.1 | 2026-09-28 | ERP section expanded: new §4.2 departmental coverage (accounts, sales, purchases, inventory, accounting reports, periods & close — platform **and** merchant books), dept↔staff map, admin/vendor surfaces, close mechanics; scope map +Purchases row; checklist rows 53–59; §5.4 components; decision D11; §4.3–4.5 renumbered | Sponsor request: ERP must manage all departments for merchants and platform administrators |
