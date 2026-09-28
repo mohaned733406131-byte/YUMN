@@ -91,13 +91,18 @@ ILLUSTRATIVE_PATHS = {
 
 # Documented phantom paths: (citing file relpath, raw token).
 #   07-api/authorization.md: quoted by HAL-12 as the broken cite it
-#   documents, and by actors-and-roles.md's change row that records the
-#   correction (the live cite now points at 06-backend/authorization.md).
+#   documents, by actors-and-roles.md's change row that records the
+#   correction, and by the consistency/recommendation/session records of
+#   that same fix (the live cite now points at 06-backend/authorization.md).
+#   Session work files quote dead paths *as evidence of the fix* — allow
+#   only the file that narrates the correction, never a new live citation.
 PHANTOM_PATHS = {
     ("docs/20-validation/hallucination-audit.md", "07-api/authorization.md"),
     ("docs/00-project-overview/actors-and-roles.md", "07-api/authorization.md"),
     ("docs/20-validation/consistency-audit.md", "07-api/authorization.md"),
     ("docs/21-completion/recommendations.md", "07-api/authorization.md"),
+    ("docs/sessions/session-008-archdoc-brinv-citation-ci.md", "07-api/authorization.md"),
+    ("session_track.md", "07-api/authorization.md"),
 }
 
 # Backticked tokens that look like file paths.

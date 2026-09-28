@@ -19,7 +19,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | File | Purpose |
 |---|---|
 | [session_track.md](session_track.md) | Session ledger, resume points, resume prompts (SES-02/04) |
-| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…007` with evidence (SES-01) |
+| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…008` with evidence (SES-01) |
 | [development_phases_entry.md](development_phases_entry.md) | Phase status, Gate 0 state (DOC-01/02) |
 | [memory.md](memory.md) | Durable facts + known-defect register (DOC-01) |
 | [mind_map.md](mind_map.md) | Repository navigation (DOC-01) |
@@ -50,8 +50,13 @@ Change-control sweep completed (session 006): 31-check re-run 18/2/11 on 479 fil
 catalogs, `VERSION` 2.2.0). `describ.md` reconciled + `plan-develop.md` **v1.2 APPROVED** and propagated
 at the analysis layer (session 007): constraint amendments `C-05`/`C-06`, `DOC-SA-011`, rbac §11,
 register dispositions (`CT-24`/`CT-25`/`GAP-02`/`GAP-03`/`GAP-13`/`HAL-15` → `RESOLVED`), roll-up
-**72 open**.
+**72 open**. Assistant-side queue cleared (session 008): `REC-01` paid (`archdoc.md` v1.0 restored),
+`BR-INV-01…05` registered (`business-rules.md` v1.1 → **104 rules / 15 domains**), `REC-15` paid
+(citation CI `tools/check_citations.py` + `.github/workflows/docs-citations.yml`), close-out
+count/dashboard catch-up (7 missed `99`→`104` consumers, UC/TC dashboard, `F-02`/`F-03` →
+`RESOLVED`), roll-up **66 open**.
 Still open: money-path enum drift (`D-06`/`SPE-04`), API-promised storage (`D-07`), the `ORD-08` race (`D-12`),
-72 audit findings, plan items `M-01`/`M-04`/`M-05`/`M-06` (`CT-23`/`CT-26`/`CT-27`/`CT-28`, `GAP-14`),
-sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`).
+66 audit findings, plan items `M-01`/`M-04`/`M-05`/`M-06` (`CT-23`/`CT-26`/`CT-27`/`CT-28`, `GAP-14`),
+sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`) — all remaining `REC`/`TD` rows are
+`PAID`; the rest is sponsor-owned.
 Rule `SPE-03` forbids claiming any of these as done.
