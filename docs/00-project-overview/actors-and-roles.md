@@ -3,9 +3,9 @@ document_id: DOC-OVR-007
 title: Actors and Roles
 category: 00-project-overview
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003]
@@ -78,10 +78,11 @@ Conceptual authorization tests (see `13-testing/test-cases/TC-011…TC-014`):
 
 ## Consistency Rule
 
-Changing an actor here propagates to: `01-business-analysis` (use cases) → `02-requirements` (FR-002) → `09-security/rbac.md` → `07-api/authorization.md` → `08-database` (roles tables) → `05-frontend` (route guards) → `13-testing` → `19-traceability` → `20-validation/consistency-audit.md`.
+Changing an actor here propagates to: `01-business-analysis` (use cases) → `02-requirements` (FR-002) → `09-security/rbac.md` → `06-backend/authorization.md` → `08-database` (roles tables) → `05-frontend` (route guards) → `13-testing` → `19-traceability` → `20-validation/consistency-audit.md`.
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Consistency-rule cite corrected: `07-api/authorization.md` (no such file) → `06-backend/authorization.md` (the actual authorization document) | `REC-15` citation-CI enforcement (session 008) — the one genuinely dangling path; `HAL-12` evidence, first clause fixed here |
