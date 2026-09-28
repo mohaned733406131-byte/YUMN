@@ -3,7 +3,7 @@ document_id: DOC-PHA-003
 title: Implementation Plan — analysis
 category: phases
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -69,7 +69,7 @@ Phase-specific rules: **none added.** The binding set is [`senior-rules/RULES.md
 | `SEC-011` — sole auth channel (SMS/WhatsApp, `DEP-06`) uncontracted | CRITICAL | Gate 0 blocker: contract + template approval before any auth code |
 | `DEP-05` wallet providers uncontracted | HIGH | Gate 0 blocker; sandbox adapters before production top-ups |
 | Spec contradictions (`D-06` vocabularies, `D-12`/`ORD-08` race, `SPE-04`) | HIGH | ADR reconciliation **before** code touches money/orders/enums |
-| 69 open audit findings | MEDIUM | Waves per [phase-audit.md](phase-audit.md) §3; sponsor items `REC-11…13` escalated |
+| 67 open audit findings | MEDIUM | Waves per [phase-audit.md](phase-audit.md) §3; sponsor items `REC-11…13` escalated |
 | `ASM-14` budget/staffing baselines unset | HIGH | Sponsor decision — Gate 0 |
 
 ## 7. Roll-up links
@@ -81,3 +81,4 @@ Phase-specific rules: **none added.** The binding set is [`senior-rules/RULES.md
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation from `TEMPLATE_phase_implementation_plan.md` (session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | §6 risk row re-synced: open audit findings 69 → **67** (`analysis-validation.md` v1.8 — `HAL-04`, `CRIT-06`, `AVF-05` `RESOLVED` by the `BR-INV` registration) | analysis-agent |

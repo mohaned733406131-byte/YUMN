@@ -3,9 +3,9 @@ document_id: DOC-BA-001
 title: 01 Business Analysis — README
 category: 01-business-analysis
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-011, FR-012, FR-020]
@@ -28,7 +28,7 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 | [business-model.md](business-model.md) | DOC-BA-002 | Multi-vendor marketplace model: value proposition, revenue streams, cost structure, partners, channels, metrics, worked unit economics |
 | [business-objectives.md](business-objectives.md) | DOC-BA-003 | Business-side objectives `BO-01…BO-12` (liquidity, retention, payment trust, operational efficiency) with owner, metric, target |
 | [business-processes.md](business-processes.md) | DOC-BA-004 | The 15 major business processes `BP-01…BP-15`: trigger, actors, steps, systems, rules applied, final state, failure paths |
-| [business-rules.md](business-rules.md) | DOC-BA-005 | **The canonical business-rule registry — 99 rules `BR-<DOMAIN>-NN` (authoritative; see note below)** |
+| [business-rules.md](business-rules.md) | DOC-BA-005 | **The canonical business-rule registry — 104 rules `BR-<DOMAIN>-NN` (authoritative; see note below)** |
 | [stakeholder-needs.md](stakeholder-needs.md) | DOC-BA-006 | Needs of each `STK-*` stakeholder group, how yumn addresses them, related `FR-*`/`BR-*`, conflict notes |
 | [user-needs.md](user-needs.md) | DOC-BA-007 | Per-actor (`ACT-01…ACT-06`) needs: jobs-to-be-done, pains today, how addressed, success signals; guest vs registered customer |
 | `use-cases/` | — | Use case specifications `UC-NNN` (one file per use case), derived from the processes here and consumed by `13-testing/` |
@@ -87,3 +87,4 @@ Files use `lowercase-kebab-case.md`; workflow files are `workflow-NNN.md` where 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Registry count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |

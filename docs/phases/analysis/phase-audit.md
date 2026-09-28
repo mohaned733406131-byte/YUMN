@@ -3,7 +3,7 @@ document_id: DOC-PHA-018
 title: Phase Audit & Tracking — analysis
 category: phases
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -45,7 +45,7 @@ related_requirements: []
 | F-07 | MEDIUM | Validator checks ID uniqueness only in `RULES.md`; `YUMN_RULES.md` unchecked | verification coverage | **FIXED (session 006)** | amendment applied per core/00 §0.5: `validate.py` check 5 now parses both catalogs (77 + 94 IDs); `VERSION` → `2.2.0`, `CHANGELOG.md` entry; validator `PASS — yumn rule ids unique (94 rules in YUMN_RULES.md)` |
 | F-08 | LOW | No terminal-session names recorded (sessions 001–004) | SES-03 | **FIXED** | noted in session files; named sessions apply from session 005 |
 | F-09 | HIGH | Design findings `SEC-001…015` all open (1 CRIT, 4 HIGH) | SEC-04/AUD-02 | **OPEN — owner: sponsor/Gate 0** | register: `09-security/security-findings.md` |
-| F-10 | MEDIUM | Open knowledge-base findings across seven audits at each re-sync: **69 at session 005**, **71 at the session-006 re-sync** (15/17/12/12/8/7), **69 at the session-008 re-sync** (14 consistency / 21 contradiction / 11 gap / 9 hallucination / 7 critical / 7 requirement-validation; `analysis-validation.md` v1.7); Gate 0 `FAIL` (`CRIT-01`) | AUD-02 | **OPEN — sponsor items `REC-11…13`** | `20-validation/` registers (`analysis-validation.md` v1.7) |
+| F-10 | MEDIUM | Open knowledge-base findings across seven audits at each re-sync: **69 at session 005**, **71 at the session-006 re-sync** (15/17/12/12/8/7), **69 at the session-008 re-sync** (14/21/11/9/7/7; `analysis-validation.md` v1.7), **67 after the session-008 `BR-INV` registration** (14 consistency / 21 contradiction / 11 gap / 8 hallucination / 6 critical / 7 requirement-validation; `analysis-validation.md` v1.8); Gate 0 `FAIL` (`CRIT-01`) | AUD-02 | **OPEN — sponsor items `REC-11…13`** | `20-validation/` registers (`analysis-validation.md` v1.8) |
 
 ## 3. Remediation waves (rule 16f)
 
@@ -78,3 +78,4 @@ related_requirements: []
 | 2026-09-28 | 1.1 | G9 + §6 evidence filled with real commit hashes; F-03 annotated (remote `master` deletion pending default-branch switch) | analysis-agent |
 | 2026-09-28 | 1.2 | F-07 → FIXED (session-006 §0.5 amendment: `validate.py` check 5 covers `YUMN_RULES.md`; `VERSION` 2.2.0); F-10/Remaining re-synced to 71 open findings; rules-version line updated | analysis-agent |
 | 2026-09-28 | 1.3 | F-05 → FIXED (session 008: `archdoc.md` v1.0 restored with provenance, `D-10` → `RESOLVED`); F-10 re-synced to the session-008 roll-up (69 open, `analysis-validation.md` v1.7); Wave-1 + Remaining re-scoped | analysis-agent |
+| 2026-09-28 | 1.4 | F-10 re-synced to the `BR-INV` registration roll-up (**67 open**, `analysis-validation.md` v1.8 — `HAL-04`/`CRIT-06`/`AVF-05` `RESOLVED`); sponsor-owned status unchanged | analysis-agent |

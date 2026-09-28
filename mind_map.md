@@ -28,7 +28,7 @@ E:\YUMN
 ├─ docs/                            ★ Knowledge base — the analysis source of truth (24 domains)
 │  ├─ README.md                     Master index, reading order, ID conventions, source-of-truth rules
 │  ├─ 00-project-overview/          Charter, context, scope, constraints C-01…C-26, actors, assumptions
-│  ├─ 01-business-analysis/         99 business rules, 40 use cases, 12 workflows, 15 processes
+│  ├─ 01-business-analysis/         104 business rules, 40 use cases, 12 workflows, 15 processes
 │  ├─ 02-requirements/              68 requirements (FR/NFR/SEC-REQ/DATA-REQ/INT-REQ) + 253 ACs
 │  ├─ 03-system-analysis/           Boundary, components, state transitions, edge cases, failures
 │  ├─ 04-architecture/              Views, tech stack, module boundaries, scalability

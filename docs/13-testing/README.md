@@ -3,9 +3,9 @@ document_id: DOC-TST-001
 title: 13 Testing — Domain Overview & Test Case Index
 category: 13-testing
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -16,7 +16,7 @@ related_documents: [DOC-TST-002, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-TST-
 
 **Verification domain for the yumn platform.** Testing answers one question for every claim made elsewhere in `docs/`: *how do we know it works?* This README is the domain index; the methodology's Verification Strategy (§47) is expanded in [testing-strategy.md](testing-strategy.md).
 
-Scope: all five surfaces (customer web, vendor panel, admin console, customer mobile, courier mobile), the NestJS modular monolith (C-21), background workers, and the eight external integrations — against 68 requirements, 99 business rules, 26 constraints, and 253 acceptance criteria.
+Scope: all five surfaces (customer web, vendor panel, admin console, customer mobile, courier mobile), the NestJS modular monolith (C-21), background workers, and the eight external integrations — against 68 requirements, 104 business rules, 26 constraints, and 253 acceptance criteria.
 
 ---
 
@@ -158,3 +158,4 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Scope line count sync: 99 → **104 business rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
