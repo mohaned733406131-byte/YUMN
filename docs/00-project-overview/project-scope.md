@@ -3,7 +3,7 @@ document_id: DOC-OVR-005
 title: Project Scope
 category: 00-project-overview
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
 updated: 2026-09-26
 author: analysis-agent
@@ -83,6 +83,12 @@ related_documents: [DOC-OVR-001, DOC-OVR-008]
 | GAP-04 | Loyalty program depth (tiers only vs points accrual/redemption) | Product owner | same |
 | GAP-05 | Vendor subscription/tiered commission plans (vs flat 5–20%) | Finance | same |
 | GAP-06 | Cash-out (wallet → bank) for vendors: automatic or admin-approved only? | Finance | same |
+| GAP-07 | Logistics partners beyond individual couriers (fleet operators) | Operations lead (RISK-018 owner) | same |
+| GAP-08 | Statutory data-retention obligations applicable in Yemen (exact scope) | Legal liaison | same |
+| GAP-09 | Unresolved blocking legal deliverables (Central Bank wallet position, VAT opinion) | Legal liaison + sponsor | same |
+| GAP-10 | Exact provider API specifications for m-Floos / OneCash (blocked by DEP-05) | Technical lead / integrations | same |
+| GAP-11 | Hosting / cross-border data-location decision (Yemen Law No. 11 of 2012) | Project sponsor | same |
+| GAP-12 | v2 account-recovery channel beyond SMS/WhatsApp | Security officer | same |
 
 ## Scope-Creep Control
 
@@ -101,3 +107,4 @@ Scope is baselined at v1.0. Post-baseline changes follow change management (root
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Uncertain-scope table extended with GAP-07..GAP-12 pointer rows (canonical register already carries them) | Consistency with 20-validation/missing-information.md (session 006: CHK-15) |

@@ -3,7 +3,7 @@ document_id: DOC-PHA-013
 title: Sequence Diagrams — analysis phase
 category: phases
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -52,7 +52,7 @@ sequenceDiagram
   else commit
     DB-->>API: committed (single unit)
     API-->>W: 201 order_no + Cache-Control: no-store (MNY-12)
-    API->>Q: b07.order.confirmation.enqueue
+    API->>Q: enqueue b10.notification.delivery
     Q->>N: notify customer + vendor (2/2 locales, RTL-05)
   end
 ```
@@ -87,3 +87,4 @@ sequenceDiagram
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 11, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | Queue token b07.order.confirmation.enqueue (absent from queue register) replaced with b10.notification.delivery (session 006: CHK-16) | analysis-agent |

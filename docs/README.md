@@ -3,11 +3,12 @@ document_id: DOC-ROOT-001
 title: yumn Analysis Documentation — Master Index
 category: root
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-26
 updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
+related_requirements: []
 related_documents: []
 ---
 
@@ -17,7 +18,7 @@ related_documents: []
 |---|---|
 | Project Name | **yumn** (Arabic: يُمن) |
 | Project Description | Multi-vendor e-commerce marketplace for Yemen — Arabic-first (RTL), wallet-only payments, custom-built |
-| Documentation Version | 1.2 |
+| Documentation Version | 1.3 |
 | Last Updated | 2026-09-28 |
 | Documentation Status | APPROVED — analysis complete, ready for design/implementation planning |
 | Project Status | ANALYZED (pre-implementation) |
@@ -307,3 +308,4 @@ A document is complete only if it passes the quality gate (purpose, scope, termi
 | 2026-09-26 | 1.0 | Initial publication of the master index | analysis-agent |
 | 2026-09-27 | 1.1 | §5 AUD-NN validation-audit ID row (registration for domain 20) | analysis-agent |
 | 2026-09-28 | 1.2 | §1 `archdoc.md`/`archive/` claims corrected to honest state (defect `D-10`, SPE-03); §2 process-folder note (`phases/`, `sessions/`); §3 unverifiable `archdoc.md §38` reference removed | analysis-agent |
+| 2026-09-28 | 1.3 | related_requirements: [] frontmatter key added (session 006 sweep: CHK-01) | analysis-agent |

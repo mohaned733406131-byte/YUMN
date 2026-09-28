@@ -3,12 +3,12 @@ document_id: DOC-PHA-009
 title: Non-Functional Requirements (metrics per function) — analysis phase
 category: phases
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
 source_of_truth: false
-related_documents: [DOC-REQ-010, DOC-NFR-001, DOC-PHA-010]
+related_documents: [DOC-NFR-001, DOC-NFD-001, DOC-PHA-010]
 related_requirements: [NFR-001, NFR-002, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-008, NFR-010, NFR-011, NFR-013, NFR-017, NFR-020]
 ---
 
@@ -54,3 +54,4 @@ Every budget above has a named verification (k6 / size-limit / Lighthouse CI / u
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 7, session 005) | analysis-agent |
+| 2026-09-28 | 1.1 | Phantom citation DOC-REQ-010 replaced with DOC-NFD-001 in related_documents (session 006: CHK-07) | analysis-agent |
