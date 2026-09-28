@@ -3,7 +3,7 @@ document_id: DOC-SES-006
 title: Session 006 — change-control sweep + F-07 validator amendment
 category: sessions
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -87,15 +87,17 @@ open findings total: 71 = 15 consistency + 17 contradiction + 12 gap + 12 halluc
 
 ## Commit evidence
 
-Grouped conventional commits on branch **`session-006`** (hashes filled by the closing evidence commit):
+Grouped conventional commits on branch **`session-006`** (hashes below; closing evidence commit follows this file's update):
 
-| # | Message (governing IDs) |
-|---|---|
-| 1 | `fix(docs): session-006 sweep fixes — frontmatter/CH scaffolding, GAP-07..12 pointers, DOC + queue token corrections (CHK-01, CHK-05, CHK-07, CHK-15, CHK-16; findings 1, 9, 27, 28)` |
-| 2 | `fix(validation): land deferred sweep findings (a)-(f) + 31-check re-run in audit registers (session 006; CT-21, CT-22, HAL-14, HAL-15, findings 26-28)` |
-| 3 | `feat(rules): F-07 amendment via core/00 §0.5 — validate.py ID-uniqueness covers YUMN_RULES.md; VERSION 2.2.0` |
-| 4 | `docs(session-006): session work file, registry row, trackers, handoff to 007` |
-| 5 | closing evidence commit (this file's hashes + final validator state) |
+| # | Commit | Message (governing IDs) |
+|---|---|---|
+| 1 | `bc60937` | `fix(docs): session-006 sweep fixes — frontmatter/CH scaffolding, GAP-07..12 pointers, DOC + queue token corrections (CHK-01, CHK-05, CHK-07, CHK-15, CHK-16; findings 1, 9, 27, 28)` |
+| 2 | `4984e31` | `fix(validation): land deferred sweep findings (a)-(f) + 31-check re-run in audit registers (session 006; consistency v1.11 18/2/11, CT-21, CT-22, HAL-14, HAL-15, findings 26-28, roll-up 71 open)` |
+| 3 | `5579293` | `feat(rules): F-07 amendment via core/00 0.5 — validate.py ID-uniqueness covers YUMN_RULES.md (77+94), VERSION 2.2.0, pin re-sync (GEN-08)` |
+| 4 | `849aa04` | `docs(session-006): session work file (DOC-SES-006), registry row, session-file frontmatter/CH scaffolding (CHK-01, CHK-05), backlog annotations, trackers + handoff to 007` |
+| 5 | *(closing evidence commit — this file + validator state)* | `docs(session-006): closing evidence — commit hashes + final validator state` |
+
+`session-006` fast-forwards `main`; both are pushed together with `session-005` history (`origin/master` deletion still pending the default-branch switch — F-03 residual, sponsor/user action).
 
 ## Handoff
 
@@ -110,3 +112,4 @@ Grouped conventional commits on branch **`session-006`** (hashes filled by the c
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation — change-control sweep + F-07 amendment (session 006) | analysis-agent |
+| 2026-09-28 | 1.1 | Commit-evidence table filled with real hashes (`bc60937`, `4984e31`, `5579293`, `849aa04`) in the closing evidence commit | analysis-agent |
