@@ -35,10 +35,19 @@ registration, and `REC-15` citation CI were paid and propagated — session file
   → `RESOLVED`**; this file → 009.
 
 **Last states:** validator `RESULT: PASS — structure healthy` (0 broken links; 77 + 94 rule IDs);
-citation check `RESULT: PASS — every cited path and ID resolves (REC-15)`.
-**Git:** branch **`session-008`**, commits `e28a9f1`, `81da89d`, `38961c9`, `506c740`, `55ecd83`
-(+ closing evidence commit) pushed to `origin`
-(`https://github.com/mohaned733406131-byte/YUMN.git`). **`main` was not touched** — by directive.
+citation check `RESULT: PASS — every cited path and ID resolves (REC-15)`
+**497 files, ~18.8k ID citations, 0 problems** (exact counts move as docs change — re-run to
+see the current number; the close-out run was the one that first flagged this
+session's own historical quote of the dead `07-api` authorization path (the cite fixed by
+`actors-and-roles.md` v1.1); two documented-phantom entries were added to
+`tools/check_citations.py` `PHANTOM_PATHS`, the same mechanism that already covers the 4 HAL-12
+documents — quoting the broken cite *as evidence of the fix* is allowed, live citations of it
+are not).
+**Git:** branch **`session-008`** (pushed, up to date with `origin`): `e28a9f1` (REC-01/archdoc),
+`81da89d` (BR-INV), `38961c9` (citation CI + 2 source fixes), `506c740` (REC-15 paid, roll-up 66),
+`55ecd83` (count/dashboard catch-up), **`872480b`** (session-008 close-out) — remote
+`origin` = `https://github.com/mohaned733406131-byte/YUMN.git`. **`main` was not touched** — by
+directive (it still sits at `c9ff07c`, the session-007 close).
 
 ## 2. Current truth (do not contradict)
 
@@ -85,7 +94,8 @@ items `M-01` (`CT-23` + `GAP-14`), `M-04` (`CT-26` pricing), `M-05` (`CT-28` sec
 
 **B. Verify the pushed CI (honestly):** open the GitHub Actions UI for `docs-citations.yml` after
 this push; record the first run's result in the session-009 work file (PASS/FAIL/UNVERIFIED —
-whatever it actually is). Locally both checks are green; the runner is not.
+whatever it actually is). Locally both checks are green; the runner is not. **Before pushing
+session-009, run `python tools/check_citations.py` locally** — it is the same check CI runs.
 
 **C. Pre-gate hygiene:** fresh **31-check consistency re-run** (corpus has grown past the
 479-file snapshot; last result 18/2/10) before any gate claim; `CHK-05` residual is owned by the
