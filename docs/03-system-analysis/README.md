@@ -3,7 +3,7 @@ document_id: DOC-SA-001
 title: 03 System Analysis — README
 category: 03-system-analysis
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
 updated: 2026-09-26
 author: analysis-agent
@@ -34,6 +34,7 @@ It sits between `02-requirements/` (what the system *must* do — static stateme
 | [edge-cases.md](edge-cases.md) | DOC-SA-008 | Edge cases per domain (`EC-NN`) with expected system behavior and the `BR-*` / `C-*` references that govern them |
 | [failure-modes.md](failure-modes.md) | DOC-SA-009 | Failure modes (`FM-NN`) and analysis-level handling: provider outage, idempotency, double-debit, code mismatch, webhook retries, oversell |
 | [state-transitions.md](state-transitions.md) | DOC-SA-010 | **The canonical 17-state order machine (`C-09`) — single source of truth for states and transitions** (pre-existing) |
+| [erp-finance-departments.md](erp-finance-departments.md) | DOC-SA-011 | Finance/ERP department surface: platform + per-merchant books, six departments (accounts, sales, purchases, inventory, reports, periods), dept↔staff map, period-close mechanics, phasing — approved via `plan-develop.md` §8 (`D2`/`D3`/`D11`) |
 
 ## How 03 Differs From 04-Architecture
 
@@ -104,6 +105,7 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | "How does the order flow end to end?" | `sequence-flows.md` (DOC-SA-007) | `01-business-analysis/workflows/` for step tables |
 | "What can go wrong?" | `edge-cases.md` (DOC-SA-008) | `failure-modes.md` (DOC-SA-009) |
 | "What are the exact order states?" | `state-transitions.md` (DOC-SA-010) | `13-testing/` for the state-machine suite |
+| "How are the finance/ERP departments organised?" | `erp-finance-departments.md` (DOC-SA-011) | `09-security/rbac.md` §11 for the permission model; `plan-develop.md` §4 for connector mechanics |
 
 ## Change History
 
@@ -111,3 +113,4 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-27 | Registry stub rows replaced: the three stale `07-api/`/`08-database/`/`13-testing/` registry stub rows now point at the real registries with paths, ID ranges and real examples (`API-WAL-003`, `DB-001…DB-018`, `TC-001…TC-114`) | `REC-08`/`TD-09` pay-down — stale stubs caused the stop-or-invent-ID failure mode root README §5 forbids |
+| 1.2 | 2026-09-28 | Contents + reading-order rows added for `erp-finance-departments.md` (`DOC-SA-011`, minted here) | `plan-develop.md` §8 approval implementation (session 007) — new analysis document registered in its domain index (SPE-05) |

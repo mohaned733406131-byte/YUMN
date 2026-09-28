@@ -1,8 +1,10 @@
 # plan-develop — Development, Enhancement & Expansion Plan (v1 → comprehensive platform)
 
-> **Status:** DRAFT — **AWAITING REVIEW & APPROVAL** (no work below is authorized until the sponsor
-> signs off; nothing here may silently enter the approved scope — change control lives at
-> [`docs/README.md`](docs/README.md) §9).
+> **Status:** ✅ **APPROVED 2026-09-28 (administrator) — authorized for implementation at the
+> analysis layer** under [`docs/README.md`](docs/README.md) §9 change control. Approval covers the
+> §8 recommendations `D1`…`D11` as written (see §8 Outcome column); items the plan itself routes to
+> external review (`CT-23`, `CT-26`, `CT-27`, `CT-28`, `GAP-14`, `DEP-05/09`, `ASM-14`) remain
+> **OPEN** — approval does not fabricate the evidence those gates require (`GEN-03`, `DOD-10`).
 > **Author role:** Development & Planning Manager / Requirements Engineer / Business Analyst.
 > **Date:** 2026-09-28 · **Session:** 007 · **Rules pin:** ADMR `2.2.0` + `YUMN_RULES.md` (94 rules).
 > **Method:** approved knowledge base (24 domains, 68 requirements, 221 endpoints, 114 test cases)
@@ -32,8 +34,11 @@
 4. **ID policy:** `C-*`, `FR-*`, `BR-*`, `GAP-*`, `CT-*`, `CRIT-*`, `REC-*`, `TD-*`, `SEC-*`,
    `API-*`, `DB-*`, `UC-*`, `BP-*`, `ACT-*`, `B0x` cited below are existing corpus IDs. New proposals
    carry **document-local IDs `M-nn` (modification), `P-nn` (proposed feature), `ORG-nn` (admin org),
-   `ROLE-nn` (role)** — these are placeholders in this file only and are minted into their owning
-   registers (`requirements-overview.md`, `rbac.md`, `project-scope.md`, …) only after approval.
+   `ROLE-nn` (role)** — minted into their owning registers only after approval. **Minted 2026-09-28:**
+   `ORG-01`…`ORG-08` and `ROLE-01`…`ROLE-07`/`ROLE-09` now live in
+   [`rbac.md`](docs/09-security/rbac.md) §11 (`ROLE-08`/`ROLE-10`/`ROLE-11` stay document-local —
+   their conditions are unmet); `M-nn`/`P-nn` convert to `FR-*` + ACs at their build wave
+   (never earlier — `SPE-03`/`D-02` discipline).
 5. **Evidence tags:** `VERIFIED` = confirmed in a cited corpus file this session · `INFERENCE` =
    reasoned from sources but not yet ratified · `INSUFFICIENT EVIDENCE` = needs a sponsor/owner answer.
 
@@ -612,19 +617,22 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 
 ## 8. Approval request — decisions needed before this plan becomes work
 
-| # | Decision | Options | Recommended |
-|---|---|---|---|
-| D1 | `GAP-13` — does `describ.md` **amend** `C-04/05/06/12`, the no-P2P principle and `rbac` rows 15/16, or is the spec **re-scoped** to canon? | amend / re-scope / mixed (per-row) | **Mixed:** accept `M-02` (extra wallets) and `M-03` (optional email); decide `M-01`/`M-04`/`M-06`/`M-07` on their own merits with security & finance review |
-| D2 | ERP strategy | A in-platform · B self-hosted satellite · C SaaS | **A now, connector-port ready for B later** (§4.3) |
-| D3 | ERP block placement | extend `B07`+`B13` vs new block **B14** | start inside existing boundaries; promote to `B14` only when size forces it (both paths need change control) |
-| D4 | Departments & staff profiles | bundles inside `ADMIN` vs new actors | **bundles inside `ADMIN`** (§6.2) |
-| D5 | Wishlist | implement (`P-11`) vs delete route (`M-17`) | **implement** (small, removes a dead-element DOD risk) |
-| D6 | Email channel `GAP-03` | in v1 / out of v1 | **out of v1**, document the exclusion (SMS/WhatsApp/in-app/push already cover it) |
-| D7 | `GAP-02` delivery-code admin override | allow audited override / never | **never** in v1 (keeps `AC-S-*` "0 deliveries without code" absolute) |
-| D8 | `GAP-05` vendor plans · `GAP-04` loyalty · `GAP-07` fleets | defer / include | **defer plans & loyalty**; build the **fleet registry skeleton** (`P-09`) since ops needs it |
-| D9 | Approve §1 HIGH set as the pre-build backlog and §3 as the v1 completeness checklist | yes / amend | — |
-| D10 | On approval, authorize register propagation (FR registry, `rbac.md`, `project-scope.md`, constraints, ADRs) under change control | yes | — |
-| D11 | ERP department depth for v1: accounts/sales/reports/periods only, **or** also platform purchases + inventory snapshots | core-only / core+ (recommended) | **core+ (§4.2 phasing)** — merchant procurement & valuation stay Phase 2 |
+> **Outcomes recorded 2026-09-28 (administrator approval, session 007).** `OPEN` items stay open
+> until their own evidence lands — approval never fabricates a gate (`GEN-03`).
+
+| # | Decision | Options | Recommended | Outcome (2026-09-28) |
+|---|---|---|---|---|
+| D1 | `GAP-13` — does `describ.md` **amend** `C-04/05/06/12`, the no-P2P principle and `rbac` rows 15/16, or is the spec **re-scoped** to canon? | amend / re-scope / mixed (per-row) | **Mixed:** accept `M-02` (extra wallets) and `M-03` (optional email); decide `M-01`/`M-04`/`M-06`/`M-07` on their own merits with security & finance review | **APPROVED mixed.** `C-05` amended (+Al-Kuraimi Bank, Jeeb wallets), `C-06` amended (optional *verified* email) — `CT-24`/`CT-25` → RESOLVED, `HAL-15` → RESOLVED. `M-07` = **NO** → `CT-29` RESOLVED-NO (rbac rows 15/16 absolute). `M-01`/`M-04`/`M-05`/`M-06` remain **OPEN** (finance/security/owner review), `GAP-14` stays OPEN |
+| D2 | ERP strategy | A in-platform · B self-hosted satellite · C SaaS | **A now, connector-port ready for B later** (§4.3) | **APPROVED — Option A + connector port.** Recorded in `decision-log.md` §2 (ADR-011 is pre-reserved for multi-host); propagation: `erp-finance-departments.md` DOC-SA-011 |
+| D3 | ERP block placement | extend `B07`+`B13` vs new block **B14** | start inside existing boundaries; promote to `B14` only when size forces it (both paths need change control) | **APPROVED — start in `B07`/`B13`**; `B14` promotion is a change-control event |
+| D4 | Departments & staff profiles | bundles inside `ADMIN` vs new actors | **bundles inside `ADMIN`** (§6.2) | **APPROVED.** `ORG-01`…`ORG-08` + `ROLE-01`…`ROLE-07`/`ROLE-09` minted in `rbac.md` §11 |
+| D5 | Wishlist | implement (`P-11`) vs delete route (`M-17`) | **implement** (small, removes a dead-element DOD risk) | **APPROVED — implement** (`P-11`, scheduled Wave 2) |
+| D6 | Email channel `GAP-03` | in v1 / out of v1 | **out of v1**, document the exclusion (SMS/WhatsApp/in-app/push already cover it) | **APPROVED — OUT of v1** → `GAP-03` RESOLVED (documented exclusion) |
+| D7 | `GAP-02` delivery-code admin override | allow audited override / never | **never** in v1 (keeps `AC-S-*` "0 deliveries without code" absolute) | **APPROVED — NEVER** → `GAP-02` RESOLVED |
+| D8 | `GAP-05` vendor plans · `GAP-04` loyalty · `GAP-07` fleets | defer / include | **defer plans & loyalty**; build the **fleet registry skeleton** (`P-09`) since ops needs it | **APPROVED — defer `GAP-04`/`GAP-05`** (stay OPEN, annotated deferred); **`P-09` fleet skeleton included** (`GAP-07` annotated approved-skeleton) |
+| D9 | Approve §1 HIGH set as the pre-build backlog and §3 as the v1 completeness checklist | yes / amend | — | **APPROVED** — §1 HIGH rows + §3 59-row checklist = the pre-build backlog |
+| D10 | On approval, authorize register propagation (FR registry, `rbac.md`, `project-scope.md`, constraints, ADRs) under change control | yes | — | **APPROVED.** Propagation executed 2026-09-28 under §9 change control: `rbac.md` §11, `project-constraints.md` (`C-05`/`C-06`), `project-scope.md`, `requirements-overview.md`, `decision-log.md` §2, validation registers |
+| D11 | ERP department depth for v1: accounts/sales/reports/periods only, **or** also platform purchases + inventory snapshots | core-only / core+ (recommended) | **core+ (§4.2 phasing)** — merchant procurement & valuation stay Phase 2 | **APPROVED — core+** |
 
 ---
 
@@ -677,3 +685,4 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 |---|---|---|---|
 | 1.0 | 2026-09-28 | Initial draft: modification register `M-01…M-25`, proposals `P-01…P-20`, 52-row completeness checklist, ERP integration design, admin/department model, role proposals, approval decisions D1–D10 | Session 007 — development & planning manager deliverable requested by the sponsor for review before any work |
 | 1.1 | 2026-09-28 | ERP section expanded: new §4.2 departmental coverage (accounts, sales, purchases, inventory, accounting reports, periods & close — platform **and** merchant books), dept↔staff map, admin/vendor surfaces, close mechanics; scope map +Purchases row; checklist rows 53–59; §5.4 components; decision D11; §4.3–4.5 renumbered | Sponsor request: ERP must manage all departments for merchants and platform administrators |
+| 1.2 | 2026-09-28 | **APPROVED** by administrator. Status header rewritten; §0.4 mint record (`ORG-*`/`ROLE-*` → `rbac.md` §11); §8 table gains an Outcome column recording `D1`…`D11` dispositions with register consequences (`CT-24`/`CT-25`/`CT-29`/`GAP-02`/`GAP-03`/`GAP-13` resolutions, deferred annotations, honest OPEN carry-overs) | Session 007 — plan approved for analysis-layer implementation under `docs/README.md` §9 change control |

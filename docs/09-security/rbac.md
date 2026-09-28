@@ -3,9 +3,9 @@ document_id: DOC-SEC-004
 title: RBAC — Definitive Permission Matrix (7 Actors)
 category: 09-security
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-002, FR-020, SEC-REQ-004, SEC-REQ-010, DATA-REQ-008]
@@ -161,9 +161,56 @@ Reconciliation rules:
 | Audit coverage | each privileged action in P5 produces exactly one complete audit row | `AC-SR010-03` |
 | DB privilege | direct UPDATE/DELETE on audit tables as app role fails | `AC-SR010-01` |
 
+## 11. Org Departments & Staff-Profile Permission Bundles (approved 2026-09-28)
+
+Approved via `plan-develop.md` §8 decisions **D4** (bundles inside `ADMIN`, not new actors) and
+**D10** (register propagation). Departments are **permission bundles + queue scopes inside `ADMIN`** —
+they do not add actor rows, so the §8 cardinality invariant (API 7 = enum 10 − 3 staff; DB 6 = 7 −
+`SYSTEM`) and every §2 matrix row stand unchanged. An admin staff profile is an `ADMIN` identity plus
+one or more department bundles; the persisted shape is designed with the Phase 1 schema work (no new
+`user_role.role` values — a bundle may only grant capabilities the §2 `ADMIN` column already allows).
+
+| ID | Department | Owns (existing endpoint groups, `07-api/endpoints/admin.md`) | Must NOT touch |
+|---|---|---|---|
+| `ORG-01` | **Finance & Payments** | bank top-ups (`API-ADM-030…032`), freeze/unfreeze, payout ops, reconciliation, invoices, tax reports | ledger rows (append-only), role management |
+| `ORG-02` | **Vendor Success / Merchant Ops** | KYC queue (`API-ADM-005…008`), stores (`API-ADM-009…013`), vendor plans/agreements | KYC *policy* changes, money |
+| `ORG-03` | **Catalog & Content** | categories/attributes (`API-ADM-014…021`), moderation (`API-ADM-027…029`), CMS/banners/coupons | settings, roles |
+| `ORG-04` | **Logistics & Delivery** | zones/rates, dispatch, provider registry | payouts (`ORG-01` executes), delivery-code override (decision D7: **never** in v1) |
+| `ORG-05` | **Customer Support** | tickets (`API-ADM-035…041`), return/dispute intake, refund *initiation* (`ORG-01` approves) | top-up verification, roles |
+| `ORG-06` | **Trust & Safety / Compliance** | audit read, risk queue, retention/DSAR, fraud rules | ledger, settings writes |
+| `ORG-07` | **Platform Engineering** | settings (group-scoped), feature flags, integrations/webhooks, health, feature releases | finance ops, moderation |
+| `ORG-08` | **Executive (read-only)** | dashboards, reports, exports, KPI views | every state-changing endpoint |
+
+Staff-profile bundles (minted here per decision D10; `ROLE-08`, `ROLE-10`, `ROLE-11` stay
+plan-local until their own conditions — `GAP-07`, change control — are met):
+
+| ID | Bundle (staff profile) | Department | Capability scope | Condition |
+|---|---|---|---|---|
+| `ROLE-01` | Finance Officer | `ORG-01` | verify top-ups, payout batches, invoices, tax reports, reconciliation views; no role changes, no ledger writes | approved |
+| `ROLE-02` | Accountant / Auditor (read-only) | `ORG-01` | journals, close pack, exports, audit read; zero mutations | with `plan-develop.md` `P-02` |
+| `ROLE-03` | KYC / Compliance Officer | `ORG-02` / `ORG-06` | KYC decisions, document vault, sanctions checks | approved |
+| `ROLE-04` | Support Agent | `ORG-05` | ticket queue, canned replies, return intake, refund *initiation* | with `plan-develop.md` `P-15` |
+| `ROLE-05` | Logistics Coordinator | `ORG-04` | dispatch, provider assignment | with `plan-develop.md` `P-09`/`P-10` |
+| `ROLE-06` | Content Editor / Category Manager | `ORG-03` | CMS, banners, category tree, review moderation (narrower than `MODERATOR`) | approved |
+| `ROLE-07` | Risk Analyst | `ORG-06` | risk queue, velocity rules, freeze *requests* | with `plan-develop.md` `P-16` |
+| `ROLE-09` | Integration / Service Account | `SYSTEM`-class (non-human) | ERP connector, partner APIs; scoped tokens, no login, write-only audit | with `plan-develop.md` §4 |
+
+Guardrails (all absolute):
+
+- **Rows 15/16 stand:** no department or bundle grants direct ledger/balance adjustment or customer
+  balance reads (disposition `M-07` = **NO**, `CT-29` resolved 2026-09-28) — aggregate read-only
+  finance dashboards plus explicitly enumerated, audited support actions only.
+- **Deny-by-default** (`SEC-REQ-004`): a bundle grants nothing that the `ADMIN` column of §2 denies;
+  endpoints are declared per department in the API register, undeclared ⇒ 403.
+- **Four-eyes on money ops:** `ORG-01` initiator ≠ approver on verify/freeze/refund/payout batch
+  actions; every privileged change returns an `auditId` (`BR-PLT-06`).
+- **Read-only bundles** (`ROLE-02`, `ORG-08`) carry zero mutating endpoints — enforced server-side,
+  never by UI hiding (§1 principles).
+
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-27 | §8 cross-layer role mapping added (actor → API role → application enum → DB value, 10 rows + reconciliation rules); verification gains a cross-layer parity row; Admin Console / Verification renumbered §8/§9 → §9/§10 | `REC-07`/`TD-08` pay-down — one authoritative three-layer mapping as root README §4 requires |
+| 1.2 | 2026-09-28 | §11 added: `ORG-01`…`ORG-08` department table + staff-profile bundles `ROLE-01`…`ROLE-07`/`ROLE-09` minted; guardrails (rows 15/16 absolute, four-eyes, deny-by-default restated) | `plan-develop.md` §8 decisions D4/D10 approved by the administrator — register propagation (root README §9); no new actors, §2/§8 unchanged |

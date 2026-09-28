@@ -3,9 +3,9 @@ document_id: DOC-OVR-005
 title: Project Scope
 category: 00-project-overview
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -46,8 +46,8 @@ related_documents: [DOC-OVR-001, DOC-OVR-008]
 | Card payments / third-party card processors (Stripe, Moyasar, etc.) | `C-02` |
 | BNPL / installments / credit | `C-03` |
 | Cryptocurrency / multi-currency wallets (USD/SAR accounts) | `C-04` |
-| Top-up methods beyond m-Floos, OneCash, bank transfer | `C-05` |
-| Email-primary auth, social login (Google/Facebook/Apple) | `C-06` |
+| Top-up methods beyond m-Floos, OneCash, Al-Kuraimi Bank, Jeeb, bank transfer (as amended 2026-09-28) | `C-05` |
+| Email-primary auth, social login (Google/Facebook/Apple) — an *optional verified* email on a profile remains allowed (`C-06` as amended) | `C-06` |
 | Biometric authentication | `C-07` |
 | GPS / real-time courier tracking | `C-16` |
 | International (cross-border) fulfillment | `C-17` |
@@ -60,7 +60,7 @@ related_documents: [DOC-OVR-001, DOC-OVR-008]
 | Additional locales beyond Arabic and English | `C-24` |
 | AI chatbot / generative-AI support features | Scope decision (human ticketing only, `FR-020`) |
 | Subscription products, trials, samples, rentals | Scope decision (see `01-business-analysis/business-rules.md`, `BR-CAT-05`) |
-| Email as a notification channel | `INFERENCE` — not in `FR-017` channel list; confirm if needed (`GAP-03`) |
+| Email as a notification channel | **RESOLVED out of v1** 2026-09-28 (`plan-develop.md` §8 `D6`) — SMS/WhatsApp/in-app/push cover it; `GAP-03` closed |
 | Native desktop applications | Not requested |
 
 ## FUTURE SCOPE (explicitly NOT current requirements)
@@ -78,17 +78,34 @@ related_documents: [DOC-OVR-001, DOC-OVR-008]
 | ID | Item | Needed From | Registered In |
 |---|---|---|---|
 | GAP-01 | Growth/commercial targets for launch (vendor/order/GMV) | Sponsor | `20-validation/missing-information.md` |
-| GAP-02 | Whether admin can override a delivery code in exceptional cases | Operations | same |
-| GAP-03 | Email notification channel: include or exclude? | Product owner | same |
-| GAP-04 | Loyalty program depth (tiers only vs points accrual/redemption) | Product owner | same |
-| GAP-05 | Vendor subscription/tiered commission plans (vs flat 5–20%) | Finance | same |
+| GAP-02 | Whether admin can override a delivery code in exceptional cases | Operations | same — **RESOLVED `NEVER` 2026-09-28 (`D7`)** |
+| GAP-03 | Email notification channel: include or exclude? | Product owner | same — **RESOLVED `OUT OF v1` 2026-09-28 (`D6`)** |
+| GAP-04 | Loyalty program depth (tiers only vs points accrual/redemption) | Product owner | same — **deferred** 2026-09-28 (`D8`), still OPEN |
+| GAP-05 | Vendor subscription/tiered commission plans (vs flat 5–20%) | Finance | same — **deferred** 2026-09-28 (`D8`), still OPEN |
 | GAP-06 | Cash-out (wallet → bank) for vendors: automatic or admin-approved only? | Finance | same |
-| GAP-07 | Logistics partners beyond individual couriers (fleet operators) | Operations lead (RISK-018 owner) | same |
+| GAP-07 | Logistics partners beyond individual couriers (fleet operators) | Operations lead (RISK-018 owner) | same — fleet **registry skeleton approved** 2026-09-28 (`D8`, `P-09`) |
 | GAP-08 | Statutory data-retention obligations applicable in Yemen (exact scope) | Legal liaison | same |
 | GAP-09 | Unresolved blocking legal deliverables (Central Bank wallet position, VAT opinion) | Legal liaison + sponsor | same |
 | GAP-10 | Exact provider API specifications for m-Floos / OneCash (blocked by DEP-05) | Technical lead / integrations | same |
 | GAP-11 | Hosting / cross-border data-location decision (Yemen Law No. 11 of 2012) | Project sponsor | same |
 | GAP-12 | v2 account-recovery channel beyond SMS/WhatsApp | Security officer | same |
+
+## APPROVED BACKLOG (pointer — content never copied)
+
+> Approved 2026-09-28 by the administrator (`plan-develop.md` v1.2 §8 `D9`/`D10`). The canonical
+> text of every row lives in [`plan-develop.md`](../../plan-develop.md); this section only records
+> that the plan is **approved work waiting for its build wave** — no row here is a v1 requirement
+> yet (`SPE-03`/`D-02`: `M-nn`/`P-nn` convert to `FR-*` + ACs at their wave, never earlier).
+
+| Group | IDs | Where it lands | When |
+|---|---|---|---|
+| Modifications (HIGH) — pre-build backlog | `M-01`…`M-14` subset in plan §1.1 | owning domains + `requirements-overview.md` | Wave 1 FR conversion |
+| Modifications (MEDIUM/LOW) | plan §1.2–§1.3 | owning domains | later waves |
+| Missing features — ERP/finance core | plan §2.1 (`P-01`…`P-06`), `D2`/`D3`/`D11` | `B07`+`B13`, `erp-finance-departments.md` (DOC-SA-011) | Wave 1–2 |
+| Wishlist `P-11` | `D5` — implement | customer-facing surfaces | Wave 2 |
+| Fleet registry skeleton `P-09` | `D8` — approved skeleton | delivery/ops (`GAP-07`) | Wave 2 |
+| Admin departments + staff bundles | `ORG-01`…`ORG-08`, `ROLE-01`…`ROLE-09` | **minted** in `09-security/rbac.md` §11 | as of 2026-09-28 |
+| Completeness checklist (v1) | plan §3 rows 1–59 | gate evidence at each wave | ongoing |
 
 ## Scope-Creep Control
 
@@ -108,3 +125,4 @@ Scope is baselined at v1.0. Post-baseline changes follow change management (root
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Uncertain-scope table extended with GAP-07..GAP-12 pointer rows (canonical register already carries them) | Consistency with 20-validation/missing-information.md (session 006: CHK-15) |
+| 1.2 | 2026-09-28 | `C-05`/`C-06` OUT OF SCOPE rows follow the amended constraints (Al-Kuraimi/Jeeb; optional verified email); `GAP-02` → RESOLVED `NEVER`, `GAP-03` → RESOLVED `OUT OF v1`, `GAP-04`/`GAP-05` annotated deferred, `GAP-07` skeleton annotated; new **APPROVED BACKLOG** pointer section (content stays in `plan-develop.md`) | `plan-develop.md` v1.2 §8 approval implementation (session 007, `D5`–`D9`) |

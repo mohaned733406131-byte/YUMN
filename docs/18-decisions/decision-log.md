@@ -3,9 +3,9 @@ document_id: DOC-DEC-002
 title: Decision Log
 category: 18-decisions
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-016, NFR-018, FR-009, FR-013, FR-001]
@@ -49,6 +49,7 @@ Smaller decisions that are binding but do not shape architecture enough for a fu
 | D-08 | **Bank-transfer top-ups are credited only after admin verification of the reference — no bank API in v1** | No bank API access exists in the market context; human verification keeps the credit path trustworthy and doubles as the fallback rail when mobile-wallet providers are down | `02-requirements/integration/INT-REQ-002.md`; `BR-PAY-04`; `10-integrations/bank-transfer-topup.md` |
 | D-09 | **Single support hub: in-app tickets (primary) answered by human agents, with resolutions executed through admin-console tooling — no AI chatbot, no email, no code changes for common issues** | One queue keeps every issue auditable end-to-end; admin tooling (verify top-up, freeze wallet, resolve dispute, unlock code lockout, KYC decisions, state override within `C-09`) makes support an operations capability (`NFR-020`) rather than a release dependency; auto-created escalation tickets carry the full order timeline so agents never re-collect context | `12-non-functional/usability-and-support.md` §5; `FR-020` (out-of-scope note); scope exclusions in `00-project-overview/project-scope.md`; `AC-FR020-04` |
 | D-10 | **UUID v7 primary keys generated in the application layer, and singular `snake_case` table/column naming** | UUID v7 needs no coordination across stateless replicas (`NFR-018`) and workers, stays index-local on 100M-row tables (`NFR-017`), and ranges well with composite `(id, created_at)` partition keys; singular table names keep entity file = table = Prisma `@@map` and avoid irregular plurals — CI asserts no v4 IDs enter tables | `08-database/README.md` §1 (naming) and §2 (ID strategy) |
+| D-11 | **ERP/finance strategy: build in-platform (Option A) with a connector port reserved for a later self-hosted satellite (Option B); block placement starts inside `B07`+`B13` (no `B14` until size forces it); v1 department depth is core+ (accounts, sales, purchases, inventory snapshots, reports, periods)** | Keeps `C-18`/`C-21`/`C-22` untouched for v1 while the seam (ports/adapters, per `ADR-009`'s pattern) preserves a no-rework exit to Option B; extending existing blocks avoids a change-control event today, and core+ depth answers the sponsor's departmental requirement without Phase-2 merchant procurement | `plan-develop.md` §4 (`D2`, `D3`, `D11` approval 2026-09-28); operating model in `03-system-analysis/erp-finance-departments.md` (`DOC-SA-011`); permission model in `09-security/rbac.md` §11 |
 
 ## 3. Reserved for Future ADRs (from ADR-011)
 
@@ -84,3 +85,4 @@ Candidates parked so numbering stays collision-free (merged from DOC-ARCH-010 §
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | §2 `D-11` added: ERP/finance strategy (in-platform + connector port, `B07`/`B13` placement, core+ department depth) — inline decision, no ADR (ADR-011 stays reserved for multi-host per §3) | `plan-develop.md` §8 approval implementation (session 007, `D2`/`D3`/`D11`) — decision recorded in the decision register, not copied anywhere else (SPE-05) |

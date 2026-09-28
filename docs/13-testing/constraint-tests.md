@@ -81,7 +81,7 @@ related_documents: [DOC-TST-001, DOC-TST-002, DOC-TST-003, DOC-OVR-008, DOC-AC-0
 - **Constraint:** C-05 · **Status:** DESIGNED
 - **Asserted:** only m-Floos, OneCash and manual bank transfer top-ups are accepted; other instruments rejected.
 - **Type / Method / Env:** integration · one happy + one reject case per method against mock adapters (`MockPaymentAdapter`) · CI, staging sandbox.
-- **Pass:** each approved method credits exactly once after verification (`BR-PAY-03/04`); unknown method → validation error, 0 ledger rows. **Notes:** `AC-IR001-01`, `AC-IR002-01`, `API-TOP-*`.
+- **Pass:** each approved method credits exactly once after verification (`BR-PAY-03/04`); unknown method → validation error, 0 ledger rows. **Notes:** `AC-IR001-01`, `AC-IR002-01`, `API-WAL-003/004`.
 
 ### TST-CON-06 — Phone + OTP only
 - **Constraint:** C-06 · **Status:** DESIGNED
