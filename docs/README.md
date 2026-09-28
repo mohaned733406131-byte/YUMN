@@ -3,7 +3,7 @@ document_id: DOC-ROOT-001
 title: yumn Analysis Documentation — Master Index
 category: root
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-26
 updated: 2026-09-28
 author: analysis-agent
@@ -31,7 +31,7 @@ related_documents: []
 This repository is the **single, self-contained analysis knowledge base** for the yumn platform. It was produced from scratch using:
 
 - **Methodology:** `command.md` — *Comprehensive Software Project Analysis & Validation Agent* (56 analysis areas, 48-part final structure, evidence rules, absolute rules).
-- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules). ⚠ **`archdoc.md` is a 0-byte placeholder** — its content never existed in git history (defect `D-10`, `memory.md`); the 24-domain structure this README implements is recorded here until the sponsor restores or retires the file.
+- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules). ✅ **Restored 2026-09-28** (session 008, `REC-01`/`TD-03`): the file had been a 0-byte placeholder whose content never existed in git history (defect `D-10`); its content was reconstructed from the structure as implemented by this README (§2–§5) and validated by `20-validation/consistency-audit.md`, with that provenance stated inside the file (`SPE-03`, finding `HAL-03`).
 
 `command.md` is the governing methodology document (28.7 KB, present). The claim that both governing documents are "archived under `archive/`" is **not verifiable — `archive/` does not exist** in this repository; treat it as an unproven statement (`SPE-03`) until evidence appears. Nothing inside `docs/` references archived content: this analysis is independent, evidence-tagged, and internally consistent.
 
@@ -309,3 +309,4 @@ A document is complete only if it passes the quality gate (purpose, scope, termi
 | 2026-09-27 | 1.1 | §5 AUD-NN validation-audit ID row (registration for domain 20) | analysis-agent |
 | 2026-09-28 | 1.2 | §1 `archdoc.md`/`archive/` claims corrected to honest state (defect `D-10`, SPE-03); §2 process-folder note (`phases/`, `sessions/`); §3 unverifiable `archdoc.md §38` reference removed | analysis-agent |
 | 2026-09-28 | 1.3 | related_requirements: [] frontmatter key added (session 006 sweep: CHK-01) | analysis-agent |
+| 2026-09-28 | 1.4 | §1 structure bullet updated: `archdoc.md` **restored** (session 008 `REC-01`/`TD-03`) — reconstruction provenance stated; `HAL-03`/`CRIT-08` closure evidence | analysis-agent |

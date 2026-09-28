@@ -49,7 +49,7 @@ E:\YUMN
 │  └─ 23-templates/                 Templates for every document type
 │
 ├─ command.md                       Analysis methodology (56 areas / 48-part structure)
-└─ archdoc.md                       Structure spec — ⚠ 0 bytes (defect, see memory.md)
+└─ archdoc.md                       Structure spec — restored 2026-09-28 (REC-01; reconstructed, provenance noted)
 ```
 
 **Navigation rule:** read a directory's `README.md` before analyzing that directory (`docs/README.md` §3). IDs are never copied across documents — always reference them (`docs/README.md` §4).

@@ -3,7 +3,7 @@ document_id: DOC-PHA-018
 title: Phase Audit & Tracking — analysis
 category: phases
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -14,7 +14,7 @@ related_requirements: []
 
 # Phase Audit & Tracking — analysis
 
-- Phase: analysis · Audited in session **005** (F-07 closed in session **006**) · Rules version: ADMR `2.2.0` (validator amendment F-07; rule text unchanged since `2.0.0`) + `YUMN_RULES.md` (94 rules)
+- Phase: analysis · Audited in session **005** (F-07 closed in session **006**, F-05 in session **008**) · Rules version: ADMR `2.2.0` (validator amendment F-07; rule text unchanged since `2.0.0`) + `YUMN_RULES.md` (94 rules)
 
 ## 1. Gate results (DOD)
 
@@ -40,16 +40,16 @@ related_requirements: []
 | F-02 | CRITICAL | 88 changes from sessions 002–004 uncommitted/unpushed | SES-04, DOD-09 | **FIXED** | grouped conventional commits + push, session 005 |
 | F-03 | HIGH | Branch `master` contradicted adapter `main`-only convention | VCS-01 | **FIXED (one server-side step pending)** | local `master` → `main` renamed, `session-005` created, both pushed; `origin/master` deletion rejected until GitHub default branch switches to `main` (no `gh` CLI — user/settings action) |
 | F-04 | CRITICAL | Phase 0 `COMPLETE` with no `docs/phases/` artifact set | DOC-02 | **FIXED** | `docs/phases/` + `analysis/` 16/16 artifacts |
-| F-05 | HIGH | `archdoc.md` 0 bytes cited as governing structure spec | SPE-03 (`D-10`) | **PARTIAL** | citations in `docs/README.md` §1/§3 made honest; file content never existed in git — sponsor decision (restore vs. drop) still open |
+| F-05 | HIGH | `archdoc.md` 0 bytes cited as governing structure spec | SPE-03 (`D-10`) | **FIXED (session 008)** | citations made honest in session 005, then `archdoc.md` **v1.0 restored 2026-09-28 (session 008, `REC-01`/`TD-03`)** — reconstructed from `docs/README.md` §2–§5 with provenance stated in the file (`archive/` claim stays annotated absent; `D-10` → `RESOLVED`) |
 | F-06 | MEDIUM | YUMN_RULES rule count reported as 77 (actually 94) | SPE-03 | **FIXED** | `all_in_one_track.md`, `session_track.md` corrected |
 | F-07 | MEDIUM | Validator checks ID uniqueness only in `RULES.md`; `YUMN_RULES.md` unchecked | verification coverage | **FIXED (session 006)** | amendment applied per core/00 §0.5: `validate.py` check 5 now parses both catalogs (77 + 94 IDs); `VERSION` → `2.2.0`, `CHANGELOG.md` entry; validator `PASS — yumn rule ids unique (94 rules in YUMN_RULES.md)` |
 | F-08 | LOW | No terminal-session names recorded (sessions 001–004) | SES-03 | **FIXED** | noted in session files; named sessions apply from session 005 |
 | F-09 | HIGH | Design findings `SEC-001…015` all open (1 CRIT, 4 HIGH) | SEC-04/AUD-02 | **OPEN — owner: sponsor/Gate 0** | register: `09-security/security-findings.md` |
-| F-10 | MEDIUM | 69 open knowledge-base findings across seven audits at session 005; **71 at the session-006 re-sync** (15 consistency / 17 contradiction / 12 gap / 12 hallucination / 8 critical / 7 requirement-validation); Gate 0 `FAIL` (`CRIT-01`) | AUD-02 | **OPEN — sponsor items `REC-11…13`** | `20-validation/` registers (`analysis-validation.md` v1.5) |
+| F-10 | MEDIUM | Open knowledge-base findings across seven audits at each re-sync: **69 at session 005**, **71 at the session-006 re-sync** (15/17/12/12/8/7), **69 at the session-008 re-sync** (14 consistency / 21 contradiction / 11 gap / 9 hallucination / 7 critical / 7 requirement-validation; `analysis-validation.md` v1.7); Gate 0 `FAIL` (`CRIT-01`) | AUD-02 | **OPEN — sponsor items `REC-11…13`** | `20-validation/` registers (`analysis-validation.md` v1.7) |
 
 ## 3. Remediation waves (rule 16f)
 
-- **Wave 1 (CRITICAL/HIGH):** F-01…F-05 → executed in session 005 (F-05 partial, owner: sponsor). F-09/F-10 → Gate 0, sponsor-owned.
+- **Wave 1 (CRITICAL/HIGH):** F-01…F-05 → executed in session 005 (F-05 was partial then; **fixed in session 008** — `archdoc.md` v1.0 restored, `D-10` → `RESOLVED`). F-09/F-10 → Gate 0, sponsor-owned.
 - **Wave 2 (MEDIUM/LOW):** F-06, F-07, F-08 → **all three FIXED** (F-07 via the §0.5 amendment in session 006, not a hot-fix).
 - Completion evidence per wave is this table + the session-005 evidence block; **the phase cannot be declared closed with open CRITICAL/HIGH — hence phase status stays `COMPLETE (analysis)` with the two open sponsor-owned findings named, not "closed"** (AUD-02).
 
@@ -61,7 +61,7 @@ related_requirements: []
 ## 5. Report (rules 5, 16d — Done / Remaining / Next)
 
 - **Done:** 24-domain knowledge base `APPROVED`; rule system bound (77 core + 94 project rules); seven validation audits live; sessions 001–005 recorded (SES-01/02); phase artifact set 16/16 (DOC-02); rule-count + citation honesty fixes (SPE-03); validator `PASS`.
-- **Remaining:** Wave-1 sponsor items (Gate 0: sign-off, `ASM-14`, `DEP-05/06`); 71 audit findings (session-006 re-sync); `SEC-001…015`; `D-06`/`D-07`/`D-12`/`ORD-08` reconciliations.
+- **Remaining:** Wave-1 sponsor items (Gate 0: sign-off, `ASM-14`, `DEP-05/06`); 69 audit findings (session-008 re-sync, `analysis-validation.md` v1.7); `SEC-001…015`; `D-06`/`D-07`/`D-12`/`ORD-08` reconciliations.
 - **Next:** Phase 1 bootstrap (`development_phases_entry.md` checklist: repo skeleton, bind `test:all`/dead-element/`k6`/i18n commands, then code only after Gate 0 clears).
 
 ## 6. Docs consistency (rule 16b, AUD-05)
@@ -77,3 +77,4 @@ related_requirements: []
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 16 / AUD-01…06, session 005) | analysis-agent |
 | 2026-09-28 | 1.1 | G9 + §6 evidence filled with real commit hashes; F-03 annotated (remote `master` deletion pending default-branch switch) | analysis-agent |
 | 2026-09-28 | 1.2 | F-07 → FIXED (session-006 §0.5 amendment: `validate.py` check 5 covers `YUMN_RULES.md`; `VERSION` 2.2.0); F-10/Remaining re-synced to 71 open findings; rules-version line updated | analysis-agent |
+| 2026-09-28 | 1.3 | F-05 → FIXED (session 008: `archdoc.md` v1.0 restored with provenance, `D-10` → `RESOLVED`); F-10 re-synced to the session-008 roll-up (69 open, `analysis-validation.md` v1.7); Wave-1 + Remaining re-scoped | analysis-agent |

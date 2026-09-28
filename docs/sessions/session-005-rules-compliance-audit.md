@@ -3,7 +3,7 @@ document_id: DOC-SES-005
 title: Session 005 — rules-compliance audit + SES-01/DOC-02/VCS remediation
 category: sessions
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-28
 updated: 2026-09-28
 author: analysis-agent
@@ -28,7 +28,7 @@ The full table with severities, rule IDs and disposition lives in [`docs/phases/
 | F-02 | CRITICAL | 88 changes from sessions 002–004 uncommitted/unpushed | SES-04, DOD-09 | **FIXED** — grouped commits + push, this session |
 | F-03 | HIGH | Branch `master` contradicted `main`-only convention | VCS-01 | **FIXED** — `master` → `main`, branch `session-005` |
 | F-04 | CRITICAL | Phase 0 `COMPLETE` with no `docs/phases/` artifact set | DOC-02 | **FIXED** — 16/16 artifacts + `_index.md` + `README.md` |
-| F-05 | HIGH | `archdoc.md` 0 bytes cited as governing structure spec | SPE-03 (`D-10`) | **PARTIAL** — citations honest; sponsor decision still open |
+| F-05 | HIGH | `archdoc.md` 0 bytes cited as governing structure spec | SPE-03 (`D-10`) | **PARTIAL at this session's close** → **FIXED 2026-09-28 (session 008)**: `archdoc.md` v1.0 restored with provenance, `D-10` → `RESOLVED` |
 | F-06 | MEDIUM | Rule count reported as 77 (actually 94) | SPE-03 | **FIXED** — `all_in_one_track.md`, `session_track.md` |
 | F-07 | MEDIUM | Validator checks ID uniqueness only in `RULES.md` | verification coverage | **FIXED 2026-09-28 (session 006)** — §0.5 amendment applied (`validate.py` check 5 → both catalogs, 77 + 94; `VERSION` 2.2.0); was "proposed, not hot-fixed" (manual: 94/94 unique) |
 | F-08 | LOW | No terminal-session names recorded | SES-03 | **FIXED** — named sessions from 005 |
@@ -84,7 +84,7 @@ RESULT: FAIL — 1 finding(s)
 - Validator: **PASS — structure healthy**.
 - Knowledge base: **69 open findings** across seven audits (16 consistency + 15 contradiction + 12 gap + 11 hallucination + 8 critical + 7 requirement-validation) — unchanged by this session; Gate 0 `FAIL` (`CRIT-01`, sponsor-owned).
 - Security: `SEC-001…015` all OPEN (1 CRITICAL `SEC-011`, 4 HIGH) — sponsor/Gate 0 (F-09).
-- `D-10` (`archdoc.md` 0 bytes): citations now honest, file content still absent — sponsor decision open (F-05).
+- `D-10` (`archdoc.md` 0 bytes): citations now honest, file content still absent — sponsor decision open (F-05) — *(state at this session's close; since **fixed 2026-09-28, session 008**: `archdoc.md` v1.0 restored with provenance, `D-10` → `RESOLVED`)*.
 - Not verifiable: secret scan (gitleaks binary absent) reported BLOCKED, not PASS (DOD-10).
 - `D-16` registered: `describ.md` 0-byte untracked file at repo root (content never existed) — sponsor decision.
 
@@ -124,3 +124,4 @@ Filled after the commit sequence in this same session (see `session_track.md` ro
 | 2026-09-28 | 1.0 | Initial creation (SES-01 reconstruction, session 005) | analysis-agent |
 | 2026-09-28 | 1.1 | related_requirements: [] frontmatter key and this Change History section added (session 006 sweep: CHK-01, CHK-05) | analysis-agent |
 | 2026-09-28 | 1.2 | F-07 flipped to FIXED — the §0.5 amendment it proposed was applied in session 006 (`validate.py` + `VERSION` 2.2.0 + `CHANGELOG`) | analysis-agent |
+| 2026-09-28 | 1.3 | F-05 annotated → FIXED (session 008: `archdoc.md` v1.0 restored with provenance, `D-10` → `RESOLVED`); close-state bullet at §Findings/blockers annotated | analysis-agent |
