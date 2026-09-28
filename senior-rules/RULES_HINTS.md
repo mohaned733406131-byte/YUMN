@@ -8,9 +8,10 @@ License: GPL-3.0
 > core rule files under `senior-rules/core/`, `RULES.md`, `ENTRY.md` are never modified (ADP-03).
 
 ## 1. System identity
-- Name: **yumn (يُمن)** — multi-vendor e-commerce marketplace for Yemen · Version: **0.1.0** (analysis complete, pre-implementation) · Rules version pinned: **2.0.0**
-- Pin source: `senior-rules/VERSION` = `2.0.0`. ⚠ `senior-rules/CHANGELOG.md` shows a later `[2.1.0]` entry — at session start (GEN-08) reconcile VERSION ↔ CHANGELOG and re-read changed rules before working; do not silently assume either value.
-  - **GEN-08 reconciliation (session 003, 2026-09-27):** pin stays **2.0.0**. The `[2.1.0]` entry is packaging-only (`.ai-rules`→`senior-rules` reference renames, npm installer, README updates) — it changes **no rule IDs, severities, or rule text**, so there are no changed rules to re-read. The renames it describes are already present in this installed copy. Defect `D-13` → `RESOLVED 2026-09-27`.
+- Name: **yumn (يُمن)** — multi-vendor e-commerce marketplace for Yemen · Version: **0.1.0** (analysis complete, pre-implementation) · Rules version pinned: **2.2.0**
+- Pin source: `senior-rules/VERSION` = `2.2.0`. At session start (GEN-08) confirm VERSION ↔ CHANGELOG ↔ this pin agree and re-read changed rules before working.
+  - **GEN-08 reconciliation (session 003, 2026-09-27):** pin **2.0.0**. The `[2.1.0]` entry is packaging-only (`.ai-rules`→`senior-rules` reference renames, npm installer, README updates) — it changes **no rule IDs, severities, or rule text**. Defect `D-13` → `RESOLVED 2026-09-27`.
+  - **GEN-08 reconciliation (session 006, 2026-09-28):** pin **2.0.0 → 2.2.0**. `[2.2.0]` (MINOR) is the F-07 amendment: `validators/validate.py` check 5 now enforces rule-ID uniqueness in **both** `RULES.md` (77) and `YUMN_RULES.md` (94). Validator/tooling change only — **no rule IDs, severities, or rule text changed**; nothing to re-read beyond `CHANGELOG.md` `[2.2.0]`. (Pre-existing `VERSION` 2.0.0 vs `[2.1.0]` drift recorded in that entry, not silently reconciled.) npm package stays `v2.0.0` (`AGENTS.md` line is the published-package fact).
 - Knowledge base: `docs/` (24-domain analysis, `APPROVED` v1.0). No implementation exists yet — nothing in `docs/` is `VERIFIED`.
 - Language of record: English. Product locales: `ar` (default, RTL) + `en` only.
 
