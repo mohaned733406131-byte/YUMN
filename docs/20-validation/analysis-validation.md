@@ -3,9 +3,9 @@ document_id: DOC-VAL-008
 title: AUD-06 — Final Quality Assessment (whole corpus)
 category: 20-validation
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013, NFR-019]
@@ -86,16 +86,16 @@ Roll-ups only — every row is owned by a named audit; nothing is minted here.
 | AVF-07 | Requirement field contract (`requirements-overview.md` §6) unmet outside the functional category; `source` 0/68, `priority` 32/68 | HIGH | `AUD-07` RVF-01…RVF-03 | `VERIFIED` | OPEN |
 | AVF-08 | Provenance/decision-record drift: `archdoc.md` 0 bytes, `archive/` absent, ADR index says "empty" while 10 ADRs exist | MEDIUM | `AUD-04` HAL-02/HAL-03; `AUD-05` CRIT-08 | `INSUFFICIENT EVIDENCE` (sources absent) / `VERIFIED` | OPEN |
 | AVF-09 | Three `AC-S-*` success criteria missing from the "registry of every AC" | MEDIUM | `AUD-04` HAL-06; `AUD-07` RVF-05 | `VERIFIED` | OPEN |
-| AVF-10 | Sibling audits' open inventory: `CT-06`…`CT-20` contradictions (15), `GAP-01`…`GAP-12` gaps, consistency sweep 14/31 checks failed | MEDIUM | `AUD-02`, `AUD-03`, `AUD-01` | `VERIFIED` (their own registers) | OPEN |
+| AVF-10 | Sibling audits' open inventory: `CT-06`…`CT-22` contradictions (17), `GAP-01`…`GAP-12` gaps, consistency sweep 11/31 checks failed (session-006 re-run 2026-09-28) | MEDIUM | `AUD-02`, `AUD-03`, `AUD-01` | `VERIFIED` (their own registers) | OPEN |
 | AVF-11 | Corpus link pass: 30 of 1,728 path citations broken — 12 are evidence strings quoted verbatim in HAL-12, 5 belong to sibling `20-validation/` files in parallel edit, 13 elsewhere (11 = HAL-12's original locations, 2 = `19-traceability/README.md:50,148`) | LOW | root README §11; `AUD-04` HAL-12 | `VERIFIED` — final pass 2026-09-27 | OPEN |
 
-Severity totals in this roll-up: **CRITICAL 2 · HIGH 5 · MEDIUM 3 · LOW 1 = 11 rows** (source audits: `AUD-04` 13, `AUD-05` 10, `AUD-07` 7 findings; siblings as reported in §4).
+Severity totals in this roll-up: **CRITICAL 2 · HIGH 5 · MEDIUM 3 · LOW 1 = 11 rows** (source audits: `AUD-04` 15, `AUD-05` 10, `AUD-07` 7 findings; siblings as reported in §4).
 
 ---
 
 ## Coverage & Statistics
 
-- **Files examined:** 444 of 444 `docs/**/*.md` (structural + link pass); registry re-counts on 12 owning documents; deep reads distributed across `AUD-04`/`AUD-05`/`AUD-07`
+- **Files examined:** 444 of 444 `docs/**/*.md` (structural + link pass); registry re-counts on 12 owning documents; deep reads distributed across `AUD-04`/`AUD-05`/`AUD-07`; corpus grown to 479 at the session-006 re-run 2026-09-28 (sibling registers re-read, not this file's link pass)
 - **Checks run:** 444 frontmatter checks — **passed 444, failed 0**; 1 final link pass over **1,728 path citations → 30 broken** (12 = evidence strings quoted verbatim in HAL-12, 5 = sibling `20-validation/` files still in parallel edit, 13 elsewhere: 11 = HAL-12's original locations, 2 = `19-traceability/README.md:50,148`); 12 registry re-counts; 6 sibling audits consumed
 - **ID references verified:** `DOC-*` 444 unique (1 per file) · `FR` 20 · `NFR` 20 · `SEC-REQ` 12 · `DATA-REQ` 8 · `INT-REQ` 8 · `AC` 253 registry + 24 `AC-S-*` · `BR` 99 · `TC` 114 · `UC` 40 · `workflow` 12 · `ADR` 10 · `C` 26 · `RISK` 24 · `SEC` 15 · `GAP` 12 · `CT` 20 · `AUD` 7 · `API-*` 221 · DB entity files 18 + index — **missing/nonexistent inside requirement files: none**; missing elsewhere: `BR-INV-01…05` (HAL-04)
 - **Terms/IDs in scope:** all 24 domains; 5 requirement categories; 14 gate checklists (`quality-gates.md` §3–§6)
@@ -106,10 +106,10 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 5 · MEDIUM 3 · LOW 1 = 1
 
 | Audit | File | Verdict of record | Findings |
 |---|---|---|---|
-| `AUD-01` | `20-validation/consistency-audit.md` | `PASS WITH FINDINGS` | 14 of 31 checks failed (v1.9 post-`REC-06`: 15 PASS · 2 PASS WITH FINDINGS · 14 FAIL; findings 16 `OPEN`, 9 `RESOLVED`) |
-| `AUD-02` | `20-validation/contradiction-audit.md` | `PASS WITH FINDINGS` | `CT-01` `PASS`; `CT-02`…`CT-05` `RESOLVED` 2026-09-27; `CT-06`…`CT-20` `OPEN` (15) |
+| `AUD-01` | `20-validation/consistency-audit.md` | `PASS WITH FINDINGS` | 11 of 31 checks failed (v1.11 session-006 re-run on 479 files: 18 PASS · 2 PASS WITH FINDINGS · 11 FAIL; findings 15 `OPEN`, 13 `RESOLVED`) |
+| `AUD-02` | `20-validation/contradiction-audit.md` | `PASS WITH FINDINGS` | `CT-01` `PASS`; `CT-02`…`CT-05` `RESOLVED` 2026-09-27; `CT-06`…`CT-22` `OPEN` (17 — `CT-21`, `CT-22` minted 2026-09-28) |
 | `AUD-03` | `20-validation/missing-information.md` | `PASS WITH FINDINGS` | `GAP-01`…`GAP-12` `OPEN` |
-| `AUD-04` | `20-validation/hallucination-audit.md` | `PASS WITH FINDINGS` | 11 open (4 HIGH, 4 MEDIUM, 3 LOW — `HAL-01`, `HAL-07` `RESOLVED` 2026-09-27) |
+| `AUD-04` | `20-validation/hallucination-audit.md` | `PASS WITH FINDINGS` | 12 open (4 HIGH, 5 MEDIUM, 3 LOW — `HAL-01`, `HAL-07` `RESOLVED` 2026-09-27; `HAL-14` `RESOLVED`, `HAL-15` minted 2026-09-28) |
 | `AUD-05` | `20-validation/critical-findings.md` | `PASS WITH FINDINGS` (register) / Gate 0 `FAIL` stance | 8 open (1 CRITICAL, 4 HIGH, 3 MEDIUM — `CRIT-02`, `CRIT-04` `RESOLVED` 2026-09-27) |
 | `AUD-07` | `20-validation/requirements-validation.md` | `PASS WITH FINDINGS` | 7 open (3 HIGH, 3 MEDIUM, 1 LOW) |
 | **`AUD-06`** | **this file** | **`PASS WITH FINDINGS`** | 11 roll-up rows above |
@@ -118,9 +118,9 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 5 · MEDIUM 3 · LOW 1 = 1
 
 ## Verdict & Sign-off
 
-- **Gate:** `PASS WITH FINDINGS` (root README §11) — the knowledge base is structurally sound (444/444 frontmatter, every requirement cites acceptance criteria, every cross-reference inside the requirement set resolves, all ID sequences intact) but 69 open findings across the six audits (16 consistency, 15 contradiction, 12 gap, 11 hallucination, 8 critical, 7 requirement-validation) must be dispositioned. **Readiness: not ready for Gate 0** — `AUD-05` CRIT-01 makes Gate 0 a `FAIL` today (`21-completion/quality-gates.md:89`), and `00-project-overview/project-charter.md:87` keeps sign-off pending until `21-completion/final-acceptance.md` moves off `PENDING`
- - **Unresolved contradictions / gaps:** `CT-06`…`CT-20` (`CT-02`…`CT-05` `RESOLVED` 2026-09-27), `GAP-01`…`GAP-12`, `HAL-02`…`HAL-06`, `HAL-08`…`HAL-13` (`HAL-01`, `HAL-07` `RESOLVED`), `CRIT-01`, `CRIT-03`, `CRIT-05`…`CRIT-10` (`CRIT-02`, `CRIT-04` `RESOLVED`), `RVF-01`…`RVF-07` — open in their owning registers; roll-up rows `AVF-01` (closed), `AVF-02`…`AVF-11` close only when the source findings close
-- **Required follow-up:** (1) sponsor clears `CRIT-01` before any implementation starts; (2) ~~`13-testing/` re-syncs the TC inventory (`CRIT-02`)~~ done 2026-09-27; (3) `07-api`/`08-database` reconcile money-path statuses (`CRIT-03`) and ~~`06-backend`/`04-architecture` adopt one queue register (`CRIT-04`)~~ done 2026-09-27 (`REC-06`); (4) `02-requirements/` reconciles AC text and the §6 field contract (`CRIT-05`, `RVF-01`…`RVF-04`); (5) re-run **all seven audits** before every gate (root README §11; `20-validation/README.md` §4 rule 7) — this assessment's counts are a 2026-09-27 snapshot and will drift as `19-traceability/` and the sibling registers evolve
+- **Gate:** `PASS WITH FINDINGS` (root README §11) — the knowledge base is structurally sound (444/444 frontmatter at publication, 479/479 at the session-006 re-run, every requirement cites acceptance criteria, every cross-reference inside the requirement set resolves, all ID sequences intact) but **71 open findings** across the six audits (15 consistency, 17 contradiction, 12 gap, 12 hallucination, 8 critical, 7 requirement-validation — snapshot 2026-09-28) must be dispositioned. **Readiness: not ready for Gate 0** — `AUD-05` CRIT-01 makes Gate 0 a `FAIL` today (`21-completion/quality-gates.md:89`), and `00-project-overview/project-charter.md:87` keeps sign-off pending until `21-completion/final-acceptance.md` moves off `PENDING`
+ - **Unresolved contradictions / gaps:** `CT-06`…`CT-22` (`CT-02`…`CT-05` `RESOLVED` 2026-09-27), `GAP-01`…`GAP-12`, `HAL-02`…`HAL-06`, `HAL-08`…`HAL-13`, `HAL-15` (`HAL-01`, `HAL-07` `RESOLVED` 2026-09-27; `HAL-14` `RESOLVED` 2026-09-28), `CRIT-01`, `CRIT-03`, `CRIT-05`…`CRIT-10` (`CRIT-02`, `CRIT-04` `RESOLVED`), `RVF-01`…`RVF-07`, consistency findings 2, 6, 7, 8, 11, 13, 14, 15, 16, 18, 19, 21, 22, 24, 26 (15 `OPEN`) — open in their owning registers; roll-up rows `AVF-01` (closed), `AVF-02`…`AVF-11` close only when the source findings close
+- **Required follow-up:** (1) sponsor clears `CRIT-01` before any implementation starts; (2) ~~`13-testing/` re-syncs the TC inventory (`CRIT-02`)~~ done 2026-09-27; (3) `07-api`/`08-database` reconcile money-path statuses (`CRIT-03`) and ~~`06-backend`/`04-architecture` adopt one queue register (`CRIT-04`)~~ done 2026-09-27 (`REC-06`); (4) `02-requirements/` reconciles AC text and the §6 field contract (`CRIT-05`, `RVF-01`…`RVF-04`); (5) `07-api`/`09-security`/`01-business-analysis` resolve the Moderator read-access conflict (consistency finding 26); (6) re-run **all seven audits** before every gate (root README §11; `20-validation/README.md` §4 rule 7) — this assessment's counts are a 2026-09-28 snapshot and will drift as the sibling registers evolve
 - **Residual risks:** domain totals in §2 and the link numbers in Coverage & Statistics were taken while two domains were being authored in parallel; both must be re-run at Gate 0 (`quality-gates.md` check 0.7). All 24 `AC-S-*` remain `PENDING` (`21-completion/final-acceptance.md`); no document in `docs/` is `VERIFIED` (root README: no implementation exists)
 - **Sign-off:** analysis-agent (author), 2026-09-27 — final acceptance signature belongs to the project sponsor in `21-completion/final-acceptance.md` after Gate 3 (`quality-gates.md:169`)
 
@@ -133,3 +133,4 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 5 · MEDIUM 3 · LOW 1 = 1
 | 1.2 | 2026-09-27 | `REC-03` propagation: `13-testing` domain row 109→120 files / 103→114 test cases; `AVF-01` → `RESOLVED`; open-findings total 81 → 78; verdict/follow-up re-scoped (`HAL-01`, `CRIT-02` closed) | `REC-03` pay-down change set — root README §9.4 consumer re-sync (finding 25 pattern) |
 | 1.3 | 2026-09-27 | `REC-04` propagation: `AVF-04` annotated partial (`-05` orphans closed); open-findings total 78 → 77 (`HAL-07` closed) | `REC-04` pay-down change set — root README §9.4 consumer re-sync |
 | 1.4 | 2026-09-27 | `REC-06` propagation: sibling roll-up re-synced (`AUD-01` 14/31 v1.9, `AUD-02` `CT-06`…`CT-20`, `AUD-04` 11 open, `AUD-05` 8 open); open-findings total 77 → 69; `AVF-10` + verdict/follow-up/`TC` count re-scoped | `REC-06` pay-down change set — root README §9.4 consumer re-sync (finding 25 pattern) |
+| 1.5 | 2026-09-28 | Session-006 sweep propagation: sibling roll-up re-synced (`AUD-01` 11/31 v1.11, `AUD-02` `CT-06`…`CT-22`, `AUD-04` 12 open v1.3); open-findings total 69 → 71 (15/17/12/12/8/7); `AVF-10` + verdict/follow-up re-scoped; deferred sweep findings (a)–(f) landed in their owning registers | Session-006 change-control sweep — root README §9.4 consumer re-sync (finding 25 pattern) |

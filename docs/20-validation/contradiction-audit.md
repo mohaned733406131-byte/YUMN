@@ -1,18 +1,18 @@
 ---
 document_id: DOC-VAL-004
-title: AUD-02 — Contradiction Audit (CT-01…CT-20)
+title: AUD-02 — Contradiction Audit (CT-01…CT-22)
 category: 20-validation
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-007, FR-013, FR-016, FR-017, NFR-009]
 related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH-010, DOC-DEC-002, DOC-DPL-005, DOC-API-019, DOC-TST-001, DOC-AC-001, DOC-BE-006, DOC-ARCH-007]
 ---
 
-# AUD-02 — Contradiction Audit (CT-01…CT-20)
+# AUD-02 — Contradiction Audit (CT-01…CT-22)
 
 | Field | Value |
 |---|---|
@@ -51,6 +51,8 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 | `CT-18` | Payment release returns `status: "RELEASED"`, a value outside the `payment_state` enum the same payment row must hold | `MEDIUM` | `07-api/endpoints/wallet.md:34` vs `08-database/entities/payment.md:33`, `constraints-and-integrity.md:85` | `payment_state {PENDING, AUTHORIZED, CAPTURED, FAILED, REFUNDED}`; `RELEASED` exists only as `escrow_state` (`entities/escrow.md:32`); no mapping documented — `VERIFIED` (statement) + `INFERENCE` (which domain is meant) | `OPEN` |
 | `CT-19` | Refund receipt status set differs from the stored `refund.state` enum, with no documented mapping | `MEDIUM` | `07-api/endpoints/wallet.md:40` vs `08-database/entities/payment.md:60` | API `PENDING\|COMPOSED\|CREDITED` vs DB `{PENDING, PROCESSING, COMPLETED, FAILED}`; only `PENDING` is shared — `VERIFIED` | `OPEN` |
 | `CT-20` | Payout `state` column has no declared enum, and its only documented value (`ELIGIBLE`) is absent from the API status set | `MEDIUM` | `07-api/endpoints/wallet.md:37-38` vs `08-database/indexes-and-performance.md:138-139`; `constraints-and-integrity.md:84-100` | no `payout_state` row in the enum register (unlike `payment_state:85`, `escrow_state:87`); partial index `WHERE state='ELIGIBLE'` vs API `REQUESTED\|SCHEDULED\|EXECUTED\|REJECTED\|ROLLED_OVER` — `VERIFIED` | `OPEN` |
+| `CT-21` | `J10` audit-chain verification cadence declared three different ways (hourly vs nightly vs daily) | `MEDIUM` | `16-data/data-quality.md:84` (job register: **Hourly**) vs `17-risk-management/mitigation-plans.md:46` + `21-completion/implementation-roadmap.md:188` (**Nightly**) vs `17-risk-management/risk-register.md:79` (**daily**) | `J10`, `SEC-REQ-010` R4, `SEC-002` residual-risk acceptance; `implementation-roadmap.md:174` defers cadence to `data-quality.md` while `:188` asserts nightly — `VERIFIED` (four lines re-read) | `OPEN` (deferred item (b), logged at sweep 2026-09-28) |
+| `CT-22` | API audit-log projection and privacy claim promise `ipHash`, but the schema stores a raw `ip` address | `MEDIUM` | `07-api/endpoints/admin.md:77` (`API-ADM-024` response field `ipHash`) + `admin.md:125` ("audit entries store `ipHash`, not raw IPs", `SEC-REQ-008`) vs `08-database/entities/audit_log.md:40` (`ip` column, `inet`, "client address (`BR-PLT-06`)") | corroborating projections at `13-testing/test-cases/TC-036.md:53`, `TC-053.md:46`, `TC-109.md:57`; no documented hash-on-read step, no `ip_hash` column — `VERIFIED` | `OPEN` (deferred item (d), logged at sweep 2026-09-28) |
 
 ---
 
@@ -202,22 +204,41 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 
 ---
 
+### `CT-21` — `J10` cadence · `MEDIUM` · `OPEN`
+
+- **Statement A (job register — the owner):** `16-data/data-quality.md:84` — "`J10` | Audit hash-chain verification | All audit partitions | **Hourly** | Chain intact | Alert + freeze privileged writes for investigation".
+- **Statement B (post-launch cadence):** `17-risk-management/mitigation-plans.md:46` — "Post-launch | **Nightly** `J1`/`J2`/`J10` forever; monthly invariant attestation; any money-path incident triggers re-score"; repeated at `21-completion/implementation-roadmap.md:188` — "`RISK-001` (nightly `J1`/`J2`/`J10` forever, monthly attestation)".
+- **Statement C (risk acceptance):** `17-risk-management/risk-register.md:79` — "…accepted with **daily** chain verification `J10` + signed…".
+- **Why all cannot stand:** the residual-risk acceptance for `SEC-002`/`SEC-REQ-010` R4 is granted *in exchange for* a stated verification cadence, and three documents name three different cadences (hourly / nightly / daily); `implementation-roadmap.md:174` defers to `data-quality.md` while `:188` of the same file asserts nightly. An operator cannot tell which cadence is the binding control — hourly would satisfy every other claim, but "daily/nightly" acceptance language would be falsified by an hourly-only job in a future re-tuning.
+- **Owning document:** `16-data/data-quality.md` (job register decides); `mitigation-plans.md`, `risk-register.md:79`, `implementation-roadmap.md:188` must then be re-worded to the single cadence. Deferred item (b); logged at sweep 2026-09-28, re-searched from `J10` grep (5 occurrence sites re-read).
+
+---
+
+### `CT-22` — `ipHash` (API) vs raw `ip` (schema) · `MEDIUM` · `OPEN`
+
+- **Statement A (API + privacy claim):** `07-api/endpoints/admin.md:77` (`API-ADM-024` response) — "`{ id, at, actorId, actorRole, action, targetType, targetId, reason?, ipHash, correlationId }`"; `admin.md:125` — "**No PHI/secret leakage**: … audit entries store `ipHash`, not raw IPs (`SEC-REQ-008`)"; test projections repeat the field name (`TC-036.md:53`, `TC-053.md:46`, `TC-109.md:57`).
+- **Statement B (schema):** `08-database/entities/audit_log.md:40` — "`ip` | `inet` | yes | null | — | client address (`BR-PLT-06`)" — a raw client address column; the entity defines no `ip_hash`.
+- **Why both cannot stand:** either the API hashes on read (an undocumented transformation, violating the "schema is the contract" convention of `08-database/README.md`) or the privacy claim at `admin.md:125` is false while a raw `ip` sits in an append-only, exportable table; either way `SEC-REQ-008`'s "no raw IPs" statement and the schema disagree. A third option — store the hash — requires a schema change neither document mentions.
+- **Owning document:** `08-database/entities/audit_log.md` + `07-api/endpoints/admin.md` (pick storage-vs-hash-on-read and document it once). Deferred item (d); logged at sweep 2026-09-28.
+
+---
+
 ## 3. Coverage & Statistics
 
-- Files examined: **~40** directly cited files (each quoted line re-read in context), out of 433 in scope at sweep time; seeded by `AUD-01` failing checks `CHK-16`, `CHK-19`, `CHK-20`, `CHK-21`, `CHK-22`, `CHK-23`, `CHK-24`, `CHK-25`, `CHK-12`, `CHK-13`, `CHK-14`, `CHK-31`.
-- Checks run: **20** — passed 1 (`CT-01`), failed 19 at audit; 2026-09-27 re-run: `CT-04`/`CT-05` conditions now pass → passed 3, 15 recorded `OPEN`.
-- ID references verified: 20 statement pairs, every one with `file:line`; **0** fabricated or assumed citations.
-- Contradictions by severity (issued): `CRITICAL` 0 · `HIGH` 3 (`CT-04` resolved, `CT-06`, `CT-11` open) · `MEDIUM` 10 · `LOW` 6 (`CT-05` resolved) · `PASS` 1.
-- Series in scope: `CT-NN` issued 20 · open 15 · resolved 4 (`CT-02`, `CT-03` — `REC-05`; `CT-04`, `CT-05` — `REC-06`, all 2026-09-27) · passed 1.
+- Files examined: **~45** directly cited files (each quoted line re-read in context), out of 479 in scope at the 2026-09-28 re-run (433 at original sweep); seeded by `AUD-01` failing checks `CHK-16`, `CHK-19`, `CHK-20`, `CHK-21`, `CHK-22`, `CHK-23`, `CHK-24`, `CHK-25`, `CHK-12`, `CHK-13`, `CHK-14`, `CHK-31`, plus deferred sweep items (b)/(d).
+- Checks run: **22** — passed 1 (`CT-01`), failed 19 at audit; 2026-09-27 re-run: `CT-04`/`CT-05` conditions now pass → passed 3, 15 recorded `OPEN`; 2026-09-28 session-006 sweep: `CT-21` (J10 cadence) and `CT-22` (`ipHash` vs `ip`) added from the deferred backlog → issued 22, 17 `OPEN`.
+- ID references verified: 22 statement pairs, every one with `file:line`; **0** fabricated or assumed citations.
+- Contradictions by severity (issued): `CRITICAL` 0 · `HIGH` 3 (`CT-04` resolved, `CT-06`, `CT-11` open) · `MEDIUM` 12 · `LOW` 6 (`CT-05` resolved) · `PASS` 1.
+- Series in scope: `CT-NN` issued 22 · open 17 · resolved 4 (`CT-02`, `CT-03` — `REC-05`; `CT-04`, `CT-05` — `REC-06`, all 2026-09-27) · passed 1.
 - Cross-graded against the sibling audits: `CT-18` = `CRIT-03(a)`, `CT-19` = `CRIT-03(c)`, `CT-08` = `CRIT-03(b)`, `CT-04` = `CRIT-04`, `CT-11`/`CT-12` adjacent to `CRIT-05` (`critical-findings.md:51-53`). Severities here grade the *document conflict*; `critical-findings.md` grades gate impact. `CT-20` (payout state domain) is not covered by any `CRIT-*` row.
 
 ---
 
 ## 4. Verdict & Sign-off
 
-- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit ran to completion with every conflict evidenced; 15 remain `OPEN` because fixing them is the owning documents' job (root README §9.5 forbids local fixes here). `CT-02`/`CT-03` were closed under `REC-05`, `CT-04`/`CT-05` under `REC-06`, by the owning documents' change sets on 2026-09-27.
-- **Unresolved contradictions / gaps:** `CT-06`…`CT-20` (`OPEN`); `CT-01` `PASS`/`CLOSED`; `CT-02`, `CT-03`, `CT-04`, `CT-05` `RESOLVED` 2026-09-27. Cross-links: `GAP-01…GAP-12` (`missing-information.md`), findings 6–11, 13, 14, 15, 16, 17, 22, 24 (`consistency-audit.md`) — finding 12 closed alongside `CT-02`/`CT-03`.
-- **Required follow-up — owning documents that must change, in propagation order (root README §9.4), edits NOT made by this audit:** ~~`15-deployment/health-checks.md` + `07-api/endpoints/admin.md` (`CT-02`, `CT-03`)~~ **done 2026-09-27 (`REC-05`, both docs v1.1 + `TC-001/031/057/065` v1.1)** · ~~`04-architecture/data-flow.md` + `06-backend/background-processing.md` + `10-integrations/*` + `13-testing/TC-061/063/064/107` (`CT-04`)~~ **done 2026-09-27 (`REC-06`)** · `07-api/endpoints/notifications.md` + `08-database/entities/notification.md` (`CT-06`) · `02-requirements/acceptance-criteria.md` (`CT-11`, `CT-12`) · `07-api/endpoints/wallet.md` (`CT-08`, `CT-09`, `CT-18`, `CT-19`, `CT-20`) + `08-database/entities/payment.md` (`CT-18`, `CT-19`) + `08-database/constraints-and-integrity.md` (`CT-20`) · `04-architecture/architecture-decisions-reference.md` (`CT-14`) · `16-data/retention-and-archival.md` + `12-non-functional/compliance-and-legal.md` (`CT-15`) · `07-api/endpoints/admin.md` + `07-api/error-model.md` (`CT-07`) · `22-glossary/naming-conventions.md` (~~`CT-05`~~ done 2026-09-27; `CT-16`, `CT-17`) · `15-deployment/production-readiness.md` (`CT-13`) · `07-api/endpoints/returns.md` (`CT-10`). After each change: bump `version`, add the §9.2 row, re-run the linked `AUD-01` checks, log the propagation.
+- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit ran to completion with every conflict evidenced; 17 remain `OPEN` because fixing them is the owning documents' job (root README §9.5 forbids local fixes here). `CT-02`/`CT-03` were closed under `REC-05`, `CT-04`/`CT-05` under `REC-06`, by the owning documents' change sets on 2026-09-27; `CT-21`/`CT-22` were added by the session-006 sweep on 2026-09-28 from the deferred backlog.
+- **Unresolved contradictions / gaps:** `CT-06`…`CT-22` (`OPEN`); `CT-01` `PASS`/`CLOSED`; `CT-02`, `CT-03`, `CT-04`, `CT-05` `RESOLVED` 2026-09-27. Cross-links: `GAP-01…GAP-12` (`missing-information.md`), findings 6–11, 13, 14, 15, 16, 17, 22, 24, 26 (`consistency-audit.md`) — finding 12 closed alongside `CT-02`/`CT-03`; `HAL-15` (`hallucination-audit.md`) cross-links the `API-TOP` group defect.
+- **Required follow-up — owning documents that must change, in propagation order (root README §9.4), edits NOT made by this audit:** ~~`15-deployment/health-checks.md` + `07-api/endpoints/admin.md` (`CT-02`, `CT-03`)~~ **done 2026-09-27 (`REC-05`, both docs v1.1 + `TC-001/031/057/065` v1.1)** · ~~`04-architecture/data-flow.md` + `06-backend/background-processing.md` + `10-integrations/*` + `13-testing/TC-061/063/064/107` (`CT-04`)~~ **done 2026-09-27 (`REC-06`)** · `07-api/endpoints/notifications.md` + `08-database/entities/notification.md` (`CT-06`) · `02-requirements/acceptance-criteria.md` (`CT-11`, `CT-12`) · `07-api/endpoints/wallet.md` (`CT-08`, `CT-09`, `CT-18`, `CT-19`, `CT-20`) + `08-database/entities/payment.md` (`CT-18`, `CT-19`) + `08-database/constraints-and-integrity.md` (`CT-20`) · `04-architecture/architecture-decisions-reference.md` (`CT-14`) · `16-data/retention-and-archival.md` + `12-non-functional/compliance-and-legal.md` (`CT-15`) · `07-api/endpoints/admin.md` + `07-api/error-model.md` (`CT-07`) · `22-glossary/naming-conventions.md` (~~`CT-05`~~ done 2026-09-27; `CT-16`, `CT-17`) · `15-deployment/production-readiness.md` (`CT-13`) · `07-api/endpoints/returns.md` (`CT-10`) · `16-data/data-quality.md` + `17-risk-management/mitigation-plans.md` + `risk-register.md` + `21-completion/implementation-roadmap.md` (`CT-21` cadence) · `08-database/entities/audit_log.md` + `07-api/endpoints/admin.md` (`CT-22` `ipHash`). After each change: bump `version`, add the §9.2 row, re-run the linked `AUD-01` checks, log the propagation.
 - **Sign-off:** analysis-agent, 2026-09-27.
 
 ---
@@ -230,3 +251,4 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 | 1.1 | 2026-09-27 | `CT-18` (`payment` `RELEASED`), `CT-19` (refund status set), `CT-20` (payout state domain) opened after the money-path re-read; `CT-04` gains the intra-file `b10.notification.delivery.*` evidence; statistics re-issued (20 checks: 1 pass / 19 open) and cross-grades to `CRIT-03(a)(c)` / `CRIT-04` / `CRIT-05` recorded | `AUD-01` check `CHK-31`; cross-ref `critical-findings.md` `CRIT-03`; root README §9.5 |
 | 1.2 | 2026-09-27 | `CT-02`, `CT-03` → `RESOLVED` (health-path canon `/healthz` + `/readyz` applied in `admin.md` v1.1, `health-checks.md` v1.1, `TC-001/031/057/065` v1.1); statistics re-issued (open 17 / resolved 2); follow-up list updated | `REC-05` / `TD-06` pay-down; root README §9.5 (resolution recorded, rows kept) |
 | 1.3 | 2026-09-27 | `CT-04`, `CT-05` → `RESOLVED` (single 30-row queue register adopted: `data-flow.md` v1.1, `background-processing.md` v1.1, `naming-conventions.md` v1.2, `search.md`, `10-integrations/*`, `TC-061/063/064/107`); statistics re-issued (open 15 / resolved 4); follow-up list updated | `REC-06` / `TD-07` pay-down; root README §9.5 (resolution recorded, rows kept) |
+| 1.4 | 2026-09-28 | Session-006 sweep: `CT-21` (`J10` hourly vs nightly vs daily cadence) and `CT-22` (`ipHash` API field vs raw `ip` schema column) opened from the deferred backlog items (b)/(d) with re-read evidence; title/range → `CT-01…CT-22`; statistics re-issued (issued 22, open 17); follow-up list extended | Deferred sweep findings must land in their owning register (session-006 mandate); root README §9.5 |

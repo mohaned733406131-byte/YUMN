@@ -3,9 +3,9 @@ document_id: DOC-VAL-005
 title: AUD-04 — Hallucination Audit (unsupported claims across docs/)
 category: 20-validation
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-015, FR-016, FR-017, FR-020, NFR-015]
@@ -57,8 +57,10 @@ Evidence tags and severities follow root README §9/§10: `CRITICAL · HIGH · M
 | HAL-11 | LOW | "…when that register is authored" phrasings for `20-validation/` — `16-data/retention-and-archival.md:39`, `12-non-functional/compliance-and-legal.md:88`, `22-glossary/naming-conventions.md:91` ("`20-validation/` (domain not yet created)"), `23-templates/validation-audit-template.md:32`, `21-completion/quality-gates.md:35` ("declared in root README §2 but not yet authored") | **Self-expiring**: `20-validation/` is being authored in parallel with this audit; these sentences become false the moment the domain lands and must be re-checked at the next gate (root README §11 link pass) | VERIFIED at audit time (domain empty when scanned) | OPEN |
 | HAL-12 | LOW | Path citations that cannot resolve: `00-project-overview/actors-and-roles.md:81` cites `07-api/authorization.md` (no such file — the domain has `07-api/endpoints/auth.md` and `06-backend/authorization.md`); `22-glossary/naming-conventions.md:36,37,38,148` cite `use-cases/UC-040.md`, `workflows/workflow-012.md`, `entities/wallet_transaction.md`, `endpoints/orders.md`, `endpoints/wallet.md`, `entities/return_request.md` without a domain prefix; `23-templates/{requirement,test-case,use-case,workflow}-template.md:17` cite `functional/FR-013.md`, `test-cases/TC-001.md`, `use-cases/UC-001.md`, `workflows/workflow-001.md` the same way | **11 citations broken** under root README §11 ("every path cited … resolves") | VERIFIED (path resolution pass, 2026-09-27) | OPEN |
 | HAL-13 | LOW | "Documentation Status: APPROVED — analysis complete" — `docs/README.md:22`, alongside a domain map that lists `19-traceability/` and `20-validation/` (`docs/README.md:62`, `:63`) as if present | **Premature at audit time**: both domains were absent when scanned (their README links broken); status is only defensible once the two domains land | VERIFIED at audit time | OPEN |
+| HAL-14 | LOW | Sweep-backlog claim "`BR-PRM-07` orphan citation (`content.md:59`)" — `docs/sessions/session-003-health-canon-and-tc-inventory.md:48`, repeated at `session-004-rec-paydowns.md:57` (asserts a business rule cited but never defined) | **Not reproduced (claim itself false)**: `BR-PRM-07` occurs nowhere in the corpus (repo-wide regex, 479 docs + root/`senior-rules` files); `01-business-analysis/business-rules.md:153-158` defines `BR-PRM-01`…`BR-PRM-06` completely; the only `content.md` (`07-api/endpoints/content.md:59`) cites `BR-PRM-01` | VERIFIED (repo-wide regex + `git log -S` re-run 2026-09-28) | RESOLVED (2026-09-28 — backlog claim disproved; both session files annotated in the same change set) |
+| HAL-15 | MEDIUM | Top-up endpoints cited under a phantom API group `API-TOP-*` — `00-project-overview/project-constraints.md:27` (`C-05` row), `03-system-analysis/functional-analysis.md:167`, `13-testing/constraint-tests.md:84` (a fourth hit, `19-traceability/README.md:141`, is the finding row `F-06` documenting the defect for `functional-analysis` only) | **Phantom group**: the `07-api/` register defines 14 groups / 221 `API-*` IDs and no `API-TOP`; real top-up endpoints are `API-WAL-003`/`API-WAL-004` (`07-api/endpoints/wallet.md:29-30`) | VERIFIED (register re-count + 4-site re-read 2026-09-28) | OPEN (deferred item (e); cross-links `19-traceability/README.md:141` `F-06`) |
 
-Severity totals (as recorded at audit): **CRITICAL 1 · HIGH 4 · MEDIUM 5 · LOW 3 = 13 findings** — **11 open** after `HAL-01` and `HAL-07` → `RESOLVED` (2026-09-27).
+Severity totals (as recorded at audit): **CRITICAL 1 · HIGH 4 · MEDIUM 6 · LOW 4 = 15 findings** — **12 open** after `HAL-01`, `HAL-07` and `HAL-14` → `RESOLVED` (2026-09-27, 2026-09-27, 2026-09-28).
 
 ---
 
@@ -138,6 +140,19 @@ Verified broken (root README §11 rule): `actors-and-roles.md:81` → `07-api/au
 
 `docs/README.md:22` declares the documentation set complete and ready for implementation planning while `19-traceability/` and `20-validation/` are (at audit time) absent — the map rows at `docs/README.md:62`–`:63` link to files that do not yet exist. Re-check after both domains land.
 
+### HAL-14 — Backlog claim "`BR-PRM-07` orphan" disproved (LOW)
+
+- **Claim:** `docs/sessions/session-003-health-canon-and-tc-inventory.md:48` logged a sweep backlog item "`BR-PRM-07` orphan citation", repeated in `session-004-rec-paydowns.md:57` as deferred item (c) with location "`content.md:59`".
+- **Re-count (session 006):** repo-wide regex for `BR-PRM-\d+` across all `docs/**/*.md` + root + `senior-rules` returns only `BR-PRM-01`…`BR-PRM-06` (the registry at `01-business-analysis/business-rules.md:153-158` defines exactly these six; every citing file uses in-range IDs); `git log -S'BR-PRM-07' --all` finds the string only in the commit that *added the session notes themselves*; `07-api/endpoints/content.md:59` — the only `content.md` in the corpus — cites `BR-PRM-01`.
+- **Outcome:** the backlog entry was a false positive of the session-003 sweep; no document violates root README §11 (D-3) here. Both session files are annotated in the same change set (status `RESOLVED`) — the row is kept, never deleted (DOC-TPL-011 #3).
+
+### HAL-15 — Phantom API group `API-TOP-*` cited by three documents (MEDIUM)
+
+- **Claim under audit:** `00-project-overview/project-constraints.md:27` (`C-05` verification cell: "Integration tests per method (`API-TOP-*`)"), `03-system-analysis/functional-analysis.md:167` ("the top-up group `API-TOP-*` cited by `C-05`"), `13-testing/constraint-tests.md:84` ("**Notes:** `AC-IR001-01`, `AC-IR002-01`, `API-TOP-*`").
+- **Re-count:** `07-api/` registers 14 endpoint groups / 221 `API-*` IDs; there is no `API-TOP` group (grep of the register returns zero). Top-up endpoints exist as `API-WAL-003` (`POST /wallet/topups`) and `API-WAL-004` (poll/status) at `07-api/endpoints/wallet.md:29-30`.
+- **Prior partial record:** `19-traceability/README.md:141` already logs this as finding `F-06` — but only for `functional-analysis.md`; `project-constraints.md` and `constraint-tests.md` were uncited consumers until this row. Cross-link kept rather than duplicated.
+- **Remediation owner:** authors of `project-constraints.md`, `functional-analysis.md`, `constraint-tests.md` — replace `API-TOP-*` with `API-WAL-003`/`API-WAL-004` (or register a real group in `07-api/`), then flip `F-06` and this row. Violates root README §11 (D-3).
+
 ---
 
 ## 4. What this audit does not cover
@@ -152,16 +167,16 @@ Verified broken (root README §11 rule): `actors-and-roles.md:81` → `07-api/au
 
 ## Coverage & Statistics
 
-- **Files examined:** 433 of 433 `docs/**/*.md` at extraction time (100% pattern sweep; corpus is 444 after this domain + `19-traceability/` landed); deep reads: `13-testing/` (both READMEs + `test-cases/` inventory), `18-decisions/ADR/` (10 files), `04-architecture/architecture-decisions-reference.md`, `02-requirements/acceptance-criteria.md`, `00-project-overview/success-criteria.md`, `01-business-analysis/business-rules.md`, `FR-015`…`FR-020`, `INT-REQ-002/006`, `NFR-015`, root `README.md`
-- **Checks run:** 13 claim checks + 2 path-resolution passes — 13 claim checks **all failed** (that is what this register records); link pass #1 (before this domain existed): 1,397 citations, 131 broken (112 → then-absent `20-validation/*`, 19 elsewhere); link pass #2 (final, after this domain landed): **1,728 citations, 30 broken — 12 are the evidence strings quoted verbatim in HAL-12 below, 5 belong to sibling `20-validation/` files, 13 elsewhere** (of which 11 are HAL-12's original locations and 2 are `19-traceability/README.md` internal paths). Breakdown of record in `20-validation/analysis-validation.md`
+- **Files examined:** 433 of 433 `docs/**/*.md` at extraction time (100% pattern sweep; corpus is 444 after this domain + `19-traceability/` landed; **479** at the session-006 re-run 2026-09-28, which produced `HAL-14`/`HAL-15`); deep reads: `13-testing/` (both READMEs + `test-cases/` inventory), `18-decisions/ADR/` (10 files), `04-architecture/architecture-decisions-reference.md`, `02-requirements/acceptance-criteria.md`, `00-project-overview/success-criteria.md`, `01-business-analysis/business-rules.md`, `FR-015`…`FR-020`, `INT-REQ-002/006`, `NFR-015`, root `README.md`
+- **Checks run:** 15 claim checks + 2 path-resolution passes — 14 claim checks **failed** (that is what this register records; `HAL-14` recorded the *absence* of the claimed defect — a disproved backlog entry — and is `RESOLVED`); link pass #1 (before this domain existed): 1,397 citations, 131 broken (112 → then-absent `20-validation/*`, 19 elsewhere); link pass #2 (final, after this domain landed): **1,728 citations, 30 broken — 12 are the evidence strings quoted verbatim in HAL-12 below, 5 belong to sibling `20-validation/` files, 13 elsewhere** (of which 11 are HAL-12's original locations and 2 are `19-traceability/README.md` internal paths). Breakdown of record in `20-validation/analysis-validation.md`
 - **ID references verified:** `AC-FR*` 94 defined / 80 cited · `AC-NFR*` 40/40 · `AC-SR*` 50/50 · `AC-DR*` 32/32 · `AC-IR*` 33/33 · `AC-XCUT*` 4/4 · `AC-S-*` 24 defined / 21 referenced · `BR-*` 99 defined, `BR-INV-*` 5 cited / 0 defined · `TC-*` 114 claimed / 103 exist · `ADR-*` 10 claimed-written / 10 exist · `SEC-*` 15 defined (claim of 15 in `17-risk-management/README.md:21` is correct — checked, no finding)
 - **Terms/IDs in scope:** `TC-*` 114/103 · `ADR-*` 10 · `AC-*` 253 (+24 `AC-S-*`) · `BR-*` 99 · `FR-*` 20 · `AUD-NN` 6 sanctioned (DOC-TPL-011) · 26 `C-*` constraints · 24 `RISK-*` · 12 `GAP-*` (`GAP-01`…`GAP-07` seeded in `00-project-overview/`, `GAP-08`…`GAP-12` minted by AUD-03 in `20-validation/missing-information.md`)
 
 ## Verdict & Sign-off
 
-- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit itself is complete and reproducible; 11 of 13 findings remain open in the audited corpus (0 CRITICAL — `HAL-01` resolved 2026-09-27 — 4 HIGH, 4 MEDIUM, 3 LOW)
-- **Unresolved contradictions / gaps:** `HAL-02`…`HAL-06`, `HAL-08`…`HAL-13` all `OPEN`, `HAL-01` and `HAL-07` `RESOLVED` (2026-09-27); CRIT roll-ups at `20-validation/critical-findings.md` (`CRIT-02` now `RESOLVED`, plus open `CRIT-05`, `CRIT-06`, `CRIT-08`); GAP series owned by `20-validation/missing-information.md` — no GAP rows minted here
-- **Required follow-up:** `13-testing/` (~~HAL-01~~ done), `04-architecture/` (HAL-02, HAL-09), `docs/README.md` + `21-completion/` (HAL-03), `01-business-analysis/` + `13-testing/test-cases/` (HAL-04), `02-requirements/functional/` + `acceptance-criteria.md` (HAL-05, HAL-06, ~~HAL-07~~ done), `02-requirements/integration/` (HAL-08), `03-system-analysis/` (HAL-09), `13-testing/` + `00-project-overview/` (HAL-10), domain authors named in HAL-11…HAL-13 — root README §9.5: fixes are propagated by the owning document, never locally
+- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit itself is complete and reproducible; 12 of 15 findings remain open in the audited corpus (0 CRITICAL — `HAL-01` resolved 2026-09-27, `HAL-07` resolved 2026-09-27, `HAL-14` resolved 2026-09-28 — 4 HIGH, 5 MEDIUM, 3 LOW open)
+- **Unresolved contradictions / gaps:** `HAL-02`…`HAL-06`, `HAL-08`…`HAL-13`, `HAL-15` all `OPEN`, `HAL-01`, `HAL-07`, `HAL-14` `RESOLVED` (2026-09-27, 2026-09-27, 2026-09-28); CRIT roll-ups at `20-validation/critical-findings.md` (`CRIT-02` now `RESOLVED`, plus open `CRIT-05`, `CRIT-06`, `CRIT-08`); GAP series owned by `20-validation/missing-information.md` — no GAP rows minted here
+- **Required follow-up:** `13-testing/` (~~HAL-01~~ done), `04-architecture/` (HAL-02, HAL-09), `docs/README.md` + `21-completion/` (HAL-03), `01-business-analysis/` + `13-testing/test-cases/` (HAL-04), `02-requirements/functional/` + `acceptance-criteria.md` (HAL-05, HAL-06, ~~HAL-07~~ done), `02-requirements/integration/` (HAL-08), `03-system-analysis/` (HAL-09), `13-testing/` + `00-project-overview/` (HAL-10), domain authors named in HAL-11…HAL-13, `00-project-overview/project-constraints.md` + `03-system-analysis/functional-analysis.md` + `13-testing/constraint-tests.md` (HAL-15) — root README §9.5: fixes are propagated by the owning document, never locally
 - **Sign-off:** analysis-agent (author), 2026-09-27 — sponsor/QA countersignature recorded with the Gate 0 review (`21-completion/quality-gates.md` §3)
 
 ## Change History
@@ -171,3 +186,4 @@ Verified broken (root README §11 rule): `actors-and-roles.md:81` → `07-api/au
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 43,45,48 + DOC-REQ-001 |
 | 1.1 | 2026-09-27 | `HAL-01` → `RESOLVED` (11 missing TCs authored; re-count = 114); severity totals, §HAL-01 note and verdict re-scoped to 12 open findings | `REC-03` pay-down change set (session 003) — findings flipped, never deleted (DOC-TPL-011 #3) |
 | 1.2 | 2026-09-27 | `HAL-07` → `RESOLVED` (14 `-05` references added; 94/94 cited); totals/verdict re-scoped to 11 open findings | `REC-04` pay-down change set (session 003) — same-change-set propagation |
+| 1.3 | 2026-09-28 | Session-006 sweep: `HAL-14` (backlog claim `BR-PRM-07` disproved → `RESOLVED`, session files annotated) and `HAL-15` (phantom `API-TOP` group, 3 consumer sites + `F-06` cross-link → `OPEN`) added from deferred items (c)/(e); totals/verdict re-scoped to 15 findings / 12 open | Deferred sweep findings must land in their owning register (session-006 mandate); findings kept, never deleted (DOC-TPL-011 #3) |
