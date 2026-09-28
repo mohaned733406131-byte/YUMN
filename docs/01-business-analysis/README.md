@@ -3,7 +3,7 @@ document_id: DOC-BA-001
 title: 01 Business Analysis — README
 category: 01-business-analysis
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
 updated: 2026-09-28
 author: analysis-agent
@@ -37,7 +37,7 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 
 ## Source of Truth For
 
-- **Business rules** — `business-rules.md` (DOC-BA-005) is **the single authoritative registry of all 99 `BR-*` rules**. No other document may define, restate, or amend a rule; every other document only *references* rule IDs. Rule domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN`.
+- **Business rules** — `business-rules.md` (DOC-BA-005) is **the single authoritative registry of all 104 `BR-*` rules**. No other document may define, restate, or amend a rule; every other document only *references* rule IDs. Rule domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`.
 - **Business processes** (`BP-01…BP-15`) — `business-processes.md`.
 - **Business objectives** (`BO-01…BO-12`) — `business-objectives.md` (project objectives `OBJ-01…OBJ-12` remain in `00-project-overview/project-objectives.md`).
 - **End-to-end workflows** (`WF-001…WF-012`) — `workflows/`.
@@ -88,3 +88,4 @@ Files use `lowercase-kebab-case.md`; workflow files are `workflow-NNN.md` where 
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Registry count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
+| 1.2 | 2026-09-28 | §Source-of-Truth catch-up: the "single authoritative registry" bullet still said **99** rules and listed only **14** domains — synced to **104** + `INV` (the v1.1 sync had covered only the Contents row) | BR-count propagation catch-up (session 008 close) — root README §9.4; missed consumer of `business-rules.md` v1.1 |

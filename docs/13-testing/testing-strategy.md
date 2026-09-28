@@ -3,9 +3,9 @@ document_id: DOC-TST-002
 title: Testing Strategy — Verification Methodology (Methodology §47)
 category: 13-testing
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-001, NFR-009, NFR-010, NFR-011, NFR-013, SEC-REQ-012, DATA-REQ-008]
@@ -34,7 +34,7 @@ related_documents: [DOC-TST-001, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-REQ-
 
 ### 2.1 Unit (Jest)
 
-- **Covers:** pure domain logic — business rules (99 `BR-*`), the 17-state order machine (C-09), money math (integer YER, VAT `BR-FIN-01`, commission `BR-ESC-03`), validation guards, adapter contract math (retry/backoff), stateless authorization helpers.
+- **Covers:** pure domain logic — business rules (104 `BR-*`), the 17-state order machine (C-09), money math (integer YER, VAT `BR-FIN-01`, commission `BR-ESC-03`), validation guards, adapter contract math (retry/backoff), stateless authorization helpers.
 - **Rule:** no network, no clock, no shared DB (`NFR-010`; `AC-NFR-010-01` runs the suite with outbound sockets blocked).
 - **Runs:** every PR, minutes.
 
@@ -190,3 +190,4 @@ Every TC cites its `FR/NFR/SEC-REQ/DATA-REQ/INT-REQ`, `BR-*`, `C-*` and `AC-*` I
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | §2.1 unit-scope count sync: 99 → **104 `BR-*`** | BR-count propagation catch-up (session 008 close) — consumer of `business-rules.md` v1.1 (`BR-INV-01…05` registered; root README §9.4) |

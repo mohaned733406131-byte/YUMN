@@ -7,7 +7,7 @@ Every rule: stable ID · severity · requirement · mechanical verification.
 Severity: **CRITICAL** = blocks completion · **HIGH** = pass or justify in writing · **MEDIUM** = expected · **LOW** = guidance.
 
 These rules bind the stack-agnostic master catalog (`RULES.md`) to the yumn domain, derived from the
-approved knowledge base in `docs/` (`C-01…C-26`, 99 `BR-*`, 68 requirements, `SEC-REQ-*`, `NFR-*`).
+approved knowledge base in `docs/` (`C-01…C-26`, 104 `BR-*`, 68 requirements, `SEC-REQ-*`, `NFR-*`).
 IDs are stable: never renumbered, never reused. Precedence: see `RULES_HINTS.md` §7.
 Verification commands are listed in `RULES_HINTS.md` §3.
 

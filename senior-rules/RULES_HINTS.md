@@ -57,7 +57,7 @@ License: GPL-3.0
 - Entry files present: `senior-rules/ENTRY.md`, `senior-rules/RULES.md`, `senior-rules/RULES_HINTS.md` (this file), `senior-rules/YUMN_RULES.md`, `senior-rules/CHANGELOG.md`, `senior-rules/VERSION`, root `AGENTS.md`. Root `session_track.md`, `development_phases_entry.md`, `all_in_one_track.md`, `architecture.md`, `mind_map.md`, `memory.md` are required by DOC-01 and are **pending creation** — status honesty: validator will report them `FAIL` until they exist.
 - Main security spec: `docs/09-security/` (`threat-model.md`, `security-controls.md`, `rbac.md`, `security-findings.md` = `SEC-001…SEC-015` — corrected from `…SEC-016` on 2026-09-28, session 005: the register holds 15 findings, `SEC-016` is only a forward-sequence note; factual correction, no rule text/severity changed, pin stays `2.0.0`)
 - Main architecture file: `docs/04-architecture/architecture-overview.md` (ADRs in `docs/18-decisions/ADR/ADR-001…010`)
-- Requirements/source IDs: `docs/02-requirements/` (68 reqs), `docs/01-business-analysis/business-rules.md` (99 `BR-*`), `docs/00-project-overview/project-constraints.md` (`C-01…C-26`)
+- Requirements/source IDs: `docs/02-requirements/` (68 reqs), `docs/01-business-analysis/business-rules.md` (104 `BR-*` — count corrected 2026-09-28, session 008: `BR-INV-01…05` registered), `docs/00-project-overview/project-constraints.md` (`C-01…C-26`)
 
 ## 5. Conventions
 - Branch prefix: `main` only long-lived; short-lived `feat/<ID>-<slug>`, `fix/<ID>-<slug>`, `chore/…`, `docs/<topic>`; PR-only; linear history (squash/rebase); force-push blocked on `main`

@@ -33,7 +33,7 @@ days · KYC decision ≤48 h · inspection ≤72 h · OTP 6-digit/5-min/3-attemp
 | Concept | Authoritative file |
 |---|---|
 | Constraints / scope / actors | `docs/00-project-overview/` |
-| Business rules (99) | `docs/01-business-analysis/business-rules.md` |
+| Business rules (104) | `docs/01-business-analysis/business-rules.md` |
 | Requirements (68) + ACs (253) | `docs/02-requirements/requirements-overview.md`, `acceptance-criteria.md` |
 | Order/state behavior | `docs/03-system-analysis/state-transitions.md` |
 | API contract (221 endpoints) | `docs/07-api/` |

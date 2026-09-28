@@ -3,7 +3,7 @@ document_id: DOC-TRC-002
 title: Requirements to Features — Objective & Feature Traceability Matrix
 category: 19-traceability
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-27
 updated: 2026-09-28
 author: analysis-agent
@@ -177,7 +177,7 @@ Interpretation: the functional spine (20 FRs) is fully linked to use cases, work
 |---|---|---|---|
 | T-01 | **31 requirements serve no objective in the matrix**: every `SEC-REQ`, `DATA-REQ`, `INT-REQ` (28) plus `NFR-015`, `NFR-016`, `NFR-020` are referenced by no objective row and by no `OBJ-NN` mention in their own file | MEDIUM | Matrix B *Objective(s)* column |
 | T-02 | **36 requirements define no priority**: all `NFR-*`, `DATA-REQ-*`, `INT-REQ-*` files lack a priority field (only FR registry §1 and `SEC-REQ-*` headers carry one) | LOW | Matrix B *Priority* column; `02-requirements/non-functional/*.md` |
-| T-03 | **No UC/WF trace exists for cross-cutting requirements**: all 40 UC and all 12 workflow frontmatters list `FR-*` only | LOW | frontmatter scan of `use-cases/` and `workflows/` |
+| T-03 | **No UC/WF trace exists for cross-cutting requirements**: all 42 UC and all 12 workflow frontmatters list `FR-*` only | LOW | frontmatter scan of `use-cases/` and `workflows/` |
 | T-04 | **26 requirements touch no registered API group and 24 touch no endpoint** — including `SEC-REQ-007`, `SEC-REQ-012`, `DATA-REQ-004/005`, `INT-REQ-006/007/008`, which are verified elsewhere by plans/drills but not by an endpoint link | MEDIUM | Matrix B; `07-api/README.md` §4 |
 | T-05 | **Two objectives have no functional or verification trace**: `OBJ-09` (quality velocity) and `OBJ-10` (maintainability) are named only by `NFR-009`/`NFR-010` — no `FR-*`, use case, workflow or test case cites them, although `OBJ-09`'s measurable (a release-gating test suite) is a testing concern; `OBJ-11`'s measurable is `INSUFFICIENT EVIDENCE` (`ASM-14`) | LOW | Matrix A; search of `13-testing/` for `OBJ-09`/`OBJ-10` returns nothing |
 | T-06 | **No stakeholder → objective/requirement map exists** in `00-project-overview/stakeholders.md` (table has `STK-01…STK-15` with goals, no `OBJ-*`/`FR-*` column), so a stakeholder trace cannot be built without inventing links | LOW | file read |
@@ -200,3 +200,4 @@ Follow `README.md` §6: any change to an objective, requirement, endpoint, entit
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 item 40 |
 | 1.1 | 2026-09-28 | FR-013 UC column gains `UC-041`, `UC-042` (new session-007 use cases) | Session-007 UC gap — traceability must cover every UC (`CHK` series); root README §9 change management |
+| 1.2 | 2026-09-28 | `T-03` evidence re-synced: 40 → **42 UC** (`UC-041`/`UC-042`, added session 007 — finding status unchanged, LOW `OPEN`) | Count/dashboard propagation catch-up (session 008 close) — direct count of `use-cases/UC-*.md` = 42 |
