@@ -1,9 +1,9 @@
 ---
 document_id: DOC-VAL-004
-title: AUD-02 — Contradiction Audit (CT-01…CT-22)
+title: AUD-02 — Contradiction Audit (CT-01…CT-30)
 category: 20-validation
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-27
 updated: 2026-09-28
 author: analysis-agent
@@ -12,14 +12,14 @@ related_requirements: [FR-007, FR-013, FR-016, FR-017, NFR-009]
 related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH-010, DOC-DEC-002, DOC-DPL-005, DOC-API-019, DOC-TST-001, DOC-AC-001, DOC-BE-006, DOC-ARCH-007]
 ---
 
-# AUD-02 — Contradiction Audit (CT-01…CT-22)
+# AUD-02 — Contradiction Audit (CT-01…CT-30)
 
 | Field | Value |
 |---|---|
 | **Audit ID** | `AUD-02` |
 | **Type** | contradiction |
 | **Date** | 2026-09-27 |
-| **Scope** | pairs of statements in different documents that cannot both be true: infrastructure ↔ API ↔ test cases, data-flow ↔ background processing, database enums ↔ API enums, glossary/naming rules ↔ the canon they index, registry claims ↔ their contents |
+| **Scope** | pairs of statements in different documents that cannot both be true: infrastructure ↔ API ↔ test cases, data-flow ↔ background processing, database enums ↔ API enums, glossary/naming rules ↔ the canon they index, registry claims ↔ their contents; extended 2026-09-28 to sponsor-provided input (`describ.md`) ↔ canon constraints/rules, and one canon-internal pair the input surfaced |
 | **Method** | targeted value-set and path comparisons seeded by `AUD-01` failing checks; every pair re-read in full context (including the paragraph around each line) before filing; one entry per distinct conflict, both statements quoted verbatim |
 | **Auditor** | analysis-agent |
 
@@ -44,7 +44,7 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 | `CT-11` | AC registry claims to be the single authority but omits `AC-S-04/12/21` | `HIGH` | `02-requirements/acceptance-criteria.md:17` vs `00-project-overview/success-criteria.md` | 16 citing files — `VERIFIED` | `OPEN` |
 | `CT-12` | AC registry claims every AC, yet 121 `AC-UCnnn-nn` sit outside it and `AC-WF-012-01` is undefined | `MEDIUM` | `acceptance-criteria.md:17` vs `01-business-analysis/use-cases/*`; `naming-conventions.md:112` | `DOC-AC-001` — `VERIFIED` | `OPEN` |
 | `CT-13` | Flat AC ID `AC-SR-16` used although the registry has no such row | `LOW` | `15-deployment/production-readiness.md:66` | pre-flagged at `naming-conventions.md:120` — `VERIFIED` | `OPEN` |
-| `CT-14` | ADR index states the ADR directory is empty while 10 approved ADRs exist | `MEDIUM` | `04-architecture/architecture-decisions-reference.md:19`, `:25-34` vs `18-decisions/ADR/ADR-001…010.md`, `18-decisions/decision-log.md:23-30` | `ADR-001…ADR-010` — `VERIFIED` | `OPEN` |
+| `CT-14` | ADR index states the ADR directory is empty while 10 approved ADRs exist | `MEDIUM` | `04-architecture/architecture-decisions-reference.md:19`, `:25-34` vs `18-decisions/ADR/ADR-001…010.md`, `18-decisions/decision-log.md:23-30` | `ADR-001…ADR-010` — `VERIFIED` | **`RESOLVED` 2026-09-28** (`REC-02` — index v1.1: empty-directory note removed, ten statuses re-synced to `ACCEPTED`) |
 | `CT-15` | Two documents each claim to be the canonical GAP register | `MEDIUM` | root README §5:161 + `naming-conventions.md:90` vs `16-data/retention-and-archival.md:39`, `12-non-functional/compliance-and-legal.md:88` | `GAP-01…GAP-12` — `VERIFIED` | `OPEN` |
 | `CT-16` | Glossary bans "seller"/"merchant" while canon rows use them | `LOW` | `naming-conventions.md:210` (§11) vs `00-project-overview/project-charter.md:42`, `project-constraints.md:43`, `02-requirements/requirements-overview.md` | `C-11`, `FR-016` — `VERIFIED` | `OPEN` |
 | `CT-17` | Naming document declares `A-07` undefined, but the threat model defines asset `A-07` | `LOW` | `naming-conventions.md:121` vs `09-security/threat-model.md:29` | asset series `A-01…A-10` — `VERIFIED` | `OPEN` |
@@ -53,6 +53,14 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 | `CT-20` | Payout `state` column has no declared enum, and its only documented value (`ELIGIBLE`) is absent from the API status set | `MEDIUM` | `07-api/endpoints/wallet.md:37-38` vs `08-database/indexes-and-performance.md:138-139`; `constraints-and-integrity.md:84-100` | no `payout_state` row in the enum register (unlike `payment_state:85`, `escrow_state:87`); partial index `WHERE state='ELIGIBLE'` vs API `REQUESTED\|SCHEDULED\|EXECUTED\|REJECTED\|ROLLED_OVER` — `VERIFIED` | `OPEN` |
 | `CT-21` | `J10` audit-chain verification cadence declared three different ways (hourly vs nightly vs daily) | `MEDIUM` | `16-data/data-quality.md:84` (job register: **Hourly**) vs `17-risk-management/mitigation-plans.md:46` + `21-completion/implementation-roadmap.md:188` (**Nightly**) vs `17-risk-management/risk-register.md:79` (**daily**) | `J10`, `SEC-REQ-010` R4, `SEC-002` residual-risk acceptance; `implementation-roadmap.md:174` defers cadence to `data-quality.md` while `:188` asserts nightly — `VERIFIED` (four lines re-read) | `OPEN` (deferred item (b), logged at sweep 2026-09-28) |
 | `CT-22` | API audit-log projection and privacy claim promise `ipHash`, but the schema stores a raw `ip` address | `MEDIUM` | `07-api/endpoints/admin.md:77` (`API-ADM-024` response field `ipHash`) + `admin.md:125` ("audit entries store `ipHash`, not raw IPs", `SEC-REQ-008`) vs `08-database/entities/audit_log.md:40` (`ip` column, `inet`, "client address (`BR-PLT-06`)") | corroborating projections at `13-testing/test-cases/TC-036.md:53`, `TC-053.md:46`, `TC-109.md:57`; no documented hash-on-read step, no `ip_hash` column — `VERIFIED` | `OPEN` (deferred item (d), logged at sweep 2026-09-28) |
+| `CT-23` | Sponsor spec: multi-currency sub-accounts + platform FX vs `C-04` "Fiat YER only — no USD/SAR wallets in v1" | `HIGH` | `describ.md:19` ("sub-accounts denominated in various currencies"), `:38-40` (SAR order vs YER balance, "standard exchange rate"), `:63-64` ("platform … controls the exchange rate") vs `docs/00-project-overview/project-constraints.md:26` (`C-04`) | `C-04`, `FR-013:29` ("YER-only per-user wallet"), `wallet.md` `currency=YER` column — `VERIFIED` | `OPEN` (sponsor input — §9 change control required; `GAP-13`) |
+| `CT-24` | Sponsor spec: top-up via Al-Kuraimi/Jeeb with provider PIN vs `C-05` fixed three methods (m-Floos, OneCash, bank transfer) | `HIGH` | `describ.md:28-30` ("payment ID and the PIN generated within their external wallet (such as **Al-Kuraimi** or **Jeeb**)") vs `project-constraints.md:27` (`C-05` "No other instruments") | `C-05`, `BR-PAY-04:94` (spec §2.2 admin-verified transfer **agrees**), `INT-REQ-008` — `VERIFIED` | `OPEN` (sponsor input — §9 change control required; `GAP-13`) |
+| `CT-25` | Sponsor spec: email+password as a second login option vs `C-06` "No email-primary auth" + canon phone+password / phone+OTP paths | `HIGH` | `describ.md:68` ("phone number **and/or** email; … email is optional"), `:74` ("Email and password") vs `project-constraints.md:33` (`C-06`); `FR-001` register paths | `C-06`, `SEC-REQ-001` — `VERIFIED` (phone-mandatory half of the spec **agrees**) | `OPEN` (sponsor input — §9 change control required; `GAP-13`) |
+| `CT-26` | Sponsor spec: escrow held for the merchant-defined return period vs `C-12` fixed 7-day hold | `HIGH` | `describ.md:57-59` ("held in an escrow account for the duration of the merchant-defined return period … Funds … not returned are released directly") vs `project-constraints.md:44` (`C-12` "funds held 7 days from DELIVERED") | `C-12`, `BR-RET-01` (merchant returnable designation **agrees**), `escrow.md` `escrow_state` — `VERIFIED` | `OPEN` (sponsor input — §9 change control required; `GAP-13`) |
+| `CT-27` | Sponsor spec: person-to-person account funding vs canon "Money never flows directly between actors" | `HIGH` | `describ.md:33` ("Another person transfers funds from their own account to this user's account"), `:41-42` ("deposit funds into another person's account") vs `03-system-analysis/system-context.md:96` ("**Money never flows directly between actors.** Customer funds enter only via top-up (`C-05`)…") | `system-context.md:96`, `C-05`, `FR-013` (top-up enumeration has no P2P leg) — `VERIFIED` | `OPEN` (sponsor input — §9 change control required; `GAP-13`) |
+| `CT-28` | Sponsor spec: customer withdrawal to an external wallet vs `BR-PAY-07` "never external cash-out" | `MEDIUM` | `describ.md:41-42` ("request a withdrawal to an external wallet, subject to the options available in the system") vs `01-business-analysis/business-rules.md:97` (`BR-PAY-07`) | `BR-PAY-07`, `BR-ESC-05` (vendor-payout exception does not cover customers), `GAP-06` (vendor cash-out is itself an open question) — `VERIFIED` | `OPEN` (sponsor input — §9 change control required; `GAP-13`) |
+| `CT-29` | Sponsor spec: admin "operations on accounts — individually or collectively" incl. "any actions deemed appropriate" vs `rbac.md` rows 15–16 (no role may adjust ledgers; no role but the customer reads a wallet) | `HIGH` | `describ.md:52-53` vs `09-security/rbac.md:51` (row 15 `Direct ledger / balance adjustment` — ADMIN `✖`, SUPER_ADMIN `✖`, SYSTEM `✖ (compensating entries only)`) and `:52` (row 16 `Read a customer's wallet balance` — ADMIN `✖`, SUPER_ADMIN `✖`) | `rbac.md` §2 rows 15–16, `SEC-REQ-004`, `FR-002` — `VERIFIED` | `OPEN` (sponsor input — §9 change control required; `GAP-13`) |
+| `CT-30` | Canon-internal: wallet row creation timing — `FR-013` "created at registration" vs `wallet.md` "created lazily on first top-up/order attempt" (sponsor spec §1 asserts account-on-verification) | `MEDIUM` | `02-requirements/functional/FR-013.md:45` vs `08-database/entities/wallet.md:34`; `describ.md:18-19` | `FR-013`, `wallet.md` `created_at` note, `UC-041` flow (top-up assumes a wallet row) — `VERIFIED` | `OPEN` (canon-internal — owning docs `FR-013.md` / `08-database/entities/wallet.md` decide) |
 
 ---
 
@@ -223,23 +231,98 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 
 ---
 
+### `CT-23` — Multi-currency sub-accounts vs `C-04` · `HIGH` · `OPEN`
+
+- **Statement A (sponsor spec, 2026-09-28):** `describ.md:19` — "this account includes **sub-accounts denominated in various currencies**"; `:38-40` — "if the user holds a balance in Yemeni currency but places an order in Saudi Riyals, the system displays the equivalent deduction based on the system's standard exchange rate, or deducts the amount from an account holding the same currency as the order"; `:63-64` — "**Currency management is handled by the platform**, which controls the **exchange rate** and updates it across the entire system."
+- **Statement B (canon):** `00-project-overview/project-constraints.md:26` — "`C-04` | **No cryptocurrency; single currency.** Fiat YER only — no USD/SAR wallets in v1."; corroborated by `02-requirements/functional/FR-013.md:29` ("a YER-only per-user wallet") and the `08-database/entities/wallet.md` `currency=YER` column.
+- **Why both cannot stand:** sub-accounts denominated in USD/SAR, cross-currency deduction at a "standard exchange rate", and a platform-set FX rate are exactly what `C-04` forbids in v1; the canon's ledger, wallet row, and order money path have no second currency, no rate table, and no FX posting type.
+- **Owning document:** constraint amendment via root `docs/README.md` §9 change control (sponsor-owned) — or the spec is re-scoped to YER-only (`GAP-13`). Never fixed by editing `C-04` locally.
+
+---
+
+### `CT-24` — Al-Kuraimi/Jeeb + provider PIN vs `C-05` · `HIGH` · `OPEN`
+
+- **Statement A (sponsor spec):** `describ.md:28-30` — "**Via external wallets integrated with the system via API.** The user enters the payment ID and the PIN generated within their external wallet (such as **Al-Kuraimi** or **Jeeb**). The system verifies the transaction through the connected API and adds the amount to the balance."
+- **Statement B (canon):** `00-project-overview/project-constraints.md:27` — "`C-05` | **Wallet top-up methods:** mobile wallet (m-Floos, OneCash) and bank transfer (manual admin verification). No other instruments."
+- **Agreement noted:** spec §2.2 ("submits proof of payment, which an administrator then verifies before adding the funds") matches `business-rules.md:94` `BR-PAY-04` exactly; only the first funding leg (named providers + PIN instrument) conflicts.
+- **Why both cannot stand:** `C-05` enumerates the complete instrument set; Al-Kuraimi and Jeeb are not in it, and adding them amends a constraint that also drives the `DEP-05` integration scope and the `C-05` constraint-test row.
+- **Owning document:** §9 change control (sponsor) if the providers are intended; otherwise the spec leg is dropped (`GAP-13`).
+
+---
+
+### `CT-25` — Email login option vs `C-06` · `HIGH` · `OPEN`
+
+- **Statement A (sponsor spec):** `describ.md:68` — "Login is performed using a **phone number and/or email**; the **phone number is mandatory**, while the **email is optional**."; `:74` — "2. **Email and password.**"
+- **Statement B (canon):** `00-project-overview/project-constraints.md:33` — "`C-06` | **Phone + OTP only.** Primary identifier is the phone number; verification via SMS or WhatsApp. No email-primary auth, no social login."; canon login paths are phone+password (primary) and phone+OTP (alternate) per `FR-001`.
+- **Agreement noted:** the spec's phone-mandatory rule and phone-verified-at-registration match `C-06` and `FR-001`; the conflict is email as a second login identifier.
+- **Why both cannot stand:** an email+password path introduces a second primary identifier the auth design, user entity, and `SEC-REQ-001` flows never modelled; `C-06` was granted on market grounds (phone universal, email is not).
+- **Owning document:** §9 change control (sponsor) if email login is intended; otherwise the spec option 2 is dropped (`GAP-13`).
+
+---
+
+### `CT-26` — Merchant-defined escrow period vs `C-12` · `HIGH` · `OPEN`
+
+- **Statement A (sponsor spec):** `describ.md:57-59` — "**Returnable products are designated by the merchant**; the value of these items is held in an **escrow account for the duration of the merchant-defined return period**. Funds for items that are **not returned are released directly**."
+- **Statement B (canon):** `00-project-overview/project-constraints.md:44` — "`C-12` | **Escrow:** funds held 7 days from DELIVERED before release to vendor (unless dispute freezes)."
+- **Agreement noted:** merchant designation of returnable products matches `BR-RET-01`; only the hold duration semantics conflict (fixed 7-day clock vs per-merchant window).
+- **Why both cannot stand:** the escrow engine's release timer, the delayed-job `b07.escrow.release` schedule, and `C-12`'s constraint test all encode one fixed delay; a merchant-defined period makes release time an unbounded per-store parameter with no canon default, cap, or timezone rule.
+- **Owning document:** §9 change control (sponsor) if merchant-defined windows are intended; otherwise the spec is re-scoped to the 7-day clock (`GAP-13`).
+
+---
+
+### `CT-27` — P2P account funding vs "money never flows between actors" · `HIGH` · `OPEN`
+
+- **Statement A (sponsor spec):** `describ.md:33` — "**Via account funding.** Another person transfers funds from their own account to this user's account."; repeated `:41-42` — "Users can **deposit funds into another person's account**…"
+- **Statement B (canon):** `03-system-analysis/system-context.md:96` — "**Money never flows directly between actors.** Customer funds enter only via top-up (`C-05`); vendor exit is only the platform payout (`BR-ESC-05`); refunds credit the wallet (`BR-PAY-07`)."
+- **Why both cannot stand:** P2P wallet-to-wallet transfers are a direct actor-to-actor money flow — the invariant the system-context document names as one of its load-bearing principles (`FR-013`'s top-up enumeration has no P2P leg, and `ledger_type` has no transfer posting type); granting it would also reopen fraud/laundering controls the risk register assumed closed.
+- **Owning document:** §9 change control (sponsor) — this is a system-boundary change, not a wording fix (`GAP-13`).
+
+---
+
+### `CT-28` — Customer withdrawal vs `BR-PAY-07` · `MEDIUM` · `OPEN`
+
+- **Statement A (sponsor spec):** `describ.md:41-42` — "Users can … **request a withdrawal to an external wallet**, subject to the options available in the system."
+- **Statement B (canon):** `01-business-analysis/business-rules.md:97` — "`BR-PAY-07` | Refunds always credit the wallet — never external cash-out to cards/banks (except vendor payouts, BR-ESC-05)."
+- **Why both cannot stand:** a customer-facing "withdrawal to an external wallet" is external cash-out; `BR-ESC-05`'s exception covers vendor payouts only. (Vendor cash-out is itself undecided — `GAP-06` — but the spec's §3.2 subject is the customer account.)
+- **Owning document:** §9 change control (sponsor) if customer cash-out is in v1; otherwise the spec leg is dropped (`GAP-13`).
+
+---
+
+### `CT-29` — Admin collective account actions vs RBAC rows 15–16 · `HIGH` · `OPEN`
+
+- **Statement A (sponsor spec):** `describ.md:52-53` — "The **management function** (administration) enables operations on and the viewing of accounts — either individually or **collectively** — as well as **any actions deemed appropriate for account management**."
+- **Statement B (canon):** `09-security/rbac.md:51` — row 15 `Direct ledger / balance adjustment (manual write)`: CUSTOMER `✖` … ADMIN `✖` … SYSTEM `✖ (compensating entries only)`; `:52` — row 16 `Read a customer's wallet balance / transactions`: ADMIN `✖`, SUPER_ADMIN `✖`.
+- **Why both cannot stand:** the matrix grants **no role** manual ledger writes (only `SYSTEM` compensating entries) and denies admin wallet reads entirely, while the spec promises collective admin operations and viewing "as … appropriate" — an open-ended grant that `SEC-REQ-004`/`FR-002` never modelled, and "collectively" implies bulk balance operations the append-only ledger design has no API for.
+- **Owning document:** `09-security/rbac.md` is the definitive matrix (`DOC-OVR-007`); changing it requires §9 change control with security sign-off (`GAP-13`).
+
+---
+
+### `CT-30` — Wallet row creation timing (canon-internal) · `MEDIUM` · `OPEN`
+
+- **Statement A:** `02-requirements/functional/FR-013.md:45` — "User account exists (FR-001) with a **wallet row created at registration**."; the sponsor spec asserts the same shape at `describ.md:18-19` ("Once a customer or merchant is registered **and verified**, a financial account is created for them").
+- **Statement B:** `08-database/entities/wallet.md:34` — `created_at` … "created **lazily on first top-up/order attempt**".
+- **Why both cannot stand:** either a wallet row exists for every registered user (statement A) or it appears only on first money attempt (statement B); they cannot both be true, and downstream behaviour differs (zero-balance rows in the table, `UC-041` top-up flow, wallet-freeze preconditions). This one is canon-internal — the sponsor spec merely surfaced it.
+- **Owning document:** `02-requirements/functional/FR-013.md` and `08-database/entities/wallet.md` (owner decision; `GAP` not minted — the answer exists in canon, the two rows just disagree).
+
+---
+
 ## 3. Coverage & Statistics
 
-- Files examined: **~45** directly cited files (each quoted line re-read in context), out of 479 in scope at the 2026-09-28 re-run (433 at original sweep); seeded by `AUD-01` failing checks `CHK-16`, `CHK-19`, `CHK-20`, `CHK-21`, `CHK-22`, `CHK-23`, `CHK-24`, `CHK-25`, `CHK-12`, `CHK-13`, `CHK-14`, `CHK-31`, plus deferred sweep items (b)/(d).
-- Checks run: **22** — passed 1 (`CT-01`), failed 19 at audit; 2026-09-27 re-run: `CT-04`/`CT-05` conditions now pass → passed 3, 15 recorded `OPEN`; 2026-09-28 session-006 sweep: `CT-21` (J10 cadence) and `CT-22` (`ipHash` vs `ip`) added from the deferred backlog → issued 22, 17 `OPEN`.
-- ID references verified: 22 statement pairs, every one with `file:line`; **0** fabricated or assumed citations.
-- Contradictions by severity (issued): `CRITICAL` 0 · `HIGH` 3 (`CT-04` resolved, `CT-06`, `CT-11` open) · `MEDIUM` 12 · `LOW` 6 (`CT-05` resolved) · `PASS` 1.
-- Series in scope: `CT-NN` issued 22 · open 17 · resolved 4 (`CT-02`, `CT-03` — `REC-05`; `CT-04`, `CT-05` — `REC-06`, all 2026-09-27) · passed 1.
-- Cross-graded against the sibling audits: `CT-18` = `CRIT-03(a)`, `CT-19` = `CRIT-03(c)`, `CT-08` = `CRIT-03(b)`, `CT-04` = `CRIT-04`, `CT-11`/`CT-12` adjacent to `CRIT-05` (`critical-findings.md:51-53`). Severities here grade the *document conflict*; `critical-findings.md` grades gate impact. `CT-20` (payout state domain) is not covered by any `CRIT-*` row.
+- Files examined: **~56** directly cited files (each quoted line re-read in context), out of 480 in scope at the 2026-09-28 re-run (479 at session-006, 433 at original sweep) plus the root sponsor file `describ.md`; seeded by `AUD-01` failing checks `CHK-16`, `CHK-19`, `CHK-20`, `CHK-21`, `CHK-22`, `CHK-23`, `CHK-24`, `CHK-25`, `CHK-12`, `CHK-13`, `CHK-14`, `CHK-31`, plus deferred sweep items (b)/(d), plus the session-007 sponsor-input reconciliation.
+- Checks run: **30** — passed 1 (`CT-01`), failed 19 at audit; 2026-09-27 re-run: `CT-04`/`CT-05` conditions now pass → passed 3, 15 recorded `OPEN`; 2026-09-28 session-006 sweep: `CT-21`/`CT-22` added → issued 22, 17 `OPEN`; 2026-09-28 session-007 sponsor reconciliation: `CT-23`…`CT-30` opened (8) and `CT-14` → `RESOLVED` (`REC-02`) → issued 30, 24 `OPEN`.
+- ID references verified: 30 statement pairs, every one with `file:line` (sponsor quotes cite `describ.md` line numbers); **0** fabricated or assumed citations.
+- Contradictions by severity (issued): `CRITICAL` 0 · `HIGH` 9 (`CT-04` resolved, `CT-06`, `CT-11`, `CT-23`…`CT-27`, `CT-29` open) · `MEDIUM` 14 (`CT-14` resolved, 13 open) · `LOW` 6 (`CT-05` resolved) · `PASS` 1.
+- Series in scope: `CT-NN` issued 30 · open 24 · resolved 5 (`CT-02`, `CT-03` — `REC-05`; `CT-04`, `CT-05` — `REC-06`, all 2026-09-27; `CT-14` — `REC-02`, 2026-09-28) · passed 1.
+- Cross-graded against the sibling audits: `CT-18` = `CRIT-03(a)`, `CT-19` = `CRIT-03(c)`, `CT-08` = `CRIT-03(b)`, `CT-04` = `CRIT-04`, `CT-11`/`CT-12` adjacent to `CRIT-05` (`critical-findings.md:51-53`). Severities here grade the *document conflict*; `critical-findings.md` grades gate impact. `CT-20` (payout state domain) is not covered by any `CRIT-*` row. Sponsor-input conflicts `CT-23`…`CT-29` are graded here only; their gate impact routes through `GAP-13` (change-control decision), not a `CRIT-*` row; `CT-30` is canon-internal.
 
 ---
 
 ## 4. Verdict & Sign-off
 
-- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit ran to completion with every conflict evidenced; 17 remain `OPEN` because fixing them is the owning documents' job (root README §9.5 forbids local fixes here). `CT-02`/`CT-03` were closed under `REC-05`, `CT-04`/`CT-05` under `REC-06`, by the owning documents' change sets on 2026-09-27; `CT-21`/`CT-22` were added by the session-006 sweep on 2026-09-28 from the deferred backlog.
-- **Unresolved contradictions / gaps:** `CT-06`…`CT-22` (`OPEN`); `CT-01` `PASS`/`CLOSED`; `CT-02`, `CT-03`, `CT-04`, `CT-05` `RESOLVED` 2026-09-27. Cross-links: `GAP-01…GAP-12` (`missing-information.md`), findings 6–11, 13, 14, 15, 16, 17, 22, 24, 26 (`consistency-audit.md`) — finding 12 closed alongside `CT-02`/`CT-03`; `HAL-15` (`hallucination-audit.md`) cross-links the `API-TOP` group defect.
-- **Required follow-up — owning documents that must change, in propagation order (root README §9.4), edits NOT made by this audit:** ~~`15-deployment/health-checks.md` + `07-api/endpoints/admin.md` (`CT-02`, `CT-03`)~~ **done 2026-09-27 (`REC-05`, both docs v1.1 + `TC-001/031/057/065` v1.1)** · ~~`04-architecture/data-flow.md` + `06-backend/background-processing.md` + `10-integrations/*` + `13-testing/TC-061/063/064/107` (`CT-04`)~~ **done 2026-09-27 (`REC-06`)** · `07-api/endpoints/notifications.md` + `08-database/entities/notification.md` (`CT-06`) · `02-requirements/acceptance-criteria.md` (`CT-11`, `CT-12`) · `07-api/endpoints/wallet.md` (`CT-08`, `CT-09`, `CT-18`, `CT-19`, `CT-20`) + `08-database/entities/payment.md` (`CT-18`, `CT-19`) + `08-database/constraints-and-integrity.md` (`CT-20`) · `04-architecture/architecture-decisions-reference.md` (`CT-14`) · `16-data/retention-and-archival.md` + `12-non-functional/compliance-and-legal.md` (`CT-15`) · `07-api/endpoints/admin.md` + `07-api/error-model.md` (`CT-07`) · `22-glossary/naming-conventions.md` (~~`CT-05`~~ done 2026-09-27; `CT-16`, `CT-17`) · `15-deployment/production-readiness.md` (`CT-13`) · `07-api/endpoints/returns.md` (`CT-10`) · `16-data/data-quality.md` + `17-risk-management/mitigation-plans.md` + `risk-register.md` + `21-completion/implementation-roadmap.md` (`CT-21` cadence) · `08-database/entities/audit_log.md` + `07-api/endpoints/admin.md` (`CT-22` `ipHash`). After each change: bump `version`, add the §9.2 row, re-run the linked `AUD-01` checks, log the propagation.
-- **Sign-off:** analysis-agent, 2026-09-27.
+- **Gate:** `PASS WITH FINDINGS` (root README §11) — the audit ran to completion with every conflict evidenced; 24 remain `OPEN` because fixing them is the owning document's job (root README §9.5 forbids local fixes here). `CT-02`/`CT-03` were closed under `REC-05`, `CT-04`/`CT-05` under `REC-06`, by the owning documents' change sets on 2026-09-27; `CT-14` closed under `REC-02` on 2026-09-28 (ADR index v1.1); `CT-21`/`CT-22` were added by the session-006 sweep on 2026-09-28 from the deferred backlog; `CT-23`…`CT-30` were opened by the session-007 sponsor-input reconciliation on 2026-09-28.
+- **Unresolved contradictions / gaps:** `CT-06`…`CT-13`, `CT-15`…`CT-30` (`OPEN`); `CT-01` `PASS`/`CLOSED`; `CT-02`, `CT-03`, `CT-04`, `CT-05`, `CT-14` `RESOLVED`. Cross-links: `GAP-01…GAP-14` (`missing-information.md`), findings 6–11, 13, 14, 15, 16, 17, 22, 24, 26 (`consistency-audit.md`) — finding 12 closed alongside `CT-02`/`CT-03`; `HAL-15` (`hallucination-audit.md`) cross-links the `API-TOP` group defect; `HAL-02` `RESOLVED` alongside `CT-14`.
+- **Required follow-up — owning documents that must change, in propagation order (root README §9.4), edits NOT made by this audit:** ~~`15-deployment/health-checks.md` + `07-api/endpoints/admin.md` (`CT-02`, `CT-03`)~~ **done 2026-09-27 (`REC-05`, both docs v1.1 + `TC-001/031/057/065` v1.1)** · ~~`04-architecture/data-flow.md` + `06-backend/background-processing.md` + `10-integrations/*` + `13-testing/TC-061/063/064/107` (`CT-04`)~~ **done 2026-09-27 (`REC-06`)** · ~~`04-architecture/architecture-decisions-reference.md` (`CT-14`)~~ **done 2026-09-28 (`REC-02`, index v1.1)** · `07-api/endpoints/notifications.md` + `08-database/entities/notification.md` (`CT-06`) · `02-requirements/acceptance-criteria.md` (`CT-11`, `CT-12`) · `07-api/endpoints/wallet.md` (`CT-08`, `CT-09`, `CT-18`, `CT-19`, `CT-20`) + `08-database/entities/payment.md` (`CT-18`, `CT-19`) + `08-database/constraints-and-integrity.md` (`CT-20`) · `16-data/retention-and-archival.md` + `12-non-functional/compliance-and-legal.md` (`CT-15`) · `07-api/endpoints/admin.md` + `07-api/error-model.md` (`CT-07`) · `22-glossary/naming-conventions.md` (~~`CT-05`~~ done 2026-09-27; `CT-16`, `CT-17`) · `15-deployment/production-readiness.md` (`CT-13`) · `07-api/endpoints/returns.md` (`CT-10`) · `16-data/data-quality.md` + `17-risk-management/mitigation-plans.md` + `risk-register.md` + `21-completion/implementation-roadmap.md` (`CT-21` cadence) · `08-database/entities/audit_log.md` + `07-api/endpoints/admin.md` (`CT-22` `ipHash`) · **sponsor change control, root `docs/README.md` §9, before any canon edit** — `CT-23`…`CT-29` (sponsor decides amend-constraint vs re-scope-spec; tracked as `GAP-13`; FX mechanics answer is `GAP-14`) · `02-requirements/functional/FR-013.md` + `08-database/entities/wallet.md` (`CT-30` wallet-row timing). After each change: bump `version`, add the §9.2 row, re-run the linked `AUD-01` checks, log the propagation.
+- **Sign-off:** analysis-agent, 2026-09-27; amended by session 007, 2026-09-28.
 
 ---
 
@@ -252,3 +335,4 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-OVR-008, DOC-ARCH
 | 1.2 | 2026-09-27 | `CT-02`, `CT-03` → `RESOLVED` (health-path canon `/healthz` + `/readyz` applied in `admin.md` v1.1, `health-checks.md` v1.1, `TC-001/031/057/065` v1.1); statistics re-issued (open 17 / resolved 2); follow-up list updated | `REC-05` / `TD-06` pay-down; root README §9.5 (resolution recorded, rows kept) |
 | 1.3 | 2026-09-27 | `CT-04`, `CT-05` → `RESOLVED` (single 30-row queue register adopted: `data-flow.md` v1.1, `background-processing.md` v1.1, `naming-conventions.md` v1.2, `search.md`, `10-integrations/*`, `TC-061/063/064/107`); statistics re-issued (open 15 / resolved 4); follow-up list updated | `REC-06` / `TD-07` pay-down; root README §9.5 (resolution recorded, rows kept) |
 | 1.4 | 2026-09-28 | Session-006 sweep: `CT-21` (`J10` hourly vs nightly vs daily cadence) and `CT-22` (`ipHash` API field vs raw `ip` schema column) opened from the deferred backlog items (b)/(d) with re-read evidence; title/range → `CT-01…CT-22`; statistics re-issued (issued 22, open 17); follow-up list extended | Deferred sweep findings must land in their owning register (session-006 mandate); root README §9.5 |
+| 1.5 | 2026-09-28 | Session-007 sponsor-input reconciliation: `CT-23`…`CT-30` opened (8 conflicts between `describ.md` and canon: `C-04`, `C-05`, `C-06`, `C-12`, system-context actor-flow principle, `BR-PAY-07`, RBAC rows 15–16, plus canon-internal wallet-creation timing), each with verbatim quotes and §9 change-control routing via `GAP-13`/`GAP-14`; `CT-14` → `RESOLVED` (`REC-02`); title/range → `CT-01…CT-30`; statistics re-issued (issued 30, open 24) | Sponsor spec `describ.md` (session 007, `D-16` resolved) must be reconciled against canon — contradictions registered, never silently absorbed (root README §9.5); findings kept, never deleted (DOC-TPL-011 #3) |

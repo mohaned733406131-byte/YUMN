@@ -1,11 +1,11 @@
 ---
 document_id: DOC-VAL-002
-title: AUD-03 — Missing Information (GAP register GAP-01…GAP-12)
+title: AUD-03 — Missing Information (GAP register GAP-01…GAP-14)
 category: 20-validation
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-28
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-014, FR-017, NFR-019, INT-REQ-001]
@@ -43,8 +43,10 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-OVR-005, DOC-GL-003, DOC-CMP-
 | `GAP-10` | Exact provider API specifications (endpoint paths, signature header names, field names) for m-Floos / OneCash — unavailable while `DEP-05` is `NOT STARTED` | Technical lead / integrations, via `DEP-05` | `OPEN` | Gate 0 check 0.3 | **minted by this audit** — `10-integrations/wallet-providers.md:19`; `10-integrations/testing-and-sandboxes.md:130` | `VERIFIED` |
 | `GAP-11` | Hosting / cross-border data-location decision (whether Yemeni Law No. 11 of 2012 applies) | Project sponsor | `OPEN` | Before launch; `DEP-09` / `ASM-13`; may force an ADR | **minted by this audit** — `16-data/data-ownership.md:99` | `VERIFIED` |
 | `GAP-12` | v2 account-recovery channel beyond SMS/WhatsApp (auth-channel concentration) | Security officer | `OPEN` | Post-v1 (recommendation, not a v1 gate) | **minted by this audit** — `09-security/security-findings.md:48` (`SEC-001` recommendation) | `VERIFIED` |
+| `GAP-13` | Sponsor change-control decision on `describ.md` (2026-09-28 transaction rules): do statements `CT-23`…`CT-29` **amend** the constraints/rules (`C-04`, `C-05`, `C-06`, `C-12`, the system-context actor-flow principle, `BR-PAY-07`, RBAC rows 15–16), or is the **spec re-scoped** to canon? One decision, seven citations — no canon line changes until it is written down | Project sponsor (root `docs/README.md` §9 change control) | `OPEN` | Gate 0 check 0.5 (triage of sponsor inputs); blocks any `CT-23`…`CT-29` resolution | **minted by this audit** — `describ.md` §§1–7 header ("sponsor input under evaluation … until the change-control process amends those constraints"); `contradiction-audit.md` `CT-23`…`CT-29` | `VERIFIED` |
+| `GAP-14` | FX mechanics if (and only if) `C-04` is amended per `GAP-13`: rate source, spread/margin, update cadence, rounding, and ledger posting type for cross-currency deduction (`describ.md` §3.1/§6) — canon has no rate table or FX posting type today | Product owner + Finance (via `GAP-13`) | `OPEN` | Gate 0 check 0.5 — only reachable after `GAP-13` answers "amend"; moot if re-scoped | **minted by this audit** — `describ.md:38-40`, `:63-64` vs `project-constraints.md:26` (`C-04`); no FX entity in `08-database/` | `VERIFIED` |
 
-Status vocabulary for this register: `OPEN` → `RESOLVED` (answer recorded here + owning document changed, version bumped, root README §9.2) or `WAIVED` (sponsor writes an explicit decision that the question stays unanswered for v1). All twelve rows are `OPEN` at 2026-09-27.
+Status vocabulary for this register: `OPEN` → `RESOLVED` (answer recorded here + owning document changed, version bumped, root README §9.2) or `WAIVED` (sponsor writes an explicit decision that the question stays unanswered for v1). All fourteen rows are `OPEN` at 2026-09-28.
 
 ---
 
@@ -54,6 +56,7 @@ Status vocabulary for this register: `OPEN` → `RESOLVED` (answer recorded here
 - **`GAP-07` was promised but never minted.** `risk-register.md:284` and `:299` speak of "seven open gaps (`GAP-01…GAP-07`)" and `stakeholders.md:48` tags the fleet-operator omission `GAP-07`, yet `project-scope.md` lists only six rows. Registering it here closes the numbering hole; the owner is taken from `risk-register.md:42` (`RISK-018`, Operations lead) → `INFERENCE`.
 - **`GAP-03` has hard evidence behind its two sides:** `08-database/constraints-and-integrity.md` (`notification_channel` = `SMS, WHATSAPP, IN_APP, PUSH`, explicitly "**no `EMAIL` value**") and `BR-NTF-01` (`business-rules.md:143`) vs the email rows still described in `12-non-functional/` messaging prose. The gap stays the *decision*, not the channel inventory.
 - **`GAP-08…GAP-12` are minted here because canon promised them to this register:** each source sentence explicitly defers "record it in `20-validation/missing-information.md`" (and, for `GAP-08`/`GAP-09`, forbids minting the ID anywhere else — `retention-and-archival.md:39`: "No new `GAP-NNN` ID is minted here — gap IDs are assigned only in the canonical GAP register"). One gap per promise site; no promise was merged or dropped.
+- **`GAP-13`/`GAP-14` are minted by the session-007 sponsor-input reconciliation:** the sponsor's `describ.md` (2026-09-28) raised statements canon does not answer (`CT-23`…`CT-29`), and the register is the canonical home for "open question" rows (`GAP-10`…`GAP-12` precedent: minted by an audit when no source promise existed). `GAP-13` is deliberately **one row for seven citations** — it is a single sponsor decision (amend the constraints under §9, or re-scope the spec), which then dispositions every conflict at once; splitting it would invite partial answers. `GAP-14` is conditional: it only becomes reachable if `GAP-13` answers "amend" for `C-04`, and it stays `OPEN`-but-moot otherwise (`WAIVED`-style note expected with the `GAP-13` answer).
 - **Why `GAP-09` and `GAP-11` are separate rows:** `compliance-and-legal.md:88` is a *deliverables* gap (ten sign-off items, esp. item 2), while `data-ownership.md:99` is a *design-forcing* location decision that "must be confirmed by the sponsor before launch and … if it changes the design, in an ADR". They have different owners and different gate checks, so they are tracked separately.
 
 ---
@@ -86,17 +89,17 @@ Status vocabulary for this register: `OPEN` → `RESOLVED` (answer recorded here
 - Files examined: **433 of 433** `.md` files swept for `missing-information` / `GAP-` (26 files cite the register by path; `hallucination-audit.md` 2, `critical-findings.md` 5, `analysis-validation.md` 7, `requirements-validation.md` 1).
 - Checks run: **4** — passed 1 (`GAP-01…GAP-06` wording/owner fidelity), failed 3 (register location, `GAP-07` never minted, Gate-0 set size).
 - ID references verified: **all `GAP-*` citations in `docs/`** resolve after this run; before it, `GAP-07` had **0 definition sites**.
-- Series in scope: `GAP-NN` issued 12 · open 12 · resolved 0 · waived 0.
-- New IDs minted by this audit: **`GAP-08`, `GAP-09`, `GAP-10`, `GAP-11`, `GAP-12`** (5). No other series touched.
+- Series in scope: `GAP-NN` issued 14 · open 14 · resolved 0 · waived 0.
+- New IDs minted by this audit: **`GAP-08`, `GAP-09`, `GAP-10`, `GAP-11`, `GAP-12`** (5), and by the session-007 reconciliation: **`GAP-13`, `GAP-14`** (2). No other series touched.
 
 ---
 
 ## 6. Verdict & Sign-off
 
-- **Gate:** `PASS WITH FINDINGS` (root README §11) — the register now exists and every promised item is recorded; five questions remain unanswered and are owners' work, not documentation defects.
-- **Unresolved contradictions / gaps:** `GAP-01…GAP-12` all `OPEN`; `CT-15` (register location) `OPEN` in `contradiction-audit.md`.
-- **Required follow-up (edits NOT made here):** `00-project-overview/project-scope.md` §UNCERTAIN SCOPE needs a `GAP-07` row (and, if the location conflict is resolved in favour of this file, an `→ 20-validation/missing-information.md` pointer for `GAP-08…GAP-12`); `21-completion/quality-gates.md:80` / `risk-register.md:35` need one agreed GAP set for Gate 0; `22-glossary/terminology.md` needs rows for the three sampled terms or a recorded decision that they stay out.
-- **Sign-off:** analysis-agent, 2026-09-27 (document authorship; gate sign-off remains with the roles named above).
+- **Gate:** `PASS WITH FINDINGS` (root README §11) — the register now exists and every promised item is recorded; fourteen questions remain unanswered and are owners' work, not documentation defects.
+- **Unresolved contradictions / gaps:** `GAP-01…GAP-14` all `OPEN`; `CT-15` (register location) `OPEN` in `contradiction-audit.md`.
+- **Required follow-up (edits NOT made here):** `00-project-overview/project-scope.md` §UNCERTAIN SCOPE needs a `GAP-07` row (and, if the location conflict is resolved in favour of this file, an `→ 20-validation/missing-information.md` pointer for `GAP-08…GAP-14`); `21-completion/quality-gates.md:80` / `risk-register.md:35` need one agreed GAP set for Gate 0; `22-glossary/terminology.md` needs rows for the three sampled terms or a recorded decision that they stay out; **`GAP-13` needs the sponsor's §9 change-control answer** (amend `C-04`/`C-05`/`C-06`/`C-12` + the actor-flow principle, `BR-PAY-07`, RBAC rows 15–16 — or re-scope `describ.md`), which then dispositions `CT-23`…`CT-29` and gates `GAP-14`.
+- **Sign-off:** analysis-agent, 2026-09-27 (document authorship; gate sign-off remains with the roles named above); `GAP-13`/`GAP-14` rows added by session 007, 2026-09-28.
 
 ---
 
@@ -106,3 +109,4 @@ Status vocabulary for this register: `OPEN` → `RESOLVED` (answer recorded here
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring; `AUD-03` run; `GAP-01…GAP-07` registered from canon sources; `GAP-08…GAP-12` minted for promised-but-unregistered items | Root README §10 item 41; `naming-conventions.md:90`; `DOC-TPL-011` |
 | 1.1 | 2026-09-27 | §4 "considered, not minted" cell corrected: `19-traceability/` was authored after the run — moved out with a pointer to consistency-audit finding 3 (`RESOLVED`) | Findings never deleted; sibling authoring pass landed after v1.0 |
+| 1.2 | 2026-09-28 | `GAP-13` (sponsor §9 change-control decision on `describ.md` vs `C-04`/`C-05`/`C-06`/`C-12` + actor-flow principle + `BR-PAY-07` + RBAC rows 15–16, one row for seven `CT-*` citations) and conditional `GAP-14` (FX mechanics, reachable only if `C-04` amended) minted; totals → 14 issued / 14 open; title → `GAP-01…GAP-14`; follow-up extended | Session-007 sponsor-input reconciliation (`describ.md`, `CT-23`…`CT-29`) raised questions canon does not answer — registered here, never silently absorbed (root README §9.5) |
