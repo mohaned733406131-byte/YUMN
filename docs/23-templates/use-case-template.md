@@ -3,9 +3,9 @@ document_id: DOC-TPL-003
 title: Use Case Template (UC-NNN.md)
 category: 23-templates
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -18,7 +18,7 @@ related_documents: [DOC-TPL-001, DOC-UC-000, DOC-BA-005, DOC-REQ-001, DOC-GL-003
 
 ## Rules
 
-- Allocation is `UC-001…UC-040` (all issued); a genuinely new use case takes **UC-041+**, must be added to the DOC-UC-000 §2 index and §3 actor totals in the same change.
+- Allocation is `UC-001…UC-210` (42 issued at session-010 start; `UC-043+` minting per owner directive `prompt-010.md` §1); a genuinely new use case beyond the allocation takes **UC-211+**, must be added to the DOC-UC-000 §2 index and §3 actor totals in the same change.
 - Filename `UC-NNN.md`; frontmatter `document_id: DOC-UC-NNN` where the number **matches** the UC number (`UC-041` → `DOC-UC-041`), `category: 01-business-analysis`, `source_of_truth: true`.
 - **Exactly one primary actor** from the canonical 7 (`DOC-OVR-007`); supporting actors appear inside steps.
 - Reference only **existing** `BR-*` (DOC-BA-005) and `FR-*` (DOC-REQ-001) IDs — never invent. API touchpoints are conceptual (`POST /orders`); `07-api/` owns the contract.
@@ -98,3 +98,4 @@ related_documents: [DOC-UC-000, DOC-BA-005, DOC-OVR-007]
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-29 | Allocation rule: `UC-001…UC-040` → **`UC-001…UC-210`** (42 issued + session-010 minting band; next free ID `UC-211+`) | Owner directive session 010 (`prompt-010.md` §1) — allocation synced in `naming-conventions.md` v1.5 §3 (SPE-05) |

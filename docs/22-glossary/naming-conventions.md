@@ -3,9 +3,9 @@ document_id: DOC-GL-003
 title: Naming Conventions
 category: 22-glossary
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -77,7 +77,7 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | Data requirements | `DATA-REQ-NNN` | `DATA-REQ-008` | 3 | `02-requirements/data/` | `DATA-REQ-001…008` |
 | Integration requirements | `INT-REQ-NNN` | `INT-REQ-005` | 3 | `02-requirements/integration/` | `INT-REQ-001…008` |
 | Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-02` | 2 | `01-business-analysis/business-rules.md` | 15 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`), 104 rules |
-| Use cases | `UC-NNN` | `UC-026` | 3 | `01-business-analysis/use-cases/` | `UC-001…UC-040` |
+| Use cases | `UC-NNN` | `UC-026` | 3 | `01-business-analysis/use-cases/` | `UC-001…UC-210` (42 issued at session-010 start; `UC-043…UC-210` allocated for minting in session 010) |
 | Workflows | `WF-NNN` | `WF-003` | 3 | `01-business-analysis/workflows/` | `WF-001…WF-012` |
 | Blocks | `B01…B13` | `B07` | 2 (no dash) | `00-project-overview/project-context.md` | 13 blocks |
 | API endpoints | `API-<GROUP>-NNN` | `API-WAL-002` | 3 | `07-api/endpoints/` | 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints |
@@ -238,5 +238,6 @@ Enforcement points in canon: CI lint for RTL/logical CSS (`05-frontend/rtl-and-s
 | 1.2 | 2026-09-27 | §7 queue example corrected: `b03.platform.webhook.send` → `b13.platform.webhook.send` (matches the register) | `REC-06`/`TD-07` pay-down — closes `CT-05`/consistency finding 17 (`CHK-25`) |
 | 1.3 | 2026-09-28 | §1 process-folder naming row (`phases/`, `sessions/`); §2 short codes gain `PHA`, `SES` | SES-01/DOC-02 remediation — `docs/sessions/` + `docs/phases/` created, IDs registered (SPE-05, session 005) |
 | 1.4 | 2026-09-28 | §3 `BR` row: 14 → **15 domains** (+`INV`), 99 → **104 rules** | `CRIT-06`/`HAL-04` pay-down (session 008) — `business-rules.md` v1.1 registered `BR-INV-01…05`; ID-series allocation row kept in sync (SPE-05) |
+| 1.5 | 2026-09-29 | §3 `UC` row: allocation `UC-001…UC-040` → **`UC-001…UC-210`** (42 issued + `UC-043…UC-210` allocated; also fixes the stale `…UC-040` range) | Owner directive session 010 (`prompt-010.md` §1): full portal use-case coverage — change control before minting (SPE-05, GEN-03) |
 
 

@@ -3,9 +3,9 @@ document_id: DOC-GL-002
 title: Terminology — Canonical A–Z Term Register
 category: 22-glossary
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-012, FR-013, NFR-013]
@@ -126,7 +126,7 @@ related_documents: [DOC-GL-001, DOC-GL-003, DOC-ROOT-001, DOC-OVR-002, DOC-OVR-0
 | System (actor) | الفاعل النظامي | Non-human actor ACT-07: background jobs, schedulers, webhooks and automated engines (escrow release, TTL sweeps, escalations); it has no interactive login and is not a login role — its actions write `audit_log.actor_type='SYSTEM'`. | Business | ACT-07, DOC-DB-001 §Invariants | Workflow (WF), Domain event |
 | Test case (TC) | حالة اختبار | A single executable verification document `TC-NNN.md` (`TC-001…TC-114`, allocation locked per domain) with objective, level, priority, automation flag, preconditions, data, steps and expected result. | Process | `13-testing/test-cases/`, DOC-TST-006 | Acceptance criterion (AC), Constraint test |
 | Top-up | تعبئة الرصيد | Adding money to the wallet: m-Floos/OneCash credited only on verified provider callback or reconciled poll, bank transfer only after admin verification; bounds 1,000–5,000,000 YER per transaction; no other instruments exist. | Business | C-05, BR-PAY-02…04, FR-013 | Wallet, Reconciliation |
-| Use case (UC) | حالة استخدام | A structured scenario document `UC-NNN.md` (`UC-001…UC-040`) with one primary actor from the canonical 7, trigger, main/alternative/exception flows and `AC-UCnnn-nn` criteria; API touchpoints inside are conceptual. | Process | `01-business-analysis/use-cases/` (DOC-UC-000) | Workflow (WF), Acceptance criterion |
+| Use case (UC) | حالة استخدام | A structured scenario document `UC-NNN.md` (`UC-001…UC-210`, 42 issued at session-010 start) with one primary actor from the canonical 7, trigger, main/alternative/exception flows and `AC-UCnnn-nn` criteria; API touchpoints inside are conceptual. | Process | `01-business-analysis/use-cases/` (DOC-UC-000) | Workflow (WF), Acceptance criterion |
 | VAT (15%) | ضريبة القيمة المضافة | Value-added tax at 15% applied to (cart subtotal − coupon discount), added on top, never charged on shipping, shown as its own localized line in every order breakdown. | Business | BR-FIN-01, project-context §Compliance | Subtotal, Discount |
 | Vendor | بائع | The canonical name for actor ACT-02 — the selling party who owns a store, passes KYC, manages catalog/inventory/orders and receives escrow releases and payouts. | Business | ACT-02, `00-project-overview/actors-and-roles.md` | Store, Seller (disallowed), KYC |
 | Verified purchase | شراء موثّق | The badge/eligibility proving a review comes from a real delivered order of that customer — the precondition for writing a review (only the purchasing customer, only after `DELIVERED`). | Business | BR-REV-01, DB-015 | Review, Rating |
@@ -157,3 +157,4 @@ related_documents: [DOC-GL-001, DOC-GL-003, DOC-ROOT-001, DOC-OVR-002, DOC-OVR-0
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Business-rule term row: 14 → **15 domains** (+`INV`), 99 → **104 rules** | `CRIT-06`/`HAL-04` pay-down (session 008) — `business-rules.md` v1.1 registered `BR-INV-01…05` (root README §9.4) |
+| 1.2 | 2026-09-29 | Use-case term row: range `UC-001…UC-040` → **`UC-001…UC-210`** (42 issued at session-010 start; allocation expanded for portal coverage) | Owner directive session 010 (`prompt-010.md` §1) — allocation change control in `naming-conventions.md` v1.5 §3 |
