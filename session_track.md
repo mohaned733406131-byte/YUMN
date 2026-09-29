@@ -363,7 +363,7 @@ RESULT: PASS — every cited path and ID resolves (REC-15)
 gitleaks 8.30.1: raw 2 (dir) / 5 (git, 28 commits) findings = 2 benign test fixtures
   -> .gitleaks.toml documented allowlist -> gitleaks dir EXIT 0, gitleaks git EXIT 0
 
-git log: ae2ae01 (CHK-05 + registers) · d492ae3 (gitleaks allowlist) (+ closing evidence commit) — branch session-009
+git log: ae2ae01 (CHK-05 + registers) · d492ae3 (gitleaks allowlist) · f303c54 (close-out) (+ closing evidence commit) — branch session-009
 ```
 
 **Status honesty (DOD-10):** validator `PASS — structure healthy` and citation check `PASS`. Roll-up **66 → 65 open** (13/21/11/7/6/7) — only finding 2 closed; **no gate moved**. Secret scan is now genuinely `PASS` (not BLOCKED): installed, raw findings triaged as documented test fixtures, allowlist scoped and justified, tree + full history clean. **Citation-CI run still UNVERIFIED** (pushed ≠ run ≠ seen). Remaining work is sponsor/owner-owned: `REC-11` (`ASM-14`), `REC-12` (`DEP-05`/`DEP-06`), `REC-13` (`DEP-10`), `M-01`/`M-04`/`M-05`/`M-06`, `SEC-001…015`, `origin/master` deletion; plus deferred `D-06`/`D-07`/`D-12` (Phase-2 ADRs). Gate 0 still `FAIL` (`CRIT-01`); nothing in `docs/` is `VERIFIED` (`SPE-03`).

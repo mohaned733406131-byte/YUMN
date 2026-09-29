@@ -90,6 +90,7 @@ with .gitleaks.toml (documented, regex-scoped allowlist; default rules kept):
 ```text
 git log --oneline (session-009)
 
+f303c54 docs(session-009): close session 009 — work file DOC-SES-009, ledger row 009 + resume 010, sessions registry v1.6, memory snapshot, prompt-next -> 010 (roll-up 65 open, secret scan PASS, citation-CI UNVERIFIED)
 d492ae3 chore(security): gitleaks allowlist for 2 test-fixture idempotency keys — tree + 28-commit history scans clean (gitleaks 8.30.1, session 009)
 ae2ae01 fix(docs): CHK-05 remediation — add Change History to 48 files, full 31-check re-run 20/2/9 (consistency v1.17), roll-up 66 -> 65 (analysis-validation v1.11)
 (+ closing evidence commit for this file / trackers)

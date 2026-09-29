@@ -39,7 +39,7 @@ after my register edits failed on one path I had invented — `` `02-requirement
 — fixed at source, then green; the session file's own references to the two uncommitted
 session-local scripts had to come off the path checker as plain text; re-run it before every commit).
 **Git:** branch **`session-009`**: `ae2ae01` (CHK-05 remediation + registers, roll-up 65),
-`d492ae3` (gitleaks allowlist) — remote `origin` =
+`d492ae3` (gitleaks allowlist), `f303c54` (session-009 close-out) — remote `origin` =
 `https://github.com/mohaned733406131-byte/YUMN.git`. **`main` was not touched** — by directive
 (it still sits at `c9ff07c`, the session-007 close).
 
