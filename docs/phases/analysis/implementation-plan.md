@@ -3,9 +3,9 @@ document_id: DOC-PHA-003
 title: Implementation Plan — analysis
 category: phases
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: false
 related_documents: [DOC-PHA-002, DOC-CMP-002, DOC-CMP-004]
@@ -69,7 +69,7 @@ Phase-specific rules: **none added.** The binding set is [`senior-rules/RULES.md
 | `SEC-011` — sole auth channel (SMS/WhatsApp, `DEP-06`) uncontracted | CRITICAL | Gate 0 blocker: contract + template approval before any auth code |
 | `DEP-05` wallet providers uncontracted | HIGH | Gate 0 blocker; sandbox adapters before production top-ups |
 | Spec contradictions (`D-06` vocabularies, `D-12`/`ORD-08` race, `SPE-04`) | HIGH | ADR reconciliation **before** code touches money/orders/enums |
-| 66 open audit findings | MEDIUM | Waves per [phase-audit.md](phase-audit.md) §3; sponsor items `REC-11…13` escalated |
+| 65 open audit findings | MEDIUM | Waves per [phase-audit.md](phase-audit.md) §3; sponsor items `REC-11…13` escalated |
 | `ASM-14` budget/staffing baselines unset | HIGH | Sponsor decision — Gate 0 |
 
 ## 7. Roll-up links
@@ -83,3 +83,4 @@ Phase-specific rules: **none added.** The binding set is [`senior-rules/RULES.md
 | 2026-09-28 | 1.0 | Initial creation from `TEMPLATE_phase_implementation_plan.md` (session 005) | analysis-agent |
 | 2026-09-28 | 1.1 | §6 risk row re-synced: open audit findings 69 → **67** (`analysis-validation.md` v1.8 — `HAL-04`, `CRIT-06`, `AVF-05` `RESOLVED` by the `BR-INV` registration) | analysis-agent |
 | 2026-09-28 | 1.2 | §6 risk row re-synced: open audit findings 67 → **66** (`analysis-validation.md` v1.9 — `HAL-12`, `AVF-11` `RESOLVED` by the `REC-15` citation-CI set) | analysis-agent |
+| 2026-09-29 | 1.3 | §6 risk row re-synced: open audit findings 66 → **65** (`analysis-validation.md` v1.11 — session-009 pre-gate hygiene: consistency finding 2 `RESOLVED` by the `CHK-05` fix) | analysis-agent |

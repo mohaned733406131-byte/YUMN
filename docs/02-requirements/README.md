@@ -3,9 +3,9 @@ document_id: DOC-REQ-002
 title: 02 Requirements — README
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -72,3 +72,10 @@ Open questions (if any → GAP-*)
 ## Related Directories
 
 `01-business-analysis/` (rules) · `03-system-analysis/` (behavior) · `19-traceability/` (links) · `20-validation/` (audits) · `13-testing/` (verification)
+
+## Change History
+
+| Version | Date | Change | Reason |
+|---|---|---|---|
+| 1.0 | 2026-09-26 | Initial publication | Analysis-phase authoring (root README §7) |
+| 1.1 | 2026-09-29 | `## Change History` section added | Session 009 `CHK-05` re-run — consistency finding 2; root README §9.2 requires the section on every document |

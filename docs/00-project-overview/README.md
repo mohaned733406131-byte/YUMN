@@ -3,9 +3,9 @@ document_id: DOC-OVR-001
 title: 00 Project Overview — README
 category: 00-project-overview
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -56,3 +56,10 @@ None (root of the analysis).
 ## Important Note
 
 All quantitative targets (scale, availability, performance) originate here and in `02-requirements/non-functional/`. Changing a value here requires propagation to NFRs, architecture, and tests (consistency rule → `20-validation/consistency-audit.md`).
+
+## Change History
+
+| Version | Date | Change | Reason |
+|---|---|---|---|
+| 1.0 | 2026-09-26 | Initial publication | Analysis-phase authoring (root README §7) |
+| 1.1 | 2026-09-29 | `## Change History` section added | Session 009 `CHK-05` re-run — consistency finding 2; root README §9.2 requires the section on every document |

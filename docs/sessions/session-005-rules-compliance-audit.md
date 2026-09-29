@@ -3,9 +3,9 @@ document_id: DOC-SES-005
 title: Session 005 — rules-compliance audit + SES-01/DOC-02/VCS remediation
 category: sessions
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -33,7 +33,7 @@ The full table with severities, rule IDs and disposition lives in [`docs/phases/
 | F-07 | MEDIUM | Validator checks ID uniqueness only in `RULES.md` | verification coverage | **FIXED 2026-09-28 (session 006)** — §0.5 amendment applied (`validate.py` check 5 → both catalogs, 77 + 94; `VERSION` 2.2.0); was "proposed, not hot-fixed" (manual: 94/94 unique) |
 | F-08 | LOW | No terminal-session names recorded | SES-03 | **FIXED** — named sessions from 005 |
 | F-09 | HIGH | `SEC-001…015` all open (1 CRIT, 4 HIGH) | SEC-04/AUD-02 | **OPEN — sponsor/Gate 0** |
-| F-10 | MEDIUM | 69 open findings across seven audits (session-005 close; roll-up now **66** after the session-008 `BR-INV` + `REC-15` sets — `analysis-validation.md` v1.9); Gate 0 `FAIL` | AUD-02 | **OPEN — sponsor items `REC-11…13`** |
+| F-10 | MEDIUM | 69 open findings across seven audits (session-005 close; roll-up now **65** after the session-008 `BR-INV` + `REC-15` sets and the session-009 hygiene set — `analysis-validation.md` v1.11); Gate 0 `FAIL` | AUD-02 | **OPEN — sponsor items `REC-11…13`** |
 
 ## Work log (chronological)
 
@@ -127,3 +127,4 @@ Filled after the commit sequence in this same session (see `session_track.md` ro
 | 2026-09-28 | 1.3 | F-05 annotated → FIXED (session 008: `archdoc.md` v1.0 restored with provenance, `D-10` → `RESOLVED`); close-state bullet at §Findings/blockers annotated | analysis-agent |
 | 2026-09-28 | 1.4 | F-10 row annotated: roll-up re-synced 69 → **67** (`BR-INV` registration — `HAL-04`/`CRIT-06`/`AVF-05` `RESOLVED`); status still `OPEN`, sponsor-owned | analysis-agent |
 | 2026-09-28 | 1.5 | F-10 row annotated again: roll-up → **66** (`REC-15` citation-CI set — `HAL-12`/`AVF-11` `RESOLVED`); status still `OPEN`, sponsor-owned | analysis-agent |
+| 2026-09-29 | 1.6 | F-10 row annotated again: roll-up → **65** (session-009 pre-gate hygiene — consistency finding 2 `RESOLVED` by the `CHK-05` fix; `analysis-validation.md` v1.11); status still `OPEN`, sponsor-owned | analysis-agent |

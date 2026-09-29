@@ -3,9 +3,9 @@ document_id: DOC-PHA-018
 title: Phase Audit & Tracking — analysis
 category: phases
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: false
 related_documents: [DOC-VAL-001, DOC-VAL-008, DOC-CMP-004]
@@ -45,7 +45,7 @@ related_requirements: []
 | F-07 | MEDIUM | Validator checks ID uniqueness only in `RULES.md`; `YUMN_RULES.md` unchecked | verification coverage | **FIXED (session 006)** | amendment applied per core/00 §0.5: `validate.py` check 5 now parses both catalogs (77 + 94 IDs); `VERSION` → `2.2.0`, `CHANGELOG.md` entry; validator `PASS — yumn rule ids unique (94 rules in YUMN_RULES.md)` |
 | F-08 | LOW | No terminal-session names recorded (sessions 001–004) | SES-03 | **FIXED** | noted in session files; named sessions apply from session 005 |
 | F-09 | HIGH | Design findings `SEC-001…015` all open (1 CRIT, 4 HIGH) | SEC-04/AUD-02 | **OPEN — owner: sponsor/Gate 0** | register: `09-security/security-findings.md` |
-| F-10 | MEDIUM | Open knowledge-base findings across seven audits at each re-sync: **69 at session 005**, **71 at the session-006 re-sync** (15/17/12/12/8/7), **69 at the session-008 re-sync** (14/21/11/9/7/7; `analysis-validation.md` v1.7), **67 after the session-008 `BR-INV` registration** (14/21/11/8/6/7; v1.8), **66 after the session-008 `REC-15` citation-CI set** (14 consistency / 21 contradiction / 11 gap / 7 hallucination / 6 critical / 7 requirement-validation; `analysis-validation.md` v1.9); Gate 0 `FAIL` (`CRIT-01`) | AUD-02 | **OPEN — sponsor items `REC-11…13`** | `20-validation/` registers (`analysis-validation.md` v1.9) |
+| F-10 | MEDIUM | Open knowledge-base findings across seven audits at each re-sync: **69 at session 005**, **71 at the session-006 re-sync** (15/17/12/12/8/7), **69 at the session-008 re-sync** (14/21/11/9/7/7; `analysis-validation.md` v1.7), **67 after the session-008 `BR-INV` registration** (14/21/11/8/6/7; v1.8), **66 after the session-008 `REC-15` citation-CI set** (14/21/11/7/6/7; v1.9), **65 after the session-009 pre-gate hygiene set** (13 consistency / 21 contradiction / 11 gap / 7 hallucination / 6 critical / 7 requirement-validation; `analysis-validation.md` v1.11 — finding 2 `RESOLVED` by the `CHK-05` fix); Gate 0 `FAIL` (`CRIT-01`) | AUD-02 | **OPEN — sponsor items `REC-11…13`** | `20-validation/` registers (`analysis-validation.md` v1.11) |
 
 ## 3. Remediation waves (rule 16f)
 
@@ -80,3 +80,4 @@ related_requirements: []
 | 2026-09-28 | 1.3 | F-05 → FIXED (session 008: `archdoc.md` v1.0 restored with provenance, `D-10` → `RESOLVED`); F-10 re-synced to the session-008 roll-up (69 open, `analysis-validation.md` v1.7); Wave-1 + Remaining re-scoped | analysis-agent |
 | 2026-09-28 | 1.4 | F-10 re-synced to the `BR-INV` registration roll-up (**67 open**, `analysis-validation.md` v1.8 — `HAL-04`/`CRIT-06`/`AVF-05` `RESOLVED`); sponsor-owned status unchanged | analysis-agent |
 | 2026-09-28 | 1.5 | F-10 re-synced to the `REC-15` citation-CI roll-up (**66 open**, `analysis-validation.md` v1.9 — `HAL-12`/`AVF-11` `RESOLVED`); sponsor-owned status unchanged | analysis-agent |
+| 2026-09-29 | 1.6 | F-10 re-synced to the session-009 pre-gate hygiene roll-up (**65 open**, `analysis-validation.md` v1.11 — consistency finding 2 `RESOLVED` by the `CHK-05` fix, `AUD-01` v1.17 full 31-check re-run); sponsor-owned status unchanged | analysis-agent |

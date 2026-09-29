@@ -54,9 +54,11 @@ register dispositions (`CT-24`/`CT-25`/`GAP-02`/`GAP-03`/`GAP-13`/`HAL-15` → `
 `BR-INV-01…05` registered (`business-rules.md` v1.1 → **104 rules / 15 domains**), `REC-15` paid
 (citation CI `tools/check_citations.py` + `.github/workflows/docs-citations.yml`), close-out
 count/dashboard catch-up (7 missed `99`→`104` consumers, UC/TC dashboard, `F-02`/`F-03` →
-`RESOLVED`), roll-up **66 open**.
+`RESOLVED`), roll-up **66 open**. Pre-gate hygiene (session 009): full 31-check re-run on the 485-file
+corpus → **20/2/9** and the `CHK-05` fix (48 files given their `## Change History`) closing consistency
+finding 2 → roll-up **65 open**.
 Still open: money-path enum drift (`D-06`/`SPE-04`), API-promised storage (`D-07`), the `ORD-08` race (`D-12`),
-66 audit findings, plan items `M-01`/`M-04`/`M-05`/`M-06` (`CT-23`/`CT-26`/`CT-27`/`CT-28`, `GAP-14`),
+65 audit findings, plan items `M-01`/`M-04`/`M-05`/`M-06` (`CT-23`/`CT-26`/`CT-27`/`CT-28`, `GAP-14`),
 sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`) — all remaining `REC`/`TD` rows are
 `PAID`; the rest is sponsor-owned.
 Rule `SPE-03` forbids claiming any of these as done.
