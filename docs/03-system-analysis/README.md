@@ -3,9 +3,9 @@ document_id: DOC-SA-001
 title: 03 System Analysis — README
 category: 03-system-analysis
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-011, FR-012, FR-015]
@@ -64,7 +64,7 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Direction | Directory | What flows |
 |---|---|---|
 | Consumes | `00-project-overview/` | Actors `ACT-01…ACT-07`, constraints `C-01…C-26`, blocks `B01…B13`, scope exclusions |
-| Consumes | `01-business-analysis/` | 104 rules `BR-*`, processes `BP-01…BP-15`, workflows `WF-001…WF-012`, use cases `UC-001…UC-040` |
+| Consumes | `01-business-analysis/` | 104 rules `BR-*`, processes `BP-01…BP-15`, workflows `WF-001…WF-012`, use cases `UC-001…UC-210` |
 | Consumes | `02-requirements/` | All 68 `FR-*` / `NFR-*` / `SEC-REQ-*` / `DATA-REQ-*` / `INT-REQ-*` |
 | Feeds | `04-architecture/` | Logical components become modules; flows become technical data flows |
 | Feeds | `07-api/`, `08-database/` | Behavior contracts become endpoints; conceptual stores become schemas `b01…b13` |
@@ -115,3 +115,4 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | 1.1 | 2026-09-27 | Registry stub rows replaced: the three stale `07-api/`/`08-database/`/`13-testing/` registry stub rows now point at the real registries with paths, ID ranges and real examples (`API-WAL-003`, `DB-001…DB-018`, `TC-001…TC-114`) | `REC-08`/`TD-09` pay-down — stale stubs caused the stop-or-invent-ID failure mode root README §5 forbids |
 | 1.2 | 2026-09-28 | Contents + reading-order rows added for `erp-finance-departments.md` (`DOC-SA-011`, minted here) | `plan-develop.md` §8 approval implementation (session 007) — new analysis document registered in its domain index (SPE-05) |
 | 1.3 | 2026-09-28 | Consumes row count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
+| 1.4 | 2026-09-29 | Consumes row use-case range sync: `UC-001…UC-040` → **`UC-001…UC-210`** (210 use-case files) | `prompt-010.md` §1 (session 010 owner directive — `UC-043`…`UC-210` minted) |

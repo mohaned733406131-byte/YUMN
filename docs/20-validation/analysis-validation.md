@@ -3,7 +3,7 @@ document_id: DOC-VAL-008
 title: AUD-06 — Final Quality Assessment (whole corpus)
 category: 20-validation
 status: approved
-version: 1.11
+version: 1.12
 created: 2026-09-27
 updated: 2026-09-29
 author: analysis-agent
@@ -45,7 +45,7 @@ File counts recomputed 2026-09-27 (domains `19-traceability/` and `20-validation
 |---|---|---|---|---|---|
 | — | root `README.md` | 1 | OK | Domain map, §5 ID series, §10 file register, §11 quality gate | ~~HAL-03 (provenance)~~ `RESOLVED` 2026-09-28, HAL-13 (status line) |
 | 00 | `00-project-overview` | 11 | OK | Charter, scope, constraints (26), assumptions (ASM), dependencies (DEP), success criteria (24 `AC-S-*`) | CRIT-01 (Gate 0 prereqs), CRIT-09 (launch deps), HAL-10 |
-| 01 | `01-business-analysis` | 63 | OK | 104 business rules, 42 use cases, 12 workflows, stakeholder needs | ~~HAL-04 (`BR-INV-*` absent — with `13-testing/`)~~ `RESOLVED` 2026-09-28 (`BR-INV-01…05` registered) |
+| 01 | `01-business-analysis` | 231 | OK | 104 business rules, 210 use cases, 12 workflows, stakeholder needs | ~~HAL-04 (`BR-INV-*` absent — with `13-testing/`)~~ `RESOLVED` 2026-09-28 (`BR-INV-01…05` registered) |
 | 02 | `02-requirements` | 76 | OK | 68 requirements, 253-AC registry | HAL-05…HAL-08, RVF-01…RVF-07, CRIT-05 |
 | 03 | `03-system-analysis` | 10 | OK | Boundary, context, state transitions, edge cases | HAL-09 (stale "not yet authored") |
 | 04 | `04-architecture` | 10 | OK | C4 views, data flow (17-queue table), ADR index | HAL-02 (ADR index), HAL-09, CRIT-04 (queue drift — with `06-backend/`) |
@@ -140,3 +140,4 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 4 · MEDIUM 3 · LOW 1 = 1
 | 1.9 | 2026-09-28 | `AVF-11` → `RESOLVED` + `HAL-12` → `RESOLVED` (source fix `actors-and-roles.md` v1.1 + `REC-15` citation CI green); method §2.2 annotated (CI now continuous, tail-boundary rule added); domain rows 07/22/23 annotated; sibling roll-up `AUD-04` → 7 open v1.8; severity totals → **8 open**; verdict + unresolved list re-scoped; open-findings total → **66 (14/21/11/7/6/7)** | `REC-15` citation-CI change set (session 008) — root README §9.4 consumer re-sync (finding 25 pattern) |
 | 1.10 | 2026-09-28 | Domain-01 row re-synced: 61 → **63 files**, 40 → **42 use cases** (`UC-041`/`UC-042` added session 007, row never updated); roll-up unchanged (**66 open**) | Count/dashboard propagation catch-up (session 008 close) — root README §9.4 consumer re-sync; direct file count re-run |
 | 1.11 | 2026-09-29 | Session-009 pre-gate hygiene propagation: `AUD-01` row → **v1.17 / 9 of 31 checks failed** (485-file re-run 2026-09-29, `CHK-05` → `PASS`); `AVF-10` consistency count 10 → 9; verdict 66 → **65 open** (13 consistency) with snapshot date 2026-09-29; unresolved list drops finding 2; coverage lines record the 485-file corpus and the current citation-CI figures (497 files, 18,790 ID citations) | Root README §9.4 consumer re-sync — owning document `consistency-audit.md` v1.17 changed in the same session-009 change set |
+| 1.12 | 2026-09-29 | Session-010 UC expansion propagation: domain-01 row re-counted — 63 → **231 files**, 42 → **210 use cases** (session 010 minted `UC-043`…`UC-210`, 168 files; `UC-001…210` verified contiguous 210/210); roll-up untouched (**65 open** — no register status/count edited by this row) | Owner directive session 010 (`prompt-010.md` §1) — root README §9.4 consumer re-sync; direct file count re-run |

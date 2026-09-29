@@ -3,9 +3,9 @@ document_id: DOC-UX-002
 title: Critical User Flows
 category: 11-ui-ux
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: false
 related_requirements: [FR-001, FR-007, FR-009, FR-010, FR-011, FR-012, FR-013, FR-015, FR-016, FR-017, FR-019, FR-020]
@@ -14,7 +14,7 @@ related_documents: [DOC-UX-001, DOC-UX-003, DOC-UC-000, DOC-WF-001, DOC-BA-005, 
 
 # Critical User Flows
 
-Nine end-to-end flows as the design-level counterpart of `01-business-analysis/` use cases (`UC-001…UC-040`) and workflows (`WF-001…WF-012`). Steps are numbered; **decision points are marked `D1`, `D2`…** with their branches; rule and requirement IDs are referenced, never restated. State names are the canonical 17 (`C-09`, `DOC-SA-010`).
+Nine end-to-end flows as the design-level counterpart of `01-business-analysis/` use cases (`UC-001…UC-210`) and workflows (`WF-001…WF-012`). Steps are numbered; **decision points are marked `D1`, `D2`…** with their branches; rule and requirement IDs are referenced, never restated. State names are the canonical 17 (`C-09`, `DOC-SA-010`).
 
 ## Flow Index
 
@@ -170,3 +170,4 @@ Mapped: `UC-024`, `UC-038`, `FR-006`, `AC-FR006-01…05`.
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-29 | Design-counterpart use-case range sync: `UC-001…UC-040` → **`UC-001…UC-210`** | `prompt-010.md` §1 (session 010 owner directive — `UC-043`…`UC-210` minted; flow-level UC refs unchanged) |

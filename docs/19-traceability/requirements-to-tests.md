@@ -3,9 +3,9 @@ document_id: DOC-TRC-003
 title: Requirements to Tests — Requirement → Acceptance Criterion → Test Artifact Matrix
 category: 19-traceability
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-27
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-019, FR-020, NFR-009, SEC-REQ-012, DATA-REQ-002, INT-REQ-002]
@@ -459,7 +459,7 @@ Reading: each group lists ACs whose parent requirement is covered by **no** `TC`
 | G-04 | `AC-S-03` ("zero gaps") and `13-testing/README.md` `G-TEST-1` cannot be demonstrated from the corpus as it stands — file-absence cause cleared 2026-09-27, but `G-01`/`G-03` (27 unlinked + 42 declared-only ACs) and zero execution evidence still block the claim | HIGH | §2 verdict; `02-requirements/acceptance-criteria.md` §7 |
 | G-05 | ~~14 FR files list only `AC-FRnnn-01…04` while the registry defines `AC-FRnnn-05` (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`)~~ **RESOLVED 2026-09-27** — all 14 references added; 94/94 registry `AC-FR*` IDs present (`REC-04`/`TD-05` paid) | MEDIUM (was) → **RESOLVED** | `02-requirements/functional/*.md` vs `acceptance-criteria.md` |
 | G-06 | 5 success criteria (`AC-S-19`, `AC-S-21`…`AC-S-24`) are operational/pilot/sign-off records — no test artifact can ever satisfy them here | INFORMATIONAL | §3 rows marked `OPERATIONAL EVIDENCE` |
-| G-07 | 121 `AC-UCnnn-nn` criteria exist in `01-business-analysis/use-cases/*.md` outside the registry that claims to be the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings |
+| G-07 | 779 `AC-UCnnn-nn` criteria exist in `01-business-analysis/use-cases/*.md` outside the registry that claims to be the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings — 779 re-counted 2026-09-29 after session 010 grew the corpus to 210 UCs (was 121 at v1.2; finding unchanged, MEDIUM `OPEN`) |
 | G-08 | 8 constraint-register details cite no AC | LOW | §4 |
 | G-09 | Execution status: 0 tests executed, 0 reports; all `TST-CON-NN` `DESIGNED` | INFORMATIONAL (expected at v1.0) | `13-testing/constraint-tests.md` |
 
@@ -482,3 +482,4 @@ Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-do
 | 1.2 | 2026-09-27 | `REC-03` pay-down: `TC-104`…`TC-114` authored — §1 artifact count 114, §2 NFR/SEC counts re-run (203/42), 6 rows `DECLARED`→`EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`), 10 rows gain new TC links, §5 statuses flipped to present, `G-02` → `RESOLVED`, `G-04` re-scoped | Root README §9.4 same-change-set propagation for a `13-testing/` change (`21-completion/recommendations.md` `REC-03`) |
 | 1.3 | 2026-09-27 | `REC-04` pay-down: `G-05` → `RESOLVED` (14 `AC-FRnnn-05` references added, 94/94 cited); "documents needing update" re-scoped | Root README §9.4 same-change-set propagation for an `02-requirements/functional/` change (`REC-04`) |
 | 1.4 | 2026-09-28 | §1 Functional range end corrected `AC-FR020-05` → `AC-FR020-04` (registry tops at `-04`; FR-020 defines four ACs — count 94 unchanged) | `REC-15` citation-CI enforcement (session 008) — `tools/check_citations.py` caught the dangling range end |
+| 1.5 | 2026-09-29 | `G-07` evidence re-counted: 121 → **779** unique `AC-UC*` IDs across the now-210 `use-cases/UC-*.md` (finding severity/status unchanged, MEDIUM `OPEN`) | `prompt-010.md` §1 session-010 UC-coverage directive — UC corpus grown 42 → 210, UC-derived evidence re-synced in the same change set (root README §9 rule 4) |
