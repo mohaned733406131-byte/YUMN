@@ -19,7 +19,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | File | Purpose |
 |---|---|
 | [session_track.md](session_track.md) | Session ledger, resume points, resume prompts (SES-02/04) |
-| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…008` with evidence (SES-01) |
+| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…009` with evidence (SES-01) |
 | [development_phases_entry.md](development_phases_entry.md) | Phase status, Gate 0 state (DOC-01/02) |
 | [memory.md](memory.md) | Durable facts + known-defect register (DOC-01) |
 | [mind_map.md](mind_map.md) | Repository navigation (DOC-01) |

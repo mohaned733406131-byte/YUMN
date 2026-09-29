@@ -3,13 +3,13 @@ document_id: DOC-SES-000
 title: Sessions Index — session work files (SES-01)
 category: sessions
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-09-29
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
-related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-004, DOC-SES-005, DOC-SES-006, DOC-SES-007, DOC-SES-008]
+related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-004, DOC-SES-005, DOC-SES-006, DOC-SES-007, DOC-SES-008, DOC-SES-009]
 ---
 
 # docs/sessions — Session Work Files (SES-01)
@@ -32,6 +32,7 @@ from `senior-rules/templates/TEMPLATE_session_work.md`). The resume index is
 | 006 | [session-006-change-control-sweep.md](session-006-change-control-sweep.md) | 2026-09-28 | CLOSED | Change-control sweep (31-check re-run, deferred findings (a)–(f)) + F-07 amendment |
 | 007 | [session-007-describ-reconciliation.md](session-007-describ-reconciliation.md) | 2026-09-28 | CLOSED | `describ.md` reconciliation (`CT-23`…`CT-30`, `GAP-13`/`GAP-14`, `UC-041`/`UC-042`) + `REC-02`/`REC-10`/`REC-14` pay-downs + `plan-develop.md` **v1.2 APPROVED** + analysis-layer implementation (constraint amendments, `DOC-SA-011`, rbac §11, register dispositions → roll-up **72 open**) |
 | 008 | [session-008-archdoc-brinv-citation-ci.md](session-008-archdoc-brinv-citation-ci.md) | 2026-09-28 | CLOSED | `REC-01` archdoc restore (`archdoc.md` v1.0, `TD-03`/`HAL-03`/`CRIT-08` closed) + `BR-INV-01…05` registration (`business-rules.md` v1.1 → 104 rules/15 domains, `CRIT-06`/`HAL-04` closed) + `REC-15` citation CI (`tools/check_citations.py` + Actions workflow, `HAL-12`/`AVF-11` closed — **all assistant-side `REC`/`TD` now `PAID`**) + count/dashboard catch-up → roll-up **66 open** |
+| 009 | [session-009-pre-gate-hygiene.md](session-009-pre-gate-hygiene.md) | 2026-09-29 | CLOSED | Pre-gate hygiene: fresh **31-check re-run on 485 files → 20/2/9** (session-006 tally correlation corrected to 19/2/10 pre-fix) + **`CHK-05` remediated** (48 files given `## Change History`, finding 2 `RESOLVED`, `consistency-audit` **v1.17**) + **gitleaks 8.30.1 secret scan** (raw 2/5 findings = 2 benign test fixtures → documented `.gitleaks.toml` allowlist → tree + history clean) + citation-CI run recorded **UNVERIFIED** + sponsor dispositions surfaced → roll-up **65 open** |
 
 ## Notes
 
@@ -50,3 +51,4 @@ from `senior-rules/templates/TEMPLATE_session_work.md`). The resume index is
 | 2026-09-28 | 1.3 | Registry row 007 + `DOC-SES-007` added (session 007, SPE-05) | analysis-agent |
 | 2026-09-28 | 1.4 | Registry row 007 → `CLOSED` + focus extended (approval implementation, session 007 close, SES-01) | analysis-agent |
 | 2026-09-28 | 1.5 | Registry row 008 + `DOC-SES-008` added (session 008 close, SPE-05) | analysis-agent |
+| 2026-09-29 | 1.6 | Registry row 009 + `DOC-SES-009` added (session 009 close, SPE-05) | analysis-agent |
