@@ -19,7 +19,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | File | Purpose |
 |---|---|
 | [session_track.md](session_track.md) | Session ledger, resume points, resume prompts (SES-02/04) |
-| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…009` with evidence (SES-01) |
+| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…010` with evidence (SES-01) |
 | [development_phases_entry.md](development_phases_entry.md) | Phase status, Gate 0 state (DOC-01/02) |
 | [memory.md](memory.md) | Durable facts + known-defect register (DOC-01) |
 | [mind_map.md](mind_map.md) | Repository navigation (DOC-01) |
@@ -56,7 +56,11 @@ register dispositions (`CT-24`/`CT-25`/`GAP-02`/`GAP-03`/`GAP-13`/`HAL-15` → `
 count/dashboard catch-up (7 missed `99`→`104` consumers, UC/TC dashboard, `F-02`/`F-03` →
 `RESOLVED`), roll-up **66 open**. Pre-gate hygiene (session 009): full 31-check re-run on the 485-file
 corpus → **20/2/9** and the `CHK-05` fix (48 files given their `## Change History`) closing consistency
-finding 2 → roll-up **65 open**.
+finding 2 → roll-up **65 open**. UC coverage expanded (session 010, owner directive `prompt-010.md` §1):
+42 → **210 use cases** — 168 `UC-043`…`UC-210` minted in **parallel subagent waves**, index `DOC-UC-000`
+**v1.2** (+ §5 coverage matrix + **18-item PENDING backlog**), all registers/counts propagated (no
+omissions), full 31-check re-run on the **654**-file corpus **20/2/9 unchanged**; **derived 210** vs
+**owner "over 350" = `INSUFFICIENT EVIDENCE`** recorded side by side — roll-up still **65 open**.
 Still open: money-path enum drift (`D-06`/`SPE-04`), API-promised storage (`D-07`), the `ORD-08` race (`D-12`),
 65 audit findings, plan items `M-01`/`M-04`/`M-05`/`M-06` (`CT-23`/`CT-26`/`CT-27`/`CT-28`, `GAP-14`),
 sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`) — all remaining `REC`/`TD` rows are
