@@ -1,0 +1,20 @@
+# gitleaks configuration for this repository (REC secret scan, session 009 2026-09-29).
+#
+# Usage: gitleaks dir .   (working tree)   /   gitleaks git .   (history)
+# Default rules stay enabled; only the entries below are allowlisted, each with
+# a written justification. Never allowlist a real credential here.
+
+title = "YUMN gitleaks allowlist"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = """
+Test-case fixture values, NOT secrets: `Idempotency-Key` header examples in the
+order-cancel and payout test steps (`ord-045-cancel-01`, `pay-dispute-01`).
+They are readable, non-privileged test keys copied from the test case's own
+`Keys` row — nothing is being concealed. Flagged by rule `generic-api-key`
+(TC-045.md:39, TC-061.md:45); triaged 2026-09-29 (session 009 secret scan).
+"""
+regexes = ['''ord-045-cancel-01''', '''pay-dispute-01''']
