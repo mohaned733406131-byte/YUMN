@@ -598,7 +598,7 @@ propagation).
 
 ## 7. Prioritization & sequencing (aligned to the phase model)
 
-Per [`implementation-roadmap.md`](docs/21-completion/implementation-roadmap.md): schedule floats; no
+Per [`implementation-roadmap.md`](docs/21-completion/core/implementation-roadmap.md): schedule floats; no
 dates until `ASM-14` baselines exist; each phase exits only through its gate.
 
 | Wave | Contents | Gate |
@@ -658,10 +658,10 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 [`missing-information.md`](docs/20-validation/core/missing-information.md) ·
 [`contradiction-audit.md`](docs/20-validation/core/contradiction-audit.md) ·
 [`critical-findings.md`](docs/20-validation/core/critical-findings.md) ·
-[`recommendations.md`](docs/21-completion/recommendations.md) ·
-[`implementation-roadmap.md`](docs/21-completion/implementation-roadmap.md) ·
-[`quality-gates.md`](docs/21-completion/quality-gates.md) ·
-[`technical-debt.md`](docs/21-completion/technical-debt.md) ·
+[`recommendations.md`](docs/21-completion/core/recommendations.md) ·
+[`implementation-roadmap.md`](docs/21-completion/core/implementation-roadmap.md) ·
+[`quality-gates.md`](docs/21-completion/core/quality-gates.md) ·
+[`technical-debt.md`](docs/21-completion/core/technical-debt.md) ·
 [`describ.md`](describ.md) (sponsor input, `CT-23`…`CT-30` / `GAP-13` / `GAP-14`).
 
 **External research (benchmark & ERP — consulted 2026-09-28):**

@@ -221,7 +221,7 @@ Actor totals across all 210 use cases (allocation `UC-001`…`UC-210`, naming-co
 | **Total** | **210** |
 
 ## Preconditions
-Each `UC-NNN` file carries its own preconditions, main/alternate/exception flows, postconditions and related IDs per [`23-templates/use-case-template.md`](../../23-templates/use-case-template.md).
+Each `UC-NNN` file carries its own preconditions, main/alternate/exception flows, postconditions and related IDs per [`../../23-templates/core/use-case-template.md`](../../23-templates/core/use-case-template.md).
 
 ## Main flow
 Requirement → use case → workflow → API endpoint → entity → test: `FR-013 → BR-PAY-04 → UC-021 → API-WAL-002 → wallet → TC-031 → AC-FR013-01` (cross-referencing example, root README §5).

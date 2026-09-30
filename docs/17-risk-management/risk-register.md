@@ -292,11 +292,11 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Resolve `GAP-01…GAP-06` decisions before Gate 0 (owners listed in scope register) | Product owner + Sponsor | Phase 0 |
 | Every change follows root README §9: version bump, change history, impacted IDs into `../20-validation/core/consistency-audit.md` | Technical lead | Continuous |
 | Future-scope items parked, never promoted silently; ADR required for architectural change | Architecture | Continuous |
-| Phase-gate scope audit in `21-completion/quality-gates.md` | Sponsor | Each gate |
+| Phase-gate scope audit in `../21-completion/core/quality-gates.md` | Sponsor | Each gate |
 
 - **Contingency plan:** if creep has already consumed float, sponsor re-baselines schedule or cuts launch scope; never reduce test/observability coverage to absorb creep.
 - **Residual risk:** sponsor-level deadline pressure (STK-01) can override process; the mitigation is transparency of register/gate status, not authority.
-- **Linked IDs:** GAP-01…GAP-07, OBJ set, `project-scope.md`, root README §9, `../20-validation/core/consistency-audit.md`, `21-completion/quality-gates.md`.
+- **Linked IDs:** GAP-01…GAP-07, OBJ set, `project-scope.md`, root README §9, `../20-validation/core/consistency-audit.md`, `../21-completion/core/quality-gates.md`.
 
 ### RISK-012 — Central Bank position on closed-loop wallets (existential for wallet-only model)
 
@@ -422,7 +422,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 
 - **Contingency plan:** sponsor re-baselines timeline or adds contract capacity; freeze non-critical feature work to protect money-path delivery; sequence work so no single person blocks a gate.
 - **Residual risk:** Yemen's constrained tech talent market limits replacement options.
-- **Linked IDs:** ASM-14, DEP-11, NFR-009/010, OBJ set, `21-completion/quality-gates.md` Gate 0, STK-09.
+- **Linked IDs:** ASM-14, DEP-11, NFR-009/010, OBJ set, `../21-completion/core/quality-gates.md` Gate 0, STK-09.
 
 ### RISK-018 — Courier supply shortage in launch zones
 

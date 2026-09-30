@@ -16,9 +16,9 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 
 **Scope of `20-validation/`:** the evidence and defect record for this knowledge base — where gaps, contradictions, unsupported claims, critical findings and the final quality verdict live. This README is the domain index, the **`AUD-NN` audit register**, and the rules of engagement for every file in this directory.
 
-> **Audits record, they never fix.** No file here edits another document. Findings stay `OPEN` until the *owning* document changes through root README §9 change management, after which this domain records the propagation (root README §9.4) — never a silent local fix (root README §9.5, `23-templates/validation-audit-template.md` §Rules).
+> **Audits record, they never fix.** No file here edits another document. Findings stay `OPEN` until the *owning* document changes through root README §9 change management, after which this domain records the propagation (root README §9.4) — never a silent local fix (root README §9.5, `../23-templates/core/validation-audit-template.md` §Rules).
 
-**Authority:** root README §8 (evidence tags, severities), §9 (change/contradiction rules), §10 rows 41/42/43/45/48 (this domain's sanctioned file list), §11 (quality gate); `23-templates/validation-audit-template.md` (DOC-TPL-011 — file shape, finding columns, pre-submission checklist). Where DOC-TPL-011 and root README disagree, root README wins and the disagreement is logged in `core/contradiction-audit.md`.
+**Authority:** root README §8 (evidence tags, severities), §9 (change/contradiction rules), §10 rows 41/42/43/45/48 (this domain's sanctioned file list), §11 (quality gate); `../23-templates/core/validation-audit-template.md` (DOC-TPL-011 — file shape, finding columns, pre-submission checklist). Where DOC-TPL-011 and root README disagree, root README wins and the disagreement is logged in `core/contradiction-audit.md`.
 
 ---
 
@@ -41,7 +41,7 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 
 ## 2. Audit Register (`AUD-NN` — minted here)
 
-`AUD-NN` is width 2, allocated append-only in this table only (`22-glossary/naming-conventions.md:91`, `23-templates/validation-audit-template.md` §Rules). The row previously carried `INFERENCE` in DOC-GL-003 §3; with this register authored, `AUD-01…AUD-07` are `VERIFIED` allocations.
+`AUD-NN` is width 2, allocated append-only in this table only (`22-glossary/naming-conventions.md:91`, `../23-templates/core/validation-audit-template.md` §Rules). The row previously carried `INFERENCE` in DOC-GL-003 §3; with this register authored, `AUD-01…AUD-07` are `VERIFIED` allocations.
 
 | Audit ID | Type | File | Methodology | Scope of the baseline run | Verdict (baseline) |
 |---|---|---|---|---|---|
@@ -76,12 +76,12 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 
 1. **Evidence tags** on every statement: `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` (root README §8).
 2. **Severity** for findings: `CRITICAL` · `HIGH` · `MEDIUM` · `LOW` · `INFORMATIONAL`; **confidence** for conclusions: `HIGH` · `MEDIUM` · `LOW`.
-3. **Gate outcomes** for audits: `PASS` · `PASS WITH FINDINGS` · `FAIL` (root README §11; outcome vocabulary mirrored in `21-completion/quality-gates.md` §1).
+3. **Gate outcomes** for audits: `PASS` · `PASS WITH FINDINGS` · `FAIL` (root README §11; outcome vocabulary mirrored in `../21-completion/core/quality-gates.md` §1).
 4. **Finding status:** `OPEN` → `RESOLVED` (owning document changed, version bumped) or `WAIVED` (explicit written disposition with owner). No finding is deleted (DOC-TPL-011 pre-submission checklist #3).
 5. **Exact citations:** every finding names `file` + `§section` or `file:line` plus the conflicting/absent IDs. No evidence is invented; anything not read first-hand is tagged `INFERENCE`.
 6. **Propagation:** when an owning document changes, run the affected sweep again and record the affected IDs in `core/consistency-audit.md` §Change-Propagation Log (root README §9.4).
 7. **Re-run triggers:** any structural change (new directory, new ID series, registry renumber), any canon change in root README §5/§9, and before every gate (root README §11: "Audits … must be run after any structural change").
-8. **Consumers:** `21-completion/quality-gates.md` §1 lists all four of these files as *standing input to every gate*; `G-R6` (register hygiene) requires this domain to be clean; `D-1` (link validation) and `D-3` (ID discipline) are the checks this domain produces evidence for.
+8. **Consumers:** `../21-completion/core/quality-gates.md` §1 lists all four of these files as *standing input to every gate*; `G-R6` (register hygiene) requires this domain to be clean; `D-1` (link validation) and `D-3` (ID discipline) are the checks this domain produces evidence for.
 9. **English only**; no `<angle-bracket>` placeholders outside `23-templates/` (DOC-TPL-001 §2).
 
 ---

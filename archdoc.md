@@ -85,7 +85,7 @@ validated by `validate.py`'s entry-file checks instead.
 - Content audits: the seven registers under `docs/20-validation/` (consistency, contradiction, gap,
   hallucination, critical, requirements-validation, roll-up) — re-run before every gate claim
   (root README §11; `20-validation/README.md` §4 rule 7).
-- Gates: `21-completion/quality-gates.md` (Gate 0–3) — gates stay `FAIL`/`BLOCKED` until real
+- Gates: `docs/21-completion/core/quality-gates.md` (Gate 0–3) — gates stay `FAIL`/`BLOCKED` until real
   evidence exists (`DOD-10`); approval of analysis artifacts never flips a gate (`GEN-03`).
 
 ## Change History

@@ -14,7 +14,7 @@ related_documents: [DOC-TST-001, DOC-TST-002, DOC-TST-004, DOC-TST-005, DOC-INT-
 
 # Test Plans
 
-Executable plans for the yumn verification effort. Methodology (levels, coverage, defect lifecycle) is fixed by [testing-strategy.md](testing-strategy.md); this file defines **what runs, when, and under which entry/exit conditions**. Every plan cites its canon IDs; results are evidence for the quality gates in `21-completion/quality-gates.md`.
+Executable plans for the yumn verification effort. Methodology (levels, coverage, defect lifecycle) is fixed by [testing-strategy.md](testing-strategy.md); this file defines **what runs, when, and under which entry/exit conditions**. Every plan cites its canon IDs; results are evidence for the quality gates in `../../21-completion/core/quality-gates.md`.
 
 **Defects process (all plans):** failures are filed against the failing TC / `TST-CON-*` / AC ID with severity per [testing-strategy.md](testing-strategy.md) §10. CRITICAL/HIGH block the plan's exit; security defects additionally follow `SEC-REQ-012` (critical ≤ 7 days); anything deferred needs written risk acceptance in `17-risk-management/risk-register.md`.
 
@@ -43,7 +43,7 @@ Executable plans for the yumn verification effort. Methodology (levels, coverage
 | PLAN-17 | Content, CMS & coupons | TC-097–104 | FR-019, BR-PRM-01…06 | Coupon edge fixtures (90%/91%, 90/91 days) seeded | 95% |
 | PLAN-18 | Platform administration & audit | TC-105–114 | FR-020, BR-PLT-06, SEC-REQ-010 | Admin/Moderator accounts + audit chain verifier ready | 80% |
 
-- **Schedule pointer:** plans execute per sprint against `21-completion/roadmap.md`; PLAN-01/02/09/10/11 are Phase-1 critical path. Sizing and sequencing detail: sprint test plan appendix maintained in CI, not in docs.
+- **Schedule pointer:** plans execute per sprint against `../../21-completion/core/roadmap.md`; PLAN-01/02/09/10/11 are Phase-1 critical path. Sizing and sequencing detail: sprint test plan appendix maintained in CI, not in docs.
 - **User acceptance:** at each release candidate, a per-surface UAT pass (`AC-S-04`) executes the P0/P1 journeys of every plan's TC range; sign-off sheets reference the plan IDs above and are filed as release evidence.
 - **Entry (common):** FR + ACs stable; environment healthy; fixtures seeded (DOC-TST-005); TCs for the range exist and are READY.
 - **Exit (common):** all TCs in range executed, P0/P1 100% PASS, 0 CRITICAL/HIGH open, evidence links added to the TCs, `19-traceability/` updated.

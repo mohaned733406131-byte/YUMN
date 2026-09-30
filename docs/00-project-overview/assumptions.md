@@ -31,12 +31,12 @@ Each assumption: statement, source, evidence, risk if false, how to verify, stat
 | ASM-11 | 10,000 concurrent users is the correct launch scale target | VERIFIED — brief (`C-25`) | Over/under-provisioning | Sponsor confirmation at Gate 0 | SUPPORTED |
 | ASM-12 | Central Bank of Yemen permits platform-operated closed-loop wallets | INFERENCE | Wallet feature illegal → fundamental redesign | Legal opinion before implementation (`DEP-10`) | DANGEROUS |
 | ASM-13 | Yemeni Personal Data Protection Law (2012) obligations are implementable by the planned controls | INFERENCE | Compliance gaps; penalties | Legal gap assessment (`DEP-09`) | UNSUPPORTED |
-| ASM-14 | Budget, team size, and schedule baselines will be set by sponsor at Gate 0 | INSUFFICIENT EVIDENCE | Planning impossible; roadmap floats | Sponsor decision — blocking for `21-completion/quality-gates.md` Gate 0 | UNSUPPORTED |
+| ASM-14 | Budget, team size, and schedule baselines will be set by sponsor at Gate 0 | INSUFFICIENT EVIDENCE | Planning impossible; roadmap floats | Sponsor decision — blocking for `../21-completion/core/quality-gates.md` Gate 0 | UNSUPPORTED |
 | ASM-15 | Arabic search quality is achievable with Elasticsearch Arabic analyzer (stemming) without custom NLP | INFERENCE | Poor search → discovery fails (FR-009) | Search relevance spike in Phase 1 with real product data | REASONABLE |
 
 ## Escalation Rule
 
-`DANGEROUS` and `UNSUPPORTED` assumptions blocking critical paths (ASM-03, ASM-04, ASM-12, ASM-14) must be resolved before the quality gate that precedes implementation (`21-completion/quality-gates.md`). They are also registered as risks (`RISK-006`, `RISK-012`).
+`DANGEROUS` and `UNSUPPORTED` assumptions blocking critical paths (ASM-03, ASM-04, ASM-12, ASM-14) must be resolved before the quality gate that precedes implementation (`../21-completion/core/quality-gates.md`). They are also registered as risks (`RISK-006`, `RISK-012`).
 
 ## Change History
 

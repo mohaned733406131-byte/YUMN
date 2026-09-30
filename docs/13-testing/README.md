@@ -22,7 +22,7 @@ Scope: all five surfaces (customer web, vendor panel, admin console, customer mo
 
 ## 1. Goals & Quality Gates
 
-Testing exists to move requirements from `IMPLEMENTED` to `VERIFIED` with evidence, never with assertion. Every test activity in this domain feeds one of the gates defined in `21-completion/quality-gates.md`:
+Testing exists to move requirements from `IMPLEMENTED` to `VERIFIED` with evidence, never with assertion. Every test activity in this domain feeds one of the gates defined in `../21-completion/core/quality-gates.md`:
 
 | Gate | Question | Evidence this domain produces | Canon |
 |---|---|---|---|

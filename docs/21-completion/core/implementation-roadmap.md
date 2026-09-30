@@ -14,11 +14,11 @@ related_documents: [DOC-OVR-003, DOC-OVR-009, DOC-OVR-010, DOC-RSK-002, DOC-RSK-
 
 # Implementation Roadmap (Phased Delivery Plan)
 
-> **SCHEDULE FLOATS.** There are **no calendar dates, no effort estimates, and no sprint numbers in this document, by design.** Budget, team-size, and schedule baselines are `INSUFFICIENT EVIDENCE` (`ASM-14`, `00-project-overview/assumptions.md`) and must be established by the sponsor **before implementation kickoff** at Gate 0 (`00-project-overview/project-charter.md` Authority; `21-completion/quality-gates.md`). Until `ASM-14` is resolved, all sequencing below is **relative and conditional**: one phase begins only when the previous phase's exit gate outcome is recorded.
+> **SCHEDULE FLOATS.** There are **no calendar dates, no effort estimates, and no sprint numbers in this document, by design.** Budget, team-size, and schedule baselines are `INSUFFICIENT EVIDENCE` (`ASM-14`, `00-project-overview/assumptions.md`) and must be established by the sponsor **before implementation kickoff** at Gate 0 (`00-project-overview/project-charter.md` Authority; `quality-gates.md`). Until `ASM-14` is resolved, all sequencing below is **relative and conditional**: one phase begins only when the previous phase's exit gate outcome is recorded.
 
-**Authority:** this file is the delivery-model authority for the project — the charter cites it directly ("Delivery model | Phased (see `21-completion/implementation-roadmap.md`)"). The sprint-cadence view derived from it for test planning is `21-completion/roadmap.md` (precedence rule: this file wins on conflict — `21-completion/README.md` §3).
+**Authority:** this file is the delivery-model authority for the project — the charter cites it directly ("Delivery model | Phased (see `implementation-roadmap.md`)"). The sprint-cadence view derived from it for test planning is `roadmap.md` (precedence rule: this file wins on conflict — `21-completion/README.md` §3).
 
-**Phase vocabulary** (fixed by `../17-risk-management/core/mitigation-plans.md`): **Phase 0** = pre-implementation · **Phase 1** = core build · **Phase 2** = pilot & hardening · **Launch** = public availability · **Post-launch** = operation and review. **"Nothing is implemented yet" applies to every row below** (DOC-RSK-001 §1) — this plan describes work to be done, not work done.
+**Phase vocabulary** (fixed by `../../17-risk-management/core/mitigation-plans.md`): **Phase 0** = pre-implementation · **Phase 1** = core build · **Phase 2** = pilot & hardening · **Launch** = public availability · **Post-launch** = operation and review. **"Nothing is implemented yet" applies to every row below** (DOC-RSK-001 §1) — this plan describes work to be done, not work done.
 
 ---
 
@@ -50,23 +50,23 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 |---|---|---|
 | 1 | Budget, team-size, and schedule baselines set by sponsor (`ASM-14` re-scored with evidence) | `00-project-overview/assumptions.md` escalation rule; charter Authority |
 | 2 | Dangerous / blocking assumptions resolved: `ASM-03`, `ASM-04`, `ASM-12` (+ `ASM-14`) | `assumptions.md` L39 escalation rule |
-| 3 | Gate-critical dependencies opened **or** their mitigation accepted in writing: `DEP-05`, `DEP-06` (and `DEP-10` before any B07 money build) | `00-project-overview/dependencies.md`; `../17-risk-management/core/risk-review-process.md` §7 G-R3 |
+| 3 | Gate-critical dependencies opened **or** their mitigation accepted in writing: `DEP-05`, `DEP-06` (and `DEP-10` before any B07 money build) | `00-project-overview/dependencies.md`; `../../17-risk-management/core/risk-review-process.md` §7 G-R3 |
 | 4 | GAP register triaged: `GAP-01…GAP-07` dispositioned with owners (Gate-0 blockers flagged) | `00-project-overview/project-scope.md` UNCERTAIN SCOPE; `17-risk-management/risk-register.md` RISK-011 action |
-| 5 | Analysis sign-off path opened — `00-project-overview/project-charter.md` sign-off flows to `21-completion/final-acceptance.md` | charter L87 |
+| 5 | Analysis sign-off path opened — `00-project-overview/project-charter.md` sign-off flows to `final-acceptance.md` | charter L87 |
 | 6 | Documentation link validation run across `docs/` (every cited path exists) | root README §11 validation rules |
 
 **Content (what actually happens):**
 
 - **Dependency closure — `DEP-01 … DEP-12` (`00-project-overview/dependencies.md`):**
-  - `DEP-01…DEP-04`, `DEP-07` — status **Available** (`VERIFIED`): no action beyond environment bring-up (`../14-devops-infrastructure/core/environments.md`).
+  - `DEP-01…DEP-04`, `DEP-07` — status **Available** (`VERIFIED`): no action beyond environment bring-up (`../../14-devops-infrastructure/core/environments.md`).
   - `DEP-05` — m-Floos + OneCash merchant API access, status **NOT STARTED**: request sandbox credentials from **both** providers; start contract negotiation (SLA, API-change notice). Blocks `FR-013` production top-ups.
   - `DEP-06` — SMS provider contract (Telesom and/or Sabafon) + WhatsApp Business API approval, status **NOT STARTED**: this is the **hardest blocker** — registration (`FR-001`) has no fallback path. `risk-review-process.md` §7 G-R3: `DEP-06` signed **before Gate 0**.
   - `DEP-08` (domains/TLS/CDN) — **Not started**: needed for Launch, started here so it is not a launch-day surprise.
   - `DEP-09` (legal opinions: VAT, data protection) — **Not started**: feeds `ASM-10`/`ASM-13` and `AC-S-24`.
   - `DEP-10` (Central Bank position on closed-loop wallets) — **Not started**: existential for `C-01`; written position required before payment build (§Phase 1 money scope).
-  - `DEP-11` (design assets) — **Partial** (brand tokens exist in `../11-ui-ux/core/design-system.md`): close the remaining copy/logo gaps before frontend build.
-  - `DEP-12` (test device lab + carrier SIMs) — **Not started**: required by `../13-testing/core/test-plans.md` §g before mobile verification can complete.
-- **Assumption verification:** `ASM-03` (provider merchant APIs — `UNSUPPORTED`), `ASM-04` (SMS/WhatsApp reachability — `UNSUPPORTED`), `ASM-12` (Central Bank permits closed-loop wallets — `DANGEROUS`), `ASM-14` (baselines — `UNSUPPORTED`). Also run the Phase-0 verification actions recorded for `ASM-05`, `ASM-09` (vendor discovery interviews) and `ASM-11` (sponsor confirmation of the 10K target) per `../17-risk-management/core/mitigation-plans.md`.
+  - `DEP-11` (design assets) — **Partial** (brand tokens exist in `../../11-ui-ux/core/design-system.md`): close the remaining copy/logo gaps before frontend build.
+  - `DEP-12` (test device lab + carrier SIMs) — **Not started**: required by `../../13-testing/core/test-plans.md` §g before mobile verification can complete.
+- **Assumption verification:** `ASM-03` (provider merchant APIs — `UNSUPPORTED`), `ASM-04` (SMS/WhatsApp reachability — `UNSUPPORTED`), `ASM-12` (Central Bank permits closed-loop wallets — `DANGEROUS`), `ASM-14` (baselines — `UNSUPPORTED`). Also run the Phase-0 verification actions recorded for `ASM-05`, `ASM-09` (vendor discovery interviews) and `ASM-11` (sponsor confirmation of the 10K target) per `../../17-risk-management/core/mitigation-plans.md`.
 - **GAP triage:** `GAP-01` growth targets, `GAP-02` delivery-code admin override, `GAP-03` email channel, `GAP-04` loyalty depth, `GAP-05` commission tiers, `GAP-06` vendor cash-out mode, `GAP-07` fleet partners — each gets a decision or an explicit "defer with owner" (`RISK-011` requires `GAP-01…GAP-06` resolved before Gate 0).
 - **Design/decision readiness:** ledger design review signed (RISK-001 Phase 0 exit evidence), stack register + ADR-required rule adopted (`technology-stack.md` §8), architecture process agreed.
 
@@ -88,20 +88,20 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 
 | # | Criterion | Canon |
 |---|---|---|
-| 1 | Plans executed for every completed range; P0/P1 test cases 100% PASS, 0 CRITICAL/HIGH open | `../13-testing/core/test-plans.md` §a common exit |
+| 1 | Plans executed for every completed range; P0/P1 test cases 100% PASS, 0 CRITICAL/HIGH open | `../../13-testing/core/test-plans.md` §a common exit |
 | 2 | Coverage against the AC registry (253 ACs) with zero uncovered ACs in built scope | `02-requirements/acceptance-criteria.md`; `AC-S-03` |
-| 3 | Money-path suites green (checkout/payment/wallet, escrow, ledger invariant) | `../01-business-analysis/core/stakeholder-needs.md` STK-01; `00-project-overview/stakeholders.md` conflicts table |
-| 4 | Performance evidence vs NFRs at staging scale | `../13-testing/core/test-plans.md` §b; `AC-S-05` |
-| 5 | Security findings triaged — 0 open CRITICAL/HIGH security defects | `../09-security/core/security-findings.md`; `test-plans.md` §c exit |
-| 6 | Constraint tests `TST-CON-01…26` 26/26 PASS for constraints touched by built scope | `../13-testing/core/constraint-tests.md`; `AC-S-02` |
+| 3 | Money-path suites green (checkout/payment/wallet, escrow, ledger invariant) | `../../01-business-analysis/core/stakeholder-needs.md` STK-01; `00-project-overview/stakeholders.md` conflicts table |
+| 4 | Performance evidence vs NFRs at staging scale | `../../13-testing/core/test-plans.md` §b; `AC-S-05` |
+| 5 | Security findings triaged — 0 open CRITICAL/HIGH security defects | `../../09-security/core/security-findings.md`; `test-plans.md` §c exit |
+| 6 | Constraint tests `TST-CON-01…26` 26/26 PASS for constraints touched by built scope | `../../13-testing/core/constraint-tests.md`; `AC-S-02` |
 
 **Content:**
 
 - **Blocks:** `B01` Identity & Access → `B13` Platform Administration, all thirteen in scope (`00-project-overview/project-context.md` §Platform Decomposition).
-- **P0 use cases first — 17 of 40 (`VERIFIED` count from `../01-business-analysis/use-case-index.md` §3: P0 = 17, P1 = 18, P2 = 5):**
+- **P0 use cases first — 17 of 40 (`VERIFIED` count from `../../01-business-analysis/use-case-index.md` §3: P0 = 17, P1 = 18, P2 = 5):**
   `UC-002` (register + OTP), `UC-003` (login), `UC-009` (add to cart), `UC-011` (checkout with wallet payment), `UC-013` (confirm receipt with delivery code), `UC-015` (vendor register + KYC), `UC-017` (product listing), `UC-019` (accept incoming order), `UC-020` (ready for pickup), `UC-026` (accept delivery assignment), `UC-027` (confirm pickup), `UC-030` (confirm delivery with 6-digit code), `UC-031` (approve/reject KYC), `UC-033` (manage orders & disputes), `UC-037` (roles & permissions), `UC-039` (auto-release escrow), `UC-040` (OTP with provider failover).
   P1 follows P0; P2 (`UC-008`, `UC-014`, `UC-023`, `UC-024`, `UC-036`) is deferrable within the phase but must exist before Gate 1 if its FR is claimed `VERIFIED`.
-- **Critical-path test plans:** `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Shopping cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle are the Phase-1 critical path (`../13-testing/core/test-plans.md` L46). Their entry criteria (OTP mock adapter + SMS sandbox, RBAC matrix, cart fixtures, money boundary fixtures + ledger invariant harness, 17-state fixtures) are themselves Phase 1 deliverables.
+- **Critical-path test plans:** `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Shopping cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle are the Phase-1 critical path (`../../13-testing/core/test-plans.md` L46). Their entry criteria (OTP mock adapter + SMS sandbox, RBAC matrix, cart fixtures, money boundary fixtures + ledger invariant harness, 17-state fixtures) are themselves Phase 1 deliverables.
 - **Architecture-boundary work:** ADRs `ADR-001…ADR-010` are the accepted decision set (`18-decisions/core/`, index `04-architecture/architecture-decisions-reference.md`); ports/adapters for payment providers (`ADR-009`) keep the custody model swappable under `RISK-012`.
 - **Money scope is conditional:** B07 payment/wallet build proceeds only if `DEP-10` yields a favourable or conditional written position (`mitigation-plans.md` RISK-012 kill criteria — adverse position stops B07 money-flow implementation).
 
@@ -125,9 +125,9 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 |---|---|---|
 | 1 | Load tests at target: p95 read < 200 ms / write < 500 ms at 10,000 concurrent for 30 min | `test-plans.md` §b PERF-01; `AC-S-05`; `C-25` |
 | 2 | Drills all PASS: failover, webhook storm, Redis restart, queue stop, ES down, DR restore, replica kill, alert fire | `test-plans.md` §d CHAOS-01…08 |
-| 3 | Production-readiness checklist rolled up (52 rows `DONE` or explicitly `WAIVED`) | `../15-deployment/core/production-readiness.md` §8 |
-| 4 | Compliance sign-off checklist complete for `AC-S-24` | `../12-non-functional/core/compliance-and-legal.md` §5 |
-| 5 | Launch-blocking gaps closed or explicitly waived with owner | `../20-validation/core/missing-information.md` (GAP register) |
+| 3 | Production-readiness checklist rolled up (52 rows `DONE` or explicitly `WAIVED`) | `../../15-deployment/core/production-readiness.md` §8 |
+| 4 | Compliance sign-off checklist complete for `AC-S-24` | `../../12-non-functional/core/compliance-and-legal.md` §5 |
+| 5 | Launch-blocking gaps closed or explicitly waived with owner | `../../20-validation/core/missing-information.md` (GAP register) |
 | 6 | Accessibility + localization + device-lab + migration/rollback plans exited | `test-plans.md` §e, §f, §g, §h |
 
 **Content:**
@@ -154,9 +154,9 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 
 **Entry criteria — Gate 2 `PASS` requires, at minimum:**
 
-1. Production-readiness: **all 52 rows `DONE` or explicitly `WAIVED`**, plus sponsor, QA lead, security owner, and ops owner signatures (`../15-deployment/core/production-readiness.md` §9).
+1. Production-readiness: **all 52 rows `DONE` or explicitly `WAIVED`**, plus sponsor, QA lead, security owner, and ops owner signatures (`../../15-deployment/core/production-readiness.md` §9).
 2. Critical-path dependencies closed: `DEP-06` (registration), `DEP-10` (wallet legitimacy), `DEP-05` (production top-ups), `DEP-09` (legal sign-off), `DEP-08` (public launch) — ordering per `00-project-overview/dependencies.md`.
-3. Money-path quality gates green and non-negotiable (`00-project-overview/stakeholders.md` conflicts table; `../01-business-analysis/core/stakeholder-needs.md` STK-01).
+3. Money-path quality gates green and non-negotiable (`00-project-overview/stakeholders.md` conflicts table; `../../01-business-analysis/core/stakeholder-needs.md` STK-01).
 4. `AC-S-24` legal/compliance sign-offs on file; unresolved blocking items (notably the Central Bank position) stop launch.
 
 **Content:** go-live checklist entries per risk plan (payout batch enabled only after `J1`/`J2` green for 7 consecutive days; production SMS/WhatsApp credentials issued only after the sandbox suite passes; production dashboards + saturation alerts live before first traffic); on-call rotation sized to the team with escalation contacts tested; maintenance-mode and rollback paths verified.
@@ -171,17 +171,17 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 
 **Objective.** Keep the money correct, the SLOs honest, and the registers moving — then judge the outcome at Gate 3.
 
-**Entry criteria.** Launch executed; monitoring and reconciliation jobs live (`J1`, `J2`, `J6`, `J5`, `J10` cadence per `../16-data/core/data-quality.md` and the mitigation plans).
+**Entry criteria.** Launch executed; monitoring and reconciliation jobs live (`J1`, `J2`, `J6`, `J5`, `J10` cadence per `../../16-data/core/data-quality.md` and the mitigation plans).
 
 **Exit criteria — mapped to Gate 3:**
 
 | # | Criterion | Canon |
 |---|---|---|
 | 1 | Availability evidence vs `AC-S-06` (99.99% over any rolling 30-day window) | `00-project-overview/success-criteria.md` |
-| 2 | Residual CRITICAL items dispositioned: security findings, CRITICAL risks, open `GAP-*` | `../09-security/core/security-findings.md`; `17-risk-management/risk-register.md` |
-| 3 | Technical-debt register reviewed; every `TD-NN` has an owner and a decision | `21-completion/technical-debt.md` |
+| 2 | Residual CRITICAL items dispositioned: security findings, CRITICAL risks, open `GAP-*` | `../../09-security/core/security-findings.md`; `17-risk-management/risk-register.md` |
+| 3 | Technical-debt register reviewed; every `TD-NN` has an owner and a decision | `technical-debt.md` |
 | 4 | Assumptions re-scored against real data (`ASM-01`, `ASM-05`, `ASM-06`, `ASM-08`, `ASM-09`, plus `GAP-01` targets once set) | `00-project-overview/assumptions.md` |
-| 5 | Monthly standing risk reviews and burndown produced; flat-by-construction honesty rule honored while pre-implementation | `../17-risk-management/core/risk-review-process.md` §1, §8 |
+| 5 | Monthly standing risk reviews and burndown produced; flat-by-construction honesty rule honored while pre-implementation | `../../17-risk-management/core/risk-review-process.md` §1, §8 |
 
 **Content:** continuous RED metrics and quarterly load re-runs; monthly invariant attestation for the ledger; monthly provider performance review with a **second** SMS provider contract kept active; monthly ops review (alert volume, MTTR, manual steps); quarterly legal review and dependency/credential config review; cohort retention review and churn interviews; delta re-run of production readiness before any release that changes infrastructure, integrations, or compliance posture.
 
@@ -194,9 +194,9 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 ## 6. Cross-Phase Rules
 
 1. **Gates are blocking.** A `FAIL` outcome stops the transition; the sponsor may accept a gate-blocking risk only explicitly, in writing, recorded as a register status change (`risk-review-process.md` §4).
-2. **The phase-gate risk check runs at every gate** (G-R1…G-R7) — embedded in `21-completion/quality-gates.md`; this roadmap does not restate it.
+2. **The phase-gate risk check runs at every gate** (G-R1…G-R7) — embedded in `quality-gates.md`; this roadmap does not restate it.
 3. **Money paths are non-negotiable.** Quality gates in money paths outrank schedule pressure (`stakeholders.md` L40; STK-01). Scope is cut instead of tests, monitoring, or backups (RISK-005 decision rule).
-4. **Constraints outrank everything.** Any plan step that would violate `C-01…C-26` is void; conflicts are logged in `../20-validation/core/contradiction-audit.md` (root README §9; `mitigation-plans.md` §9).
+4. **Constraints outrank everything.** Any plan step that would violate `C-01…C-26` is void; conflicts are logged in `../../20-validation/core/contradiction-audit.md` (root README §9; `mitigation-plans.md` §9).
 5. **No silent schedule invention.** Sequencing stays relative/conditional until `ASM-14` baselines land at Gate 0; estimates, dates, and sprint numbering are added only in downstream planning artifacts outside this knowledge base.
 6. **Evidence flows forward, never backward.** Each phase's exit evidence becomes the next phase's entry assumption; nothing carries over unlinked.
 

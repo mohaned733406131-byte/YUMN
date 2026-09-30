@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-TST-006, DOC-TST-002, DOC-AC-001, DOC-GL-00
 
 # Test Case Template (DOC-TPL-005)
 
-**When to use:** `13-testing/test-cases/TC-NNN.md`. **Authority: DOC-TST-006 §1 (anatomy) + §2 (locked allocation)**; level-selection rule in `testing-strategy.md` §3. Exemplar: `../13-testing/core/TC-001.md`.
+**When to use:** `13-testing/test-cases/TC-NNN.md`. **Authority: DOC-TST-006 §1 (anatomy) + §2 (locked allocation)**; level-selection rule in `testing-strategy.md` §3. Exemplar: `../../13-testing/core/TC-001.md`.
 
 ## Rules
 

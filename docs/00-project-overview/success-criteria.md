@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-004, DOC-CMP-010]
 
 # Success Criteria
 
-Success is **verified**, not asserted (methodology: completion = verified completion). Each criterion has an objective verification method. `AC-S-*` IDs are referenced by `20-validation/` and `21-completion/final-acceptance.md`.
+Success is **verified**, not asserted (methodology: completion = verified completion). Each criterion has an objective verification method. `AC-S-*` IDs are referenced by `20-validation/` and `../21-completion/core/final-acceptance.md`.
 
 ## A. Product Completeness
 

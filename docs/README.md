@@ -276,7 +276,7 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 33. Maintainability | `12-non-functional/core/maintainability.md` |
 | 34. Technology Decisions | `18-decisions/core/` |
 | 35. Legal/Compliance | `00-project-overview/project-context.md` §Compliance + `12-non-functional/` |
-| 36. Feasibility | `21-completion/feasibility-assessment.md` |
+| 36. Feasibility | `21-completion/core/feasibility-assessment.md` |
 | 37. Risks | `17-risk-management/` |
 | 38. Assumptions | `00-project-overview/assumptions.md` |
 | 39. Dependencies | `00-project-overview/dependencies.md` |
@@ -284,11 +284,11 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 41. Missing Information | `20-validation/core/missing-information.md` |
 | 42. Contradictions | `20-validation/core/contradiction-audit.md` |
 | 43. Incorrect/Unsupported Claims | `20-validation/core/hallucination-audit.md` |
-| 44. Technical Debt | `21-completion/technical-debt.md` |
+| 44. Technical Debt | `21-completion/core/technical-debt.md` |
 | 45. Critical Findings | `20-validation/core/critical-findings.md` |
-| 46. Recommendations | `21-completion/recommendations.md` |
+| 46. Recommendations | `21-completion/core/recommendations.md` |
 | 47. Verification Strategy | `13-testing/core/testing-strategy.md` |
-| 48. Final Quality Assessment | `20-validation/core/analysis-validation.md` + `21-completion/final-acceptance.md` |
+| 48. Final Quality Assessment | `20-validation/core/analysis-validation.md` + `21-completion/core/final-acceptance.md` |
 
 ---
 

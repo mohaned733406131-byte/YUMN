@@ -27,7 +27,7 @@ This domain **records links, never creates canon**. Requirement text, AC text, r
 | Which objectives does a requirement serve? | `requirements-to-features.md` Matrix A | `00-project-overview/project-objectives.md` |
 | Which API group, endpoint, entity, use case, workflow and rule does a requirement touch? | `requirements-to-features.md` Matrix B | `07-api/`, `08-database/`, `01-business-analysis/` |
 | Which test artifact proves each acceptance criterion? | `requirements-to-tests.md` | `13-testing/` |
-| Did any test actually execute and pass? | **No** — this domain is design-time linkage only | `21-completion/quality-gates.md` |
+| Did any test actually execute and pass? | **No** — this domain is design-time linkage only | `../21-completion/core/quality-gates.md` |
 | Is a claim inconsistent or unsupported elsewhere? | Reported as a finding only | `20-validation/` |
 
 Audience: the validation domain (`20-validation/`), the completion domain (`21-completion/`), and any reviewer checking `AC-S-01`, `AC-S-02`, `AC-S-03`.
@@ -123,7 +123,7 @@ By family: FR 86/94 `EXPLICIT` + 8 `DECLARED`; NFR 29/40 `EXPLICIT` + 5 `DECLARE
 3. **Sweep.** After any structural change to requirements or testing, re-run the sweep that produces the counts in §5 and record affected IDs in `../20-validation/core/consistency-audit.md`.
 4. **Contradictions.** Anything that cannot be resolved inside a matrix (duplicate ID spaces, broken chain hops, allocation mismatches) is recorded in `../20-validation/core/contradiction-audit.md` — never ignored (`docs/README.md` §9 rule 5).
 5. **Versioning.** Any row change bumps `version` and adds a `## Change History` row (`docs/README.md` §9 rules 1–3).
-6. **No execution claims.** Status such as `PASS`/`FAIL`/`VERIFIED-by-test` may not appear in this domain; execution evidence belongs to `13-testing/` artifacts and `21-completion/quality-gates.md`.
+6. **No execution claims.** Status such as `PASS`/`FAIL`/`VERIFIED-by-test` may not appear in this domain; execution evidence belongs to `13-testing/` artifacts and `../21-completion/core/quality-gates.md`.
 
 ---
 

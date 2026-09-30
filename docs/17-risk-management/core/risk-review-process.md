@@ -14,14 +14,14 @@ related_documents: [DOC-RSK-001, DOC-RSK-002, DOC-RSK-003, DOC-ROOT-001, DOC-SEC
 
 # Risk Review Process (DOC-RSK-004)
 
-Governance for how risks enter the register, how they change, who reviews them, when they escalate, and how they connect to findings (`SEC-NNN`), gaps (`GAP-NNN`), constraints (`C-01…C-26`), and the quality gates (`21-completion/quality-gates.md`, `20-validation/`).
+Governance for how risks enter the register, how they change, who reviews them, when they escalate, and how they connect to findings (`SEC-NNN`), gaps (`GAP-NNN`), constraints (`C-01…C-26`), and the quality gates (`../../21-completion/core/quality-gates.md`, `20-validation/`).
 
 ## 1. Cadence
 
 | Review | Frequency | Chair | Required participants | Output |
 |---|---|---|---|---|
 | Standing risk review | **Monthly** — first occurrence 2026-10-26, then the 26th of each month (or next working day) | Product owner | Sponsor (informed; required for CRITICAL), Technical lead, DevOps lead, Security officer, Finance (Admin), Business development | Updated register + change-history rows; score changes with rationale; burndown snapshot |
-| Phase-gate risk check | At **every gate** in `21-completion/quality-gates.md` (Gate 0 before implementation, and each subsequent gate) | Project sponsor | Gate participants + risk owners of that phase | Gate decision: mitigate-to-plan, accept-with-conditions, or block |
+| Phase-gate risk check | At **every gate** in `../../21-completion/core/quality-gates.md` (Gate 0 before implementation, and each subsequent gate) | Project sponsor | Gate participants + risk owners of that phase | Gate decision: mitigate-to-plan, accept-with-conditions, or block |
 | Trigger-based review | Within **5 working days** of the trigger (§3) | Whoever detects the trigger | Affected risk owner(s) | Ad-hoc register update or explicit "no change" note |
 | Post-incident review | Within 48 h of any incident touching money, auth, or availability | Technical lead | Owner of the impacted risk + Security officer | Re-scored risk + corrective actions |
 
@@ -95,7 +95,7 @@ Escalation never happens by implication: the escalation is a written record (reg
 
 ## 7. Phase-Gate Checks
 
-At each gate in `21-completion/quality-gates.md`, the gate review runs this checklist and records the result (gate document + `../../20-validation/core/analysis-validation.md` where applicable):
+At each gate in `../../21-completion/core/quality-gates.md`, the gate review runs this checklist and records the result (gate document + `../../20-validation/core/analysis-validation.md` where applicable):
 
 | # | Check | Pass criterion |
 |---|---|---|
@@ -133,7 +133,7 @@ Gate 0 is the strictest: RISK-006 (`DEP-06`) and RISK-012 (`DEP-10`) are blockin
 - `../../20-validation/core/consistency-audit.md` — records every risk-document impact set from §5.
 - `../../20-validation/core/contradiction-audit.md` — receives constraint conflicts, severity disputes, and unreconciled citations.
 - `../../20-validation/core/missing-information.md` — owns `GAP-NNN`; §6 links gaps to the risks they feed.
-- `21-completion/quality-gates.md` — embeds §7 checks; `21-completion/final-acceptance.md` verifies that no CRITICAL risk was closed without evidence and that gate acceptances are signed.
+- `../../21-completion/core/quality-gates.md` — embeds §7 checks; `../../21-completion/core/final-acceptance.md` verifies that no CRITICAL risk was closed without evidence and that gate acceptances are signed.
 
 ## Change History
 

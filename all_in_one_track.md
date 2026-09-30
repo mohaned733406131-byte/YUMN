@@ -42,7 +42,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 
 Tracked in [memory.md](memory.md) §Known defects and — canonically — in
 [docs/20-validation/](docs/20-validation/README.md) (`CRIT-NN`, `CT-NN`, `HAL-NN`, `GAP-01…GAP-14`)
-plus [docs/21-completion/recommendations.md](docs/21-completion/recommendations.md) (`REC-NN`).
+plus [docs/21-completion/core/recommendations.md](docs/21-completion/core/recommendations.md) (`REC-NN`).
 Domains `19/20/21` were authored 2026-09-27 (resolved); `TC-104…114` authored (resolved, session 003);
 FR↔AC `-05` references added (resolved, session 004 — AC *text-drift* half still open under `HAL-05`/`RVF-04`).
 Change-control sweep completed (session 006): 31-check re-run 18/2/11 on 479 files, deferred findings

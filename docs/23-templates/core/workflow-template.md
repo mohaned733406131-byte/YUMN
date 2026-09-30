@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-WF-001, DOC-SA-010, DOC-BA-005, DOC-GL-003]
 
 # Workflow Template (DOC-TPL-004)
 
-**When to use:** `01-business-analysis/workflows/workflow-NNN.md`. **Authority: DOC-WF-001 §2–§3** — mirror it exactly; differences are logged in `../20-validation/core/contradiction-audit.md`. Exemplar: `../01-business-analysis/customer/workflow-001.md`.
+**When to use:** `01-business-analysis/workflows/workflow-NNN.md`. **Authority: DOC-WF-001 §2–§3** — mirror it exactly; differences are logged in `../../20-validation/core/contradiction-audit.md`. Exemplar: `../../01-business-analysis/customer/workflow-001.md`.
 
 ## Rules
 

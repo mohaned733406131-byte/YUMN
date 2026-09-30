@@ -54,7 +54,7 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 | `GAP` | No artifact and no declaration anywhere in the scanned set (`INSUFFICIENT EVIDENCE`) |
 | `OPERATIONAL EVIDENCE` | Provable only by an operational/pilot/audit record, never by a test artifact — tracked in `21-completion/` |
 
-Rules obeyed: shorthand citations are expanded conservatively (`AC-SR011-01/02` → both IDs; `AC-NFR-013-01/02` → both; `AC-FR009-01…04` → the range); a row is never marked `EXPLICIT` on the strength of another document's opinion about a test; and no test result (`PASS`/`FAIL`/executed) is claimed anywhere — every `TST-CON-NN` is `DESIGNED`, and execution evidence belongs to `21-completion/quality-gates.md`.
+Rules obeyed: shorthand citations are expanded conservatively (`AC-SR011-01/02` → both IDs; `AC-NFR-013-01/02` → both; `AC-FR009-01…04` → the range); a row is never marked `EXPLICIT` on the strength of another document's opinion about a test; and no test result (`PASS`/`FAIL`/executed) is claimed anywhere — every `TST-CON-NN` is `DESIGNED`, and execution evidence belongs to `../../21-completion/core/quality-gates.md`.
 
 ---
 
@@ -479,7 +479,7 @@ Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-do
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 item 40 |
 | 1.1 | 2026-09-27 | 29 citations of undefined `DOC-INT-010` corrected to `DOC-INT-008` (`../../10-integrations/core/testing-and-sandboxes.md`) | `../../20-validation/core/consistency-audit.md` finding 23 — no cited ID absent from its owning register (root README §11 `D-3`) |
-| 1.2 | 2026-09-27 | `REC-03` pay-down: `TC-104`…`TC-114` authored — §1 artifact count 114, §2 NFR/SEC counts re-run (203/42), 6 rows `DECLARED`→`EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`), 10 rows gain new TC links, §5 statuses flipped to present, `G-02` → `RESOLVED`, `G-04` re-scoped | Root README §9.4 same-change-set propagation for a `13-testing/` change (`21-completion/recommendations.md` `REC-03`) |
+| 1.2 | 2026-09-27 | `REC-03` pay-down: `TC-104`…`TC-114` authored — §1 artifact count 114, §2 NFR/SEC counts re-run (203/42), 6 rows `DECLARED`→`EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`), 10 rows gain new TC links, §5 statuses flipped to present, `G-02` → `RESOLVED`, `G-04` re-scoped | Root README §9.4 same-change-set propagation for a `13-testing/` change (`../../21-completion/core/recommendations.md` `REC-03`) |
 | 1.3 | 2026-09-27 | `REC-04` pay-down: `G-05` → `RESOLVED` (14 `AC-FRnnn-05` references added, 94/94 cited); "documents needing update" re-scoped | Root README §9.4 same-change-set propagation for an `02-requirements/functional/` change (`REC-04`) |
 | 1.4 | 2026-09-28 | §1 Functional range end corrected `AC-FR020-05` → `AC-FR020-04` (registry tops at `-04`; FR-020 defines four ACs — count 94 unchanged) | `REC-15` citation-CI enforcement (session 008) — `tools/check_citations.py` caught the dangling range end |
 | 1.5 | 2026-09-29 | `G-07` evidence re-counted: 121 → **779** unique `AC-UC*` IDs across the now-210 `use-cases/UC-*.md` (finding severity/status unchanged, MEDIUM `OPEN`) | `prompt-010.md` §1 session-010 UC-coverage directive — UC corpus grown 42 → 210, UC-derived evidence re-synced in the same change set (root README §9 rule 4) |

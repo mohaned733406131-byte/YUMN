@@ -100,7 +100,7 @@ PHANTOM_PATHS = {
     ("docs/20-validation/core/hallucination-audit.md", "07-api/authorization.md"),
     ("docs/00-project-overview/actors-and-roles.md", "07-api/authorization.md"),
     ("docs/20-validation/core/consistency-audit.md", "07-api/authorization.md"),
-    ("docs/21-completion/recommendations.md", "07-api/authorization.md"),
+    ("docs/21-completion/core/recommendations.md", "07-api/authorization.md"),
     ("docs/sessions/session-008-archdoc-brinv-citation-ci.md", "07-api/authorization.md"),
     ("session_track.md", "07-api/authorization.md"),
 }

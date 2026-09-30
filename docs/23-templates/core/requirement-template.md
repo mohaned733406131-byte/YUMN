@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-REQ-001, DOC-ROOT-001, DOC-FR-013, DOC-GL-0
 
 # Requirement Template (DOC-TPL-002)
 
-**When to use:** a new file in `02-requirements/<family>/` — `FR-NNN.md`, `NFR-NNN.md`, `SEC-REQ-NNN.md`, `DATA-REQ-NNN.md`, `INT-REQ-NNN.md`. Authority: `02-requirements/` registries; exemplar: `../02-requirements/core/FR-013.md`.
+**When to use:** a new file in `02-requirements/<family>/` — `FR-NNN.md`, `NFR-NNN.md`, `SEC-REQ-NNN.md`, `DATA-REQ-NNN.md`, `INT-REQ-NNN.md`. Authority: `02-requirements/` registries; exemplar: `../../02-requirements/core/FR-013.md`.
 
 ## Rules
 

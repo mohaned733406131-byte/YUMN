@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-SEC-008, DOC-SEC-002, DOC-GL-003]
 
 # Security Finding Template (DOC-TPL-010)
 
-**When to use:** appending a new finding **entry** to `../09-security/core/security-findings.md` (DOC-SEC-008) — findings are entries in the register, never separate files. **Authority: DOC-SEC-008 (register format, severity rule), DOC-SEC-002 (threat model the finding may cite), root README §8 (severity vocabulary)**. Exemplar entries: `SEC-001`, `SEC-002` in `security-findings.md`.
+**When to use:** appending a new finding **entry** to `../../09-security/core/security-findings.md` (DOC-SEC-008) — findings are entries in the register, never separate files. **Authority: DOC-SEC-008 (register format, severity rule), DOC-SEC-002 (threat model the finding may cite), root README §8 (severity vocabulary)**. Exemplar entries: `SEC-001`, `SEC-002` in `security-findings.md`.
 
 ## Rules
 

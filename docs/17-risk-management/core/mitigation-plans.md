@@ -27,7 +27,7 @@ Detailed, phased plans for the eight highest-ranked risks using the ranking rule
 | 7 | RISK-004 — VAT treatment ambiguity | 12 | HIGH | Legal liaison (sponsor) | 2026-10-26 |
 | 8 | RISK-005 — Infrastructure/operational complexity vs small team | 12 | HIGH | DevOps lead | 2026-11-26 |
 
-**Phase vocabulary** (defined here for this domain; gates themselves live in `21-completion/quality-gates.md`): **Phase 0** = pre-implementation (dependency closure, assumptions verification, gate checks — no product code) · **Phase 1** = core build (all blocks B01…B13) · **Phase 2** = pilot & hardening (staging, load tests, drills) · **Launch** = public availability · **Post-launch** = operation and review. "Nothing is implemented yet" applies to every row below (DOC-RSK-001 §1).
+**Phase vocabulary** (defined here for this domain; gates themselves live in `../../21-completion/core/quality-gates.md`): **Phase 0** = pre-implementation (dependency closure, assumptions verification, gate checks — no product code) · **Phase 1** = core build (all blocks B01…B13) · **Phase 2** = pilot & hardening (staging, load tests, drills) · **Launch** = public availability · **Post-launch** = operation and review. "Nothing is implemented yet" applies to every row below (DOC-RSK-001 §1).
 
 ---
 

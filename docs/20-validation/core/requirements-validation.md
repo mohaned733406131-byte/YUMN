@@ -192,7 +192,7 @@ Severity totals: **HIGH 3 (RVF-01, RVF-02, RVF-04) · MEDIUM 3 (RVF-03, RVF-05, 
 - **Gate:** `PASS WITH FINDINGS` (root README §11) — the requirement set is complete in the sense that all 68 files exist, all cite acceptance criteria, and every cross-reference resolves; it fails its own §6 field contract outside the functional category and its AC registry alignment for six functional files
 - **Unresolved contradictions / gaps:** RVF-01…RVF-07 open (`RVF-04` partial since 2026-09-27); linked to HAL-05 (open), HAL-06/HAL-08 (open), HAL-07 (`RESOLVED`) (`hallucination-audit.md`) and CRIT-05 (open, partial) (`critical-findings.md`); GAP-series product decisions are owned by `missing-information.md` — none minted here
 - **Required follow-up:** `02-requirements/requirements-overview.md` §6 owners (RVF-01, RVF-02, RVF-03 — either amend the contract or backfill the fields), `02-requirements/` + `acceptance-criteria.md` (RVF-04 — `-05` clause done, text drift remains), `acceptance-criteria.md` + `success-criteria.md` (RVF-05), `02-requirements/` (RVF-06); propagation per root README §9.5 — the owning document changes, this audit only records
-- **Sign-off:** analysis-agent (author), 2026-09-27 — requirements sign-off remains with the sponsor (`00-project-overview/project-charter.md:87`, `21-completion/final-acceptance.md`)
+- **Sign-off:** analysis-agent (author), 2026-09-27 — requirements sign-off remains with the sponsor (`00-project-overview/project-charter.md:87`, `../../21-completion/core/final-acceptance.md`)
 
 ## Change History
 

@@ -111,7 +111,7 @@ Keyboard order, focus visibility, contrast and screen-reader semantics are speci
 
 ## 7. Design Completeness Gate
 
-A screen is design-complete only when it has: (a) an IA location and URL (`DOC-UX-003`), (b) a flow entry (`DOC-UX-002`), (c) all states specified (`DOC-UX-005`), (d) component/token usage only (`DOC-UX-004`), (e) accessibility attributes (`DOC-UX-006`), (f) `ar` and `en` copy (`DOC-UX-007`). This gate feeds `21-completion/quality-gates.md`.
+A screen is design-complete only when it has: (a) an IA location and URL (`DOC-UX-003`), (b) a flow entry (`DOC-UX-002`), (c) all states specified (`DOC-UX-005`), (d) component/token usage only (`DOC-UX-004`), (e) accessibility attributes (`DOC-UX-006`), (f) `ar` and `en` copy (`DOC-UX-007`). This gate feeds `../21-completion/core/quality-gates.md`.
 
 ## Change History
 

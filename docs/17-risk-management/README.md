@@ -88,7 +88,7 @@ A register row states one **primary** strategy; contingency plans (in `risk-regi
 | Event | Frequency / trigger | Output |
 |---|---|---|
 | Standing risk review | **Monthly** (first review 2026-10-26) | Updated register, changed scores with rationale, new/closed IDs |
-| Phase-gate check | At every gate in `21-completion/quality-gates.md` (Gate 0 before implementation, and each subsequent gate) | Gate decision: risks owning that phase must be mitigated to plan or explicitly accepted by the sponsor |
+| Phase-gate check | At every gate in `../21-completion/core/quality-gates.md` (Gate 0 before implementation, and each subsequent gate) | Gate decision: risks owning that phase must be mitigated to plan or explicitly accepted by the sponsor |
 | Trigger-based review | New CRITICAL finding (`SEC-NNN`), new/changed `DEP-*`/`ASM-*`/`GAP-*`, provider contract change, incident, scope change | Ad-hoc review within 5 working days |
 | Validation audit | After any structural change (root README §9) | Entries in `../20-validation/core/consistency-audit.md` |
 

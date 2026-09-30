@@ -175,7 +175,7 @@ Flags are **operational switches**, not configuration of business rules. Busines
 | `maintenance_mode` | off | Routes non-critical traffic to the maintenance page; health endpoints stay live | `NFR-020`, `DOC-DPL-003` |
 | `new_vendor_registration_enabled` | on | Throttle intake during KYC backlog | `FR-007` |
 
-Flag lifecycle: **add** = new row + default in the register · **active** = row in force · **retire** = remove code usage first, then remove the row (a dead flag is technical debt and is recorded in `21-completion/technical-debt.md` **before** the row disappears) · **retired** = row removed; the flag name is never reused. **Sweep cadence: quarterly** — every flag in §4.1 is checked against code usage; any dead row is dispositioned in `21-completion/technical-debt.md` before removal (`REC-10`, `TD-01`).
+Flag lifecycle: **add** = new row + default in the register · **active** = row in force · **retire** = remove code usage first, then remove the row (a dead flag is technical debt and is recorded in `../../21-completion/core/technical-debt.md` **before** the row disappears) · **retired** = row removed; the flag name is never reused. **Sweep cadence: quarterly** — every flag in §4.1 is checked against code usage; any dead row is dispositioned in `../../21-completion/core/technical-debt.md` before removal (`REC-10`, `TD-01`).
 
 ### 4.2 Flag sweep record (dated, per-flag disposition)
 

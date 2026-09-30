@@ -25,7 +25,7 @@ related_documents: [DOC-SES-001, DOC-SES-003, DOC-SES-004, DOC-SES-005]
 |---|---|---|---|
 | 1 | User disposition recorded: **author** the three domains (not amend `docs/README.md`) | COM-01 question → answer order preserved in `session_track.md` | PASS |
 | 2 | Authored 19 files in four parallel authoring passes (frontmatter v1.0, `approved`, `2026-09-27`, `analysis-agent` + `## Change History`) | see file list below | PASS |
-| 3 | Registrations (SPE-05): root `docs/README.md` §5 `AUD-NN` row (v1.1); `22-glossary/naming-conventions.md` v1.1; `23-templates/validation-audit-template.md` v1.1 | registry rows present | PASS |
+| 3 | Registrations (SPE-05): root `docs/README.md` §5 `AUD-NN` row (v1.1); `22-glossary/naming-conventions.md` v1.1; `../23-templates/core/validation-audit-template.md` v1.1 | registry rows present | PASS |
 | 4 | Reconciliation of parallel-pass seams (findings 20/23/25): 29× `DOC-INT-010`→`DOC-INT-008`, `analysis-validation.md` v1.1 statistics, `consistency-audit.md` v1.4, `technical-debt.md` v1.1 (`TD-10`→PAID), `recommendations.md` v1.1 (`REC-09` PAID) | change rows recorded | PASS |
 | 5 | `memory.md`: D-01, D-05, D-14 → RESOLVED; validator command corrected (`python`, not `python3`) | register updated | PASS |
 | 6 | Ran the rules validator | see raw output below | **PASS** |

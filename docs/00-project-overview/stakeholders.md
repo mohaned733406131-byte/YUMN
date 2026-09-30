@@ -37,7 +37,7 @@ related_documents: [DOC-OVR-007, DOC-OVR-009]
 | Conflict | Resolution |
 |---|---|
 | Vendors want COD vs platform wallet-only (`C-01`) | Constraint wins; vendor communication is a change-management concern |
-| Speed-to-market vs quality gates | `21-completion/quality-gates.md` — gates are non-negotiable for money paths |
+| Speed-to-market vs quality gates | `../21-completion/core/quality-gates.md` — gates are non-negotiable for money paths |
 | Feature richness vs operational simplicity (`C-21`/`C-22`) | Modular monolith enforced; simplification audit in `20-validation/` |
 | Low commission (vendor attraction) vs revenue (platform) | Commission tiered 5–20%, default 10% (`BR-ESC-03`); adjust only via decision record |
 
