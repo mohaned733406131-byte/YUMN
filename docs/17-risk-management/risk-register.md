@@ -162,7 +162,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Observability from day one: RED metrics, dashboards, alert routes (`INT-REQ-007`, `NFR-014`) | DevOps lead | Phase 1 |
 | Runbooks for top 10 incidents + DR drill within RTO 1 h / RPO 15 min (`AC-S-17`, `AC-S-19`) | DevOps lead | Phase 2 |
 | Health/readiness gates and graceful degradation (`BR-PLT-07`, `NFR-007`) verified in staging | QA lead | Phase 2 |
-| On-call rotation sized to team; alert severity definitions per `12-non-functional/observability.md` | DevOps lead | Launch |
+| On-call rotation sized to team; alert severity definitions per `../12-non-functional/core/observability.md` | DevOps lead | Launch |
 
 - **Contingency plan:** if ops load exceeds capacity, reduce *scope* (features) rather than controls — cut launch scope via product owner, never monitoring/backups; sponsor may add ops capacity (`ASM-14` decision).
 - **Residual risk:** single-host topology concentrates failure (see RISK-019); 99.99% on one host is inherently harder than on redundant fleets.
@@ -231,7 +231,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 
 - **Contingency plan:** activate `NFR-018` stage S2 (stateless API replicas behind LB, PG read replica) — all within Compose (`C-22` preserved); reduce non-essential background work; cache more aggressively.
 - **Residual risk:** headroom on one host is finite; sustained growth beyond target eventually needs the multi-host decision (candidate ADR, requires `C-22` change).
-- **Linked IDs:** C-25, NFR-001/003/004/017/018, AC-S-05, ADR-004, ADR-005, ADR-006, SEC-013, `12-non-functional/performance.md`.
+- **Linked IDs:** C-25, NFR-001/003/004/017/018, AC-S-05, ADR-004, ADR-005, ADR-006, SEC-013, `../12-non-functional/core/performance.md`.
 
 ### RISK-009 — Data breach / PII leak (KYC documents, phone data)
 
@@ -544,7 +544,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Jobs idempotent + retry 3× + DLQ with depth alerts (`BR-PLT-01/02`) so replays are safe | Technical lead | Phase 1 |
 | Postgres as durable session record so cache loss cannot strand revocations (`authentication.md` §4) | Technical lead | Phase 1 |
 | Critical invariants owned by Postgres + nightly jobs, not by Redis state (`DQ-08`, `J1–J6`) | Technical lead | Phase 1 |
-| Memory limits, queue monitoring panels, stuck-job alerts per `12-non-functional/observability.md` | DevOps lead | Phase 1 |
+| Memory limits, queue monitoring panels, stuck-job alerts per `../12-non-functional/core/observability.md` | DevOps lead | Phase 1 |
 
 - **Contingency plan:** flush cache (safe by design — it is disposable); replay/re-run jobs idempotently; if queue data lost, trigger reconciliation and manual re-enqueue of escrow/payout batches; OTP codes simply re-requested (60 s cooldown).
 - **Residual risk:** in-flight non-idempotent external sends (SMS) may duplicate or be lost — bounded by provider DLR logs.

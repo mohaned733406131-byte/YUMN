@@ -58,14 +58,14 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 **Content (what actually happens):**
 
 - **Dependency closure — `DEP-01 … DEP-12` (`00-project-overview/dependencies.md`):**
-  - `DEP-01…DEP-04`, `DEP-07` — status **Available** (`VERIFIED`): no action beyond environment bring-up (`14-devops-infrastructure/environments.md`).
+  - `DEP-01…DEP-04`, `DEP-07` — status **Available** (`VERIFIED`): no action beyond environment bring-up (`../14-devops-infrastructure/core/environments.md`).
   - `DEP-05` — m-Floos + OneCash merchant API access, status **NOT STARTED**: request sandbox credentials from **both** providers; start contract negotiation (SLA, API-change notice). Blocks `FR-013` production top-ups.
   - `DEP-06` — SMS provider contract (Telesom and/or Sabafon) + WhatsApp Business API approval, status **NOT STARTED**: this is the **hardest blocker** — registration (`FR-001`) has no fallback path. `risk-review-process.md` §7 G-R3: `DEP-06` signed **before Gate 0**.
   - `DEP-08` (domains/TLS/CDN) — **Not started**: needed for Launch, started here so it is not a launch-day surprise.
   - `DEP-09` (legal opinions: VAT, data protection) — **Not started**: feeds `ASM-10`/`ASM-13` and `AC-S-24`.
   - `DEP-10` (Central Bank position on closed-loop wallets) — **Not started**: existential for `C-01`; written position required before payment build (§Phase 1 money scope).
-  - `DEP-11` (design assets) — **Partial** (brand tokens exist in `11-ui-ux/design-system.md`): close the remaining copy/logo gaps before frontend build.
-  - `DEP-12` (test device lab + carrier SIMs) — **Not started**: required by `13-testing/test-plans.md` §g before mobile verification can complete.
+  - `DEP-11` (design assets) — **Partial** (brand tokens exist in `../11-ui-ux/core/design-system.md`): close the remaining copy/logo gaps before frontend build.
+  - `DEP-12` (test device lab + carrier SIMs) — **Not started**: required by `../13-testing/core/test-plans.md` §g before mobile verification can complete.
 - **Assumption verification:** `ASM-03` (provider merchant APIs — `UNSUPPORTED`), `ASM-04` (SMS/WhatsApp reachability — `UNSUPPORTED`), `ASM-12` (Central Bank permits closed-loop wallets — `DANGEROUS`), `ASM-14` (baselines — `UNSUPPORTED`). Also run the Phase-0 verification actions recorded for `ASM-05`, `ASM-09` (vendor discovery interviews) and `ASM-11` (sponsor confirmation of the 10K target) per `17-risk-management/mitigation-plans.md`.
 - **GAP triage:** `GAP-01` growth targets, `GAP-02` delivery-code admin override, `GAP-03` email channel, `GAP-04` loyalty depth, `GAP-05` commission tiers, `GAP-06` vendor cash-out mode, `GAP-07` fleet partners — each gets a decision or an explicit "defer with owner" (`RISK-011` requires `GAP-01…GAP-06` resolved before Gate 0).
 - **Design/decision readiness:** ledger design review signed (RISK-001 Phase 0 exit evidence), stack register + ADR-required rule adopted (`technology-stack.md` §8), architecture process agreed.
@@ -88,12 +88,12 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 
 | # | Criterion | Canon |
 |---|---|---|
-| 1 | Plans executed for every completed range; P0/P1 test cases 100% PASS, 0 CRITICAL/HIGH open | `13-testing/test-plans.md` §a common exit |
+| 1 | Plans executed for every completed range; P0/P1 test cases 100% PASS, 0 CRITICAL/HIGH open | `../13-testing/core/test-plans.md` §a common exit |
 | 2 | Coverage against the AC registry (253 ACs) with zero uncovered ACs in built scope | `02-requirements/acceptance-criteria.md`; `AC-S-03` |
 | 3 | Money-path suites green (checkout/payment/wallet, escrow, ledger invariant) | `../01-business-analysis/core/stakeholder-needs.md` STK-01; `00-project-overview/stakeholders.md` conflicts table |
-| 4 | Performance evidence vs NFRs at staging scale | `13-testing/test-plans.md` §b; `AC-S-05` |
+| 4 | Performance evidence vs NFRs at staging scale | `../13-testing/core/test-plans.md` §b; `AC-S-05` |
 | 5 | Security findings triaged — 0 open CRITICAL/HIGH security defects | `../09-security/core/security-findings.md`; `test-plans.md` §c exit |
-| 6 | Constraint tests `TST-CON-01…26` 26/26 PASS for constraints touched by built scope | `13-testing/constraint-tests.md`; `AC-S-02` |
+| 6 | Constraint tests `TST-CON-01…26` 26/26 PASS for constraints touched by built scope | `../13-testing/core/constraint-tests.md`; `AC-S-02` |
 
 **Content:**
 
@@ -101,7 +101,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 - **P0 use cases first — 17 of 40 (`VERIFIED` count from `../01-business-analysis/use-case-index.md` §3: P0 = 17, P1 = 18, P2 = 5):**
   `UC-002` (register + OTP), `UC-003` (login), `UC-009` (add to cart), `UC-011` (checkout with wallet payment), `UC-013` (confirm receipt with delivery code), `UC-015` (vendor register + KYC), `UC-017` (product listing), `UC-019` (accept incoming order), `UC-020` (ready for pickup), `UC-026` (accept delivery assignment), `UC-027` (confirm pickup), `UC-030` (confirm delivery with 6-digit code), `UC-031` (approve/reject KYC), `UC-033` (manage orders & disputes), `UC-037` (roles & permissions), `UC-039` (auto-release escrow), `UC-040` (OTP with provider failover).
   P1 follows P0; P2 (`UC-008`, `UC-014`, `UC-023`, `UC-024`, `UC-036`) is deferrable within the phase but must exist before Gate 1 if its FR is claimed `VERIFIED`.
-- **Critical-path test plans:** `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Shopping cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle are the Phase-1 critical path (`13-testing/test-plans.md` L46). Their entry criteria (OTP mock adapter + SMS sandbox, RBAC matrix, cart fixtures, money boundary fixtures + ledger invariant harness, 17-state fixtures) are themselves Phase 1 deliverables.
+- **Critical-path test plans:** `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Shopping cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle are the Phase-1 critical path (`../13-testing/core/test-plans.md` L46). Their entry criteria (OTP mock adapter + SMS sandbox, RBAC matrix, cart fixtures, money boundary fixtures + ledger invariant harness, 17-state fixtures) are themselves Phase 1 deliverables.
 - **Architecture-boundary work:** ADRs `ADR-001…ADR-010` are the accepted decision set (`18-decisions/ADR/`, index `04-architecture/architecture-decisions-reference.md`); ports/adapters for payment providers (`ADR-009`) keep the custody model swappable under `RISK-012`.
 - **Money scope is conditional:** B07 payment/wallet build proceeds only if `DEP-10` yields a favourable or conditional written position (`mitigation-plans.md` RISK-012 kill criteria — adverse position stops B07 money-flow implementation).
 
@@ -125,8 +125,8 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 |---|---|---|
 | 1 | Load tests at target: p95 read < 200 ms / write < 500 ms at 10,000 concurrent for 30 min | `test-plans.md` §b PERF-01; `AC-S-05`; `C-25` |
 | 2 | Drills all PASS: failover, webhook storm, Redis restart, queue stop, ES down, DR restore, replica kill, alert fire | `test-plans.md` §d CHAOS-01…08 |
-| 3 | Production-readiness checklist rolled up (52 rows `DONE` or explicitly `WAIVED`) | `15-deployment/production-readiness.md` §8 |
-| 4 | Compliance sign-off checklist complete for `AC-S-24` | `12-non-functional/compliance-and-legal.md` §5 |
+| 3 | Production-readiness checklist rolled up (52 rows `DONE` or explicitly `WAIVED`) | `../15-deployment/core/production-readiness.md` §8 |
+| 4 | Compliance sign-off checklist complete for `AC-S-24` | `../12-non-functional/core/compliance-and-legal.md` §5 |
 | 5 | Launch-blocking gaps closed or explicitly waived with owner | `20-validation/missing-information.md` (GAP register) |
 | 6 | Accessibility + localization + device-lab + migration/rollback plans exited | `test-plans.md` §e, §f, §g, §h |
 
@@ -154,7 +154,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 
 **Entry criteria — Gate 2 `PASS` requires, at minimum:**
 
-1. Production-readiness: **all 52 rows `DONE` or explicitly `WAIVED`**, plus sponsor, QA lead, security owner, and ops owner signatures (`15-deployment/production-readiness.md` §9).
+1. Production-readiness: **all 52 rows `DONE` or explicitly `WAIVED`**, plus sponsor, QA lead, security owner, and ops owner signatures (`../15-deployment/core/production-readiness.md` §9).
 2. Critical-path dependencies closed: `DEP-06` (registration), `DEP-10` (wallet legitimacy), `DEP-05` (production top-ups), `DEP-09` (legal sign-off), `DEP-08` (public launch) — ordering per `00-project-overview/dependencies.md`.
 3. Money-path quality gates green and non-negotiable (`00-project-overview/stakeholders.md` conflicts table; `../01-business-analysis/core/stakeholder-needs.md` STK-01).
 4. `AC-S-24` legal/compliance sign-offs on file; unresolved blocking items (notably the Central Bank position) stop launch.

@@ -33,7 +33,7 @@ Two probes, two questions: **is the process alive?** (`/healthz`) and **should i
 
 ### 1.1 Path naming note (canon reconciled 2026-09-27)
 
-The single canonical spelling is **`/healthz`** and **`/readyz`**, fixed by `BR-PLT-07`, `NFR-005`, `NFR-020`, `../04-architecture/core/deployment-view.md`, `../04-architecture/core/component-view.md`, and asserted by `13-testing/test-cases/TC-001.md` (readiness gate) — the API endpoint register now specifies the same two checks at `GET /healthz` (API-ADM-042) and `GET /readyz` (API-ADM-043) with identical semantics. The former API-prefixed probe spellings (verbatim text preserved in `20-validation/contradiction-audit.md` entry `CT-02`) were retired from the contract and the four affected test cases (`TC-001`, `TC-031`, `TC-057`, `TC-065`) on 2026-09-27 under `REC-05`/`TD-06`; the only non-register `/health/…` substring left in the repository is MinIO's own vendor probe (`14-devops-infrastructure/docker-compose.md`), which is not a platform path. Reconciliation recorded in `20-validation/contradiction-audit.md` (`CT-02`, `CT-03` → `RESOLVED`).
+The single canonical spelling is **`/healthz`** and **`/readyz`**, fixed by `BR-PLT-07`, `NFR-005`, `NFR-020`, `../../04-architecture/core/deployment-view.md`, `../../04-architecture/core/component-view.md`, and asserted by `../../13-testing/core/TC-001.md` (readiness gate) — the API endpoint register now specifies the same two checks at `GET /healthz` (API-ADM-042) and `GET /readyz` (API-ADM-043) with identical semantics. The former API-prefixed probe spellings (verbatim text preserved in `20-validation/contradiction-audit.md` entry `CT-02`) were retired from the contract and the four affected test cases (`TC-001`, `TC-031`, `TC-057`, `TC-065`) on 2026-09-27 under `REC-05`/`TD-06`; the only non-register `/health/…` substring left in the repository is MinIO's own vendor probe (`../../14-devops-infrastructure/core/docker-compose.md`), which is not a platform path. Reconciliation recorded in `20-validation/contradiction-audit.md` (`CT-02`, `CT-03` → `RESOLVED`).
 
 ## 2. Readiness — Required vs Degraded Checks
 
@@ -129,7 +129,7 @@ migrate (one-shot) ─► must succeed before api/worker restart   (depends_on: 
 | Open breaker | Does **not** flip readiness — the app stays READY and degrades the affected channel (bank transfer fallback, in-app notifications) |
 | Closed breaker + down DB | Readiness fails — the app must not pretend to serve |
 | Observability | Breaker state is exported as a metric so dashboard #8 shows per-provider circuit state; a breaker open > 5 min pages (P2) |
-| Degradation matrix | Authoritative behaviours live in `../10-integrations/core/integration-overview.md` §3–§4 and `12-non-functional/reliability.md` §4 |
+| Degradation matrix | Authoritative behaviours live in `../../10-integrations/core/integration-overview.md` §3–§4 and `../../12-non-functional/core/reliability.md` §4 |
 
 ## 7. Monitoring Integration
 

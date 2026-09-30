@@ -48,7 +48,7 @@ License: GPL-3.0
 | Dependency vulnerability scan | `npm audit --audit-level=high` (+ Trivy on images, CodeQL for SAST) |
 | Dead-element scan | **NOT DOCUMENTED** — closest is the route-inventory test (`docs/05-frontend/core/routing.md` §10) plus CI boundary/queue-name/i18n gates. A real dead-route/dead-transaction inventory test must be created in bootstrap; until then DOD-05/IMP-02 verification is `BLOCKED` |
 | Benchmark | k6 scenarios `PERF-01…PERF-07` on **staging** only — exact `k6 run …` invocation **NOT DOCUMENTED**; bind it in bootstrap |
-| i18n key scan | Named as merge-blocking (`docs/13-testing/testing-strategy.md` §5) — command **NOT DOCUMENTED**; bind in bootstrap |
+| i18n key scan | Named as merge-blocking (`docs/13-testing/core/testing-strategy.md` §5) — command **NOT DOCUMENTED**; bind in bootstrap |
 | Rules validator | `python3 senior-rules/validators/validate.py .` |
 
 ## 4. Paths
@@ -67,7 +67,7 @@ License: GPL-3.0
 - Env/config: `SCREAMING_SNAKE_CASE`; hierarchy compiled defaults → `.env.<environment>` → runtime → feature flags → platform settings; secrets host-only, mode `0600`, fail-fast `CONFIG_MISSING: <name>` (name never value); no secrets under `NEXT_PUBLIC_`; no `if (env === 'production')` literals in app code
 
 ## 6. Overrides (may tighten, may NOT loosen without user approval)
-- Coverage: ADMR `DOD-04` governs — **≥80% overall, 100% on critical paths**. Project floors (`docs/13-testing/testing-strategy.md` §4): overall ≥80%, payment/`b07` ≥95%, auth/`b01` ≥90%. ⚠ 95%/90% is **looser** than ADMR's 100%-critical gate: the stricter (100%) applies unless the user approves the project numbers in writing in the session log.
+- Coverage: ADMR `DOD-04` governs — **≥80% overall, 100% on critical paths**. Project floors (`docs/13-testing/core/testing-strategy.md` §4): overall ≥80%, payment/`b07` ≥95%, auth/`b01` ≥90%. ⚠ 95%/90% is **looser** than ADMR's 100%-critical gate: the stricter (100%) applies unless the user approves the project numbers in writing in the session log.
 - Perf budgets (tighter than core defaults — permitted):
   - API p95 read **< 200 ms**, write **< 500 ms**; error rate **< 0.1%**; **10,000** concurrent users × 30 min (`NFR-001`, `NFR-003`, `C-25`)
   - Web **LCP < 2.5 s**, INP ≤ 200 ms, CLS ≤ 0.1; JS **< 200 KB gzipped** (`NFR-002`)

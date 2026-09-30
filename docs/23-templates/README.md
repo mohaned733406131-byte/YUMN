@@ -26,7 +26,7 @@ related_documents: [DOC-ROOT-001, DOC-GL-001, DOC-GL-003, DOC-UC-000, DOC-WF-001
 | 2 | [requirement-template.md](requirement-template.md) | DOC-TPL-002 | FR / NFR / SEC-REQ / DATA-REQ / INT-REQ files | `02-requirements/` registry + `FR-013` | `../02-requirements/core/FR-013.md` |
 | 3 | [use-case-template.md](use-case-template.md) | DOC-TPL-003 | Use-case files `UC-NNN.md` | DOC-UC-000 | `../01-business-analysis/customer/UC-001.md` |
 | 4 | [workflow-template.md](workflow-template.md) | DOC-TPL-004 | Workflow files `workflow-NNN.md` | DOC-WF-001 | `../01-business-analysis/customer/workflow-001.md` |
-| 5 | [test-case-template.md](test-case-template.md) | DOC-TPL-005 | Test cases `TC-NNN.md` | DOC-TST-006 | `13-testing/test-cases/TC-001.md` |
+| 5 | [test-case-template.md](test-case-template.md) | DOC-TPL-005 | Test cases `TC-NNN.md` | DOC-TST-006 | `../13-testing/core/TC-001.md` |
 | 6 | [api-endpoint-template.md](api-endpoint-template.md) | DOC-TPL-006 | Endpoint group docs `endpoints/<group>.md` | DOC-API-005, `../07-api/core/api-conventions.md` | `../07-api/core/wallet.md` (API-WAL) |
 | 7 | [database-entity-template.md](database-entity-template.md) | DOC-TPL-007 | Entity docs `entities/<table>.md` | `08-database/README.md` §1–§2, DOC-DB-007 | `../08-database/core/user.md` (DB-001) |
 | 8 | [adr-template.md](adr-template.md) | DOC-TPL-008 | ADR files `18-decisions/ADR/ADR-NNN.md` | DOC-DEC-001 §6 (required sections), §2–§3 (lifecycle, numbering) | `18-decisions/ADR/ADR-001.md` |

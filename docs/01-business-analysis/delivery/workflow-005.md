@@ -61,7 +61,7 @@ related_documents: [DOC-WF-001, DOC-BA-004, DOC-BA-005]
 - No courier accepts → sub-order remains `READY_FOR_PICKUP`; ops escalation via admin dispatch view (no canon SLA value — `INSUFFICIENT EVIDENCE`).
 - Fraudulent code guessing → exactly 3 attempts, then 24 h lock (`BR-SHP-03`, `SEC-REQ-005`).
 - Requesting GPS → forbidden by design (`BR-SHP-05`, `C-16`); no location API exists in the contract.
-- Reaching `DELIVERED` without a verified code → forbidden (`BR-ORD-08`, `C-16`); covered by the constraint test suite (`13-testing/testing-strategy.md`).
+- Reaching `DELIVERED` without a verified code → forbidden (`BR-ORD-08`, `C-16`); covered by the constraint test suite (`../../13-testing/core/testing-strategy.md`).
 
 **Rules applied:** `BR-SHP-02…07`, `BR-ORD-03/07/08`, `BR-ESC-01`, `BR-NTF-04`, `BR-PLT-06` · Constraints: `C-10`, `C-16`, `C-17` · Security: `SEC-REQ-005`.
 

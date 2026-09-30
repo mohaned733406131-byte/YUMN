@@ -14,7 +14,7 @@ related_documents: [DOC-TST-001, DOC-TST-002, DOC-TST-003, DOC-TST-004, DOC-TST-
 
 # Test Cases — Layer Index (TC-001 … TC-114)
 
-Index and authoring standard for the individual test-case files in this directory. The **allocation below is locked**: TC IDs are never renumbered, reused, or reassigned to another domain. Strategy, plans and constraints are in the parent files ([testing-strategy.md](../testing-strategy.md), [test-plans.md](../test-plans.md), [constraint-tests.md](../constraint-tests.md)).
+Index and authoring standard for the individual test-case files in this directory. The **allocation below is locked**: TC IDs are never renumbered, reused, or reassigned to another domain. Strategy, plans and constraints are in the parent files ([testing-strategy.md](core/testing-strategy.md), [test-plans.md](core/test-plans.md), [constraint-tests.md](core/constraint-tests.md)).
 
 **Files:** one test case per file, named **`TC-NNN.md`** (zero-padded, e.g. `TC-031.md`), with frontmatter `document_id: DOC-TC-NNN`, `category: 13-testing`, `status: approved`, `version: 1.0`, `source_of_truth: false`, and `related_requirements` listing the IDs the case exercises. This README (DOC-TST-006) is the only index of the layer.
 
@@ -28,7 +28,7 @@ Every `TC-NNN.md` contains these sections, in this order:
 |---|---|---|
 | 1 | **Objective** | One or two sentences: the single behavior being proven, phrased as a verifiable claim |
 | 2 | **Level** | `unit` \| `integration` \| `e2e` \| `performance` \| `security` \| `a11y` — chosen per strategy §3 (level selection rule) |
-| 3 | **Preconditions** | Environment, accounts, seed state, provider mode — must be re-creatable from [test-data-and-environments.md](../test-data-and-environments.md) |
+| 3 | **Preconditions** | Environment, accounts, seed state, provider mode — must be re-creatable from [test-data-and-environments.md](core/test-data-and-environments.md) |
 | 4 | **Test data** | Table of exact values (phones from the reserved `79xxxxxxx` block, boundary amounts, locale) — never vague sample entries such as a generic user |
 | 5 | **Steps** | Numbered, executable actions (endpoint + payload, UI path, or tool command) |
 | 6 | **Expected result** | Observable, binary outcomes: status codes, row states, ledger effects — PASS/FAIL with no interpretation |
@@ -101,7 +101,7 @@ All four are **P0, automated, and merge-blocking**; they run under security plan
 | FR-019 content/coupons | TC-097–104 | 8 | AC-FR019-01…04 |
 | FR-020 administration/audit | TC-105–114 | 10 | AC-FR020-01…04, AC-SR010-* |
 
-**Non-FR ACs.** `AC-NFR-*`, `AC-SRnnn-*`, `AC-DRnnn-*`, `AC-IRnnn-*` and `AC-XCUT-*` are executed through the executable plans ([test-plans.md](../test-plans.md) §b–§h) and the constraint register ([constraint-tests.md](../constraint-tests.md)); where a TC also exercises one, the TC cites it in *Related requirements & rules*. `19-traceability/requirements-to-tests.md` records the full AC → artifact matrix with zero gaps (`AC-S-03`); total TC count remains **114**.
+**Non-FR ACs.** `AC-NFR-*`, `AC-SRnnn-*`, `AC-DRnnn-*`, `AC-IRnnn-*` and `AC-XCUT-*` are executed through the executable plans ([test-plans.md](core/test-plans.md) §b–§h) and the constraint register ([constraint-tests.md](core/constraint-tests.md)); where a TC also exercises one, the TC cites it in *Related requirements & rules*. `19-traceability/requirements-to-tests.md` records the full AC → artifact matrix with zero gaps (`AC-S-03`); total TC count remains **114**.
 
 ## 5. Writing Workflow
 
@@ -118,7 +118,7 @@ Constraints: C-NN (+ TST-CON-NN when the case feeds the constraint register)
 Priority: P0 | P1 | P2        Automation: Yes — <tool> | No — <reason>
 ```
 
-**Layer boundaries:** a TC never restates what [constraint-tests.md](../constraint-tests.md) defines (it may cite `TST-CON-NN`), never duplicates a plan's schedule ([test-plans.md](../test-plans.md)), and never redefines fixture values ([test-data-and-environments.md](../test-data-and-environments.md)) — it references them. Each layer has exactly one owner: TC files own case-level detail only.
+**Layer boundaries:** a TC never restates what [constraint-tests.md](core/constraint-tests.md) defines (it may cite `TST-CON-NN`), never duplicates a plan's schedule ([test-plans.md](core/test-plans.md)), and never redefines fixture values ([test-data-and-environments.md](core/test-data-and-environments.md)) — it references them. Each layer has exactly one owner: TC files own case-level detail only.
 
 ## Change History
 

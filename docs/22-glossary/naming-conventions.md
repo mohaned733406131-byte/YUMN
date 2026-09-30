@@ -37,7 +37,7 @@ Two global rules override everything below (root README §5):
 | Use cases / workflows | ID-named (`UC-NNN.md`) vs prefixed sequence (`workflow-NNN.md`), each in its portal folder; dissolved folder indexes are renamed `*-index.md` at domain root | `01-business-analysis/<portal>/UC-040.md`; `01-business-analysis/<portal>/workflow-012.md` (DOC-WF-001 reserves `WF-NNN` for the concept; UC index = use-case-index.md, workflow index = workflow-index.md at domain root) |
 | Entity documents | `<portal>/<table>.md` — file name **is** the table name (singular `snake_case`, not kebab) | `08-database/core/<table>.md` (e.g. wallet_transaction.md) → `DB-011` (`08-database/README.md` §1) |
 | Endpoint documents | One file per group, plural resource noun, in its portal folder (platform groups → `core/`) | `07-api/<portal>/orders.md`, `07-api/<portal>/cart.md` |
-| Filled vs template files | Templates live only in `23-templates/` and contain `<angle-bracket placeholders>`; no other file may contain them | `23-templates/test-case-template.md` vs `13-testing/test-cases/TC-001.md` |
+| Filled vs template files | Templates live only in `23-templates/` and contain `<angle-bracket placeholders>`; no other file may contain them | `23-templates/test-case-template.md` vs `../13-testing/core/TC-001.md` |
 | Cross-links | Relative Markdown links from the linking file; reference by **ID** in prose, never by copied definition | `[terminology.md](terminology.md)`, "see `BR-ESC-02`" |
 | Banned names | version/position words instead of meaning | `final.md`, `latest.md`, `draft2.md`, `Untitled.md`, `copy-of-*.md` |
 | Process folders (not domains) | `phases/` holds `README.md` + `<slug>/_index.md` + the 16 CORE-03 artifacts (kebab-case); `sessions/` holds `README.md` + `session-NNN-<slug>.md` (zero-padded, sequential, never reused) | `phases/analysis/implementation-plan.md`, `sessions/session-005-rules-compliance-audit.md` (CORE-03; `senior-rules/core/02` §2.1); IDs `DOC-PHA-NNN` / `DOC-SES-NNN` |
@@ -84,7 +84,7 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | API endpoints | `API-<GROUP>-NNN` | `API-WAL-002` | 3 | `07-api/<portal>/` (gateway index `*-index.md` at domain root) | 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints |
 | Database entities | `DB-NNN` (+ table name) | `DB-011` | 3 | `08-database/core/` (gateway index `*-index.md` at domain root) | `DB-001…DB-018` |
 | Test cases | `TC-NNN` | `TC-031` | 3 | `13-testing/core/` (gateway index `*-index.md` at domain root) | allocation locked `TC-001…TC-114` (`13-testing/README.md` §5); files added incrementally — count live in `13-testing/core/` |
-| Constraint tests | `TST-CON-NN` | `TST-CON-09` | 2 | `13-testing/constraint-tests.md` | `TST-CON-01…26` (one per constraint) |
+| Constraint tests | `TST-CON-NN` | `TST-CON-09` | 2 | `../13-testing/core/constraint-tests.md` | `TST-CON-01…26` (one per constraint) |
 | Acceptance criteria | `AC-<REQID>-NN`, `AC-S-NN`, `AC-XCUT-NN` | `AC-FR013-01`, `AC-S-14` | 2 | `02-requirements/acceptance-criteria.md` | see §3.1 |
 | Risks | `RISK-NNN` | `RISK-006` | 3 | `17-risk-management/risk-register.md` (DOC-RSK-002) | `RISK-001…RISK-024` |
 | Decisions / ADRs | `ADR-NNN` | `ADR-011` | 3 | `18-decisions/core/` (index: `04-architecture/architecture-decisions-reference.md`) | `ADR-001…ADR-010` reserved; new from `ADR-011` |
@@ -119,7 +119,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 |---|---|---|
 | `GAP-NNN` pattern vs two-digit issuance (`GAP-03`) | root README §5 vs `20-validation/`, `17-risk-management/` | Use the issued form `GAP-03`; pattern width is a documentation defect logged for root README |
 | `AC-SR-nnn` (retired) vs `AC-SRnnn-nn` | pre-v1.1 registry vs requirement files | Resolved by `DOC-AC-001` v1.1 (2026-09-26) — cite only the sub-numbered `AC-SRnnn-nn`/`AC-DRnnn-nn`/`AC-IRnnn-nn` shapes; the flat `AC-SR-nnn` spelling is retired and must not be reintroduced |
-| Stray flat AC IDs (`AC-SR-16`; `AC-DR-004-03`, since corrected) | `15-deployment/production-readiness.md`; historic `02-requirements/` drafts | Not present in the `DOC-AC-001` v1.1 registry — cite the registered `AC-SRnnn-nn`/`AC-DRnnn-nn` form or log the clash in `20-validation/contradiction-audit.md` |
+| Stray flat AC IDs (`AC-SR-16`; `AC-DR-004-03`, since corrected) | `../15-deployment/core/production-readiness.md`; historic `02-requirements/` drafts | Not present in the `DOC-AC-001` v1.1 registry — cite the registered `AC-SRnnn-nn`/`AC-DRnnn-nn` form or log the clash in `20-validation/contradiction-audit.md` |
 | Security finding cited as `A-07` | `../09-security/core/security-findings.md` (SEC-008) | The register uses `ASM-*`/`SEC-*`; `A-07` is undefined — cite `ASM-07` intent or log in `contradiction-audit.md` |
 | "four surfaces" vs "five surfaces" | `C-09`/`FR-001` vs `13-testing/`/`ADR-008` | Terminology *Surface* row resolves wording; don't mint a new count |
 
@@ -177,7 +177,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 |---|---|---|---|
 | Route segments | lowercase kebab-case only | `/orders/UC-…` → `/account/returns` | `../05-frontend/core/routing.md` (✓) |
 | i18n keys | `feature.section.key` dotted, camelCase leaf | `checkout.review.vatLabel` | `../05-frontend/core/internationalization.md` (✓) |
-| Locale codes | exactly `ar` (default, RTL) and `en` (LTR); formatting locale `ar-YE` | `Accept-Language: ar \| en` | `C-24`, `11-ui-ux/localization.md` |
+| Locale codes | exactly `ar` (default, RTL) and `en` (LTR); formatting locale `ar-YE` | `Accept-Language: ar \| en` | `C-24`, `../11-ui-ux/core/localization.md` |
 | CSS physical props | banned; logical `ms/me/ps/pe` only | `padding-inline-start` | `../05-frontend/core/rtl-and-styling.md` (enforced by CI lint) |
 | UI term strings | canonical term from `terminology.md` in both locales | "Customer" ⇒ `عميل` | DOC-GL-002 |
 

@@ -14,7 +14,7 @@ related_documents: [DOC-DR-004, DOC-DTA-005, DOC-NFD-004, DOC-SEC-005, DOC-OPS-0
 
 # Backup & Recovery — Execution of DATA-REQ-004
 
-Requirement, acceptance criteria and RPO/RTO numbers live in [`../02-requirements/core/DATA-REQ-004.md`](../02-requirements/core/DATA-REQ-004.md) (`RTO ≤ 1 h`, `RPO ≤ 15 min`, `NFR-006`, `C-26`); retention windows live in `16-data/retention-and-archival.md` (`RC-09`). This document is **how** the jobs run, where copies go, how restore works, and how the drill proves it.
+Requirement, acceptance criteria and RPO/RTO numbers live in [`../../02-requirements/core/DATA-REQ-004.md`](../../02-requirements/core/DATA-REQ-004.md) (`RTO ≤ 1 h`, `RPO ≤ 15 min`, `NFR-006`, `C-26`); retention windows live in `16-data/retention-and-archival.md` (`RC-09`). This document is **how** the jobs run, where copies go, how restore works, and how the drill proves it.
 
 ## 1. Backup Matrix by Store
 
@@ -131,7 +131,7 @@ Preconditions: disaster declared, clean Docker host ready, images and env files 
 | Acceptance | All eight gates in §6.1 pass; elapsed time recorded; evidence pack attached |
 | Evidence pack | Timestamps, commands, query outputs for each gate, dashboards screenshot, operator sign-off |
 | Failure handling | Failed drill = failed `AC-DR004-03` ⇒ **release gate blocked** (`AC-S-17`); file an incident and fix before the next release |
-| Recording | Result recorded against `NFR-006` in `12-non-functional/` and referenced from `15-deployment/production-readiness.md` |
+| Recording | Result recorded against `NFR-006` in `12-non-functional/` and referenced from `../../15-deployment/core/production-readiness.md` |
 
 **Mandatory drills:** quarterly full restore (`DATA-REQ-004`) · weekly spot check (§5) · failure-injection on backup job to prove the alert fires (`AC-DR004-02`) · WAL-gap test proving max gap ≤ 15 min (`AC-DR004-01`).
 

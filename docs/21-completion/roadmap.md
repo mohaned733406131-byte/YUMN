@@ -17,14 +17,14 @@ related_documents: [DOC-CMP-002, DOC-CMP-004, DOC-TST-003, DOC-TST-001, DOC-OVR-
 A **short, derived** file. It answers one question only: *how do the executable test plans attach to delivery cadence?* Everything else about sequencing lives in the delivery-model authority, `21-completion/implementation-roadmap.md`.
 
 **Derived from:** `21-completion/implementation-roadmap.md` (phase vocabulary, entry/exit criteria, gate mapping).
-**Consumer:** `13-testing/test-plans.md` cites this file.
+**Consumer:** `../13-testing/core/test-plans.md` cites this file.
 **Precedence:** on any conflict — phase names, ordering, what a phase contains, gate mapping — **`21-completion/implementation-roadmap.md` wins**; this file is regenerated from it (`21-completion/README.md` §3).
 
 ---
 
 ## 1. What the test domain promises (and what it does not)
 
-From `13-testing/test-plans.md` L46, quoted verbatim:
+From `../13-testing/core/test-plans.md` L46, quoted verbatim:
 
 > **Schedule pointer:** plans execute per sprint against `21-completion/roadmap.md`; PLAN-01/02/09/10/11 are Phase-1 critical path. Sizing and sequencing detail: sprint test plan appendix maintained in CI, not in docs.
 
@@ -51,7 +51,7 @@ No sprint number is invented here: cadence detail is an operational artifact own
 | Launch | Pre-release re-runs of performance, security DAST, rollback and deploy rehearsal | Before every release candidate | Gate 2 outcome authorizes go-live |
 | Post-launch | Continuous: regression suite per change, `PERF-07`, `SEC-P-01…04`, scheduled drills (`CHAOS-06` quarterly and pre-launch), quarterly load re-run | Ongoing operational cadence | Gate 3 |
 
-**Common exit criteria for every plan window** (`13-testing/test-plans.md` §a): all TCs in range executed, P0/P1 100% PASS, 0 CRITICAL/HIGH open, evidence links added to the TCs, `19-traceability/` updated.
+**Common exit criteria for every plan window** (`../13-testing/core/test-plans.md` §a): all TCs in range executed, P0/P1 100% PASS, 0 CRITICAL/HIGH open, evidence links added to the TCs, `19-traceability/` updated.
 
 ---
 

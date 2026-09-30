@@ -7,7 +7,7 @@
 | Architecture style & C4 views | [docs/04-architecture/core/architecture-overview.md](docs/04-architecture/core/architecture-overview.md) |
 | Containers / processes | [docs/04-architecture/core/container-view.md](docs/04-architecture/core/container-view.md) |
 | Components & module boundaries | [docs/04-architecture/core/component-view.md](docs/04-architecture/core/component-view.md) · [docs/04-architecture/core/module-boundaries.md](docs/04-architecture/core/module-boundaries.md) |
-| Deployment topology & environments | [docs/04-architecture/core/deployment-view.md](docs/04-architecture/core/deployment-view.md) · [docs/14-devops-infrastructure/environments.md](docs/14-devops-infrastructure/environments.md) |
+| Deployment topology & environments | [docs/04-architecture/core/deployment-view.md](docs/04-architecture/core/deployment-view.md) · [docs/14-devops-infrastructure/core/environments.md](docs/14-devops-infrastructure/core/environments.md) |
 | Technology stack (versions) | [docs/04-architecture/core/technology-stack.md](docs/04-architecture/core/technology-stack.md) |
 | Data flow | [docs/04-architecture/core/data-flow.md](docs/04-architecture/core/data-flow.md) |
 | Scalability path | [docs/04-architecture/core/scalability.md](docs/04-architecture/core/scalability.md) |

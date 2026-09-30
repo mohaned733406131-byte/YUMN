@@ -28,7 +28,7 @@ related_documents: [DOC-DPL-003, DOC-OPS-007, DOC-DB-006, DOC-NFD-004, DOC-NFD-0
 | **DB schema (expand phase applied)** | **No schema rollback.** Keep the new schema; roll back **app containers only** — the schema is backward compatible by design | ≤ 15 min | None | Core benefit of expand/contract (`DOC-DB-006` §3) |
 | **DB schema (contract phase applied)** | **Forward fix only.** Contract phases run in a maintenance window after the app version has been stable — never reverse them in place | hours (planned) | Medium | Reversal = new migration restoring the old shape, or restore |
 | **Bad migration that failed mid-run** | `migrate deploy` halts on failure; DB stays on the last good version → fix forward with a corrected migration | ≤ 15 min to stop, + fix time | Low | Never `migrate down` in production (`DOC-DB-006` §2) |
-| **Data corruption discovered** | Restore from backup per [`14-devops-infrastructure/backup-recovery.md`](../14-devops-infrastructure/backup-recovery.md) §6 to a point before corruption | ≤ 60 min (RTO) | **RPO ≤ 15 min accepted** | Highest-cost path; requires incident command |
+| **Data corruption discovered** | Restore from backup per [`../../14-devops-infrastructure/core/backup-recovery.md`](../../14-devops-infrastructure/core/backup-recovery.md) §6 to a point before corruption | ≤ 60 min (RTO) | **RPO ≤ 15 min accepted** | Highest-cost path; requires incident command |
 | **Elasticsearch mapping issue** | Reindex from PostgreSQL (drop/recreate index + full rebuild) — ES is derived (`RC-08`) | ≤ 60 min | None | Never restore ES from backup |
 | **Redis loss / bad cache data** | Flush cache namespace (not the queue DB); queues recover via AOF + BullMQ redelivery | ≤ 5 min | Cache only | Queue DB flush is a last resort with incident review |
 | **Dependency/CVE discovered post-deploy** | Roll back image, then rebuild on a patched base | ≤ 15 min | None | SLA still applies to the fix (`SEC-C-24`) |
@@ -114,7 +114,7 @@ DEPLOY FAILED / ANOMALY DETECTED
 | Procedure | Deploy release N, introduce a deliberate failure (bad env value or buggy route), execute the full decision tree to a completed rollback |
 | Pass criteria | Rollback completes **≤ 15 min**; 0 failed customer-equivalent requests (< 0.1% 5xx); smoke green afterwards; evidence recorded |
 | Evidence | Timestamps, commands, dashboards export attached to the release record |
-| Test design | Executable plan in `13-testing/test-plans.md` §h (rollback rehearsal) — referenced by `AC-S-20` |
+| Test design | Executable plan in `../../13-testing/core/test-plans.md` §h (rollback rehearsal) — referenced by `AC-S-20` |
 | Failure to rehearse | No rehearsal ⇒ no release approval (checklist row in `production-readiness.md`) |
 
 Additional rehearsals: quarterly **restore-from-backup** drill (`DOC-OPS-007` §8) covers the data-corruption branch; migration forward-fix rehearsal runs whenever a contract-phase migration is introduced.

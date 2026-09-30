@@ -354,7 +354,7 @@ Verification conditions for `non-functional/NFR-nnn.md`; measurement procedures 
 | AC-DR003-03 | DATA-REQ-003 | A financial record younger than 5 years | A purge is attempted | The purge is blocked and an alert is raised rather than deleting the record — financial records persist ≥ 5 years (NFR-019) |
 | AC-DR003-04 | DATA-REQ-003 | Each purge/deletion run | It completes | An audit entry with actor, scope, counts and timestamp is produced |
 | AC-DR004-01 | DATA-REQ-004 | WAL archiving in operation | The maximum gap between archived WAL segments is measured | The gap stays ≤ 15 minutes — RPO evidence |
-| AC-DR004-02 | DATA-REQ-004 | A forced snapshot failure | Backup monitoring runs | Operations are alerted within the alerting window defined in `12-non-functional/observability.md` |
+| AC-DR004-02 | DATA-REQ-004 | A forced snapshot failure | Backup monitoring runs | Operations are alerted within the alerting window defined in `../12-non-functional/core/observability.md` |
 | AC-DR004-03 | DATA-REQ-004 | A quarterly restore drill (latest snapshot + WAL) executed on a clean host | Restore is timed end-to-end | It completes within RTO 1 h, passes integrity checks including zero ledger imbalance, and is documented with elapsed time and scope (NFR-006, AC-S-17) |
 | AC-DR004-04 | DATA-REQ-004 | Backup storage and restore access | Protection is reviewed and an unauthenticated restore is attempted | Backups are encrypted at rest with role-restricted access; the unauthenticated attempt fails |
 | AC-DR005-01 | DATA-REQ-005 | An expand-phase schema | App version N runs critical-path tests against the expanded schema and N+1 against the pre-contract schema | Both pass and both results are recorded in CI |
@@ -406,7 +406,7 @@ Verification conditions for `non-functional/NFR-nnn.md`; measurement procedures 
 | AC-IR006-03 | INT-REQ-006 | A handler that always fails | Delivery handling occurs | It is retried 3 times with exponential backoff, lands in DLQ, and fires an alert; DLQ depth alerts follow (BR-PLT-02) |
 | AC-IR006-04 | INT-REQ-006 | The webhook endpoint under load with slow business logic | Provider callbacks arrive | The endpoint persists and acknowledges within 10 s; slow logic never blocks the callback path |
 | AC-IR007-01 | INT-REQ-007 | The observability stack deployed and traffic run | Targets and RED metrics are queried in Prometheus | All defined targets are up (`up == 1`) and RED metrics per endpoint are queryable |
-| AC-IR007-02 | INT-REQ-007 | A simulated error spike and a simulated DLQ-depth increase | Alerting evaluates them | An alert fires and reaches the on-call destination within the window defined in `12-non-functional/observability.md` (AC-S-18) |
+| AC-IR007-02 | INT-REQ-007 | A simulated error spike and a simulated DLQ-depth increase | Alerting evaluates them | An alert fires and reaches the on-call destination within the window defined in `../12-non-functional/core/observability.md` (AC-S-18) |
 | AC-IR007-03 | INT-REQ-007 | A sampled metrics export and log stream | An automated PII scan runs | Zero phone numbers, tokens or secret values are found |
 | AC-IR007-04 | INT-REQ-007 | Grafana with the deployed dashboards | The dashboards are opened | Dashboards for RED per endpoint, queue/DLQ depth, database health and reconciliation status exist and render from live data |
 | AC-IR008-01 | INT-REQ-008 | A vendor SDK or vendor-specific type referenced outside its adapter folder | The import/lint rule runs | The build fails — domain code depends only on interfaces |

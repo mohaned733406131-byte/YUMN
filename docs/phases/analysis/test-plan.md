@@ -15,7 +15,7 @@ related_requirements: [AC-S-03, AC-S-09]
 # Test Plan & Cases — analysis phase
 
 - Phase: analysis · Rules version: ADMR `2.0.0` · Suites: unit/component/integration/system/UAT/perf/security
-- Strategy (canonical): [`13-testing/testing-strategy.md`](../../13-testing/testing-strategy.md) · Registry: [`13-testing/test-cases/README.md`](../../13-testing/test-cases/README.md) (`TC-001`…`TC-114`) · Constraints: [`13-testing/constraint-tests.md`](../../13-testing/constraint-tests.md) (`TST-CON-01`…`26`)
+- Strategy (canonical): [`../../13-testing/core/testing-strategy.md`](../../13-testing/core/testing-strategy.md) · Registry: [`../../13-testing/test-cases-index.md`](../../13-testing/test-cases-index.md) (`TC-001`…`TC-114`) · Constraints: [`../../13-testing/core/constraint-tests.md`](../../13-testing/core/constraint-tests.md) (`TST-CON-01`…`26`)
 
 ## 1. Coverage mapping (TST-02)
 
@@ -34,7 +34,7 @@ Full AC → test matrix (277 rows): [`19-traceability/requirements-to-tests.md`]
 
 ## 2. Test cases
 
-Canonical, full-detail cases live in `13-testing/test-cases/TC-001.md`…`TC-114.md` (114 files, locked total — never renumbered, `SPE-05`). Constraint tests: `TST-CON-01`…`TST-CON-26` (wallet-only, 17-state, return window, code confirm, cart limits, etc.).
+Canonical, full-detail cases live in `../../13-testing/core/TC-001.md`…`TC-114.md` (114 files, locked total — never renumbered, `SPE-05`). Constraint tests: `TST-CON-01`…`TST-CON-26` (wallet-only, 17-state, return window, code confirm, cart limits, etc.).
 
 ## 3. Execution results
 

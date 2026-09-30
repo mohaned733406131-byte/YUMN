@@ -68,7 +68,7 @@ Expands to `02-requirements/non-functional/NFR-nnn.md`; measurement detail in `1
 | NFR-011 | Accessibility | WCAG 2.1 AA | ≥95% automated pass; zero critical violations; keyboard + screen-reader support |
 | NFR-012 | Usability | Core-task efficiency | New customer completes registration→first order < 5 min; vendor lists product < 10 min |
 | NFR-013 | Localization | Bilingual RTL/LTR | Arabic default, English parity; locale-aware dates/numbers/currency (C-24) |
-| NFR-014 | Observability | Logging/metrics/tracing | Structured logs, RED metrics per endpoint, correlation IDs, alerting (see `12-non-functional/observability.md`) |
+| NFR-014 | Observability | Logging/metrics/tracing | Structured logs, RED metrics per endpoint, correlation IDs, alerting (see `../12-non-functional/core/observability.md`) |
 | NFR-015 | Compatibility | Browsers/devices | Last 2 versions Chrome/Safari/Firefox/Edge; Android 10+, iOS 15+ |
 | NFR-016 | Portability | Deployment | Runs on any Docker host; no cloud-vendor lock-in in v1 |
 | NFR-017 | Capacity | Storage growth | Design for 10M products, 100M order-line records, 5-year retention (partitioning plan) |

@@ -31,7 +31,7 @@ PostgreSQL data is protected by continuous WAL archiving plus daily full snapsho
 ## Acceptance criteria
 
 - AC-DR004-01: Continuity test — monitoring confirms the maximum gap between archived WAL segments stays ≤ 15 minutes (RPO evidence).
-- AC-DR004-02: Failure-injection test — a forced snapshot failure alerts operations within the alerting window defined in `12-non-functional/observability.md`.
+- AC-DR004-02: Failure-injection test — a forced snapshot failure alerts operations within the alerting window defined in `../../12-non-functional/core/observability.md`.
 - AC-DR004-03: Drill record — the latest quarterly restore completes within 1 hour, passes integrity checks including zero ledger imbalance, and is documented with elapsed time and scope.
 - AC-DR004-04: Protection review — backup storage requires encryption at rest and authorized (role-restricted) access; unauthenticated restore attempts fail.
 

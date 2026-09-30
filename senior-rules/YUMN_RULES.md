@@ -144,10 +144,10 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 | OPS-02 | CRITICAL | **No secrets in repo, images, or logs**: `.env*` gitignored, secrets host-only mode `0600`, fail-fast on missing var (name only), gitleaks pre-commit + CI = 0 findings (`SEC-REQ-007`). | Secret scan output; image-layer scan; `CONFIG_MISSING` test. |
 | OPS-03 | HIGH | Production publishes **exactly ports 80 and 443**; any new published port is a review-blocking change. | Compose diff gate in release checklist. |
 | OPS-04 | HIGH | No container gets the Docker socket, `privileged`, or `host` network mode — asserted in CI. | Compose policy assertion test. |
-| OPS-05 | HIGH | Deploys are readiness-gated (one replica at a time, `/readyz` green before the next); images digest-pinned in staging/prod; rollback = pull previous tag ≤15 min (`docs/15-deployment/rollback.md`). | Deploy pipeline gate + rollback rehearsal evidence. |
-| OPS-06 | HIGH | **E2E never runs against production**; no seeded users in prod; no load tests in prod; staging uses sandbox/fake providers only — no real money (`docs/14-devops-infrastructure/environments.md`). | Workflow permissions review; env-credential separation check. |
+| OPS-05 | HIGH | Deploys are readiness-gated (one replica at a time, `/readyz` green before the next); images digest-pinned in staging/prod; rollback = pull previous tag ≤15 min (`docs/15-deployment/core/rollback.md`). | Deploy pipeline gate + rollback rehearsal evidence. |
+| OPS-06 | HIGH | **E2E never runs against production**; no seeded users in prod; no load tests in prod; staging uses sandbox/fake providers only — no real money (`docs/14-devops-infrastructure/core/environments.md`). | Workflow permissions review; env-credential separation check. |
 | OPS-07 | HIGH | Health: `/healthz` liveness + `/readyz` readiness gate traffic; unhealthy instances removed ≤30 s (`BR-PLT-07`, `NFR-020`). | Health-endpoint test; failure-injection drill. |
-| OPS-08 | MEDIUM | Feature flags default **fail-closed (off)**; platform settings can never alter infra topology or constraints `C-01…C-26` (`docs/14-devops-infrastructure/configuration.md`). | Flag-default test; settings-guard test. |
+| OPS-08 | MEDIUM | Feature flags default **fail-closed (off)**; platform settings can never alter infra topology or constraints `C-01…C-26` (`docs/14-devops-infrastructure/core/configuration.md`). | Flag-default test; settings-guard test. |
 
 ## PRF — Performance & Non-Functional Budgets
 

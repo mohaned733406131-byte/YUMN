@@ -14,7 +14,7 @@ related_documents: [DOC-NFD-001, DOC-NFR-011, DOC-AC-001, DOC-UX-004, DOC-UX-006
 
 # Accessibility — Measurable Targets & Verification
 
-Measurable elaboration of **NFR-011** (WCAG 2.1 AA) for the yumn platform: per-surface conformance targets, numeric criteria, assistive-technology coverage, tooling thresholds, defect policy and evidence hooks. The requirement statement of record stays in `../02-requirements/core/NFR-011.md`; design patterns stay in `11-ui-ux/accessibility.md`. Nothing here is implemented yet — status of every activity below is **DESIGNED** (root README §6).
+Measurable elaboration of **NFR-011** (WCAG 2.1 AA) for the yumn platform: per-surface conformance targets, numeric criteria, assistive-technology coverage, tooling thresholds, defect policy and evidence hooks. The requirement statement of record stays in `../../02-requirements/core/NFR-011.md`; design patterns stay in `../../11-ui-ux/core/accessibility.md`. Nothing here is implemented yet — status of every activity below is **DESIGNED** (root README §6).
 
 ## 1. Purpose & Relationship to NFR-011 / 11-ui-ux
 
@@ -22,10 +22,10 @@ This file answers the question the requirement statement and the UX patterns fil
 
 | Concern | Authoritative location | This file's role |
 |---|---|---|
-| What must hold (WCAG 2.1 AA, ≥95% pass, 0 critical) | `../02-requirements/core/NFR-011.md` (`DOC-NFR-011`) | inherits numbers unchanged; adds splits & cadences |
+| What must hold (WCAG 2.1 AA, ≥95% pass, 0 critical) | `../../02-requirements/core/NFR-011.md` (`DOC-NFR-011`) | inherits numbers unchanged; adds splits & cadences |
 | PASS/FAIL outcomes | `02-requirements/acceptance-criteria.md` (`DOC-AC-001`) — `AC-NFR-011-01/02`, `AC-S-10` | lists which detail feeds which AC (§8) |
-| What users see (patterns, contrast table, checklist) | `11-ui-ux/accessibility.md` (`DOC-UX-006`) | measures the patterns; does not re-describe them |
-| How it is executed | `13-testing/test-plans.md` §e (`DOC-TST-003`) | feeds thresholds & defect mapping to the plan |
+| What users see (patterns, contrast table, checklist) | `../../11-ui-ux/core/accessibility.md` (`DOC-UX-006`) | measures the patterns; does not re-describe them |
+| How it is executed | `../../13-testing/core/test-plans.md` §e (`DOC-TST-003`) | feeds thresholds & defect mapping to the plan |
 | Related quality claims | NFR-012 (usability), NFR-013 (locale parity — a11y runs per locale) | cross-cutting gates only |
 
 ## 2. Conformance Targets by Surface
@@ -80,9 +80,9 @@ No surface claims support for an AT outside this matrix without a new row here (
 
 | Tool | Scope & trigger | Threshold / gate | Wiring |
 |---|---|---|---|
-| **axe-core** in Playwright e2e on P0 paths | per PR (changed routes) + full page sweep weekly; both locales | fail pipeline on **0 critical / 0 serious**; overall ≥95% (`AC-NFR-011-01`) | `14-devops-infrastructure/ci-cd.md` (root README §10 map) |
+| **axe-core** in Playwright e2e on P0 paths | per PR (changed routes) + full page sweep weekly; both locales | fail pipeline on **0 critical / 0 serious**; overall ≥95% (`AC-NFR-011-01`) | `../../14-devops-infrastructure/core/ci-cd.md` (root README §10 map) |
 | **Lighthouse accessibility** on the four core pages (home, category, product, checkout) | per PR, mobile preset | score ≥ **90** (secondary signal — NFR-011 names Lighthouse as such) | CI artifact, same job family as Lighthouse CI perf gates (`DOC-NFD-002` §6) |
-| **RN accessibility checks** (React Native accessibility inspector / axe-android) in Maestro device-lab runs | per release candidate on `DEP-12` devices | 0 unlabeled interactive controls; 0 touch target < 44 px on S4/S5 flows | `13-testing/test-plans.md` §g |
+| **RN accessibility checks** (React Native accessibility inspector / axe-android) in Maestro device-lab runs | per release candidate on `DEP-12` devices | 0 unlabeled interactive controls; 0 touch target < 44 px on S4/S5 flows | `../../13-testing/core/test-plans.md` §g |
 | **Contrast/token audit** vs `DOC-UX-006` §1.1 table | every release | every token pair AA on live render | manual, checklist item 5 |
 | **Manual audits** (keyboard + SR + checklist) | public/customer flows **per release**; **full audit pre-launch and quarterly** thereafter | checklist 10/10 green (`DOC-UX-006` §10); recordings archived | QA, evidence per §8 |
 
@@ -90,7 +90,7 @@ Automated coverage is knowingly partial (axe exercises rules, not comprehension)
 
 ## 6. Defect Management
 
-Severity mapping reuses the project scale (`DOC-TST-002` §10) and the axe→defect mapping already fixed in `13-testing/test-plans.md` §e:
+Severity mapping reuses the project scale (`DOC-TST-002` §10) and the axe→defect mapping already fixed in `../../13-testing/core/test-plans.md` §e:
 
 | axe impact | Defect severity | Fix target | Release effect |
 |---|---|---|---|
@@ -105,7 +105,7 @@ Severity mapping reuses the project scale (`DOC-TST-002` §10) and the axe→def
 
 ## 7. Arabic / RTL Accessibility Specifics
 
-Design rules live in `11-ui-ux/localization.md` (`DOC-UX-007`) and `../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`); this file only fixes what gets *tested*:
+Design rules live in `../../11-ui-ux/core/localization.md` (`DOC-UX-007`) and `../../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`); this file only fixes what gets *tested*:
 
 | Aspect | Measurable check |
 |---|---|
@@ -118,8 +118,8 @@ Design rules live in `11-ui-ux/localization.md` (`DOC-UX-007`) and `../05-fronte
 
 | Element | Reference |
 |---|---|
-| Executable plan | `13-testing/test-plans.md` §e (Accessibility Plan, `DOC-TST-003`) — automation, contrast audit, keyboard run, SR pass, structural checks |
-| Manual checklist | `11-ui-ux/accessibility.md` §10 (`DOC-UX-006`), executed per locale per surface |
+| Executable plan | `../../13-testing/core/test-plans.md` §e (Accessibility Plan, `DOC-TST-003`) — automation, contrast audit, keyboard run, SR pass, structural checks |
+| Manual checklist | `../../11-ui-ux/core/accessibility.md` §10 (`DOC-UX-006`), executed per locale per surface |
 | AC links (verified IDs) | `AC-NFR-011-01` (automated report: ≥95%, 0 critical/serious, both locales) · `AC-NFR-011-02` (keyboard + SR completion with recordings) · both roll up to `AC-S-10`; RTL reading-order evidence also serves `AC-S-11` / `AC-XCUT-03` step 6; defect gate `AC-S-07` |
 | Evidence artifacts | axe JSON/HTML reports and Lighthouse a11y scores as CI artifacts; SR session recordings + keyboard-run notes filed with the `13-testing/` release report (same convention as k6 reports, `DOC-NFD-002` §6); audit report for full audits |
 | External claim | accessibility statement (WCAG 2.1 AA claim scope) is a legal deliverable — `DOC-NFD-007` §5 row 9, worded strictly from the evidence above |

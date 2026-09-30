@@ -108,7 +108,7 @@ This directory owns the **integration contracts**: concrete endpoints, payload s
 ## 9. Domain Boundaries
 
 **Owned here:** provider contracts, degradation behavior, webhook mechanics, integration testing strategy.
-**Not owned here:** requirement statements/ACs (`02-requirements/`); job/queue mechanics of the monolith (`../06-backend/core/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`12-non-functional/observability.md`); environment wiring (`14-devops-infrastructure/`).
+**Not owned here:** requirement statements/ACs (`02-requirements/`); job/queue mechanics of the monolith (`../06-backend/core/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`../12-non-functional/core/observability.md`); environment wiring (`14-devops-infrastructure/`).
 
 ## Change History
 

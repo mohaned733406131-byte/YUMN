@@ -46,7 +46,7 @@ yumn holds real money: prepaid wallet balances, 7-day escrow, refunds. The custo
 
 ### P3 — Low-bandwidth empathy (Yemen network conditions) — `INFERENCE`
 
-The dominant access profile is a mid-tier Android on variable mobile data (`ASM-01`, NFR-002 target device class). Design consequences: skeleton-first loading (never blank screens), progressive disclosure of heavy media, images with intrinsic dimensions and lightweight placeholders, offline/degraded states that preserve user work, and copy that does not punish slow networks (no "something went wrong" for a merely slow request). Performance budgets are enforced in `12-non-functional/performance.md`; the *UX treatment* of slowness is defined here (`screen-states.md`).
+The dominant access profile is a mid-tier Android on variable mobile data (`ASM-01`, NFR-002 target device class). Design consequences: skeleton-first loading (never blank screens), progressive disclosure of heavy media, images with intrinsic dimensions and lightweight placeholders, offline/degraded states that preserve user work, and copy that does not punish slow networks (no "something went wrong" for a merely slow request). Performance budgets are enforced in `../12-non-functional/core/performance.md`; the *UX treatment* of slowness is defined here (`screen-states.md`).
 
 ### P4 — Progressive disclosure over density
 

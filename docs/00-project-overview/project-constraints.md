@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-005, DOC-OVR-010]
 
 # Project Constraints
 
-**26 non-negotiable constraints (`C-01…C-26`).** These override all other considerations — no recommendation, design, or request may violate them. Every constraint has a verification method; constraint tests live in `13-testing/constraint-tests.md`.
+**26 non-negotiable constraints (`C-01…C-26`).** These override all other considerations — no recommendation, design, or request may violate them. Every constraint has a verification method; constraint tests live in `../13-testing/core/constraint-tests.md`.
 
 ## Payment Constraints
 

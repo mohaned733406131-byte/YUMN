@@ -24,10 +24,10 @@ Five shells: customer web (`apps/web-customer`), vendor panel (`apps/web-vendor`
 The 7 actors ([`actors-and-roles.md`](../../00-project-overview/actors-and-roles.md)) — each shell exposes only its role's capabilities (never relying on hidden UI for security, P1/`SEC-02`).
 
 ## Main flow (user journeys)
-End-to-end journeys: [`11-ui-ux/user-flows.md`](../../11-ui-ux/user-flows.md) + `WF-001`…`WF-012`. Information architecture and navigation: [`information-architecture.md`](../../11-ui-ux/information-architecture.md). Screen states (loading/empty/error/offline): [`screen-states.md`](../../11-ui-ux/screen-states.md).
+End-to-end journeys: [`../../11-ui-ux/core/user-flows.md`](../../11-ui-ux/core/user-flows.md) + `WF-001`…`WF-012`. Information architecture and navigation: [`information-architecture.md`](../../11-ui-ux/core/information-architecture.md). Screen states (loading/empty/error/offline): [`screen-states.md`](../../11-ui-ux/core/screen-states.md).
 
 ## Design system & styling constraints
-- Tokens/components: [`design-system.md`](../../11-ui-ux/design-system.md) + `packages/design-tokens`, `packages/ui`.
+- Tokens/components: [`design-system.md`](../../11-ui-ux/core/design-system.md) + `packages/design-tokens`, `packages/ui`.
 - **Arabic-first RTL:** `ar` default, logical CSS properties only — `ml-*/mr-*/pl-*/pr-*/left-*/right-*/text-left/text-right/float` fail CI (`RTL-03`); money as `ر.ي` with Arabic-Indic numerals in `ar` (`RTL-04`).
 - No hardcoded strings — shared catalogs only, i18n lint fails CI (`RTL-02`).
 - Confirmations use the reusable modal component — never `alert/confirm/prompt` (`IMP-04`; validator §6 = 0 today).
@@ -48,7 +48,7 @@ Read-models only on the client — authoritative values (wallet balance, order s
 Exactly two locales, no machine translation (`C-24`) · no GPS/map UI anywhere (`C-16`) · payment UI shows wallet-only methods (`C-01…C-04`).
 
 ## Open questions (COM-01)
-1. Courier app proof-photo flow: photo is optional and never required (`BR-SHP-05`) — UI must not nudge it as mandatory; confirm copy in `11-ui-ux/feedback-and-engagement.md` at design time.
+1. Courier app proof-photo flow: photo is optional and never required (`BR-SHP-05`) — UI must not nudge it as mandatory; confirm copy in `../../11-ui-ux/core/feedback-and-engagement.md` at design time.
 
 ## Change History
 

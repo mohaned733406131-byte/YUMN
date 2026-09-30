@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-003, DOC-OVR-009, DOC-OVR-010, DOC-OVR-011, DOC-TST-
 
 # Quality Gates
 
-The gate system that the rest of `docs/` points at: `00-project-overview/project-charter.md` (baseline mandate), `00-project-overview/assumptions.md` (escalation rule), `00-project-overview/stakeholders.md` (conflict resolution), `../01-business-analysis/core/stakeholder-needs.md` (STK-01), `13-testing/README.md` (§1, L25), `13-testing/test-plans.md` (L17, L46), `17-risk-management/` (phase-gate risk check), `11-ui-ux/README.md` (§7, L114), `17-risk-management/risk-register.md` (phase-gate scope audit).
+The gate system that the rest of `docs/` points at: `00-project-overview/project-charter.md` (baseline mandate), `00-project-overview/assumptions.md` (escalation rule), `00-project-overview/stakeholders.md` (conflict resolution), `../01-business-analysis/core/stakeholder-needs.md` (STK-01), `13-testing/README.md` (§1, L25), `../13-testing/core/test-plans.md` (L17, L46), `17-risk-management/` (phase-gate risk check), `11-ui-ux/README.md` (§7, L114), `17-risk-management/risk-register.md` (phase-gate scope audit).
 
 **Methodology:** a gate is not a meeting or an opinion — it is an evidence review with a recorded outcome (root README §11; `13-testing/README.md` §1: "No gate is passed by opinion").
 
@@ -100,11 +100,11 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 
 | # | Check | Pass criterion | Canon |
 |---|---|---|---|
-| 1.1 | Test evidence per plan | Every executed range meets the common exit: all TCs in range executed, P0/P1 100% PASS, 0 CRITICAL/HIGH open, evidence links on TCs | `13-testing/test-plans.md` §a |
+| 1.1 | Test evidence per plan | Every executed range meets the common exit: all TCs in range executed, P0/P1 100% PASS, 0 CRITICAL/HIGH open, evidence links on TCs | `../13-testing/core/test-plans.md` §a |
 | 1.2 | Critical-path plans green | `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle all exited | `test-plans.md` L46 (Phase-1 critical path) |
 | 1.3 | Coverage vs AC registry | Coverage floors met (unit ≥ 80%, payment module ≥ 95%, auth ≥ 90%) and every AC in built scope maps to ≥ 1 passing test (253 ACs in `02-requirements/acceptance-criteria.md`) | `AC-S-08`, `AC-S-03`, G-TEST-1/G-TEST-3 |
 | 1.4 | Money-path suites green | Checkout/payment/wallet + escrow + ledger invariant suites pass; `J1`/`J2` run in staging with seeded-mismatch detected within one run; ledger design promises implemented (append-only postings, single write path) | `AC-S-14`, `AC-S-15`; RISK-001 kill criterion; STK-01 rule |
-| 1.5 | Constraint tests | `TST-CON-01…26` executed for constraints in scope; target 26/26 at release, with no regression in the touched set | `13-testing/constraint-tests.md`; `AC-S-02`; G-TEST-2 |
+| 1.5 | Constraint tests | `TST-CON-01…26` executed for constraints in scope; target 26/26 at release, with no regression in the touched set | `../13-testing/core/constraint-tests.md`; `AC-S-02`; G-TEST-2 |
 | 1.6 | Performance vs NFRs | k6 evidence at staging scale against `NFR-001/002/004`, `NFR-003` (`C-25`), `NFR-017`; early `PERF-01/04` runs green or remediated | `test-plans.md` §b; G-TEST-4 |
 | 1.7 | Security findings triage | `SEC-P-01…SEC-P-09` results reviewed; `../09-security/core/security-findings.md` entries triaged — 0 open CRITICAL/HIGH security defects; `SEC-011` (uncontracted sole auth channel, CRITICAL) and `SEC-015` (escrow TOCTOU, HIGH) closed or formally risk-accepted | `test-plans.md` §c exit; `security-findings.md`; G-TEST-5 |
 | 1.8 | Design completeness | Customer-facing screens pass the design-complete gate (IA location, flow entry, all states, tokens, accessibility attributes, `ar`/`en` copy) | `11-ui-ux/README.md` L114 |
@@ -128,8 +128,8 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 |---|---|---|---|
 | 2.1 | Load tests at target | `PERF-01` steady 10K concurrent, 30 min: p95 read < 200 ms, p95 write < 500 ms, p99 write ≤ 1,000 ms, error < 0.1%, CPU/mem/pool within budget; all thresholds green on three consecutive runs | `test-plans.md` §b; `AC-S-05`; `C-25`; G-TEST-4 |
 | 2.2 | Drills | `CHAOS-01…CHAOS-08` all PASS conditions met and recorded; `CHAOS-06` proves RTO ≤ 1 h / RPO ≤ 15 min with zero lost money; rollback drill ≤ 15 min; zero silent data loss proven by post-drill reconciliation | `test-plans.md` §d, §h; `AC-S-17`, `AC-S-20`; G-TEST-7 |
-| 2.3 | Production readiness | All 52 rows `DONE` or explicitly `WAIVED`, with sponsor, QA lead, security owner, and ops owner signatures | `15-deployment/production-readiness.md` §8, §9 |
-| 2.4 | Compliance checklist | `AC-S-24` sign-off evidence assembled: the ten deliverables of `12-non-functional/compliance-and-legal.md` §5 on file (data-protection opinion, Central Bank position, VAT opinion, retention opinion, processor/DPA set, bilingual terms + privacy notice, return/refund policy confirmation, messaging-consent wording, accessibility statement, evidence pack) | `compliance-and-legal.md` §5; `AC-S-24` |
+| 2.3 | Production readiness | All 52 rows `DONE` or explicitly `WAIVED`, with sponsor, QA lead, security owner, and ops owner signatures | `../15-deployment/core/production-readiness.md` §8, §9 |
+| 2.4 | Compliance checklist | `AC-S-24` sign-off evidence assembled: the ten deliverables of `../12-non-functional/core/compliance-and-legal.md` §5 on file (data-protection opinion, Central Bank position, VAT opinion, retention opinion, processor/DPA set, bilingual terms + privacy notice, return/refund policy confirmation, messaging-consent wording, accessibility statement, evidence pack) | `compliance-and-legal.md` §5; `AC-S-24` |
 | 2.5 | GAP closure for launch blockers | Every `GAP-*` that blocks a launch claim is closed or waived in writing with an owner (e.g. `GAP-01` targets, `GAP-05` commission tiers before tiered plans ship, `GAP-06` payout mode) | `20-validation/missing-information.md`; RISK-002/RISK-011 actions |
 | 2.6 | Pilot evidence | ≥ 10 pilot vendors completed KYC → listing → sale → payout; end-to-end money cycle proven (top-up → order → escrow → commission → payout → refund); support process live | `AC-S-21`, `AC-S-22`, `AC-S-23` |
 | 2.7 | Accessibility / localization / mobile | §e, §f, §g plan exits green (0 critical a11y violations, 0 RTL defects on core journeys, 0 blocking device-matrix defects) | `test-plans.md` §e–§g; `AC-S-10`, `AC-S-11` |
@@ -154,7 +154,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 
 | # | Check | Pass criterion | Canon |
 |---|---|---|---|
-| 3.1 | SLOs in service | Availability evidence against `AC-S-06` (99.99% over any rolling 30-day window) reviewed; latency/error SLOs monitored with RED metrics; alert inventory current | `AC-S-06`, `AC-S-18`; `12-non-functional/observability.md`; G-TEST-7 |
+| 3.1 | SLOs in service | Availability evidence against `AC-S-06` (99.99% over any rolling 30-day window) reviewed; latency/error SLOs monitored with RED metrics; alert inventory current | `AC-S-06`, `AC-S-18`; `../12-non-functional/core/observability.md`; G-TEST-7 |
 | 3.2 | Residual CRITICALs | No `CRITICAL` security finding or risk remains undispositioned; each residual has owner, severity, and written acceptance | `../09-security/core/security-findings.md`; `risk-review-process.md` §4 |
 | 3.3 | Debt register review | `21-completion/technical-debt.md`: every `TD-NN` reviewed — paid down, scheduled, or explicitly accepted with rationale | `21-completion/technical-debt.md`; D-2 |
 | 3.4 | Assumption re-score with real data | Pilot/production evidence re-scores `ASM-01`, `ASM-05`, `ASM-06`, `ASM-08`, `ASM-09`; `GAP-01` targets set by sponsor are tracked | `assumptions.md`; RISK-002/RISK-024 actions |
@@ -176,7 +176,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 |---|---|---|---|---|---|
 | Gate 0 | Start of implementation | **Project sponsor** | **`FAIL`** | `CRIT-01` (**CRITICAL**) — `ASM-14` baselines `INSUFFICIENT EVIDENCE`; `DEP-05`/`DEP-06` `NOT STARTED` (G-R3), `DEP-10` not started; charter sign-off `PENDING` (0.6); `AVF-02` (`VERIFIED`, roll-up `CRITICAL`) | This file + `20-validation/analysis-validation.md` (`AVF-02`) |
 | Gate 1 | Phase 1 → Phase 2 | Technical lead (sponsor for CRITICAL acceptances) | **`FAIL`** — not presented; entry criterion (Gate 0 `PASS`) unmet | Gate 0 block stands; no implementation exists (`SPE-03`) — zero evidence for checks 1.1–1.9 | This file |
-| Gate 2 | Phase 2 → Launch | Project sponsor | **`FAIL`** — not presented; entry criterion unmet | Gate 0/1 blocks stand; production-readiness 0/52 rows `DONE` | This file + `15-deployment/production-readiness.md` §9 |
+| Gate 2 | Phase 2 → Launch | Project sponsor | **`FAIL`** — not presented; entry criterion unmet | Gate 0/1 blocks stand; production-readiness 0/52 rows `DONE` | This file + `../15-deployment/core/production-readiness.md` §9 |
 | Gate 3 | Post-launch closure → acceptance | Project sponsor + product owner | **`FAIL`** — not presented; entry criterion unmet | Gate 0–2 blocks stand; platform not launched; all `AC-S-*` `PENDING` | This file + `20-validation/analysis-validation.md` |
 
 Honesty rule: **no gate review has been convened, and none can pass today** — no implementation exists (root README §6: no document is `VERIFIED`). The outcomes above are the §1 **`FAIL` = block** state read from current evidence: Gate 0 fails its own criteria today (`AVF-02`, `VERIFIED`), and Gates 1–3 are blocked behind it, so none of the guarded transitions happens. Re-presentation requires new evidence, not argument (§1); a future `PASS` / `PASS WITH FINDINGS` is recorded here only when its evidence artifacts exist — this file defines what will be judged, not what has passed.

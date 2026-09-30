@@ -26,7 +26,7 @@ This domain owns the **HOW of running yumn**: environments, container definition
 | Compose services, networks, volumes, healthchecks | Topology contract / C4 views (`04-architecture/`) | "Which container, which port?" → here (contract: `DOC-ARCH-005`) |
 | GitHub Actions workflows and merge gates | Coverage thresholds and test levels (`13-testing/`, `12-non-functional/`) | "What blocks the merge?" → here |
 | Env-var inventory, feature-flag mechanics | Secret classes, rotation policy, access matrix (`09-security/`) | "Which variable, which consumer?" → here |
-| Prometheus/Grafana/Alertmanager wiring, log pipeline | SLIs, dashboard *content*, alert *thresholds* (`12-non-functional/observability.md`) | "How is the signal collected?" → here |
+| Prometheus/Grafana/Alertmanager wiring, log pipeline | SLIs, dashboard *content*, alert *thresholds* (`../12-non-functional/core/observability.md`) | "How is the signal collected?" → here |
 | Backup jobs, restore procedure, drill schedule | Backup *classes*, retention windows, RPO/RTO numbers (`16-data/`, `NFR-006`, `DATA-REQ-004`) | "Which command, which cron?" → here |
 | Host patching, firewall, TLS renewal, image scanning | Threat model, control catalogue, findings (`09-security/`) | "Which port, which scan?" → here |
 
@@ -37,13 +37,13 @@ This domain owns the **HOW of running yumn**: environments, container definition
 | # | File | Document ID | Content | Source of truth |
 |---|---|---|---|---|
 | 1 | [README.md](README.md) | `DOC-OPS-001` | Domain charter, topology summary, pointer map, index | Yes |
-| 2 | [environments.md](environments.md) | `DOC-OPS-002` | Environment matrix, parity rules (ADR-004), compose overlays, refresh/teardown, mobile build envs | Yes |
-| 3 | [docker-compose.md](docker-compose.md) | `DOC-OPS-003` | Service inventory, image sources, limits, healthchecks, volumes, networks, port map, upgrades | Yes |
-| 4 | [ci-cd.md](ci-cd.md) | `DOC-OPS-004` | GitHub Actions workflows, PR gate steps, quality gates, caching, branch protection, E2E placement | Yes |
-| 5 | [configuration.md](configuration.md) | `DOC-OPS-005` | Config hierarchy, full env-var inventory, feature flags, drift prevention, boot validation | Yes |
-| 6 | [monitoring-stack.md](monitoring-stack.md) | `DOC-OPS-006` | Scrape jobs, Grafana provisioning, alert routing, log pipeline, uptime checks, retention, honest v1 scope | Yes |
-| 7 | [backup-recovery.md](backup-recovery.md) | `DOC-OPS-007` | Backup matrix per store, RTO/RPO execution, encryption, off-host copy, restore steps, quarterly drill | Yes |
-| 8 | [host-hardening.md](host-hardening.md) | `DOC-OPS-008` | OS patching, SSH policy, firewall/port exposure, Docker hygiene, TLS renewal, scan cadence | Yes |
+| 2 | [environments.md](core/environments.md) | `DOC-OPS-002` | Environment matrix, parity rules (ADR-004), compose overlays, refresh/teardown, mobile build envs | Yes |
+| 3 | [docker-compose.md](core/docker-compose.md) | `DOC-OPS-003` | Service inventory, image sources, limits, healthchecks, volumes, networks, port map, upgrades | Yes |
+| 4 | [ci-cd.md](core/ci-cd.md) | `DOC-OPS-004` | GitHub Actions workflows, PR gate steps, quality gates, caching, branch protection, E2E placement | Yes |
+| 5 | [configuration.md](core/configuration.md) | `DOC-OPS-005` | Config hierarchy, full env-var inventory, feature flags, drift prevention, boot validation | Yes |
+| 6 | [monitoring-stack.md](core/monitoring-stack.md) | `DOC-OPS-006` | Scrape jobs, Grafana provisioning, alert routing, log pipeline, uptime checks, retention, honest v1 scope | Yes |
+| 7 | [backup-recovery.md](core/backup-recovery.md) | `DOC-OPS-007` | Backup matrix per store, RTO/RPO execution, encryption, off-host copy, restore steps, quarterly drill | Yes |
+| 8 | [host-hardening.md](core/host-hardening.md) | `DOC-OPS-008` | OS patching, SSH policy, firewall/port exposure, Docker hygiene, TLS renewal, scan cadence | Yes |
 
 Domain numbering prefix: **`DOC-OPS-NNN`**. Nothing outside this directory may mint a `DOC-OPS` ID.
 
@@ -102,8 +102,8 @@ Totals: 13 defined services; production runs 12 (no `sms-sink`); local dev runs 
 
 | Question | Authoritative location | This domain's contribution |
 |---|---|---|
-| Availability target 99.99%, probe SLI, error budget, **single-host residual risk** | `12-non-functional/reliability.md` §1–§3 | Restart policies, healthchecks, uptime probes (`docker-compose.md`, `monitoring-stack.md`) |
-| RED metrics, log schema, dashboard inventory, alert severity → route, runbook list | `12-non-functional/observability.md` | Scrape config, provisioning files, Alertmanager receivers (`monitoring-stack.md`) |
+| Availability target 99.99%, probe SLI, error budget, **single-host residual risk** | `../12-non-functional/core/reliability.md` §1–§3 | Restart policies, healthchecks, uptime probes (`docker-compose.md`, `monitoring-stack.md`) |
+| RED metrics, log schema, dashboard inventory, alert severity → route, runbook list | `../12-non-functional/core/observability.md` | Scrape config, provisioning files, Alertmanager receivers (`monitoring-stack.md`) |
 | Secrets classes, storage model, rotation cadence, access matrix | `../09-security/core/secrets-management.md` | `env_file` wiring, `.gitignore` hygiene, CI secret scan job (`configuration.md`, `ci-cd.md`) |
 | Vulnerability SLAs, scan gates | `../02-requirements/core/SEC-REQ-012.md`, `../09-security/core/security-controls.md` (`SEC-C-23/24`) | Workflow steps, image scans, Dependabot/Renovate cadence (`ci-cd.md`, `host-hardening.md`) |
 | Backup classes, retention windows `RC-01…RC-09`, residual window | `16-data/retention-and-archival.md` §3–§5 | Job scripts, storage layout, restore runbook (`backup-recovery.md`) |
@@ -111,7 +111,7 @@ Totals: 13 defined services; production runs 12 (no `sms-sink`); local dev runs 
 | Topology contract (services, networks, volumes, restart, degraded mode) | `../04-architecture/core/deployment-view.md` | Actual Compose YAML realizing that contract (`docker-compose.md`) |
 | Stack versions and rejected alternatives | `../04-architecture/core/technology-stack.md` | Pinned tags and base-image policy (`docker-compose.md`, `build-and-release.md` in `15-deployment/`) |
 | Migration ordering, expand/contract, forward-only | `../08-database/core/migrations-and-evolution.md` | `migrate` one-shot job placement (`deployment-process.md` in `15-deployment/`) |
-| Degradation behaviour (ES down ⇒ browse works, etc.) | `../10-integrations/core/integration-overview.md` §3–§4, `12-non-functional/reliability.md` §4 | Readiness policy that refuses to fail on ES (`health-checks.md` in `15-deployment/`) |
+| Degradation behaviour (ES down ⇒ browse works, etc.) | `../10-integrations/core/integration-overview.md` §3–§4, `../12-non-functional/core/reliability.md` §4 | Readiness policy that refuses to fail on ES (`health-checks.md` in `15-deployment/`) |
 | Risks RISK-005 (small team vs 99.99%), RISK-014 (edge/DNS) | `17-risk-management/risk-register.md` | Operational mitigations executed here |
 
 ## 5. Governing Principles

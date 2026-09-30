@@ -22,10 +22,10 @@ This domain owns the **release lifecycle**: what artifact ships, how it is versi
 
 | This domain owns | This domain does **not** own | Rule of thumb |
 |---|---|---|
-| Release artifacts, versioning, release notes, registry | Compose service definitions, images, networks (`14-devops-infrastructure/docker-compose.md`) | "What ships and what is it called?" → here |
-| Ordered deploy steps, deploy windows, maintenance page, deploy records | Workflow definitions and merge gates (`14-devops-infrastructure/ci-cd.md`) | "What do I run, in what order, when?" → here |
-| Rollback strategy by change type, triggers, decision tree | Backup execution mechanics (`14-devops-infrastructure/backup-recovery.md`) | "How do we undo it safely?" → here |
-| Health model: liveness/readiness semantics, probes, graceful shutdown | Alert thresholds and dashboards (`12-non-functional/observability.md`) | "What makes a node ready to serve?" → here |
+| Release artifacts, versioning, release notes, registry | Compose service definitions, images, networks (`../14-devops-infrastructure/core/docker-compose.md`) | "What ships and what is it called?" → here |
+| Ordered deploy steps, deploy windows, maintenance page, deploy records | Workflow definitions and merge gates (`../14-devops-infrastructure/core/ci-cd.md`) | "What do I run, in what order, when?" → here |
+| Rollback strategy by change type, triggers, decision tree | Backup execution mechanics (`../14-devops-infrastructure/core/backup-recovery.md`) | "How do we undo it safely?" → here |
+| Health model: liveness/readiness semantics, probes, graceful shutdown | Alert thresholds and dashboards (`../12-non-functional/core/observability.md`) | "What makes a node ready to serve?" → here |
 | Go-live checklist and sign-offs | What the requirements are (`02-requirements/`) | "Is everything proven before launch?" → here |
 | — | Test case design (`13-testing/`) — this domain supplies *where* tests run | — |
 | — | Schema migration rules (`../08-database/core/migrations-and-evolution.md`) — this domain executes them | — |
@@ -35,11 +35,11 @@ This domain owns the **release lifecycle**: what artifact ships, how it is versi
 | # | File | Document ID | Content | Source of truth |
 |---|---|---|---|---|
 | 1 | [README.md](README.md) | `DOC-DPL-001` | Domain charter, release-flow summary, index, pointer map | Yes |
-| 2 | [build-and-release.md](build-and-release.md) | `DOC-DPL-002` | Artifacts, SemVer + image tags, release branches/tags, notes, reproducibility, GHCR | No (supporting) |
-| 3 | [deployment-process.md](deployment-process.md) | `DOC-DPL-003` | Production deploy runbook: pre-checks, ordered steps, windows, smoke, records, approvers | Yes |
-| 4 | [rollback.md](rollback.md) | `DOC-DPL-004` | Rollback by change type, trigger criteria, decision tree, rehearsal, post-incident review | Yes |
-| 5 | [health-checks.md](health-checks.md) | `DOC-DPL-005` | `/healthz` + `/readyz` semantics, probes, startup ordering, graceful shutdown, monitoring hooks | Yes |
-| 6 | [production-readiness.md](production-readiness.md) | `DOC-DPL-006` | Go-live checklist grouped by area with owner, verification method, status, evidence; sign-off | No (supporting) |
+| 2 | [build-and-release.md](core/build-and-release.md) | `DOC-DPL-002` | Artifacts, SemVer + image tags, release branches/tags, notes, reproducibility, GHCR | No (supporting) |
+| 3 | [deployment-process.md](core/deployment-process.md) | `DOC-DPL-003` | Production deploy runbook: pre-checks, ordered steps, windows, smoke, records, approvers | Yes |
+| 4 | [rollback.md](core/rollback.md) | `DOC-DPL-004` | Rollback by change type, trigger criteria, decision tree, rehearsal, post-incident review | Yes |
+| 5 | [health-checks.md](core/health-checks.md) | `DOC-DPL-005` | `/healthz` + `/readyz` semantics, probes, startup ordering, graceful shutdown, monitoring hooks | Yes |
+| 6 | [production-readiness.md](core/production-readiness.md) | `DOC-DPL-006` | Go-live checklist grouped by area with owner, verification method, status, evidence; sign-off | No (supporting) |
 
 Domain numbering prefix: **`DOC-DPL-NNN`**. Nothing outside this directory may mint a `DOC-DPL` ID.
 
@@ -100,7 +100,7 @@ merge → CI → staging auto-deploy → smoke (+ E2E) → manual production app
 
 | Stage | Gate | Failure path |
 |---|---|---|
-| Merge to `main` | All required checks green (`14-devops-infrastructure/ci-cd.md` §3) | No merge |
+| Merge to `main` | All required checks green (`../14-devops-infrastructure/core/ci-cd.md` §3) | No merge |
 | Staging auto-deploy | Smoke suite green; 5xx spike < 0.1% over the 5-min window (`AC-NFR-020-02`) | Revert the merge or fix forward; staging never promotes a red build |
 | Production approval | Manual review by a repository admin in the GitHub `production` environment | Approval withheld |
 | Production deploy | Ordered runbook completed; `/readyz` green; post-deploy smoke green; error rate < 1% over 5 min | `rollback.md` decision tree |
@@ -110,19 +110,19 @@ merge → CI → staging auto-deploy → smoke (+ E2E) → manual production app
 
 | Question | Authoritative location |
 |---|---|
-| Which workflows run, what blocks a merge | `14-devops-infrastructure/ci-cd.md` |
-| Compose services, ports, volumes, image sources | `14-devops-infrastructure/docker-compose.md` |
-| Environment matrix, overlays, parity rules | `14-devops-infrastructure/environments.md` |
-| Env vars, feature flags, boot validation | `14-devops-infrastructure/configuration.md` |
-| Dashboards, alert routing, log pipeline, uptime probes | `14-devops-infrastructure/monitoring-stack.md` |
-| Backup jobs, restore steps, quarterly drill | `14-devops-infrastructure/backup-recovery.md` |
-| Host hardening, scanning cadence, TLS renewal | `14-devops-infrastructure/host-hardening.md` |
+| Which workflows run, what blocks a merge | `../14-devops-infrastructure/core/ci-cd.md` |
+| Compose services, ports, volumes, image sources | `../14-devops-infrastructure/core/docker-compose.md` |
+| Environment matrix, overlays, parity rules | `../14-devops-infrastructure/core/environments.md` |
+| Env vars, feature flags, boot validation | `../14-devops-infrastructure/core/configuration.md` |
+| Dashboards, alert routing, log pipeline, uptime probes | `../14-devops-infrastructure/core/monitoring-stack.md` |
+| Backup jobs, restore steps, quarterly drill | `../14-devops-infrastructure/core/backup-recovery.md` |
+| Host hardening, scanning cadence, TLS renewal | `../14-devops-infrastructure/core/host-hardening.md` |
 | Migration ordering, expand/contract, forward-only rules | `../08-database/core/migrations-and-evolution.md` (`DOC-DB-006`) |
 | Topology contract (services, restart, degraded mode, RTO/RPO placement) | `../04-architecture/core/deployment-view.md` |
-| Availability math, error budget, degradation matrix, drills | `12-non-functional/reliability.md` |
-| Health endpoint timing, deploy observation window, rollback timing | `12-non-functional/observability.md` §8 |
+| Availability math, error budget, degradation matrix, drills | `../12-non-functional/core/reliability.md` |
+| Health endpoint timing, deploy observation window, rollback timing | `../12-non-functional/core/observability.md` §8 |
 | API versioning (`/api/v1`) | `../07-api/core/api-conventions.md`, `07-api/README.md` |
-| Test placement (E2E on staging, k6, DAST) | `13-testing/testing-strategy.md` §7, `13-testing/test-plans.md` |
+| Test placement (E2E on staging, k6, DAST) | `../13-testing/core/testing-strategy.md` §7, `../13-testing/core/test-plans.md` |
 | Degraded readiness semantics (ES down ⇒ ready) | `../10-integrations/core/integration-overview.md` §3–§4 |
 
 ## 5. Governing Principles

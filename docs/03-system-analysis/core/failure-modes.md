@@ -116,7 +116,7 @@ What can go wrong, how the system *detects* it, and what it *does* — expressed
 
 ## 5. Verification
 
-Failure modes become resilience test cases in `13-testing/` (chaos-style provider simulations, duplicate-webhook tests, concurrency tests) and are traced in `19-traceability/`. Alert routes and runbook references belong to `12-non-functional/observability.md` and `14-devops-infrastructure/`.
+Failure modes become resilience test cases in `13-testing/` (chaos-style provider simulations, duplicate-webhook tests, concurrency tests) and are traced in `19-traceability/`. Alert routes and runbook references belong to `../../12-non-functional/core/observability.md` and `14-devops-infrastructure/`.
 
 ## Change History
 

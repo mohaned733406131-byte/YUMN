@@ -14,7 +14,7 @@ related_documents: [DOC-NFD-006, DOC-NFD-004, DOC-OPS-001, DOC-OPS-003, DOC-OPS-
 
 # Monitoring & Observability Stack — Execution
 
-**What** to observe is canon in `12-non-functional/observability.md` (DOC-NFD-006): signal schema, metric catalog, the 12-dashboard inventory, alert severities and thresholds, the top-10 runbooks. **How** those signals are collected, stored, routed and retained is this document. Nothing here invents a threshold; everything here makes an existing threshold measurable (`INT-REQ-007`).
+**What** to observe is canon in `../../12-non-functional/core/observability.md` (DOC-NFD-006): signal schema, metric catalog, the 12-dashboard inventory, alert severities and thresholds, the top-10 runbooks. **How** those signals are collected, stored, routed and retained is this document. Nothing here invents a threshold; everything here makes an existing threshold measurable (`INT-REQ-007`).
 
 ## 1. Stack Placement (single host, `C-22`)
 
@@ -194,11 +194,11 @@ Retention is configured in `infra/monitoring/` and verified by the weekly config
 | Distributed tracing of third-party outbound spans beyond logged attributes | Provider APIs do not propagate `traceparent` reliably | Per-provider latency/error metrics + integration dashboard |
 | Mobile client crashes / native ANR | Separate RN release train; no crash-reporting SDK committed in v1 | Store review feedback + support tickets (`FR-020`) |
 | Cost / billing metrics | Single-VM footprint tracked manually | Monthly ops review (`INFERENCE`) |
-| Database query *plans* in production continuously | Expensive; CI compares plans on a seeded staging DB instead | `../08-database/core/indexes-and-performance.md` §2 regression gate |
+| Database query *plans* in production continuously | Expensive; CI compares plans on a seeded staging DB instead | `../../08-database/core/indexes-and-performance.md` §2 regression gate |
 | Email channel | No email channel in v1 (`BR-NTF-01`) | n/a |
 | PII-level user journey analytics | Privacy minimization (`DATA-REQ-002`); metrics carry no PII labels | Aggregate business metrics only |
 
-Residual availability risk (single host, no HA failover) is **declared**, not hidden: `12-non-functional/reliability.md` §3. Monitoring detects fast; recovery is bounded by RTO ≤ 1 h — it does not eliminate host loss.
+Residual availability risk (single host, no HA failover) is **declared**, not hidden: `../../12-non-functional/core/reliability.md` §3. Monitoring detects fast; recovery is bounded by RTO ≤ 1 h — it does not eliminate host loss.
 
 ## 9. Verification
 

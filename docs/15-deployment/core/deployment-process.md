@@ -98,7 +98,7 @@ Runs against production immediately after step 11; each item is a hard gate.
 
 **Observation window:** 15 minutes with dashboards #1–#4 and #7 open (`DOC-NFD-006` §5). Any P1 alert during the window ⇒ rollback decision tree (`DOC-DPL-004` §5).
 
-> Test-data rule: production smoke never moves real customer money. Where a money-path check is required, it uses a dedicated smoke account with a segregated, clearly-labeled balance, and the transaction is reconciled out afterwards (`13-testing/testing-strategy.md` §7: production gets passive probes + smoke only).
+> Test-data rule: production smoke never moves real customer money. Where a money-path check is required, it uses a dedicated smoke account with a segregated, clearly-labeled balance, and the transaction is reconciled out afterwards (`../../13-testing/core/testing-strategy.md` §7: production gets passive probes + smoke only).
 
 ## 6. Deploy Log / Audit Record
 
@@ -137,7 +137,7 @@ Emergency/rollback deploys follow the same approval path but with an expedited t
 |---|---|
 | Coupling | Mobile releases are **not** gated by or gated on web deploys; they ship on the store-review cadence |
 | Compatibility | Clients pin `/api/v1`; additive API changes deploy first, app updates follow |
-| Coordinated change | A breaking API change requires a deprecation window: new version deployed, old version served until the app base has migrated (`../07-api/core/api-conventions.md`) |
+| Coordinated change | A breaking API change requires a deprecation window: new version deployed, old version served until the app base has migrated (`../../07-api/core/api-conventions.md`) |
 | QA gate | `DEP-12` device-lab pass (Android 10+, iOS 15+, carrier OTP) before store submission |
 | Rollback | Store rollback = halt rollout + ship a fix build; server-side can revert via feature flags where possible |
 

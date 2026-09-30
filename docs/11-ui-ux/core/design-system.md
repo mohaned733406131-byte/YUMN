@@ -14,7 +14,7 @@ related_documents: [DOC-UX-001, DOC-UX-006, DOC-UX-007, DOC-FE-007, DOC-FE-009, 
 
 # Design System — Tokens, Components & Voice
 
-Single source of truth for yumn's visual language (`DEP-11` points here for brand tokens). `../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`) owns the *mechanics* (Tailwind logical properties, token plumbing, font loading); this file owns the *values and usage rules*. Light theme only in v1 (consistent with `DOC-FE-007` §6). Raw hex/px values appear only in this file.
+Single source of truth for yumn's visual language (`DEP-11` points here for brand tokens). `../../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`) owns the *mechanics* (Tailwind logical properties, token plumbing, font loading); this file owns the *values and usage rules*. Light theme only in v1 (consistent with `DOC-FE-007` §6). Raw hex/px values appear only in this file.
 
 ## 1. Color Tokens — Brand (Yemeni green identity)
 

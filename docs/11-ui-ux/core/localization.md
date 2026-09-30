@@ -14,7 +14,7 @@ related_documents: [DOC-UX-001, DOC-UX-004, DOC-FE-008, DOC-FE-007, DOC-REQ-001,
 
 # Localization — Content & Translation Rules
 
-Content and translation **rules** for the two supported locales (`C-24`: `ar` default, `en` parity). The i18n *mechanism* (libraries, catalogs, routing, ICU plumbing) is owned by `../05-frontend/core/internationalization.md` (`DOC-FE-008`); this file owns what is translated, how text behaves, and the editorial standards. Both must agree — where they overlap, canon (`BR-PLT-05`, `BR-NTF-04`, `BR-PAY-10`, `NFR-013`) decides.
+Content and translation **rules** for the two supported locales (`C-24`: `ar` default, `en` parity). The i18n *mechanism* (libraries, catalogs, routing, ICU plumbing) is owned by `../../05-frontend/core/internationalization.md` (`DOC-FE-008`); this file owns what is translated, how text behaves, and the editorial standards. Both must agree — where they overlap, canon (`BR-PLT-05`, `BR-NTF-04`, `BR-PAY-10`, `NFR-013`) decides.
 
 ## 1. Locale Model
 

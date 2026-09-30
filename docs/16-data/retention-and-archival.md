@@ -118,7 +118,7 @@ Purged data can persist in backups until the backup window rolls over (max **35 
 | 5. Delete | Class-specific method (§4): TTL, anonymize, hard delete, object lifecycle | `DOC-DTA-006` |
 | 6. Cascade | ES, Redis keys, MinIO orphans updated in the same run | `DOC-DTA-002` §4 |
 | 7. Evidence | Audit entry: actor (`System`), class, scope, row/object counts, duration, timestamp; emitted as metric for Grafana | `DATA-REQ-003` R5, `NFR-014` |
-| 8. Report | Weekly retention report: rows per class purged, skipped-by-guard, backlog age | `14-devops-infrastructure/`, `12-non-functional/observability.md` |
+| 8. Report | Weekly retention report: rows per class purged, skipped-by-guard, backlog age | `14-devops-infrastructure/`, `../12-non-functional/core/observability.md` |
 
 **Archive mechanics:** monthly-range partitions on order/ledger/audit tables sized for 10-year storage (`NFR-017` forecasts 100M order-line records, 5-year horizon — partition plan accommodates 10); MinIO object lifecycle rules for images/KYC; Prometheus TSDB retention 13 months. Schema-evolution constraint: cold partitions must stay readable across expand–contract migrations (`DATA-REQ-005`, `DOC-DTA-002` §5).
 

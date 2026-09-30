@@ -107,8 +107,8 @@ Actor: System (ACT-07).
 | UC-220 | Delete Superseded KYC Document Sets When a Resubmission Is Accepted | System | B03 | FR-007, BR-VND-03 | P2 | `docs/16-data/retention-and-archival.md` |
 | UC-221 | Purge KYC Objects and Metadata Five Years After Account Closure | System | B03 | FR-007 | P2 | `docs/16-data/data-lifecycle.md` |
 | UC-222 | Rebuild the Search Index From Source After an Outage | System | B04 | FR-009 | P1 | `docs/03-system-analysis/core/failure-modes.md` |
-| UC-223 | Serve Category Browse From Cache While Search Is Degraded | System | B04 | FR-009 | P1 | `docs/12-non-functional/reliability.md` |
-| UC-224 | Alert on Search Indexing Lag Beyond the Five-Minute Delete SLO | System | B04 | FR-009, BR-CAT-06 | P2 | `docs/14-devops-infrastructure/monitoring-stack.md` |
+| UC-223 | Serve Category Browse From Cache While Search Is Degraded | System | B04 | FR-009 | P1 | `docs/12-non-functional/core/reliability.md` |
+| UC-224 | Alert on Search Indexing Lag Beyond the Five-Minute Delete SLO | System | B04 | FR-009, BR-CAT-06 | P2 | `docs/14-devops-infrastructure/core/monitoring-stack.md` |
 | UC-225 | Return the Original Order on Idempotent Checkout Replay | System | B05 | FR-011, BR-ORD-06, BR-PLT-03 | P0 | `docs/06-backend/core/validation.md` |
 | UC-226 | Reject Order Totals Outside the 500–5,000,000 YER Bounds | System | B05 | FR-011, BR-CAT-04 | P0 | `docs/03-system-analysis/core/edge-cases.md` |
 | UC-227 | Expire Idempotency-Key Records After 24 Hours | System | B05 | FR-011, BR-PLT-03 | P2 | `docs/06-backend/core/caching.md` |
@@ -132,11 +132,11 @@ Actor: System (ACT-07).
 | UC-245 | Throttle Per-Channel Notification Sends to Protect Provider Quotas | System | B10 | FR-017 | P1 | `docs/06-backend/core/background-processing.md` |
 | UC-246 | Record SMS and WhatsApp Delivery Receipts per Message | System | B10 | FR-017 | P1 | `docs/10-integrations/core/sms-provider.md` |
 | UC-247 | Publish the Weekly Retention Purge Report | System | B11 | FR-018 | P2 | `docs/16-data/retention-and-archival.md` |
-| UC-248 | Enforce Retention Windows on Metrics, Logs, and Traces | System | B11 | FR-018 | P2 | `docs/14-devops-infrastructure/monitoring-stack.md` |
+| UC-248 | Enforce Retention Windows on Metrics, Logs, and Traces | System | B11 | FR-018 | P2 | `docs/14-devops-infrastructure/core/monitoring-stack.md` |
 | UC-249 | Purge CDN and ISR Caches When Content Is Published | System | B12 | FR-019 | P1 | `docs/06-backend/core/caching.md` |
 | UC-250 | Invalidate the Coupon Validation Cache on Admin Disable | System | B12 | FR-019, BR-PRM-04 | P2 | `docs/06-backend/core/caching.md` |
 | UC-251 | Verify the Audit Hash Chain Nightly and Alert on Tamper | System | B13 | FR-020, BR-PLT-06 | P0 | `docs/08-database/core/constraints-and-integrity.md` |
-| UC-252 | Page On-Call When Backup Freshness Breaches Its Window | System | B13 | FR-020 | P0 | `docs/14-devops-infrastructure/monitoring-stack.md` |
+| UC-252 | Page On-Call When Backup Freshness Breaches Its Window | System | B13 | FR-020 | P0 | `docs/14-devops-infrastructure/core/monitoring-stack.md` |
 | UC-253 | Run the Daily Retention Purge With Floor Guards and Evidence | System | B13 | FR-020, BR-PLT-01, BR-PLT-02 | P1 | `docs/16-data/retention-and-archival.md` |
 | UC-254 | Create Next-Month Table Partitions Ahead of Deployment | System | B13 | FR-020 | P1 | `docs/08-database/core/migrations-and-evolution.md` |
 | UC-255 | Cascade Primary-Data Deletion to Search, Cache, Queues, and Objects | System | B13 | FR-020 | P1 | `docs/16-data/data-lifecycle.md` |
@@ -153,7 +153,7 @@ Actor: Admin / Super Admin / Moderator (ACT-04/05/06).
 
 | UC ID | Title | Actor | Block | FR/BR refs | Priority | Source document |
 |---|---|---|---|---|---|---|
-| UC-256 | Investigate Account-Lockout and OTP-Abuse Signals | Admin | B01 | FR-001, FR-020, BR-AUTH-04 | P1 | `docs/12-non-functional/observability.md` |
+| UC-256 | Investigate Account-Lockout and OTP-Abuse Signals | Admin | B01 | FR-001, FR-020, BR-AUTH-04 | P1 | `docs/12-non-functional/core/observability.md` |
 | UC-257 | Execute the Incident Rotation Runbook for a Leaked Secret | Super Admin | B01 | FR-001, FR-020, BR-AUTH-05, BR-PAY-09 | P0 | `docs/09-security/core/secrets-management.md` |
 | UC-258 | Force Session Revalidation After a Signing-Key Rotation | Super Admin | B01 | FR-001, FR-002, BR-AUTH-05, BR-AUTH-06 | P1 | `docs/09-security/core/secrets-management.md` |
 | UC-259 | Audit Four-Eyes Compliance on Money Operations | Admin | B01 | FR-002, FR-020, BR-PLT-06 | P1 | `docs/09-security/core/rbac.md` |
@@ -168,7 +168,7 @@ Actor: Admin / Super Admin / Moderator (ACT-04/05/06).
 | UC-268 | Set the Platform Commission Tier Within the 5-20% Bound | Super Admin | B03 | FR-014, FR-019, BR-ESC-03 | P1 | `docs/07-api/admin/admin.md` |
 | UC-269 | Cancel an Order as the Platform of Last Resort | Admin | B06 | FR-012, FR-014, BR-ORD-04 | P1 | `docs/07-api/core/orders.md` |
 | UC-270 | Force a Sub-Order State Correction Within the 17-State Table | Admin | B06 | FR-012, FR-020, BR-ORD-01, BR-ORD-03, BR-PLT-06 | P0 | `docs/07-api/core/orders.md` |
-| UC-271 | Assemble the Order Timeline Evidence Pack for a Dispute | Admin | B06 | FR-012, FR-016, BR-ORD-05, BR-ORD-09 | P1 | `docs/11-ui-ux/user-flows.md` |
+| UC-271 | Assemble the Order Timeline Evidence Pack for a Dispute | Admin | B06 | FR-012, FR-016, BR-ORD-05, BR-ORD-09 | P1 | `docs/11-ui-ux/core/user-flows.md` |
 | UC-272 | Trace a Master Order to Its Sub-Orders During an Investigation | Admin | B06 | FR-012, BR-ORD-02 | P2 | `docs/07-api/core/orders.md` |
 | UC-273 | Investigate an Escalated Illegal Order-State Transition | Admin | B06 | FR-012, FR-020, BR-ORD-01, BR-PLT-06 | P1 | `docs/16-data/data-quality.md` |
 | UC-274 | Second-Approve a Large Bank-Transfer Top-Up | Super Admin | B07 | FR-013, FR-020, BR-PAY-04 | P1 | `docs/10-integrations/core/bank-transfer-topup.md` |
@@ -194,7 +194,7 @@ Actor: Admin / Super Admin / Moderator (ACT-04/05/06).
 | UC-294 | Hide Reported Content With a Reason as Moderator | Moderator | B13 | FR-006, FR-019, BR-REV-04 | P1 | `docs/07-api/admin/admin.md` |
 | UC-295 | Isolate Auto-Created Delivery-Code Tickets in the Support Queue | Admin | B13 | FR-015, FR-020, BR-SHP-03 | P2 | `docs/07-api/admin/admin.md` |
 | UC-296 | Investigate an Audit Hash-Chain Verification Failure | Admin | B13 | FR-020, BR-PLT-06 | P0 | `docs/16-data/data-quality.md` |
-| UC-297 | Extract Audit Evidence for a Security Incident | Admin | B13 | FR-020, BR-PLT-06 | P1 | `docs/12-non-functional/observability.md` |
+| UC-297 | Extract Audit Evidence for a Security Incident | Admin | B13 | FR-020, BR-PLT-06 | P1 | `docs/12-non-functional/core/observability.md` |
 | UC-298 | Re-Drive a Failed Job From the Dead-Letter Queue | Admin | B13 | FR-020, BR-PLT-01, BR-PLT-02 | P1 | `docs/10-integrations/core/webhook-reliability.md` |
 | UC-299 | Dispose of Aged Data-Quality Quarantine Records | Admin | B13 | FR-020, BR-PLT-06 | P1 | `docs/16-data/data-quality.md` |
 | UC-300 | Review the Weekly Retention Purge Report | Admin | B13 | FR-020 | P2 | `docs/16-data/retention-and-archival.md` |
@@ -204,7 +204,7 @@ Actor: Admin / Super Admin / Moderator (ACT-04/05/06).
 | UC-304 | Audit the Evidence Entry of a Completed Purge Run | Admin | B13 | FR-020 | P2 | `docs/16-data/retention-and-archival.md` |
 | UC-305 | Review the Monthly Security Severity Report | Admin | B13 | FR-020 | P2 | `docs/09-security/core/security-controls.md` |
 
-> - **sources verified:** every row cites one repo-relative path opened and skimmed this session. Primary evidence: `docs/07-api/{admin,orders,returns,wallet,delivery,analytics,content,catalog}.md` (API-ADM-002/005/011/012/013/016/023/024/027/028/039, API-ORD-011/013/014, API-RET-014/016/017, API-WAL-008/014, API-SHP-003/005, API-ANL-006/007/009, API-CNT-007/017); `docs/09-security/{rbac,secrets-management,security-controls}.md` (four-eyes `ORG-01`/L205, incident rotation runbook §7, SEC-C-24 + monthly severity report); `docs/10-integrations/{bank-transfer-topup,webhook-reliability}.md` (two-person control, statement cross-check S-10, admin-only DLQ re-drive); `docs/16-data/{data-quality,retention-and-archival,data-deletion-and-privacy}.md` (DQ-06, J10, quarantine §6 Admin disposition, weekly purge report + guard-blocked purge, monthly sampling QA); `docs/12-non-functional/observability.md` (dashboard #11, runbook #10); `docs/17-risk-management/risk-register.md` (RISK-001 mitigation + contingency, RISK-013 contingency); `docs/11-ui-ux/user-flows.md` (FL-07 evidence panels); `docs/02-requirements/requirements-overview.md` (FR-001…FR-020 only); `docs/01-business-analysis/business-rules.md` (104 BR IDs, all cited IDs confirmed present with the stated meaning).
+> - **sources verified:** every row cites one repo-relative path opened and skimmed this session. Primary evidence: `docs/07-api/{admin,orders,returns,wallet,delivery,analytics,content,catalog}.md` (API-ADM-002/005/011/012/013/016/023/024/027/028/039, API-ORD-011/013/014, API-RET-014/016/017, API-WAL-008/014, API-SHP-003/005, API-ANL-006/007/009, API-CNT-007/017); `docs/09-security/{rbac,secrets-management,security-controls}.md` (four-eyes `ORG-01`/L205, incident rotation runbook §7, SEC-C-24 + monthly severity report); `docs/10-integrations/{bank-transfer-topup,webhook-reliability}.md` (two-person control, statement cross-check S-10, admin-only DLQ re-drive); `docs/16-data/{data-quality,retention-and-archival,data-deletion-and-privacy}.md` (DQ-06, J10, quarantine §6 Admin disposition, weekly purge report + guard-blocked purge, monthly sampling QA); `docs/12-non-functional/core/observability.md` (dashboard #11, runbook #10); `docs/17-risk-management/risk-register.md` (RISK-001 mitigation + contingency, RISK-013 contingency); `docs/11-ui-ux/core/user-flows.md` (FL-07 evidence panels); `docs/02-requirements/requirements-overview.md` (FR-001…FR-020 only); `docs/01-business-analysis/business-rules.md` (104 BR IDs, all cited IDs confirmed present with the stated meaning).
 
 > - **actor note:** on-call / security-owner duties in `observability.md` and `security-controls.md` are mapped to Admin (ACT-04); key/secrets authority and the commission-tier write are mapped to Super Admin (ACT-05) per `stores.md` L53 (`SUPER_ADMIN` changes tiers via `PUT /admin/settings/{key}`).
 
@@ -224,9 +224,9 @@ Actor: Customer (ACT-01).
 | UC-307 | Hit the 10-Address Cap and Free Up a Slot | Customer | B01 | FR-003 | P2 | `docs/07-api/core/users.md` |
 | UC-308 | Keep Past Orders on Their Address Snapshot After Editing the Book | Customer | B01 | FR-003, FR-012 | P2 | `docs/08-database/core/address.md` |
 | UC-309 | Recover After a Refresh-Token Reuse Revokes the Session Family | Customer | B01 | FR-001, BR-AUTH-05 | P1 | `docs/05-frontend/core/state-management.md` |
-| UC-310 | Sit Through the 15-Minute Lockout Countdown After Five Failed Logins | Customer | B01 | FR-001, BR-AUTH-04 | P1 | `docs/11-ui-ux/user-flows.md` |
+| UC-310 | Sit Through the 15-Minute Lockout Countdown After Five Failed Logins | Customer | B01 | FR-001, BR-AUTH-04 | P1 | `docs/11-ui-ux/core/user-flows.md` |
 | UC-311 | Collect the OTP via WhatsApp When SMS Delivery Fails | Customer | B01 | FR-001, FR-017, BR-NTF-03 | P1 | `docs/07-api/core/notifications.md` |
-| UC-312 | Hit the OTP Attempt Cap and Read the Blocked-Verification Notice | Customer | B01 | FR-001, BR-AUTH-03, BR-NTF-02 | P1 | `docs/11-ui-ux/screen-states.md` |
+| UC-312 | Hit the OTP Attempt Cap and Read the Blocked-Verification Notice | Customer | B01 | FR-001, BR-AUTH-03, BR-NTF-02 | P1 | `docs/11-ui-ux/core/screen-states.md` |
 | UC-313 | Attach Photos to a Product Review and Handle Upload Rejections | Customer | B02 | FR-006, BR-REV-03 | P2 | `docs/07-api/core/catalog.md` |
 | UC-314 | Attempt a Review After the 30-Day Window and Get Rejected | Customer | B02 | FR-006, BR-REV-01 | P2 | `docs/07-api/core/catalog.md` |
 | UC-315 | Filter a Product's Reviews by Rating | Customer | B02 | FR-006, BR-REV-05 | P2 | `docs/07-api/core/catalog.md` |
@@ -238,13 +238,13 @@ Actor: Customer (ACT-01).
 | UC-321 | Combine Search Filters and Compare Facet Counts | Customer | B04 | FR-009 | P1 | `docs/07-api/core/search.md` |
 | UC-322 | Sort Results by Relevance, Price, Rating, or Newest | Customer | B04 | FR-009 | P2 | `docs/07-api/core/search.md` |
 | UC-323 | Recover from a Zero-Result Search with Suggestions and Popular Categories | Customer | B04 | FR-009 | P1 | `docs/07-api/core/search.md` |
-| UC-324 | Fall Back to Category Browse When Search Is Unavailable | Customer | B04 | FR-009 | P1 | `docs/11-ui-ux/screen-states.md` |
+| UC-324 | Fall Back to Category Browse When Search Is Unavailable | Customer | B04 | FR-009 | P1 | `docs/11-ui-ux/core/screen-states.md` |
 | UC-325 | Add Past a Cart Guard and Leave the Cart Unchanged | Customer | B05 | FR-010, BR-CRT-01 | P1 | `docs/07-api/customer/cart.md` |
 | UC-326 | Re-Reserve Stock When a Cart Line's 15-Minute Countdown Expires | Customer | B05 | FR-010, FR-005, BR-CRT-02 | P1 | `docs/03-system-analysis/core/edge-cases.md` |
 | UC-327 | Re-Confirm a Price That Changed Since Add-to-Cart | Customer | B05 | FR-010, FR-011, BR-CRT-04 | P0 | `docs/07-api/customer/cart.md` |
 | UC-328 | Remove an Ineligible Line That Blocks Checkout | Customer | B05 | FR-010, BR-CRT-05 | P1 | `docs/07-api/customer/cart.md` |
 | UC-329 | Merge the Guest Cart Into the Account Cart on Login | Customer | B05 | FR-010, BR-CRT-03 | P1 | `docs/07-api/customer/cart.md` |
-| UC-330 | Resume Checkout After Topping Up the Wallet Shortfall | Customer | B05 | FR-011, FR-013, BR-CRT-06 | P0 | `docs/11-ui-ux/screen-states.md` |
+| UC-330 | Resume Checkout After Topping Up the Wallet Shortfall | Customer | B05 | FR-011, FR-013, BR-CRT-06 | P0 | `docs/11-ui-ux/core/screen-states.md` |
 | UC-331 | Retry a Duplicate Confirm and Receive the Original Order | Customer | B05 | FR-011, BR-ORD-06, BR-PLT-03 | P0 | `docs/03-system-analysis/core/edge-cases.md` |
 | UC-332 | Reject an Order Total Outside the 500-5,000,000 YER Bounds | Customer | B05 | FR-011, BR-CAT-04 | P1 | `docs/07-api/core/orders.md` |
 | UC-333 | Handle a Shipping-Zone Gap for the Selected Address | Customer | B05 | FR-011, FR-015, BR-SHP-01 | P1 | `docs/01-business-analysis/customer/workflow-003.md` |
@@ -252,31 +252,31 @@ Actor: Customer (ACT-01).
 | UC-335 | Refresh the Order Screen After a Status Conflict | Customer | B06 | FR-012, BR-ORD-01 | P2 | `docs/05-frontend/core/forms-and-validation.md` |
 | UC-336 | Receive the 24-Hour Escalation Notice on a Stalled Order | Customer | B06 | FR-012, FR-017, BR-ORD-10 | P2 | `docs/03-system-analysis/core/edge-cases.md` |
 | UC-337 | Get the Cancel-Window Refusal After READY_FOR_PICKUP | Customer | B06 | FR-012, BR-ORD-04 | P1 | `docs/03-system-analysis/core/edge-cases.md` |
-| UC-338 | Open the Order Receipt With the Full VAT Breakdown | Customer | B06 | FR-011, FR-012, BR-FIN-01 | P2 | `docs/11-ui-ux/feedback-and-engagement.md` |
+| UC-338 | Open the Order Receipt With the Full VAT Breakdown | Customer | B06 | FR-011, FR-012, BR-FIN-01 | P2 | `docs/11-ui-ux/core/feedback-and-engagement.md` |
 | UC-339 | Filter Wallet Transactions by Type and Date Range | Customer | B07 | FR-013, BR-PAY-06 | P1 | `docs/07-api/core/wallet.md` |
 | UC-340 | Poll a Top-Up Awaiting Provider Confirmation | Customer | B07 | FR-013, BR-PAY-03 | P1 | `docs/07-api/core/wallet.md` |
 | UC-341 | Upload a Bank-Transfer Slip for Admin Verification | Customer | B07 | FR-013, BR-PAY-04 | P1 | `docs/07-api/core/wallet.md` |
-| UC-342 | Work With a Frozen Wallet (Pay and Top-Up Blocked, Refunds Still Received) | Customer | B07 | FR-013, BR-PAY-09 | P0 | `docs/11-ui-ux/screen-states.md` |
+| UC-342 | Work With a Frozen Wallet (Pay and Top-Up Blocked, Refunds Still Received) | Customer | B07 | FR-013, BR-PAY-09 | P0 | `docs/11-ui-ux/core/screen-states.md` |
 | UC-343 | Check Refund Status and the 3-Business-Day Wallet Credit Date | Customer | B07 | FR-016, FR-013, BR-RET-04, BR-PAY-07 | P1 | `docs/07-api/core/wallet.md` |
 | UC-344 | Reject a Top-Up Outside the 1,000-5,000,000 YER Bounds | Customer | B07 | FR-013, BR-PAY-02 | P2 | `docs/03-system-analysis/core/edge-cases.md` |
-| UC-345 | Read Wallet Amounts Correctly as Arabic-Indic Numerals with a Screen Reader | Customer | B07 | FR-013, BR-PAY-10 | P2 | `docs/12-non-functional/accessibility.md` |
+| UC-345 | Read Wallet Amounts Correctly as Arabic-Indic Numerals with a Screen Reader | Customer | B07 | FR-013, BR-PAY-10 | P2 | `docs/12-non-functional/core/accessibility.md` |
 | UC-346 | Retrieve the Delivery Code In-App When No SMS Arrives | Customer | B08 | FR-015, FR-017, BR-SHP-02 | P0 | `docs/07-api/delivery/delivery.md` |
-| UC-347 | See Failed Delivery Attempts Reflected in Your Order Timeline | Customer | B08 | FR-015, FR-012, BR-ORD-03 | P2 | `docs/11-ui-ux/user-flows.md` |
-| UC-348 | Open the 24-Hour Code-Lockout Notice and Its Auto-Created Ticket | Customer | B08 | FR-015, FR-020, BR-SHP-03 | P1 | `docs/11-ui-ux/screen-states.md` |
-| UC-349 | Follow Delivery Progress Without a Map | Customer | B08 | FR-015, BR-SHP-05 | P2 | `docs/11-ui-ux/user-flows.md` |
+| UC-347 | See Failed Delivery Attempts Reflected in Your Order Timeline | Customer | B08 | FR-015, FR-012, BR-ORD-03 | P2 | `docs/11-ui-ux/core/user-flows.md` |
+| UC-348 | Open the 24-Hour Code-Lockout Notice and Its Auto-Created Ticket | Customer | B08 | FR-015, FR-020, BR-SHP-03 | P1 | `docs/11-ui-ux/core/screen-states.md` |
+| UC-349 | Follow Delivery Progress Without a Map | Customer | B08 | FR-015, BR-SHP-05 | P2 | `docs/11-ui-ux/core/user-flows.md` |
 | UC-350 | Check Return Eligibility Before Submitting a Request | Customer | B09 | FR-016, BR-RET-01 | P0 | `docs/07-api/core/returns.md` |
 | UC-351 | Open a Late-Window Return on a Completed Order | Customer | B09 | FR-016, BR-RET-01 | P1 | `docs/03-system-analysis/core/state-transitions.md` |
 | UC-352 | Watch a Return Auto-Approve After the 72-Hour Inspection Timeout | Customer | B09 | FR-016, BR-RET-05 | P1 | `docs/03-system-analysis/core/edge-cases.md` |
 | UC-353 | Read the Refund Composition (Item Value Versus Shipping) | Customer | B09 | FR-016, BR-RET-03 | P2 | `docs/01-business-analysis/core/workflow-007.md` |
 | UC-354 | Resolve a Conflict Between an Open Dispute and a New Return | Customer | B09 | FR-016, FR-012, BR-ORD-05 | P2 | `docs/07-api/core/returns.md` |
 | UC-355 | Filter the Notification Inbox by Category and Unread State | Customer | B10 | FR-017 | P2 | `docs/07-api/core/notifications.md` |
-| UC-356 | Disable a Marketing Channel Without Silencing Order Alerts | Customer | B10 | FR-017, BR-NTF-05 | P1 | `docs/11-ui-ux/feedback-and-engagement.md` |
-| UC-357 | See Locked Security Toggles in the Preference Center | Customer | B10 | FR-017, BR-NTF-02 | P1 | `docs/11-ui-ux/feedback-and-engagement.md` |
-| UC-358 | Keep Using the App When Push Permission Is Denied | Customer | B10 | FR-017 | P1 | `docs/11-ui-ux/screen-states.md` |
+| UC-356 | Disable a Marketing Channel Without Silencing Order Alerts | Customer | B10 | FR-017, BR-NTF-05 | P1 | `docs/11-ui-ux/core/feedback-and-engagement.md` |
+| UC-357 | See Locked Security Toggles in the Preference Center | Customer | B10 | FR-017, BR-NTF-02 | P1 | `docs/11-ui-ux/core/feedback-and-engagement.md` |
+| UC-358 | Keep Using the App When Push Permission Is Denied | Customer | B10 | FR-017 | P1 | `docs/11-ui-ux/core/screen-states.md` |
 | UC-359 | Add a Message and Attachment to an Open Support Ticket Thread | Customer | B13 | FR-020 | P2 | `docs/07-api/admin/admin.md` |
-| UC-360 | Rate the Support Resolution in the Post-Ticket Survey | Customer | B13 | FR-020 | P2 | `docs/11-ui-ux/feedback-and-engagement.md` |
+| UC-360 | Rate the Support Resolution in the Post-Ticket Survey | Customer | B13 | FR-020 | P2 | `docs/11-ui-ux/core/feedback-and-engagement.md` |
 
-> - sources verified: every cited path was confirmed to exist in the repo (directory listings of `docs/07-api/`, `docs/11-ui-ux/`, `docs/05-frontend/`, `docs/03-system-analysis/`, `docs/01-business-analysis/`, `docs/08-database/`, `docs/12-non-functional/`) and then read/skimmed for the specific behavior: `cart.md` (guard ladder, reservation countdown, priceChanges, blockers, guest merge), `orders.md` (idempotent confirm, ORDER_VALUE_OUT_OF_RANGE, `?status` filter), `wallet.md` (API-WAL-002 filters, API-WAL-004/005 top-up poll+proof, API-WAL-014 refund receipt), `returns.md` (WINDOW_EXPIRED vs NOT_RETURNABLE, DISPUTE_ALREADY_OPEN), `search.md` (facets, sort modes, zero-result, degradation), `catalog.md` (review media/eligibility/list filters, PDP return policy, vendor response), `users.md` (MAX_ADDRESSES_REACHED, in-flight-checkout delete guard), `notifications.md` (inbox filters, SMS->WhatsApp failover), `stores.md` (unfollow, suspended storefront 404), `delivery.md` (API-SHP-013 in-app code), `admin.md` (API-ADM-038 thread reply), `user-flows.md` FL-01/FL-03/FL-06, `screen-states.md` §5-§8, `feedback-and-engagement.md` §2/§5/§7/§9, `routing.md` §2/§9, `forms-and-validation.md` §5 (409 STATE_CONFLICT), `state-management.md` §5 (reuse revocation), `edge-cases.md` EC-01/05/11/13/15/21/23/35/38/42, `state-transitions.md` §2 (COMPLETED -> RETURN_REQUESTED), `workflow-003.md` (NO_SHIPPING_ZONE), `workflow-007.md` (refund composition), `../08-database/core/address.md` (shipping_address_snapshot), `12-non-functional/accessibility.md` §7 (Arabic-Indic SR pronunciation). BR IDs checked against the 104-ID registry in `docs/01-business-analysis/business-rules.md`; FR IDs checked against `docs/02-requirements/requirements-overview.md` (FR-001…FR-020 only).
+> - sources verified: every cited path was confirmed to exist in the repo (directory listings of `docs/07-api/`, `docs/11-ui-ux/`, `docs/05-frontend/`, `docs/03-system-analysis/`, `docs/01-business-analysis/`, `docs/08-database/`, `docs/12-non-functional/`) and then read/skimmed for the specific behavior: `cart.md` (guard ladder, reservation countdown, priceChanges, blockers, guest merge), `orders.md` (idempotent confirm, ORDER_VALUE_OUT_OF_RANGE, `?status` filter), `wallet.md` (API-WAL-002 filters, API-WAL-004/005 top-up poll+proof, API-WAL-014 refund receipt), `returns.md` (WINDOW_EXPIRED vs NOT_RETURNABLE, DISPUTE_ALREADY_OPEN), `search.md` (facets, sort modes, zero-result, degradation), `catalog.md` (review media/eligibility/list filters, PDP return policy, vendor response), `users.md` (MAX_ADDRESSES_REACHED, in-flight-checkout delete guard), `notifications.md` (inbox filters, SMS->WhatsApp failover), `stores.md` (unfollow, suspended storefront 404), `delivery.md` (API-SHP-013 in-app code), `admin.md` (API-ADM-038 thread reply), `user-flows.md` FL-01/FL-03/FL-06, `screen-states.md` §5-§8, `feedback-and-engagement.md` §2/§5/§7/§9, `routing.md` §2/§9, `forms-and-validation.md` §5 (409 STATE_CONFLICT), `state-management.md` §5 (reuse revocation), `edge-cases.md` EC-01/05/11/13/15/21/23/35/38/42, `state-transitions.md` §2 (COMPLETED -> RETURN_REQUESTED), `workflow-003.md` (NO_SHIPPING_ZONE), `workflow-007.md` (refund composition), `../08-database/core/address.md` (shipping_address_snapshot), `../12-non-functional/core/accessibility.md` §7 (Arabic-Indic SR pronunciation). BR IDs checked against the 104-ID registry in `docs/01-business-analysis/business-rules.md`; FR IDs checked against `docs/02-requirements/requirements-overview.md` (FR-001…FR-020 only).
 
 > - shortfall: none (55 of 55 rows produced, UC-306 … UC-360)
 
@@ -339,20 +339,20 @@ Actor: Delivery Provider (ACT-03).
 | UC-396 | Decline a Delivery Offer Without Claiming It | Delivery Provider | B08 | FR-015, BR-SHP-04 | P1 | `docs/08-database/core/shipment.md` |
 | UC-397 | Review the Shipment Attempt Log Before a Retry | Delivery Provider | B08 | FR-015, BR-SHP-06 | P1 | `docs/07-api/delivery/delivery.md` |
 | UC-398 | Upload an Optional Delivery Photo as Extra Proof | Delivery Provider | B08 | FR-015, BR-SHP-07 | P2 | `docs/07-api/delivery/delivery.md` |
-| UC-399 | Finish on the Proof Success Screen and Continue to the Next Job | Delivery Provider | B08 | FR-015, BR-SHP-07 | P2 | `docs/11-ui-ux/screen-states.md` |
-| UC-400 | Disable Code Entry When the Job Is Reassigned or Released | Delivery Provider | B08 | FR-015, BR-SHP-04 | P1 | `docs/11-ui-ux/screen-states.md` |
+| UC-399 | Finish on the Proof Success Screen and Continue to the Next Job | Delivery Provider | B08 | FR-015, BR-SHP-07 | P2 | `docs/11-ui-ux/core/screen-states.md` |
+| UC-400 | Disable Code Entry When the Job Is Reassigned or Released | Delivery Provider | B08 | FR-015, BR-SHP-04 | P1 | `docs/11-ui-ux/core/screen-states.md` |
 | UC-401 | Recover from Delivery-Code Entry Rate Limiting | Delivery Provider | B08 | FR-015, BR-SHP-03 | P2 | `docs/07-api/delivery/delivery.md` |
 | UC-402 | Keep Attempt and Lock Progress Across an App Restart | Delivery Provider | B08 | FR-015, BR-SHP-03 | P2 | `docs/03-system-analysis/core/failure-modes.md` |
 | UC-403 | Work a Delivery Whose Attempts Are Frozen for Admin Review | Delivery Provider | B08 | FR-015, BR-SHP-06 | P1 | `docs/07-api/delivery/delivery.md` |
-| UC-404 | Hear Code Attempt Feedback via Screen Reader | Delivery Provider | B08 | FR-015, BR-SHP-03 | P2 | `docs/12-non-functional/accessibility.md` |
+| UC-404 | Hear Code Attempt Feedback via Screen Reader | Delivery Provider | B08 | FR-015, BR-SHP-03 | P2 | `docs/12-non-functional/core/accessibility.md` |
 | UC-405 | Track Personal Delivery Stats on the Courier Profile | Delivery Provider | B08 | FR-015 | P2 | `docs/07-api/delivery/delivery.md` |
 | UC-406 | Register This Courier Device for Job Push Notifications | Delivery Provider | B10 | FR-017 | P1 | `docs/07-api/core/notifications.md` |
 | UC-407 | Open a Delivery Job from a Push Deep Link | Delivery Provider | B10 | FR-017, FR-015 | P1 | `docs/07-api/core/notifications.md` |
 | UC-408 | Fall Back to the In-App Inbox When Push Delivery Fails | Delivery Provider | B10 | FR-017 | P2 | `docs/10-integrations/core/push-notifications.md` |
 | UC-409 | Configure Delivery Notification Channels as a Courier | Delivery Provider | B10 | FR-017, BR-NTF-05 | P2 | `docs/07-api/core/notifications.md` |
 | UC-410 | Resume a Delivery Deep Link After Signing In | Delivery Provider | B01 | FR-001, FR-015 | P2 | `docs/05-frontend/core/routing.md` |
-| UC-411 | Re-Authenticate When the Session Expires Mid-Job | Delivery Provider | B01 | FR-001, FR-015 | P1 | `docs/11-ui-ux/screen-states.md` |
-| UC-412 | Switch the Courier App Language Between Arabic and English | Delivery Provider | B01 | FR-003 | P2 | `docs/11-ui-ux/information-architecture.md` |
+| UC-411 | Re-Authenticate When the Session Expires Mid-Job | Delivery Provider | B01 | FR-001, FR-015 | P1 | `docs/11-ui-ux/core/screen-states.md` |
+| UC-412 | Switch the Courier App Language Between Arabic and English | Delivery Provider | B01 | FR-003 | P2 | `docs/11-ui-ux/core/information-architecture.md` |
 | UC-413 | Record Vendor Receipt of an Approved Return Package | Delivery Provider | B09 | FR-016, BR-RET-02 | P0 | `docs/01-business-analysis/core/workflow-007.md` |
 | UC-414 | Escalate a Failed Return Pickup to Operations | Delivery Provider | B09 | FR-016, FR-020 | P2 | `docs/01-business-analysis/core/workflow-007.md` |
 | UC-415 | Browse Completed Jobs in the History Tab | Delivery Provider | B08 | FR-015 | P2 | `docs/05-frontend/core/routing.md` |
@@ -360,9 +360,9 @@ Actor: Delivery Provider (ACT-03).
 | UC-417 | Record a Failed Pickup Attempt When the Store Is Not Ready | Delivery Provider | B08 | FR-015, BR-SHP-06 | P1 | `docs/08-database/core/shipment.md` |
 | UC-418 | Wait and Retry Later When the Customer Is Unavailable | Delivery Provider | B08 | FR-015, BR-SHP-03 | P1 | `docs/01-business-analysis/delivery/workflow-005.md` |
 | UC-419 | Work Only with a Masked Buyer Code at the Door | Delivery Provider | B08 | FR-015, BR-SHP-02 | P1 | `docs/07-api/delivery/delivery.md` |
-| UC-420 | Type the Delivery Code with Latin Digits in the Arabic Interface | Delivery Provider | B08 | FR-015, BR-PLT-05 | P2 | `docs/11-ui-ux/localization.md` |
+| UC-420 | Type the Delivery Code with Latin Digits in the Arabic Interface | Delivery Provider | B08 | FR-015, BR-PLT-05 | P2 | `docs/11-ui-ux/core/localization.md` |
 
-> - sources verified: Read `docs/01-business-analysis/use-case-index.md` §2 index first, then read all 12 existing courier UC files (UC-025…UC-030, UC-205…UC-210) in full to map covered scenarios. Each cited source was opened and matched to the row: `docs/07-api/delivery/delivery.md` (API-SHP-003 attempts/proof, -009 `buyerCodeMasked` + CUSTOMER-only -013, -012 photo upload, -014 stats, §2 rate limiter / `DELIVERY_ATTEMPTS_EXCEEDED` / visibility scoping); `docs/07-api/core/notifications.md` (API-NTF-006/007/008, §2 deep-link contract `surface: COURIER`); `docs/10-integrations/core/push-notifications.md` (§6 in-app mirror, §7 provider-outage fallback); `docs/01-business-analysis/delivery/workflow-005.md` step 6 (customer absence — attempt not consumed) and `workflow-007.md` step 5 + Exceptions (return custody, failed return pickup); `docs/03-system-analysis/core/failure-modes.md` §2.5 (lock/attempts survive app restart); `docs/03-system-analysis/core/edge-cases.md` §4 (EC-29/30/31 — checked, already covered by UC-030/UC-208/UC-026); `docs/08-database/core/shipment.md` (`shipment_offer` DECLINED/EXPIRED, `shipment_attempt` outcomes incl. PICKUP_FAILED); `docs/11-ui-ux/screen-states.md` §4/§7/§9; `docs/11-ui-ux/information-architecture.md` §6/§8 (S5 tabs, S5 locale row); `docs/11-ui-ux/localization.md` (Latin digits in code slots); `docs/05-frontend/core/routing.md` §5/§6 (S5 `History` tab, deep-link auth bounce, ACT-03 landing); `docs/12-non-functional/accessibility.md` (S5 / FL-06 attempts announcements); `docs/09-security/core/rbac.md` §5/§6 (courier least-privilege, historically-delivered reads, 403 scoping). FR refs restricted to FR-001…FR-020 and BR refs to the 104 IDs extracted from `docs/01-business-analysis/business-rules.md` (grep of the BR table). No file in the repo was modified.
+> - sources verified: Read `docs/01-business-analysis/use-case-index.md` §2 index first, then read all 12 existing courier UC files (UC-025…UC-030, UC-205…UC-210) in full to map covered scenarios. Each cited source was opened and matched to the row: `docs/07-api/delivery/delivery.md` (API-SHP-003 attempts/proof, -009 `buyerCodeMasked` + CUSTOMER-only -013, -012 photo upload, -014 stats, §2 rate limiter / `DELIVERY_ATTEMPTS_EXCEEDED` / visibility scoping); `docs/07-api/core/notifications.md` (API-NTF-006/007/008, §2 deep-link contract `surface: COURIER`); `docs/10-integrations/core/push-notifications.md` (§6 in-app mirror, §7 provider-outage fallback); `docs/01-business-analysis/delivery/workflow-005.md` step 6 (customer absence — attempt not consumed) and `workflow-007.md` step 5 + Exceptions (return custody, failed return pickup); `docs/03-system-analysis/core/failure-modes.md` §2.5 (lock/attempts survive app restart); `docs/03-system-analysis/core/edge-cases.md` §4 (EC-29/30/31 — checked, already covered by UC-030/UC-208/UC-026); `docs/08-database/core/shipment.md` (`shipment_offer` DECLINED/EXPIRED, `shipment_attempt` outcomes incl. PICKUP_FAILED); `docs/11-ui-ux/core/screen-states.md` §4/§7/§9; `docs/11-ui-ux/core/information-architecture.md` §6/§8 (S5 tabs, S5 locale row); `docs/11-ui-ux/core/localization.md` (Latin digits in code slots); `docs/05-frontend/core/routing.md` §5/§6 (S5 `History` tab, deep-link auth bounce, ACT-03 landing); `docs/12-non-functional/core/accessibility.md` (S5 / FL-06 attempts announcements); `docs/09-security/core/rbac.md` §5/§6 (courier least-privilege, historically-delivered reads, 403 scoping). FR refs restricted to FR-001…FR-020 and BR refs to the 104 IDs extracted from `docs/01-business-analysis/business-rules.md` (grep of the BR table). No file in the repo was modified.
 
 > - shortfall: none — 25/25 rows produced. Caveat (transparency, not a shortfall): UC-396 and UC-417 are backed at entity level only (`shipment_offer.status = DECLINED`, `shipment_attempt.outcome = PICKUP_FAILED`); v1 `delivery.md` has no dedicated endpoint for decline or pickup-failure — the row documents a real modeled behavior but the API gap should be closed or the row demoted at review time. Two task focus areas were deliberately NOT minted because no source describes them: batch/multi-package pickup (sources model one shipment per sub-order; multi-job is only UC-026 A2/UC-028 A1) and shift/idle sweeps (background register has only `assign-offer`, `code-expire`, `code-issue`, `failed-attempt-sla` — all System-actor).
 
@@ -393,7 +393,7 @@ Actor: Delivery Provider (ACT-03).
 - Constraints are owner-locked `C-01…C-26` → no new `C-NN`; candidates listed under Deferred.
 
 **Documents mined for described-but-unregistered behavior:**
-`docs/09-security/core/security-findings.md` (SEC-001…015), `docs/09-security/core/threat-model.md`, `docs/09-security/core/security-controls.md`, `docs/09-security/core/data-protection.md`; `docs/03-system-analysis/core/failure-modes.md` (FM-01…18), `edge-cases.md` (EC-39), `state-transitions.md`, `functional-analysis.md`, `data-flow.md`, `erp-finance-departments.md`, `system-boundary.md`, `sequence-flows.md`; `docs/07-api/core/error-model.md`, `api-conventions.md`, `../07-api/core/auth.md`, `admin.md`, `wallet.md`, `users.md`, `returns.md`, `delivery.md`; `docs/12-non-functional/usability-and-support.md`; `docs/20-validation/missing-information.md` (GAP-01…14); `docs/01-business-analysis/core/business-processes.md` (BP-14/15), `../01-business-analysis/core/UC-051.md`, `UC-004.md`, `UC-014.md`; `docs/18-decisions/ADR/ADR-010.md`.
+`docs/09-security/core/security-findings.md` (SEC-001…015), `docs/09-security/core/threat-model.md`, `docs/09-security/core/security-controls.md`, `docs/09-security/core/data-protection.md`; `docs/03-system-analysis/core/failure-modes.md` (FM-01…18), `edge-cases.md` (EC-39), `state-transitions.md`, `functional-analysis.md`, `data-flow.md`, `erp-finance-departments.md`, `system-boundary.md`, `sequence-flows.md`; `docs/07-api/core/error-model.md`, `api-conventions.md`, `../07-api/core/auth.md`, `admin.md`, `wallet.md`, `users.md`, `returns.md`, `delivery.md`; `docs/12-non-functional/core/usability-and-support.md`; `docs/20-validation/missing-information.md` (GAP-01…14); `docs/01-business-analysis/core/business-processes.md` (BP-14/15), `../01-business-analysis/core/UC-051.md`, `UC-004.md`, `UC-014.md`; `docs/18-decisions/ADR/ADR-010.md`.
 
 **Coverage greps run (grep tool; `rg` unavailable on this Windows host):**
 - `docs/02-requirements` × `enumerat|CORS|presign|bucket|48 h|reopen|hold` → matches only state-machine/stock-hold/KYC-48 h usages (FR-007, FR-012, AC-FR012-01); no requirement covers anti-enumeration at auth entry points, CORS, object-storage access, per-destination OTP limits, search-index PII, return 48 h SLA, ticket lifecycle, or wallet authorization holds.
@@ -408,7 +408,7 @@ Actor: Delivery Provider (ACT-03).
 
 | Idea | Why deferred |
 |---|---|
-| Support severity S1–S4 response/resolution SLAs (candidate NFR/BR) | `docs/12-non-functional/usability-and-support.md` §5 "Support SLAs" line 100 marks all targets `INFERENCE` "and must be confirmed against sponsor capacity at launch readiness"; `docs/01-business-analysis/core/business-objectives.md` BO-11 line 52 records ticket SLA as `INSUFFICIENT EVIDENCE`. Sponsor decision first — a requirement would freeze unsanctioned numbers. |
+| Support severity S1–S4 response/resolution SLAs (candidate NFR/BR) | `docs/12-non-functional/core/usability-and-support.md` §5 "Support SLAs" line 100 marks all targets `INFERENCE` "and must be confirmed against sponsor capacity at launch readiness"; `docs/01-business-analysis/core/business-objectives.md` BO-11 line 52 records ticket SLA as `INSUFFICIENT EVIDENCE`. Sponsor decision first — a requirement would freeze unsanctioned numbers. |
 | Webhook replay window (±5 min) + nonce/payload store (candidate INT-REQ) | `docs/09-security/core/security-findings.md` SEC-005 line 80 calls the window a "design choice" and assigns the spec to `../10-integrations/core/webhook-reliability.md`, which does not exist yet. Mint after that integration document lands; the key is also noted `INFERENCE`. |
 | MFA / step-up at ADMIN & SUPER_ADMIN login (candidate SEC-REQ-013+ if minted later) | `docs/09-security/core/security-findings.md` SEC-012 lines 134–136 explicitly require "a decision record (18-decisions/) before implementation". A SEC-REQ minted now would pre-empt the ADR; also conflicts with `authentication.md` §7 ("none in v1"). |
 | ERP/finance department surface (accounts, sales, purchases, inventory snapshots, period close) as FR-021+ / BR-FIN-06+ | `docs/03-system-analysis/core/erp-finance-departments.md` line 26 states the document "mints no new identifiers" by design; it is approved scope (D2/D3/D11) but plan wave discipline (SPE-03 / D-02) converts backlog rows to FR/BR only at their build wave, never earlier. |

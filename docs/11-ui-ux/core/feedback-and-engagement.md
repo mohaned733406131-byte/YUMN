@@ -68,7 +68,7 @@ Entry: bell icon in header (all web surfaces) with **unread badge** (`99+` cap),
 | List | reverse-chronological, grouped "اليوم / Today", "سابقًا / Earlier"; each row = icon + localized title + 2-line preview + relative time (`DOC-UX-007` §5) |
 | Unread state | unread rows: green-50 tint + start-edge dot + bold title; read = plain; badge clears on visiting the screen (per-row read stays granular) |
 | Segments | tabs: الكل / All · المالية / Money · الطلبات / Orders · المتجر / Store · الترويج / Promotions (promotions hidden if opted out) |
-| **Deep link** | every row taps through to the owning screen: order events → order detail; top-up verified → wallet; return → return detail; KYC decision (vendor) → KYC status; coupon/deal → product/deal page; ticket reply → ticket. Payload contract (title/body/action URL/locale/entity IDs) is specified in `../07-api/core/notifications.md` (planned — see report of missing paths) |
+| **Deep link** | every row taps through to the owning screen: order events → order detail; top-up verified → wallet; return → return detail; KYC decision (vendor) → KYC status; coupon/deal → product/deal page; ticket reply → ticket. Payload contract (title/body/action URL/locale/entity IDs) is specified in `../../07-api/core/notifications.md` (planned — see report of missing paths) |
 | Actions | swipe/long-press: mark read/unread, delete (local dismiss only — never deletes the server record for security notices) |
 | Retention in UI | 90 days visible, older reachable via wallet/order history (`INFERENCE`; server retention per `DATA-REQ-003`) |
 | Security notices | pinned section behavior: cannot be dismissed permanently; render with danger accent (`BR-NTF-02`) |
@@ -127,7 +127,7 @@ Promotional messages are visually and verbally distinct from transactional ones 
 | فتح تذكرة / Open ticket | help center, order detail, wallet, tracking, error states | form: subject, category, related entity (order/wallet/KYC auto-attached), free text + optional screenshots; confirmation with ticket ID |
 | Contextual escalation | delivered inline by failing states: code lockout (auto-created ticket, `BR-SHP-03`), dispute (admin queue), payment pending | pre-filled context — user never retypes the situation |
 | Vendor support | vendor panel help | separate queue view (vendor tickets) |
-| Admin/support console | S3 tickets section | human agents reply; SLA per severity (`12-non-functional/usability-and-support.md`) |
+| Admin/support console | S3 tickets section | human agents reply; SLA per severity (`../../12-non-functional/core/usability-and-support.md`) |
 | No-chat affordances | everywhere | no chat bubble, no "Ask AI", no canned-bot first layer — presence of a bot UI would violate scope |
 
 Multilingual: tickets carry the submitter's locale; agents answer in `ar` by default (`INFERENCE` on staffing language coverage).
@@ -141,7 +141,7 @@ Multilingual: tickets carry the submitter's locale; agents answer in `ar` by def
 | In-app "إبلاغ عن مشكلة / Report a problem" | account → support | captures screen context (no PII beyond what user types, `DATA-REQ-002`) |
 | Review analytics | vendor/admin dashboards | review volume, rating trend (`FR-018`) |
 
-Aggregated outcomes feed `21-completion/` (usability/quality gates) via the loop defined in `12-non-functional/usability-and-support.md` §8.
+Aggregated outcomes feed `21-completion/` (usability/quality gates) via the loop defined in `../../12-non-functional/core/usability-and-support.md` §8.
 
 ## 10. Cross-References
 

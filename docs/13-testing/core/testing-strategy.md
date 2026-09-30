@@ -14,7 +14,7 @@ related_documents: [DOC-TST-001, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-REQ-
 
 # Testing Strategy — Verification Methodology
 
-**Source of truth for how yumn is verified.** This is the Verification Strategy of the analysis methodology (§47) expanded for this project: scope, test levels, coverage targets, automation policy, environments, Arabic/RTL testing, defect lifecycle, entry/exit criteria, regression, and explicit non-goals. Executable detail lives in [test-plans.md](test-plans.md); case detail in [`test-cases/`](test-cases/README.md).
+**Source of truth for how yumn is verified.** This is the Verification Strategy of the analysis methodology (§47) expanded for this project: scope, test levels, coverage targets, automation policy, environments, Arabic/RTL testing, defect lifecycle, entry/exit criteria, regression, and explicit non-goals. Executable detail lives in [test-plans.md](test-plans.md); case detail in [`test-cases/`](../test-cases-index.md).
 
 ---
 
@@ -87,7 +87,7 @@ related_documents: [DOC-TST-001, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-REQ-
 | Branch coverage on domain logic (state machine, money, stock, coupon math) | **≥ 90%** | Local hardening (`INFERENCE`): these modules have asymmetric blast radius — a missed branch is a lost refund or an oversell; cheap to reach because the logic is pure (`NFR-009` testability, `NFR-010`) |
 | E2E P0 journey pass rate | 100% to merge/release | `AC-S-07` |
 
-Coverage is a **floor, not a goal**: a covered line that asserts nothing is reported as such in review. Thresholds are enforced as merge gates in CI (`14-devops-infrastructure/ci-cd.md`), matching `NFR-009`'s lint/type/test gates.
+Coverage is a **floor, not a goal**: a covered line that asserts nothing is reported as such in review. Thresholds are enforced as merge gates in CI (`../../14-devops-infrastructure/core/ci-cd.md`), matching `NFR-009`'s lint/type/test gates.
 
 ## 5. Automation Policy & CI Gating
 
@@ -149,7 +149,7 @@ Flakiness is treated as a defect class: no test depends on wall-clock time (time
 | **LOW** | Cosmetic, minor copy, non-blocking UX | label overflow in `ar` at 320 px | backlog |
 | **INFORMATIONAL** | Observation, tech-debt note, test gap | duplicate assertion in suite | backlog |
 
-- Severity scale matches the project-wide finding classes (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`, root README §8) used by `../09-security/core/security-findings.md` (`SEC-nnn`) and the risk severity classes in `17-risk-management/risk-register.md` (`RISK-nnn`).
+- Severity scale matches the project-wide finding classes (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`, root README §8) used by `../../09-security/core/security-findings.md` (`SEC-nnn`) and the risk severity classes in `17-risk-management/risk-register.md` (`RISK-nnn`).
 - **States:** NEW → TRIAGED → IN_PROGRESS → FIXED → VERIFY → CLOSED / DEFERRED (with risk acceptance) / REJECTED (not a defect, with reason).
 - **Release gate:** zero open CRITICAL/HIGH (`AC-S-07`). Security defects follow `SEC-REQ-012`: critical vulnerabilities fixed ≤ 7 days.
 - Every defect references the failing TC / `TST-CON-*` / AC ID; closure requires re-run evidence.
@@ -172,7 +172,7 @@ Flakiness is treated as a defect class: no test depends on wall-clock time (time
 
 | Excluded | Why | Reference |
 |---|---|---|
-| Live real-money movement | Sandbox/fake providers only in CI/staging; production credentials unreachable from tests | `../10-integrations/core/testing-and-sandboxes.md` §2, `DOC-INT-008` |
+| Live real-money movement | Sandbox/fake providers only in CI/staging; production credentials unreachable from tests | `../../10-integrations/core/testing-and-sandboxes.md` §2, `DOC-INT-008` |
 | Email channels | No email in v1 (GAP-03) — no positive email tests exist | `BR-NTF-01`, GAP-03 |
 | GPS / real-time tracking | Feature does not exist; only *absence* is asserted | `C-16`, `TST-CON-16` |
 | Card, BNPL, COD, crypto paths | Prohibited; only negative/absence scans | `C-01…C-04`, `TST-CON-01…04` |

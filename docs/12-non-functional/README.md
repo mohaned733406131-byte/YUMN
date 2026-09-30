@@ -55,7 +55,7 @@ Rules binding every file here:
 | 7 | `usability-and-support.md` | DOC-NFD-008 | NFR-012, NFR-013 + support ops | task-efficiency targets, learnability, low-bandwidth mode, localization gates, human-only support model, SLAs, tooling, CSAT, feedback loop |
 | 8 | `accessibility.md` | DOC-NFD-009 | NFR-011 (+ NFR-012, NFR-013) | measurable conformance targets per surface, assistive-technology matrix, CI automation thresholds, defect SLAs, Arabic/RTL accessibility specifics, verification & evidence |
 
-> Note: root README §10 maps "Accessibility → `11-ui-ux/accessibility.md` + `12-non-functional/accessibility.md`". The UX patterns live in `11-ui-ux/accessibility.md` (DOC-UX-006); the measurable NFR-011 elaboration lives in `accessibility.md` (DOC-NFD-009).
+> Note: root README §10 maps "Accessibility → `../11-ui-ux/core/accessibility.md` + `core/accessibility.md`". The UX patterns live in `../11-ui-ux/core/accessibility.md` (DOC-UX-006); the measurable NFR-011 elaboration lives in `accessibility.md` (DOC-NFD-009).
 
 ## 4. Consolidated Target Dashboard
 
@@ -73,7 +73,7 @@ One row per NFR — headline target only (the canonical statement remains `DOC-R
 | NFR-008 | ACID + idempotency; zero ledger imbalance | `reliability.md` | idempotency key standard, reconciliation cadence, integrity invariants |
 | NFR-009 | module boundaries enforced; CI gates; docs current | `maintainability.md` | dependency-cruiser rules, gate inventory, doc-freshness audit |
 | NFR-010 | business logic unit-testable offline; coverage thresholds | `maintainability.md` | pyramid targets (80/95/90), suite budgets, flake policy |
-| NFR-011 | WCAG 2.1 AA; ≥95% automated pass; 0 critical | `accessibility.md` + `11-ui-ux/accessibility.md` | per-surface conformance matrix, AT support, CI thresholds, defect SLAs, RTL a11y (see DOC-NFD-009) |
+| NFR-011 | WCAG 2.1 AA; ≥95% automated pass; 0 critical | `accessibility.md` + `../11-ui-ux/core/accessibility.md` | per-surface conformance matrix, AT support, CI thresholds, defect SLAs, RTL a11y (see DOC-NFD-009) |
 | NFR-012 | registration→first order < 5 min; vendor listing < 10 min | `usability-and-support.md` | task matrix, SUS ≥ 78, dead-end rule, error-path audits |
 | NFR-013 | Arabic default, English parity, locale-aware formats | `usability-and-support.md` | locale quality gates, template inventory, RTL regression set |
 | NFR-014 | structured logs, RED metrics, correlation IDs, alerting | `observability.md` | field schema, sampling policy, dashboard list, alert severities, retention |

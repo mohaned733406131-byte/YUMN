@@ -14,7 +14,7 @@ related_documents: [DOC-OPS-001, DOC-OPS-003, DOC-OPS-005, DOC-DPL-003, DOC-TST-
 
 # CI/CD Pipelines (GitHub Actions)
 
-GitHub Actions is the only CI/CD system (`../04-architecture/core/technology-stack.md` §4). Pipelines are **gates, not suggestions**: every rule below fails the run rather than warning. Deployment promotion semantics (staging auto, production manual) live in [`15-deployment/`](../15-deployment/README.md); this file owns the workflow definitions and merge gates.
+GitHub Actions is the only CI/CD system (`../../04-architecture/core/technology-stack.md` §4). Pipelines are **gates, not suggestions**: every rule below fails the run rather than warning. Deployment promotion semantics (staging auto, production manual) live in [`15-deployment/`](../../15-deployment/README.md); this file owns the workflow definitions and merge gates.
 
 ## 1. Workflow Inventory
 
@@ -98,7 +98,7 @@ Branch: **`main`** (single long-lived branch; feature branches → PR).
 | Mobile flows | Maestro | nightly on `DEP-12` lab devices | staging | Release-blocking for app releases |
 | Production | — | **no test suites** beyond passive probes and post-deploy smoke | production | — |
 
-Rule: **E2E never runs against production**; production credentials are unreachable from any test workflow (`13-testing/testing-strategy.md` §7, `DOC-INT-008` §2).
+Rule: **E2E never runs against production**; production credentials are unreachable from any test workflow (`../../13-testing/core/testing-strategy.md` §7, `DOC-INT-008` §2).
 
 ## 6. Caching, Matrix, Concurrency
 
@@ -130,7 +130,7 @@ feature branch ──PR──► ci.yml (all required checks) ──approve/merg
 ```
 
 - **Staging deploys automatically on every merge to `main`.**
-- **Production deploys only from a release tag, after manual approval** by a repository admin, using the runbook in `15-deployment/deployment-process.md`.
+- **Production deploys only from a release tag, after manual approval** by a repository admin, using the runbook in `../../15-deployment/core/deployment-process.md`.
 - Re-running a failed deploy always re-runs from a clean, digest-pinned state — never from a half-applied manual change.
 
 ## 8. Badge & Status Policy
@@ -141,7 +141,7 @@ feature branch ──PR──► ci.yml (all required checks) ──approve/merg
 | Red badge on `main` | Treated as an incident for the owning block: fix forward or revert within the same day |
 | Red badge on a PR | Merge blocked; no "merge anyway" |
 | Release readiness | `release.yml` refuses to start if the latest `main` CI run is not green |
-| Evidence | Every gate result links to a run URL recorded in the release record (`15-deployment/build-and-release.md` §5) |
+| Evidence | Every gate result links to a run URL recorded in the release record (`../../15-deployment/core/build-and-release.md` §5) |
 
 ## 9. Verification
 

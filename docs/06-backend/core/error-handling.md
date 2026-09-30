@@ -98,7 +98,7 @@ throw (typed exception from service/domain)
 
 | Severity | Examples | Route |
 |---|---|---|
-| Critical | 5xx rate > 1%, DLQ depth > 0, ledger mismatch (`BR-ESC-08`), reconciliation failure | on-call page (`12-non-functional/observability.md`) |
+| Critical | 5xx rate > 1%, DLQ depth > 0, ledger mismatch (`BR-ESC-08`), reconciliation failure | on-call page (`../../12-non-functional/core/observability.md`) |
 | High | `STATE_CONFLICT` spike (client/server drift), auth failure spike, Redis down | team channel + dashboard annotation |
 | Medium | rate-limit surge, `DEPENDENCY_UNAVAILABLE` from a provider | ticket + dashboard |
 | Info | routine domain errors (`VALIDATION_ERROR`, 404) | metrics only |

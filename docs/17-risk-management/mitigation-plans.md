@@ -89,7 +89,7 @@ Detailed, phased plans for the eight highest-ranked risks using the ranking rule
 
 - Adapter with primary/secondary/WhatsApp chain inside the 5-minute OTP window; failover never duplicates a successful send (`AC-IR003-02`).
 - Counters in Redis shared across replicas: 60 s cooldown, ≤3 resends/10 min, **keyed per destination phone globally** (`SEC-006` fix).
-- Metrics: OTP send success rate per provider, DLR latency, fallback counts; alert thresholds per `12-non-functional/observability.md`.
+- Metrics: OTP send success rate per provider, DLR latency, fallback counts; alert thresholds per `../12-non-functional/core/observability.md`.
 - No logging of OTP bodies (`SEC-REQ-002` R4); correlation IDs only.
 - Degrade honestly: all-channels-down state is a designed screen, not an exception (`AC-IR003-04`).
 
@@ -233,7 +233,7 @@ Detailed, phased plans for the eight highest-ranked risks using the ranking rule
 
 | Phase | Actions | Exit evidence |
 |---|---|---|
-| **Phase 0** | Confirm `ASM-11` (10K is the correct target) at Gate 0; latency budgets recorded in `12-non-functional/performance.md` | Sponsor confirmation |
+| **Phase 0** | Confirm `ASM-11` (10K is the correct target) at Gate 0; latency budgets recorded in `../12-non-functional/core/performance.md` | Sponsor confirmation |
 | **Phase 1** | Query/index review against `NFR-017` capacity plan; Redis cache with ≥ 80% hit target (`NFR-004`); cursor pagination for deep lists; connection pooling; ES offload for search | Staging baselines at 1K concurrency |
 | **Phase 2** | k6 suites at 1× and 2× target; fix regressions; validate rate-limit budgets with abusive profile (`SEC-013`, `AC-SR009-04`) | k6 report: p95 < 200/500 ms at 10K for 30 min (`AC-S-05`) |
 | **Launch** | Production SLO dashboards + saturation alerts before first traffic | Alert inventory (`AC-S-18`) |
@@ -319,7 +319,7 @@ Detailed, phased plans for the eight highest-ranked risks using the ranking rule
 - Guardrail: every new infrastructure component requires an ADR before adoption (blocks complexity creep).
 - Automation: same images across environments; migrations as one-shot job; no manual prod steps beyond approval gate (`deployment-view.md` §7).
 - Degradation-first design: search/cache/queue failures must not fail readiness for core routes (`NFR-007`).
-- Bounded alerting: severity definitions from `12-non-functional/observability.md`; no unclassified pages.
+- Bounded alerting: severity definitions from `../12-non-functional/core/observability.md`; no unclassified pages.
 
 ### 8.3 Decision points / kill criteria
 

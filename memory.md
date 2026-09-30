@@ -38,7 +38,7 @@ days · KYC decision ≤48 h · inspection ≤72 h · OTP 6-digit/5-min/3-attemp
 | Order/state behavior | `docs/03-system-analysis/core/state-transitions.md` |
 | API contract (221 endpoints) | `docs/07-api/` |
 | Database schema | `docs/08-database/` |
-| Test cases | `docs/13-testing/test-cases/` |
+| Test cases | `docs/13-testing/` |
 | Naming | `docs/22-glossary/naming-conventions.md` |
 | Implementation binding (commands/paths/budgets) | `senior-rules/RULES_HINTS.md` |
 | Project rules | `senior-rules/YUMN_RULES.md` |
@@ -68,7 +68,7 @@ days · KYC decision ≤48 h · inspection ≤72 h · OTP 6-digit/5-min/3-attemp
 | D-05 | `GAP-07` cited in 5 files; canonical register listed only `GAP-01…06` | MEDIUM | `docs/00-project-overview/project-scope.md` vs risk register | **RESOLVED 2026-09-27** — GAP-07 adopted; register now `GAP-01…GAP-12` (`docs/20-validation/missing-information.md`) |
 | D-06 | API vocabularies disagree with DB enums: product status (`INACTIVE` vs `DISABLED`), KYC (`IN_REVIEW` absent), notification categories (7 vs 4), notification `severity` (no column), refund/payout/dispute/return states, ledger `type` set | HIGH | `docs/07-api/` vs `docs/08-database/core/constraints-and-integrity.md` §2.3 | Reconcile via ADR **before coding** (rule `SPE-04`) |
 | D-07 | API promises storage that doesn't exist: push devices, review reports, dispute evidence, support-ticket messages, vendor application, top-up proof file, payout account, deletion request | HIGH | endpoint files vs `docs/08-database/` | Add entities or remove endpoints before implementation |
-| D-08 | Repo path spellings conflict: `apps/api` + `apps/web` + `apps/mobile/**` (ops docs) vs root `api/` + `apps/web-*` + `apps/mobile-*` (frontend/backend docs) | MEDIUM | `docs/14-devops-infrastructure/ci-cd.md` vs `docs/05-frontend/core/frontend-architecture.md` | Canonical = frontend/backend tree; correct ops docs (adapter §4 already pins this) |
+| D-08 | Repo path spellings conflict: `apps/api` + `apps/web` + `apps/mobile/**` (ops docs) vs root `api/` + `apps/web-*` + `apps/mobile-*` (frontend/backend docs) | MEDIUM | `docs/14-devops-infrastructure/core/ci-cd.md` vs `docs/05-frontend/core/frontend-architecture.md` | Canonical = frontend/backend tree; correct ops docs (adapter §4 already pins this) |
 | D-09 | Queue-name registers diverge: 25 names in `docs/06-backend/core/background-processing.md` vs 17 in `docs/04-architecture/core/data-flow.md`, 1 shared | MEDIUM | both files | **RESOLVED 2026-09-27** (session 004) — single 30-row register at `background-processing.md` §1; `data-flow.md` v1.1 restates all 17 consumer rows; 20 downstream names renamed; repo-wide queue-name scan 0 violations; `REC-06`/`TD-07` PAID, `CT-04`/`CT-05`/`CRIT-04` RESOLVED (CI-enforcement half = `REC-15`) |
 | D-10 | `archdoc.md` at repo root is **0 bytes** yet cited as the governing structure spec; `archive/` cited but absent | MEDIUM | `docs/README.md` §1 | **RESOLVED 2026-09-28** (session 008, `REC-01`/`TD-03`) — citations made honest in `docs/README.md` v1.2 (session 005), then **`archdoc.md` v1.0 authored** (reconstructed from `docs/README.md` §2–§5; provenance + the absent `archive/` claim stated inside the file, `SPE-03`); `docs/README.md` v1.4 §1 → restored; `F-05` → FIXED, `HAL-03` → `RESOLVED`, `AVF-08` → `RESOLVED` |
 | D-11 | ADR index `04-architecture/architecture-decisions-reference.md` claims "no ADR files exist" though ADR-001…010 are all present & ACCEPTED; three status vocabularies in use | LOW | index vs `docs/18-decisions/ADR/` | Re-sync the index |

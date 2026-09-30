@@ -73,11 +73,11 @@ Phase vocabulary is owned by `17-risk-management/mitigation-plans.md` (§Phase v
 
 Feeds into the gates:
 
-- **Test evidence** — `13-testing/test-plans.md` (PLAN-01…PLAN-18, performance, security, chaos, accessibility, localization, device-lab, migration plans) → gate evidence.
+- **Test evidence** — `../13-testing/core/test-plans.md` (PLAN-01…PLAN-18, performance, security, chaos, accessibility, localization, device-lab, migration plans) → gate evidence.
 - **Risk checks** — `17-risk-management/risk-review-process.md` §7 checklist runs at every gate.
 - **Design completeness** — `11-ui-ux/README.md` §7 design gate "feeds `21-completion/quality-gates.md`".
-- **Operational readiness** — `15-deployment/production-readiness.md` (52 checklist rows) → Gate 2.
-- **Compliance evidence** — `12-non-functional/compliance-and-legal.md` §5 sign-off checklist → `AC-S-24` → Gate 2.
+- **Operational readiness** — `../15-deployment/core/production-readiness.md` (52 checklist rows) → Gate 2.
+- **Compliance evidence** — `../12-non-functional/core/compliance-and-legal.md` §5 sign-off checklist → `AC-S-24` → Gate 2.
 - **Audit findings** — `20-validation/` (see §4).
 
 ---
@@ -90,7 +90,7 @@ This domain holds two differently-scoped sequencing documents. Both exist on pur
 |---|---|---|
 | Document ID | `DOC-CMP-002` | `DOC-CMP-003` |
 | Question answered | What is the delivery model — phases, entry/exit criteria, dependencies, risks owned, evidence produced? | How do test plans execute per sprint against those phases? |
-| Cited by | `00-project-overview/project-charter.md` ("Delivery model — Phased (see `21-completion/implementation-roadmap.md`)") | `13-testing/test-plans.md` ("plans execute per sprint against `21-completion/roadmap.md`") |
+| Cited by | `00-project-overview/project-charter.md` ("Delivery model — Phased (see `21-completion/implementation-roadmap.md`)") | `../13-testing/core/test-plans.md` ("plans execute per sprint against `21-completion/roadmap.md`") |
 | Scope | Full authority: phases, gates mapping, dependencies, risks, evidence | Narrow: sprint-cadence checklist; sizing/schedule detail is deliberately out of scope |
 | Status | **Authoritative** | **Derived** |
 
@@ -119,7 +119,7 @@ Neither file contains calendar dates, effort estimates, or sprint counts: schedu
 |---|---|
 | Sponsor / product owner | `21-completion/quality-gates.md` (Gate 0) → `21-completion/final-acceptance.md` |
 | Delivery / engineering | `21-completion/implementation-roadmap.md` → `21-completion/roadmap.md` |
-| QA lead | `21-completion/roadmap.md` → `13-testing/test-plans.md` → `21-completion/quality-gates.md` (Gate 1) |
+| QA lead | `21-completion/roadmap.md` → `../13-testing/core/test-plans.md` → `21-completion/quality-gates.md` (Gate 1) |
 | Anyone asking "is it ready?" | `21-completion/feasibility-assessment.md` → `21-completion/recommendations.md` → `21-completion/final-acceptance.md` |
 | Anyone inheriting unfinished work | `21-completion/technical-debt.md` |
 

@@ -101,7 +101,7 @@ All jobs run under the BullMQ naming scheme `{block}.{entity}.{action}`, are ide
 ## 7. Dashboards & Alerting
 
 - **Grafana — "Data Quality" dashboard** (provisioned with the platform's Grafana via `INT-REQ-007`): reconciliation run status/freshness (J1–J12), mismatch counts by job, quarantine depth by rule, ledger imbalance gauge (target 0), ES index lag, DLQ depth, purge/evidence row counts (`DOC-DTA-005` §6), erasure metrics (`DOC-DTA-006` §6).
-- **Alerts** follow `12-non-functional/observability.md` severity definitions: imbalance and chain-break = CRITICAL (page); provider/top-up mismatch = HIGH; quarantine aging and index-lag breaches = MEDIUM; single-run transient failures = LOW (auto-retried).
+- **Alerts** follow `../12-non-functional/core/observability.md` severity definitions: imbalance and chain-break = CRITICAL (page); provider/top-up mismatch = HIGH; quarantine aging and index-lag breaches = MEDIUM; single-run transient failures = LOW (auto-retried).
 - Every panel carries its rule/job ID so an alert links straight to this register.
 
 ## 8. Data Quality SLOs

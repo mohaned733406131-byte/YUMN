@@ -69,7 +69,7 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 | Queues | `{block}.{entity}.{action}` | `b07.escrow.release` | `../06-backend/core/background-processing.md` §1 (rule `BR-PLT-01`) — single queue register |
 | API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/endpoints-index.md` — 14 groups, 221 endpoints |
 | Database entities | `DB-NNN` in schemas `b01…b13` | `b06` orders schema | registry `../08-database/entities-index.md` — `DB-001…DB-018` |
-| Test cases | `TC-NNN` | `TC-104` | registry `13-testing/test-cases/README.md` — `TC-001…TC-114`; this directory references load/resilience scenarios by `NFR-*` instead |
+| Test cases | `TC-NNN` | `TC-104` | registry `../13-testing/test-cases-index.md` — `TC-001…TC-114`; this directory references load/resilience scenarios by `NFR-*` instead |
 
 ## Quality Rules for This Directory
 

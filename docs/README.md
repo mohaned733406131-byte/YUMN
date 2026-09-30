@@ -263,17 +263,17 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 20. Authorization | `09-security/core/rbac.md` + `06-backend/core/authorization.md` |
 | 21. Security | `09-security/` |
 | 22. Integrations | `10-integrations/` |
-| 23. Performance | `12-non-functional/performance.md` |
-| 24. Scalability | `12-non-functional/scalability.md` + `04-architecture/core/scalability.md` |
-| 25. Reliability | `12-non-functional/reliability.md` |
+| 23. Performance | `12-non-functional/core/performance.md` |
+| 24. Scalability | `12-non-functional/core/scalability.md` + `04-architecture/core/scalability.md` |
+| 25. Reliability | `12-non-functional/core/reliability.md` |
 | 26. Infrastructure | `14-devops-infrastructure/` |
 | 27. Deployment | `15-deployment/` |
-| 28. DevOps | `14-devops-infrastructure/ci-cd.md` |
+| 28. DevOps | `14-devops-infrastructure/core/ci-cd.md` |
 | 29. Testing | `13-testing/` |
 | 30. UX/UI | `11-ui-ux/` + `05-frontend/` |
-| 31. Accessibility | `11-ui-ux/accessibility.md` + `12-non-functional/accessibility.md` |
-| 32. Internationalization | `11-ui-ux/localization.md` + `05-frontend/core/internationalization.md` |
-| 33. Maintainability | `12-non-functional/maintainability.md` |
+| 31. Accessibility | `11-ui-ux/core/accessibility.md` + `12-non-functional/core/accessibility.md` |
+| 32. Internationalization | `11-ui-ux/core/localization.md` + `05-frontend/core/internationalization.md` |
+| 33. Maintainability | `12-non-functional/core/maintainability.md` |
 | 34. Technology Decisions | `18-decisions/core/` |
 | 35. Legal/Compliance | `00-project-overview/project-context.md` §Compliance + `12-non-functional/` |
 | 36. Feasibility | `21-completion/feasibility-assessment.md` |
@@ -287,7 +287,7 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 44. Technical Debt | `21-completion/technical-debt.md` |
 | 45. Critical Findings | `20-validation/critical-findings.md` |
 | 46. Recommendations | `21-completion/recommendations.md` |
-| 47. Verification Strategy | `13-testing/testing-strategy.md` |
+| 47. Verification Strategy | `13-testing/core/testing-strategy.md` |
 | 48. Final Quality Assessment | `20-validation/analysis-validation.md` + `21-completion/final-acceptance.md` |
 
 ---

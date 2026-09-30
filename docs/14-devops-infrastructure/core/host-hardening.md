@@ -38,7 +38,7 @@ One Docker host per environment (`C-22`) means **the host is the security perime
 | Production access | Via **bastion/jump host or VPN** (`INFERENCE`); direct SSH to the production host from the internet is denied at the firewall. Where a bastion is not yet deployed, SSH is restricted to a static IP allowlist as the interim control |
 | Staging/dev | VPN or IP allowlist; direct exposure permitted for the engineering network only |
 | Local development | No SSH — developer machines run their own Compose stack (`DOC-OPS-002`) |
-| MFA | SSH certificate or hardware-key MFA at the bastion where the provider supports it; **no MFA on the admin console in v1** — see `15-deployment/production-readiness.md` §Security for the recorded decision |
+| MFA | SSH certificate or hardware-key MFA at the bastion where the provider supports it; **no MFA on the admin console in v1** — see `../../15-deployment/core/production-readiness.md` §Security for the recorded decision |
 | Commands | Sudo limited to the ops role; full session logging (`script`/auditd) with 90-day retention (`RC-02`) |
 | Failed logins | `fail2ban`-class rate limiting; alerts on burst (feeds `SEC-REQ-009` abuse control) |
 | Emergency break-glass | One sealed, offline root key held by the ops owner; use is a `BR-PLT-06`-recorded event and triggers a key rotation afterwards |
@@ -149,13 +149,13 @@ This document **hardens** the host; it does not define incident process.
 
 | Topic | Authoritative location |
 |---|---|
-| Runbooks for the top-10 operational incidents (symptom → diagnosis → mitigation → escalation) | `12-non-functional/observability.md` §7 |
-| Availability math, error-budget policy, degradation matrix, game-day drills | `12-non-functional/reliability.md` §2, §4, §8 |
+| Runbooks for the top-10 operational incidents (symptom → diagnosis → mitigation → escalation) | `../../12-non-functional/core/observability.md` §7 |
+| Availability math, error-budget policy, degradation matrix, game-day drills | `../../12-non-functional/core/reliability.md` §2, §4, §8 |
 | Risk register (incl. RISK-005 small-team-vs-99.99%, RISK-014 edge/DNS) | `17-risk-management/risk-register.md` |
-| Secret-leak rotation runbook | `../09-security/core/secrets-management.md` §7 |
-| Backup/restore under disaster | `14-devops-infrastructure/backup-recovery.md` §6 |
-| Rollback decision tree | `15-deployment/rollback.md` |
-| Go-live evidence that these exist and were rehearsed | `15-deployment/production-readiness.md` |
+| Secret-leak rotation runbook | `../../09-security/core/secrets-management.md` §7 |
+| Backup/restore under disaster | `backup-recovery.md` §6 |
+| Rollback decision tree | `../../15-deployment/core/rollback.md` |
+| Go-live evidence that these exist and were rehearsed | `../../15-deployment/core/production-readiness.md` |
 
 Host-specific escalation inputs: P1 alerts from `DOC-OPS-006` §4 page the on-call; on-call ack ≤ 15 min; anything exceeding the error-budget burn threshold triggers the freeze policy of `DOC-NFD-004` §2.
 

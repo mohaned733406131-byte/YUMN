@@ -137,7 +137,7 @@ domain event (OrderConfirmed, OtpRequested, WalletCredited, …)
 | Payloads | carry **IDs only** — never amounts, never PII beyond recipient ID; consumer fetches fresh state |
 | Concurrency | per-queue `concurrency` limits; money queues concurrency low (serial-ish); notification queues high |
 | Graceful shutdown | worker finishes in-flight job on SIGTERM (deploys, NFR-020) — no job loss (NFR-007) |
-| Observability | queue depth, wait time, failure rate exported to Prometheus; DLQ alerts (`INT-REQ-007`, `12-non-functional/observability.md`) |
+| Observability | queue depth, wait time, failure rate exported to Prometheus; DLQ alerts (`INT-REQ-007`, `../../12-non-functional/core/observability.md`) |
 | Stalled jobs | BullMQ stalled-job detection re-enqueues; counted as reliability signal |
 
 ## 9. Scheduling Model

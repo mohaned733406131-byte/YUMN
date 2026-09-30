@@ -14,7 +14,7 @@ related_documents: [DOC-ARCH-005, DOC-ARCH-003, DOC-ARCH-009, DOC-OPS-001, DOC-O
 
 # Container Strategy — Compose Service Inventory
 
-Realizes the topology contract of `../04-architecture/core/deployment-view.md` (DOC-ARCH-005) as concrete Compose services. Governing constraints: `C-22` (Compose only), `C-19` (PostgreSQL only), `C-20` (BullMQ only), `NFR-016` (any Docker host, no lock-in).
+Realizes the topology contract of `../../04-architecture/core/deployment-view.md` (DOC-ARCH-005) as concrete Compose services. Governing constraints: `C-22` (Compose only), `C-19` (PostgreSQL only), `C-20` (BullMQ only), `NFR-016` (any Docker host, no lock-in).
 
 ## 1. Service Inventory
 
@@ -68,7 +68,7 @@ Rules:
 | `prometheus` | `/-/healthy` | 15s / 5s / 3 / 15s | Unhealthy → P2 (monitoring blind spot) |
 | `grafana` | `/api/health` | 15s / 5s / 3 / 15s | Unhealthy → P3 |
 
-Health endpoint semantics (liveness vs readiness, degraded policy, graceful shutdown) are specified in [`15-deployment/health-checks.md`](../15-deployment/health-checks.md) — this file only wires the probes.
+Health endpoint semantics (liveness vs readiness, degraded policy, graceful shutdown) are specified in [`../../15-deployment/core/health-checks.md`](../../15-deployment/core/health-checks.md) — this file only wires the probes.
 
 ## 4. Volumes
 
@@ -102,7 +102,7 @@ Health endpoint semantics (liveness vs readiness, degraded policy, graceful shut
 | Restart policy | `unless-stopped` for all long-running services; `no` for `migrate` and one-shot jobs | Self-healing after crash/reboot (`C-26` process-level defense) |
 | Logging driver | `json-file` with `max-size: 10m`, `max-file: 5` per container | Simple, no extra daemon under `C-22`; rotated by Docker; collected by the pipeline in `DOC-OPS-006` §6 |
 | Log format | Structured JSON written to **stdout** by the app (`DOC-NFD-006` §2 schema) | One collection point; no log files inside containers |
-| Image tags | `ghcr.io/yumn/<service>:<git-sha>` for every build; release adds `:<semver>` and `:latest` **only on release tags** | Reproducible rollback target N-2 (`15-deployment/rollback.md`) |
+| Image tags | `ghcr.io/yumn/<service>:<git-sha>` for every build; release adds `:<semver>` and `:latest` **only on release tags** | Reproducible rollback target N-2 (`../../15-deployment/core/rollback.md`) |
 | Image pull policy | `always` in staging/prod deploy step; local uses `build:` | Ensures digest parity (PAR-2) |
 | OOM behaviour | `oom_kill_disable: false` + per-service memory limits | A runaway container is killed and restarted, not allowed to starve the host |
 | Ulimits | `nofile` raised for `postgres`/`elasticsearch`/`api` | Pool and socket headroom under `C-25` |
@@ -136,7 +136,7 @@ Health endpoint semantics (liveness vs readiness, degraded policy, graceful shut
 | TLS | Native termination + cert reload; pairs cleanly with Cloudflare origin certs (`DEP-08`) | Excellent ACME automation — valuable only if we ran our own public CA flow |
 | Edge behaviour | Request-size limits, `proxy_buffering`, static asset serving, maintenance page, gzip/brotli | Comparable |
 | Team familiarity | High for the operating team (`INFERENCE`) | Lower |
-| Why not now | — | Traefik's advantages (auto-discovery, ACME) pay off with dynamic fleets; v1 has one fixed, tiny service set. Revisit only via ADR if the topology changes (`../04-architecture/core/technology-stack.md` §4 records the alternative as viable) |
+| Why not now | — | Traefik's advantages (auto-discovery, ACME) pay off with dynamic fleets; v1 has one fixed, tiny service set. Revisit only via ADR if the topology changes (`../../04-architecture/core/technology-stack.md` §4 records the alternative as viable) |
 
 ## 9. Upgrading Images Safely
 
@@ -144,7 +144,7 @@ Health endpoint semantics (liveness vs readiness, degraded policy, graceful shut
 |---|---|---|
 | 1 | New base-image/digest PR opened by the dependency bot | CI: build + unit + image scan (`SEC-REQ-012`) |
 | 2 | Merge to `main` → CI builds and tags `ghcr.io/yumn/*:<sha>` | All PR checks green |
-| 3 | Auto-deploy to `dev`, then `staging` | Smoke + Playwright suite green (`15-deployment/deployment-process.md` §5) |
+| 3 | Auto-deploy to `dev`, then `staging` | Smoke + Playwright suite green (`../../15-deployment/core/deployment-process.md` §5) |
 | 4 | Promotion of the **same digest** to production | Manual approval; digest recorded in the release log |
 | 5 | Rolling recreate: `api` (one replica at a time, readiness-gated) → `worker` → `web` → `edge` config reload | `/readyz` green before the next replica; error rate < 1% over 5 min |
 | 6 | Verify | Post-deploy smoke suite; dashboards watched for 15 min |

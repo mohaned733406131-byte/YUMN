@@ -35,7 +35,7 @@ Method: moderated sessions, **≥ 5 participants per persona**, real devices, st
 Cross-cutting gates:
 
 - **Dead-end rule:** every rejected input and failed state offers a next action — 0 unrecoverable dead ends, in both locales (`AC-NFR-012-01`).
-- **Inline validation:** 100% of rejected inputs on money/address forms explained in the user's locale **before** submission fails — pattern set in `DOC-UX-005` §4, schemas in `../05-frontend/core/forms-and-validation.md`.
+- **Inline validation:** 100% of rejected inputs on money/address forms explained in the user's locale **before** submission fails — pattern set in `DOC-UX-005` §4, schemas in `../../05-frontend/core/forms-and-validation.md`.
 - **Perceived speed:** each task step's wait states follow `DOC-UX-005` (optimistic cart updates, skeletons < 800 ms, no double-submit) so NFR-001/NFR-002 latency does not surface as friction inside the timed tasks.
 
 ## 2. Learnability — no-training operation
@@ -68,7 +68,7 @@ Cross-cutting gates:
 | Numeric formats | Arabic-Indic digits rendered in `ar`, Latin in `en`; normalization at input (`DOC-UX-007` §4, `BR-PAY-10`) | automated + spot QA |
 | Currency | integer YER everywhere, `ر.ي` / `YER` suffix by locale; no floating point | contract tests |
 | Dates/times | locale calendars, day-month order, 24 h (`DOC-UX-007` §5) | spot QA |
-| RTL regression | mirroring correctness set: forms, tables, modals, chips, timeline, maps-to-code — run against `../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`) | every PR (visual) + release |
+| RTL regression | mirroring correctness set: forms, tables, modals, chips, timeline, maps-to-code — run against `../../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`) | every PR (visual) + release |
 | Layout integrity | Arabic text expansion ≥ 30% must not clip/overlap any component (`INFERENCE` bound) | visual QA pass |
 | Legal/tax text | translated; authoritative version noted on page (`DOC-FE-008`) | release |
 | Template coverage | notification templates (SMS/WhatsApp/push) complete in both locales, provider-approved (`BR-NTF-04`, `DEP-06`) | before launch |
@@ -105,7 +105,7 @@ Targets are `INFERENCE` (not canon) and must be confirmed against sponsor capaci
 |---|---|---|
 | Post-resolution CSAT (1–5) | in-ticket rating after close (`INFERENCE` persona: ≥ 4.0 target) | monthly report; S1/S2 < 4.0 → incident review |
 | Task-time funnel | analytics: registration → top-up → first-order timestamps | watch vs §1 targets post-launch; breach → UX ticket |
-| Abandon points | funnel drop-offs per step + error-message clicks | routed to `11-ui-ux/screen-states.md` gaps |
+| Abandon points | funnel drop-offs per step + error-message clicks | routed to `../../11-ui-ux/core/screen-states.md` gaps |
 | Ticket taxonomy trends | top-10 ticket reasons per month | product fix if systemic (e.g., OTP confusion → copy fix in `DOC-UX-004` §8) |
 | SUS re-run | moderated sessions each minor release or quarterly (`INFERENCE`) | regression below 78 blocks release |
 | Usability findings register | session notes filed in `13-testing/` with linked UX-doc updates | docs updated with version bump, never silently |

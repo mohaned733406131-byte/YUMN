@@ -82,7 +82,7 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Sequence flows | `SQ-NN` | `SQ-03` | `sequence-flows.md` |
 | API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/endpoints-index.md` — 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints; never cite an endpoint ID that is not in that registry |
 | Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `../08-database/entities-index.md` — `DB-001…DB-018`, one file per entity; here stores are conceptual (`DS1…DS16`) |
-| Test cases | `TC-NNN` | `TC-104` | registry `13-testing/test-cases/README.md` — `TC-001…TC-114`; here verification is described by scenario and cited by `TC-` ID |
+| Test cases | `TC-NNN` | `TC-104` | registry `../13-testing/test-cases-index.md` — `TC-001…TC-114`; here verification is described by scenario and cited by `TC-` ID |
 
 Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` per root README §8.
 

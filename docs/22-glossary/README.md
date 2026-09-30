@@ -51,7 +51,7 @@ A term is introduced **before** it appears in any new or edited document:
 |---|---|
 | Two documents use different words for one concept | The register's canonical term wins; the losing document is edited (consistency rule, root README §9.4) |
 | A document's usage contradicts the register's *definition* | Logged in `20-validation/contradiction-audit.md` until resolved; constraints (`C-01…C-26`) and rules (`BR-*`) outrank the glossary if a true collision occurs |
-| A term is ambiguous across languages (e.g. Arabic "مشرف" for both moderator and admin) | The register's disambiguation note governs; UI catalogs follow `11-ui-ux/design-system.md` §8 voice rules |
+| A term is ambiguous across languages (e.g. Arabic "مشرف" for both moderator and admin) | The register's disambiguation note governs; UI catalogs follow `../11-ui-ux/core/design-system.md` §8 voice rules |
 | A term is proposed for deprecation | Row status moves to "deprecated" with a replacement pointer; the ID/term is never reused |
 
 ### 2.4 Evidence and status
@@ -68,7 +68,7 @@ Definitions are statements about canon. Where a definition goes beyond cited can
 |---|---|
 | Authoring or reviewing any document | [terminology.md](terminology.md) — search for each key term you are about to use |
 | Creating a new file / ID / table / endpoint / queue | [naming-conventions.md](naming-conventions.md) — the "defined-in" column tells you which registry issues the ID |
-| Translating or writing Arabic copy | terminology.md `Arabic` column + `11-ui-ux/design-system.md` §8 + `11-ui-ux/localization.md` |
+| Translating or writing Arabic copy | terminology.md `Arabic` column + `../11-ui-ux/core/design-system.md` §8 + `../11-ui-ux/core/localization.md` |
 | Running a validation audit | Both files; mismatches are consistency/contradiction findings (`20-validation/`) |
 
 ## 4. File Index

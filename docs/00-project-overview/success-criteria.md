@@ -21,7 +21,7 @@ Success is **verified**, not asserted (methodology: completion = verified comple
 | ID | Criterion | Verification |
 |---|---|---|
 | AC-S-01 | All 20 functional requirements `FR-001…FR-020` are IMPLEMENTED and VERIFIED | Requirements status audit + test evidence |
-| AC-S-02 | All 26 constraints `C-01…C-26` pass dedicated constraint tests | `13-testing/constraint-tests.md` constraint suite, 26/26 |
+| AC-S-02 | All 26 constraints `C-01…C-26` pass dedicated constraint tests | `../13-testing/core/constraint-tests.md` constraint suite, 26/26 |
 | AC-S-03 | Every `FR` has ≥1 passing test case and satisfied acceptance criteria | `19-traceability/requirements-to-tests.md` — 0 gaps |
 | AC-S-04 | All four surfaces (customer web, vendor panel, admin console, mobile apps) deliver their UC set | UAT sign-off per surface |
 
@@ -52,7 +52,7 @@ Success is **verified**, not asserted (methodology: completion = verified comple
 | ID | Criterion | Verification |
 |---|---|---|
 | AC-S-17 | Backup restore drill succeeds within RTO 1 h / RPO 15 min | DR drill report |
-| AC-S-18 | Monitoring/alerting live for all `12-non-functional/observability.md` signals | Alert inventory check |
+| AC-S-18 | Monitoring/alerting live for all `../12-non-functional/core/observability.md` signals | Alert inventory check |
 | AC-S-19 | Runbooks exist for top 10 operational incidents | `15-deployment/` + ops runbook review |
 | AC-S-20 | Rollback executed successfully in staging rehearsal | Rollback drill record |
 

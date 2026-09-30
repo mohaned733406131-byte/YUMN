@@ -14,7 +14,7 @@ related_documents: [DOC-ARCH-005, DOC-OPS-001, DOC-OPS-003, DOC-TST-002, DOC-INT
 
 # Environments & Parity Rules
 
-Four environments — **local · dev · staging · production** — all running the *same* Compose topology on *one* Docker host each (`C-22`). Configuration differs; structure never does. This document is the environment matrix of record for infrastructure; the *testing* view of environments (fixtures, masking, reserved phone blocks) is `13-testing/testing-strategy.md` §7 and `13-testing/test-data-and-environments.md`.
+Four environments — **local · dev · staging · production** — all running the *same* Compose topology on *one* Docker host each (`C-22`). Configuration differs; structure never does. This document is the environment matrix of record for infrastructure; the *testing* view of environments (fixtures, masking, reserved phone blocks) is `../../13-testing/core/testing-strategy.md` §7 and `../../13-testing/core/test-data-and-environments.md`.
 
 ## 1. Environment Matrix
 
@@ -40,7 +40,7 @@ Four environments — **local · dev · staging · production** — all running 
 | **Teardown** | On demand (`docker compose down -v`) | Weekly refresh | Monthly refresh; reset before each release cycle | **Never** — see §5 |
 | **Cost notes (`INFERENCE`)** | ~0 (laptop) | ~1 small VM, ~4 GB RAM | ~1 mid VM + storage, burst during k6 runs | 1 prod VM + CDN egress + backup storage; the only continuously billed app tier |
 
-> **Optional fifth tier (testing view):** `13-testing/testing-strategy.md` §7 also lists a *prod-like (pre-release)* tier used for DR and rollback rehearsal at `C-25` scale. It is **not a separate topology** — it is production's Compose overlay applied to a throwaway host with sandbox credentials. Infrastructure provisions it on demand; it is destroyed after the rehearsal.
+> **Optional fifth tier (testing view):** `../../13-testing/core/testing-strategy.md` §7 also lists a *prod-like (pre-release)* tier used for DR and rollback rehearsal at `C-25` scale. It is **not a separate topology** — it is production's Compose overlay applied to a throwaway host with sandbox credentials. Infrastructure provisions it on demand; it is destroyed after the rehearsal.
 
 ## 2. Parity Rules (ADR-004, NFR-016, NFR-020)
 
@@ -49,14 +49,14 @@ Four environments — **local · dev · staging · production** — all running 
 | PAR-1 | **Same topology.** Every environment defines the identical service set and networks; an environment may *disable* an optional service (e.g. `sms-sink` in prod) but may never add a service that exists nowhere else. | `docker compose config` diff across overlays — services section must match |
 | PAR-2 | **Same images.** `staging` and `production` run byte-identical image digests for a given release; only env vars differ. | Image digest recorded in the release log; `AC-NFR-016-01` |
 | PAR-3 | **Layered configuration only.** Differences live in `.env.<environment>` + Compose overlay, never in code branches, `if (env === 'production')` literals, or per-env commits. | Config review; grep gate for environment-name literals in `apps/` |
-| PAR-4 | **Disjoint credentials.** dev / staging / production share **no** secret value; sandbox keys are never valid in production and vice versa. | `../09-security/core/secrets-management.md` §3 access matrix |
+| PAR-4 | **Disjoint credentials.** dev / staging / production share **no** secret value; sandbox keys are never valid in production and vice versa. | `../../09-security/core/secrets-management.md` §3 access matrix |
 | PAR-5 | **Non-prod never holds unmasked production PII.** Restored backups are masked before use (`DATA-REQ-002`). | `16-data/data-classification.md` masking rules; seed script assertion |
 | PAR-6 | **Topology changes ship as code first.** A new service/volume/network is merged to `main` before any environment adopts it — dev proves it, staging verifies it, production inherits it. | PR review + `docker compose config` in CI |
 | PAR-7 | **Parity is a test asset.** Image digests and service sets must match across envs or the release is blocked. | `AC-NFR-016-01` |
 
 ## 3. Compose Overlay Layout
 
-Canonical file names follow `../04-architecture/core/deployment-view.md` §1 (Compose v2 reads `compose.yaml` by default; the legacy `docker-compose.yml` spelling is the same file if a tool enforces it).
+Canonical file names follow `../../04-architecture/core/deployment-view.md` §1 (Compose v2 reads `compose.yaml` by default; the legacy `docker-compose.yml` spelling is the same file if a tool enforces it).
 
 | Canonical file | Legacy-equivalent name | Purpose | Present in |
 |---|---|---|---|
@@ -93,7 +93,7 @@ What belongs **where**:
 | dev (incremental) | Every merge to `main` | Pull new image tags → recreate app services only; data services persist | None — schema changes apply forward (`DOC-DB-006`) |
 | staging | Before every release cycle; always after a `contract`-phase migration | Recreate all services from current tags; re-seed fixtures; run smoke | Total (fixtures are code) |
 | staging (prod-like tier) | After the rehearsal | Destroy host/containers; keep the drill report | Total |
-| production | **Never torn down.** Schema changes are forward-only; data changes are governed by `16-data/` retention and the account-deletion workflow | `15-deployment/deployment-process.md` | n/a |
+| production | **Never torn down.** Schema changes are forward-only; data changes are governed by `16-data/` retention and the account-deletion workflow | `../../15-deployment/core/deployment-process.md` | n/a |
 
 **Teardown safety interlocks:**
 
@@ -103,7 +103,7 @@ What belongs **where**:
 
 ## 5. Mobile Build Environments (outside Compose)
 
-React Native 0.73 apps (`CNT-02` customer, `CNT-03` courier) are **not** containerized and are **not** deployed by this domain's pipelines — they are built by `EAS` / `Gradle` / `Xcode` toolchains on developer machines and CI runners, then distributed through store pipelines (`15-deployment/build-and-release.md` §2, `DEP-12`).
+React Native 0.73 apps (`CNT-02` customer, `CNT-03` courier) are **not** containerized and are **not** deployed by this domain's pipelines — they are built by `EAS` / `Gradle` / `Xcode` toolchains on developer machines and CI runners, then distributed through store pipelines (`../../15-deployment/core/build-and-release.md` §2, `DEP-12`).
 
 | Aspect | Simulator / emulator | Physical device (DEP-12 lab) |
 |---|---|---|
@@ -112,7 +112,7 @@ React Native 0.73 apps (`CNT-02` customer, `CNT-03` courier) are **not** contain
 | OTP delivery | `sms-sink` UI — no carrier involved | **Real carrier SIMs** (`DEP-12`) — the only way to validate `BR-NTF-03` failover and delivery receipts |
 | Push (FCM/APNs) | Not validated | Validated against sandbox APNs / FCM test project |
 | Coverage required | Optional | Android 10+ matrix and iOS 15+ (`NFR-015`); device-lab runs are **manual and release-blocking** |
-| Automation | Maestro flows on emulator | Maestro flows on lab devices (`13-testing/testing-strategy.md` §2.3) |
+| Automation | Maestro flows on emulator | Maestro flows on lab devices (`../../13-testing/core/testing-strategy.md` §2.3) |
 | Artifacts | Debug builds (`.apk`/`.app`) | Signed internal/tracks builds for QA distribution |
 
 **Rule:** an environment may not be called "staging-equivalent" for mobile unless it runs against the `staging` Compose stack **and** has been exercised on at least one physical Android and one physical iOS device from the `DEP-12` lab.
@@ -122,8 +122,8 @@ React Native 0.73 apps (`CNT-02` customer, `CNT-03` courier) are **not** contain
 | Check | Method | Evidence |
 |---|---|---|
 | Topology parity | `docker compose config` service-set diff across overlays | CI artifact per PR (`AC-NFR-016-01`) |
-| Digest parity staging↔prod | Release log records digests for both | Release record in `15-deployment/build-and-release.md` §5 |
-| Credential disjointness | Config review: `.env.*` sets compared, values never equal | `../09-security/core/secrets-management.md` §8 |
+| Digest parity staging↔prod | Release log records digests for both | Release record in `../../15-deployment/core/build-and-release.md` §5 |
+| Credential disjointness | Config review: `.env.*` sets compared, values never equal | `../../09-security/core/secrets-management.md` §8 |
 | No production PII in non-prod | Seed script asserts masked phone patterns; manual audit quarterly | `DATA-REQ-002` evidence |
 | No seeded weak admin in prod | `seed --only=reference` is the only permitted production seed | Deployment log |
 | Dev = prod topology | Service-set diff green in CI | PR check `compose-config` |

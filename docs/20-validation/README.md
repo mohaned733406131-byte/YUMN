@@ -90,7 +90,7 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 
 | # | Question | State at 2026-09-27 | Handled in |
 |---|---|---|---|
-| 1 | Where is the canonical GAP register: `20-validation/missing-information.md` (root README §5:161, `22-glossary/naming-conventions.md:90`) or `00-project-overview/project-scope.md` §UNCERTAIN SCOPE (`16-data/retention-and-archival.md:39`, `12-non-functional/compliance-and-legal.md:88`)? | Conflict recorded, not resolved here | `contradiction-audit.md` `CT-15` |
+| 1 | Where is the canonical GAP register: `20-validation/missing-information.md` (root README §5:161, `22-glossary/naming-conventions.md:90`) or `00-project-overview/project-scope.md` §UNCERTAIN SCOPE (`16-data/retention-and-archival.md:39`, `../12-non-functional/core/compliance-and-legal.md:88`)? | Conflict recorded, not resolved here | `contradiction-audit.md` `CT-15` |
 | 2 | Root README §5 has no `AUD-NN` row (`naming-conventions.md:91` instructs registering it here "when `20-validation/` is authored") | Register authored; root README §5 row **not yet added** | consistency-audit finding (required edit, not made here) |
 | 3 | Root README §5 pattern `GAP-NNN` vs issued width `GAP-NN` | Known defect logged against root README | `naming-conventions.md:118`, consistency-audit finding |
 | 4 | `19-traceability/` (root README §10 row 40) was cited by 33 files while absent | Directory authored 2026-09-27 17:34 (3 files); consistency-audit finding 3 flipped to `RESOLVED` — but `19-traceability/requirements-to-tests.md` cites an undefined `DOC-INT-010` | consistency-audit finding 3 (`RESOLVED`) + finding 23 (`OPEN`) |

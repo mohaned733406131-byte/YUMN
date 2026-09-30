@@ -110,7 +110,7 @@ Every control traces to at least one `SEC-REQ-*`; every `SEC-REQ-*` is covered b
 | Module-boundary lint | every PR | vendor SDK outside adapter folder / raw SQL concat ⇒ build fails (`AC-IR008-01`, `AC-SR008-04`) |
 | SLA tracking | on confirmation | CRITICAL ≤ 7 days (registry), HIGH ≤ 30 days (`INFERENCE`), monthly severity report with no silent suppressions (`AC-SR012-03/04`) |
 
-Tooling is GitHub Actions (project CI canon); exact tool selection and pipeline wiring belong to `14-devops-infrastructure/ci-cd.md`.
+Tooling is GitHub Actions (project CI canon); exact tool selection and pipeline wiring belong to `../../14-devops-infrastructure/core/ci-cd.md`.
 
 ## 7. Change Control
 
