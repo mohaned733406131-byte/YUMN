@@ -3,7 +3,7 @@ document_id: DOC-TST-001
 title: 13 Testing — Domain Overview & Test Case Index
 category: 13-testing
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -16,7 +16,7 @@ related_documents: [DOC-TST-002, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-TST-
 
 **Verification domain for the yumn platform.** Testing answers one question for every claim made elsewhere in `docs/`: *how do we know it works?* This README is the domain index; the methodology's Verification Strategy (§47) is expanded in [testing-strategy.md](core/testing-strategy.md).
 
-Scope: all five surfaces (customer web, vendor panel, admin console, customer mobile, courier mobile), the NestJS modular monolith (C-21), background workers, and the eight external integrations — against 68 requirements, 104 business rules, 26 constraints, and 253 acceptance criteria.
+Scope: all five surfaces (customer web, vendor panel, admin console, customer mobile, courier mobile), the NestJS modular monolith (C-21), background workers, and the eight external integrations — against 73 requirements, 111 business rules, 26 constraints, and 273 acceptance criteria.
 
 ---
 
@@ -165,3 +165,4 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Scope line count sync: 99 → **104 business rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
 | 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TST-007…DOC-TST-011) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.3 | 2026-09-30 | Scope-line count sync: 68 → **73 requirements**, 104 → **111 business rules**, 253 → **273 acceptance criteria** (`requirements-overview.md` v1.2, `business-rules.md` v1.2, `acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — three count consumers re-synced in same change set |

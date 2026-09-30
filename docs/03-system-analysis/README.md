@@ -3,7 +3,7 @@ document_id: DOC-SA-001
 title: 03 System Analysis — README
 category: 03-system-analysis
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -69,7 +69,7 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Direction | Directory | What flows |
 |---|---|---|
 | Consumes | `00-project-overview/` | Actors `ACT-01…ACT-07`, constraints `C-01…C-26`, blocks `B01…B13`, scope exclusions |
-| Consumes | `01-business-analysis/` | 104 rules `BR-*`, processes `BP-01…BP-15`, workflows `WF-001…WF-012`, use cases `UC-001…UC-210` |
+| Consumes | `01-business-analysis/` | 111 rules `BR-*`, processes `BP-01…BP-15`, workflows `WF-001…WF-012`, use cases `UC-001…UC-420` |
 | Consumes | `02-requirements/` | All 68 `FR-*` / `NFR-*` / `SEC-REQ-*` / `DATA-REQ-*` / `INT-REQ-*` |
 | Feeds | `04-architecture/` | Logical components become modules; flows become technical data flows |
 | Feeds | `07-api/`, `08-database/` | Behavior contracts become endpoints; conceptual stores become schemas `b01…b13` |
@@ -122,3 +122,4 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | 1.3 | 2026-09-28 | Consumes row count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
 | 1.4 | 2026-09-29 | Consumes row use-case range sync: `UC-001…UC-040` → **`UC-001…UC-210`** (210 use-case files) | `prompt-010.md` §1 (session 010 owner directive — `UC-043`…`UC-210` minted) |
 | 1.5 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-SA-012…DOC-SA-016) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.6 | 2026-09-30 | Consumes-row count sync: 104 → **111 rules** (`business-rules.md` v1.2); use-case range `UC-001…UC-210` → **`UC-001…UC-420`** (phase 6 minting complete) | Owner directive session 011 (`prompt-011.md` §4.6–4.7) — consumer of `business-rules.md` + UC index; counts re-synced in same change set |

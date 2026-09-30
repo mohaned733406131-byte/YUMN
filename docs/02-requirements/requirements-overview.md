@@ -3,9 +3,9 @@ document_id: DOC-REQ-001
 title: Requirements Overview (Canonical ID Registry)
 category: 02-requirements
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -16,7 +16,7 @@ related_documents: [DOC-OVR-004, DOC-OVR-008]
 
 **This document is the single registry of every requirement ID in the project.** Individual requirement files (`functional/FR-nnn.md`, etc.) expand each entry; they must never contradict this registry. Never invent a requirement ID that is not listed here.
 
-Total: **20 FR + 20 NFR + 12 SEC-REQ + 8 DATA-REQ + 8 INT-REQ = 68 requirements.**
+Total: **20 FR + 20 NFR + 16 SEC-REQ + 9 DATA-REQ + 8 INT-REQ = 73 requirements.**
 
 ---
 
@@ -78,7 +78,7 @@ Expands to `02-requirements/core/NFR-nnn.md`; measurement detail in `12-non-func
 
 ---
 
-## 3. Security Requirements (`SEC-REQ-001…SEC-REQ-012`)
+## 3. Security Requirements (`SEC-REQ-001…SEC-REQ-016`)
 
 Expands to `02-requirements/core/SEC-REQ-nnn.md`; controls detailed in `09-security/`.
 
@@ -96,10 +96,14 @@ Expands to `02-requirements/core/SEC-REQ-nnn.md`; controls detailed in `09-secur
 | SEC-REQ-010 | Audit trail integrity | Append-only audit log for privileged & money actions; tamper-evident chain |
 | SEC-REQ-011 | File upload security | Type/size validation, EXIF strip, malware scan, no SVG execution; ≤5 MB images |
 | SEC-REQ-012 | Vulnerability management | SAST/DAST/dependency scanning in CI; critical vulns fixed ≤ 7 days |
+| SEC-REQ-013 | Anti-enumeration uniform responses | Auth/verification entry points answer with a uniform success-shaped response; never confirm or deny account existence (resolves `error-model.md` §5 vs `API-ATH-001` `PHONE_ALREADY_REGISTERED`) |
+| SEC-REQ-014 | Per-surface CORS policy | Exact origin allowlist (web/vendor/admin); credentialed CORS only for known origins; methods/headers allowlist; deny-by-default preflight in a single middleware; CORS test case |
+| SEC-REQ-015 | Object-storage access control | Deny anonymous access/listing on all MinIO buckets; short presigned-URL TTLs; separate media origin; server-generated object keys; quarterly bucket-policy review verified in tests |
+| SEC-REQ-016 | Per-destination OTP resend limits | Resend cooldown/caps also enforced globally per hashed destination phone (not only session/IP); per-destination metric + alert against OTP bombing of a victim number |
 
 ---
 
-## 4. Data Requirements (`DATA-REQ-001…DATA-REQ-008`)
+## 4. Data Requirements (`DATA-REQ-001…DATA-REQ-009`)
 
 Expands to `02-requirements/core/DATA-REQ-nnn.md`; detail in `16-data/`.
 
@@ -113,6 +117,7 @@ Expands to `02-requirements/core/DATA-REQ-nnn.md`; detail in `16-data/`.
 | DATA-REQ-006 | Data quality validation | Validation at write time + reconciliation jobs (stock, wallet, escrow) |
 | DATA-REQ-007 | Financial immutability | Ledger append-only: corrections via compensating entries, never UPDATE/DELETE of postings |
 | DATA-REQ-008 | Ownership boundaries | Every tenant-scoped row carries owner keys (user_id/store_id) enforced by queries + tests |
+| DATA-REQ-009 | Search-index data protection | Index field allowlist (public catalog fields only); restricted/encrypted index snapshots; index deletion wired into account-deletion workflow; "PII in index" test |
 
 ---
 
@@ -153,3 +158,4 @@ Every requirement file must pass the 7-question quality test (clarity, completen
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial registry (68 requirements) | Initial analysis |
 | 1.1 | 2026-09-28 | New §7 approved-backlog pointer to `plan-develop.md` (no `FR-*` minted — wave discipline) | `plan-develop.md` v1.2 §8 approval implementation (session 007, `D9`/`D10`) |
+| 1.2 | 2026-09-30 | Session-011 delta registration — `SEC-REQ-013`…`SEC-REQ-016`, `DATA-REQ-009` (+5 requirement files under `core/`); 68 → 73 requirements | Owner directive session 011 (`prompt-011.md` §4.7) — deltas accepted in `system-expansion-proposal.md` (DOC-OVR-012) §5 from verified sources (`security-findings.md` SEC-006/007/008/010, `error-model.md` §5, `auth.md` lines 27/28/34); count consumers re-synced in same change set |

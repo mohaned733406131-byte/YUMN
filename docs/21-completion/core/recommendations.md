@@ -3,7 +3,7 @@ document_id: DOC-CMP-007
 title: Recommendations (REC-NN)
 category: 21-completion
 status: approved
-version: 1.10
+version: 1.11
 created: 2026-09-27
 updated: 2026-09-28
 author: analysis-agent
@@ -47,7 +47,7 @@ Methodology item 46 (root README §10): *Recommendations* — prioritized, actio
 ## 2. Sequencing & Precedence
 
 1. **P0 items are Gate 0/Gate 1 preconditions**, not backlog: `REC-03` and `REC-04` (TC inventory + FR↔AC `-05` drift, both paid 2026-09-27) and `REC-05` (health canon, paid 2026-09-27) unblock the very evidence gates review (coverage audit, probe contract); REC-09 (gate evidence home) was paid 2026-09-27; `REC-02`, `REC-10`, `REC-14` paid 2026-09-28; `REC-01` paid 2026-09-28 (structure spec restored); `REC-15` paid 2026-09-28 (citation CI built and green — `tools/check_citations.py` + `.github/workflows/docs-citations.yml`, which runs on the GitHub remote on push); REC-11…REC-13 are the sponsor-owned commercial/regulatory blockers.
-2. **No recommendation may contradict canon.** Where a recommendation would change a locked number (114 TCs, 253 ACs, 7 flags, 52 production-readiness rows, 26 constraints) or a root README §9 item, the change set follows the root change-control process — update, version bump, Change History row in **both** affected documents.
+2. **No recommendation may contradict canon.** Where a recommendation would change a locked number (114 TCs, 273 ACs, 7 flags, 52 production-readiness rows, 26 constraints) or a root README §9 item, the change set follows the root change-control process — update, version bump, Change History row in **both** affected documents.
 3. **Effort, dates, and sprint placement are deliberately absent:** `ASM-14` baselines are not set, so sequencing is by dependency and priority only (see `implementation-roadmap.md`).
 4. **Pairing rule:** every `TD-NN` has exactly one pay-down `REC-NN` (TD-01→REC-10, TD-02→REC-02, TD-03→REC-01, TD-04→REC-03, TD-05→REC-04, TD-06→REC-05, TD-07→REC-06, TD-08→REC-07, TD-09→REC-08, TD-10→REC-09); REC-11…REC-15 address evidence gaps that are risks/assumptions rather than authored debt.
 5. **Progress is measured** by the acceptance-criterion column, checked at Gate 0 (P0), Gate 1 (P0/P1), Gate 2 (P1), Gate 3 (all, including P2 cadence), alongside the `TD-NN` review (D-2).
@@ -67,3 +67,4 @@ Methodology item 46 (root README §10): *Recommendations* — prioritized, actio
 | 1.8 | 2026-09-28 | `REC-02` → paid (ADR index v1.1 re-synced; `TD-02` `PAID`, `HAL-02` `RESOLVED`), `REC-10` → paid (flag lifecycle retire state + quarterly sweep + dated baseline record; `TD-01` `PAID`), `REC-14` → paid (`quality-gates.md` v1.1 §7 all four gates carry explicit `FAIL` outcomes with evidence); sequencing note 1 updated | `REC-02`/`REC-10`/`REC-14` pay-down change sets (session 007) — rules 4/5: paid rows carry their acceptance evidence in the same change set |
 | 1.9 | 2026-09-28 | `REC-01` → paid (`archdoc.md` v1.0 restored with 24-domain list matching root README §2 + honest provenance; `TD-03` `PAID`, `HAL-03`/`CRIT-08`/`AVF-08` `RESOLVED`); sequencing note 1 updated | `REC-01` pay-down change set (session 008) — rules 4/5: paid row carries its acceptance evidence in the same change set |
 | 1.10 | 2026-09-28 | `REC-15` → paid (citation CI: `tools/check_citations.py` + `.github/workflows/docs-citations.yml`; full-repo green, failure mode proven, 2 real defects fixed at source); sequencing note 1 updated; `REC-07` scope clarification | `REC-15` pay-down change set (session 008) — rules 4/5: paid row carries its acceptance evidence in the same change set; `HAL-12`/`AVF-11` → `RESOLVED`, roll-up → 66 |
+| 1.11 | 2026-09-30 | Rules-of-engagement count sync: locked number 253 → **273 ACs** (`acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — count consumer re-synced in same change set |

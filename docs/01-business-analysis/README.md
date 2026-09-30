@@ -3,7 +3,7 @@ document_id: DOC-BA-001
 title: 01 Business Analysis — README
 category: 01-business-analysis
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -28,7 +28,7 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 | [business-model.md](core/business-model.md) | DOC-BA-002 | Multi-vendor marketplace model: value proposition, revenue streams, cost structure, partners, channels, metrics, worked unit economics |
 | [business-objectives.md](core/business-objectives.md) | DOC-BA-003 | Business-side objectives `BO-01…BO-12` (liquidity, retention, payment trust, operational efficiency) with owner, metric, target |
 | [business-processes.md](core/business-processes.md) | DOC-BA-004 | The 15 major business processes `BP-01…BP-15`: trigger, actors, steps, systems, rules applied, final state, failure paths |
-| [business-rules.md](business-rules.md) | DOC-BA-005 | **The canonical business-rule registry — 104 rules `BR-<DOMAIN>-NN` (authoritative; see note below)** |
+| [business-rules.md](business-rules.md) | DOC-BA-005 | **The canonical business-rule registry — 111 rules `BR-<DOMAIN>-NN` (authoritative; see note below)** |
 | [stakeholder-needs.md](core/stakeholder-needs.md) | DOC-BA-006 | Needs of each `STK-*` stakeholder group, how yumn addresses them, related `FR-*`/`BR-*`, conflict notes |
 | [user-needs.md](core/user-needs.md) | DOC-BA-007 | Per-actor (`ACT-01…ACT-06`) needs: jobs-to-be-done, pains today, how addressed, success signals; guest vs registered customer |
 | `use-cases/` | — | Use case specifications `UC-NNN` (one file per use case), derived from the processes here and consumed by `13-testing/` |
@@ -95,3 +95,4 @@ Files use `lowercase-kebab-case.md`; workflow files are `workflow-NNN.md` where 
 | 1.1 | 2026-09-28 | Registry count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
 | 1.2 | 2026-09-28 | §Source-of-Truth catch-up: the "single authoritative registry" bullet still said **99** rules and listed only **14** domains — synced to **104** + `INV` (the v1.1 sync had covered only the Contents row) | BR-count propagation catch-up (session 008 close) — root README §9.4; missed consumer of `business-rules.md` v1.1 |
 | 1.3 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-BA-008…DOC-BA-012) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.4 | 2026-09-30 | Registry count sync: 104 → **111 rules** (`BR-AUTH-09/10`, `BR-ESC-09`, `BR-PAY-11`, `BR-RET-08`, `BR-REV-06`, `BR-PLT-08` registered in `business-rules.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — consumer of `business-rules.md`; count re-synced in same change set |

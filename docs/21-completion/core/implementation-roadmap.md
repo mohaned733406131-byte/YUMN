@@ -3,7 +3,7 @@ document_id: DOC-CMP-002
 title: Implementation Roadmap — Phased Delivery Plan
 category: 21-completion
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-27
 updated: 2026-09-27
 author: analysis-agent
@@ -89,7 +89,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 | # | Criterion | Canon |
 |---|---|---|
 | 1 | Plans executed for every completed range; P0/P1 test cases 100% PASS, 0 CRITICAL/HIGH open | `../../13-testing/core/test-plans.md` §a common exit |
-| 2 | Coverage against the AC registry (253 ACs) with zero uncovered ACs in built scope | `02-requirements/acceptance-criteria.md`; `AC-S-03` |
+| 2 | Coverage against the AC registry (273 ACs) with zero uncovered ACs in built scope | `02-requirements/acceptance-criteria.md`; `AC-S-03` |
 | 3 | Money-path suites green (checkout/payment/wallet, escrow, ledger invariant) | `../../01-business-analysis/core/stakeholder-needs.md` STK-01; `00-project-overview/stakeholders.md` conflicts table |
 | 4 | Performance evidence vs NFRs at staging scale | `../../13-testing/core/test-plans.md` §b; `AC-S-05` |
 | 5 | Security findings triaged — 0 open CRITICAL/HIGH security defects | `../../09-security/core/security-findings.md`; `test-plans.md` §c exit |
@@ -205,3 +205,4 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
+| 1.1 | 2026-09-30 | AC-registry count sync: 253 → **273 ACs** (`acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — count consumer re-synced in same change set |

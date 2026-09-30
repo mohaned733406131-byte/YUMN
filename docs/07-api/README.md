@@ -3,7 +3,7 @@ document_id: DOC-API-001
 title: API Contract Domain — Overview, Versioning & File Map
 category: 07-api
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -109,7 +109,7 @@ Every FR is reachable through at least one endpoint group; every endpoint belong
 2. Read `error-model.md` — every endpoint's "Errors" column lists error **codes**; the envelope and HTTP status mapping are defined only in `error-model.md`.
 3. Read `pagination.md` before implementing any list endpoint — the pagination mode (cursor/offset) is fixed per endpoint family.
 4. Open the group file under `endpoints/` for the endpoint table: method, path, roles, request/response essentials, errors, and related FR/BR/SEC IDs.
-5. Cross-check state-sensitive behavior against `../03-system-analysis/core/state-transitions.md` (17 states, `409 STATE_CONFLICT`) and `01-business-analysis/business-rules.md` (104 rules).
+5. Cross-check state-sensitive behavior against `../03-system-analysis/core/state-transitions.md` (17 states, `409 STATE_CONFLICT`) and `01-business-analysis/business-rules.md` (111 rules).
 
 ---
 
@@ -129,3 +129,4 @@ Every FR is reachable through at least one endpoint group; every endpoint belong
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Checklist item 5 count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
 | 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-API-020…DOC-API-024) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.3 | 2026-09-30 | Checklist item 5 count sync: 104 → **111 rules** (`business-rules.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — consumer of `business-rules.md`; count re-synced in same change set |

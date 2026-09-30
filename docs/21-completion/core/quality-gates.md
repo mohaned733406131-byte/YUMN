@@ -3,7 +3,7 @@ document_id: DOC-CMP-004
 title: Quality Gates — Gate 0 to Gate 3
 category: 21-completion
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-27
 updated: 2026-09-28
 author: analysis-agent
@@ -102,7 +102,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 |---|---|---|---|
 | 1.1 | Test evidence per plan | Every executed range meets the common exit: all TCs in range executed, P0/P1 100% PASS, 0 CRITICAL/HIGH open, evidence links on TCs | `../../13-testing/core/test-plans.md` §a |
 | 1.2 | Critical-path plans green | `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle all exited | `test-plans.md` L46 (Phase-1 critical path) |
-| 1.3 | Coverage vs AC registry | Coverage floors met (unit ≥ 80%, payment module ≥ 95%, auth ≥ 90%) and every AC in built scope maps to ≥ 1 passing test (253 ACs in `02-requirements/acceptance-criteria.md`) | `AC-S-08`, `AC-S-03`, G-TEST-1/G-TEST-3 |
+| 1.3 | Coverage vs AC registry | Coverage floors met (unit ≥ 80%, payment module ≥ 95%, auth ≥ 90%) and every AC in built scope maps to ≥ 1 passing test (273 ACs in `02-requirements/acceptance-criteria.md`) | `AC-S-08`, `AC-S-03`, G-TEST-1/G-TEST-3 |
 | 1.4 | Money-path suites green | Checkout/payment/wallet + escrow + ledger invariant suites pass; `J1`/`J2` run in staging with seeded-mismatch detected within one run; ledger design promises implemented (append-only postings, single write path) | `AC-S-14`, `AC-S-15`; RISK-001 kill criterion; STK-01 rule |
 | 1.5 | Constraint tests | `TST-CON-01…26` executed for constraints in scope; target 26/26 at release, with no regression in the touched set | `../../13-testing/core/constraint-tests.md`; `AC-S-02`; G-TEST-2 |
 | 1.6 | Performance vs NFRs | k6 evidence at staging scale against `NFR-001/002/004`, `NFR-003` (`C-25`), `NFR-017`; early `PERF-01/04` runs green or remediated | `test-plans.md` §b; G-TEST-4 |
@@ -187,3 +187,4 @@ Honesty rule: **no gate review has been convened, and none can pass today** — 
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
 | 1.1 | 2026-09-28 | §7 rewritten: every gate record now carries an explicit §1 outcome (`FAIL`) with findings/severities and evidence links; honesty note re-scoped to "no review convened, block stands" | `REC-14` pay-down — gate discipline requires recorded outcomes; never green-washed (DOD-10): Gate 0 fails its own criteria today (`AVF-02`) |
+| 1.2 | 2026-09-30 | Check 1.3 AC-registry count sync: 253 → **273 ACs** (`acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — count consumer re-synced in same change set |

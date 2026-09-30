@@ -3,7 +3,7 @@ document_id: DOC-GL-002
 title: Terminology — Canonical A–Z Term Register
 category: 22-glossary
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -40,7 +40,7 @@ related_documents: [DOC-GL-001, DOC-GL-003, DOC-ROOT-001, DOC-OVR-002, DOC-OVR-0
 | Banner | بانر | A merchandising/promotional image slot on home, category or CMS pages, published by admins (or vendors per placement rules) and rendered per locale. | Business | B12, FR-019, B04 merchandising | CMS page, Promotion |
 | Basket (cart) | السلة | The buyer's selection of products before checkout: one active cart per logged-in user, guest carts client-side merged on login; guarded at ≤50 distinct products, ≤10 units per product, ≤5 vendors. | Business | B05, FR-010, C-15, BR-CRT-01…06 | Checkout, Reservation |
 | Block (module) | كتلة (وحدة) النظام | One of the 13 canonical functional partitions `B01…B13` of the platform; each block maps 1:1 to a PostgreSQL schema `b01…b13`, to a NestJS module and to owned queues. | Technical | `00-project-overview/project-context.md`, `08-database/README.md` | Entity (DB-NNN), ADR |
-| Business rule (BR) | قاعدة عمل | A domain constraint enforced by backend services and verified by tests, identified `BR-<DOMAIN>-NN` across 15 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`), 104 rules total; rules never contradict constraints. | Process | `01-business-analysis/business-rules.md` (DOC-BA-005) | Constraint (C-NN), Acceptance criterion |
+| Business rule (BR) | قاعدة عمل | A domain constraint enforced by backend services and verified by tests, identified `BR-<DOMAIN>-NN` across 15 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`), 111 rules total; rules never contradict constraints. | Process | `01-business-analysis/business-rules.md` (DOC-BA-005) | Constraint (C-NN), Acceptance criterion |
 | Cancelled | ملغي | Order state 11 of 17: order cancelled; the wallet refund flow is always triggered (moves toward `REFUNDED`). Customer may cancel only while `PLACED`/`CONFIRMED`; vendor/admin until `READY_FOR_PICKUP`. | Business | C-09, BR-ORD-04, `DOC-SA-010` | Order lifecycle states, Refund |
 | Category tree | شجرة التصنيفات | The hierarchical product taxonomy, maximum 5 levels deep with slugs unique per level, bilingual names, maintained by admins. | Business | B02, BR-CAT-03, DB-004 | Product |
 | Checkout | إتمام الطلب | The 7-step flow (address → shipping → wallet payment → review → confirm) that converts a cart into a master order plus one sub-order per vendor, with idempotent order creation and a 15-minute reservation snapshot. | Business | B05, FR-011, BR-ORD-06, WF-003 | Basket (cart), Master order |
@@ -161,3 +161,4 @@ related_documents: [DOC-GL-001, DOC-GL-003, DOC-ROOT-001, DOC-OVR-002, DOC-OVR-0
 | 1.2 | 2026-09-29 | Use-case term row: range `UC-001…UC-040` → **`UC-001…UC-210`** (42 issued at session-010 start; allocation expanded for portal coverage) | Owner directive session 010 (`prompt-010.md` §1) — allocation change control in `naming-conventions.md` v1.5 §3 |
 | 1.3 | 2026-09-29 | Use-case term row wording: `42 issued at session-010 start` → **fully issued through session 010** (210 files) | Owner directive session 010 (`prompt-010.md` §1) — minting completed; wording synced after `naming-conventions.md` v1.6 §3 |
 | 1.4 | 2026-09-30 | New **Portal (documentation partition)** term row; Use-case row range → **`UC-001…UC-420`** (210 minted + `UC-211…420` allocated); path cells realigned to the portal scheme (UC/WF → `01-business-analysis/<portal>/`, TC → `13-testing/core/`, entity → `08-database/core/`, ADR → `18-decisions/core/`, API → `07-api/<portal>/`) | Owner directive session 011 (`prompt-011.md` §1): portal-partitioned `01…23` + 400+ UCs — change control before minting/moving (`naming-conventions.md` v1.7, `DOC-OVR-012`) |
+| 1.5 | 2026-09-30 | Business-rule term row count sync: 104 → **111 rules total** (domains unchanged at 15) | Owner directive session 011 (`prompt-011.md` §4.7) — consumer of `business-rules.md` v1.2; count re-synced in same change set |

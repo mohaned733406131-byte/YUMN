@@ -3,7 +3,7 @@ document_id: DOC-GL-003
 title: Naming Conventions
 category: 22-glossary
 status: approved
-version: 1.7
+version: 1.8
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -77,7 +77,7 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | Security requirements | `SEC-REQ-NNN` | `SEC-REQ-007` | 3 | `02-requirements/core/` | `SEC-REQ-001…012` |
 | Data requirements | `DATA-REQ-NNN` | `DATA-REQ-008` | 3 | `02-requirements/core/` | `DATA-REQ-001…008` |
 | Integration requirements | `INT-REQ-NNN` | `INT-REQ-005` | 3 | `02-requirements/core/` | `INT-REQ-001…008` |
-| Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-02` | 2 | `01-business-analysis/business-rules.md` | 15 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`), 104 rules |
+| Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-02` | 2 | `01-business-analysis/business-rules.md` | 15 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`), 111 rules |
 | Use cases | `UC-NNN` | `UC-026` | 3 | `01-business-analysis/<portal>/` (gateway index `*-index.md` at domain root) | `UC-001…UC-420` (`UC-001…UC-210` minted through session 010; `UC-211…UC-420` allocated for session 011 minting; next free `UC-421+`) |
 | Workflows | `WF-NNN` | `WF-003` | 3 | `01-business-analysis/<portal>/` (gateway index `*-index.md` at domain root) | `WF-001…WF-012` |
 | Blocks | `B01…B13` | `B07` | 2 (no dash) | `00-project-overview/project-context.md` | 13 blocks |
@@ -242,5 +242,6 @@ Enforcement points in canon: CI lint for RTL/logical CSS (`../05-frontend/core/r
 | 1.5 | 2026-09-29 | §3 `UC` row: allocation `UC-001…UC-040` → **`UC-001…UC-210`** (42 issued + `UC-043…UC-210` allocated; also fixes the stale `…UC-040` range) | Owner directive session 010 (`prompt-010.md` §1): full portal use-case coverage — change control before minting (SPE-05, GEN-03) |
 | 1.6 | 2026-09-29 | §3 `UC` row wording finalized: band minted — `UC-043…UC-210` allocated for minting → **210 issued**, next free `UC-211+` | Owner directive session 010 (`prompt-010.md` §1) — 168 UCs minted + index `DOC-UC-000` v1.2 registered; allocation fully issued |
 | 1.7 | 2026-09-30 | §1 new **Portal partition** path-scheme row (+ UC/workflow/entity/endpoint examples → portal folders); §3 `UC` row allocation `UC-001…UC-210` → **`UC-001…UC-420`** (`UC-211…UC-420` allocated, next free `UC-421+`); `Defined in` paths realigned to the portal scheme (FR/NFR/SEC-REQ/DATA-REQ/INT-REQ → `02-requirements/core/`, WF/UC → `01-business-analysis/<portal>/`, API → `07-api/<portal>/`, DB → `08-database/core/`, TC → `13-testing/core/`, ADR → `18-decisions/core/`); §12 checklist item 1 | Owner directive session 011 (`prompt-011.md` §1): 400+ UCs + portal-partitioned `01…23` — change control **before** minting/moving (SPE-05, GEN-03; proposal/evaluation `DOC-OVR-012`) |
+| 1.8 | 2026-09-30 | §3 `BR` row count sync: 104 → **111 rules** (domains unchanged at 15) | Owner directive session 011 (`prompt-011.md` §4.7) — consumer of `business-rules.md` v1.2; count re-synced in same change set |
 
 
