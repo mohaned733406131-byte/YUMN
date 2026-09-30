@@ -14,7 +14,7 @@ related_documents: [DOC-API-001, DOC-API-002, DOC-FE-005, DOC-BA-005, DOC-OVR-00
 
 # API Error Model
 
-Single source of truth for **every** non-2xx response of the yumn API. Endpoint files list error *codes* only; the envelope, HTTP mapping and localization rules live here. Clients must never invent codes — an unknown code renders the generic localized fallback (`05-frontend/forms-and-validation.md` §5).
+Single source of truth for **every** non-2xx response of the yumn API. Endpoint files list error *codes* only; the envelope, HTTP mapping and localization rules live here. Clients must never invent codes — an unknown code renders the generic localized fallback (`../05-frontend/core/forms-and-validation.md` §5).
 
 ---
 
@@ -79,7 +79,7 @@ Success responses never contain an `error` object. HTTP status always agrees wit
 | 503 | Dependency degraded | `PROVIDER_DOWN`, `SEARCH_UNAVAILABLE`, `SERVICE_UNAVAILABLE` |
 | 504 | Upstream timeout | `TIMEOUT` |
 
-Client guidance (from `05-frontend/forms-and-validation.md` §5): 401 `TOKEN_EXPIRED` ⇒ silent refresh; 403 ⇒ role landing, never a toast on foreign resources (show 404 behavior); 409 `STATE_CONFLICT` ⇒ refetch + "status changed" banner; 422 `INSUFFICIENT_FUNDS` ⇒ show shortfall + link to top-up; 429 ⇒ countdown from `Retry-After`; 5xx ⇒ generic message + `correlationId`, never raw text (`SEC-REQ-008`).
+Client guidance (from `../05-frontend/core/forms-and-validation.md` §5): 401 `TOKEN_EXPIRED` ⇒ silent refresh; 403 ⇒ role landing, never a toast on foreign resources (show 404 behavior); 409 `STATE_CONFLICT` ⇒ refetch + "status changed" banner; 422 `INSUFFICIENT_FUNDS` ⇒ show shortfall + link to top-up; 429 ⇒ countdown from `Retry-After`; 5xx ⇒ generic message + `correlationId`, never raw text (`SEC-REQ-008`).
 
 ## 4. Error-Code Catalog (by domain)
 

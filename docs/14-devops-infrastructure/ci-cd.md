@@ -14,7 +14,7 @@ related_documents: [DOC-OPS-001, DOC-OPS-003, DOC-OPS-005, DOC-DPL-003, DOC-TST-
 
 # CI/CD Pipelines (GitHub Actions)
 
-GitHub Actions is the only CI/CD system (`04-architecture/technology-stack.md` §4). Pipelines are **gates, not suggestions**: every rule below fails the run rather than warning. Deployment promotion semantics (staging auto, production manual) live in [`15-deployment/`](../15-deployment/README.md); this file owns the workflow definitions and merge gates.
+GitHub Actions is the only CI/CD system (`../04-architecture/core/technology-stack.md` §4). Pipelines are **gates, not suggestions**: every rule below fails the run rather than warning. Deployment promotion semantics (staging auto, production manual) live in [`15-deployment/`](../15-deployment/README.md); this file owns the workflow definitions and merge gates.
 
 ## 1. Workflow Inventory
 

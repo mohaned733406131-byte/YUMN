@@ -54,7 +54,7 @@ related_documents: [DOC-DB-001, DOC-DB-003, DOC-DB-005]
    - *Change History* — required table.
 3. **Naming** — table/column/constraint names exactly as in DOC-DB-001 §1 (singular snake_case, `_yer` money suffix, `timestamptz`).
 4. **Money** — every amount is `bigint` whole YER; never floats, never foreign currency (C-04).
-5. **Cross-reference, don't copy** — rule text lives in `01-business-analysis/business-rules.md`, states in `03-system-analysis/state-transitions.md`, constraints in `00-project-overview/project-constraints.md`. Entity docs cite IDs.
+5. **Cross-reference, don't copy** — rule text lives in `01-business-analysis/business-rules.md`, states in `../../03-system-analysis/core/state-transitions.md`, constraints in `00-project-overview/project-constraints.md`. Entity docs cite IDs.
 6. **No contradictions with canon** — where an entity doc interprets a canon tension, it says so explicitly in its *Invariants* section.
 7. **Change control** — editing an entity doc bumps `version`, adds a Change History row, and updates the register (DOC-DB-003) and this index if structure changed (root README §9).
 

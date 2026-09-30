@@ -33,7 +33,7 @@ End-to-end journeys: [`11-ui-ux/user-flows.md`](../../11-ui-ux/user-flows.md) + 
 - Confirmations use the reusable modal component — never `alert/confirm/prompt` (`IMP-04`; validator §6 = 0 today).
 
 ## Alternate flows / exception flows
-Server error, validation failure, network failure and offline paths are specified per form ([`forms-and-validation.md`](../../05-frontend/forms-and-validation.md)) and screen state; every operation handles success/failure branches (`IMP-05`).
+Server error, validation failure, network failure and offline paths are specified per form ([`forms-and-validation.md`](../../05-frontend/core/forms-and-validation.md)) and screen state; every operation handles success/failure branches (`IMP-05`).
 
 ## Postconditions (quality bar)
 - Accessibility: **WCAG 2.1 AA**, ≥95% automated pass, 0 critical/serious axe findings (`UI-02`, `NFR-011`).

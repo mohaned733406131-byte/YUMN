@@ -67,7 +67,7 @@ Sequence inside `CheckoutService.placeOrder()` (single transaction + saga, `BR-P
 Compensating actions on failure    → refund ledger entries, stock restore (BR-PLT-04)
 ```
 
-VAT display parity: server returns the full breakdown; clients render it (`05-frontend/forms-and-validation.md`).
+VAT display parity: server returns the full breakdown; clients render it (`../05-frontend/core/forms-and-validation.md`).
 
 ## 3. Escrow Lifecycle (`BR-ESC-*`)
 
@@ -83,17 +83,17 @@ VAT display parity: server returns the full breakdown; clients render it (`05-fr
 | Refund draw | refund due | `RefundService` | escrow first, then vendor payable (BR-ESC-07) |
 | Reconcile | daily job | `ReconciliationService` | Σ ledger balanced; mismatch → finance alert (BR-ESC-08, BR-FIN-03) |
 
-## 4. Order State Transitions (C-09, `03-system-analysis/state-transitions.md`)
+## 4. Order State Transitions (C-09, `../03-system-analysis/core/state-transitions.md`)
 
 | Aspect | Placement |
 |---|---|
-| Canonical table | `b06-order/domain/order-state.machine.ts` — code-generated/checked against `03-system-analysis/state-transitions.md`; exactly 17 states (C-09, `TST-CON-09`) |
+| Canonical table | `b06-order/domain/order-state.machine.ts` — code-generated/checked against `../03-system-analysis/core/state-transitions.md`; exactly 17 states (C-09, `TST-CON-09`) |
 | Transition execution | `OrderService.transition(from, to, actor, reason)` — single entry point; **no direct `status` UPDATE anywhere else** (enforced by lint + architecture test) |
 | Guards | machine validates from→to, actor eligibility (BR-ORD-04 cancel windows), preconditions (KYC, code verified, attempts) |
 | Concurrency | optimistic lock on `version`; losing writer → **409 `STATE_CONFLICT`** (state doc §5) |
 | History | append-only `order_status_history` row with actor/timestamp/reason (BR-ORD-03) |
 | DELIVERED gate | only via `DeliveryCodeService.verify()` (BR-ORD-08, BR-SHP-02/03, C-16) |
-| Client impact | invalid transition surfaced to UI as `STATE_CONFLICT` → frontend refetches (`05-frontend/forms-and-validation.md` §5) |
+| Client impact | invalid transition surfaced to UI as `STATE_CONFLICT` → frontend refetches (`../05-frontend/core/forms-and-validation.md` §5) |
 | Master completion | sub-orders COMPLETED or REFUNDED → master COMPLETED (BR-ORD-07) |
 
 ## 5. Stock TTL (C-13, `BR-CAT-07`)

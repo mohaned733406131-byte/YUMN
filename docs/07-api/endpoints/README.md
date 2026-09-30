@@ -70,7 +70,7 @@ Index of all 14 endpoint groups. Each group lives in one file, uses one group co
 | Headers, idempotency, rate limits, uploads, deprecation | [`../api-conventions.md`](../api-conventions.md) |
 | Error envelope, status mapping, code catalog | [`../error-model.md`](../error-model.md) |
 | Pagination mode, filters, sorts, search shape | [`../pagination.md`](../pagination.md) |
-| Order state machine (17 states, `409 STATE_CONFLICT`) | `../../03-system-analysis/state-transitions.md` |
+| Order state machine (17 states, `409 STATE_CONFLICT`) | `../../03-system-analysis/core/state-transitions.md` |
 | Business rule text (BR-*) | `../../01-business-analysis/business-rules.md` |
 | Requirement registry (FR/NFR/SEC/DATA/INT) | `../../02-requirements/requirements-overview.md` |
 

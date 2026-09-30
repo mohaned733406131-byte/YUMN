@@ -156,7 +156,7 @@ gitleaks git  E:\YUMN --config E:\YUMN\.gitleaks.toml --redact --no-banner   # e
 # UC inventory (paths change with the migration — expect 400+, contiguous, no gaps):
 Get-ChildItem docs\01-business-analysis -Recurse -Filter 'UC-*.md'
 # old-count / old-path grep after any count or move (exclude 20-/21- CH rows — only history may remain):
-#   Select-String over docs for "210 use cases", "use-cases/UC-", "01-business-analysis/use-cases"
+#   Select-String over docs for "210 use cases", "use-cases/UC-", "01-business-analysis"
 node --check senior-rules/scripts/admr-install.js     # syntax check only; do NOT run install
 git log --oneline -10
 ```

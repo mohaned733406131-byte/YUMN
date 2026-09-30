@@ -44,10 +44,10 @@ related_documents: [DOC-SES-000, DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-
 
 ## Files touched (grouped)
 
-**Authored this session (168):** `docs/01-business-analysis/use-cases/UC-043.md` … `UC-210.md` (one file per minted UC; template `use-case-template.md` v1.1 verbatim).
+**Authored this session (168):** `docs/01-business-analysis/core/UC-043.md` … `UC-210.md` (one file per minted UC; template `use-case-template.md` v1.1 verbatim).
 **Authored this session (1):** `docs/sessions/session-010-uc-coverage-expansion.md` (this file).
 **Modified (change control, commit `c1f280d` + wording finalization):** `docs/22-glossary/naming-conventions.md` **v1.6**, `docs/22-glossary/terminology.md` **v1.3**, `docs/23-templates/use-case-template.md` **v1.2**.
-**Modified (propagation, commits `fc242c0` + sweep set):** `docs/01-business-analysis/use-cases/README.md` **v1.2** · `docs/19-traceability/README.md` **v1.3** · `docs/19-traceability/requirements-to-features.md` **v1.3** · `docs/19-traceability/requirements-to-tests.md` **v1.5** · `docs/20-validation/analysis-validation.md` **v1.13** · `docs/20-validation/consistency-audit.md` **v1.20** · `docs/phases/analysis/use-cases.md` **v1.2** · `docs/03-system-analysis/README.md` **v1.4** · `docs/11-ui-ux/user-flows.md` **v1.1**.
+**Modified (propagation, commits `fc242c0` + sweep set):** `docs/01-business-analysis/use-case-index.md` **v1.2** · `docs/19-traceability/README.md` **v1.3** · `docs/19-traceability/requirements-to-features.md` **v1.3** · `docs/19-traceability/requirements-to-tests.md` **v1.5** · `docs/20-validation/analysis-validation.md` **v1.13** · `docs/20-validation/consistency-audit.md` **v1.20** · `docs/phases/analysis/use-cases.md` **v1.2** · `docs/03-system-analysis/README.md` **v1.4** · `docs/11-ui-ux/user-flows.md` **v1.1**.
 **Session-local (not committed):** session-010-uc-spec.md, chk31_v2.py (session tools, per session-006/009 precedent).
 **Close-out targets:** `docs/sessions/README.md`, `session_track.md`, `memory.md`, `all_in_one_track.md`, `prompt-next.md`; `prompt-011.md` (untracked by precedent — no prompt-009.md is tracked).
 

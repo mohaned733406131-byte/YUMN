@@ -90,7 +90,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 |---|---|---|
 | 1 | Plans executed for every completed range; P0/P1 test cases 100% PASS, 0 CRITICAL/HIGH open | `13-testing/test-plans.md` §a common exit |
 | 2 | Coverage against the AC registry (253 ACs) with zero uncovered ACs in built scope | `02-requirements/acceptance-criteria.md`; `AC-S-03` |
-| 3 | Money-path suites green (checkout/payment/wallet, escrow, ledger invariant) | `01-business-analysis/stakeholder-needs.md` STK-01; `00-project-overview/stakeholders.md` conflicts table |
+| 3 | Money-path suites green (checkout/payment/wallet, escrow, ledger invariant) | `../01-business-analysis/core/stakeholder-needs.md` STK-01; `00-project-overview/stakeholders.md` conflicts table |
 | 4 | Performance evidence vs NFRs at staging scale | `13-testing/test-plans.md` §b; `AC-S-05` |
 | 5 | Security findings triaged — 0 open CRITICAL/HIGH security defects | `09-security/security-findings.md`; `test-plans.md` §c exit |
 | 6 | Constraint tests `TST-CON-01…26` 26/26 PASS for constraints touched by built scope | `13-testing/constraint-tests.md`; `AC-S-02` |
@@ -98,7 +98,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 **Content:**
 
 - **Blocks:** `B01` Identity & Access → `B13` Platform Administration, all thirteen in scope (`00-project-overview/project-context.md` §Platform Decomposition).
-- **P0 use cases first — 17 of 40 (`VERIFIED` count from `01-business-analysis/use-cases/README.md` §3: P0 = 17, P1 = 18, P2 = 5):**
+- **P0 use cases first — 17 of 40 (`VERIFIED` count from `../01-business-analysis/use-case-index.md` §3: P0 = 17, P1 = 18, P2 = 5):**
   `UC-002` (register + OTP), `UC-003` (login), `UC-009` (add to cart), `UC-011` (checkout with wallet payment), `UC-013` (confirm receipt with delivery code), `UC-015` (vendor register + KYC), `UC-017` (product listing), `UC-019` (accept incoming order), `UC-020` (ready for pickup), `UC-026` (accept delivery assignment), `UC-027` (confirm pickup), `UC-030` (confirm delivery with 6-digit code), `UC-031` (approve/reject KYC), `UC-033` (manage orders & disputes), `UC-037` (roles & permissions), `UC-039` (auto-release escrow), `UC-040` (OTP with provider failover).
   P1 follows P0; P2 (`UC-008`, `UC-014`, `UC-023`, `UC-024`, `UC-036`) is deferrable within the phase but must exist before Gate 1 if its FR is claimed `VERIFIED`.
 - **Critical-path test plans:** `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Shopping cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle are the Phase-1 critical path (`13-testing/test-plans.md` L46). Their entry criteria (OTP mock adapter + SMS sandbox, RBAC matrix, cart fixtures, money boundary fixtures + ledger invariant harness, 17-state fixtures) are themselves Phase 1 deliverables.
@@ -156,7 +156,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 
 1. Production-readiness: **all 52 rows `DONE` or explicitly `WAIVED`**, plus sponsor, QA lead, security owner, and ops owner signatures (`15-deployment/production-readiness.md` §9).
 2. Critical-path dependencies closed: `DEP-06` (registration), `DEP-10` (wallet legitimacy), `DEP-05` (production top-ups), `DEP-09` (legal sign-off), `DEP-08` (public launch) — ordering per `00-project-overview/dependencies.md`.
-3. Money-path quality gates green and non-negotiable (`00-project-overview/stakeholders.md` conflicts table; `01-business-analysis/stakeholder-needs.md` STK-01).
+3. Money-path quality gates green and non-negotiable (`00-project-overview/stakeholders.md` conflicts table; `../01-business-analysis/core/stakeholder-needs.md` STK-01).
 4. `AC-S-24` legal/compliance sign-offs on file; unresolved blocking items (notably the Central Bank position) stop launch.
 
 **Content:** go-live checklist entries per risk plan (payout batch enabled only after `J1`/`J2` green for 7 consecutive days; production SMS/WhatsApp credentials issued only after the sandbox suite passes; production dashboards + saturation alerts live before first traffic); on-call rotation sized to the team with escalation contacts tested; maintenance-mode and rollback paths verified.

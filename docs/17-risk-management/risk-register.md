@@ -568,7 +568,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 
 - **Contingency plan:** deliberate pricing review by sponsor using tiered commission capability; prioritize retention of active vendors over price matching; accept short-term share loss if fee war threatens unit economics.
 - **Residual risk:** market pricing dynamics are uncontrollable; `GAP-01` (growth targets) remains unresolved, so impact measurement is approximate.
-- **Linked IDs:** OBJ-01, BR-ESC-03, GAP-01, `01-business-analysis/business-model.md`, BO-01…BO-06, STK-03/STK-04.
+- **Linked IDs:** OBJ-01, BR-ESC-03, GAP-01, `../01-business-analysis/core/business-model.md`, BO-01…BO-06, STK-03/STK-04.
 
 ---
 

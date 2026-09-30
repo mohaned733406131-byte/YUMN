@@ -113,7 +113,7 @@ POST /auth/otp/verify   → otp.service
 
 ## 8. What the Client May Do (boundary)
 
-Clients request OTP, submit credentials, hold tokens and render guards (`05-frontend/authentication-handling.md`). Clients **cannot**: set their own roles, extend token lifetimes, bypass attempt counters, or read another session. Frontend behavior is UX parity only (`SEC-REQ-004`).
+Clients request OTP, submit credentials, hold tokens and render guards (`../05-frontend/core/authentication-handling.md`). Clients **cannot**: set their own roles, extend token lifetimes, bypass attempt counters, or read another session. Frontend behavior is UX parity only (`SEC-REQ-004`).
 
 ## 9. Verification
 

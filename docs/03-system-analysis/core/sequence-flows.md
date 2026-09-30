@@ -14,7 +14,7 @@ related_documents: [DOC-SA-004, DOC-SA-010, DOC-BA-004, DOC-WF-001, DOC-BA-005]
 
 # Key Sequence Flows
 
-Five end-to-end sequences as text sequence diagrams (`SQ-01…SQ-05`), complementing the business-side walkthroughs in `01-business-analysis/workflows/` (`WF-001…WF-012`) and the state machine in `state-transitions.md` (DOC-SA-010). Participants are **logical components** (`LC-*`, DOC-SA-006), not classes or services. Alternate and failure branches are shown inline with `✗` markers; rule IDs are referenced, never restated.
+Five end-to-end sequences as text sequence diagrams (`SQ-01…SQ-05`), complementing the business-side walkthroughs in `01-business-analysis/` (`WF-001…WF-012`) and the state machine in `state-transitions.md` (DOC-SA-010). Participants are **logical components** (`LC-*`, DOC-SA-006), not classes or services. Alternate and failure branches are shown inline with `✗` markers; rule IDs are referenced, never restated.
 
 ## SQ-01 — Browse → Cart → Checkout → Order → Delivery → Completion
 
@@ -170,7 +170,7 @@ Customer/Vendor  LC-09       LC-12        LC-19       Admin      LC-10      LC-1
 2. Arrows labelled `✗` are failure exits; each names the governing `BR-*` or constraint.
 3. Time-based steps (15-min reservation, 48-h KYC/decision SLA, 72-h inspection, 24-h escalation, 7-day escrow, 3–7-day payout) are driven by LC-23 jobs, never by a client timer.
 4. Notifications appear as the last leg of every user-visible transition; security notifications are never suppressible (`BR-NTF-02`).
-5. Physical-level realizations (endpoints, queues, transactions) are documented in `07-api/`, `04-architecture/data-flow.md` and `06-backend/`.
+5. Physical-level realizations (endpoints, queues, transactions) are documented in `07-api/`, `../../04-architecture/core/data-flow.md` and `06-backend/`.
 
 ## Change History
 

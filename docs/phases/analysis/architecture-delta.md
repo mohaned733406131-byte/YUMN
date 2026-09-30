@@ -15,7 +15,7 @@ related_requirements: [NFR-016]
 # Architecture Delta — analysis phase
 
 ## Purpose
-Record what this phase changed in the system architecture. For phase 0 the architecture was *defined, not modified*: the canonical structure lives in [`04-architecture/architecture-overview.md`](../../04-architecture/architecture-overview.md) and this file confirms the phase introduced **no delta** beyond authoring that baseline.
+Record what this phase changed in the system architecture. For phase 0 the architecture was *defined, not modified*: the canonical structure lives in [`../../04-architecture/core/architecture-overview.md`](../../04-architecture/core/architecture-overview.md) and this file confirms the phase introduced **no delta** beyond authoring that baseline.
 
 ## Scope
 - In scope: blocks `B01…B13`, containers, deployment topology, module boundaries as specified in `04-architecture/`.
@@ -30,7 +30,7 @@ Architecture authority: tech lead (PENDING sign-off) · Author of record: analys
 ## Main flow
 1. Analysis derives candidate architecture from requirements + constraints.
 2. Decisions recorded as ADRs ([`18-decisions/ADR/`](../../18-decisions/ADR/)).
-3. Views published: [container](../../04-architecture/container-view.md), [component](../../04-architecture/component-view.md), [deployment](../../04-architecture/deployment-view.md), [data-flow](../../04-architecture/data-flow.md), [module boundaries](../../04-architecture/module-boundaries.md).
+3. Views published: [container](../../04-architecture/core/container-view.md), [component](../../04-architecture/core/component-view.md), [deployment](../../04-architecture/core/deployment-view.md), [data-flow](../../04-architecture/core/data-flow.md), [module boundaries](../../04-architecture/core/module-boundaries.md).
 
 ## Alternate / exception flows
 - Spec contradiction (`SPE-04`: API vocabulary vs DB enums, defect `D-06`) → **stop and reconcile via ADR before any code**; no ad-hoc mapping layers.
@@ -47,7 +47,7 @@ None (documentation only).
 
 ## Open questions (COM-01)
 1. Sponsor/tech-lead review of `RULES_HINTS.md` §8 — PENDING (blocks phase-gate use per AUD-05).
-2. Path-spelling reconciliation (`D-08`): ops docs cite `apps/api`/`apps/web` — canonical tree is `05-frontend/frontend-architecture.md` §1 + `06-backend/backend-architecture.md` §1.
+2. Path-spelling reconciliation (`D-08`): ops docs cite `apps/api`/`apps/web` — canonical tree is `../../05-frontend/core/frontend-architecture.md` §1 + `06-backend/backend-architecture.md` §1.
 
 ## Change History
 

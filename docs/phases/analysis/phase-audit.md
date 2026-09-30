@@ -55,7 +55,7 @@ related_requirements: []
 
 ## 4. Dead-element verification (rule 16e)
 
-- Scan command: **not yet defined** (Phase 1 bootstrap binds it; nearest proxies today: route-inventory test design in `05-frontend/routing.md` §10 + validator §6).
+- Scan command: **not yet defined** (Phase 1 bootstrap binds it; nearest proxies today: route-inventory test design in `../../05-frontend/core/routing.md` §10 + validator §6).
 - Current evidence: **0 product UI/source files exist** → dead-element count is vacuously 0; the real scan is `BLOCKED` (honest status, not a PASS).
 
 ## 5. Report (rules 5, 16d — Done / Remaining / Next)

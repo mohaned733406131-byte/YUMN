@@ -40,7 +40,7 @@ Methodology item 36 (root README §10): *Feasibility* — assessed across six di
 - The stack is fixed and self-consistent: modular monolith (`C-21`, `ADR-002`), PostgreSQL 16 as sole relational store (`C-19`, `ADR-001`), Redis 7 + BullMQ as the only queue/cache (`C-20`, `ADR-005`), Elasticsearch 8 for search (`ADR-006`), Docker + Docker Compose deployment with no Kubernetes (`C-22`, `ADR-004`), 100% custom build (`C-18`), MinIO object storage (`ADR-007`), Next.js 14 + React Native 0.73 across the five surfaces (`ADR-008`).
 - Every technology choice carries an accepted ADR in `18-decisions/ADR/` with a constraint-compliance section; the index is `04-architecture/architecture-decisions-reference.md`.
 - The constraint envelope is testable: `13-testing/constraint-tests.md` defines one test per constraint (`TST-CON-01…TST-CON-26`), and `AC-S-02` requires 26/26 PASS.
-- Scale and availability targets (`C-25` 10,000 concurrent, `C-26` 99.99%) are demanding but bounded: stateless replicas, caching, cursor pagination, and single-host-plus-replica growth stages are specified (`NFR-018`, `04-architecture/scalability.md`).
+- Scale and availability targets (`C-25` 10,000 concurrent, `C-26` 99.99%) are demanding but bounded: stateless replicas, caching, cursor pagination, and single-host-plus-replica growth stages are specified (`NFR-018`, `../04-architecture/core/scalability.md`).
 
 **Evidence tag:** `VERIFIED` for stack and constraints (they are canon); `INFERENCE` for the performance posture until k6 evidence exists at Gate 1/Gate 2.
 
@@ -75,7 +75,7 @@ Methodology item 36 (root README §10): *Feasibility* — assessed across six di
 **Assessment: `INSUFFICIENT EVIDENCE` — cannot be judged.**
 
 - No budget, burn rate, or funding-duration figure exists in the knowledge base (`ASM-14` covers budget explicitly).
-- Revenue/commercial targets that would frame a business case are open: `GAP-01` (growth/commercial targets for launch — vendor, order, GMV) is owned by the sponsor and still unresolved; `01-business-analysis/business-objectives.md` records launch growth targets as `INSUFFICIENT EVIDENCE` until set at Gate 0; `01-business-analysis/business-model.md` records baseline GMV targets as `INSUFFICIENT EVIDENCE` (`GAP-01`, `ASM-14`).
+- Revenue/commercial targets that would frame a business case are open: `GAP-01` (growth/commercial targets for launch — vendor, order, GMV) is owned by the sponsor and still unresolved; `../01-business-analysis/core/business-objectives.md` records launch growth targets as `INSUFFICIENT EVIDENCE` until set at Gate 0; `../01-business-analysis/core/business-model.md` records baseline GMV targets as `INSUFFICIENT EVIDENCE` (`GAP-01`, `ASM-14`).
 - Cost shape is at least partially knowable: commission default 10% within a 5–20% band (`BR-ESC-03`), payout batching, self-hosted infrastructure (no cloud-managed hard dependencies — `C-22`/`C-20` exclusions), and the requirement that any new infrastructure component needs an ADR first (RISK-005 control).
 
 **Evidence tag:** `INSUFFICIENT EVIDENCE`.

@@ -14,7 +14,7 @@ related_documents: [DOC-ARCH-002, DOC-ARCH-006, DOC-SA-006, DOC-OVR-002, DOC-BA-
 
 # Component View — Internal Modules
 
-The internals of the NestJS API container (CNT-04): one module per block (`B01…B13`) plus a shared kernel. This is the technology-bound realization of the logical components in `03-system-analysis/logical-components.md` (DOC-SA-006); the rules governing how these modules may depend on each other are in `module-boundaries.md` (DOC-ARCH-006).
+The internals of the NestJS API container (CNT-04): one module per block (`B01…B13`) plus a shared kernel. This is the technology-bound realization of the logical components in `../../03-system-analysis/core/logical-components.md` (DOC-SA-006); the rules governing how these modules may depend on each other are in `module-boundaries.md` (DOC-ARCH-006).
 
 ## 1. Module Map
 

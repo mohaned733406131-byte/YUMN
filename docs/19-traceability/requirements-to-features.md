@@ -177,13 +177,13 @@ Interpretation: the functional spine (20 FRs) is fully linked to use cases, work
 | # | Finding | Severity | Evidence |
 |---|---|---|---|
 | T-01 | **31 requirements serve no objective in the matrix**: every `SEC-REQ`, `DATA-REQ`, `INT-REQ` (28) plus `NFR-015`, `NFR-016`, `NFR-020` are referenced by no objective row and by no `OBJ-NN` mention in their own file | MEDIUM | Matrix B *Objective(s)* column |
-| T-02 | **36 requirements define no priority**: all `NFR-*`, `DATA-REQ-*`, `INT-REQ-*` files lack a priority field (only FR registry §1 and `SEC-REQ-*` headers carry one) | LOW | Matrix B *Priority* column; `02-requirements/non-functional/*.md` |
+| T-02 | **36 requirements define no priority**: all `NFR-*`, `DATA-REQ-*`, `INT-REQ-*` files lack a priority field (only FR registry §1 and `SEC-REQ-*` headers carry one) | LOW | Matrix B *Priority* column; `02-requirements/*.md` |
 | T-03 | **No UC/WF trace exists for cross-cutting requirements**: all 210 UC and all 12 workflow frontmatters list `FR-*` only | LOW | frontmatter scan of `use-cases/` and `workflows/` — re-verified 2026-09-29 (session 010): 210/210 `UC-*.md`, every `related_requirements` entry is an `FR-*` ID; count 42 → 210, finding unchanged (LOW `OPEN`) |
 | T-04 | **26 requirements touch no registered API group and 24 touch no endpoint** — including `SEC-REQ-007`, `SEC-REQ-012`, `DATA-REQ-004/005`, `INT-REQ-006/007/008`, which are verified elsewhere by plans/drills but not by an endpoint link | MEDIUM | Matrix B; `07-api/README.md` §4 |
 | T-05 | **Two objectives have no functional or verification trace**: `OBJ-09` (quality velocity) and `OBJ-10` (maintainability) are named only by `NFR-009`/`NFR-010` — no `FR-*`, use case, workflow or test case cites them, although `OBJ-09`'s measurable (a release-gating test suite) is a testing concern; `OBJ-11`'s measurable is `INSUFFICIENT EVIDENCE` (`ASM-14`) | LOW | Matrix A; search of `13-testing/` for `OBJ-09`/`OBJ-10` returns nothing |
 | T-06 | **No stakeholder → objective/requirement map exists** in `00-project-overview/stakeholders.md` (table has `STK-01…STK-15` with goals, no `OBJ-*`/`FR-*` column), so a stakeholder trace cannot be built without inventing links | LOW | file read |
 
-**Documents needing update (outside this domain, reported not edited):** `02-requirements/non-functional/`, `02-requirements/data/`, `02-requirements/integration/` (add priority and objective references if the sponsor wants them traced — T-01, T-02); `00-project-overview/stakeholders.md` (add an `OBJ-*` column — T-06); `07-api/README.md` §4 (review the 26 unlinked requirements — T-04).
+**Documents needing update (outside this domain, reported not edited):** `02-requirements/`, `02-requirements/`, `02-requirements/` (add priority and objective references if the sponsor wants them traced — T-01, T-02); `00-project-overview/stakeholders.md` (add an `OBJ-*` column — T-06); `07-api/README.md` §4 (review the 26 unlinked requirements — T-04).
 
 Nothing in this file contradicts canon; where the corpus is silent the matrix says so.
 

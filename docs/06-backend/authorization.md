@@ -86,7 +86,7 @@ Implementation: ownership predicates are **mandatory parameters** of repository 
 
 ## 6. Where Frontend Guards Fit
 
-Route guards and hidden buttons in `05-frontend/routing.md` §6 are **UX mirrors only**. Consequences:
+Route guards and hidden buttons in `../05-frontend/core/routing.md` §6 are **UX mirrors only**. Consequences:
 
 1. Every guard decorator has a corresponding (stronger) server check — never the reverse.
 2. API responses to unauthorized callers are 403 `FORBIDDEN` (or 404 for foreign resources to avoid existence disclosure).
@@ -111,7 +111,7 @@ Emitted via `shared/events` → `b13-platform` audit writer; audit table is appe
 | Integration | each endpoint class called with wrong role → 403; foreign ID → 404 |
 | Conformance (CI) | RBAC matrix ↔ guard decorators ↔ API role register (`07-api/api-conventions.md` §4) ↔ `user_role.role` enum diff must be empty — asserted against the cross-layer mapping at `09-security/rbac.md` §8 |
 | Security tests | TC-011…TC-014 (cross-user, cross-store, staff escalation, direct API bypass) |
-| Regression | every `SEC-REQ-004` test in `02-requirements/security/` |
+| Regression | every `SEC-REQ-004` test in `02-requirements/` |
 
 ## Change History
 

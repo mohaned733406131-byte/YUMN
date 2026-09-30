@@ -22,7 +22,7 @@ Analysis-phase attack surface = the *designed* system: 221 endpoints (`07-api/`)
 
 ## Threat model (roll-up)
 - Canonical: [`threat-model.md`](../../09-security/threat-model.md) (STRIDE-classified, per-entry-point).
-- Controls catalogue: [`security-controls.md`](../../09-security/security-controls.md); requirements: `SEC-REQ-001`…`SEC-REQ-012` (`02-requirements/security/`).
+- Controls catalogue: [`security-controls.md`](../../09-security/security-controls.md); requirements: `SEC-REQ-001`…`SEC-REQ-012` (`02-requirements/`).
 - Secrets: [`secrets-management.md`](../../09-security/secrets-management.md) — host-only, mode `0600`, fail-fast `CONFIG_MISSING: <name>` (`SEC-REQ-007`, `OPS-02`).
 
 ## Findings (phase security audit)

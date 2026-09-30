@@ -15,7 +15,7 @@ related_requirements: []
 # Use Cases — analysis phase roll-up
 
 ## Purpose
-Index every operation the system supports, as authored during analysis. The **canonical use-case files live in [`01-business-analysis/use-cases/`](../../01-business-analysis/use-cases/README.md) (`UC-001`…`UC-210`)**; this roll-up (CORE-03 item 4) proves completeness against the phase boundary and links the flows artifact (item 5).
+Index every operation the system supports, as authored during analysis. The **canonical use-case files live in [`01-business-analysis/`](../../01-business-analysis/use-case-index.md) (`UC-001`…`UC-210`)**; this roll-up (CORE-03 item 4) proves completeness against the phase boundary and links the flows artifact (item 5).
 
 ## Scope
 All functionality of the four shells: customer web + customer mobile, vendor panel, admin console, courier mobile.
@@ -27,7 +27,7 @@ Canonical actor list: [`00-project-overview/actors-and-roles.md`](../../00-proje
 
 | Actor group | Use cases | Canonical index |
 |---|---|---|
-| Guest / customer — discovery & identity | `UC-001`…`UC-005` (browse as guest, register phone+OTP, login, reset password, addresses) | [`use-cases/README.md`](../../01-business-analysis/use-cases/README.md) |
+| Guest / customer — discovery & identity | `UC-001`…`UC-005` (browse as guest, register phone+OTP, login, reset password, addresses) | [`../../01-business-analysis/use-case-index.md`](../../01-business-analysis/use-case-index.md) |
 | Customer — commerce | `UC-006`…`UC-014` (search, product detail, follow store, add to cart, manage cart, checkout with wallet, track order, confirm receipt with code, contact support) | same |
 | Customer — money | `UC-041`, `UC-042` (top up wallet, view wallet statement) | same |
 | Vendor — store & catalog | `UC-015`…`UC-024` (register+KYC, store profile, listings, inventory, incoming orders, ready for pickup, return response, finances/payouts, coupons, review responses) | same |

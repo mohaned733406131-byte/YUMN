@@ -71,7 +71,7 @@
 | `M-14` | **RBAC / staff model** — `FR-002`, `rbac.md` §8 | Add scoped admin **staff profiles** (permission bundles per department) while preserving the 7-actor canonical mapping (API 7 = enum 10 − 3 staff; DB 6 = 7 − `SYSTEM`) | Today `ADMIN` is one flat role doing KYC + refunds + moderation + settings-lite. Real platform teams need separation of duties (four-eyes on money ops) — benchmark-standard and required for `M-07`/§5/§6 |
 | `M-15` | **Vendor finance surface** — `BR-FIN-04`, `API-ANL-004/005`, `API-WAL-013` | Upgrade monthly statements to **document-grade artefacts**: numbered invoices/settlement documents, PDF, tax fields, payout receipts, downloadable tax summary | Statements exist (`VERIFIED`), but no invoicing document exists anywhere in the corpus (`invoice` ≈ 6 incidental hits; BP-01…BP-15 contain **no** accounting/invoicing process). Yemen tax invoicing is asserted in `project-context.md` while `ASM-10` (VAT liability) is `UNSUPPORTED` (`DEP-09`) |
 | `M-16` | **Delivery providers** — `FR-015`, `INT-REQ-005`, `DeliveryProviderPort` | Add a **delivery-provider (fleet/partner) registry**: partner record, service areas, rate cards, contracts, settlement runs, SLA metrics — couriers can stay individual in v1 | `GAP-07` (`OPEN`, owned via `RISK-018`) + benchmark: operator-run marketplaces manage carriers as counterparties, not just as freelancers. Port already exists, so this is domain + admin surface, not new architecture |
-| `M-17` | **Wishlist route** — [`routing.md`](docs/05-frontend/routing.md) §, [`information-architecture.md`](docs/11-ui-ux/information-architecture.md) | **Decide**: implement the saved-products list (small: `b01` relation + 3 endpoints + 2 screens) **or** delete the `/account/wishlist` route | The route and IA row cite `FR-008`/`BR-VND-05`, which only define *store following*; `FR-010.md` explicitly excludes "persistent wishlists … not specified in v1". Today it is a **candidate dead element** (`DOD-05`/`IMP-02` — 0 dead routes is a hard gate) |
+| `M-17` | **Wishlist route** — [`routing.md`](docs/05-frontend/core/routing.md) §, [`information-architecture.md`](docs/11-ui-ux/information-architecture.md) | **Decide**: implement the saved-products list (small: `b01` relation + 3 endpoints + 2 screens) **or** delete the `/account/wishlist` route | The route and IA row cite `FR-008`/`BR-VND-05`, which only define *store following*; `FR-010.md` explicitly excludes "persistent wishlists … not specified in v1". Today it is a **candidate dead element** (`DOD-05`/`IMP-02` — 0 dead routes is a hard gate) |
 | `M-18` | **Technical SEO pack** — `FR-009`, `frontend-architecture.md` | Generate `sitemap.xml`, `robots.txt`, canonical/hreflang already designed, product & breadcrumb structured data, search-console verification | ISR/SEO-friendly slugs and `hreflang` exist (`VERIFIED`), but no crawler entry-point artefacts are specified (only IA "sitemap" = navigation). Cheap, high discovery value in a marketplace |
 | `M-19` | **Promotions calendar** — `FR-019`, `DB-016 coupon` | Add scheduling/period targeting for banners + coupons, campaign calendar view, per-store promotion windows | Coupons (`≤90%`, non-stackable) and banners exist; benchmark operators run *scheduled campaigns*, not hand-toggled banners. No new money semantics (stays inside `B12`) |
 | `M-20` | **Review & moderation quality** — `FR-006`, `API-ADM-027…029` | Vendor right-of-reply workflow on hidden reviews, evidence attachments on reports, auto-flag heuristics tuning | Moderation queue/hide/restore exist; the *governance* around them (response, escalation, false-positive rate) is thin vs benchmark and vs `BR-REV-*` expectations |
@@ -349,7 +349,7 @@ design the *slot* inventory first (banners exist), the auction/billing later.
 
 **Non-negotiable integrity rule:** the append-only double-entry ledger stays the single writer of
 marketplace money (`BR-PAY-06`, `NFR-008`, `LedgerService.post` = only money writer, forbidden
-pattern `F7` in [`module-boundaries.md`](docs/04-architecture/module-boundaries.md)). The ERP **never
+pattern `F7` in [`module-boundaries.md`](docs/04-architecture/core/module-boundaries.md)). The ERP **never
 writes** to `b07`; it receives postings and returns nothing money-shaped. Reconciliation is one-way
 asserted: `J1`/`J2` inside yumn, plus a new daily "ledger ↔ ERP journal" diff report.
 
@@ -642,14 +642,14 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 [`project-scope.md`](docs/00-project-overview/project-scope.md) ·
 [`project-constraints.md`](docs/00-project-overview/project-constraints.md) ·
 [`actors-and-roles.md`](docs/00-project-overview/actors-and-roles.md) ·
-[`business-model.md`](docs/01-business-analysis/business-model.md) ·
-[`business-processes.md`](docs/01-business-analysis/business-processes.md) ·
+[`business-model.md`](docs/01-business-analysis/core/business-model.md) ·
+[`business-processes.md`](docs/01-business-analysis/core/business-processes.md) ·
 [`business-rules.md`](docs/01-business-analysis/business-rules.md) ·
 [`requirements-overview.md`](docs/02-requirements/requirements-overview.md) ·
-[`functional/README.md`](docs/02-requirements/functional/README.md) ·
+[`docs/02-requirements/functional-index.md`](docs/02-requirements/functional-index.md) ·
 [`admin.md`](docs/07-api/endpoints/admin.md) · [`analytics.md`](docs/07-api/endpoints/analytics.md) ·
 [`rbac.md`](docs/09-security/rbac.md) ·
-[`module-boundaries.md`](docs/04-architecture/module-boundaries.md) ·
+[`module-boundaries.md`](docs/04-architecture/core/module-boundaries.md) ·
 [`backend-architecture.md`](docs/06-backend/backend-architecture.md) ·
 [`entities/README.md`](docs/08-database/entities/README.md) ·
 [`integration-overview.md`](docs/10-integrations/integration-overview.md) ·

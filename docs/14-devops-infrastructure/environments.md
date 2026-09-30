@@ -56,7 +56,7 @@ Four environments — **local · dev · staging · production** — all running 
 
 ## 3. Compose Overlay Layout
 
-Canonical file names follow `04-architecture/deployment-view.md` §1 (Compose v2 reads `compose.yaml` by default; the legacy `docker-compose.yml` spelling is the same file if a tool enforces it).
+Canonical file names follow `../04-architecture/core/deployment-view.md` §1 (Compose v2 reads `compose.yaml` by default; the legacy `docker-compose.yml` spelling is the same file if a tool enforces it).
 
 | Canonical file | Legacy-equivalent name | Purpose | Present in |
 |---|---|---|---|

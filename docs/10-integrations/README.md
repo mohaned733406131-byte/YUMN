@@ -16,7 +16,7 @@ related_documents: [DOC-ROOT-001, DOC-REQ-001, DOC-IR-000, DOC-OVR-010, DOC-SEC-
 
 ## 1. Purpose
 
-This directory owns the **integration contracts**: concrete endpoints, payload schemas, provider-specific failure matrices, sequence detail, and degradation behavior for every external system yumn talks to. The *requirements* (provider-agnostic guarantees with `AC-IRnnn-nn`) live in `02-requirements/integration/`; the *security policy* for shared controls lives in `09-security/`. Nothing here redefines a requirement — it expands it.
+This directory owns the **integration contracts**: concrete endpoints, payload schemas, provider-specific failure matrices, sequence detail, and degradation behavior for every external system yumn talks to. The *requirements* (provider-agnostic guarantees with `AC-IRnnn-nn`) live in `02-requirements/`; the *security policy* for shared controls lives in `09-security/`. Nothing here redefines a requirement — it expands it.
 
 ## 2. External-System Map
 
@@ -108,7 +108,7 @@ This directory owns the **integration contracts**: concrete endpoints, payload s
 ## 9. Domain Boundaries
 
 **Owned here:** provider contracts, degradation behavior, webhook mechanics, integration testing strategy.
-**Not owned here:** requirement statements/ACs (`02-requirements/integration/`); job/queue mechanics of the monolith (`06-backend/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`12-non-functional/observability.md`); environment wiring (`14-devops-infrastructure/`).
+**Not owned here:** requirement statements/ACs (`02-requirements/`); job/queue mechanics of the monolith (`06-backend/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`12-non-functional/observability.md`); environment wiring (`14-devops-infrastructure/`).
 
 ## Change History
 

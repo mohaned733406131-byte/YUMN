@@ -90,7 +90,7 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 
 | Kind | Pattern | Example | Meaning |
 |---|---|---|---|
-| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-005` | Owned by `02-requirements/security/` — never redefined here |
+| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-005` | Owned by `02-requirements/` — never redefined here |
 | Security controls | `SEC-C-NN` | `SEC-C-07` | Design controls catalogued in `security-controls.md` |
 | Security findings | `SEC-NNN` | `SEC-004` | Register entries in `security-findings.md` — status `OPEN` until verified closed |
 | Threats | `TM-NN` | `TM-03` | Threat-model entries in `threat-model.md` |
@@ -117,7 +117,7 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 ## 7. Domain Boundaries
 
 **Owned here:** security design, control catalog, RBAC matrix (definitive), secrets policy, encryption design, findings register.
-**Not owned here:** requirement statements and acceptance criteria (`02-requirements/security/`, `AC-SRnnn-nn`); code-level enforcement placement (`06-backend/`); endpoint contracts (`07-api/`); CI pipeline mechanics (`14-devops-infrastructure/`); test cases (`13-testing/`); risk linkage (`17-risk-management/risk-register.md`, `RISK-nnn`).
+**Not owned here:** requirement statements and acceptance criteria (`02-requirements/`, `AC-SRnnn-nn`); code-level enforcement placement (`06-backend/`); endpoint contracts (`07-api/`); CI pipeline mechanics (`14-devops-infrastructure/`); test cases (`13-testing/`); risk linkage (`17-risk-management/risk-register.md`, `RISK-nnn`).
 **Cross-domain contracts:** integration security controls are specified jointly with `10-integrations/` (webhook HMAC, provider secrets, SMS abuse limits) — requirements stay in `02-requirements/`, contracts in `10-integrations/`, security policy here.
 
 ---

@@ -110,7 +110,7 @@ type AppError = {
 | 401 | `TOKEN_EXPIRED` | silent refresh (DOC-FE-004 §5); `AUTH_INVALID` → login prompt |
 | 403 | `FORBIDDEN` | redirect to role landing — never toast "access denied" on foreign resources (use 404 behavior) |
 | 404 | `NOT_FOUND` | not-found page/inline empty state |
-| 409 | `STATE_CONFLICT` | order screens: refetch + "status changed, refreshed" banner (`03-system-analysis/state-transitions.md`) |
+| 409 | `STATE_CONFLICT` | order screens: refetch + "status changed, refreshed" banner (`../../03-system-analysis/core/state-transitions.md`) |
 | 409 | `DUPLICATE_RESOURCE` (phone/SKU taken) | field-level error |
 | 422 | `INSUFFICIENT_FUNDS` | checkout: show shortfall, link to top-up (FR-013) |
 | 422 | `STOCK_UNAVAILABLE` | cart: flag item, block until removed (`BR-CRT-05`) |

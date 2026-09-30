@@ -14,7 +14,7 @@ related_documents: [DOC-NFD-001, DOC-NFR-011, DOC-AC-001, DOC-UX-004, DOC-UX-006
 
 # Accessibility — Measurable Targets & Verification
 
-Measurable elaboration of **NFR-011** (WCAG 2.1 AA) for the yumn platform: per-surface conformance targets, numeric criteria, assistive-technology coverage, tooling thresholds, defect policy and evidence hooks. The requirement statement of record stays in `02-requirements/non-functional/NFR-011.md`; design patterns stay in `11-ui-ux/accessibility.md`. Nothing here is implemented yet — status of every activity below is **DESIGNED** (root README §6).
+Measurable elaboration of **NFR-011** (WCAG 2.1 AA) for the yumn platform: per-surface conformance targets, numeric criteria, assistive-technology coverage, tooling thresholds, defect policy and evidence hooks. The requirement statement of record stays in `../02-requirements/core/NFR-011.md`; design patterns stay in `11-ui-ux/accessibility.md`. Nothing here is implemented yet — status of every activity below is **DESIGNED** (root README §6).
 
 ## 1. Purpose & Relationship to NFR-011 / 11-ui-ux
 
@@ -22,7 +22,7 @@ This file answers the question the requirement statement and the UX patterns fil
 
 | Concern | Authoritative location | This file's role |
 |---|---|---|
-| What must hold (WCAG 2.1 AA, ≥95% pass, 0 critical) | `02-requirements/non-functional/NFR-011.md` (`DOC-NFR-011`) | inherits numbers unchanged; adds splits & cadences |
+| What must hold (WCAG 2.1 AA, ≥95% pass, 0 critical) | `../02-requirements/core/NFR-011.md` (`DOC-NFR-011`) | inherits numbers unchanged; adds splits & cadences |
 | PASS/FAIL outcomes | `02-requirements/acceptance-criteria.md` (`DOC-AC-001`) — `AC-NFR-011-01/02`, `AC-S-10` | lists which detail feeds which AC (§8) |
 | What users see (patterns, contrast table, checklist) | `11-ui-ux/accessibility.md` (`DOC-UX-006`) | measures the patterns; does not re-describe them |
 | How it is executed | `13-testing/test-plans.md` §e (`DOC-TST-003`) | feeds thresholds & defect mapping to the plan |
@@ -105,7 +105,7 @@ Severity mapping reuses the project scale (`DOC-TST-002` §10) and the axe→def
 
 ## 7. Arabic / RTL Accessibility Specifics
 
-Design rules live in `11-ui-ux/localization.md` (`DOC-UX-007`) and `05-frontend/rtl-and-styling.md` (`DOC-FE-007`); this file only fixes what gets *tested*:
+Design rules live in `11-ui-ux/localization.md` (`DOC-UX-007`) and `../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`); this file only fixes what gets *tested*:
 
 | Aspect | Measurable check |
 |---|---|

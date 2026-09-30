@@ -25,7 +25,7 @@ PostgreSQL 16 (C-19) is the final arbiter of data integrity: every relationship,
 - R1: Every relationship carries a foreign key with an explicit `ON DELETE` behavior; no orphan child rows can exist — inserting one directly via SQL must fail.
 - R2: Uniqueness is DB-enforced for: phone number (BR-AUTH-01), SKU within a store (BR-CAT-02), category slug per level (BR-CAT-03), coupon code (BR-PRM-01), idempotency keys (BR-PLT-03), and master/sub-order references (C-10).
 - R3: CHECK constraints enforce domain rules: price > 0 and sale price < original (BR-CAT-04), stock integer ≥ 0 (BR-CAT-07), rating 1–5 (BR-REV-03), order total 500–5,000,000 YER (C-14), top-up 1,000–5,000,000 YER (BR-PAY-02), amount integer YER (BR-PAY-10), cart guards 50/10/5 (C-15).
-- R4: The order state column is constrained to exactly the 17 enumerated states (C-09, `03-system-analysis/state-transitions.md`); no 18th value can be written.
+- R4: The order state column is constrained to exactly the 17 enumerated states (C-09, `../../03-system-analysis/core/state-transitions.md`); no 18th value can be written.
 - R5: `NOT NULL` on all money, ownership (`user_id`/`store_id`), state, and audit-timestamp columns; constraints are declared in migrations reviewed alongside schema changes (DATA-REQ-005).
 
 ## Acceptance criteria

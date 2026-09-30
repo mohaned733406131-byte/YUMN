@@ -14,7 +14,7 @@ related_documents: [DOC-REQ-001, DOC-BA-005, DOC-OVR-008, DOC-SA-010, DOC-FE-005
 
 # API Contract Domain — Overview & File Map
 
-**This directory (`07-api/`) is the single source of truth for the yumn HTTP API contract.** It defines the REST conventions, canonical error model, pagination semantics, and a full specification of every endpoint group. Backend modules (`06-backend/`), the frontend API SDK (`05-frontend/`), and test suites (`13-testing/`) consume this contract; use-case touchpoints in `01-business-analysis/use-cases/` are conceptual — where they differ in wording, this contract governs (per `UC-000`).
+**This directory (`07-api/`) is the single source of truth for the yumn HTTP API contract.** It defines the REST conventions, canonical error model, pagination semantics, and a full specification of every endpoint group. Backend modules (`06-backend/`), the frontend API SDK (`05-frontend/`), and test suites (`13-testing/`) consume this contract; use-case touchpoints in `01-business-analysis/` are conceptual — where they differ in wording, this contract governs (per `UC-000`).
 
 ---
 
@@ -104,7 +104,7 @@ Every FR is reachable through at least one endpoint group; every endpoint belong
 2. Read `error-model.md` — every endpoint's "Errors" column lists error **codes**; the envelope and HTTP status mapping are defined only in `error-model.md`.
 3. Read `pagination.md` before implementing any list endpoint — the pagination mode (cursor/offset) is fixed per endpoint family.
 4. Open the group file under `endpoints/` for the endpoint table: method, path, roles, request/response essentials, errors, and related FR/BR/SEC IDs.
-5. Cross-check state-sensitive behavior against `03-system-analysis/state-transitions.md` (17 states, `409 STATE_CONFLICT`) and `01-business-analysis/business-rules.md` (104 rules).
+5. Cross-check state-sensitive behavior against `../03-system-analysis/core/state-transitions.md` (17 states, `409 STATE_CONFLICT`) and `01-business-analysis/business-rules.md` (104 rules).
 
 ---
 

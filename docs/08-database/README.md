@@ -120,7 +120,7 @@ related_documents: [DOC-OVR-002, DOC-OVR-008, DOC-REQ-001, DOC-BA-005, DOC-SA-01
 3. Open the entity file for the table you are changing; check its **Invariants** section first.
 4. Before writing a migration, read [constraints-and-integrity.md](constraints-and-integrity.md) and [migrations-and-evolution.md](migrations-and-evolution.md).
 
-Cross-domain references: requirements `02-requirements/` (esp. DATA-REQ-001…008), rules `01-business-analysis/business-rules.md`, states `03-system-analysis/state-transitions.md`, constraints `00-project-overview/project-constraints.md`.
+Cross-domain references: requirements `02-requirements/` (esp. DATA-REQ-001…008), rules `01-business-analysis/business-rules.md`, states `../03-system-analysis/core/state-transitions.md`, constraints `00-project-overview/project-constraints.md`.
 
 ## Change History
 

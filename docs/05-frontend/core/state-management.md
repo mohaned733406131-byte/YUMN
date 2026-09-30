@@ -118,7 +118,7 @@ Cart state is **never** ISR/SSR-cached and is cleared on logout (guest carts sur
 | Review draft, notification prefs, profile fields | **Allowed** | cosmetic, revalidated server-side |
 | **Wallet balance / top-up** | **Forbidden** | money display must never be locally invented (`BR-PAY-05`, `BR-PAY-06`) |
 | **Order placement / cancellation** | **Forbidden** | idempotent server transaction is the only truth (`BR-ORD-06`, `BR-PLT-04`) |
-| **Order state changes** | **Forbidden** | 17-state machine guarded server-side; invalid transition = `409 STATE_CONFLICT` (`03-system-analysis/state-transitions.md`) |
+| **Order state changes** | **Forbidden** | 17-state machine guarded server-side; invalid transition = `409 STATE_CONFLICT` (`../../03-system-analysis/core/state-transitions.md`) |
 | **Refund / return status** | **Forbidden** | financial + SLA-driven (BR-RET-04, BR-RET-05) |
 | **Stock availability** | **Forbidden** | atomic reservation server-side (`BR-CAT-07`) |
 

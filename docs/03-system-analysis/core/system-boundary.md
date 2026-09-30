@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-002, DOC-OVR-005, DOC-OVR-008, DOC-OVR-010, DOC-SA-0
 
 # System Boundary
 
-**What yumn owns, what it merely talks to, and where the trust boundaries sit.** The boundary is drawn from the approved scope (`DOC-OVR-005`), the constraint register (`DOC-OVR-008`) and the integration requirements (`02-requirements/integration/`). `C-18` requires a 100% custom build: everything inside the boundary is purpose-built — no commerce platform is adopted to sit in the middle of it.
+**What yumn owns, what it merely talks to, and where the trust boundaries sit.** The boundary is drawn from the approved scope (`DOC-OVR-005`), the constraint register (`DOC-OVR-008`) and the integration requirements (`02-requirements/`). `C-18` requires a 100% custom build: everything inside the boundary is purpose-built — no commerce platform is adopted to sit in the middle of it.
 
 ## 1. Inside the System
 
@@ -37,7 +37,7 @@ Everything below is built, owned and operated by the yumn team. Each element map
 | Audit log, RBAC, settings, support tickets | B01, B13 | Security and governance (`SEC-REQ-004`, `SEC-REQ-010`) |
 | Background job scheduling and retries | all | `C-20` — BullMQ is the only queue system |
 
-> Internal persistence, caching, queues, search and object storage (PostgreSQL, Redis, Elasticsearch, MinIO) are **infrastructure inside the boundary** — they are operated by yumn, not consumed as vendor SaaS. Their placement is a technical matter for `04-architecture/container-view.md`.
+> Internal persistence, caching, queues, search and object storage (PostgreSQL, Redis, Elasticsearch, MinIO) are **infrastructure inside the boundary** — they are operated by yumn, not consumed as vendor SaaS. Their placement is a technical matter for `../../04-architecture/core/container-view.md`.
 
 ## 2. Outside the System
 

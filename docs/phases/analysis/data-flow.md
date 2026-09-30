@@ -15,7 +15,7 @@ related_requirements: [DATA-REQ-007, NFR-008]
 # Data Flow Diagram (with DB transactions) — analysis phase
 
 ## Purpose
-CORE-03 item 6: the phase-level DFD including the DB transactions each flow performs. Canonical detail: [`03-system-analysis/data-flow.md`](../../03-system-analysis/data-flow.md) (analysis view) and [`04-architecture/data-flow.md`](../../04-architecture/data-flow.md) (consumer/queue view, 30-row register pointer).
+CORE-03 item 6: the phase-level DFD including the DB transactions each flow performs. Canonical detail: [`../../03-system-analysis/core/data-flow.md`](../../03-system-analysis/core/data-flow.md) (analysis view) and [`../../04-architecture/core/data-flow.md`](../../04-architecture/core/data-flow.md) (consumer/queue view, 30-row register pointer).
 
 ## Scope
 External entities → processes → data stores for all v1 journeys; transaction boundaries that must be atomic.

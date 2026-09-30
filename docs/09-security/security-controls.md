@@ -114,7 +114,7 @@ Tooling is GitHub Actions (project CI canon); exact tool selection and pipeline 
 
 ## 7. Change Control
 
-Adding/removing/altering a control: update this catalog, bump version, add a Change History row, and propagate to `13-testing/` (new test) and, if a requirement is affected, to `02-requirements/security/` — never silently (root README §9).
+Adding/removing/altering a control: update this catalog, bump version, add a Change History row, and propagate to `13-testing/` (new test) and, if a requirement is affected, to `02-requirements/` — never silently (root README §9).
 
 ## Change History
 

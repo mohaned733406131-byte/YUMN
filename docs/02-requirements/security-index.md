@@ -16,24 +16,24 @@ related_documents: [DOC-REQ-001, DOC-REQ-002, DOC-BA-005, DOC-OVR-008]
 
 ## Purpose
 
-Expands the 12 security requirement IDs registered in [`requirements-overview.md` §3](../requirements-overview.md) into testable statements with acceptance criteria and verification methods. The registry is canonical: IDs and titles in this directory never diverge from it, and no security requirement exists that is not registered there.
+Expands the 12 security requirement IDs registered in [`requirements-overview.md` §3](requirements-overview.md) into testable statements with acceptance criteria and verification methods. The registry is canonical: IDs and titles in this directory never diverge from it, and no security requirement exists that is not registered there.
 
 ## Index
 
 | ID | File | Title | STRIDE focus | Failure impact |
 |---|---|---|---|---|
-| SEC-REQ-001 | [SEC-REQ-001.md](SEC-REQ-001.md) | Strong phone-based verification | Spoofing | CRITICAL |
-| SEC-REQ-002 | [SEC-REQ-002.md](SEC-REQ-002.md) | Credential storage | Information disclosure | CRITICAL |
-| SEC-REQ-003 | [SEC-REQ-003.md](SEC-REQ-003.md) | Token security | Spoofing, Elevation of privilege | CRITICAL |
-| SEC-REQ-004 | [SEC-REQ-004.md](SEC-REQ-004.md) | Server-side authorization | Elevation of privilege | CRITICAL |
-| SEC-REQ-005 | [SEC-REQ-005.md](SEC-REQ-005.md) | Brute-force protection | Spoofing, Denial of service | HIGH |
-| SEC-REQ-006 | [SEC-REQ-006.md](SEC-REQ-006.md) | Transport & data encryption | Information disclosure, Tampering | CRITICAL |
-| SEC-REQ-007 | [SEC-REQ-007.md](SEC-REQ-007.md) | Secrets management | Information disclosure | CRITICAL |
-| SEC-REQ-008 | [SEC-REQ-008.md](SEC-REQ-008.md) | Injection/XSS/CSRF defense | Tampering, Elevation of privilege | CRITICAL |
-| SEC-REQ-009 | [SEC-REQ-009.md](SEC-REQ-009.md) | Rate limiting & abuse control | Denial of service | HIGH |
-| SEC-REQ-010 | [SEC-REQ-010.md](SEC-REQ-010.md) | Audit trail integrity | Repudiation, Tampering | HIGH |
-| SEC-REQ-011 | [SEC-REQ-011.md](SEC-REQ-011.md) | File upload security | Tampering, Information disclosure | HIGH |
-| SEC-REQ-012 | [SEC-REQ-012.md](SEC-REQ-012.md) | Vulnerability management | Elevation of privilege, Tampering | HIGH |
+| SEC-REQ-001 | [SEC-REQ-001.md](core/SEC-REQ-001.md) | Strong phone-based verification | Spoofing | CRITICAL |
+| SEC-REQ-002 | [SEC-REQ-002.md](core/SEC-REQ-002.md) | Credential storage | Information disclosure | CRITICAL |
+| SEC-REQ-003 | [SEC-REQ-003.md](core/SEC-REQ-003.md) | Token security | Spoofing, Elevation of privilege | CRITICAL |
+| SEC-REQ-004 | [SEC-REQ-004.md](core/SEC-REQ-004.md) | Server-side authorization | Elevation of privilege | CRITICAL |
+| SEC-REQ-005 | [SEC-REQ-005.md](core/SEC-REQ-005.md) | Brute-force protection | Spoofing, Denial of service | HIGH |
+| SEC-REQ-006 | [SEC-REQ-006.md](core/SEC-REQ-006.md) | Transport & data encryption | Information disclosure, Tampering | CRITICAL |
+| SEC-REQ-007 | [SEC-REQ-007.md](core/SEC-REQ-007.md) | Secrets management | Information disclosure | CRITICAL |
+| SEC-REQ-008 | [SEC-REQ-008.md](core/SEC-REQ-008.md) | Injection/XSS/CSRF defense | Tampering, Elevation of privilege | CRITICAL |
+| SEC-REQ-009 | [SEC-REQ-009.md](core/SEC-REQ-009.md) | Rate limiting & abuse control | Denial of service | HIGH |
+| SEC-REQ-010 | [SEC-REQ-010.md](core/SEC-REQ-010.md) | Audit trail integrity | Repudiation, Tampering | HIGH |
+| SEC-REQ-011 | [SEC-REQ-011.md](core/SEC-REQ-011.md) | File upload security | Tampering, Information disclosure | HIGH |
+| SEC-REQ-012 | [SEC-REQ-012.md](core/SEC-REQ-012.md) | Vulnerability management | Elevation of privilege, Tampering | HIGH |
 
 ## Relation to `09-security/`
 

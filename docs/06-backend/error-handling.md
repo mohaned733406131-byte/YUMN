@@ -14,7 +14,7 @@ related_documents: [DOC-BE-001, DOC-BE-002, DOC-BE-005, DOC-BA-005]
 
 # Error Handling
 
-One global error pipeline produces the contract defined in **`07-api/error-model.md`** (that document owns the canonical codes and envelope; this file describes backend implementation). Clients map codes to localized text (`05-frontend/forms-and-validation.md` §5). Errors never leak internals (`SEC-REQ-008`).
+One global error pipeline produces the contract defined in **`07-api/error-model.md`** (that document owns the canonical codes and envelope; this file describes backend implementation). Clients map codes to localized text (`../05-frontend/core/forms-and-validation.md` §5). Errors never leak internals (`SEC-REQ-008`).
 
 ---
 

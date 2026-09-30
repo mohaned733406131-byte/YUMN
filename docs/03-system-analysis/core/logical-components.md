@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-002, DOC-SA-004, DOC-SA-005, DOC-ARCH-004, DOC-ARCH-
 
 # Logical Components
 
-Technology-independent components derived from the 13 blocks (`B01…B13`). A **logical component** is a bundle of behavior with a named responsibility, a set of interfaces it provides, and a set of interfaces it requires — no framework, language, or process implied. The NestJS module realization of these components is in `04-architecture/component-view.md` (DOC-ARCH-004); allowed dependencies between the realized modules are in `04-architecture/module-boundaries.md` (DOC-ARCH-006).
+Technology-independent components derived from the 13 blocks (`B01…B13`). A **logical component** is a bundle of behavior with a named responsibility, a set of interfaces it provides, and a set of interfaces it requires — no framework, language, or process implied. The NestJS module realization of these components is in `../../04-architecture/core/component-view.md` (DOC-ARCH-004); allowed dependencies between the realized modules are in `../../04-architecture/core/module-boundaries.md` (DOC-ARCH-006).
 
 ## 1. Component Inventory
 

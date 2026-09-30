@@ -14,7 +14,7 @@ related_documents: [DOC-NFD-001, DOC-NFR-005, DOC-NFR-006, DOC-NFR-007, DOC-NFR-
 
 # Reliability Detail — Availability Math, Degradation Matrix & Integrity Standards
 
-Elaborates **NFR-005 (uptime), NFR-007 (fault tolerance), NFR-008 (data integrity)** and the operational half of **`C-26`**, with recovery mechanics (`NFR-006`) and supportability hooks (`NFR-020`). Requirement statements stay in `02-requirements/non-functional/`; acceptance is `AC-NFR-005-*`, `AC-NFR-006-*`, `AC-NFR-007-*`, `AC-NFR-008-*`.
+Elaborates **NFR-005 (uptime), NFR-007 (fault tolerance), NFR-008 (data integrity)** and the operational half of **`C-26`**, with recovery mechanics (`NFR-006`) and supportability hooks (`NFR-020`). Requirement statements stay in `02-requirements/`; acceptance is `AC-NFR-005-*`, `AC-NFR-006-*`, `AC-NFR-007-*`, `AC-NFR-008-*`.
 
 ## 1. Availability Math
 

@@ -16,7 +16,7 @@ related_documents: [DOC-NFR-000, DOC-REQ-001, DOC-AC-001, DOC-OVR-008, DOC-OVR-0
 
 ## 1. Purpose
 
-This domain **elaborates** the 20 non-functional requirements (`NFR-001…NFR-020`) with the things a requirement statement alone cannot carry: numeric thresholds beyond the headline, budgets, mechanisms, operating policies, tooling, and verification hooks. It never restates requirement text — the statement of record lives in `02-requirements/non-functional/` (`DOC-NFR-000` … `DOC-NFR-020`), IDs are assigned only in `02-requirements/requirements-overview.md` (`DOC-REQ-001` §2), and acceptance outcomes are registered in `02-requirements/acceptance-criteria.md` (`DOC-AC-001`).
+This domain **elaborates** the 20 non-functional requirements (`NFR-001…NFR-020`) with the things a requirement statement alone cannot carry: numeric thresholds beyond the headline, budgets, mechanisms, operating policies, tooling, and verification hooks. It never restates requirement text — the statement of record lives in `02-requirements/` (`DOC-NFR-000` … `DOC-NFR-020`), IDs are assigned only in `02-requirements/requirements-overview.md` (`DOC-REQ-001` §2), and acceptance outcomes are registered in `02-requirements/acceptance-criteria.md` (`DOC-AC-001`).
 
 ## 2. Method — Statement → Elaboration → Verification
 
@@ -101,7 +101,7 @@ One row per NFR — headline target only (the canonical statement remains `DOC-R
 
 ## 6. Reading Order
 
-`performance` → `scalability` → `reliability` → `observability` → `maintainability` → `compliance-and-legal` → `usability-and-support`. Upstream: `02-requirements/non-functional/` (statements), `00-project-overview/project-constraints.md` (`C-25`, `C-26`), `00-project-overview/success-criteria.md` (`AC-S-05…AC-S-10`, `AC-S-17…AC-S-20`). Downstream: `13-testing/` (execution), `14-devops-infrastructure/` + `15-deployment/` (wiring), `19-traceability/` (NFR → AC → TC).
+`performance` → `scalability` → `reliability` → `observability` → `maintainability` → `compliance-and-legal` → `usability-and-support`. Upstream: `02-requirements/` (statements), `00-project-overview/project-constraints.md` (`C-25`, `C-26`), `00-project-overview/success-criteria.md` (`AC-S-05…AC-S-10`, `AC-S-17…AC-S-20`). Downstream: `13-testing/` (execution), `14-devops-infrastructure/` + `15-deployment/` (wiring), `19-traceability/` (NFR → AC → TC).
 
 ## Change History
 

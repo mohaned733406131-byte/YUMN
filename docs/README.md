@@ -251,20 +251,20 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 8. Business Rules | `01-business-analysis/business-rules.md` |
 | 9. Use Cases | `01-business-analysis/<portal>/` (gateway index `*-index.md` at folder root) |
 | 10. End-to-End Workflows | `01-business-analysis/<portal>/` (gateway index `*-index.md` at folder root) |
-| 11. Functional Analysis | `03-system-analysis/functional-analysis.md` |
+| 11. Functional Analysis | `03-system-analysis/core/functional-analysis.md` |
 | 12. Non-Functional Requirements | `02-requirements/core/` + `12-non-functional/` |
-| 13. System Architecture | `04-architecture/architecture-overview.md` |
+| 13. System Architecture | `04-architecture/core/architecture-overview.md` |
 | 14. Frontend Architecture | `05-frontend/` |
 | 15. Backend Architecture | `06-backend/` |
 | 16. API Architecture | `07-api/` |
 | 17. Database Architecture | `08-database/` |
-| 18. Data Flow | `03-system-analysis/data-flow.md` + `04-architecture/data-flow.md` |
+| 18. Data Flow | `03-system-analysis/core/data-flow.md` + `04-architecture/core/data-flow.md` |
 | 19. Authentication | `09-security/authentication.md` + `06-backend/authentication.md` |
 | 20. Authorization | `09-security/rbac.md` + `06-backend/authorization.md` |
 | 21. Security | `09-security/` |
 | 22. Integrations | `10-integrations/` |
 | 23. Performance | `12-non-functional/performance.md` |
-| 24. Scalability | `12-non-functional/scalability.md` + `04-architecture/scalability.md` |
+| 24. Scalability | `12-non-functional/scalability.md` + `04-architecture/core/scalability.md` |
 | 25. Reliability | `12-non-functional/reliability.md` |
 | 26. Infrastructure | `14-devops-infrastructure/` |
 | 27. Deployment | `15-deployment/` |
@@ -272,7 +272,7 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 29. Testing | `13-testing/` |
 | 30. UX/UI | `11-ui-ux/` + `05-frontend/` |
 | 31. Accessibility | `11-ui-ux/accessibility.md` + `12-non-functional/accessibility.md` |
-| 32. Internationalization | `11-ui-ux/localization.md` + `05-frontend/internationalization.md` |
+| 32. Internationalization | `11-ui-ux/localization.md` + `05-frontend/core/internationalization.md` |
 | 33. Maintainability | `12-non-functional/maintainability.md` |
 | 34. Technology Decisions | `18-decisions/core/` |
 | 35. Legal/Compliance | `00-project-overview/project-context.md` §Compliance + `12-non-functional/` |

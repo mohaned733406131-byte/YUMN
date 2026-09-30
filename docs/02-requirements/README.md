@@ -28,11 +28,11 @@ All requirement IDs: `FR-*` (functional), `NFR-*` (non-functional), `SEC-REQ-*` 
 |---|---|
 | [requirements-overview.md](requirements-overview.md) | **Canonical registry of all 68 requirement IDs** — read this first |
 | [requirements-overview.md §1](requirements-overview.md) | Functional requirements index |
-| [functional/](functional/README.md) | `FR-001…FR-020` — one file per requirement |
-| [non-functional/](non-functional/README.md) | `NFR-001…NFR-020` — measurable quality requirements |
-| [security/](security/README.md) | `SEC-REQ-001…SEC-REQ-012` |
-| [data/](data/README.md) | `DATA-REQ-001…DATA-REQ-008` |
-| [integration/](integration/README.md) | `INT-REQ-001…INT-REQ-008` |
+| [functional/](functional-index.md) | `FR-001…FR-020` — one file per requirement |
+| [non-functional/](non-functional-index.md) | `NFR-001…NFR-020` — measurable quality requirements |
+| [security/](security-index.md) | `SEC-REQ-001…SEC-REQ-012` |
+| [data/](data-index.md) | `DATA-REQ-001…DATA-REQ-008` |
+| [integration/](integration-index.md) | `INT-REQ-001…INT-REQ-008` |
 | [acceptance-criteria.md](acceptance-criteria.md) | `AC-*` acceptance criteria grouped per FR |
 
 ## Dependencies

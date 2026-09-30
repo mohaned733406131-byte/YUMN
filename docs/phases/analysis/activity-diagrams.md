@@ -15,7 +15,7 @@ related_requirements: []
 # Activity Diagrams — analysis phase
 
 ## Purpose
-CORE-03 item 12 (separate file): activity (decision-heavy) flows as Mermaid. Canonical behavioral detail lives in [`state-transitions.md`](../../03-system-analysis/state-transitions.md) and the workflows `WF-001`…`WF-012`; this file carries the phase-level activity diagrams.
+CORE-03 item 12 (separate file): activity (decision-heavy) flows as Mermaid. Canonical behavioral detail lives in [`state-transitions.md`](../../03-system-analysis/core/state-transitions.md) and the workflows `WF-001`…`WF-012`; this file carries the phase-level activity diagrams.
 
 ## Scope
 Two decision-dense flows that drive most branch logic: delivery-code confirmation and escrow release.

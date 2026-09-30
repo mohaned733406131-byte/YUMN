@@ -15,7 +15,7 @@ related_requirements: []
 # Use Case Descriptions & Flows — analysis phase
 
 ## Purpose
-CORE-03 item 5: descriptions + **flow of actions** + **flow of events** for all phase functionality. Canonical flows live in [`01-business-analysis/workflows/`](../../01-business-analysis/workflows/README.md) (`WF-001`…`WF-012`) and [`03-system-analysis/sequence-flows.md`](../../03-system-analysis/sequence-flows.md) (`SQ-01`…`SQ-05`); this artifact indexes them and states the flow conventions.
+CORE-03 item 5: descriptions + **flow of actions** + **flow of events** for all phase functionality. Canonical flows live in [`01-business-analysis/`](../../01-business-analysis/workflow-index.md) (`WF-001`…`WF-012`) and [`../../03-system-analysis/core/sequence-flows.md`](../../03-system-analysis/core/sequence-flows.md) (`SQ-01`…`SQ-05`); this artifact indexes them and states the flow conventions.
 
 ## Scope
 Every end-to-end journey spanning ≥2 use cases across actors.
@@ -41,7 +41,7 @@ Every end-to-end journey spanning ≥2 use cases across actors.
 | `WF-012` | Coupon creation (admin/vendor) → redemption at checkout | coupon state |
 
 ## Flow of events (sequence level)
-`SQ-01` browse→cart→checkout→order→delivery→completion · `SQ-02` return · `SQ-03` vendor onboarding · `SQ-04` wallet top-up · `SQ-05` dispute — mermaid sequence diagrams per convention in [`sequence-flows.md`](../../03-system-analysis/sequence-flows.md); phase roll-up in [sequence-diagrams.md](sequence-diagrams.md).
+`SQ-01` browse→cart→checkout→order→delivery→completion · `SQ-02` return · `SQ-03` vendor onboarding · `SQ-04` wallet top-up · `SQ-05` dispute — mermaid sequence diagrams per convention in [`sequence-flows.md`](../../03-system-analysis/core/sequence-flows.md); phase roll-up in [sequence-diagrams.md](sequence-diagrams.md).
 
 ## Alternate flows
 Per workflow files: OTP failover SMS→WhatsApp (`WF-001`, `BR-NTF-03`), payment insufficient funds (`WF-003`, `BR-CRT-06`), 3rd failed delivery lock (`WF-005`, `BR-SHP-03`), dispute freezes escrow only for its own sub-orders (`WF-008`, `BR-ORD-05/07`).

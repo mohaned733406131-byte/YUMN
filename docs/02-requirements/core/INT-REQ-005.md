@@ -24,7 +24,7 @@ Coordinate courier assignment and delivery progression for the 17-state order ma
 ## Interface expectations
 
 - **Assign:** eligible couriers in the same zone are offered the job; first accept wins with optimistic locking preventing double assignment (BR-SHP-04); release returns the job to the pool (`ASSIGNED → READY_FOR_PICKUP`).
-- **Progress:** pickup, transit, and out-for-delivery events advance the state machine per `03-system-analysis/state-transitions.md`; delivery completes only via 6-digit code verification (BR-SHP-02, BR-ORD-08).
+- **Progress:** pickup, transit, and out-for-delivery events advance the state machine per `../../03-system-analysis/core/state-transitions.md`; delivery completes only via 6-digit code verification (BR-SHP-02, BR-ORD-08).
 - **Timeouts/retries:** state events are idempotent; a crashed worker job retries 3× with backoff then DLQ with alert (BR-PLT-02); transitions use optimistic `version` locking → `409 STATE_CONFLICT` on races.
 - **Abstraction:** all engine operations are exposed through a `DeliveryProviderPort` so a future external fleet API can be substituted without domain changes (INT-REQ-008).
 

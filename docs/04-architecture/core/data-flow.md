@@ -14,7 +14,7 @@ related_documents: [DOC-SA-005, DOC-ARCH-003, DOC-ARCH-004, DOC-ARCH-005, DOC-BA
 
 # Technical Data Flow
 
-The realization of the logical flows `DF-01…DF-45` defined in [`03-system-analysis/data-flow.md`](../03-system-analysis/data-flow.md) (DOC-SA-005): which container, which path (sync request / async job / cache / event), and which storage holds the data. DOC-SA-005 owns *what moves*; this document owns *how it moves*.
+The realization of the logical flows `DF-01…DF-45` defined in [`../../03-system-analysis/core/data-flow.md`](../../03-system-analysis/core/data-flow.md) (DOC-SA-005): which container, which path (sync request / async job / cache / event), and which storage holds the data. DOC-SA-005 owns *what moves*; this document owns *how it moves*.
 
 ## 1. Synchronous Request Path (the common case)
 
@@ -47,7 +47,7 @@ Response JSON (error model per 07-api/) — target p95 < 200 ms read / < 500 ms 
 
 ## 2. Asynchronous Paths (BullMQ)
 
-Queue naming is fixed by rule: `{block}.{entity}.{action}` (`BR-PLT-01`, `C-20`). **The single queue register is [`06-backend/background-processing.md`](../06-backend/background-processing.md) §1 — every name below appears there verbatim.** Workers (CNT-05) consume them with 3× exponential retries then DLQ + alert (`BR-PLT-02`).
+Queue naming is fixed by rule: `{block}.{entity}.{action}` (`BR-PLT-01`, `C-20`). **The single queue register is [`06-backend/background-processing.md`](../../06-backend/background-processing.md) §1 — every name below appears there verbatim.** Workers (CNT-05) consume them with 3× exponential retries then DLQ + alert (`BR-PLT-02`).
 
 | Queue | Producer | Consumer work | Triggers | Key rules |
 |---|---|---|---|---|

@@ -36,7 +36,7 @@ A fifth document, `data-quality.md`, defines how the platform proves its data is
 | **16-data (this)** | Lifecycle stages per category; ownership/access matrix; classification levels and the element inventory; retention schedule and purge policy; deletion/anonymization procedures; data-quality rules and reconciliation register | Table/column definitions, indexes, migrations; control implementations; requirement wording | If the question is "what policy governs this data through time?", it belongs here |
 | **08-database** | Physical schema: entities (`DB-nnn`), relationships, constraints, indexes, migrations, partitioning mechanics (`DATA-REQ-001`, `DATA-REQ-005`) | Whether a field should exist, its classification, its retention period | 16-data decides *that* a phone number is CONFIDENTIAL and kept 24 months after closure; 08-database decides *how* it is stored and constrained |
 | **09-security** | Controls: RBAC, authentication, encryption implementation, secrets, threat model, security findings (`SEC-NNN`) | The classification taxonomy itself and the retention/deletion schedule | Classification (16-data) *drives* control selection (09-security): CONFIDENTIAL ⇒ AES-256 at rest (`SEC-REQ-006`) |
-| **02-requirements/data** | The requirement statements `DATA-REQ-001…008` with acceptance criteria (`AC-DRnnn-nn`) | Operational detail: actual periods, actual access rows, actual purge mechanics | Requirements say *what*; 16-data says *how, for which data, by whom* and is referenced by the requirements themselves |
+| **02-requirements** | The requirement statements `DATA-REQ-001…008` with acceptance criteria (`AC-DRnnn-nn`) | Operational detail: actual periods, actual access rows, actual purge mechanics | Requirements say *what*; 16-data says *how, for which data, by whom* and is referenced by the requirements themselves |
 | **03-system-analysis / 04-architecture** | Data flows and movement views | Ownership, classification, retention of the flowing data | Flow diagrams consume the categories defined here |
 | **12-non-functional / 14-devops** | Measurable performance, observability, backup tooling | Which classes are backed up, for how long, and when purge evidence is required | Ops executes the schedule defined in `retention-and-archival.md` |
 
@@ -112,7 +112,7 @@ A fifth document, `data-quality.md`, defines how the platform proves its data is
 
 **Reading order:** this README → `data-classification.md` (the inventory everything references) → `data-ownership.md` → `data-lifecycle.md` → `retention-and-archival.md` → `data-deletion-and-privacy.md` → `data-quality.md`.
 
-**Verification:** this domain is verified through the acceptance criteria of `DATA-REQ-002…008` (`AC-DRnnn-nn` in `02-requirements/data/`), the cross-tenant suite of `DATA-REQ-008`, purge/evidence tests of `DATA-REQ-003`, and reconciliation tests of `DATA-REQ-006`; test design lands in `13-testing/`, traceability in `19-traceability/`. Policy changes here trigger the change-management rules of root README §9 and an entry in `20-validation/consistency-audit.md`.
+**Verification:** this domain is verified through the acceptance criteria of `DATA-REQ-002…008` (`AC-DRnnn-nn` in `02-requirements/`), the cross-tenant suite of `DATA-REQ-008`, purge/evidence tests of `DATA-REQ-003`, and reconciliation tests of `DATA-REQ-006`; test design lands in `13-testing/`, traceability in `19-traceability/`. Policy changes here trigger the change-management rules of root README §9 and an entry in `20-validation/consistency-audit.md`.
 
 ## Change History
 

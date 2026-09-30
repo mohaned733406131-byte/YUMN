@@ -25,14 +25,14 @@ It is the entry point for architects and developers (root README §3) and the so
 | File / Directory | document_id | Purpose |
 |---|---|---|
 | [README.md](README.md) | DOC-ARCH-001 | This index — directory purpose, dependencies, conventions, quality rules |
-| [architecture-overview.md](architecture-overview.md) | DOC-ARCH-002 | **Source of truth for technical architecture:** C4 level-1 context + containers, principles (`C-18`, `C-21`), quality attributes (`C-25`, `C-26`), major technology choices |
-| [container-view.md](container-view.md) | DOC-ARCH-003 | The deployable containers — Next.js 14 web, RN 0.73 apps, NestJS API monolith, PostgreSQL 16, Redis 7, BullMQ workers, Elasticsearch 8, MinIO — and how they communicate |
-| [component-view.md](component-view.md) | DOC-ARCH-004 | Internal components/modules of the NestJS monolith per `B01…B13`: responsibilities, provided interfaces, dependencies |
-| [deployment-view.md](deployment-view.md) | DOC-ARCH-005 | Docker Compose deployment (`C-22`): services, ports, networks, volumes, dev/staging/prod parity, no-K8s rationale |
-| [module-boundaries.md](module-boundaries.md) | DOC-ARCH-006 | Modular-monolith boundaries: allowed dependencies, enforcement via lint/import rules, shared kernel, cross-cutting concerns |
-| [data-flow.md](data-flow.md) | DOC-ARCH-007 | TECHNICAL data flow: request path, BullMQ async paths, caching layers, event flow, storage — counterpart to `03-system-analysis/data-flow.md` |
-| [scalability.md](scalability.md) | DOC-ARCH-008 | How the architecture meets `C-25` (10,000 concurrent) and `NFR-003`/`NFR-018`: read scaling, caching, pooling, statelessness, ES offload, scale-out path without K8s |
-| [technology-stack.md](technology-stack.md) | DOC-ARCH-009 | Full stack register: layer, technology, version, rationale, constraint reference, alternatives considered |
+| [architecture-overview.md](core/architecture-overview.md) | DOC-ARCH-002 | **Source of truth for technical architecture:** C4 level-1 context + containers, principles (`C-18`, `C-21`), quality attributes (`C-25`, `C-26`), major technology choices |
+| [container-view.md](core/container-view.md) | DOC-ARCH-003 | The deployable containers — Next.js 14 web, RN 0.73 apps, NestJS API monolith, PostgreSQL 16, Redis 7, BullMQ workers, Elasticsearch 8, MinIO — and how they communicate |
+| [component-view.md](core/component-view.md) | DOC-ARCH-004 | Internal components/modules of the NestJS monolith per `B01…B13`: responsibilities, provided interfaces, dependencies |
+| [deployment-view.md](core/deployment-view.md) | DOC-ARCH-005 | Docker Compose deployment (`C-22`): services, ports, networks, volumes, dev/staging/prod parity, no-K8s rationale |
+| [module-boundaries.md](core/module-boundaries.md) | DOC-ARCH-006 | Modular-monolith boundaries: allowed dependencies, enforcement via lint/import rules, shared kernel, cross-cutting concerns |
+| [data-flow.md](core/data-flow.md) | DOC-ARCH-007 | TECHNICAL data flow: request path, BullMQ async paths, caching layers, event flow, storage — counterpart to `../03-system-analysis/core/data-flow.md` |
+| [scalability.md](core/scalability.md) | DOC-ARCH-008 | How the architecture meets `C-25` (10,000 concurrent) and `NFR-003`/`NFR-018`: read scaling, caching, pooling, statelessness, ES offload, scale-out path without K8s |
+| [technology-stack.md](core/technology-stack.md) | DOC-ARCH-009 | Full stack register: layer, technology, version, rationale, constraint reference, alternatives considered |
 | [architecture-decisions-reference.md](architecture-decisions-reference.md) | DOC-ARCH-010 | Index of architectural decisions (`ADR-001…ADR-010`) with rationale summaries, each pointing to its ADR in `18-decisions/ADR/` |
 
 ## Source of Truth For

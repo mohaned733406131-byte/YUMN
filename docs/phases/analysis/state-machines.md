@@ -15,7 +15,7 @@ related_requirements: [FR-012, NFR-008]
 # State Machines — analysis phase
 
 ## Purpose
-CORE-03 item 10: zero-to-end states, transitions, data. Canonical, authoritative tables live in [`03-system-analysis/state-transitions.md`](../../03-system-analysis/state-transitions.md) — **17 order states** (`C-09`, `ORD-01`); this artifact rolls them up and records the machine inventory.
+CORE-03 item 10: zero-to-end states, transitions, data. Canonical, authoritative tables live in [`../../03-system-analysis/core/state-transitions.md`](../../03-system-analysis/core/state-transitions.md) — **17 order states** (`C-09`, `ORD-01`); this artifact rolls them up and records the machine inventory.
 
 ## Scope
 All persisted state machines in the design: order lifecycle (17 states), escrow, payment, return, dispute, KYC, wallet transaction types, coupon, shipment attempts, notification delivery.

@@ -16,20 +16,20 @@ related_documents: [DOC-REQ-001, DOC-REQ-002, DOC-OVR-010]
 
 ## Purpose
 
-Expands the 8 integration requirement IDs registered in [`requirements-overview.md` §5](../requirements-overview.md) into interface expectations, data contracts, failure behavior, security controls, and dependency risk ratings. The registry is canonical: IDs and titles here never diverge from it, and no integration requirement exists that is not registered.
+Expands the 8 integration requirement IDs registered in [`requirements-overview.md` §5](requirements-overview.md) into interface expectations, data contracts, failure behavior, security controls, and dependency risk ratings. The registry is canonical: IDs and titles here never diverge from it, and no integration requirement exists that is not registered.
 
 ## Index
 
 | ID | File | Title | Primary dependency | Dependency risk |
 |---|---|---|---|---|
-| INT-REQ-001 | [INT-REQ-001.md](INT-REQ-001.md) | Wallet top-up providers | DEP-05 (m-Floos, OneCash) | HIGH |
-| INT-REQ-002 | [INT-REQ-002.md](INT-REQ-002.md) | Bank transfer top-up | internal admin flow | MEDIUM |
-| INT-REQ-003 | [INT-REQ-003.md](INT-REQ-003.md) | SMS provider failover | DEP-06 (Telesom/Sabafon) | CRITICAL |
-| INT-REQ-004 | [INT-REQ-004.md](INT-REQ-004.md) | WhatsApp Business notifications | DEP-06 (WhatsApp Business API) | HIGH |
-| INT-REQ-005 | [INT-REQ-005.md](INT-REQ-005.md) | Delivery orchestration | internal engine (v1) | LOW |
-| INT-REQ-006 | [INT-REQ-006.md](INT-REQ-006.md) | Webhook robustness | DEP-05 / DEP-06 callbacks | HIGH |
-| INT-REQ-007 | [INT-REQ-007.md](INT-REQ-007.md) | Observability export | Prometheus / Grafana stack | MEDIUM |
-| INT-REQ-008 | [INT-REQ-008.md](INT-REQ-008.md) | Provider abstraction | design constraint on 001/003/004/005 | MEDIUM |
+| INT-REQ-001 | [INT-REQ-001.md](core/INT-REQ-001.md) | Wallet top-up providers | DEP-05 (m-Floos, OneCash) | HIGH |
+| INT-REQ-002 | [INT-REQ-002.md](core/INT-REQ-002.md) | Bank transfer top-up | internal admin flow | MEDIUM |
+| INT-REQ-003 | [INT-REQ-003.md](core/INT-REQ-003.md) | SMS provider failover | DEP-06 (Telesom/Sabafon) | CRITICAL |
+| INT-REQ-004 | [INT-REQ-004.md](core/INT-REQ-004.md) | WhatsApp Business notifications | DEP-06 (WhatsApp Business API) | HIGH |
+| INT-REQ-005 | [INT-REQ-005.md](core/INT-REQ-005.md) | Delivery orchestration | internal engine (v1) | LOW |
+| INT-REQ-006 | [INT-REQ-006.md](core/INT-REQ-006.md) | Webhook robustness | DEP-05 / DEP-06 callbacks | HIGH |
+| INT-REQ-007 | [INT-REQ-007.md](core/INT-REQ-007.md) | Observability export | Prometheus / Grafana stack | MEDIUM |
+| INT-REQ-008 | [INT-REQ-008.md](core/INT-REQ-008.md) | Provider abstraction | design constraint on 001/003/004/005 | MEDIUM |
 
 ## Relation to `10-integrations/`
 

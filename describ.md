@@ -83,7 +83,7 @@ operations and scenarios in this domain.
 > **Session-007 disposition of this note:** the missing standard use cases in this domain were
 > identified as the customer-initiated **wallet top-up** (only the admin half, `UC-034`, existed) and
 > the **wallet statement view** (required by `FR-013` with no use case to trace to). They are authored
-> as `UC-041` and `UC-042` in `docs/01-business-analysis/use-cases/`.
+> as `UC-041` and `UC-042` in `docs/01-business-analysis/`.
 
 ---
 

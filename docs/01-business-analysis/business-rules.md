@@ -73,7 +73,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 
 | ID | Rule |
 |---|---|
-| BR-ORD-01 | The lifecycle has exactly 17 states — enumeration and transitions defined in `03-system-analysis/state-transitions.md` (C-09). |
+| BR-ORD-01 | The lifecycle has exactly 17 states — enumeration and transitions defined in `../03-system-analysis/core/state-transitions.md` (C-09). |
 | BR-ORD-02 | One master order per checkout; one sub-order per vendor; master total = Σ sub-order totals; payment & escrow at master level (C-10). |
 | BR-ORD-03 | State changes are append-only in `order_status_history` with actor, timestamp, and reason; states are never overwritten. |
 | BR-ORD-04 | Customer may cancel only while PLACED or CONFIRMED; vendor/admin cancellation allowed until READY_FOR_PICKUP; cancellation always triggers wallet refund flow. |

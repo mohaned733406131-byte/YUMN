@@ -14,7 +14,7 @@ related_documents: [DOC-NFD-001, DOC-NFR-001, DOC-NFR-002, DOC-NFR-004, DOC-AC-0
 
 # Performance Detail — Latency Budgets, Tooling & Degradation Under Load
 
-Elaborates **NFR-001 (API response time), NFR-002 (client performance) and NFR-004 (caching)**. Requirement statements stay in `02-requirements/non-functional/`; this file adds the sub-budgets, per-surface splits, tooling and load-shedding policy that make those statements operable. Acceptance remains `AC-NFR-001-01/02`, `AC-NFR-002-01/02`, `AC-NFR-004-01/02` at the 10,000-user gate (`C-25`, `AC-S-05`).
+Elaborates **NFR-001 (API response time), NFR-002 (client performance) and NFR-004 (caching)**. Requirement statements stay in `02-requirements/`; this file adds the sub-budgets, per-surface splits, tooling and load-shedding policy that make those statements operable. Acceptance remains `AC-NFR-001-01/02`, `AC-NFR-002-01/02`, `AC-NFR-004-01/02` at the 10,000-user gate (`C-25`, `AC-S-05`).
 
 ## 1. Latency Budgets — API (server-side, measured at the gateway)
 

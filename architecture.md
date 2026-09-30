@@ -4,17 +4,17 @@
 
 | Question | Authoritative document |
 |---|---|
-| Architecture style & C4 views | [docs/04-architecture/architecture-overview.md](docs/04-architecture/architecture-overview.md) |
-| Containers / processes | [docs/04-architecture/container-view.md](docs/04-architecture/container-view.md) |
-| Components & module boundaries | [docs/04-architecture/component-view.md](docs/04-architecture/component-view.md) · [docs/04-architecture/module-boundaries.md](docs/04-architecture/module-boundaries.md) |
-| Deployment topology & environments | [docs/04-architecture/deployment-view.md](docs/04-architecture/deployment-view.md) · [docs/14-devops-infrastructure/environments.md](docs/14-devops-infrastructure/environments.md) |
-| Technology stack (versions) | [docs/04-architecture/technology-stack.md](docs/04-architecture/technology-stack.md) |
-| Data flow | [docs/04-architecture/data-flow.md](docs/04-architecture/data-flow.md) |
-| Scalability path | [docs/04-architecture/scalability.md](docs/04-architecture/scalability.md) |
+| Architecture style & C4 views | [docs/04-architecture/core/architecture-overview.md](docs/04-architecture/core/architecture-overview.md) |
+| Containers / processes | [docs/04-architecture/core/container-view.md](docs/04-architecture/core/container-view.md) |
+| Components & module boundaries | [docs/04-architecture/core/component-view.md](docs/04-architecture/core/component-view.md) · [docs/04-architecture/core/module-boundaries.md](docs/04-architecture/core/module-boundaries.md) |
+| Deployment topology & environments | [docs/04-architecture/core/deployment-view.md](docs/04-architecture/core/deployment-view.md) · [docs/14-devops-infrastructure/environments.md](docs/14-devops-infrastructure/environments.md) |
+| Technology stack (versions) | [docs/04-architecture/core/technology-stack.md](docs/04-architecture/core/technology-stack.md) |
+| Data flow | [docs/04-architecture/core/data-flow.md](docs/04-architecture/core/data-flow.md) |
+| Scalability path | [docs/04-architecture/core/scalability.md](docs/04-architecture/core/scalability.md) |
 | Decisions (ADRs 001–010) | [docs/18-decisions/README.md](docs/18-decisions/README.md) · [decision log](docs/18-decisions/decision-log.md) |
-| System behavior / state machines | [docs/03-system-analysis/state-transitions.md](docs/03-system-analysis/state-transitions.md) |
+| System behavior / state machines | [docs/03-system-analysis/core/state-transitions.md](docs/03-system-analysis/core/state-transitions.md) |
 | Backend internals | [docs/06-backend/backend-architecture.md](docs/06-backend/backend-architecture.md) |
-| Frontend internals | [docs/05-frontend/frontend-architecture.md](docs/05-frontend/frontend-architecture.md) |
+| Frontend internals | [docs/05-frontend/core/frontend-architecture.md](docs/05-frontend/core/frontend-architecture.md) |
 
 ## One-paragraph summary (implementation binding in `senior-rules/RULES_HINTS.md` §2)
 

@@ -90,7 +90,7 @@ The frontend domain defines how the yumn client applications are structured, rou
 |---|---|---|
 | Upstream | `02-requirements/requirements-overview.md` | FR/NFR/SEC IDs every client must satisfy |
 | Upstream | `00-project-overview/project-constraints.md` | `C-01`, `C-06`, `C-08`, `C-15`, `C-16`, `C-24` visible behavior |
-| Upstream | `03-system-analysis/state-transitions.md` | The 17 states the UIs may render (no others) |
+| Upstream | `../03-system-analysis/core/state-transitions.md` | The 17 states the UIs may render (no others) |
 | Upstream | `11-ui-ux/` (planned) | Flows, design system, feedback states |
 | Downstream | `07-api/` (planned) | Endpoint contracts, error model consumed by DOC-FE-005 |
 | Downstream | `06-backend/` | Authoritative enforcement of every rule the UI mirrors |

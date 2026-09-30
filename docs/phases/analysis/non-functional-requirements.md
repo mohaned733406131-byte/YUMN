@@ -15,7 +15,7 @@ related_requirements: [NFR-001, NFR-002, NFR-003, NFR-004, NFR-005, NFR-006, NFR
 # Non-Functional Requirements (metrics per function) — analysis phase
 
 ## Purpose
-CORE-03 item 7: measurable NFR budgets for every function class. Canonical requirement text: [`02-requirements/non-functional/`](../../02-requirements/non-functional/README.md) (`NFR-001`…`NFR-020`, 20 files); domain detail: [`12-non-functional/`](../../12-non-functional/README.md). This artifact rolls the budgets up and pins the **binding numbers** the adapter tightened ([`RULES_HINTS.md`](../../../senior-rules/RULES_HINTS.md) §6 — stricter than core defaults; may tighten, never loosen without written user approval).
+CORE-03 item 7: measurable NFR budgets for every function class. Canonical requirement text: [`02-requirements/`](../../02-requirements/non-functional-index.md) (`NFR-001`…`NFR-020`, 20 files); domain detail: [`12-non-functional/`](../../12-non-functional/README.md). This artifact rolls the budgets up and pins the **binding numbers** the adapter tightened ([`RULES_HINTS.md`](../../../senior-rules/RULES_HINTS.md) §6 — stricter than core defaults; may tighten, never loosen without written user approval).
 
 ## Scope
 All user-facing and internal function classes: browse/search, cart/checkout, wallet/ledger, order lifecycle, notifications, admin operations, background jobs.

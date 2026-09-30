@@ -16,38 +16,38 @@ related_documents: [DOC-REQ-001, DOC-REQ-002, DOC-BA-005, DOC-OVR-008]
 
 ## Purpose
 
-This directory holds the **detailed specification of the 20 functional requirements** of the yumn marketplace (`FR-001…FR-020`), one file per requirement. Each file expands — and must never contradict — its entry in the canonical registry [requirements-overview.md](../requirements-overview.md) (`DOC-REQ-001`).
+This directory holds the **detailed specification of the 20 functional requirements** of the yumn marketplace (`FR-001…FR-020`), one file per requirement. Each file expands — and must never contradict — its entry in the canonical registry [requirements-overview.md](requirements-overview.md) (`DOC-REQ-001`).
 
 ## Contents
 
 | File | ID | Title | Block | Priority |
 |---|---|---|---|---|
-| [FR-001.md](FR-001.md) | FR-001 | Identity, Authentication & Session Management | B01 | Critical |
-| [FR-002.md](FR-002.md) | FR-002 | Roles, Permissions & Access Control | B01 | Critical |
-| [FR-003.md](FR-003.md) | FR-003 | User & Profile Management | B01 | High |
-| [FR-004.md](FR-004.md) | FR-004 | Product Catalog Management | B02 | Critical |
-| [FR-005.md](FR-005.md) | FR-005 | Inventory Management | B02 | Critical |
-| [FR-006.md](FR-006.md) | FR-006 | Reviews & Ratings | B02 | High |
-| [FR-007.md](FR-007.md) | FR-007 | Vendor Onboarding & KYC | B03 | Critical |
-| [FR-008.md](FR-008.md) | FR-008 | Store Management & Storefront Configuration | B03 | High |
-| [FR-009.md](FR-009.md) | FR-009 | Search & Discovery | B04 | High |
-| [FR-010.md](FR-010.md) | FR-010 | Shopping Cart | B05 | Critical |
-| [FR-011.md](FR-011.md) | FR-011 | Checkout & Order Placement | B05 | Critical |
-| [FR-012.md](FR-012.md) | FR-012 | Order Lifecycle Management | B06 | Critical |
-| [FR-013.md](FR-013.md) | FR-013 | Wallet & Payment Processing | B07 | Critical |
-| [FR-014.md](FR-014.md) | FR-014 | Escrow, Commission & Vendor Payouts | B07 | Critical |
-| [FR-015.md](FR-015.md) | FR-015 | Shipping & Delivery | B08 | Critical |
-| [FR-016.md](FR-016.md) | FR-016 | Returns & Refunds | B09 | Critical |
-| [FR-017.md](FR-017.md) | FR-017 | Notifications & Messaging | B10 | High |
-| [FR-018.md](FR-018.md) | FR-018 | Analytics & Reporting | B11 | Medium |
-| [FR-019.md](FR-019.md) | FR-019 | Content & Promotions (CMS + Coupons) | B12 | High |
-| [FR-020.md](FR-020.md) | FR-020 | Platform Administration, Settings & Audit | B13 | Critical |
+| [FR-001.md](core/FR-001.md) | FR-001 | Identity, Authentication & Session Management | B01 | Critical |
+| [FR-002.md](core/FR-002.md) | FR-002 | Roles, Permissions & Access Control | B01 | Critical |
+| [FR-003.md](core/FR-003.md) | FR-003 | User & Profile Management | B01 | High |
+| [FR-004.md](core/FR-004.md) | FR-004 | Product Catalog Management | B02 | Critical |
+| [FR-005.md](core/FR-005.md) | FR-005 | Inventory Management | B02 | Critical |
+| [FR-006.md](core/FR-006.md) | FR-006 | Reviews & Ratings | B02 | High |
+| [FR-007.md](core/FR-007.md) | FR-007 | Vendor Onboarding & KYC | B03 | Critical |
+| [FR-008.md](core/FR-008.md) | FR-008 | Store Management & Storefront Configuration | B03 | High |
+| [FR-009.md](core/FR-009.md) | FR-009 | Search & Discovery | B04 | High |
+| [FR-010.md](core/FR-010.md) | FR-010 | Shopping Cart | B05 | Critical |
+| [FR-011.md](core/FR-011.md) | FR-011 | Checkout & Order Placement | B05 | Critical |
+| [FR-012.md](core/FR-012.md) | FR-012 | Order Lifecycle Management | B06 | Critical |
+| [FR-013.md](core/FR-013.md) | FR-013 | Wallet & Payment Processing | B07 | Critical |
+| [FR-014.md](core/FR-014.md) | FR-014 | Escrow, Commission & Vendor Payouts | B07 | Critical |
+| [FR-015.md](core/FR-015.md) | FR-015 | Shipping & Delivery | B08 | Critical |
+| [FR-016.md](core/FR-016.md) | FR-016 | Returns & Refunds | B09 | Critical |
+| [FR-017.md](core/FR-017.md) | FR-017 | Notifications & Messaging | B10 | High |
+| [FR-018.md](core/FR-018.md) | FR-018 | Analytics & Reporting | B11 | Medium |
+| [FR-019.md](core/FR-019.md) | FR-019 | Content & Promotions (CMS + Coupons) | B12 | High |
+| [FR-020.md](core/FR-020.md) | FR-020 | Platform Administration, Settings & Audit | B13 | Critical |
 
 ## Source of Truth Statement
 
 1. **`02-requirements/requirements-overview.md` (`DOC-REQ-001`) is the single registry of all requirement IDs.** It fixes every FR ID, title, block and priority. No file in this directory may add, rename, re-prioritize, merge or split an FR ID.
 2. Each `FR-nnn.md` file is the source of truth for the **detail** of its requirement: requirements detail, preconditions, expected result, acceptance criteria (`AC-FRnnn-nn`), applied business rules, honored constraints, dependencies and verification method.
-3. Business rules are defined only in `01-business-analysis/business-rules.md` (`DOC-BA-005`); constraints only in `00-project-overview/project-constraints.md` (`DOC-OVR-008`); order states only in `03-system-analysis/state-transitions.md` (`DOC-SA-010`). This directory **references those IDs — it never redefines them.**
+3. Business rules are defined only in `01-business-analysis/business-rules.md` (`DOC-BA-005`); constraints only in `00-project-overview/project-constraints.md` (`DOC-OVR-008`); order states only in `../03-system-analysis/core/state-transitions.md` (`DOC-SA-010`). This directory **references those IDs — it never redefines them.**
 4. If an FR file and the registry disagree, the registry wins and the discrepancy is logged in `20-validation/contradiction-audit.md` — never silently patched.
 
 ## Dependency on the Registry
@@ -71,7 +71,7 @@ This directory holds the **detailed specification of the 20 functional requireme
 
 ## Related Directories
 
-`../requirements-overview.md` (registry) · `../non-functional/` (NFR-001…020) · `../security/` (SEC-REQ-001…012) · `../data/` · `../integration/` · `../../01-business-analysis/` (rules) · `../../03-system-analysis/` (behavior) · `../../13-testing/` (verification)
+`requirements-overview.md` (registry) · `../non-functional/` (NFR-001…020) · `../security/` (SEC-REQ-001…012) · `../data/` · `../integration/` · `../../01-business-analysis/` (rules) · `../../03-system-analysis/` (behavior) · `../../13-testing/` (verification)
 
 ## Change History
 

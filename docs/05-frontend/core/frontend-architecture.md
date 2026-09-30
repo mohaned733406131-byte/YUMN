@@ -82,7 +82,7 @@ packages/api-sdk/orders.ts                 SDK: POST order with idempotency key 
 | Validation schemas | `packages/validation` | Zod schemas mirrored from server DTOs (DOC-FE-005) |
 | Strings, dates, numbers | `packages/i18n` | Single catalog import path; no strings in components (`BR-PLT-05`) |
 | Visual primitives, tokens | `packages/ui` + `packages/design-tokens` | Web uses Tailwind classes from tokens; RN maps tokens to StyleSheet (`DOC-FE-007`) |
-| Domain constants (order states, statuses) | `packages/api-sdk/types` | Enumerations generated from the API contract — must equal the 17 states (`C-09`, `03-system-analysis/state-transitions.md`) |
+| Domain constants (order states, statuses) | `packages/api-sdk/types` | Enumerations generated from the API contract — must equal the 17 states (`C-09`, `../../03-system-analysis/core/state-transitions.md`) |
 | Feature logic (cart math, formatting) | feature folder, promoted to `packages/` only when a second app needs it | Avoid premature sharing |
 
 **Anti-patterns (rejected in review):** copy-pasted components between apps; importing `web-customer/features/*` from `web-vendor`; hand-rolled fetch in screens; locale strings inside components.

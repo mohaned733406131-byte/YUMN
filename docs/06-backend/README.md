@@ -82,7 +82,7 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 |---|---|---|
 | Upstream | `02-requirements/requirements-overview.md` | FR/NFR/SEC/INT IDs implemented here |
 | Upstream | `01-business-analysis/business-rules.md` | all 104 BR rules — enforced, never redefined |
-| Upstream | `03-system-analysis/state-transitions.md` | authoritative transition table |
+| Upstream | `../03-system-analysis/core/state-transitions.md` | authoritative transition table |
 | Upstream | `00-project-overview/project-constraints.md` | `C-01…C-26` hard boundaries |
 | Peer | `07-api/` | endpoint contracts + error model this code exposes |
 | Peer | `08-database/` | schema, entities, indexes backing Prisma models |

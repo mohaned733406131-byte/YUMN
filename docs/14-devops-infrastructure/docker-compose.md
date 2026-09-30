@@ -14,7 +14,7 @@ related_documents: [DOC-ARCH-005, DOC-ARCH-003, DOC-ARCH-009, DOC-OPS-001, DOC-O
 
 # Container Strategy — Compose Service Inventory
 
-Realizes the topology contract of `04-architecture/deployment-view.md` (DOC-ARCH-005) as concrete Compose services. Governing constraints: `C-22` (Compose only), `C-19` (PostgreSQL only), `C-20` (BullMQ only), `NFR-016` (any Docker host, no lock-in).
+Realizes the topology contract of `../04-architecture/core/deployment-view.md` (DOC-ARCH-005) as concrete Compose services. Governing constraints: `C-22` (Compose only), `C-19` (PostgreSQL only), `C-20` (BullMQ only), `NFR-016` (any Docker host, no lock-in).
 
 ## 1. Service Inventory
 
@@ -136,7 +136,7 @@ Health endpoint semantics (liveness vs readiness, degraded policy, graceful shut
 | TLS | Native termination + cert reload; pairs cleanly with Cloudflare origin certs (`DEP-08`) | Excellent ACME automation — valuable only if we ran our own public CA flow |
 | Edge behaviour | Request-size limits, `proxy_buffering`, static asset serving, maintenance page, gzip/brotli | Comparable |
 | Team familiarity | High for the operating team (`INFERENCE`) | Lower |
-| Why not now | — | Traefik's advantages (auto-discovery, ACME) pay off with dynamic fleets; v1 has one fixed, tiny service set. Revisit only via ADR if the topology changes (`04-architecture/technology-stack.md` §4 records the alternative as viable) |
+| Why not now | — | Traefik's advantages (auto-discovery, ACME) pay off with dynamic fleets; v1 has one fixed, tiny service set. Revisit only via ADR if the topology changes (`../04-architecture/core/technology-stack.md` §4 records the alternative as viable) |
 
 ## 9. Upgrading Images Safely
 

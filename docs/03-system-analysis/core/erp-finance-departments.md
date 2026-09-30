@@ -17,7 +17,7 @@ related_documents: [DOC-OVR-008, DOC-SEC-004, DOC-VAL-004, DOC-VAL-002]
 This document is the **analysis-level design of the platform's finance/ERP department surface**: the six
 departments (accounts, sales, purchases, inventory, reports, periods), the scope each book gives its
 operators, the surfaces through which those departments are used, and the period-close mechanics that
-govern them. It records the departmental coverage of [`plan-develop.md`](../../plan-develop.md) §4.1,
+govern them. It records the departmental coverage of [`plan-develop.md`](../../../plan-develop.md) §4.1,
 §4.2 and §4.5 as approved through that plan's §8 decisions `D2`, `D3` and `D11` — the department model
 is therefore approved scope, not a brainstorm.
 
@@ -35,10 +35,10 @@ under Option A, a satellite under Option B — holds the general ledger those su
 - **Multi-tenant by construction.** Every department below is scoped twice: platform administrators
   see and operate the whole book, each merchant sees only their own slice of it.
 - **Ownership rule `DATA-REQ-008`** (with `BR-ORD-09`): foreign data ⇒ **404**, never a 403 that leaks
-  existence. The enforcement table lives in [`rbac.md`](../09-security/rbac.md) §6.
+  existence. The enforcement table lives in [`rbac.md`](../../09-security/rbac.md) §6.
 - **Integrity rule:** `LedgerService.post` remains the **only** money writer — `BR-PAY-06`, `NFR-008`,
   and forbidden pattern `F7` ("money writes outside B07") in
-  [`module-boundaries.md`](../04-architecture/module-boundaries.md).
+  [`module-boundaries.md`](../../04-architecture/core/module-boundaries.md).
 - **The ERP never writes `b07`.** It receives postings and returns nothing money-shaped, so
   reconciliation stays one-way: yumn's own `J1`/`J2` invariants plus a ledger↔ERP journal diff.
 - **Inventory is symmetric:** `b02` stays the operational source of truth; the ERP layer never writes
@@ -70,9 +70,9 @@ The six departments of `plan-develop.md` §4.2, each row scoped per book and pin
 
 - **No new actors.** Departments are permission bundles and queue scopes **inside `ADMIN`** — plan
   decision `D4`. The seven canonical actors and the cross-layer mapping invariant of
-  [`rbac.md`](../09-security/rbac.md) §8 are unchanged.
+  [`rbac.md`](../../09-security/rbac.md) §8 are unchanged.
 - **Org-departments `ORG-01`…`ORG-08` and staff bundles `ROLE-01`…`ROLE-09`** are specified in
-  [`rbac.md`](../09-security/rbac.md) §11 (minted 2026-09-28 via `plan-develop.md` §8 `D10`
+  [`rbac.md`](../../09-security/rbac.md) §11 (minted 2026-09-28 via `plan-develop.md` §8 `D10`
   propagation). This table is the *module* model; it composes with that *permission* model rather
   than duplicating it.
 - **`rbac.md` rows 15/16 stay absolute:** no department grants direct ledger/balance write (row 15) or
@@ -90,7 +90,7 @@ The six departments of `plan-develop.md` §4.2, each row scoped per book and pin
   when enabled — **Purchases** (PO/bill entry) and **Stock valuation**; statements and the
   balance/escrow/payout views already exist.
 - *Interfaces:* admin endpoints follow the `API-ADM` group conventions documented in
-  [`admin.md`](../07-api/endpoints/admin.md); merchant endpoints follow `API-ANL`/`API-WAL` scoping
+  [`admin.md`](../../07-api/endpoints/admin.md); merchant endpoints follow `API-ANL`/`API-WAL` scoping
   (own store only, foreign ⇒ 404).
 
 ## Periods & close mechanics
@@ -113,7 +113,7 @@ Connector mechanics — the transactional outbox written in the same DB transact
 the direction/payload map with per-flow idempotency keys, `SYSTEM`-class service accounts with scoped
 rotated tokens, the held/review/resolved exception queue and the sandbox verification discipline — live
 in `plan-develop.md` §4.4 and remain pending an integration-domain document under
-[`10-integrations/`](../10-integrations/README.md). From this document's viewpoint the connector is a
+[`10-integrations/`](../../10-integrations/README.md). From this document's viewpoint the connector is a
 **read-side consumer**: postings, documents and close status flow outward only, and no connector job may
 ever become a second money writer.
 
@@ -137,7 +137,7 @@ ever become a second money writer.
 | `D3` | ERP block placement | Start inside existing `B07`/`B13` boundaries; promote to a new block only when size forces it | 2026-09-28 (administrator) |
 | `D11` | ERP department depth for v1 | **core+** — accounts/sales/reports/periods plus platform purchases and inventory snapshots | 2026-09-28 (administrator) |
 
-Source for all three rows: [`plan-develop.md`](../../plan-develop.md) §8.
+Source for all three rows: [`plan-develop.md`](../../../plan-develop.md) §8.
 
 ## Change History
 

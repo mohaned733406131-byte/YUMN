@@ -25,16 +25,16 @@ It sits between `02-requirements/` (what the system *must* do — static stateme
 | File / Directory | document_id | Purpose |
 |---|---|---|
 | [README.md](README.md) | DOC-SA-001 | This index — directory purpose, boundary vs architecture distinction, conventions |
-| [system-boundary.md](system-boundary.md) | DOC-SA-002 | What is inside vs outside yumn (`C-18` custom build), boundary-crossing actors, external systems per `INT-REQ-*`, trust zones |
-| [system-context.md](system-context.md) | DOC-SA-003 | Context view: the 7 actors and external entities around yumn, with responsibilities, inputs and outputs |
-| [functional-analysis.md](functional-analysis.md) | DOC-SA-004 | Methodology §11 — per-block (`B01…B13`) analysis mapping every `FR-*` to behavior, validations, processing logic and outputs |
-| [data-flow.md](data-flow.md) | DOC-SA-005 | ANALYSIS-level logical data flows between actors, processes and conceptual data stores (technical counterpart: `04-architecture/data-flow.md`, DOC-ARCH-007) |
-| [logical-components.md](logical-components.md) | DOC-SA-006 | Technology-independent logical components derived from `B01…B13`: responsibilities, provided interfaces, required interfaces, interactions |
-| [sequence-flows.md](sequence-flows.md) | DOC-SA-007 | Key end-to-end sequence flows as text diagrams: browse→checkout→delivery→completion, return, vendor onboarding, wallet top-up, dispute |
-| [edge-cases.md](edge-cases.md) | DOC-SA-008 | Edge cases per domain (`EC-NN`) with expected system behavior and the `BR-*` / `C-*` references that govern them |
-| [failure-modes.md](failure-modes.md) | DOC-SA-009 | Failure modes (`FM-NN`) and analysis-level handling: provider outage, idempotency, double-debit, code mismatch, webhook retries, oversell |
-| [state-transitions.md](state-transitions.md) | DOC-SA-010 | **The canonical 17-state order machine (`C-09`) — single source of truth for states and transitions** (pre-existing) |
-| [erp-finance-departments.md](erp-finance-departments.md) | DOC-SA-011 | Finance/ERP department surface: platform + per-merchant books, six departments (accounts, sales, purchases, inventory, reports, periods), dept↔staff map, period-close mechanics, phasing — approved via `plan-develop.md` §8 (`D2`/`D3`/`D11`) |
+| [system-boundary.md](core/system-boundary.md) | DOC-SA-002 | What is inside vs outside yumn (`C-18` custom build), boundary-crossing actors, external systems per `INT-REQ-*`, trust zones |
+| [system-context.md](core/system-context.md) | DOC-SA-003 | Context view: the 7 actors and external entities around yumn, with responsibilities, inputs and outputs |
+| [functional-analysis.md](core/functional-analysis.md) | DOC-SA-004 | Methodology §11 — per-block (`B01…B13`) analysis mapping every `FR-*` to behavior, validations, processing logic and outputs |
+| [data-flow.md](core/data-flow.md) | DOC-SA-005 | ANALYSIS-level logical data flows between actors, processes and conceptual data stores (technical counterpart: `../04-architecture/core/data-flow.md`, DOC-ARCH-007) |
+| [logical-components.md](core/logical-components.md) | DOC-SA-006 | Technology-independent logical components derived from `B01…B13`: responsibilities, provided interfaces, required interfaces, interactions |
+| [sequence-flows.md](core/sequence-flows.md) | DOC-SA-007 | Key end-to-end sequence flows as text diagrams: browse→checkout→delivery→completion, return, vendor onboarding, wallet top-up, dispute |
+| [edge-cases.md](core/edge-cases.md) | DOC-SA-008 | Edge cases per domain (`EC-NN`) with expected system behavior and the `BR-*` / `C-*` references that govern them |
+| [failure-modes.md](core/failure-modes.md) | DOC-SA-009 | Failure modes (`FM-NN`) and analysis-level handling: provider outage, idempotency, double-debit, code mismatch, webhook retries, oversell |
+| [state-transitions.md](core/state-transitions.md) | DOC-SA-010 | **The canonical 17-state order machine (`C-09`) — single source of truth for states and transitions** (pre-existing) |
+| [erp-finance-departments.md](core/erp-finance-departments.md) | DOC-SA-011 | Finance/ERP department surface: platform + per-merchant books, six departments (accounts, sales, purchases, inventory, reports, periods), dept↔staff map, period-close mechanics, phasing — approved via `plan-develop.md` §8 (`D2`/`D3`/`D11`) |
 
 ## How 03 Differs From 04-Architecture
 
@@ -100,9 +100,9 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | Need | Start with | Then |
 |---|---|---|
 | "What is in scope for the system?" | `system-boundary.md` (DOC-SA-002) | `system-context.md` (DOC-SA-003) |
-| "What does block Bxx actually do?" | `functional-analysis.md` (DOC-SA-004) | relevant `FR-*` file in `02-requirements/functional/` |
-| "What data moves where?" | `data-flow.md` (DOC-SA-005) | `04-architecture/data-flow.md` for the technical path |
-| "How does the order flow end to end?" | `sequence-flows.md` (DOC-SA-007) | `01-business-analysis/workflows/` for step tables |
+| "What does block Bxx actually do?" | `functional-analysis.md` (DOC-SA-004) | relevant `FR-*` file in `02-requirements/` |
+| "What data moves where?" | `data-flow.md` (DOC-SA-005) | `../04-architecture/core/data-flow.md` for the technical path |
+| "How does the order flow end to end?" | `sequence-flows.md` (DOC-SA-007) | `01-business-analysis/` for step tables |
 | "What can go wrong?" | `edge-cases.md` (DOC-SA-008) | `failure-modes.md` (DOC-SA-009) |
 | "What are the exact order states?" | `state-transitions.md` (DOC-SA-010) | `13-testing/` for the state-machine suite |
 | "How are the finance/ERP departments organised?" | `erp-finance-departments.md` (DOC-SA-011) | `09-security/rbac.md` §11 for the permission model; `plan-develop.md` §4 for connector mechanics |

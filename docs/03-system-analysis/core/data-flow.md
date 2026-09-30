@@ -14,7 +14,7 @@ related_documents: [DOC-SA-002, DOC-SA-003, DOC-SA-004, DOC-SA-010, DOC-ARCH-007
 
 # Logical Data Flow (Analysis Level)
 
-**What data moves between actors, processes and stores — with no technology named.** Data stores here are *conceptual* (business-meaningful containers), not tables; the physical mapping (PostgreSQL schemas `b01…b13`, MinIO buckets, Elasticsearch indices, Redis keys) belongs to `08-database/` and to the technical counterpart [`04-architecture/data-flow.md`](../04-architecture/data-flow.md) (DOC-ARCH-007). This document defines the flow contract; DOC-ARCH-007 documents how each flow is realized (sync call, queue job, cache write, index update).
+**What data moves between actors, processes and stores — with no technology named.** Data stores here are *conceptual* (business-meaningful containers), not tables; the physical mapping (PostgreSQL schemas `b01…b13`, MinIO buckets, Elasticsearch indices, Redis keys) belongs to `08-database/` and to the technical counterpart [`../../04-architecture/core/data-flow.md`](../../04-architecture/core/data-flow.md) (DOC-ARCH-007). This document defines the flow contract; DOC-ARCH-007 documents how each flow is realized (sync call, queue job, cache write, index update).
 
 ## 1. Conceptual Data Stores
 

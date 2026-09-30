@@ -69,9 +69,9 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | Assumptions | `ASM-NN` | `ASM-14` | 2 | `00-project-overview/assumptions.md` | `ASM-01…ASM-15` |
 | Dependencies | `DEP-NN` | `DEP-06` | 2 | `00-project-overview/dependencies.md` | `DEP-01…DEP-12` |
 | Stakeholders | `STK-NN` | `STK-15` | 2 | `00-project-overview/stakeholders.md` | `STK-01…STK-15` |
-| Business objectives | `BO-NN` | `BO-12` | 2 | `01-business-analysis/business-objectives.md` | `BO-01…BO-12` |
+| Business objectives | `BO-NN` | `BO-12` | 2 | `../01-business-analysis/core/business-objectives.md` | `BO-01…BO-12` |
 | Actors | `ACT-NN` | `ACT-03` | 2 | `00-project-overview/actors-and-roles.md` | `ACT-01…ACT-07` |
-| Business processes | `BP-NN` | `BP-08` | 2 | `01-business-analysis/business-processes.md` | `BP-01…BP-15` |
+| Business processes | `BP-NN` | `BP-08` | 2 | `../01-business-analysis/core/business-processes.md` | `BP-01…BP-15` |
 | Functional requirements | `FR-NNN` | `FR-013` | 3 | `02-requirements/core/` | `FR-001…FR-020` |
 | Non-functional requirements | `NFR-NNN` | `NFR-020` | 3 | `02-requirements/core/` | `NFR-001…NFR-020` |
 | Security requirements | `SEC-REQ-NNN` | `SEC-REQ-007` | 3 | `02-requirements/core/` | `SEC-REQ-001…012` |
@@ -175,10 +175,10 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 
 | Kind | Convention | Example | Source |
 |---|---|---|---|
-| Route segments | lowercase kebab-case only | `/orders/UC-…` → `/account/returns` | `05-frontend/routing.md` (✓) |
-| i18n keys | `feature.section.key` dotted, camelCase leaf | `checkout.review.vatLabel` | `05-frontend/internationalization.md` (✓) |
+| Route segments | lowercase kebab-case only | `/orders/UC-…` → `/account/returns` | `../05-frontend/core/routing.md` (✓) |
+| i18n keys | `feature.section.key` dotted, camelCase leaf | `checkout.review.vatLabel` | `../05-frontend/core/internationalization.md` (✓) |
 | Locale codes | exactly `ar` (default, RTL) and `en` (LTR); formatting locale `ar-YE` | `Accept-Language: ar \| en` | `C-24`, `11-ui-ux/localization.md` |
-| CSS physical props | banned; logical `ms/me/ps/pe` only | `padding-inline-start` | `05-frontend/rtl-and-styling.md` (enforced by CI lint) |
+| CSS physical props | banned; logical `ms/me/ps/pe` only | `padding-inline-start` | `../05-frontend/core/rtl-and-styling.md` (enforced by CI lint) |
 | UI term strings | canonical term from `terminology.md` in both locales | "Customer" ⇒ `عميل` | DOC-GL-002 |
 
 ## 9. Git Branches & Commits
@@ -228,7 +228,7 @@ Before adding a file, ID, table, endpoint or queue:
 7. Changed an approved doc ⇒ bump `version` + Change History row + propagate (root README §9).
 8. Suspected canon clash ⇒ `20-validation/contradiction-audit.md`, never a silent local fix.
 
-Enforcement points in canon: CI lint for RTL/logical CSS (`05-frontend/rtl-and-styling.md`), CI check that every queue matches `BR-PLT-01` (`06-backend/background-processing.md` §Test checklist), validation audits in `20-validation/`.
+Enforcement points in canon: CI lint for RTL/logical CSS (`../05-frontend/core/rtl-and-styling.md`), CI check that every queue matches `BR-PLT-01` (`06-backend/background-processing.md` §Test checklist), validation audits in `20-validation/`.
 
 ## Change History
 

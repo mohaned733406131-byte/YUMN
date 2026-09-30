@@ -47,13 +47,13 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 
 | ID | Sev | Rule | Verification |
 |---|---|---|---|
-| ORD-01 | CRITICAL | **Exactly 17 order states**; transitions only per `docs/03-system-analysis/state-transitions.md`; any other transition ⇒ `409 STATE_CONFLICT` — never 500 (`C-09`, `BR-ORD-01`). | `TST-CON-09` (17/17), enum-count test, full transition-matrix test. |
+| ORD-01 | CRITICAL | **Exactly 17 order states**; transitions only per `docs/03-system-analysis/core/state-transitions.md`; any other transition ⇒ `409 STATE_CONFLICT` — never 500 (`C-09`, `BR-ORD-01`). | `TST-CON-09` (17/17), enum-count test, full transition-matrix test. |
 | ORD-02 | CRITICAL | One **master order** per checkout, one **sub-order per vendor**; master total = Σ sub-totals; payment and escrow are master-level, allocated per sub-order (`C-10`, `BR-ORD-02`). | Deferred constraint `ct_order_totals_match_suborders` + service tests. |
 | ORD-03 | CRITICAL | Order creation requires an **idempotency key**; duplicates return the original order (`BR-ORD-06`). | Duplicate-POST test returns same `order_no`. |
 | ORD-04 | CRITICAL | `DELIVERED` is reachable **only** through successful 6-digit code verification (`C-16`, `BR-ORD-08`). | `TST-CON-16`; no admin/courier shortcut test. |
 | ORD-05 | HIGH | Every state change appends to `order_status_history` with actor, timestamp, reason (`BR-ORD-03`). | Timeline endpoint test; backstop trigger test. |
 | ORD-06 | HIGH | Cancellation windows: customer at `PLACED`/`CONFIRMED`; vendor/admin until `READY_FOR_PICKUP`; any cancellation triggers the wallet refund flow (`BR-ORD-04`). | Window tests per role; refund asserted on every cancel path. |
-| ORD-07 | HIGH | Concurrent transitions use optimistic `version` locking: first valid wins, loser gets `409` (`docs/03-system-analysis/state-transitions.md` §5). | Race test (two simultaneous transitions) ⇒ one 200, one 409. |
+| ORD-07 | HIGH | Concurrent transitions use optimistic `version` locking: first valid wins, loser gets `409` (`docs/03-system-analysis/core/state-transitions.md` §5). | Race test (two simultaneous transitions) ⇒ one 200, one 409. |
 | ORD-08 | HIGH | ⚠ **Unspecified today:** semantic precedence when `COMPLETED → RETURN_REQUESTED` races `COMPLETED → DISPUTED` (funds outcome undefined). Decide and record it (ADR + state table) **before** implementing that path — do not invent a rule in code. | ADR exists; transition row added; race test added. |
 | ORD-09 | MEDIUM | Still `CONFIRMED` 24 h after confirmation escalates to admin review with notification — never a silent auto-cancel (`BR-ORD-10`). | SLA job test. |
 
@@ -106,10 +106,10 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 |---|---|---|---|
 | RTL-01 | CRITICAL | **Arabic is the default locale, full RTL**; exactly `ar` + `en`, no third locale, no machine translation (`C-24`, `NFR-013`). | i18n key scan: 0 missing keys in either locale; locale-config test. |
 | RTL-02 | HIGH | **No hardcoded strings** in components — every string comes from the shared catalogs (`BR-PLT-05`). | i18n lint rule fails CI on literals. |
-| RTL-03 | HIGH | **No physical CSS properties** — `ml-*/mr-*/pl-*/pr-*/left-*/right-*/text-left/text-right/float` fail CI; logical properties only (`docs/05-frontend/rtl-and-styling.md`). | ESLint `no-physical-properties` rule in CI. |
+| RTL-03 | HIGH | **No physical CSS properties** — `ml-*/mr-*/pl-*/pr-*/left-*/right-*/text-left/text-right/float` fail CI; logical properties only (`docs/05-frontend/core/rtl-and-styling.md`). | ESLint `no-physical-properties` rule in CI. |
 | RTL-04 | HIGH | Money displays as integer **YER** (`ر.ي`) with **Arabic-Indic numerals** in `ar` (`BR-PAY-10`). | Formatter unit tests per locale. |
 | RTL-05 | HIGH | Every notification template exists in **2/2 locales**, language follows user locale, Arabic default (`BR-NTF-04`). | Template-completeness check. |
-| RTL-06 | HIGH | Wallet balance, order state and personalized pages are **never SSR/ISR/optimized-cached**; forbidden in client state: computed money totals, authoritative order status, permission decisions (`docs/05-frontend/state-management.md`). | Route-class test; client-state lint/review checklist. |
+| RTL-06 | HIGH | Wallet balance, order state and personalized pages are **never SSR/ISR/optimized-cached**; forbidden in client state: computed money totals, authoritative order status, permission decisions (`docs/05-frontend/core/state-management.md`). | Route-class test; client-state lint/review checklist. |
 | RTL-07 | MEDIUM | Optimistic updates are forbidden for: wallet balance/top-up, order placement/cancellation, order state changes, refund/return status, stock availability. | Component review + state-machine test. |
 
 ## API — Contract Conformance

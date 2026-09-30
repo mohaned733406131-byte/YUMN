@@ -105,11 +105,11 @@ Totals: 13 defined services; production runs 12 (no `sms-sink`); local dev runs 
 | Availability target 99.99%, probe SLI, error budget, **single-host residual risk** | `12-non-functional/reliability.md` §1–§3 | Restart policies, healthchecks, uptime probes (`docker-compose.md`, `monitoring-stack.md`) |
 | RED metrics, log schema, dashboard inventory, alert severity → route, runbook list | `12-non-functional/observability.md` | Scrape config, provisioning files, Alertmanager receivers (`monitoring-stack.md`) |
 | Secrets classes, storage model, rotation cadence, access matrix | `09-security/secrets-management.md` | `env_file` wiring, `.gitignore` hygiene, CI secret scan job (`configuration.md`, `ci-cd.md`) |
-| Vulnerability SLAs, scan gates | `02-requirements/security/SEC-REQ-012.md`, `09-security/security-controls.md` (`SEC-C-23/24`) | Workflow steps, image scans, Dependabot/Renovate cadence (`ci-cd.md`, `host-hardening.md`) |
+| Vulnerability SLAs, scan gates | `../02-requirements/core/SEC-REQ-012.md`, `09-security/security-controls.md` (`SEC-C-23/24`) | Workflow steps, image scans, Dependabot/Renovate cadence (`ci-cd.md`, `host-hardening.md`) |
 | Backup classes, retention windows `RC-01…RC-09`, residual window | `16-data/retention-and-archival.md` §3–§5 | Job scripts, storage layout, restore runbook (`backup-recovery.md`) |
-| RTO ≤ 1 h / RPO ≤ 15 min, drill acceptance | `02-requirements/data/DATA-REQ-004.md`, `NFR-006` | Execution of WAL archiving + quarterly drill (`backup-recovery.md`) |
-| Topology contract (services, networks, volumes, restart, degraded mode) | `04-architecture/deployment-view.md` | Actual Compose YAML realizing that contract (`docker-compose.md`) |
-| Stack versions and rejected alternatives | `04-architecture/technology-stack.md` | Pinned tags and base-image policy (`docker-compose.md`, `build-and-release.md` in `15-deployment/`) |
+| RTO ≤ 1 h / RPO ≤ 15 min, drill acceptance | `../02-requirements/core/DATA-REQ-004.md`, `NFR-006` | Execution of WAL archiving + quarterly drill (`backup-recovery.md`) |
+| Topology contract (services, networks, volumes, restart, degraded mode) | `../04-architecture/core/deployment-view.md` | Actual Compose YAML realizing that contract (`docker-compose.md`) |
+| Stack versions and rejected alternatives | `../04-architecture/core/technology-stack.md` | Pinned tags and base-image policy (`docker-compose.md`, `build-and-release.md` in `15-deployment/`) |
 | Migration ordering, expand/contract, forward-only | `08-database/migrations-and-evolution.md` | `migrate` one-shot job placement (`deployment-process.md` in `15-deployment/`) |
 | Degradation behaviour (ES down ⇒ browse works, etc.) | `10-integrations/integration-overview.md` §3–§4, `12-non-functional/reliability.md` §4 | Readiness policy that refuses to fail on ES (`health-checks.md` in `15-deployment/`) |
 | Risks RISK-005 (small team vs 99.99%), RISK-014 (edge/DNS) | `17-risk-management/risk-register.md` | Operational mitigations executed here |

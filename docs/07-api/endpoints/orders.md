@@ -16,7 +16,7 @@ related_documents: [DOC-API-002, DOC-API-003, DOC-API-004, DOC-FR-011, DOC-FR-01
 
 **Group:** `API-ORD` · **FR-011 (checkout), FR-012 (lifecycle)** · **Endpoints:** `API-ORD-001…014` · **Base:** `/api/v1`
 
-Checkout follows the canonical sequence **address → shipping → wallet payment → review → confirm** and produces **one master order + one sub-order per vendor** (`C-10`, `BR-ORD-02`). The 17-state machine executes **per sub-order** exactly as specified in `03-system-analysis/state-transitions.md`; any invalid transition or stale `version` returns **409 `STATE_CONFLICT`** (`C-09`, `BR-ORD-01`). Status history is append-only with actor/timestamp/reason (`BR-ORD-03`). Timeline visibility: buyer (own), vendor (own sub-orders), assigned courier (own delivery), admin/moderator scoped (`BR-ORD-09`).
+Checkout follows the canonical sequence **address → shipping → wallet payment → review → confirm** and produces **one master order + one sub-order per vendor** (`C-10`, `BR-ORD-02`). The 17-state machine executes **per sub-order** exactly as specified in `../../03-system-analysis/core/state-transitions.md`; any invalid transition or stale `version` returns **409 `STATE_CONFLICT`** (`C-09`, `BR-ORD-01`). Status history is append-only with actor/timestamp/reason (`BR-ORD-03`). Timeline visibility: buyer (own), vendor (own sub-orders), assigned courier (own delivery), admin/moderator scoped (`BR-ORD-09`).
 
 ---
 

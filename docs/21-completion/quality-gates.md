@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-003, DOC-OVR-009, DOC-OVR-010, DOC-OVR-011, DOC-TST-
 
 # Quality Gates
 
-The gate system that the rest of `docs/` points at: `00-project-overview/project-charter.md` (baseline mandate), `00-project-overview/assumptions.md` (escalation rule), `00-project-overview/stakeholders.md` (conflict resolution), `01-business-analysis/stakeholder-needs.md` (STK-01), `13-testing/README.md` (§1, L25), `13-testing/test-plans.md` (L17, L46), `17-risk-management/` (phase-gate risk check), `11-ui-ux/README.md` (§7, L114), `17-risk-management/risk-register.md` (phase-gate scope audit).
+The gate system that the rest of `docs/` points at: `00-project-overview/project-charter.md` (baseline mandate), `00-project-overview/assumptions.md` (escalation rule), `00-project-overview/stakeholders.md` (conflict resolution), `../01-business-analysis/core/stakeholder-needs.md` (STK-01), `13-testing/README.md` (§1, L25), `13-testing/test-plans.md` (L17, L46), `17-risk-management/` (phase-gate risk check), `11-ui-ux/README.md` (§7, L114), `17-risk-management/risk-register.md` (phase-gate scope audit).
 
 **Methodology:** a gate is not a meeting or an opinion — it is an evidence review with a recorded outcome (root README §11; `13-testing/README.md` §1: "No gate is passed by opinion").
 
@@ -30,7 +30,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 
 **What `FAIL` means operationally:** Phase 1 does not start on a Gate 0 `FAIL`; Phase 2 does not start on a Gate 1 `FAIL`; go-live does not occur on a Gate 2 `FAIL`; closure/acceptance does not occur on a Gate 3 `FAIL`. The sponsor may accept a gate-blocking risk **only explicitly, in writing**, with the acceptance recorded as a register status change (`17-risk-management/risk-review-process.md` §4) — never by silence, never by schedule pressure.
 
-**Conflict rule (non-negotiable):** where schedule pressure meets quality, **quality gates in money paths win** — recorded in `00-project-overview/stakeholders.md` ("Speed-to-market vs quality gates | `21-completion/quality-gates.md` — gates are non-negotiable for money paths") and `01-business-analysis/stakeholder-needs.md` STK-01 (sponsor "may trade quality for schedule — quality gates in money paths are non-negotiable"). If scope must give, scope gives: tests, monitoring, backups, and money-path gates are never traded (RISK-005 decision rule, `17-risk-management/mitigation-plans.md`).
+**Conflict rule (non-negotiable):** where schedule pressure meets quality, **quality gates in money paths win** — recorded in `00-project-overview/stakeholders.md` ("Speed-to-market vs quality gates | `21-completion/quality-gates.md` — gates are non-negotiable for money paths") and `../01-business-analysis/core/stakeholder-needs.md` STK-01 (sponsor "may trade quality for schedule — quality gates in money paths are non-negotiable"). If scope must give, scope gives: tests, monitoring, backups, and money-path gates are never traded (RISK-005 decision rule, `17-risk-management/mitigation-plans.md`).
 
 **Standing input to every gate:** `20-validation/critical-findings.md` (open critical items must be dispositioned), plus `20-validation/missing-information.md` (GAP register), `20-validation/contradiction-audit.md`, and `20-validation/consistency-audit.md`. Evidence status: `INSUFFICIENT EVIDENCE` — `20-validation/` is declared in root README §2 but not yet authored in `docs/`; gates consume it by path, and its authoring is tracked as `TD-10` in `21-completion/technical-debt.md`.
 

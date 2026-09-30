@@ -14,7 +14,7 @@ related_documents: [DOC-NFD-001, DOC-NFR-012, DOC-NFR-013, DOC-AC-001, DOC-UX-00
 
 # Usability & Support Detail — Task Efficiency, Localization Gates & Human Support Ops
 
-Elaborates **NFR-012 (core-task efficiency), NFR-013 (bilingual UX)** and the operational support model behind **`AC-S-23`** / **`NFR-020`** (support resolves issues with tooling, not code changes). Requirement statements stay in `02-requirements/non-functional/`; UX patterns live in `11-ui-ux/` (DOC-UX-005/006/007). This file adds the task matrix, device/bandwidth envelope, locale quality gates, support SLAs and the feedback loop.
+Elaborates **NFR-012 (core-task efficiency), NFR-013 (bilingual UX)** and the operational support model behind **`AC-S-23`** / **`NFR-020`** (support resolves issues with tooling, not code changes). Requirement statements stay in `02-requirements/`; UX patterns live in `11-ui-ux/` (DOC-UX-005/006/007). This file adds the task matrix, device/bandwidth envelope, locale quality gates, support SLAs and the feedback loop.
 
 ## 1. Task-Efficiency Matrix (measures behind NFR-012)
 
@@ -35,7 +35,7 @@ Method: moderated sessions, **≥ 5 participants per persona**, real devices, st
 Cross-cutting gates:
 
 - **Dead-end rule:** every rejected input and failed state offers a next action — 0 unrecoverable dead ends, in both locales (`AC-NFR-012-01`).
-- **Inline validation:** 100% of rejected inputs on money/address forms explained in the user's locale **before** submission fails — pattern set in `DOC-UX-005` §4, schemas in `05-frontend/forms-and-validation.md`.
+- **Inline validation:** 100% of rejected inputs on money/address forms explained in the user's locale **before** submission fails — pattern set in `DOC-UX-005` §4, schemas in `../05-frontend/core/forms-and-validation.md`.
 - **Perceived speed:** each task step's wait states follow `DOC-UX-005` (optimistic cart updates, skeletons < 800 ms, no double-submit) so NFR-001/NFR-002 latency does not surface as friction inside the timed tasks.
 
 ## 2. Learnability — no-training operation
@@ -68,7 +68,7 @@ Cross-cutting gates:
 | Numeric formats | Arabic-Indic digits rendered in `ar`, Latin in `en`; normalization at input (`DOC-UX-007` §4, `BR-PAY-10`) | automated + spot QA |
 | Currency | integer YER everywhere, `ر.ي` / `YER` suffix by locale; no floating point | contract tests |
 | Dates/times | locale calendars, day-month order, 24 h (`DOC-UX-007` §5) | spot QA |
-| RTL regression | mirroring correctness set: forms, tables, modals, chips, timeline, maps-to-code — run against `05-frontend/rtl-and-styling.md` (`DOC-FE-007`) | every PR (visual) + release |
+| RTL regression | mirroring correctness set: forms, tables, modals, chips, timeline, maps-to-code — run against `../05-frontend/core/rtl-and-styling.md` (`DOC-FE-007`) | every PR (visual) + release |
 | Layout integrity | Arabic text expansion ≥ 30% must not clip/overlap any component (`INFERENCE` bound) | visual QA pass |
 | Legal/tax text | translated; authoritative version noted on page (`DOC-FE-008`) | release |
 | Template coverage | notification templates (SMS/WhatsApp/push) complete in both locales, provider-approved (`BR-NTF-04`, `DEP-06`) | before launch |

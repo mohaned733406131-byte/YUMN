@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-002, DOC-OVR-007, DOC-SA-002, DOC-REQ-001, DOC-BA-00
 
 # System Context View
 
-The context view answers: **who interacts with yumn, and what crosses the boundary in each direction?** It shows yumn as a single black box surrounded by the 7 canonical actors (`ACT-01…ACT-07`) and the external entities defined in `system-boundary.md` (DOC-SA-002). It corresponds to C4 level 1; the technical C4 context with containers is in `04-architecture/architecture-overview.md` (DOC-ARCH-002).
+The context view answers: **who interacts with yumn, and what crosses the boundary in each direction?** It shows yumn as a single black box surrounded by the 7 canonical actors (`ACT-01…ACT-07`) and the external entities defined in `system-boundary.md` (DOC-SA-002). It corresponds to C4 level 1; the technical C4 context with containers is in `../../04-architecture/core/architecture-overview.md` (DOC-ARCH-002).
 
 ## 1. Context Diagram (text form)
 

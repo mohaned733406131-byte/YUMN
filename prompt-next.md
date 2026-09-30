@@ -19,7 +19,7 @@ The owner's use-case directive was executed end to end — session file:
   210 files, missing 0, every file 55–75 lines.
 - **Honesty (never blend the numbers):** **derived 210** published beside the **owner target
   "over 350" = `INSUFFICIENT EVIDENCE`**; coverage claimed only as far as the index §5 matrix
-  proves it; an explicit **18-item PENDING backlog** (`use-cases/README.md` §5.1) lists what is
+  proves it; an explicit **18-item PENDING backlog** (`docs/01-business-analysis/use-case-index.md` §5.1) lists what is
   *not* covered (with reasons) — no zero-gap claim.
 - **Change control:** `naming-conventions.md` **v1.6** (§3 `UC-001…UC-210`, **210 issued**, next
   **`UC-211+`**), `terminology.md` **v1.3**, `use-case-template.md` **v1.2** — commits `c1f280d`.
@@ -96,7 +96,7 @@ items `M-01` (`CT-23` + `GAP-14`), `M-04` (`CT-26` pricing), `M-05` (`CT-28` sec
 `M-06` (`CT-27` payout cadence); `SEC-001…015` dispositions; `origin/master` deletion.
 
 **B. Work the 18-item PENDING UC backlog (`UC-211+`) if the owner wants the "over 350" target:**
-source list = index `use-cases/README.md` §5.1 (each item has its reason). Every new UC needs the
+source list = index `docs/01-business-analysis/use-case-index.md` §5.1 (each item has its reason). Every new UC needs the
 same discipline as session 010: source document behind it, template `use-case-template.md` v1.2,
 existing `BR-*`/`FR-*` only, then the same-change set (index row + §3 totals + §5 matrix +
 `phases` inventory + consumers grep + both gates + full sweep if counts move). Next free ID is

@@ -46,7 +46,7 @@ License: GPL-3.0
 | Compose render | `docker compose config -q` |
 | Secret scan | `gitleaks detect --redact --no-banner` |
 | Dependency vulnerability scan | `npm audit --audit-level=high` (+ Trivy on images, CodeQL for SAST) |
-| Dead-element scan | **NOT DOCUMENTED** — closest is the route-inventory test (`docs/05-frontend/routing.md` §10) plus CI boundary/queue-name/i18n gates. A real dead-route/dead-transaction inventory test must be created in bootstrap; until then DOD-05/IMP-02 verification is `BLOCKED` |
+| Dead-element scan | **NOT DOCUMENTED** — closest is the route-inventory test (`docs/05-frontend/core/routing.md` §10) plus CI boundary/queue-name/i18n gates. A real dead-route/dead-transaction inventory test must be created in bootstrap; until then DOD-05/IMP-02 verification is `BLOCKED` |
 | Benchmark | k6 scenarios `PERF-01…PERF-07` on **staging** only — exact `k6 run …` invocation **NOT DOCUMENTED**; bind it in bootstrap |
 | i18n key scan | Named as merge-blocking (`docs/13-testing/testing-strategy.md` §5) — command **NOT DOCUMENTED**; bind in bootstrap |
 | Rules validator | `python3 senior-rules/validators/validate.py .` |
@@ -56,7 +56,7 @@ License: GPL-3.0
 - **Canonical repo tree = `05-frontend/frontend-architecture.md` §1 + `06-backend/backend-architecture.md` §1** (root `api/`, `apps/<shell>/`, `packages/*`). ⚠ Ops documents cite a different spelling (`apps/api`, `apps/web`, `apps/mobile/**`) — treat those as defects to correct (rule `SPE-04`), not as authority.
 - Entry files present: `senior-rules/ENTRY.md`, `senior-rules/RULES.md`, `senior-rules/RULES_HINTS.md` (this file), `senior-rules/YUMN_RULES.md`, `senior-rules/CHANGELOG.md`, `senior-rules/VERSION`, root `AGENTS.md`. Root `session_track.md`, `development_phases_entry.md`, `all_in_one_track.md`, `architecture.md`, `mind_map.md`, `memory.md` are required by DOC-01 and are **pending creation** — status honesty: validator will report them `FAIL` until they exist.
 - Main security spec: `docs/09-security/` (`threat-model.md`, `security-controls.md`, `rbac.md`, `security-findings.md` = `SEC-001…SEC-015` — corrected from `…SEC-016` on 2026-09-28, session 005: the register holds 15 findings, `SEC-016` is only a forward-sequence note; factual correction, no rule text/severity changed, pin stays `2.0.0`)
-- Main architecture file: `docs/04-architecture/architecture-overview.md` (ADRs in `docs/18-decisions/ADR/ADR-001…010`)
+- Main architecture file: `docs/04-architecture/core/architecture-overview.md` (ADRs in `docs/18-decisions/ADR/ADR-001…010`)
 - Requirements/source IDs: `docs/02-requirements/` (68 reqs), `docs/01-business-analysis/business-rules.md` (104 `BR-*` — count corrected 2026-09-28, session 008: `BR-INV-01…05` registered), `docs/00-project-overview/project-constraints.md` (`C-01…C-26`)
 
 ## 5. Conventions

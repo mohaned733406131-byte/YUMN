@@ -15,7 +15,7 @@ related_requirements: []
 # Sequence Diagrams — analysis phase
 
 ## Purpose
-CORE-03 item 11 (separate file): interaction sequences for the phase's functionality, as Mermaid. Canonical detailed flows: [`03-system-analysis/sequence-flows.md`](../../03-system-analysis/sequence-flows.md) (`SQ-01`…`SQ-05`); this file holds the phase-level diagrams and indexes them.
+CORE-03 item 11 (separate file): interaction sequences for the phase's functionality, as Mermaid. Canonical detailed flows: [`../../03-system-analysis/core/sequence-flows.md`](../../03-system-analysis/core/sequence-flows.md) (`SQ-01`…`SQ-05`); this file holds the phase-level diagrams and indexes them.
 
 ## Scope
 Cross-actor, cross-layer interactions spanning API → domain → repository → queue → external providers.

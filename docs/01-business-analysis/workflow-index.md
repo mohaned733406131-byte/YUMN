@@ -14,24 +14,24 @@ related_documents: [DOC-BA-001, DOC-BA-004, DOC-BA-005]
 
 # End-to-End Workflows — Index & Format
 
-**12 end-to-end workflows `WF-001…WF-012`** spanning the yumn marketplace from registration to settlement. Each workflow crosses actor and block boundaries and names its branches and failure paths — not just the happy path. The 17-state order machine they operate on is authoritative in `03-system-analysis/state-transitions.md` (`C-09`); rule definitions are authoritative in `business-rules.md`.
+**12 end-to-end workflows `WF-001…WF-012`** spanning the yumn marketplace from registration to settlement. Each workflow crosses actor and block boundaries and names its branches and failure paths — not just the happy path. The 17-state order machine they operate on is authoritative in `../03-system-analysis/core/state-transitions.md` (`C-09`); rule definitions are authoritative in `business-rules.md`.
 
 ## 1. Workflow Index
 
 | ID | File | document_id | Purpose (one line) | Primary actors |
 |---|---|---|---|---|
-| WF-001 | [workflow-001.md](workflow-001.md) | DOC-WF-002 | Customer registration & login — phone + OTP, lockout and session branches | Customer, System |
-| WF-002 | [workflow-002.md](workflow-002.md) | DOC-WF-003 | Product search → PDP → add to cart, with guest gating and cart guards | Customer (guest/registered) |
-| WF-003 | [workflow-003.md](workflow-003.md) | DOC-WF-004 | Cart → 7-step checkout → wallet payment → order `PLACED`, incl. insufficient-balance → top-up branch | Customer, System |
-| WF-004 | [workflow-004.md](workflow-004.md) | DOC-WF-005 | Vendor order acceptance → fulfillment → `READY_FOR_PICKUP` with SLA escalation | Vendor, System |
-| WF-005 | [workflow-005.md](workflow-005.md) | DOC-WF-006 | Courier assignment → pickup → transit → 6-digit code → `DELIVERED`, incl. failed-attempt branches | Delivery Provider, Customer, System |
-| WF-006 | [workflow-006.md](workflow-006.md) | DOC-WF-007 | Escrow: `DELIVERED` → 7-day hold → `COMPLETED` → commission → payout | System, Finance/Admin |
-| WF-007 | [workflow-007.md](workflow-007.md) | DOC-WF-008 | Return request → approval → pickup → inspection → `REFUNDED` | Customer, Vendor, Courier, System |
-| WF-008 | [workflow-008.md](workflow-008.md) | DOC-WF-009 | Dispute → escrow freeze → admin resolution | Customer/Vendor, Admin |
-| WF-009 | [workflow-009.md](workflow-009.md) | DOC-WF-010 | Wallet top-up: m-Floos/OneCash callback and bank transfer admin verification | Customer, System, Admin |
-| WF-010 | [workflow-010.md](workflow-010.md) | DOC-WF-011 | Customer cancellation (pre-dispatch) → stock restore → wallet refund | Customer, System |
-| WF-011 | [workflow-011.md](workflow-011.md) | DOC-WF-012 | Vendor onboarding: register → KYC submit → approve → first listing | Vendor, Admin |
-| WF-012 | [workflow-012.md](workflow-012.md) | DOC-WF-013 | Coupon creation (admin/vendor) → redemption at checkout | Admin/Vendor, Customer, System |
+| WF-001 | [workflow-001.md](customer/workflow-001.md) | DOC-WF-002 | Customer registration & login — phone + OTP, lockout and session branches | Customer, System |
+| WF-002 | [workflow-002.md](customer/workflow-002.md) | DOC-WF-003 | Product search → PDP → add to cart, with guest gating and cart guards | Customer (guest/registered) |
+| WF-003 | [workflow-003.md](customer/workflow-003.md) | DOC-WF-004 | Cart → 7-step checkout → wallet payment → order `PLACED`, incl. insufficient-balance → top-up branch | Customer, System |
+| WF-004 | [workflow-004.md](vendor/workflow-004.md) | DOC-WF-005 | Vendor order acceptance → fulfillment → `READY_FOR_PICKUP` with SLA escalation | Vendor, System |
+| WF-005 | [workflow-005.md](delivery/workflow-005.md) | DOC-WF-006 | Courier assignment → pickup → transit → 6-digit code → `DELIVERED`, incl. failed-attempt branches | Delivery Provider, Customer, System |
+| WF-006 | [workflow-006.md](core/workflow-006.md) | DOC-WF-007 | Escrow: `DELIVERED` → 7-day hold → `COMPLETED` → commission → payout | System, Finance/Admin |
+| WF-007 | [workflow-007.md](core/workflow-007.md) | DOC-WF-008 | Return request → approval → pickup → inspection → `REFUNDED` | Customer, Vendor, Courier, System |
+| WF-008 | [workflow-008.md](admin/workflow-008.md) | DOC-WF-009 | Dispute → escrow freeze → admin resolution | Customer/Vendor, Admin |
+| WF-009 | [workflow-009.md](customer/workflow-009.md) | DOC-WF-010 | Wallet top-up: m-Floos/OneCash callback and bank transfer admin verification | Customer, System, Admin |
+| WF-010 | [workflow-010.md](customer/workflow-010.md) | DOC-WF-011 | Customer cancellation (pre-dispatch) → stock restore → wallet refund | Customer, System |
+| WF-011 | [workflow-011.md](vendor/workflow-011.md) | DOC-WF-012 | Vendor onboarding: register → KYC submit → approve → first listing | Vendor, Admin |
+| WF-012 | [workflow-012.md](admin/workflow-012.md) | DOC-WF-013 | Coupon creation (admin/vendor) → redemption at checkout | Admin/Vendor, Customer, System |
 
 > **Numbering rule:** the file number is the workflow ID (`workflow-007.md` = `WF-007`); the `document_id` runs one ahead of the workflow number because `DOC-WF-001` is reserved for this index (`workflow-001.md` = `WF-001` = `DOC-WF-002`, … `workflow-012.md` = `WF-012` = `DOC-WF-013`). Never reference a workflow by document_id when a `WF-NNN` ID exists.
 
@@ -62,7 +62,7 @@ Every workflow file uses the same anatomy (in this order):
 
 ## 4. Dependencies
 
-Consumes: `00-project-overview/` (actors, constraints), `business-rules.md`, `03-system-analysis/state-transitions.md`, `02-requirements/` (FR registry). Feeds: `03-system-analysis/` (behavioral analysis), `07-api/` (endpoint choreography), `13-testing/` (E2E test cases), `19-traceability/`.
+Consumes: `00-project-overview/` (actors, constraints), `business-rules.md`, `../03-system-analysis/core/state-transitions.md`, `02-requirements/` (FR registry). Feeds: `03-system-analysis/` (behavioral analysis), `07-api/` (endpoint choreography), `13-testing/` (E2E test cases), `19-traceability/`.
 
 ## Change History
 

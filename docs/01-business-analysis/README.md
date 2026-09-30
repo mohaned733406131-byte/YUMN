@@ -25,15 +25,15 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 | File / Directory | document_id | Purpose |
 |---|---|---|
 | [README.md](README.md) | DOC-BA-001 | This index — directory purpose, dependencies, conventions |
-| [business-model.md](business-model.md) | DOC-BA-002 | Multi-vendor marketplace model: value proposition, revenue streams, cost structure, partners, channels, metrics, worked unit economics |
-| [business-objectives.md](business-objectives.md) | DOC-BA-003 | Business-side objectives `BO-01…BO-12` (liquidity, retention, payment trust, operational efficiency) with owner, metric, target |
-| [business-processes.md](business-processes.md) | DOC-BA-004 | The 15 major business processes `BP-01…BP-15`: trigger, actors, steps, systems, rules applied, final state, failure paths |
+| [business-model.md](core/business-model.md) | DOC-BA-002 | Multi-vendor marketplace model: value proposition, revenue streams, cost structure, partners, channels, metrics, worked unit economics |
+| [business-objectives.md](core/business-objectives.md) | DOC-BA-003 | Business-side objectives `BO-01…BO-12` (liquidity, retention, payment trust, operational efficiency) with owner, metric, target |
+| [business-processes.md](core/business-processes.md) | DOC-BA-004 | The 15 major business processes `BP-01…BP-15`: trigger, actors, steps, systems, rules applied, final state, failure paths |
 | [business-rules.md](business-rules.md) | DOC-BA-005 | **The canonical business-rule registry — 104 rules `BR-<DOMAIN>-NN` (authoritative; see note below)** |
-| [stakeholder-needs.md](stakeholder-needs.md) | DOC-BA-006 | Needs of each `STK-*` stakeholder group, how yumn addresses them, related `FR-*`/`BR-*`, conflict notes |
-| [user-needs.md](user-needs.md) | DOC-BA-007 | Per-actor (`ACT-01…ACT-06`) needs: jobs-to-be-done, pains today, how addressed, success signals; guest vs registered customer |
+| [stakeholder-needs.md](core/stakeholder-needs.md) | DOC-BA-006 | Needs of each `STK-*` stakeholder group, how yumn addresses them, related `FR-*`/`BR-*`, conflict notes |
+| [user-needs.md](core/user-needs.md) | DOC-BA-007 | Per-actor (`ACT-01…ACT-06`) needs: jobs-to-be-done, pains today, how addressed, success signals; guest vs registered customer |
 | `use-cases/` | — | Use case specifications `UC-NNN` (one file per use case), derived from the processes here and consumed by `13-testing/` |
-| [workflows/README.md](workflows/README.md) | DOC-WF-001 | Index and format specification for the 12 end-to-end workflows `WF-001…WF-012` |
-| [workflows/](workflows/workflow-001.md) | DOC-WF-002…DOC-WF-013 | One file per workflow: ASCII flow + step table (actor, action, system, rules, data changes, failure handling) |
+| [workflows/README.md](workflow-index.md) | DOC-WF-001 | Index and format specification for the 12 end-to-end workflows `WF-001…WF-012` |
+| [workflows/](customer/workflow-001.md) | DOC-WF-002…DOC-WF-013 | One file per workflow: ASCII flow + step table (actor, action, system, rules, data changes, failure handling) |
 
 ## Source of Truth For
 
@@ -66,7 +66,7 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 |---|---|---|---|
 | Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-05` | `business-rules.md` (authoritative) |
 | Use cases | `UC-NNN` | `UC-021` | `use-cases/` |
-| Workflows | `WF-NNN` | `WF-006` | `workflows/README.md` |
+| Workflows | `WF-NNN` | `WF-006` | `workflow-index.md` |
 | Business processes | `BP-NN` | `BP-07` | `business-processes.md` |
 | Business objectives | `BO-NN` | `BO-03` | `business-objectives.md` |
 | Documents | `DOC-BA-NNN` / `DOC-WF-NNN` | `DOC-BA-005` | frontmatter of each file |

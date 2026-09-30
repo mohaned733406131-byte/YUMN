@@ -14,7 +14,7 @@ related_documents: [DOC-INT-000, DOC-INT-002, DOC-INT-007, DOC-IR-000, DOC-IR-00
 
 # Integration Layer Architecture
 
-Source of truth for *how* yumn integrates: the ports-and-adapters boundary, sync vs async execution, the common cross-cutting concerns every integration obeys, what happens when each provider is down, and how integration behavior is observed. Per-provider contracts live in the sibling files; requirements live in `02-requirements/integration/`.
+Source of truth for *how* yumn integrates: the ports-and-adapters boundary, sync vs async execution, the common cross-cutting concerns every integration obeys, what happens when each provider is down, and how integration behavior is observed. Per-provider contracts live in the sibling files; requirements live in `02-requirements/`.
 
 ## 1. Ports & Adapters (`INT-REQ-008`)
 

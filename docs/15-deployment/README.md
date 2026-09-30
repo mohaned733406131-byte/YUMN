@@ -118,7 +118,7 @@ merge → CI → staging auto-deploy → smoke (+ E2E) → manual production app
 | Backup jobs, restore steps, quarterly drill | `14-devops-infrastructure/backup-recovery.md` |
 | Host hardening, scanning cadence, TLS renewal | `14-devops-infrastructure/host-hardening.md` |
 | Migration ordering, expand/contract, forward-only rules | `08-database/migrations-and-evolution.md` (`DOC-DB-006`) |
-| Topology contract (services, restart, degraded mode, RTO/RPO placement) | `04-architecture/deployment-view.md` |
+| Topology contract (services, restart, degraded mode, RTO/RPO placement) | `../04-architecture/core/deployment-view.md` |
 | Availability math, error budget, degradation matrix, drills | `12-non-functional/reliability.md` |
 | Health endpoint timing, deploy observation window, rollback timing | `12-non-functional/observability.md` §8 |
 | API versioning (`/api/v1`) | `07-api/api-conventions.md`, `07-api/README.md` |

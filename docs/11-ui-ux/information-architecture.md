@@ -14,7 +14,7 @@ related_documents: [DOC-UX-001, DOC-UX-002, DOC-FE-003, DOC-FE-001, DOC-OVR-002,
 
 # Information Architecture — Sitemaps, Navigation & URL↔Screen Map
 
-The design-level site/app map for all five clients. Route paths here are the **IA-level contract**: `05-frontend/routing.md` (`DOC-FE-003`) owns implementation mechanics (guards, code splitting, redirects); this file owns *what exists, where it sits in navigation, and which block it serves*. Any screen added anywhere must appear here first (rule 5, `DOC-UX-001` §6).
+The design-level site/app map for all five clients. Route paths here are the **IA-level contract**: `../05-frontend/core/routing.md` (`DOC-FE-003`) owns implementation mechanics (guards, code splitting, redirects); this file owns *what exists, where it sits in navigation, and which block it serves*. Any screen added anywhere must appear here first (rule 5, `DOC-UX-001` §6).
 
 ## 1. S1 — Customer Web Storefront
 

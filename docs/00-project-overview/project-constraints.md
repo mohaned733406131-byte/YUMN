@@ -38,7 +38,7 @@ related_documents: [DOC-OVR-005, DOC-OVR-010]
 
 | ID | Constraint | Rationale | Verification |
 |---|---|---|---|
-| C-09 | **Exactly 17 order states** — the canonical list in `03-system-analysis/state-transitions.md`. | Shared vocabulary across 4 surfaces | State-machine unit tests (17/17 states covered) |
+| C-09 | **Exactly 17 order states** — the canonical list in `../03-system-analysis/core/state-transitions.md`. | Shared vocabulary across 4 surfaces | State-machine unit tests (17/17 states covered) |
 | C-10 | **Master/Sub-order architecture.** One master order per checkout; one sub-order per vendor. Payment & escrow at master level; fulfillment & payout per sub-order. | Multi-vendor settlement reality | Integration tests for split orders |
 | C-11 | **Merchant-configurable return policy** (`isReturnable`, `returnPeriodDays` per product/store); return window starts at delivery confirmation. | Merchant autonomy + buyer clarity | Rule tests `BR-RET-01…03` |
 | C-12 | **Escrow:** funds held 7 days from DELIVERED before release to vendor (unless dispute freezes). | Buyer protection window | Escrow engine tests |

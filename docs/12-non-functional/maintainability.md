@@ -14,7 +14,7 @@ related_documents: [DOC-NFD-001, DOC-NFR-009, DOC-NFR-010, DOC-NFR-016, DOC-AC-0
 
 # Maintainability Detail — Standards, Test Pyramid, Docs-as-Code & Environment Parity
 
-Elaborates **NFR-009 (modularity & documentation), NFR-010 (testability) and NFR-016 (deployment portability)**. Statements live in `02-requirements/non-functional/`; this file adds the concrete standards, tool inventory, coverage split, parity evidence and cadences. Acceptance: `AC-NFR-009-*`, `AC-NFR-010-*`, `AC-NFR-016-*`.
+Elaborates **NFR-009 (modularity & documentation), NFR-010 (testability) and NFR-016 (deployment portability)**. Statements live in `02-requirements/`; this file adds the concrete standards, tool inventory, coverage split, parity evidence and cadences. Acceptance: `AC-NFR-009-*`, `AC-NFR-010-*`, `AC-NFR-016-*`.
 
 ## 1. Code Standards & Enforcement
 

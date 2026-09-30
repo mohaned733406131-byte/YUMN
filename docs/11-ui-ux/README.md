@@ -25,10 +25,10 @@ This domain captures the **design intent** for all yumn surfaces: what the user 
 | Concern | Owner |
 |---|---|
 | Component code, CSS mechanics (Tailwind, logical properties), routing implementation | `05-frontend/` (`DOC-FE-001`…`DOC-FE-009`) |
-| i18n libraries, catalogs, locale routing mechanics | `05-frontend/internationalization.md` (`DOC-FE-008`) |
+| i18n libraries, catalogs, locale routing mechanics | `../05-frontend/core/internationalization.md` (`DOC-FE-008`) |
 | Measurable accessibility targets & metrics | `12-non-functional/` (NFR-011 elaboration) |
 | Requirement statements & acceptance criteria | `02-requirements/` (`DOC-REQ-001`, `DOC-AC-001`) |
-| Order state machine semantics (17 states) | `03-system-analysis/state-transitions.md` (`DOC-SA-010`) |
+| Order state machine semantics (17 states) | `../03-system-analysis/core/state-transitions.md` (`DOC-SA-010`) |
 
 > Evidence rule applied throughout: statements are `VERIFIED` (traceable to canon), `INFERENCE` (derived design judgment), or `INSUFFICIENT EVIDENCE` (registered as a gap). Design choices not fixed by canon are tagged `INFERENCE`.
 

@@ -14,7 +14,7 @@ related_documents: [DOC-SA-008, DOC-SA-010, DOC-BA-005, DOC-IR-006, DOC-REQ-001]
 
 # Failure Modes & Analysis-Level Handling
 
-What can go wrong, how the system *detects* it, and what it *does* — expressed behaviorally, before any technical mechanism is chosen. Technical realization (queues, retries, transactions, alerting) is documented in `04-architecture/data-flow.md` (DOC-ARCH-007) and `10-integrations/`; resilience test cases derive from this register in `13-testing/`. IDs `FM-01…FM-18` are referenced from `edge-cases.md` (DOC-SA-008) where a scenario is both an edge case and a failure mode.
+What can go wrong, how the system *detects* it, and what it *does* — expressed behaviorally, before any technical mechanism is chosen. Technical realization (queues, retries, transactions, alerting) is documented in `../../04-architecture/core/data-flow.md` (DOC-ARCH-007) and `10-integrations/`; resilience test cases derive from this register in `13-testing/`. IDs `FM-01…FM-18` are referenced from `edge-cases.md` (DOC-SA-008) where a scenario is both an edge case and a failure mode.
 
 ## 1. Failure Mode Register
 

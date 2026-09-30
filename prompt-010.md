@@ -50,7 +50,7 @@
 ## 3. Facts already gathered (do not re-derive)
 
 - **Use cases today: 42 files** (`UC-001…UC-042.md`; the directive's "40" predates `UC-041`/`UC-042`
-  added in session 007). Index/template: `docs/01-business-analysis/use-cases/README.md`
+  added in session 007). Index/template: `docs/01-business-analysis/use-case-index.md`
   (**DOC-UC-000, v1.1**) — §1 is the binding UC template (9 body sections, 45–70 lines/file),
   §2 is the index titled **"Use Case Index (42 use cases)"** (hard-coded count — must be re-synced),
   and the ID rules (sequential `UC-NNN`, `DOC-UC-NNN` mirrors, no reuse/renumbering, one primary
@@ -66,7 +66,7 @@
   `DB-*` 18 entities, `TC-*` 114, workflows `WF-*` 12, plan `M-01…M-25`/`P-01…P-20`
   (`plan-develop.md` v1.2), `describ.md` §1–§8, constraint tests `TST-CON-*` 26.
 - Count consumers that hard-code **42 UC** (session-008/009 precedent — grep `42` repo-wide
-  before declaring the set done): `use-cases/README.md` §2 header, `analysis-validation.md`
+  before declaring the set done): `docs/01-business-analysis/use-case-index.md` §2 header, `analysis-validation.md`
   domain-01 row (63 files / 42 UC), `19-traceability/README.md` §5 dashboard, `requirements-to-features.md`
   `T-03` evidence, `phases/analysis/use-cases.md` (42-file roll-up), `memory.md` §3-era counts,
   `all_in_one_track.md`.
@@ -76,7 +76,7 @@
 1. **Discovery / gap analysis (no writes yet):** read ENTRY + RULES_HINTS (startup), then build
    the portal × feature-area matrix from the source inventory in §3 — for each area, list which
    UCs exist and which scenarios have none. Sources: FR registry, `07-api` endpoint register
-   (14 groups), `05-frontend/routing.md` routes/screens, `03-system-analysis` workflows/state
+   (14 groups), `docs/05-frontend/core/routing.md` routes/screens, `03-system-analysis` workflows/state
    machines, `plan-develop.md`, `describ.md`, `13-testing` coverage. Output: the target UC list
    (ID, title, primary actor, portal, block `B01…B06`, FR refs, priority, source document).
 2. **Change control before minting IDs:** UC-series allocation grows 42 → target (root README §5

@@ -103,7 +103,7 @@ related_documents: [DOC-TST-001, DOC-TST-002, DOC-TST-003, DOC-OVR-008, DOC-AC-0
 
 ### TST-CON-09 — Exactly 17 order states
 - **Constraint:** C-09 · **Status:** DESIGNED
-- **Asserted:** **state count == 17 and no other states exist in code** — the enumeration equals `03-system-analysis/state-transitions.md` §1 exactly.
+- **Asserted:** **state count == 17 and no other states exist in code** — the enumeration equals `../03-system-analysis/core/state-transitions.md` §1 exactly.
 - **Type / Method / Env:** unit (state machine) · enumerate the `OrderState` enum/constant at runtime and diff against the canonical list; assert DB CHECK constraint contains the same 17 values; assert 17/17 state-machine tests exist and pass · CI.
 - **Pass:** set equality (17 expected, 0 extra, 0 missing), DB constraint matches, all transitions from the canonical table pass and forbidden transitions return `409 STATE_CONFLICT`. **Notes:** `AC-FR012-01` demands 17/17 coverage; an 18th state anywhere = CRITICAL.
 

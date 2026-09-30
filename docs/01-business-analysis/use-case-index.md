@@ -14,7 +14,7 @@ related_documents: [DOC-BA-005, DOC-OVR-007, DOC-REQ-001, DOC-SA-010]
 
 # Use Cases — Index, ID Scheme & Template
 
-**Single index of all use cases for the yumn platform.** Use case IDs follow `UC-NNN` (zero-padded, sequential from `UC-001`); document IDs follow `DOC-UC-NNN` where the numeric part matches the UC number (`UC-017` → `DOC-UC-017`). This file itself is `UC-000` / `DOC-UC-000`. Files live in `01-business-analysis/use-cases/` and are named `UC-NNN.md`.
+**Single index of all use cases for the yumn platform.** Use case IDs follow `UC-NNN` (zero-padded, sequential from `UC-001`); document IDs follow `DOC-UC-NNN` where the numeric part matches the UC number (`UC-017` → `DOC-UC-017`). This file itself is `UC-000` / `DOC-UC-000`. Files live in `01-business-analysis/` and are named `UC-NNN.md`.
 
 Rules:
 - IDs are never reused or renumbered; a retired use case keeps its file with status `SUPERSEDED`.
@@ -277,7 +277,7 @@ Priority totals: P0 = 47, P1 = 107, P2 = 56. Block coverage: B01 (28), B02 (25),
 - `00-project-overview/actors-and-roles.md` (DOC-OVR-007) — the 7 actors
 - `01-business-analysis/business-rules.md` (DOC-BA-005) — all `BR-*` referenced here
 - `02-requirements/requirements-overview.md` (DOC-REQ-001) — all `FR-*` referenced here
-- `03-system-analysis/state-transitions.md` (DOC-SA-010) — the 17-state machine used in postconditions
+- `../03-system-analysis/core/state-transitions.md` (DOC-SA-010) — the 17-state machine used in postconditions
 
 ## 5. Coverage Matrix (portal × feature area → UC IDs)
 
