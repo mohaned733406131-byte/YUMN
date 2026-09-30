@@ -53,7 +53,7 @@ Provider callback never arrives → reconciliation job (`BR-ESC-08`, `ESC-05`); 
 Each flow terminates in exactly one terminal state or a documented rollback with wallet credit (`MNY-10`); every state change appends `order_status_history` (`ORD-05`).
 
 ## Data entities touched
-`user`, `cart`, `order`, `sub_order`, `payment`, `wallet`, `wallet_transaction`, `escrow`, `shipment`, `return_request`, `review`, `coupon` — [`08-database/entities/`](../../08-database/entities/README.md).
+`user`, `cart`, `order`, `sub_order`, `payment`, `wallet`, `wallet_transaction`, `escrow`, `shipment`, `return_request`, `review`, `coupon` — [`08-database/`](../../08-database/entities-index.md).
 
 ## Invariants
 Wallet-only payment (`C-01…C-04`) · `DELIVERED` only via 6-digit code (`ORD-04`) · zero ledger imbalance (`MNY-03`) · no GPS anywhere (`C-16`).

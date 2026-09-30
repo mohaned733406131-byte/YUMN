@@ -66,7 +66,7 @@ No legal claim in this file may be repeated as fact downstream; unresolved rows 
 | Vendor payout | payout = vendor's share of taxed totals less commission; VAT line remains platform-visible | `BR-ESC-*` family |
 | Top-up | wallet top-up itself is not a sale — not VAT-charged (`INFERENCE`) | confirm in `DEP-09` |
 | Remittance liability | collected VAT held for remittance per tax rules; model as payable until remitted | `business-model.md` §3 (`ASM-10` `UNSUPPORTED`) |
-| Reporting | admin finance reports expose VAT collected per period (exact figures from ledger, not estimates) | `07-api/endpoints/analytics.md` `totalsMeta` rule |
+| Reporting | admin finance reports expose VAT collected per period (exact figures from ledger, not estimates) | `../07-api/core/analytics.md` `totalsMeta` rule |
 
 **Evidence**: boundary-matrix test suite (100% green) + sampled production-like orders with correct breakdowns = `AC-NFR-019-01`. Rate, filing cadence and remittance mechanics remain `INSUFFICIENT EVIDENCE` until `DEP-09`/`ASM-10` resolve — tests use the canon-configured rate constant, not a hardcoded assumption.
 

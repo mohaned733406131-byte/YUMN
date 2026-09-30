@@ -24,7 +24,7 @@ Each block `B01…B13` is one NestJS module (see DOC-ARCH-004). Every module has
 |---|---|
 | **Public surface** | Only services/DTOs exported from the module's `*.public.ts` (or Nest provider exports) may be imported by other modules |
 | **Private interior** | Entities, repositories, Prisma mappers, internal helpers are invisible outside the module |
-| **Own schema** | Each module owns its PostgreSQL schema `b01…b13` (1:1 block mapping, `08-database/database-overview.md`) |
+| **Own schema** | Each module owns its PostgreSQL schema `b01…b13` (1:1 block mapping, `../../08-database/core/database-overview.md`) |
 | **Own queues** | Jobs are named `{block}.{entity}.{action}` and are produced/consumed only by the owning module's workers (`BR-PLT-01`) |
 | **Own tests** | Unit tests cover private logic; contract tests cover the public surface (`NFR-010`) |
 

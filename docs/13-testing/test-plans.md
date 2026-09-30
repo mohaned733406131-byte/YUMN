@@ -25,7 +25,7 @@ Executable plans for the yumn verification effort. Methodology (levels, coverage
 | Plan | Domain | TC range | FR / key BR / C coverage | Entry criteria | Automation |
 |---|---|---|---|---|---|
 | PLAN-01 | Authentication | TC-001–010 | FR-001, BR-AUTH-01…08, C-06, C-08, SEC-REQ-001/003/005 | FR-001 ACs stable; OTP mock adapter + SMS sandbox available | 95% |
-| PLAN-02 | Authorization | TC-011–014 | FR-002, BR-VND-06/07, SEC-REQ-004, AC-FR002-01…05, AC-SR004-01…04 | RBAC matrix defined in `09-security/rbac.md`; ≥2 roles seeded per actor | 100% |
+| PLAN-02 | Authorization | TC-011–014 | FR-002, BR-VND-06/07, SEC-REQ-004, AC-FR002-01…05, AC-SR004-01…04 | RBAC matrix defined in `../09-security/core/rbac.md`; ≥2 roles seeded per actor | 100% |
 | PLAN-03 | Catalog | TC-015–017 | FR-004, BR-CAT-01…08, C-17 | Category tree + Arabic fixtures seeded (DOC-TST-005) | 95% |
 | PLAN-04 | Inventory | TC-018–020 | FR-005, BR-CAT-07, C-13, C-14 | Timer injection harness available; concurrency runner ready | 95% |
 | PLAN-05 | Reviews & ratings | TC-021–022 | FR-006, BR-REV-01…05 | DELIVERED-order fixture exists | 90% |
@@ -90,7 +90,7 @@ OWASP mapping: injection → SEC-P-04 + Prisma parameterization tests; broken au
 
 ## §d. Reliability & Chaos Plan
 
-Scope: `NFR-006/007`, `INT-REQ-003/006`, `DATA-REQ-004`, `AC-XCUT-04`, drills catalogued in `10-integrations/testing-and-sandboxes.md` §4.
+Scope: `NFR-006/007`, `INT-REQ-003/006`, `DATA-REQ-004`, `AC-XCUT-04`, drills catalogued in `../10-integrations/core/testing-and-sandboxes.md` §4.
 
 | ID | Drill | Injection | Expected outcome | Canon |
 |---|---|---|---|---|

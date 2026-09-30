@@ -105,7 +105,7 @@ Participants, update rules, escalation thresholds, burndown reporting, and ID-al
 
 ## 7. Relationship to Findings, Gaps, and Constraints
 
-- A **security finding (`SEC-NNN`, `09-security/security-findings.md`)** is a design defect discovered by analysis; a **risk (`RISK-NNN`)** is the uncertainty that an event harms an objective. *Finding ≠ risk* — but every finding is screened: if it threatens an objective it feeds (mirrors) a register entry (e.g. `SEC-011` ↔ `RISK-006`). Rules for that screening: `risk-review-process.md` §6.
+- A **security finding (`SEC-NNN`, `../09-security/core/security-findings.md`)** is a design defect discovered by analysis; a **risk (`RISK-NNN`)** is the uncertainty that an event harms an objective. *Finding ≠ risk* — but every finding is screened: if it threatens an objective it feeds (mirrors) a register entry (e.g. `SEC-011` ↔ `RISK-006`). Rules for that screening: `risk-review-process.md` §6.
 - A **gap (`GAP-NNN`, `20-validation/missing-information.md`)** is missing information; unresolved gaps *generate* risks (e.g. `GAP-03` supports notification-channel risk exposure; `GAP-07` feeds RISK-018).
 - A **constraint (`C-01…C-26`)** is never a risk and can never be traded away to reduce one — mitigation may never violate a constraint (root README §9; conflicts go to `20-validation/contradiction-audit.md`).
 

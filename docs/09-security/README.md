@@ -81,7 +81,7 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | SEC-REQ-008 Injection/XSS/CSRF | `security-controls.md` | `threat-model.md` TM-09 |
 | SEC-REQ-009 Rate limiting & abuse | `security-controls.md` | `authentication.md`, `10-integrations/` |
 | SEC-REQ-010 Audit trail integrity | `security-controls.md` | `rbac.md`, `threat-model.md` TM-04 |
-| SEC-REQ-011 File upload security | `security-controls.md` | `data-protection.md`, `10-integrations/bank-transfer-topup.md` |
+| SEC-REQ-011 File upload security | `security-controls.md` | `data-protection.md`, `../10-integrations/core/bank-transfer-topup.md` |
 | SEC-REQ-012 Vulnerability management | `security-controls.md` | this register, `17-risk-management/` |
 
 ---
@@ -107,8 +107,8 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | Audience | Read |
 |---|---|
 | Security engineer | DOC-SEC-001 → `threat-model.md` → `rbac.md` → `security-controls.md` → `security-findings.md` |
-| Backend developer | `authentication.md` → `06-backend/authentication.md` (`DOC-BE-003`) → `rbac.md` → `06-backend/authorization.md` (`DOC-BE-004`) |
-| Payments engineer | `threat-model.md` TM-03/TM-04 → `data-protection.md` → `10-integrations/webhook-reliability.md` |
+| Backend developer | `authentication.md` → `../06-backend/core/authentication.md` (`DOC-BE-003`) → `rbac.md` → `../06-backend/core/authorization.md` (`DOC-BE-004`) |
+| Payments engineer | `threat-model.md` TM-03/TM-04 → `data-protection.md` → `../10-integrations/core/webhook-reliability.md` |
 | Ops / DevOps | `secrets-management.md` → `data-protection.md` (keys, backups) → `14-devops-infrastructure/` |
 | Auditor / reviewer | `security-controls.md` (coverage vs all 12 SEC-REQs) → `security-findings.md` → `13-testing/` |
 

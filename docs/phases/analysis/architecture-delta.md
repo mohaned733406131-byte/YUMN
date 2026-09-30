@@ -47,7 +47,7 @@ None (documentation only).
 
 ## Open questions (COM-01)
 1. Sponsor/tech-lead review of `RULES_HINTS.md` §8 — PENDING (blocks phase-gate use per AUD-05).
-2. Path-spelling reconciliation (`D-08`): ops docs cite `apps/api`/`apps/web` — canonical tree is `../../05-frontend/core/frontend-architecture.md` §1 + `06-backend/backend-architecture.md` §1.
+2. Path-spelling reconciliation (`D-08`): ops docs cite `apps/api`/`apps/web` — canonical tree is `../../05-frontend/core/frontend-architecture.md` §1 + `../../06-backend/core/backend-architecture.md` §1.
 
 ## Change History
 

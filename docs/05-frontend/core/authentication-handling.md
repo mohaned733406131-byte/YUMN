@@ -14,7 +14,7 @@ related_documents: [DOC-FE-001, DOC-FE-003, DOC-FE-004, DOC-FE-005]
 
 # Authentication Handling (Client)
 
-How the five apps implement **FR-001** on the client. Security *design* lives in `09-security/authentication.md`; server implementation in `06-backend/authentication.md`. This file covers client flows, storage, guards and UX — always subordinate to server rules (`SEC-REQ-004`).
+How the five apps implement **FR-001** on the client. Security *design* lives in `../../09-security/core/authentication.md`; server implementation in `../../06-backend/core/authentication.md`. This file covers client flows, storage, guards and UX — always subordinate to server rules (`SEC-REQ-004`).
 
 ---
 

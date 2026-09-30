@@ -67,7 +67,7 @@ Sequencing rule: steps 3–5 are the **only** credit path; step 1's client respo
 
 - Callback accepted only if: source IP ∈ provider allowlist **and** HMAC valid (constant-time) **and** timestamp inside the replay window → else `401`, security metric, zero effect (`AC-IR001-04`, `AC-IR006-02`).
 - Signature computed over the **raw body** before JSON parsing (parser differentials).
-- Replay window and nonce persistence: fixed in `10-integrations/webhook-reliability.md` (design: ±5 min) — tracked as `SEC-005` until implemented.
+- Replay window and nonce persistence: fixed in `webhook-reliability.md` (design: ±5 min) — tracked as `SEC-005` until implemented.
 - Secrets (merchant key, webhook secret) come from environment only (`SEC-REQ-007`, inventory S-04/S-05).
 - Every accepted credit writes an audit entry (actor = SYSTEM, action = TOPUP_CREDIT) (`BR-PLT-06`, `SEC-REQ-010` R2).
 

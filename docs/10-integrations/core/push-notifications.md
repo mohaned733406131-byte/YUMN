@@ -14,7 +14,7 @@ related_documents: [DOC-INT-000, DOC-INT-001, DOC-INT-005, DOC-IR-004, DOC-FR-01
 
 # Push Notifications — FCM + APNs (`FR-017`)
 
-Push delivery for the React Native apps (Android via **FCM**, iOS via **APNs**) behind a single `PushPort` so platform specifics never leak into notification logic (`INT-REQ-008` pattern applied to a first-party channel). Endpoint/payload contracts are specified in `07-api/endpoints/notifications.md`; this file owns token lifecycle, fan-out, staleness, and fallback behavior.
+Push delivery for the React Native apps (Android via **FCM**, iOS via **APNs**) behind a single `PushPort` so platform specifics never leak into notification logic (`INT-REQ-008` pattern applied to a first-party channel). Endpoint/payload contracts are specified in `../../07-api/core/notifications.md`; this file owns token lifecycle, fan-out, staleness, and fallback behavior.
 
 ## 1. Architecture
 
@@ -47,7 +47,7 @@ domain event (order · delivery · return · escrow · KYC · store)
 
 ## 3. Payload Contract (deep links)
 
-Canonical contract lives in `07-api/endpoints/notifications.md`; the push payload must contain:
+Canonical contract lives in `../../07-api/core/notifications.md`; the push payload must contain:
 
 | Field | Content | Rule |
 |---|---|---|

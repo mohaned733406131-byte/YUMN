@@ -259,8 +259,8 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 16. API Architecture | `07-api/` |
 | 17. Database Architecture | `08-database/` |
 | 18. Data Flow | `03-system-analysis/core/data-flow.md` + `04-architecture/core/data-flow.md` |
-| 19. Authentication | `09-security/authentication.md` + `06-backend/authentication.md` |
-| 20. Authorization | `09-security/rbac.md` + `06-backend/authorization.md` |
+| 19. Authentication | `09-security/core/authentication.md` + `06-backend/core/authentication.md` |
+| 20. Authorization | `09-security/core/rbac.md` + `06-backend/core/authorization.md` |
 | 21. Security | `09-security/` |
 | 22. Integrations | `10-integrations/` |
 | 23. Performance | `12-non-functional/performance.md` |

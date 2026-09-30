@@ -14,7 +14,7 @@ related_documents: [DOC-BE-001, DOC-BE-002, DOC-BE-003, DOC-BA-005]
 
 # Authorization — Implementation Placement
 
-**Design** (permission matrices, role definitions, control rationale) lives in `09-security/rbac.md`. This file covers **where FR-002 / SEC-REQ-004 are enforced in code** and the standard enforcement points every endpoint must use. The 7 actors are canonical (`00-project-overview/actors-and-roles.md`).
+**Design** (permission matrices, role definitions, control rationale) lives in `../../09-security/core/rbac.md`. This file covers **where FR-002 / SEC-REQ-004 are enforced in code** and the standard enforcement points every endpoint must use. The 7 actors are canonical (`00-project-overview/actors-and-roles.md`).
 
 ---
 
@@ -47,7 +47,7 @@ HTTP request
 | Concept | Representation | Notes |
 |---|---|---|
 | Actors | enum `Role { CUSTOMER, VENDOR_OWNER, VENDOR_STAFF_VIEWER, VENDOR_STAFF_EDITOR, VENDOR_STAFF_MANAGER, COURIER, ADMIN, SUPER_ADMIN, MODERATOR, SYSTEM }` | maps to the 7 actors; vendor staff are ACT-02 sub-roles (`BR-VND-06`) |
-| Permissions | string atoms `resource:action` (e.g. `product:update`, `refund:approve`, `audit:read`) | matrix defined in `09-security/rbac.md`; code reads it, never redefines it |
+| Permissions | string atoms `resource:action` (e.g. `product:update`, `refund:approve`, `audit:read`) | matrix defined in `../../09-security/core/rbac.md`; code reads it, never redefines it |
 | Assignment | DB tables in `b01` (user roles) and `b03` (staff roles scoped to `store_id`) | only Super Admin manages platform roles; only Owner manages staff (`BR-VND-06`) |
 | Claims | JWT carries role list + `sid` + `store_id` where applicable | roles checked from token; **privilege changes revoke/reissue sessions** so stale tokens can't escalate |
 | System actor | service identity (`ACT-07`) with machine credentials — no interactive login | used by jobs/webhooks |
@@ -80,13 +80,13 @@ Implementation: ownership predicates are **mandatory parameters** of repository 
 
 ## 5. Admin / Moderator Matrix
 
-- The definitive permission matrix is `09-security/rbac.md`; `06-backend/authorization.md` (this file) only maps it to guards.
+- The definitive permission matrix is `../../09-security/core/rbac.md`; `authorization.md` (this file) only maps it to guards.
 - Coding pattern: `@RequirePermissions('kyc:decide')`, `@RequireRoles(Role.ADMIN, Role.SUPER_ADMIN)` — matrix changes require updating *both* docs and the permission registry in code, verified by a CI conformance test (matrix ↔ guard decorators diff).
 - Escalation rules that must appear in code: self-role-change blocked (staff test 3), Moderator cannot approve money actions, Super Admin is the only role manager (`FR-020`).
 
 ## 6. Where Frontend Guards Fit
 
-Route guards and hidden buttons in `../05-frontend/core/routing.md` §6 are **UX mirrors only**. Consequences:
+Route guards and hidden buttons in `../../05-frontend/core/routing.md` §6 are **UX mirrors only**. Consequences:
 
 1. Every guard decorator has a corresponding (stronger) server check — never the reverse.
 2. API responses to unauthorized callers are 403 `FORBIDDEN` (or 404 for foreign resources to avoid existence disclosure).
@@ -109,7 +109,7 @@ Emitted via `shared/events` → `b13-platform` audit writer; audit table is appe
 |---|---|
 | Unit | permission registry resolution, ownership predicate logic |
 | Integration | each endpoint class called with wrong role → 403; foreign ID → 404 |
-| Conformance (CI) | RBAC matrix ↔ guard decorators ↔ API role register (`07-api/api-conventions.md` §4) ↔ `user_role.role` enum diff must be empty — asserted against the cross-layer mapping at `09-security/rbac.md` §8 |
+| Conformance (CI) | RBAC matrix ↔ guard decorators ↔ API role register (`../../07-api/core/api-conventions.md` §4) ↔ `user_role.role` enum diff must be empty — asserted against the cross-layer mapping at `../../09-security/core/rbac.md` §8 |
 | Security tests | TC-011…TC-014 (cross-user, cross-store, staff escalation, direct API bypass) |
 | Regression | every `SEC-REQ-004` test in `02-requirements/` |
 
@@ -118,4 +118,4 @@ Emitted via `shared/events` → `b13-platform` audit writer; audit table is appe
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
-| 1.1 | 2026-09-27 | Conformance (CI) row extended from matrix ↔ decorators to a four-way assertion (matrix ↔ decorators ↔ API role register ↔ `user_role.role` enum) against `09-security/rbac.md` §8 | `REC-07`/`TD-08` pay-down — cross-layer parity now has an explicit test definition |
+| 1.1 | 2026-09-27 | Conformance (CI) row extended from matrix ↔ decorators to a four-way assertion (matrix ↔ decorators ↔ API role register ↔ `user_role.role` enum) against `../../09-security/core/rbac.md` §8 | `REC-07`/`TD-08` pay-down — cross-layer parity now has an explicit test definition |

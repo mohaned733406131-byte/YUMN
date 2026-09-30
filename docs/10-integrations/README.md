@@ -60,7 +60,7 @@ This directory owns the **integration contracts**: concrete endpoints, payload s
 | INT-REQ-003 | SMS provider failover | `sms-provider.md` | `integration-overview.md` §4, `whatsapp-business.md` §1 |
 | INT-REQ-004 | WhatsApp Business notifications | `whatsapp-business.md` | `push-notifications.md` §7 (channel fallbacks) |
 | INT-REQ-005 | Delivery orchestration | `integration-overview.md` §1 (`DeliveryProviderPort`) | `testing-and-sandboxes.md` §4 |
-| INT-REQ-006 | Webhook robustness | `webhook-reliability.md` | `integration-overview.md` §5, `09-security/security-controls.md` |
+| INT-REQ-006 | Webhook robustness | `webhook-reliability.md` | `integration-overview.md` §5, `../09-security/core/security-controls.md` |
 | INT-REQ-007 | Observability export | `integration-overview.md` §7 | `webhook-reliability.md` §4 (DLQ alerting) |
 | INT-REQ-008 | Provider abstraction | `integration-overview.md` §1 | every provider file + `testing-and-sandboxes.md` §3/§8 |
 
@@ -108,7 +108,7 @@ This directory owns the **integration contracts**: concrete endpoints, payload s
 ## 9. Domain Boundaries
 
 **Owned here:** provider contracts, degradation behavior, webhook mechanics, integration testing strategy.
-**Not owned here:** requirement statements/ACs (`02-requirements/`); job/queue mechanics of the monolith (`06-backend/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`12-non-functional/observability.md`); environment wiring (`14-devops-infrastructure/`).
+**Not owned here:** requirement statements/ACs (`02-requirements/`); job/queue mechanics of the monolith (`../06-backend/core/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`12-non-functional/observability.md`); environment wiring (`14-devops-infrastructure/`).
 
 ## Change History
 

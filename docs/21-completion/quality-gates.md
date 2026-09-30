@@ -106,7 +106,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 | 1.4 | Money-path suites green | Checkout/payment/wallet + escrow + ledger invariant suites pass; `J1`/`J2` run in staging with seeded-mismatch detected within one run; ledger design promises implemented (append-only postings, single write path) | `AC-S-14`, `AC-S-15`; RISK-001 kill criterion; STK-01 rule |
 | 1.5 | Constraint tests | `TST-CON-01…26` executed for constraints in scope; target 26/26 at release, with no regression in the touched set | `13-testing/constraint-tests.md`; `AC-S-02`; G-TEST-2 |
 | 1.6 | Performance vs NFRs | k6 evidence at staging scale against `NFR-001/002/004`, `NFR-003` (`C-25`), `NFR-017`; early `PERF-01/04` runs green or remediated | `test-plans.md` §b; G-TEST-4 |
-| 1.7 | Security findings triage | `SEC-P-01…SEC-P-09` results reviewed; `09-security/security-findings.md` entries triaged — 0 open CRITICAL/HIGH security defects; `SEC-011` (uncontracted sole auth channel, CRITICAL) and `SEC-015` (escrow TOCTOU, HIGH) closed or formally risk-accepted | `test-plans.md` §c exit; `security-findings.md`; G-TEST-5 |
+| 1.7 | Security findings triage | `SEC-P-01…SEC-P-09` results reviewed; `../09-security/core/security-findings.md` entries triaged — 0 open CRITICAL/HIGH security defects; `SEC-011` (uncontracted sole auth channel, CRITICAL) and `SEC-015` (escrow TOCTOU, HIGH) closed or formally risk-accepted | `test-plans.md` §c exit; `security-findings.md`; G-TEST-5 |
 | 1.8 | Design completeness | Customer-facing screens pass the design-complete gate (IA location, flow entry, all states, tokens, accessibility attributes, `ar`/`en` copy) | `11-ui-ux/README.md` L114 |
 | 1.9 | Risk + debt checks | G-R1…G-R7 and D-1…D-4 run; debt register reviewed | §2 above |
 
@@ -155,7 +155,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 | # | Check | Pass criterion | Canon |
 |---|---|---|---|
 | 3.1 | SLOs in service | Availability evidence against `AC-S-06` (99.99% over any rolling 30-day window) reviewed; latency/error SLOs monitored with RED metrics; alert inventory current | `AC-S-06`, `AC-S-18`; `12-non-functional/observability.md`; G-TEST-7 |
-| 3.2 | Residual CRITICALs | No `CRITICAL` security finding or risk remains undispositioned; each residual has owner, severity, and written acceptance | `09-security/security-findings.md`; `risk-review-process.md` §4 |
+| 3.2 | Residual CRITICALs | No `CRITICAL` security finding or risk remains undispositioned; each residual has owner, severity, and written acceptance | `../09-security/core/security-findings.md`; `risk-review-process.md` §4 |
 | 3.3 | Debt register review | `21-completion/technical-debt.md`: every `TD-NN` reviewed — paid down, scheduled, or explicitly accepted with rationale | `21-completion/technical-debt.md`; D-2 |
 | 3.4 | Assumption re-score with real data | Pilot/production evidence re-scores `ASM-01`, `ASM-05`, `ASM-06`, `ASM-08`, `ASM-09`; `GAP-01` targets set by sponsor are tracked | `assumptions.md`; RISK-002/RISK-024 actions |
 | 3.5 | Risk burndown | Burndown report produced honestly (no smoothing; re-scoring up shown as a spike) | `risk-review-process.md` §8 |

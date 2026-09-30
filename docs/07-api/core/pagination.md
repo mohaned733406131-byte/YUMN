@@ -14,7 +14,7 @@ related_documents: [DOC-API-001, DOC-API-002, DOC-API-003, DOC-REQ-001, DOC-BA-0
 
 # Pagination, Filtering, Sorting & Search Result Shape
 
-Rules for **every** list/read-collection endpoint in `07-api/endpoints/`. Endpoint files state only which mode applies (`cursor` or `offset`).
+Rules for **every** list/read-collection endpoint in `07-api/`. Endpoint files state only which mode applies (`cursor` or `offset`).
 
 ---
 

@@ -76,7 +76,7 @@ Any violated invariant aborts the transaction (no partial ledger) and surfaces t
 Consistent state across wallet/order/escrow/stock; every mutation auditable (`audit_log`, `LOG-01`).
 
 ## Data entities touched
-All 18 entities: [`08-database/entities/`](../../08-database/entities/README.md) (`DB-001…DB-018`).
+All 18 entities: [`08-database/`](../../08-database/entities-index.md) (`DB-001…DB-018`).
 
 ## Open questions (COM-01)
 1. `D-07`: API promises storage with no entity (push devices, review reports, dispute evidence, ticket messages, vendor application, top-up proof, payout account, deletion request) — add entities or remove endpoints before implementation.

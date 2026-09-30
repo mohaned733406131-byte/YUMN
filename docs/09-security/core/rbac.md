@@ -14,7 +14,7 @@ related_documents: [DOC-SEC-001, DOC-SEC-002, DOC-SEC-007, DOC-FR-002, DOC-BA-00
 
 # RBAC — Authorization Design (Source of Truth)
 
-**This document is the definitive role × capability matrix** for the 7 canonical actors (`DOC-OVR-007` ACT-01…ACT-07). `06-backend/authorization.md` (`DOC-BE-004`) maps these decisions to guards and service-layer checks; it never redefines a decision. Expands `FR-002` / `SEC-REQ-004`.
+**This document is the definitive role × capability matrix** for the 7 canonical actors (`DOC-OVR-007` ACT-01…ACT-07). `../../06-backend/core/authorization.md` (`DOC-BE-004`) maps these decisions to guards and service-layer checks; it never redefines a decision. Expands `FR-002` / `SEC-REQ-004`.
 
 ## 1. Authorization Principles
 
@@ -116,7 +116,7 @@ Staff roles are attributes of the VENDOR actor — they never widen beyond `stor
 
 ## 8. Cross-Layer Role Mapping (API ↔ application ↔ database)
 
-One authoritative reconciliation of the three role representations: endpoint declarations (`07-api/api-conventions.md` §4), the coding enum (`06-backend/authorization.md` §2), and persisted grants (`08-database/constraints-and-integrity.md` enum register, `b01.user_role`). The layers differ in cardinality (7 / 10 / 6) but must never disagree about who a caller is.
+One authoritative reconciliation of the three role representations: endpoint declarations (`../../07-api/core/api-conventions.md` §4), the coding enum (`../../06-backend/core/authorization.md` §2), and persisted grants (`../../08-database/core/constraints-and-integrity.md` enum register, `b01.user_role`). The layers differ in cardinality (7 / 10 / 6) but must never disagree about who a caller is.
 
 | # | Actor | API role (endpoint declaration) | Application enum | Persisted representation |
 |---|---|---|---|---|
@@ -138,7 +138,7 @@ Reconciliation rules:
 - **6 → 7 (DB → API):** `SYSTEM` is declared at the API as a non-interactive service identity with no endpoints (`api-conventions.md` §4, principle P6) and has no `user_role` row.
 - **Staff sub-role count:** `b03.store_member` holds exactly the three staff values — §7's Owner row maps to `Role.VENDOR_OWNER` (row 2); there is no `VENDOR_STAFF_OWNER` enum value (`INFERENCE` — the enum is explicitly 10 values).
 - **Fail closed:** a JWT role, enum value, or `user_role.role` value absent from this table is an unmapped mapping → 403, never 200 (principle P2, `AC-SR004-04`).
-- **Enforcement:** the CI conformance check extended at `06-backend/authorization.md` §8 asserts this table against all three registers — RBAC matrix ↔ guard decorators ↔ API role values ↔ `user_role.role` enum — and fails on any diff.
+- **Enforcement:** the CI conformance check extended at `../../06-backend/core/authorization.md` §8 asserts this table against all three registers — RBAC matrix ↔ guard decorators ↔ API role values ↔ `user_role.role` enum — and fails on any diff.
 
 ## 9. Admin Console Additional Controls
 
@@ -170,7 +170,7 @@ they do not add actor rows, so the §8 cardinality invariant (API 7 = enum 10 �
 one or more department bundles; the persisted shape is designed with the Phase 1 schema work (no new
 `user_role.role` values — a bundle may only grant capabilities the §2 `ADMIN` column already allows).
 
-| ID | Department | Owns (existing endpoint groups, `07-api/endpoints/admin.md`) | Must NOT touch |
+| ID | Department | Owns (existing endpoint groups, `../../07-api/admin/admin.md`) | Must NOT touch |
 |---|---|---|---|
 | `ORG-01` | **Finance & Payments** | bank top-ups (`API-ADM-030…032`), freeze/unfreeze, payout ops, reconciliation, invoices, tax reports | ledger rows (append-only), role management |
 | `ORG-02` | **Vendor Success / Merchant Ops** | KYC queue (`API-ADM-005…008`), stores (`API-ADM-009…013`), vendor plans/agreements | KYC *policy* changes, money |

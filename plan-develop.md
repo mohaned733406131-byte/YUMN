@@ -36,7 +36,7 @@
    carry **document-local IDs `M-nn` (modification), `P-nn` (proposed feature), `ORG-nn` (admin org),
    `ROLE-nn` (role)** — minted into their owning registers only after approval. **Minted 2026-09-28:**
    `ORG-01`…`ORG-08` and `ROLE-01`…`ROLE-07`/`ROLE-09` now live in
-   [`rbac.md`](docs/09-security/rbac.md) §11 (`ROLE-08`/`ROLE-10`/`ROLE-11` stay document-local —
+   [`rbac.md`](docs/09-security/core/rbac.md) §11 (`ROLE-08`/`ROLE-10`/`ROLE-11` stay document-local —
    their conditions are unmet); `M-nn`/`P-nn` convert to `FR-*` + ACs at their build wave
    (never earlier — `SPE-03`/`D-02` discipline).
 5. **Evidence tags:** `VERIFIED` = confirmed in a cited corpus file this session · `INFERENCE` =
@@ -54,7 +54,7 @@
 | `M-02` | **Top-up rails** — `FR-013`, `C-05`, `INT-REQ-001` | Register **Al-Kuraimi** and **Jeeb** as additional wallet providers behind the existing `PaymentProviderPort`; provider PIN verification callback, webhook signature, degradation matrix update | Sponsor spec §2.1 vs `C-05` fixed set (m-Floos, OneCash, bank transfer) → `CT-24` (`HIGH`, `OPEN`); also enlarges `DEP-05` (NOT STARTED, Gate-0 blocker) and needs `GAP-10` API specs. Bank-transfer half already agrees (`BR-PAY-04`, `UC-034`) |
 | `M-03` | **Authentication** — `FR-001`, `C-06`, `SEC-REQ-001` | Make **email an optional, verified secondary identifier** (login + password reset), phone stays mandatory and remains the OTP factor; never an email-primary path | Sponsor spec §7 vs `C-06` "Phone + OTP only, no email-primary auth" → `CT-25` (`HIGH`, `OPEN`, `GAP-13`). Reduces account-takeover recovery dead-ends (`GAP-12` also touches recovery). Security impact (enumeration, reset flows) ⇒ threat-model delta required |
 | `M-04` | **Escrow release rule** — `FR-014`, `C-12`, `BR-ESC-01…08`, `DB-012 escrow` | Replace/augment the fixed `release_at = DELIVERED + 7d` timer with **merchant-defined return-period hold + partial release of non-returned items** (per-line maturity, split release postings) | Sponsor spec §5 vs `C-12` (7-day hold) → `CT-26` (`HIGH`, `OPEN`). Merchant return policy itself already exists (`C-11`, `BR-RET-01`) — only the *escrow maturity* rule conflicts. Money-critical ⇒ ADR before any `b07` build (`ORD-08`-style gate) |
-| `M-05` | **Wallet creation lifecycle** — `FR-013` vs [`entities/wallet.md`](docs/08-database/entities/wallet.md) | Pick **one**: wallet row created at registration (after phone verification) *or* lazily on first top-up/order; align API, entity doc, ACs and tests | `CT-30` (`MEDIUM`, `OPEN`) — canon-internal contradiction surfaced by sponsor §1 ("registered **and verified**"); `FR-013.md` and the entity doc disagree today. Cheap to fix, expensive if built twice |
+| `M-05` | **Wallet creation lifecycle** — `FR-013` vs [`docs/08-database/core/wallet.md`](docs/08-database/core/wallet.md) | Pick **one**: wallet row created at registration (after phone verification) *or* lazily on first top-up/order; align API, entity doc, ACs and tests | `CT-30` (`MEDIUM`, `OPEN`) — canon-internal contradiction surfaced by sponsor §1 ("registered **and verified**"); `FR-013.md` and the entity doc disagree today. Cheap to fix, expensive if built twice |
 | `M-06` | **System money boundary** — `FR-013`, `system-context.md`, `BR-PAY-07` | Decide whether **peer-to-peer account funding** and **customer withdrawals to external wallets** become legal flows (new ledger posting types, limits, velocity/fraud controls, admin approval queue) — or are explicitly rejected | Sponsor §3.2 vs load-bearing principle "money never flows directly between actors" → `CT-27` (`HIGH`, `OPEN`); withdrawal vs `BR-PAY-07` → `CT-28` (`MEDIUM`, `OPEN`). If approved: re-opens AML/fraud scope, `SEC-*` controls and `AC-S-*` assertions |
 | `M-07` | **Admin reach over customer money** — `FR-002`, `rbac.md` rows 15/16, `SEC-REQ-004` | Recommended disposition: **NO** direct balance read/write for anyone; replace with read-only *aggregate* finance dashboards + explicitly enumerated, audited support actions (freeze already exists: `API-ADM-033/034`) | Sponsor §4 ("operations … individually or **collectively** … any actions deemed appropriate") vs `rbac.md` deny rows + append-only ledger → `CT-29` (`HIGH`, `OPEN`) needs sponsor **and** security sign-off. `rbac.md` is `source_of_truth` |
 | `M-08` | **Spec consistency on money/state enums** — `D-06`, `D-07`, `CRIT-03` | Reconcile API ↔ DB vocabularies (product status, KYC `IN_REVIEW`, top-up lifecycle, refund/payout/dispute states, ledger `type`, notification categories) and add the entities the API promises but the DB lacks (push device tokens, dispute evidence, support messages, vendor application, payout account) | `SPE-02/03/04` forbid coding against contradictory specs; `CRIT-03/07` (`HIGH`, `OPEN`) + `CT-06…CT-10`, `CT-18…CT-20` all `OPEN`. Must close **before** schema freeze in Phase 1 — otherwise migration churn on money tables |
@@ -102,7 +102,7 @@
   order/sub-order FK, money in integer YER, VAT breakdown, hash for tamper evidence), generation via
   BullMQ job on payment/refund events (queue naming `{block}.{entity}.{action}`, register row added),
   PDF renderer in a worker (never in request path — `F10`), `GET/POST` endpoints under
-  `/api/v1/...` following [`api-conventions.md`](docs/07-api/api-conventions.md), audit on issue/void.
+  `/api/v1/...` following [`api-conventions.md`](docs/07-api/core/api-conventions.md), audit on issue/void.
   Ledger postings stay exclusively in `LedgerService.post` (`F7`).
 - *Importance:* invoices are the legal artefact of every transaction; today the platform moves money
   with **no** invoice document anywhere in the spec. Required before real merchants onboard.
@@ -473,7 +473,7 @@ behind the connector port so switching Option A → B is configuration, not re-p
 
 ### 5.1 What exists today (verified)
 
-[`docs/07-api/endpoints/admin.md`](docs/07-api/endpoints/admin.md) defines `API-ADM-001…043` across
+[`docs/07-api/admin/admin.md`](docs/07-api/admin/admin.md) defines `API-ADM-001…043` across
 10 sections: users & moderation, KYC review, store lifecycle, category/attribute taxonomy, platform
 settings (`GET /admin/settings` groups `GENERAL, PAYMENT, LOGISTICS, COMMISSION, SECURITY` +
 `PUT /admin/settings/{key}` = `SUPER_ADMIN` + `SETTINGS_VERSION_CONFLICT` optimistic locking), audit &
@@ -487,7 +487,7 @@ administration.
 ### 5.2 Department model (`ORG-01…ORG-08`, proposed)
 
 Keep the **7 canonical actors** (`ACT-01…ACT-07`) and the four-way mapping invariant in
-[`rbac.md`](docs/09-security/rbac.md) §8. Departments are **permission bundles + queue scopes inside
+[`rbac.md`](docs/09-security/core/rbac.md) §8. Departments are **permission bundles + queue scopes inside
 `ADMIN`**, not new actors (§6 explains the alternative).
 
 | ID | Department | Owns (existing endpoints) | Must NOT touch |
@@ -558,7 +558,7 @@ CSV/UTF-8 exports consistent with existing rules; cursor pagination except where
 
 7 actors (`ACT-01 Customer`, `ACT-02 Vendor`, `ACT-03 Courier`, `ACT-04 Admin`, `ACT-05 Super Admin`,
 `ACT-06 Moderator`, `ACT-07 System`) + vendor staff profiles Viewer/Editor/Manager inside `VENDOR`,
-enum 10, DB 6 login roles ([`rbac.md`](docs/09-security/rbac.md) §8).
+enum 10, DB 6 login roles ([`rbac.md`](docs/09-security/core/rbac.md) §8).
 
 ### 6.2 Proposed role additions
 
@@ -647,12 +647,12 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 [`business-rules.md`](docs/01-business-analysis/business-rules.md) ·
 [`requirements-overview.md`](docs/02-requirements/requirements-overview.md) ·
 [`docs/02-requirements/functional-index.md`](docs/02-requirements/functional-index.md) ·
-[`admin.md`](docs/07-api/endpoints/admin.md) · [`analytics.md`](docs/07-api/endpoints/analytics.md) ·
-[`rbac.md`](docs/09-security/rbac.md) ·
+[`admin.md`](docs/07-api/admin/admin.md) · [`analytics.md`](docs/07-api/core/analytics.md) ·
+[`rbac.md`](docs/09-security/core/rbac.md) ·
 [`module-boundaries.md`](docs/04-architecture/core/module-boundaries.md) ·
-[`backend-architecture.md`](docs/06-backend/backend-architecture.md) ·
-[`entities/README.md`](docs/08-database/entities/README.md) ·
-[`integration-overview.md`](docs/10-integrations/integration-overview.md) ·
+[`backend-architecture.md`](docs/06-backend/core/backend-architecture.md) ·
+[`docs/08-database/entities-index.md`](docs/08-database/entities-index.md) ·
+[`integration-overview.md`](docs/10-integrations/core/integration-overview.md) ·
 [`configuration.md`](docs/14-devops-infrastructure/configuration.md) ·
 [`data-quality.md`](docs/16-data/data-quality.md) ·
 [`missing-information.md`](docs/20-validation/missing-information.md) ·

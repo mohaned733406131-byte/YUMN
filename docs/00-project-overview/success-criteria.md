@@ -41,7 +41,7 @@ Success is **verified**, not asserted (methodology: completion = verified comple
 
 | ID | Criterion | Verification |
 |---|---|---|
-| AC-S-12 | Threat model `STP-*` cases all covered by controls/tests | `09-security/threat-model.md` coverage matrix |
+| AC-S-12 | Threat model `STP-*` cases all covered by controls/tests | `../09-security/core/threat-model.md` coverage matrix |
 | AC-S-13 | Zero known exploitable high/critical vulnerabilities at launch (SAST/DAST clean) | Security scan reports |
 | AC-S-14 | Ledger invariant holds: sum of all ledger entries = 0 at every reconciliation point | Daily automated reconciliation job + audit report |
 | AC-S-15 | All money-moving operations idempotent and double-entry balanced | Integration tests `TC-*` in payment suite |

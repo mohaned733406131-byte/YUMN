@@ -224,7 +224,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Action | Owner | Phase |
 |---|---|---|
 | Performance budgets in CI: bundle < 200 KB gzipped, query-shape review per endpoint | Technical lead | Phase 1 |
-| Redis read cache for catalog with ≥ 80% hit target (`NFR-004`, ADR-005); cursor pagination for deep lists (`07-api/pagination.md`) | Technical lead | Phase 1 |
+| Redis read cache for catalog with ≥ 80% hit target (`NFR-004`, ADR-005); cursor pagination for deep lists (`../07-api/core/pagination.md`) | Technical lead | Phase 1 |
 | Connection pooling + statement/index review against `10M products / 100M rows` capacity plan (`NFR-017`) | Technical lead | Phase 1 |
 | k6 suites at 2× target concurrency before launch; fix regressions, not budgets | QA lead | Phase 2 |
 | Documented scale-out path (API replicas, read replicas) per `NFR-018`/`scalability.md` ready if single host tops out | DevOps lead | Phase 2 |

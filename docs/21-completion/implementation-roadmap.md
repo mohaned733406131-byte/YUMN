@@ -92,7 +92,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 | 2 | Coverage against the AC registry (253 ACs) with zero uncovered ACs in built scope | `02-requirements/acceptance-criteria.md`; `AC-S-03` |
 | 3 | Money-path suites green (checkout/payment/wallet, escrow, ledger invariant) | `../01-business-analysis/core/stakeholder-needs.md` STK-01; `00-project-overview/stakeholders.md` conflicts table |
 | 4 | Performance evidence vs NFRs at staging scale | `13-testing/test-plans.md` §b; `AC-S-05` |
-| 5 | Security findings triaged — 0 open CRITICAL/HIGH security defects | `09-security/security-findings.md`; `test-plans.md` §c exit |
+| 5 | Security findings triaged — 0 open CRITICAL/HIGH security defects | `../09-security/core/security-findings.md`; `test-plans.md` §c exit |
 | 6 | Constraint tests `TST-CON-01…26` 26/26 PASS for constraints touched by built scope | `13-testing/constraint-tests.md`; `AC-S-02` |
 
 **Content:**
@@ -178,7 +178,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 | # | Criterion | Canon |
 |---|---|---|
 | 1 | Availability evidence vs `AC-S-06` (99.99% over any rolling 30-day window) | `00-project-overview/success-criteria.md` |
-| 2 | Residual CRITICAL items dispositioned: security findings, CRITICAL risks, open `GAP-*` | `09-security/security-findings.md`; `17-risk-management/risk-register.md` |
+| 2 | Residual CRITICAL items dispositioned: security findings, CRITICAL risks, open `GAP-*` | `../09-security/core/security-findings.md`; `17-risk-management/risk-register.md` |
 | 3 | Technical-debt register reviewed; every `TD-NN` has an owner and a decision | `21-completion/technical-debt.md` |
 | 4 | Assumptions re-scored against real data (`ASM-01`, `ASM-05`, `ASM-06`, `ASM-08`, `ASM-09`, plus `GAP-01` targets once set) | `00-project-overview/assumptions.md` |
 | 5 | Monthly standing risk reviews and burndown produced; flat-by-construction honesty rule honored while pre-implementation | `17-risk-management/risk-review-process.md` §1, §8 |

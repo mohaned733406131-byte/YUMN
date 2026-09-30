@@ -48,6 +48,6 @@ All three endpoints are GETs (side-effect free, idempotent). `API-SRC-001` uses 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
-| 1.1 | 2026-09-27 | Index-sync queue name corrected: `b02.product.index` → `b02.catalog.index` per the canonical register | `REC-06`/`TD-07` pay-down — queue names must appear verbatim in `06-backend/background-processing.md` §1 |
+| 1.1 | 2026-09-27 | Index-sync queue name corrected: `b02.product.index` → `b02.catalog.index` per the canonical register | `REC-06`/`TD-07` pay-down — queue names must appear verbatim in `../../06-backend/core/background-processing.md` §1 |
 
 

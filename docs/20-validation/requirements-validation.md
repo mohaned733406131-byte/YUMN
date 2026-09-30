@@ -33,7 +33,7 @@ Validation of the requirement set against `02-requirements/requirements-overview
 |---|---|---|---|
 | M1 | Field presence (the 9 §6 fields) | 68/68 (612 field assertions) | Heading/inline-marker regex per category template (`## Description`, `## Preconditions`, `**Priority**`, …) |
 | M2 | Acceptance criteria cited | 68/68 | Regex `AC-(FR\|NFR\|SR\|DR\|IR)*-NN` per file, deduplicated |
-| M3 | Every cross-referenced ID resolves | 68/68 (908 defined tokens in scope) | Extracted `BR-*`, `FR-*`, `NFR-*`, `SEC-REQ-*`, `DATA-REQ-*`, `INT-REQ-*`, `C-*`, `ASM-*`, `DEP-*`, `OBJ-*`, `UC-*`, `workflow-*`, `RISK-*`, `GAP-*`, `TC-*`, `AC-*` from each file; membership test against owning registers (`business-rules.md`, `project-constraints.md`, `assumptions.md`, `dependencies.md`, `acceptance-criteria.md`, `success-criteria.md`, `risk-register.md`, `project-scope.md`, `use-cases/`, `workflows/`, `test-cases/`, `07-api/endpoints/`) |
+| M3 | Every cross-referenced ID resolves | 68/68 (908 defined tokens in scope) | Extracted `BR-*`, `FR-*`, `NFR-*`, `SEC-REQ-*`, `DATA-REQ-*`, `INT-REQ-*`, `C-*`, `ASM-*`, `DEP-*`, `OBJ-*`, `UC-*`, `workflow-*`, `RISK-*`, `GAP-*`, `TC-*`, `AC-*` from each file; membership test against owning registers (`business-rules.md`, `project-constraints.md`, `assumptions.md`, `dependencies.md`, `acceptance-criteria.md`, `success-criteria.md`, `risk-register.md`, `project-scope.md`, `use-cases/`, `workflows/`, `test-cases/`, `07-api/`) |
 | M4 | Registry alignment | 6 prefixes | Defined-vs-cited AC counts per category; parenthetical BR IDs quoted by requirement files vs `requirements-overview.md` |
 | C1 | 7-question content test | 18/68 sampled files | Line-by-line read; verdicts tagged `VERIFIED`/`INFERENCE` |
 

@@ -21,13 +21,13 @@ CORE-03 item 9 / `SEC-04`: threat model, attack surface, findings, mitigations f
 Analysis-phase attack surface = the *designed* system: 221 endpoints (`07-api/`), 18 entities (`08-database/`), 4 external integrations (`10-integrations/`), 5 shells (web ×3, mobile ×2).
 
 ## Threat model (roll-up)
-- Canonical: [`threat-model.md`](../../09-security/threat-model.md) (STRIDE-classified, per-entry-point).
-- Controls catalogue: [`security-controls.md`](../../09-security/security-controls.md); requirements: `SEC-REQ-001`…`SEC-REQ-012` (`02-requirements/`).
-- Secrets: [`secrets-management.md`](../../09-security/secrets-management.md) — host-only, mode `0600`, fail-fast `CONFIG_MISSING: <name>` (`SEC-REQ-007`, `OPS-02`).
+- Canonical: [`threat-model.md`](../../09-security/core/threat-model.md) (STRIDE-classified, per-entry-point).
+- Controls catalogue: [`security-controls.md`](../../09-security/core/security-controls.md); requirements: `SEC-REQ-001`…`SEC-REQ-012` (`02-requirements/`).
+- Secrets: [`secrets-management.md`](../../09-security/core/secrets-management.md) — host-only, mode `0600`, fail-fast `CONFIG_MISSING: <name>` (`SEC-REQ-007`, `OPS-02`).
 
 ## Findings (phase security audit)
 
-Register: [`security-findings.md`](../../09-security/security-findings.md) — **`SEC-001`…`SEC-015`, every one `OPEN`** (design-level, raised during this analysis):
+Register: [`security-findings.md`](../../09-security/core/security-findings.md) — **`SEC-001`…`SEC-015`, every one `OPEN`** (design-level, raised during this analysis):
 
 | Severity | Count | IDs |
 |---|---|---|

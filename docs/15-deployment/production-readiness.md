@@ -36,7 +36,7 @@ Status vocabulary: `NOT DONE` · `DONE` · `WAIVED` (waiver requires sponsor + s
 
 | # | Item | Owner role | Verification method | Status | Evidence pointer |
 |---|---|---|---|---|---|
-| D-1 | All migrations applied forward via `prisma migrate deploy`; zero failed rows | Backend lead | `_prisma_migrations` query + deploy log | NOT DONE | `08-database/migrations-and-evolution.md` §2 |
+| D-1 | All migrations applied forward via `prisma migrate deploy`; zero failed rows | Backend lead | `_prisma_migrations` query + deploy log | NOT DONE | `../08-database/core/migrations-and-evolution.md` §2 |
 | D-2 | Category tree seeded (5 levels) and reference data loaded | Backend lead | Seed script report; row counts vs expected | NOT DONE | `14-devops-infrastructure/environments.md` §1 (reference data only) |
 | D-3 | Commission tiers configured (5–20%, default 10%) in platform settings | Admin / business owner | Admin console `GET /admin/settings` inspection | NOT DONE | `FR-019`, `FR-020`, `BR-ESC-03` |
 | D-4 | VAT settings configured and validated against order totals | Finance owner | VAT boundary tests green on production config | NOT DONE | `NFR-019`, `BR-FIN-01`, `AC-NFR-019-01` |
@@ -60,14 +60,14 @@ Status vocabulary: `NOT DONE` · `DONE` · `WAIVED` (waiver requires sponsor + s
 
 | # | Item | Owner role | Verification method | Status | Evidence pointer |
 |---|---|---|---|---|---|
-| S-1 | All secrets rotated from dev values; environments disjoint | Ops owner | Config review of `.env.production` set | NOT DONE | `09-security/secrets-management.md` §3 |
+| S-1 | All secrets rotated from dev values; environments disjoint | Ops owner | Config review of `.env.production` set | NOT DONE | `../09-security/core/secrets-management.md` §3 |
 | S-2 | ZAP-style DAST baseline clean against staging | Security owner | Scan report with 0 open critical | NOT DONE | `SEC-C-23`, `AC-SR012-02` |
 | S-3 | `SEC-REQ-012` scan suite clean (SAST, dependency, image, secret) | Security owner | Pipeline reports + monthly severity report | NOT DONE | `14-devops-infrastructure/host-hardening.md` §8 |
 | S-4 | Secret scan clean on repo and images | Security owner | `AC-SR007-01/03` results | NOT DONE | `AC-SR-16` |
 | S-5 | Admin accounts: **no MFA in v1** — decision recorded: strong password (bcrypt cost 12) + admin console restricted by IP allowlist + RBAC + full audit | Security owner | Documented decision + IP allowlist configured + audit entries verified | NOT DONE | `SEC-REQ-002/004/010`; MFA exclusion recorded here as the v1 decision |
 | S-6 | First admin accounts created interactively (no seeded credentials) and reviewed | Ops owner | Account inventory; no default passwords | NOT DONE | `14-devops-infrastructure/environments.md` §1 |
 | S-7 | TLS 1.3 enforced; HSTS set; no weak ciphers | DevOps | SSL Labs-style scan | NOT DONE | `SEC-REQ-006` |
-| S-8 | Log/trace scrub test clean (no secrets/PII in logs) | Backend lead | `AC-SR007-04` automated run | NOT DONE | `09-security/secrets-management.md` §4 |
+| S-8 | Log/trace scrub test clean (no secrets/PII in logs) | Backend lead | `AC-SR007-04` automated run | NOT DONE | `../09-security/core/secrets-management.md` §4 |
 
 ## 5. Integrations
 
@@ -75,10 +75,10 @@ Status vocabulary: `NOT DONE` · `DONE` · `WAIVED` (waiver requires sponsor + s
 |---|---|---|---|---|---|
 | G-1 | `DEP-05` m-Floos + OneCash **production** credentials obtained | Business development | Provider contract + live key in vault | NOT DONE | `DEP-05` (status: NOT STARTED) |
 | G-2 | `DEP-06` SMS provider contract + WhatsApp Business approval (`Phase 0` gate) | Business development | Live keys; templates approved | NOT DONE | `DEP-06` (status: NOT STARTED) |
-| G-3 | Provider sandboxes passed (contract tests + chaos drills) | QA engineer | Sandbox test report | NOT DONE | `10-integrations/testing-and-sandboxes.md` |
+| G-3 | Provider sandboxes passed (contract tests + chaos drills) | QA engineer | Sandbox test report | NOT DONE | `../10-integrations/core/testing-and-sandboxes.md` |
 | G-4 | Webhook signatures verified end-to-end (HMAC, replay window, idempotency) | Backend lead | Signed-callback integration tests | NOT DONE | `INT-REQ-006`, `AC-IR006-01/02` |
 | G-5 | SMS failover verified (primary → secondary → WhatsApp fallback) | QA engineer | Failover drill ≥ 99% combined delivery | NOT DONE | `INT-REQ-003`, `BR-NTF-03` |
-| G-6 | Push credentials (FCM/APNs) issued for both apps | Mobile lead | Sandbox push received on lab devices | NOT DONE | `DEP-12`, `10-integrations/push-notifications.md` |
+| G-6 | Push credentials (FCM/APNs) issued for both apps | Mobile lead | Sandbox push received on lab devices | NOT DONE | `DEP-12`, `../10-integrations/core/push-notifications.md` |
 | G-7 | Reconciliation job running against provider statements | Finance owner | Daily reconciliation report, 0 mismatches | NOT DONE | `BR-ESC-08`, `AC-S-14` |
 
 ## 6. Operations

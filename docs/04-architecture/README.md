@@ -66,9 +66,9 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 | Containers | `CNT-NN` | CNT-03 | `container-view.md` |
 | Modules | module name = block (`B01…B13`) | `OrderModule` = B06 | `component-view.md` |
 | Compose services | kebab-case service names | `api`, `worker`, `postgres` | `deployment-view.md` |
-| Queues | `{block}.{entity}.{action}` | `b07.escrow.release` | `06-backend/background-processing.md` §1 (rule `BR-PLT-01`) — single queue register |
-| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `07-api/endpoints/README.md` — 14 groups, 221 endpoints |
-| Database entities | `DB-NNN` in schemas `b01…b13` | `b06` orders schema | registry `08-database/entities/README.md` — `DB-001…DB-018` |
+| Queues | `{block}.{entity}.{action}` | `b07.escrow.release` | `../06-backend/core/background-processing.md` §1 (rule `BR-PLT-01`) — single queue register |
+| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/endpoints-index.md` — 14 groups, 221 endpoints |
+| Database entities | `DB-NNN` in schemas `b01…b13` | `b06` orders schema | registry `../08-database/entities-index.md` — `DB-001…DB-018` |
 | Test cases | `TC-NNN` | `TC-104` | registry `13-testing/test-cases/README.md` — `TC-001…TC-114`; this directory references load/resilience scenarios by `NFR-*` instead |
 
 ## Quality Rules for This Directory
@@ -111,6 +111,6 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-27 | Registry stub rows replaced: the three stale `07-api/`/`08-database/`/`13-testing/` registry stub rows now point at the real registries with paths, ID ranges and real examples (`API-WAL-003`, `DB-001…DB-018`, `TC-001…TC-114`) | `REC-08`/`TD-09` pay-down — stale stubs caused the stop-or-invent-ID failure mode root README §5 forbids |
-| 1.2 | 2026-09-27 | Queues row: example corrected (`b07.wallet.topup` → `b07.escrow.release`) and Defined-in repointed from `data-flow.md` to the single queue register `06-backend/background-processing.md` §1 | `REC-06`/`TD-07` pay-down — register ownership per `naming-conventions.md` §3 |
+| 1.2 | 2026-09-27 | Queues row: example corrected (`b07.wallet.topup` → `b07.escrow.release`) and Defined-in repointed from `data-flow.md` to the single queue register `../06-backend/core/background-processing.md` §1 | `REC-06`/`TD-07` pay-down — register ownership per `naming-conventions.md` §3 |
 
 

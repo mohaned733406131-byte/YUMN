@@ -104,7 +104,7 @@ related_documents: [DOC-OVR-001, DOC-OVR-008]
 | Missing features — ERP/finance core | plan §2.1 (`P-01`…`P-06`), `D2`/`D3`/`D11` | `B07`+`B13`, `erp-finance-departments.md` (DOC-SA-011) | Wave 1–2 |
 | Wishlist `P-11` | `D5` — implement | customer-facing surfaces | Wave 2 |
 | Fleet registry skeleton `P-09` | `D8` — approved skeleton | delivery/ops (`GAP-07`) | Wave 2 |
-| Admin departments + staff bundles | `ORG-01`…`ORG-08`, `ROLE-01`…`ROLE-09` | **minted** in `09-security/rbac.md` §11 | as of 2026-09-28 |
+| Admin departments + staff bundles | `ORG-01`…`ORG-08`, `ROLE-01`…`ROLE-09` | **minted** in `../09-security/core/rbac.md` §11 | as of 2026-09-28 |
 | Completeness checklist (v1) | plan §3 rows 1–59 | gate evidence at each wave | ongoing |
 
 ## Scope-Creep Control

@@ -28,7 +28,7 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | What runs asynchronously? | BullMQ workers in the same binary process pool, queues named `{block}.{entity}.{action}` (`BR-PLT-01`, `background-processing.md`) |
 | What talks to externals? | Adapter modules behind interfaces (payments, SMS, WhatsApp, webhooks) — no vendor types in domain code (`INT-REQ-008`) |
 | What is the API surface? | REST under `/api/v1`, contract in `07-api/` |
-| How are errors surfaced? | Global filters producing the shared error model (`error-handling.md` ← `07-api/error-model.md`) |
+| How are errors surfaced? | Global filters producing the shared error model (`error-handling.md` ← `../07-api/core/error-model.md`) |
 
 ## 2. Requirement → Backend Ownership (summary)
 
@@ -59,7 +59,7 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | 5 | `business-logic-placement.md` | DOC-BE-005 | Rule ID → module → service → enforcement point for the critical rules (payments, escrow, stock, states, returns) |
 | 6 | `background-processing.md` | DOC-BE-006 | BullMQ queues/jobs, retries + DLQ, idempotency, scheduling, fan-out |
 | 7 | `caching.md` | DOC-BE-007 | Redis cache strategy, TTLs, invalidation, stampede control, non-cacheable list, ES vs Redis |
-| 8 | `error-handling.md` | DOC-BE-008 | Exception filters, error codes aligned with `07-api/error-model.md`, structured logging, domain errors |
+| 8 | `error-handling.md` | DOC-BE-008 | Exception filters, error codes aligned with `../07-api/core/error-model.md`, structured logging, domain errors |
 | 9 | `validation.md` | DOC-BE-009 | DTO/schema validation, business vs schema validation, idempotency keys, payload/upload limits, integer money |
 
 ## 4. Architectural Guarantees (what this domain promises)

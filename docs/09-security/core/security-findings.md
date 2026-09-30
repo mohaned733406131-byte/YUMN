@@ -77,7 +77,7 @@ Design-level findings raised while analyzing the yumn architecture against its o
 
 - **Description:** `INT-REQ-006` requires a "replay window on timestamp/nonce" but neither the window length nor the nonce store is defined anywhere; a captured-but-validly-signed callback could be re-posted within an unbounded window if implementation defaults are careless.
 - **Impact:** Replayed "payment success" callbacks → duplicate-credit attempts (idempotency is the second line of defense, not the first).
-- **Recommendation:** Fix a concrete window (design choice: ±5 minutes), persist processed nonces/provider-transaction IDs with TTL ≥ window, reject outside-window requests before signature evaluation, and assert it in `AC-IR006-02`-style tests. Spec lives in `10-integrations/webhook-reliability.md`.
+- **Recommendation:** Fix a concrete window (design choice: ±5 minutes), persist processed nonces/provider-transaction IDs with TTL ≥ window, reject outside-window requests before signature evaluation, and assert it in `AC-IR006-02`-style tests. Spec lives in `../../10-integrations/core/webhook-reliability.md`.
 - **Related:** `SEC-REQ-007`, `INT-REQ-006`, `INT-REQ-001`, `BR-PAY-03`, `BR-PAY-08`.
 
 ## SEC-006 — OTP resend cooldown lacks a distributed per-destination guard

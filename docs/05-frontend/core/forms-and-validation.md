@@ -90,7 +90,7 @@ packages/validation (Zod schemas, shared by all 5 apps)
 | Screen readers | error summary region announced on failed submit (`role="alert"`) |
 | Offline | queue-safe: forms keep input; submit shows offline banner and never silently drops data |
 
-## 5. API Error Mapping (consumes `07-api/error-model.md`)
+## 5. API Error Mapping (consumes `../../07-api/core/error-model.md`)
 
 `packages/api-sdk` normalizes every non-2xx response into:
 
@@ -104,7 +104,7 @@ type AppError = {
 };
 ```
 
-| HTTP | `code` examples (from `07-api/error-model.md`) | Client handling |
+| HTTP | `code` examples (from `../../07-api/core/error-model.md`) | Client handling |
 |---|---|---|
 | 400 | `VALIDATION_ERROR` | bind `fields` to inputs (§4) |
 | 401 | `TOKEN_EXPIRED` | silent refresh (DOC-FE-004 §5); `AUTH_INVALID` → login prompt |

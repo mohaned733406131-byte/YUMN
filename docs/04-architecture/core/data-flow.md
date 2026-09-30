@@ -47,7 +47,7 @@ Response JSON (error model per 07-api/) — target p95 < 200 ms read / < 500 ms 
 
 ## 2. Asynchronous Paths (BullMQ)
 
-Queue naming is fixed by rule: `{block}.{entity}.{action}` (`BR-PLT-01`, `C-20`). **The single queue register is [`06-backend/background-processing.md`](../../06-backend/background-processing.md) §1 — every name below appears there verbatim.** Workers (CNT-05) consume them with 3× exponential retries then DLQ + alert (`BR-PLT-02`).
+Queue naming is fixed by rule: `{block}.{entity}.{action}` (`BR-PLT-01`, `C-20`). **The single queue register is [`../../06-backend/core/background-processing.md`](../../06-backend/core/background-processing.md) §1 — every name below appears there verbatim.** Workers (CNT-05) consume them with 3× exponential retries then DLQ + alert (`BR-PLT-02`).
 
 | Queue | Producer | Consumer work | Triggers | Key rules |
 |---|---|---|---|---|
@@ -139,4 +139,4 @@ provider → `POST /webhooks/topups` (edge) → signature check → idempotent h
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
-| 1.1 | 2026-09-27 | §2/§6/§7 queue names restated from the canonical register (`06-backend/background-processing.md` §1) — 14 names renamed, 2 already-conformant kept; intro now points at the register as the authority | `REC-06`/`TD-07` pay-down — closes `CT-04`/consistency finding 10 (consumer side) |
+| 1.1 | 2026-09-27 | §2/§6/§7 queue names restated from the canonical register (`../../06-backend/core/background-processing.md` §1) — 14 names renamed, 2 already-conformant kept; intro now points at the register as the authority | `REC-06`/`TD-07` pay-down — closes `CT-04`/consistency finding 10 (consumer side) |

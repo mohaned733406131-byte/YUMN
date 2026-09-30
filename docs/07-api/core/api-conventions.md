@@ -14,7 +14,7 @@ related_documents: [DOC-API-001, DOC-API-003, DOC-API-004, DOC-REQ-001, DOC-BA-0
 
 # API Conventions
 
-Rules that apply to **every** endpoint in `07-api/endpoints/`. Endpoint files assume these conventions and do not repeat them.
+Rules that apply to **every** endpoint in `07-api/`. Endpoint files assume these conventions and do not repeat them.
 
 ---
 
@@ -58,7 +58,7 @@ Additional rules:
 | `Accept-Language: ar \| en` | request | selects localized messages/fields; default `ar` (`C-24`, `BR-PLT-05`) |
 | `Accept: application/json` | request | required for JSON endpoints; 406 if unsupported |
 
-Auth lifecycle (specified in `endpoints/auth.md`): OTP → login → refresh (single-use rotation; reuse revokes the session family, `BR-AUTH-05`) → logout. A revoked/expired access token returns 401 `TOKEN_EXPIRED` (refreshable) or 401 `AUTH_INVALID` (re-login required).
+Auth lifecycle (specified in `auth.md`): OTP → login → refresh (single-use rotation; reuse revokes the session family, `BR-AUTH-05`) → logout. A revoked/expired access token returns 401 `TOKEN_EXPIRED` (refreshable) or 401 `AUTH_INVALID` (re-login required).
 
 ## 4. Authorization: Roles & Ownership
 
@@ -100,7 +100,7 @@ Required (server rejects with 400 `IDEMPOTENCY_KEY_REQUIRED` when missing) on:
 | Stock reservation performed by `POST /checkout/session` | `BR-PLT-03`, `C-13` |
 | `POST /coupons/validate` (coupon application) | `BR-PLT-03` |
 | Refund execution (admin/system re-triggers) | `BR-PAY-08`, `BR-PLT-03` |
-| `POST /cart/merge` | `../05-frontend/core/state-management.md` |
+| `POST /cart/merge` | `../../05-frontend/core/state-management.md` |
 
 Semantics:
 
@@ -119,7 +119,7 @@ Semantics:
 | Error payload | the same value appears in the error envelope's `correlationId` (`error-model.md` §1) |
 | Propagation | carried through the modular monolith into BullMQ job payloads and integration callbacks (`NFR-014`) |
 | Access logs | every request logs method, path, status, duration, correlationId, `sub` (masked), role — never tokens, OTPs or passwords (`SEC-REQ-002`, `SEC-REQ-007`) |
-| Client support flow | UI shows `correlationId` in "copy details" (`../05-frontend/core/forms-and-validation.md` §5) |
+| Client support flow | UI shows `correlationId` in "copy details" (`../../05-frontend/core/forms-and-validation.md` §5) |
 
 ## 8. Rate Limiting Headers (SEC-REQ-009)
 
@@ -175,7 +175,7 @@ All file uploads use `POST` with `Content-Type: multipart/form-data`, a single `
 - **Collection responses** follow the pagination envelope in `pagination.md` (`items` + paging metadata). **Single-resource responses** return the object directly.
 - **Location header** on 201: `Location: /api/v1/{collection}/{id}`.
 - **204 No Content** for successful DELETE without a body.
-- **Validation**: all input validated server-side by DTO pipes; failures return 400 `VALIDATION_ERROR` with per-field `details[]` (`../05-frontend/core/forms-and-validation.md` §1 — client checks are UX only).
+- **Validation**: all input validated server-side by DTO pipes; failures return 400 `VALIDATION_ERROR` with per-field `details[]` (`../../05-frontend/core/forms-and-validation.md` §1 — client checks are UX only).
 - **Optimistic concurrency**: order/state transitions use the resource `version`; a stale version or illegal transition ⇒ 409 `STATE_CONFLICT`.
 - **Partial success**: not used — operations are atomic; a failure returns one error and changes nothing.
 - **Batch endpoints**: not exposed in v1 (all writes are single-resource).

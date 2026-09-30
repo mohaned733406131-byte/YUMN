@@ -194,7 +194,7 @@ Retention is configured in `infra/monitoring/` and verified by the weekly config
 | Distributed tracing of third-party outbound spans beyond logged attributes | Provider APIs do not propagate `traceparent` reliably | Per-provider latency/error metrics + integration dashboard |
 | Mobile client crashes / native ANR | Separate RN release train; no crash-reporting SDK committed in v1 | Store review feedback + support tickets (`FR-020`) |
 | Cost / billing metrics | Single-VM footprint tracked manually | Monthly ops review (`INFERENCE`) |
-| Database query *plans* in production continuously | Expensive; CI compares plans on a seeded staging DB instead | `08-database/indexes-and-performance.md` §2 regression gate |
+| Database query *plans* in production continuously | Expensive; CI compares plans on a seeded staging DB instead | `../08-database/core/indexes-and-performance.md` §2 regression gate |
 | Email channel | No email channel in v1 (`BR-NTF-01`) | n/a |
 | PII-level user journey analytics | Privacy minimization (`DATA-REQ-002`); metrics carry no PII labels | Aggregate business metrics only |
 

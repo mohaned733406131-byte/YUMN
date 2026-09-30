@@ -103,10 +103,10 @@ initial attempt ──fail──► retry 1 (~1 min) ──fail──► retry 2
 
 | Area | Control home |
 |---|---|
-| Webhook authenticity (HMAC, allowlist, replay window) | `10-integrations/webhook-reliability.md`, `09-security/security-controls.md` |
-| Provider secrets custody & rotation | `09-security/secrets-management.md` (S-04…S-07) |
+| Webhook authenticity (HMAC, allowlist, replay window) | `webhook-reliability.md`, `../../09-security/core/security-controls.md` |
+| Provider secrets custody & rotation | `../../09-security/core/secrets-management.md` (S-04…S-07) |
 | Money-effect audit entries from callbacks | `SEC-REQ-010` R2, `BR-PLT-06` |
-| OTP/PII never in logs | `09-security/data-protection.md` §7 |
+| OTP/PII never in logs | `../../09-security/core/data-protection.md` §7 |
 | Rate/abuse limits on integration endpoints | `SEC-REQ-009` budgets |
 | No vendor leakage into domain | `INT-REQ-008` architecture tests |
 

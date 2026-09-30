@@ -193,9 +193,9 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 
 | ID | Rule |
 |---|---|
-| BR-INV-01 | A successful reservation holds stock atomically: on-hand stock is never oversold, one `stock_reservation` row is created per reserved cart line, and the reservation either commits (payment success → permanent deduction) or releases (expiry or cancellation) — reserve → commit/release (`FR-005`, `C-13`, `08-database/entities/inventory.md`). |
+| BR-INV-01 | A successful reservation holds stock atomically: on-hand stock is never oversold, one `stock_reservation` row is created per reserved cart line, and the reservation either commits (payment success → permanent deduction) or releases (expiry or cancellation) — reserve → commit/release (`FR-005`, `C-13`, `../08-database/core/inventory.md`). |
 | BR-INV-02 | Stock invariant at all times: `stock ≥ reservedQuantity ≥ 0` (`qty_on_hand ≥ qty_reserved ≥ 0`, `qty_available` generated) — reserved quantity never exceeds on-hand stock and never goes negative (`BR-CAT-07`, `DATA-REQ-001`, `ck_inventory_no_negative`). |
-| BR-INV-03 | Live reservations are protected: a manual stock adjustment that would set stock below active reservations is rejected with `409 STOCK_BELOW_RESERVATIONS`; the DB row stays unchanged (no partial writes) (`07-api/error-model.md`, `UC-018`). |
+| BR-INV-03 | Live reservations are protected: a manual stock adjustment that would set stock below active reservations is rejected with `409 STOCK_BELOW_RESERVATIONS`; the DB row stays unchanged (no partial writes) (`../07-api/core/error-model.md`, `UC-018`). |
 | BR-INV-04 | Unpaid reservations expire after 15 minutes: the TTL sweeper releases held quantity exactly once (status-guarded — a re-run never double-releases), the reservation moves to `RELEASED`, and a `RELEASE_TTL` ledger row records actor `SYSTEM` with a timestamp (`C-13`, `BR-CRT-02`, `FR-005`). |
 | BR-INV-05 | Every inventory mutation (reserve, consume, release, manual adjustment, cancellation restoration) appends an append-only ledger row carrying actor, reason, delta and timestamp; corrections are new rows, never edits — the events the reconciliation job compares `qty_on_hand` against (`BR-PLT-06`, `FR-005`, `API-CAT-016`). |
 
@@ -210,4 +210,4 @@ Every rule above is traceable to at least one `FR-*` and is compatible with `C-0
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial registry (99 rules) | Initial analysis |
-| 1.1 | 2026-09-28 | `INV` domain added — `BR-INV-01`…`BR-INV-05` (stock reservation lifecycle, `stock ≥ reserved ≥ 0` invariant, reservation-protected adjustment, 15-min TTL release, append-only mutation ledger); 99 → 104 rules, 14 → 15 domains | `CRIT-06`/`HAL-04` pay-down (session 008, owner-approved registration): the five IDs were cited by `TC-018`/`TC-019`/`TC-020` and undefined; wording derived from approved sources (`entities/inventory.md`, `C-13`, `BR-CAT-07`, `BR-CRT-02`, `error-model.md`, `API-CAT-016`) — never invented behavior |
+| 1.1 | 2026-09-28 | `INV` domain added — `BR-INV-01`…`BR-INV-05` (stock reservation lifecycle, `stock ≥ reserved ≥ 0` invariant, reservation-protected adjustment, 15-min TTL release, append-only mutation ledger); 99 → 104 rules, 14 → 15 domains | `CRIT-06`/`HAL-04` pay-down (session 008, owner-approved registration): the five IDs were cited by `TC-018`/`TC-019`/`TC-020` and undefined; wording derived from approved sources (`../08-database/core/inventory.md`, `C-13`, `BR-CAT-07`, `BR-CRT-02`, `error-model.md`, `API-CAT-016`) — never invented behavior |

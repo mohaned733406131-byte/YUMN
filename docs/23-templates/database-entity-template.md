@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-DB-001, DOC-DB-003, DOC-DB-007, DOC-GL-003]
 
 # Database Entity Template (DOC-TPL-007)
 
-**When to use:** a new entity document in `08-database/entities/<table>.md`. **Authority: `08-database/README.md` §1 (naming) + §2 (keys/UUID), DOC-DB-007 (entity index), DOC-DB-003 (ER overview)** — the ER overview is the register of the model; the entity file documents one table. Exemplar: `08-database/entities/user.md` (DB-001).
+**When to use:** a new entity document in `08-database/<table>.md`. **Authority: `08-database/README.md` §1 (naming) + §2 (keys/UUID), DOC-DB-007 (entity index), DOC-DB-003 (ER overview)** — the ER overview is the register of the model; the entity file documents one table. Exemplar: `../08-database/core/user.md` (DB-001).
 
 ## Rules
 

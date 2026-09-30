@@ -15,7 +15,7 @@ related_requirements: [SEC-REQ-004]
 # Permissions & Roles — analysis phase
 
 > Managed by the system admin (original rule 8). Enforcement is server-side (SEC-02, principle P1/P2);
-> every row needs an automated authorization test. **Canonical 26-row capability matrix: [`09-security/rbac.md`](../../09-security/rbac.md)** — this phase artifact maps the template rows onto that canon; role ↔ enum ↔ DB parity table is `rbac.md` §8 (7 API identities / 10 enum values / 6 persisted + `SYSTEM`).
+> every row needs an automated authorization test. **Canonical 26-row capability matrix: [`../../09-security/core/rbac.md`](../../09-security/core/rbac.md)** — this phase artifact maps the template rows onto that canon; role ↔ enum ↔ DB parity table is `rbac.md` §8 (7 API identities / 10 enum values / 6 persisted + `SYSTEM`).
 
 | Role | Operation (CRUD/action) | Resource | Allow? | Enforcement point | Test id |
 |---|---|---|---|---|---|
@@ -40,7 +40,7 @@ related_requirements: [SEC-REQ-004]
 - Per-feature `permissions-<feature>.md` files + enforcement tests are **Phase 1+ deliverables** — the phase closes with this design matrix, honestly marked design-level.
 
 ## Open questions (COM-01)
-1. `MODERATOR` read of audit log / platform settings: `07-api/endpoints/admin.md` `API-ADM-022`/`API-ADM-024` grant it, `rbac.md` rows 22/24 and `UC-036` deny it — **reconcile before coding** (deferred sweep item, session 004 backlog; `SPE-04`).
+1. `MODERATOR` read of audit log / platform settings: `../../07-api/admin/admin.md` `API-ADM-022`/`API-ADM-024` grant it, `rbac.md` rows 22/24 and `UC-036` deny it — **reconcile before coding** (deferred sweep item, session 004 backlog; `SPE-04`).
 
 ## Change History
 

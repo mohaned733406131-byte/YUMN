@@ -14,7 +14,7 @@ related_documents: [DOC-SEC-001, DOC-SEC-002, DOC-SEC-007, DOC-FR-001, DOC-BA-00
 
 # Authentication — Security Design
 
-Security design for `FR-001` (Identity, Authentication & Session Management). **Implementation placement** (guards, services, queue names, file layout) is owned by `06-backend/authentication.md` (`DOC-BE-003`) — this document defines the *what*, that one defines the *where*. All rule IDs below are canon from `01-business-analysis/business-rules.md`.
+Security design for `FR-001` (Identity, Authentication & Session Management). **Implementation placement** (guards, services, queue names, file layout) is owned by `../../06-backend/core/authentication.md` (`DOC-BE-003`) — this document defines the *what*, that one defines the *where*. All rule IDs below are canon from `01-business-analysis/business-rules.md`.
 
 ## 1. Identity Model
 
@@ -133,7 +133,7 @@ Rationale: the OTP channel already acts as a second factor for registration, res
 | Lockout persistence across client resets | negative test | `AC-SR005-04` |
 | No password/OTP in any log line | automated log scan in CI | `AC-SR002-02` |
 
-**Implementation placement:** `06-backend/authentication.md` (`DOC-BE-003`) — NestJS guards, Redis counters, cookie handling, and module boundaries. This document never prescribes file names.
+**Implementation placement:** `../../06-backend/core/authentication.md` (`DOC-BE-003`) — NestJS guards, Redis counters, cookie handling, and module boundaries. This document never prescribes file names.
 
 ## Change History
 

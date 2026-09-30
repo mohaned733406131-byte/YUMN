@@ -107,7 +107,7 @@ Rule of thumb: **if it is a `BR-*` rule, it lives in Domain; if it coordinates, 
 | `shared/config` | env schema validated at boot (fail-fast), feature flags | root wiring |
 | `shared/logging` | structured JSON logger with correlation ID; child loggers per request/job | everywhere (`NFR-014`) |
 | `shared/events` | in-process domain event bus (`OrderDelivered`, `WalletCredited`) → job producers | services that trigger side effects |
-| `shared/errors` | error code registry (aligned with `07-api/error-model.md`) + typed exceptions | services, filters (`error-handling.md`) |
+| `shared/errors` | error code registry (aligned with `../../07-api/core/error-model.md`) + typed exceptions | services, filters (`error-handling.md`) |
 | `shared/validation` | global `ValidationPipe`, common constraints (phone, integer money) | controllers (`validation.md`) |
 | `shared/idempotency` | Redis-backed key store + replay cache | payment, order, stock, coupon, refund paths (`BR-PLT-03`) |
 | `shared/crypto` | bcrypt wrapper (cost 12), AES-256 for PII fields, HMAC for webhooks | identity, integrations |
@@ -118,7 +118,7 @@ Rule of thumb: **if it is a `BR-*` rule, it lives in Domain; if it coordinates, 
 
 | Rule | Detail |
 |---|---|
-| One schema, 13 client namespaces | schema organized by block (`b01…b13` — `08-database/database-overview.md`); each module touches only its own namespace's models |
+| One schema, 13 client namespaces | schema organized by block (`b01…b13` — `../../08-database/core/database-overview.md`); each module touches only its own namespace's models |
 | Ownership columns | every tenant-scoped row carries `user_id`/`store_id`; repositories require an ownership filter parameter (DATA-REQ-008) |
 | Transactions | money/state/stock changes run in `prisma.$transaction` with explicit isolation; row locks where the rule requires (`BR-PAY-05`) |
 | No raw SQL by default | `queryRaw` only with review + parameterization (SEC-REQ-008); Prisma parameterizes everything else |

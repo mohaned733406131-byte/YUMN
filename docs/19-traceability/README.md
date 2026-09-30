@@ -48,8 +48,8 @@ Each hop was re-verified against the corpus while authoring this domain (`VERIFI
 |---|---|---|
 | `FR-013 → BR-PAY-04` | `../02-requirements/core/FR-013.md` §Business Rules Applied | Holds |
 | `BR-PAY-04 → UC-021` | `01-business-analysis/business-rules.md` row `BR-PAY-04`; `../01-business-analysis/vendor/UC-021.md` | **Fails** — `BR-PAY-04` is exercised by `UC-034` (Verify Bank-Transfer Top-Up); `UC-021` (Respond to Return Request) cites `BR-RET-*`/`BR-ORD-05`, not `BR-PAY-04` |
-| `UC-021 → API-WAL-002` | `07-api/endpoints/wallet.md`, `returns.md` | **Fails** — `UC-021` is cited by `API-RET-*` and `API-WAL-014`; `API-WAL-002` cites only `FR-013`, `BR-PAY-06/10`, `DATA-REQ-007/008` |
-| `API-WAL-002 → wallet` | `07-api/endpoints/wallet.md`, `08-database/entities/wallet.md` (`DB-010`, related `FR-013`) | Holds (ledger view over `DB-010`/`DB-011`) |
+| `UC-021 → API-WAL-002` | `../07-api/core/wallet.md`, `returns.md` | **Fails** — `UC-021` is cited by `API-RET-*` and `API-WAL-014`; `API-WAL-002` cites only `FR-013`, `BR-PAY-06/10`, `DATA-REQ-007/008` |
+| `API-WAL-002 → wallet` | `../07-api/core/wallet.md`, `../08-database/core/wallet.md` (`DB-010`, related `FR-013`) | Holds (ledger view over `DB-010`/`DB-011`) |
 | `wallet → TC-031` | `13-testing/test-cases/TC-031.md` §Related IDs (`API-WAL-001/002/007/009`, `FR-013`) | Holds |
 | `TC-031 → AC-FR013-01` | `TC-031.md` §Related IDs | Holds |
 
@@ -97,7 +97,7 @@ An empty matrix cell always means `INSUFFICIENT EVIDENCE` — never an implied l
 | Acceptance criteria | 253 in `02-requirements/acceptance-criteria.md` (94 FR + 40 NFR + 50 SR + 32 DR + 33 IR + 4 XCUT) + 24 `AC-S-NN` in `00-project-overview/success-criteria.md` = **277 traceable AC rows** | both files |
 | Use cases / workflows / blocks | 210 `UC` (`UC-001…UC-210`) / 12 `WF` / 13 blocks | `01-business-analysis/` , `00-project-overview/project-context.md` |
 | API groups / endpoints | 14 / 221 | `07-api/README.md` §4 |
-| Database entities | 18 (`DB-001…DB-018`) | `08-database/entities/` |
+| Database entities | 18 (`DB-001…DB-018`) | `08-database/` |
 | Test artifacts | 114 `TC` files present (114 declared), 18 `PLAN`, 7 `PERF`, 9 `SEC-P`, 8 `CHAOS`, 8 plan sections `§a…§h`, 26 `TST-CON` | `13-testing/` |
 
 **Acceptance-criterion → test-artifact linkage (this domain's headline number):**

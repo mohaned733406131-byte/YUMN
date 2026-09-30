@@ -64,7 +64,7 @@ The pyramid is deliberately **unit-heavy**: `NFR-010` requires all business logi
 
 | Concern | Tool | Notes |
 |---|---|---|
-| Unit / integration | **Jest 29** | Also runs contract tests against mock adapters (`10-integrations/testing-and-sandboxes.md`) |
+| Unit / integration | **Jest 29** | Also runs contract tests against mock adapters (`../10-integrations/core/testing-and-sandboxes.md`) |
 | HTTP assertion layer | **Supertest-style** in-process API tests | Hits the NestJS app without a live socket |
 | Web E2E | **Playwright** | Chromium/Firefox/WebKit — covers customer web, vendor panel, admin console; also serves cross-browser checks (`AC-NFR-015-01`) |
 | Mobile E2E | **Maestro** flows on RN 0.73 | Runs on the `DEP-12` device lab; see strategy §2.3 justification |

@@ -27,7 +27,7 @@ Any authenticated user can call any endpoint directly with a crafted request; if
 ## Requirement statements
 
 - R1: Authorization is evaluated at the service layer on every request, deny-by-default; an unknown role or missing permission results in 403 (or 404 for non-owned resources where enumeration would leak existence).
-- R2: The role × action matrix for all 7 actors is defined in `09-security/rbac.md` (control) and every endpoint must map to exactly one decision per role.
+- R2: The role × action matrix for all 7 actors is defined in `../../09-security/core/rbac.md` (control) and every endpoint must map to exactly one decision per role.
 - R3: Ownership is enforced with the role check: vendor queries scoped to `store_id` with cross-store access denied at the service layer (BR-VND-07); order/timeline visibility restricted per BR-ORD-09; customers see only their own resources.
 - R4: Privileged and money actions (role change, KYC decision, wallet freeze, refund, payout, dispute resolution) additionally require an audit entry (BR-PLT-06, SEC-REQ-010).
 - R5: The `System` actor is non-human: it authenticates only through internal mechanisms and can never be used for interactive login or to bypass ownership checks.
@@ -45,7 +45,7 @@ Any authenticated user can call any endpoint directly with a crafted request; if
 
 ## Verification method
 
-Automated authorization-matrix and cross-tenant integration tests in CI (one case per role × endpoint), plus manual penetration testing of privilege-escalation paths; control detail in `09-security/rbac.md`.
+Automated authorization-matrix and cross-tenant integration tests in CI (one case per role × endpoint), plus manual penetration testing of privilege-escalation paths; control detail in `../../09-security/core/rbac.md`.
 
 ## Failure impact
 

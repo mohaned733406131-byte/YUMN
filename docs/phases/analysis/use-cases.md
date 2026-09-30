@@ -233,7 +233,7 @@ Requirement → use case → workflow → API endpoint → entity → test: `FR-
 No use case may describe a forbidden capability: COD/cards/BNPL/crypto (`C-01…C-04`), GPS/real-time tracking (`C-16`), email-primary/social login (`C-06`), third locale (`C-24`).
 
 ## Open questions (COM-01)
-1. `UC-036` (Moderator) conflicts with `07-api/endpoints/admin.md` `API-ADM-022/024` on settings/audit-read — deferred sweep item (session 004 backlog).
+1. `UC-036` (Moderator) conflicts with `../../07-api/admin/admin.md` `API-ADM-022/024` on settings/audit-read — deferred sweep item (session 004 backlog).
 
 ## Change History
 

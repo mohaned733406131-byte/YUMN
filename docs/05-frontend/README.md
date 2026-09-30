@@ -30,7 +30,7 @@ The frontend domain defines how the yumn client applications are structured, rou
 
 > Surfaces S4 and S5 form the single "mobile apps" surface counted in requirement texts (e.g. FR-001 "four surfaces"). They share one design system and one API SDK but are separate binaries with separate review pipelines.
 
-**Actors with no interactive frontend:** ACT-07 System (`00-project-overview/actors-and-roles.md`) — background jobs and automated engines interact only through the API and BullMQ queues (see `06-backend/background-processing.md`).
+**Actors with no interactive frontend:** ACT-07 System (`00-project-overview/actors-and-roles.md`) — background jobs and automated engines interact only through the API and BullMQ queues (see `../06-backend/core/background-processing.md`).
 
 ## 2. What Each Surface Covers (by requirement family)
 
@@ -81,7 +81,7 @@ The frontend domain defines how the yumn client applications are structured, rou
 |---|---|
 | New frontend engineer | DOC-FE-001 → DOC-FE-002 → DOC-FE-007 → DOC-FE-008 → DOC-FE-006 |
 | Feature engineer (checkout) | DOC-FE-003 → DOC-FE-004 → DOC-FE-005 → `07-api/` endpoints |
-| Security reviewer | DOC-FE-006 → `09-security/authentication.md` → `06-backend/authorization.md` |
+| Security reviewer | DOC-FE-006 → `../09-security/core/authentication.md` → `../06-backend/core/authorization.md` |
 | Perf/accessibility reviewer | DOC-FE-009 → DOC-FE-007 → `12-non-functional/` |
 
 ## 6. Upstream / Downstream Contracts

@@ -113,9 +113,9 @@ Middleware enforces this: a deny-list of route prefixes fails CI if wrapped in c
 
 | Surface | Behavior |
 |---|---|
-| Next.js ISR pages | CDN caches HTML for catalog/CMS routes; purge on publish (`../05-frontend/core/frontend-performance.md` §3) |
+| Next.js ISR pages | CDN caches HTML for catalog/CMS routes; purge on publish (`../../05-frontend/core/frontend-performance.md` §3) |
 | HTTP caching | static assets immutable hashed; API responses `no-store` unless explicitly cacheable (money routes always `no-store`) |
-| Clients | TanStack Query stale-times per `../05-frontend/core/state-management.md` §2 — aligned with these TTLs but never exceeding them for catalog data |
+| Clients | TanStack Query stale-times per `../../05-frontend/core/state-management.md` §2 — aligned with these TTLs but never exceeding them for catalog data |
 
 ## 9. Verification
 

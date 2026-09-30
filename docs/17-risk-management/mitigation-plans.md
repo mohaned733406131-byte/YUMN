@@ -243,7 +243,7 @@ Detailed, phased plans for the eight highest-ranked risks using the ranking rule
 
 - Stateless API replicas (already horizontal within Compose) + readiness gating so scaling is a config change (`NFR-018`).
 - Cache: catalog reads via Redis; cache hit ratio panel; no caching of money reads.
-- Pagination: cursor/keyset for catalog and activity feeds; offset only where page depth is bounded (`07-api/pagination.md`).
+- Pagination: cursor/keyset for catalog and activity feeds; offset only where page depth is bounded (`../07-api/core/pagination.md`).
 - Statement timeouts + index audits for the 100M-row paths; EXPLAIN review in PR template for money/list queries.
 
 ### 6.3 Decision points / kill criteria

@@ -281,7 +281,7 @@ Priority totals: P0 = 47, P1 = 107, P2 = 56. Block coverage: B01 (28), B02 (25),
 
 ## 5. Coverage Matrix (portal × feature area → UC IDs)
 
-Feature areas are derived from blocks `B01…B13` (`06-backend/backend-architecture.md` §3). Portal = the surface the primary actor uses. Every UC appears in exactly one portal group, so the matrix accounts for all **210** use cases (completeness proof, AUD-01/D-02). Admin console includes Super Admin (`UC-037`) and Moderator (`UC-038`, `UC-137 … UC-140`); Shared/System includes the automated jobs `UC-039 … UC-040`.
+Feature areas are derived from blocks `B01…B13` (`../06-backend/core/backend-architecture.md` §3). Portal = the surface the primary actor uses. Every UC appears in exactly one portal group, so the matrix accounts for all **210** use cases (completeness proof, AUD-01/D-02). Admin console includes Super Admin (`UC-037`) and Moderator (`UC-038`, `UC-137 … UC-140`); Shared/System includes the automated jobs `UC-039 … UC-040`.
 
 | Portal | Feature area | UC IDs | Count |
 |---|---|---|---|

@@ -64,7 +64,7 @@ Assembled before the sign-off meeting; each artifact names its source path. Miss
 | E-06 | Executed test-plan results + coverage report (P0/P1 100% PASS, 0 CRITICAL/HIGH open) | `13-testing/test-plans.md` §a–§h; CI artifacts | Layer B |
 | E-07 | Performance evidence (k6: `PERF-01…PERF-06`, `PERF-07`) | `13-testing/test-plans.md` §b; CI artifacts | `AC-S-05` |
 | E-08 | Drill records: DR, deploy/rollback rehearsal, chaos | `13-testing/test-plans.md` §d/§h; `15-deployment/production-readiness.md` | `AC-S-17`, `AC-S-20` |
-| E-09 | Security posture pack (SAST/DAST/secret/dependency, threat-model coverage, findings triage) | `09-security/security-findings.md`; CI artifacts | `AC-S-12`, `AC-S-13`, `AC-S-16` |
+| E-09 | Security posture pack (SAST/DAST/secret/dependency, threat-model coverage, findings triage) | `../09-security/core/security-findings.md`; CI artifacts | `AC-S-12`, `AC-S-13`, `AC-S-16` |
 | E-10 | Compliance evidence pack (ten items incl. Central Bank position, legal opinions, bilingual notices, a11y statement) | `12-non-functional/compliance-and-legal.md` §5 | `AC-S-24` |
 | E-11 | Production-readiness rollup with sponsor/QA/security/ops signatures | `15-deployment/production-readiness.md` §8/§9 | Gate 2 / launch |
 | E-12 | Risk burndown + open-risk register with written acceptances | `17-risk-management/risk-review-process.md` §8; `17-risk-management/risk-register.md` | Layer B |

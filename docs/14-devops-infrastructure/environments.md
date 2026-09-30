@@ -49,7 +49,7 @@ Four environments — **local · dev · staging · production** — all running 
 | PAR-1 | **Same topology.** Every environment defines the identical service set and networks; an environment may *disable* an optional service (e.g. `sms-sink` in prod) but may never add a service that exists nowhere else. | `docker compose config` diff across overlays — services section must match |
 | PAR-2 | **Same images.** `staging` and `production` run byte-identical image digests for a given release; only env vars differ. | Image digest recorded in the release log; `AC-NFR-016-01` |
 | PAR-3 | **Layered configuration only.** Differences live in `.env.<environment>` + Compose overlay, never in code branches, `if (env === 'production')` literals, or per-env commits. | Config review; grep gate for environment-name literals in `apps/` |
-| PAR-4 | **Disjoint credentials.** dev / staging / production share **no** secret value; sandbox keys are never valid in production and vice versa. | `09-security/secrets-management.md` §3 access matrix |
+| PAR-4 | **Disjoint credentials.** dev / staging / production share **no** secret value; sandbox keys are never valid in production and vice versa. | `../09-security/core/secrets-management.md` §3 access matrix |
 | PAR-5 | **Non-prod never holds unmasked production PII.** Restored backups are masked before use (`DATA-REQ-002`). | `16-data/data-classification.md` masking rules; seed script assertion |
 | PAR-6 | **Topology changes ship as code first.** A new service/volume/network is merged to `main` before any environment adopts it — dev proves it, staging verifies it, production inherits it. | PR review + `docker compose config` in CI |
 | PAR-7 | **Parity is a test asset.** Image digests and service sets must match across envs or the release is blocked. | `AC-NFR-016-01` |
@@ -123,7 +123,7 @@ React Native 0.73 apps (`CNT-02` customer, `CNT-03` courier) are **not** contain
 |---|---|---|
 | Topology parity | `docker compose config` service-set diff across overlays | CI artifact per PR (`AC-NFR-016-01`) |
 | Digest parity staging↔prod | Release log records digests for both | Release record in `15-deployment/build-and-release.md` §5 |
-| Credential disjointness | Config review: `.env.*` sets compared, values never equal | `09-security/secrets-management.md` §8 |
+| Credential disjointness | Config review: `.env.*` sets compared, values never equal | `../09-security/core/secrets-management.md` §8 |
 | No production PII in non-prod | Seed script asserts masked phone patterns; manual audit quarterly | `DATA-REQ-002` evidence |
 | No seeded weak admin in prod | `seed --only=reference` is the only permitted production seed | Deployment log |
 | Dev = prod topology | Service-set diff green in CI | PR check `compose-config` |

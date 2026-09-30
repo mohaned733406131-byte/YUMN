@@ -45,7 +45,7 @@ Ownership transfer (e.g., staffing change) is a register update: owner column ch
 
 ## 3. Triggers for Out-of-Cycle Review
 
-1. Any new `CRITICAL` finding (`SEC-NNN`) in `09-security/security-findings.md`.
+1. Any new `CRITICAL` finding (`SEC-NNN`) in `../09-security/core/security-findings.md`.
 2. Any change to a `DEP-*` status (especially `DEP-05`, `DEP-06`, `DEP-08`, `DEP-09`, `DEP-10`), or a dependency newly marked NOT STARTED/failed.
 3. Any assumption changing status (`ASM-*`) — particularly toward `UNSUPPORTED`/`DANGEROUS`.
 4. Any new `GAP-NNN` or a gap resolved (may create or close a risk).
@@ -85,7 +85,7 @@ Escalation never happens by implication: the escalation is a written record (reg
 | Question | What design defect exists today? | What future event could harm an objective, and how bad? |
 | Severity meaning | Exploitability/impact *if the gap is exploited as designed today* | Probability × Impact on project objectives |
 | Scope | Security only | All eight categories (DOC-RSK-001 §2) |
-| Lives in | `09-security/security-findings.md` | `17-risk-management/risk-register.md` |
+| Lives in | `../09-security/core/security-findings.md` | `17-risk-management/risk-register.md` |
 
 **Screening rule (finding → risk):** every finding is screened at the monthly review; it *feeds* (mirrors into) a register entry **when it threatens a project objective or critical path**, not merely when it is severe. Worked examples from canon: `SEC-011` (uncontracted sole auth channel) ↔ `RISK-006`; `SEC-002`/`SEC-015` (immutability, escrow TOCTOU) feed `RISK-001`. A HIGH finding may feed a risk that is already registered — the finding adds a *trigger*, not a duplicate. Closure of a finding does not auto-close a risk (and vice versa); each is closed on its own evidence.
 

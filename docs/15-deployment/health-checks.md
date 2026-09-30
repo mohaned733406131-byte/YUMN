@@ -129,7 +129,7 @@ migrate (one-shot) ─► must succeed before api/worker restart   (depends_on: 
 | Open breaker | Does **not** flip readiness — the app stays READY and degrades the affected channel (bank transfer fallback, in-app notifications) |
 | Closed breaker + down DB | Readiness fails — the app must not pretend to serve |
 | Observability | Breaker state is exported as a metric so dashboard #8 shows per-provider circuit state; a breaker open > 5 min pages (P2) |
-| Degradation matrix | Authoritative behaviours live in `10-integrations/integration-overview.md` §3–§4 and `12-non-functional/reliability.md` §4 |
+| Degradation matrix | Authoritative behaviours live in `../10-integrations/core/integration-overview.md` §3–§4 and `12-non-functional/reliability.md` §4 |
 
 ## 7. Monitoring Integration
 

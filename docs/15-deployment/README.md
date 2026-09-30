@@ -28,7 +28,7 @@ This domain owns the **release lifecycle**: what artifact ships, how it is versi
 | Health model: liveness/readiness semantics, probes, graceful shutdown | Alert thresholds and dashboards (`12-non-functional/observability.md`) | "What makes a node ready to serve?" → here |
 | Go-live checklist and sign-offs | What the requirements are (`02-requirements/`) | "Is everything proven before launch?" → here |
 | — | Test case design (`13-testing/`) — this domain supplies *where* tests run | — |
-| — | Schema migration rules (`08-database/migrations-and-evolution.md`) — this domain executes them | — |
+| — | Schema migration rules (`../08-database/core/migrations-and-evolution.md`) — this domain executes them | — |
 
 ## 2. File Index
 
@@ -117,13 +117,13 @@ merge → CI → staging auto-deploy → smoke (+ E2E) → manual production app
 | Dashboards, alert routing, log pipeline, uptime probes | `14-devops-infrastructure/monitoring-stack.md` |
 | Backup jobs, restore steps, quarterly drill | `14-devops-infrastructure/backup-recovery.md` |
 | Host hardening, scanning cadence, TLS renewal | `14-devops-infrastructure/host-hardening.md` |
-| Migration ordering, expand/contract, forward-only rules | `08-database/migrations-and-evolution.md` (`DOC-DB-006`) |
+| Migration ordering, expand/contract, forward-only rules | `../08-database/core/migrations-and-evolution.md` (`DOC-DB-006`) |
 | Topology contract (services, restart, degraded mode, RTO/RPO placement) | `../04-architecture/core/deployment-view.md` |
 | Availability math, error budget, degradation matrix, drills | `12-non-functional/reliability.md` |
 | Health endpoint timing, deploy observation window, rollback timing | `12-non-functional/observability.md` §8 |
-| API versioning (`/api/v1`) | `07-api/api-conventions.md`, `07-api/README.md` |
+| API versioning (`/api/v1`) | `../07-api/core/api-conventions.md`, `07-api/README.md` |
 | Test placement (E2E on staging, k6, DAST) | `13-testing/testing-strategy.md` §7, `13-testing/test-plans.md` |
-| Degraded readiness semantics (ES down ⇒ ready) | `10-integrations/integration-overview.md` §3–§4 |
+| Degraded readiness semantics (ES down ⇒ ready) | `../10-integrations/core/integration-overview.md` §3–§4 |
 
 ## 5. Governing Principles
 

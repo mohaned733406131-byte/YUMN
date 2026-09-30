@@ -14,7 +14,7 @@ related_documents: [DOC-SEC-001, DOC-SEC-006, DOC-SEC-007, DOC-SR-007, DOC-OVR-0
 
 # Secrets Management (`SEC-REQ-007`)
 
-Policy for every secret yumn holds: what exists, where it lives, who may read it, how often it rotates, and what happens when one leaks. Requirement statements and acceptance criteria are in `../02-requirements/core/SEC-REQ-007.md`; this is the design.
+Policy for every secret yumn holds: what exists, where it lives, who may read it, how often it rotates, and what happens when one leaks. Requirement statements and acceptance criteria are in `../../02-requirements/core/SEC-REQ-007.md`; this is the design.
 
 ## 1. Principles
 

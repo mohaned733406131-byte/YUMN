@@ -152,7 +152,7 @@ This document **hardens** the host; it does not define incident process.
 | Runbooks for the top-10 operational incidents (symptom → diagnosis → mitigation → escalation) | `12-non-functional/observability.md` §7 |
 | Availability math, error-budget policy, degradation matrix, game-day drills | `12-non-functional/reliability.md` §2, §4, §8 |
 | Risk register (incl. RISK-005 small-team-vs-99.99%, RISK-014 edge/DNS) | `17-risk-management/risk-register.md` |
-| Secret-leak rotation runbook | `09-security/secrets-management.md` §7 |
+| Secret-leak rotation runbook | `../09-security/core/secrets-management.md` §7 |
 | Backup/restore under disaster | `14-devops-infrastructure/backup-recovery.md` §6 |
 | Rollback decision tree | `15-deployment/rollback.md` |
 | Go-live evidence that these exist and were rehearsed | `15-deployment/production-readiness.md` |

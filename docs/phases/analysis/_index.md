@@ -42,7 +42,7 @@ related_requirements: []
 ## Status honesty (DOD-10 / GEN-03)
 
 - This phase produced **documentation only**. DOD gates **G1–G7 (build, lint, tests, coverage, dead-element scan, security scan, performance) are `BLOCKED` — no implementation exists**; they are reported as BLOCKED in [phase-audit.md](phase-audit.md), never as PASS.
-- Security design findings `SEC-001…SEC-015` are **all OPEN** (1 CRITICAL, 4 HIGH) — they gate implementation via `docs/09-security/security-findings.md`.
+- Security design findings `SEC-001…SEC-015` are **all OPEN** (1 CRITICAL, 4 HIGH) — they gate implementation via `docs/09-security/core/security-findings.md`.
 - Nothing in `docs/` is `VERIFIED`; `approved` = analysis only.
 
 ## Roll-up links

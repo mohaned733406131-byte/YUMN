@@ -28,7 +28,7 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 | MNY-09 | HIGH | VAT **15% × (subtotal − coupon discount)**, shipping untaxed, half-up rounding to whole YER **per sub-order**, remainder to `ROUNDING_ACCOUNT` (`BR-FIN-01/02/05`). | Golden-number tests (e.g. 100,000 → 15,000 VAT, total 117,000 with 2,000 shipping). |
 | MNY-10 | HIGH | Refunds credit the **wallet only** (no external cash-out except vendor payouts) within **3 business days** of `REFUNDED` (`BR-PAY-07`, `BR-RET-04`). | Return-flow test asserts wallet credit + timestamp; no payout created for buyer refunds. |
 | MNY-11 | HIGH | A **frozen** wallet can neither pay nor top up, but **does** receive refunds (`BR-PAY-09`). | Test matrix: frozen ⇒ pay/top-up denied, refund credited. |
-| MNY-12 | HIGH | Money, order, ledger, escrow and session responses are never cached or SSR'd: `Cache-Control: no-store`, deny-list enforced (`docs/06-backend/caching.md`). | Response-header test + deny-list CI check (a cache decorator on a denied route fails CI). |
+| MNY-12 | HIGH | Money, order, ledger, escrow and session responses are never cached or SSR'd: `Cache-Control: no-store`, deny-list enforced (`docs/06-backend/core/caching.md`). | Response-header test + deny-list CI check (a cache decorator on a denied route fails CI). |
 | MNY-13 | HIGH | Provider secrets, callback HMACs and card-like data never touch logs; webhook verification uses constant-time compare + IP allowlist + replay window (`INT-REQ-006`). | Log-sampling test (0 secrets/PII in 1,000-line extract); webhook negative tests. |
 
 ## ESC — Escrow, Commission & Payouts
@@ -133,8 +133,8 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 | DAT-03 | CRITICAL | PKs are **UUIDv7** app-generated; money columns `<name>_yer` bigint; timestamps `*_at` timestamptz; soft delete via `deleted_at`; append-only tables have `created_at` only. | Constraint-presence snapshot tests. |
 | DAT-04 | HIGH | Every schema change ships **migration + updated docs in the same commit** (`IMP-06`, `DOC-05`); rollback is rehearsed via restore drill (RTO ≤1 h, RPO ≤15 min). | PR diff contains migration + doc; quarterly drill evidence. |
 | DAT-05 | HIGH | Partitioning maintained on `order_item`, `wallet_transaction`, `order_status_history`, `audit_log`; **never `VACUUM FULL`** on financial tables; partition jobs run dry-run first. | Partition maintenance job test; ops runbook check. |
-| DAT-06 | HIGH | FK policy: **RESTRICT** for financial/history, CASCADE for owned children, SET NULL for optional lookbacks (`docs/08-database/entity-relationship.md` §2). | FK-register snapshot test (48 relations). |
-| DAT-07 | HIGH | App-layer guards that the DB deliberately does not enforce must have tests: return window, 17-state matrix, cart/session/SLA limits, KYC 48-h SLA (`docs/08-database/constraints-and-integrity.md` §5). | Named test IDs mapped in `docs/13-testing/`. |
+| DAT-06 | HIGH | FK policy: **RESTRICT** for financial/history, CASCADE for owned children, SET NULL for optional lookbacks (`docs/08-database/core/entity-relationship.md` §2). | FK-register snapshot test (48 relations). |
+| DAT-07 | HIGH | App-layer guards that the DB deliberately does not enforce must have tests: return window, 17-state matrix, cart/session/SLA limits, KYC 48-h SLA (`docs/08-database/core/constraints-and-integrity.md` §5). | Named test IDs mapped in `docs/13-testing/`. |
 
 ## OPS — Infrastructure & Deployment
 

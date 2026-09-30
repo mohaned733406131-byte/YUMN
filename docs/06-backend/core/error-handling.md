@@ -14,7 +14,7 @@ related_documents: [DOC-BE-001, DOC-BE-002, DOC-BE-005, DOC-BA-005]
 
 # Error Handling
 
-One global error pipeline produces the contract defined in **`07-api/error-model.md`** (that document owns the canonical codes and envelope; this file describes backend implementation). Clients map codes to localized text (`../05-frontend/core/forms-and-validation.md` §5). Errors never leak internals (`SEC-REQ-008`).
+One global error pipeline produces the contract defined in **`../../07-api/core/error-model.md`** (that document owns the canonical codes and envelope; this file describes backend implementation). Clients map codes to localized text (`../../05-frontend/core/forms-and-validation.md` §5). Errors never leak internals (`SEC-REQ-008`).
 
 ---
 
@@ -63,7 +63,7 @@ throw (typed exception from service/domain)
 | `DEPENDENCY_UNAVAILABLE` | 503 | Redis/ES/provider adapter down | NFR-007 degradation |
 | `INTERNAL_ERROR` | 500 | filter catch-all | — |
 
-**Alignment rule:** if `07-api/error-model.md` names a code differently, that document wins and this table is updated (never invent parallel codes).
+**Alignment rule:** if `../../07-api/core/error-model.md` names a code differently, that document wins and this table is updated (never invent parallel codes).
 
 ## 3. Status-Code Conventions
 
@@ -129,7 +129,7 @@ Metrics emitted alongside logs: per-endpoint RED metrics, error-code counters, p
 |---|---|
 | Unit | each typed exception maps to expected status/code |
 | Filter tests | unknown error → 500 opaque + log contains full detail; no stack in body |
-| Contract tests | responses match `07-api/error-model.md` envelope exactly |
+| Contract tests | responses match `../../07-api/core/error-model.md` envelope exactly |
 | Log tests | JSON schema validation; PII redaction assertions (no OTP/password/phone in clear) |
 | Load | error-code metrics visible in Grafana during k6 runs (NFR-014) |
 

@@ -35,7 +35,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | [docs/02-requirements/requirements-overview.md](docs/02-requirements/requirements-overview.md) | Canonical registry of all 68 requirement IDs |
 | [docs/01-business-analysis/business-rules.md](docs/01-business-analysis/business-rules.md) | Canonical registry of 104 `BR-*` rules |
 | [docs/07-api/README.md](docs/07-api/README.md) | API contract (221 endpoints) |
-| [docs/08-database/database-overview.md](docs/08-database/database-overview.md) | Database structure (schemas `b01…b13`) |
+| [docs/08-database/core/database-overview.md](docs/08-database/core/database-overview.md) | Database structure (schemas `b01…b13`) |
 | [docs/13-testing/README.md](docs/13-testing/README.md) | Testing strategy + test cases |
 
 ## Open items that gate the next phase

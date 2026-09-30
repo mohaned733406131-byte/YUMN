@@ -80,8 +80,8 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Logical data flows | `DF-NN` | `DF-12` | `data-flow.md` |
 | Logical components | `LC-NN` | `LC-04` | `logical-components.md` |
 | Sequence flows | `SQ-NN` | `SQ-03` | `sequence-flows.md` |
-| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `07-api/endpoints/README.md` — 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints; never cite an endpoint ID that is not in that registry |
-| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `08-database/entities/README.md` — `DB-001…DB-018`, one file per entity; here stores are conceptual (`DS1…DS16`) |
+| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/endpoints-index.md` — 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints; never cite an endpoint ID that is not in that registry |
+| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `../08-database/entities-index.md` — `DB-001…DB-018`, one file per entity; here stores are conceptual (`DS1…DS16`) |
 | Test cases | `TC-NNN` | `TC-104` | registry `13-testing/test-cases/README.md` — `TC-001…TC-114`; here verification is described by scenario and cited by `TC-` ID |
 
 Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` per root README §8.
@@ -105,7 +105,7 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | "How does the order flow end to end?" | `sequence-flows.md` (DOC-SA-007) | `01-business-analysis/` for step tables |
 | "What can go wrong?" | `edge-cases.md` (DOC-SA-008) | `failure-modes.md` (DOC-SA-009) |
 | "What are the exact order states?" | `state-transitions.md` (DOC-SA-010) | `13-testing/` for the state-machine suite |
-| "How are the finance/ERP departments organised?" | `erp-finance-departments.md` (DOC-SA-011) | `09-security/rbac.md` §11 for the permission model; `plan-develop.md` §4 for connector mechanics |
+| "How are the finance/ERP departments organised?" | `erp-finance-departments.md` (DOC-SA-011) | `../09-security/core/rbac.md` §11 for the permission model; `plan-develop.md` §4 for connector mechanics |
 
 ## Change History
 

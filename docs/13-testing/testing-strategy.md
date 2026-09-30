@@ -40,7 +40,7 @@ related_documents: [DOC-TST-001, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-REQ-
 
 ### 2.2 Integration / API (Jest + Supertest-style)
 
-- **Covers:** module + PostgreSQL 16 + Redis 7 + BullMQ together; HTTP contracts from `07-api/endpoints/`; idempotency keys; RBAC/ownership enforcement on real endpoints (TC-011–014); DB-level integrity (`AC-DR001-01…04`); ledger posting inside transactions.
+- **Covers:** module + PostgreSQL 16 + Redis 7 + BullMQ together; HTTP contracts from `07-api/`; idempotency keys; RBAC/ownership enforcement on real endpoints (TC-011–014); DB-level integrity (`AC-DR001-01…04`); ledger posting inside transactions.
 - **Style:** boot the NestJS app in-process, exercise `07-api` routes, assert status/body/DB state — the Supertest pattern, no separate test server.
 - **Runs:** every PR; provider calls use mock adapters (`DOC-INT-008` §2).
 
@@ -149,7 +149,7 @@ Flakiness is treated as a defect class: no test depends on wall-clock time (time
 | **LOW** | Cosmetic, minor copy, non-blocking UX | label overflow in `ar` at 320 px | backlog |
 | **INFORMATIONAL** | Observation, tech-debt note, test gap | duplicate assertion in suite | backlog |
 
-- Severity scale matches the project-wide finding classes (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`, root README §8) used by `09-security/security-findings.md` (`SEC-nnn`) and the risk severity classes in `17-risk-management/risk-register.md` (`RISK-nnn`).
+- Severity scale matches the project-wide finding classes (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`, root README §8) used by `../09-security/core/security-findings.md` (`SEC-nnn`) and the risk severity classes in `17-risk-management/risk-register.md` (`RISK-nnn`).
 - **States:** NEW → TRIAGED → IN_PROGRESS → FIXED → VERIFY → CLOSED / DEFERRED (with risk acceptance) / REJECTED (not a defect, with reason).
 - **Release gate:** zero open CRITICAL/HIGH (`AC-S-07`). Security defects follow `SEC-REQ-012`: critical vulnerabilities fixed ≤ 7 days.
 - Every defect references the failing TC / `TST-CON-*` / AC ID; closure requires re-run evidence.
@@ -172,7 +172,7 @@ Flakiness is treated as a defect class: no test depends on wall-clock time (time
 
 | Excluded | Why | Reference |
 |---|---|---|
-| Live real-money movement | Sandbox/fake providers only in CI/staging; production credentials unreachable from tests | `10-integrations/testing-and-sandboxes.md` §2, `DOC-INT-008` |
+| Live real-money movement | Sandbox/fake providers only in CI/staging; production credentials unreachable from tests | `../10-integrations/core/testing-and-sandboxes.md` §2, `DOC-INT-008` |
 | Email channels | No email in v1 (GAP-03) — no positive email tests exist | `BR-NTF-01`, GAP-03 |
 | GPS / real-time tracking | Feature does not exist; only *absence* is asserted | `C-16`, `TST-CON-16` |
 | Card, BNPL, COD, crypto paths | Prohibited; only negative/absence scans | `C-01…C-04`, `TST-CON-01…04` |

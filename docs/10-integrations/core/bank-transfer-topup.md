@@ -48,7 +48,7 @@ No code path exists that credits before approval (`AC-IR002-01`); unresolved ite
 
 | Aspect | Design | Canon |
 |---|---|---|
-| Access | ADMIN + SUPER_ADMIN only; MODERATOR explicitly denied (finance scope) | `09-security/rbac.md` row 14, `DOC-OVR-007` |
+| Access | ADMIN + SUPER_ADMIN only; MODERATOR explicitly denied (finance scope) | `../../09-security/core/rbac.md` row 14, `DOC-OVR-007` |
 | Visibility | pending list with age; every decision writes an audit row (actor, entity, before/after, IP, timestamp) | `SEC-REQ-010` R2/R3, `BR-PLT-06` |
 | Approval effect | balanced ledger credit + wallet balance update, idempotent | `BR-PAY-06`, `BR-PAY-08` |
 | Rejection effect | zero ledger effect; localized reason to customer | `AC-IR002-03`, `BR-NTF-04` |
@@ -103,7 +103,7 @@ Every approval and decline produces exactly one complete audit entry: actor, act
 
 ## 9. Security Summary
 
-- **Authorization:** ADMIN/SUPER_ADMIN only, deny-by-default, server-side (`SEC-REQ-004`); MODERATOR has no finance authority (`09-security/rbac.md` §4).
+- **Authorization:** ADMIN/SUPER_ADMIN only, deny-by-default, server-side (`SEC-REQ-004`); MODERATOR has no finance authority (`../../09-security/core/rbac.md` §4).
 - **Uploads:** `SEC-REQ-011` pipeline for receipts (`SEC-C-22`).
 - **Audit:** append-only, chained, 5-year retention (`SEC-REQ-010`, `NFR-019`).
 - **Privacy:** request status owner-scoped (`DATA-REQ-008`); no bank credentials involved in the customer flow; portal credentials (S-10) are human-held, ops-only.

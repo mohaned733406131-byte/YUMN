@@ -54,7 +54,7 @@ Two global rules override everything below (root README §5):
 | `source_of_truth` | `true` only for the authoritative document of its concept; registries of supporting detail (entity files, TC files) use `false` | root README §4, §7 |
 | Change history | Every file ends with `## Change History` table `| Version | Date | Change | Reason |`; version bumps on every change, never silent edits | root README §9.1–2 |
 | Evidence tags | `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE`; severities `CRITICAL…INFORMATIONAL`; confidence `HIGH/MEDIUM/LOW` | root README §8 |
-| Dates in prose/frontmatter | ISO `YYYY-MM-DD`; timestamps in API/data `ISO-8601 UTC` with `Z` | `07-api/api-conventions.md` §5 |
+| Dates in prose/frontmatter | ISO `YYYY-MM-DD`; timestamps in API/data `ISO-8601 UTC` with `Z` | `../07-api/core/api-conventions.md` §5 |
 | Placeholders | `<lower-case-with-hyphens>` — allowed **only** inside `23-templates/` | DOC-TPL-001 §2 |
 
 ## 3. Identifier Series (master table)
@@ -88,16 +88,16 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | Acceptance criteria | `AC-<REQID>-NN`, `AC-S-NN`, `AC-XCUT-NN` | `AC-FR013-01`, `AC-S-14` | 2 | `02-requirements/acceptance-criteria.md` | see §3.1 |
 | Risks | `RISK-NNN` | `RISK-006` | 3 | `17-risk-management/risk-register.md` (DOC-RSK-002) | `RISK-001…RISK-024` |
 | Decisions / ADRs | `ADR-NNN` | `ADR-011` | 3 | `18-decisions/core/` (index: `04-architecture/architecture-decisions-reference.md`) | `ADR-001…ADR-010` reserved; new from `ADR-011` |
-| Security findings | `SEC-NNN` | `SEC-011` | 3 | `09-security/security-findings.md` | `SEC-001…SEC-015` |
+| Security findings | `SEC-NNN` | `SEC-011` | 3 | `../09-security/core/security-findings.md` | `SEC-001…SEC-015` |
 | Gaps | `GAP-NN` (issued) / `GAP-NNN` (root README §5) | `GAP-03` | 2 | `20-validation/missing-information.md` | `GAP-01…GAP-12` — see §3.2 |
 | Validation audits | `AUD-NN` | `AUD-01` | 2 | `20-validation/README.md` §2 | `AUD-01…AUD-07` — `VERIFIED`: series minted when `20-validation/` was authored (2026-09-27), per DOC-TPL-011 |
 | Data-quality rules | `DQ-NN` | `DQ-12` | 2 | `16-data/data-quality.md` | append-only |
-| Threat-model entries | `TM-NN` | `TM-04` | 2 | `09-security/threat-model.md` | append-only |
-| Reconciliation jobs | `J<N>` | `J1`, `J2` | 1 | `06-backend/background-processing.md`, `16-data/data-quality.md` | `J1…J12` |
-| Queues | `{block}.{entity}.{action}` | `b07.escrow.release` | — | `06-backend/background-processing.md` (`BR-PLT-01`, `C-20`) | CI enforces the pattern |
-| Domain events | PascalCase past tense | `OrderConfirmed` | — | `06-backend/background-processing.md` | payload = IDs only |
-| API roles | `SCREAMING_SNAKE` | `SUPER_ADMIN` | — | `07-api/api-conventions.md` §4 | `CUSTOMER VENDOR COURIER ADMIN SUPER_ADMIN MODERATOR` (+ `SYSTEM`, non-interactive) |
-| Error codes | `SCREAMING_SNAKE` | `STATE_CONFLICT` | — | `07-api/error-model.md` §4 catalog | catalog-closed |
+| Threat-model entries | `TM-NN` | `TM-04` | 2 | `../09-security/core/threat-model.md` | append-only |
+| Reconciliation jobs | `J<N>` | `J1`, `J2` | 1 | `../06-backend/core/background-processing.md`, `16-data/data-quality.md` | `J1…J12` |
+| Queues | `{block}.{entity}.{action}` | `b07.escrow.release` | — | `../06-backend/core/background-processing.md` (`BR-PLT-01`, `C-20`) | CI enforces the pattern |
+| Domain events | PascalCase past tense | `OrderConfirmed` | — | `../06-backend/core/background-processing.md` | payload = IDs only |
+| API roles | `SCREAMING_SNAKE` | `SUPER_ADMIN` | — | `../07-api/core/api-conventions.md` §4 | `CUSTOMER VENDOR COURIER ADMIN SUPER_ADMIN MODERATOR` (+ `SYSTEM`, non-interactive) |
+| Error codes | `SCREAMING_SNAKE` | `STATE_CONFLICT` | — | `../07-api/core/error-model.md` §4 catalog | catalog-closed |
 
 ### 3.1 Acceptance-criterion shapes
 
@@ -120,7 +120,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 | `GAP-NNN` pattern vs two-digit issuance (`GAP-03`) | root README §5 vs `20-validation/`, `17-risk-management/` | Use the issued form `GAP-03`; pattern width is a documentation defect logged for root README |
 | `AC-SR-nnn` (retired) vs `AC-SRnnn-nn` | pre-v1.1 registry vs requirement files | Resolved by `DOC-AC-001` v1.1 (2026-09-26) — cite only the sub-numbered `AC-SRnnn-nn`/`AC-DRnnn-nn`/`AC-IRnnn-nn` shapes; the flat `AC-SR-nnn` spelling is retired and must not be reintroduced |
 | Stray flat AC IDs (`AC-SR-16`; `AC-DR-004-03`, since corrected) | `15-deployment/production-readiness.md`; historic `02-requirements/` drafts | Not present in the `DOC-AC-001` v1.1 registry — cite the registered `AC-SRnnn-nn`/`AC-DRnnn-nn` form or log the clash in `20-validation/contradiction-audit.md` |
-| Security finding cited as `A-07` | `09-security/security-findings.md` (SEC-008) | The register uses `ASM-*`/`SEC-*`; `A-07` is undefined — cite `ASM-07` intent or log in `contradiction-audit.md` |
+| Security finding cited as `A-07` | `../09-security/core/security-findings.md` (SEC-008) | The register uses `ASM-*`/`SEC-*`; `A-07` is undefined — cite `ASM-07` intent or log in `contradiction-audit.md` |
 | "four surfaces" vs "five surfaces" | `C-09`/`FR-001` vs `13-testing/`/`ADR-008` | Terminology *Surface* row resolves wording; don't mint a new count |
 
 ## 4. Code Naming (`INFERENCE` for items marked ⚠)
@@ -133,7 +133,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 | Functions / variables / DTO fields | camelCase; API DTO fields exactly as `error-model`/`api-conventions` name them | `idempotencyKey`, `subOrderIds` | ⚠ `INFERENCE` |
 | Constants / env vars | SCREAMING_SNAKE | `YUMN_JWT_SECRET` — read at runtime only, `${VAR}` in Compose, no literals | env discipline ✓ (`SEC-REQ-007` R1, `C-22`); the casing itself ⚠ |
 | Test files | mirror source name + spec suffix | `escrow.service.spec.ts` | ⚠ `INFERENCE` (`13-testing/` owns *what* is tested) |
-| Secrets | never appear in any name or file; only env/secrets manager | — | `09-security/secrets-management.md` (✓) |
+| Secrets | never appear in any name or file; only env/secrets manager | — | `../09-security/core/secrets-management.md` (✓) |
 
 ## 5. Database Naming (binding — `08-database/README.md` §1)
 
@@ -147,9 +147,9 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 | Indexes / constraints | `idx_<table>_<cols>`, `uq_<table>_<cols>`, `ck_<table>_<rule>`, `fk_<table>_<column>` | `fk_sub_order_order_id` |
 | Enums | snake_case **type**, `SCREAMING_SNAKE_CASE` **values** | `order_state = 'OUT_FOR_DELIVERY'` |
 | Soft delete / append-only | `deleted_at` where soft; append-only tables have `created_at` only, no `updated_at` | `wallet_transaction`, `audit_log` |
-| Entity doc file | `entities/<table>.md` with `entity_id: DB-NNN` | `entities/return_request.md` |
+| Entity doc file | `entities/<table>.md` with `entity_id: DB-NNN` | `../08-database/core/return_request.md` |
 
-## 6. API Naming (`07-api/api-conventions.md`)
+## 6. API Naming (`../07-api/core/api-conventions.md`)
 
 | Kind | Rule | Example |
 |---|---|---|
@@ -164,11 +164,11 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 | JSON field names | camelCase; money fields `*Amount`/`price`/`balance`/`total` as integers; timestamps end `At` | `2026-09-26T14:03:22Z` |
 | Endpoint IDs | `API-<GROUP>-NNN` per group file | `API-WAL-002` |
 
-## 7. Queues, Jobs & Events (`06-backend/background-processing.md`)
+## 7. Queues, Jobs & Events (`../06-backend/core/background-processing.md`)
 
 - Queue: **`{block}.{entity}.{action}`** — `b02.inventory.expire`, `b07.escrow.release`, `b13.platform.webhook.send` (lowercase, dot-separated; CI check per `BR-PLT-01`).
 - Domain event type: **PascalCase past tense** — `OrderConfirmed`, `OtpRequested`, `WalletCredited`; payload carries **IDs only**, never amounts or PII.
-- Job/reconciliation identifiers: `J1` … `J12` (allocation: `06-backend/background-processing.md`, `16-data/data-quality.md`).
+- Job/reconciliation identifiers: `J1` … `J12` (allocation: `../06-backend/core/background-processing.md`, `16-data/data-quality.md`).
 - Retries: 3× exponential backoff → **DLQ** + alert; job names never encode secrets.
 
 ## 8. Frontend, Routing & i18n (`05-frontend/`, `11-ui-ux/`)
@@ -185,7 +185,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 
 | Kind | Convention | Example | Source |
 |---|---|---|---|
-| Schema/PR branches | `feat/<ticket>` — one schema change set per PR | `feat/FR-013-topup-limits` | `08-database/migrations-and-evolution.md` (✓ for migrations) |
+| Schema/PR branches | `feat/<ticket>` — one schema change set per PR | `feat/FR-013-topup-limits` | `../08-database/core/migrations-and-evolution.md` (✓ for migrations) |
 | Other branches | `feat/<ID>-short-desc`, `fix/<ID>-short-desc`, `docs/<topic>` | `feat/UC-017-checkout-idempotency`, `fix/RISK-006-otp-fallback` | ⚠ `INFERENCE` — no canon repo standard exists yet; proposed so IDs stay greppable in history |
 | Commits | imperative subject referencing the governing ID where relevant | `feat(WAL): enforce top-up cap (BR-PAY-04)` | ⚠ `INFERENCE` — no canon commit standard; register the final rule in `18-decisions/ADR/` when the implementation repo starts |
 | Never | force-push to main, commit secrets, `.env` literals | — | `SEC-REQ-007`, `C-22` (✓) |
@@ -209,7 +209,7 @@ Pairs and clusters that are routinely confused. The glossary row (DOC-GL-002) is
 
 | Cluster | Say / use | Means | Do not use for this | Where the distinction bites |
 |---|---|---|---|---|
-| Vendor vs Store vs Seller | **Vendor** = actor `ACT-02`, tables/users with the vendor role; **Store** = the vendor's storefront entity (slug, branding, zones; `DB-003`, `BR-VND-01`) and the API ownership prefix `/store/...` (vendor-owned surface, `07-api/api-conventions.md` §2); **Seller** is a **disallowed synonym** | Vendor = who, Store = what they own / their API scope | "Seller"/"merchant" anywhere in documents (only inside quotations of external text); never name a table `seller` or a route `/sellers/...` | `00-project-overview/actors-and-roles.md`, `07-api/api-conventions.md`, `08-database/entities/` |
+| Vendor vs Store vs Seller | **Vendor** = actor `ACT-02`, tables/users with the vendor role; **Store** = the vendor's storefront entity (slug, branding, zones; `DB-003`, `BR-VND-01`) and the API ownership prefix `/store/...` (vendor-owned surface, `../07-api/core/api-conventions.md` §2); **Seller** is a **disallowed synonym** | Vendor = who, Store = what they own / their API scope | "Seller"/"merchant" anywhere in documents (only inside quotations of external text); never name a table `seller` or a route `/sellers/...` | `00-project-overview/actors-and-roles.md`, `../07-api/core/api-conventions.md`, `08-database/` |
 | Courier vs Delivery Provider | **Delivery Provider** = canonical actor `ACT-03` (role `COURIER`); **Courier** = accepted short form in prose only | Who physically moves the package; same person in both words | Never two different entities; never use "courier" as a company name — an external logistics **company** is an *integration* (`INT-REQ-005`), not ACT-03 | terminology rows *Delivery provider*/*Courier*, `07-api` role `COURIER` |
 | Master order vs Sub-order | **Master order** = one per checkout (`orders` / `DB-008`): payment, escrow funding, buyer timeline, master total = Σ sub-orders; **Sub-order** = per-vendor slice (`sub_order`): fulfillment, commission, escrow release, payout, drives the 17-state machine | Grouping level of the order hierarchy (C-10, `BR-ORD-02`) | Never "order" alone when the level matters — qualify it; never put vendor-scoped state on the master or payment state on a sub-order | terminology rows *Master order*/*Sub-order*, `DOC-SA-010` §4 |
 
@@ -228,7 +228,7 @@ Before adding a file, ID, table, endpoint or queue:
 7. Changed an approved doc ⇒ bump `version` + Change History row + propagate (root README §9).
 8. Suspected canon clash ⇒ `20-validation/contradiction-audit.md`, never a silent local fix.
 
-Enforcement points in canon: CI lint for RTL/logical CSS (`../05-frontend/core/rtl-and-styling.md`), CI check that every queue matches `BR-PLT-01` (`06-backend/background-processing.md` §Test checklist), validation audits in `20-validation/`.
+Enforcement points in canon: CI lint for RTL/logical CSS (`../05-frontend/core/rtl-and-styling.md`), CI check that every queue matches `BR-PLT-01` (`../06-backend/core/background-processing.md` §Test checklist), validation audits in `20-validation/`.
 
 ## Change History
 

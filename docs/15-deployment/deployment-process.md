@@ -137,7 +137,7 @@ Emergency/rollback deploys follow the same approval path but with an expedited t
 |---|---|
 | Coupling | Mobile releases are **not** gated by or gated on web deploys; they ship on the store-review cadence |
 | Compatibility | Clients pin `/api/v1`; additive API changes deploy first, app updates follow |
-| Coordinated change | A breaking API change requires a deprecation window: new version deployed, old version served until the app base has migrated (`07-api/api-conventions.md`) |
+| Coordinated change | A breaking API change requires a deprecation window: new version deployed, old version served until the app base has migrated (`../07-api/core/api-conventions.md`) |
 | QA gate | `DEP-12` device-lab pass (Android 10+, iOS 15+, carrier OTP) before store submission |
 | Rollback | Store rollback = halt rollout + ship a fix build; server-side can revert via feature flags where possible |
 

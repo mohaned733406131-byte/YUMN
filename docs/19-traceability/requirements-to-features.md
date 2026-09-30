@@ -31,8 +31,8 @@ This file answers methodology item 40 (`docs/README.md` §10) for the *feature* 
 | Objective(s) | `02-requirements/<family>/<ID>.md` §Rationale (`OBJ-NN` mentions; present in 20/20 `FR` and 17/20 `NFR` files, absent from every `SEC-REQ`/`DATA-REQ`/`INT-REQ` file); `00-project-overview/project-objectives.md` table (explicit `FR-*`/`NFR-*` references and the `FR-001…FR-020` range) | `VERIFIED` where present |
 | Block | `02-requirements/requirements-overview.md` §1 (`B01…B13`) | `VERIFIED`, FR only |
 | API group(s) | `07-api/README.md` §4 Group → Requirement Mapping (FR column and Key SEC/DATA/INT column) | `VERIFIED` |
-| Representative endpoints | `07-api/endpoints/*.md` endpoint-table *Related IDs* column, reversed to the requirement; capped at 3 shown + remainder counted | `VERIFIED` |
-| DB entities | `08-database/entities/*.md` frontmatter `related_requirements`, reversed | `VERIFIED` |
+| Representative endpoints | `07-api/*.md` endpoint-table *Related IDs* column, reversed to the requirement; capped at 3 shown + remainder counted | `VERIFIED` |
+| DB entities | `08-database/*.md` frontmatter `related_requirements`, reversed | `VERIFIED` |
 | UC / WF | `01-business-analysis/use-cases/UC-nnn.md` and `01-business-analysis/workflows/workflow-nnn.md` frontmatter `related_requirements`, reversed; shown as `UC-… / WF-…` | `VERIFIED`, FR only |
 | Business rules | `02-requirements/functional/FR-nnn.md` §Business Rules Applied | `VERIFIED`, FR only |
 | Priority | `02-requirements/requirements-overview.md` §1 (FR); `02-requirements/security/SEC-REQ-nnn.md` header (SEC) | `VERIFIED` where present |
@@ -143,7 +143,7 @@ Notes on Matrix A:
 Reading rules:
 
 - **`INSUFFICIENT EVIDENCE` is a finding, not a placeholder.** Section 4 counts them; section 5 lists what they imply.
-- *Representative endpoints* are truncated (`+N more`) — the full set is derivable from `07-api/endpoints/*.md`; truncation is presentation only, no link is dropped silently.
+- *Representative endpoints* are truncated (`+N more`) — the full set is derivable from `07-api/*.md`; truncation is presentation only, no link is dropped silently.
 - *UC / WF* are shown together because neither source file cross-references the other: no `UC-*` file cites a `WF-*` ID and no workflow file cites a `UC-*` ID (both verified by search), so the two halves are independent frontmatter evidence.
 - *UC / WF* cells are truncated after the first four `UC-` IDs (`+N more`), exactly like *Representative endpoints*: presentation only, no link is dropped silently. The full set is derivable from the `related_requirements` frontmatter of `01-business-analysis/use-cases/UC-*.md` and `workflows/workflow-*.md`.
 - *Business rules* are only defined for FR files — no `NFR`/`SEC-REQ`/`DATA-REQ`/`INT-REQ` file has a *Business Rules Applied* section, so those cells read `INSUFFICIENT EVIDENCE` by construction, not by omission.

@@ -68,7 +68,7 @@ Entry: bell icon in header (all web surfaces) with **unread badge** (`99+` cap),
 | List | reverse-chronological, grouped "اليوم / Today", "سابقًا / Earlier"; each row = icon + localized title + 2-line preview + relative time (`DOC-UX-007` §5) |
 | Unread state | unread rows: green-50 tint + start-edge dot + bold title; read = plain; badge clears on visiting the screen (per-row read stays granular) |
 | Segments | tabs: الكل / All · المالية / Money · الطلبات / Orders · المتجر / Store · الترويج / Promotions (promotions hidden if opted out) |
-| **Deep link** | every row taps through to the owning screen: order events → order detail; top-up verified → wallet; return → return detail; KYC decision (vendor) → KYC status; coupon/deal → product/deal page; ticket reply → ticket. Payload contract (title/body/action URL/locale/entity IDs) is specified in `07-api/endpoints/notifications.md` (planned — see report of missing paths) |
+| **Deep link** | every row taps through to the owning screen: order events → order detail; top-up verified → wallet; return → return detail; KYC decision (vendor) → KYC status; coupon/deal → product/deal page; ticket reply → ticket. Payload contract (title/body/action URL/locale/entity IDs) is specified in `../07-api/core/notifications.md` (planned — see report of missing paths) |
 | Actions | swipe/long-press: mark read/unread, delete (local dismiss only — never deletes the server record for security notices) |
 | Retention in UI | 90 days visible, older reachable via wallet/order history (`INFERENCE`; server retention per `DATA-REQ-003`) |
 | Security notices | pinned section behavior: cannot be dismissed permanently; render with danger accent (`BR-NTF-02`) |

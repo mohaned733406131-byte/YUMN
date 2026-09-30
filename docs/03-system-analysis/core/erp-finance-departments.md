@@ -35,7 +35,7 @@ under Option A, a satellite under Option B — holds the general ledger those su
 - **Multi-tenant by construction.** Every department below is scoped twice: platform administrators
   see and operate the whole book, each merchant sees only their own slice of it.
 - **Ownership rule `DATA-REQ-008`** (with `BR-ORD-09`): foreign data ⇒ **404**, never a 403 that leaks
-  existence. The enforcement table lives in [`rbac.md`](../../09-security/rbac.md) §6.
+  existence. The enforcement table lives in [`rbac.md`](../../09-security/core/rbac.md) §6.
 - **Integrity rule:** `LedgerService.post` remains the **only** money writer — `BR-PAY-06`, `NFR-008`,
   and forbidden pattern `F7` ("money writes outside B07") in
   [`module-boundaries.md`](../../04-architecture/core/module-boundaries.md).
@@ -70,9 +70,9 @@ The six departments of `plan-develop.md` §4.2, each row scoped per book and pin
 
 - **No new actors.** Departments are permission bundles and queue scopes **inside `ADMIN`** — plan
   decision `D4`. The seven canonical actors and the cross-layer mapping invariant of
-  [`rbac.md`](../../09-security/rbac.md) §8 are unchanged.
+  [`rbac.md`](../../09-security/core/rbac.md) §8 are unchanged.
 - **Org-departments `ORG-01`…`ORG-08` and staff bundles `ROLE-01`…`ROLE-09`** are specified in
-  [`rbac.md`](../../09-security/rbac.md) §11 (minted 2026-09-28 via `plan-develop.md` §8 `D10`
+  [`rbac.md`](../../09-security/core/rbac.md) §11 (minted 2026-09-28 via `plan-develop.md` §8 `D10`
   propagation). This table is the *module* model; it composes with that *permission* model rather
   than duplicating it.
 - **`rbac.md` rows 15/16 stay absolute:** no department grants direct ledger/balance write (row 15) or
@@ -90,7 +90,7 @@ The six departments of `plan-develop.md` §4.2, each row scoped per book and pin
   when enabled — **Purchases** (PO/bill entry) and **Stock valuation**; statements and the
   balance/escrow/payout views already exist.
 - *Interfaces:* admin endpoints follow the `API-ADM` group conventions documented in
-  [`admin.md`](../../07-api/endpoints/admin.md); merchant endpoints follow `API-ANL`/`API-WAL` scoping
+  [`admin.md`](../../07-api/admin/admin.md); merchant endpoints follow `API-ANL`/`API-WAL` scoping
   (own store only, foreign ⇒ 404).
 
 ## Periods & close mechanics

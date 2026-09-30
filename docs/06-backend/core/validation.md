@@ -14,7 +14,7 @@ related_documents: [DOC-BE-001, DOC-BE-002, DOC-BE-005, DOC-BA-005]
 
 # Validation — DTOs, Business Validation, Idempotency & Payload Limits
 
-Validation happens in **two distinct layers**: *schema validation* at the controller boundary (class-validator DTOs + global `ValidationPipe`) and *business validation* inside services/domain (rules, state, funds, limits). Schema validation rejects malformed input; business validation rejects well-formed but illegal input. Both are server-side; clients mirror schemas for UX only (`../05-frontend/core/forms-and-validation.md`).
+Validation happens in **two distinct layers**: *schema validation* at the controller boundary (class-validator DTOs + global `ValidationPipe`) and *business validation* inside services/domain (rules, state, funds, limits). Schema validation rejects malformed input; business validation rejects well-formed but illegal input. Both are server-side; clients mirror schemas for UX only (`../../05-frontend/core/forms-and-validation.md`).
 
 ---
 
@@ -117,7 +117,7 @@ Malware scanning of uploads happens in the storage pipeline (`SEC-REQ-011`, `09-
 | Level | Cases |
 |---|---|
 | Unit (`NFR-010`) | every DTO constraint; business validators with fakes (no network) |
-| Golden fixtures | shared payload sets rejected identically by client Zod and server DTO (`../05-frontend/core/forms-and-validation.md` §7) |
+| Golden fixtures | shared payload sets rejected identically by client Zod and server DTO (`../../05-frontend/core/forms-and-validation.md` §7) |
 | Boundary | 499/500 and 5,000,000/5,000,001 YER (C-14); 1,000/999 top-up (BR-PAY-02); 50/51 products, 10/11 units, 5/6 vendors (C-15) |
 | Idempotency | concurrent double-submit produces one order (BR-ORD-06) |
 | Security | oversized body → 413; SVG upload rejected; unknown field rejected (SEC-REQ-008/011) |

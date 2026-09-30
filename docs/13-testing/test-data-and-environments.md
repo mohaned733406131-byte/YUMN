@@ -14,7 +14,7 @@ related_documents: [DOC-TST-001, DOC-TST-002, DOC-TST-003, DOC-TST-004, DOC-DTA-
 
 # Test Data & Environments
 
-Where yumn is tested, with what data, and under which PII rules. Consumes the provider sandbox rules from `10-integrations/testing-and-sandboxes.md` (DOC-INT-008) and the masking rules from `16-data/data-classification.md` (DOC-DTA-004). Produces the fixtures referenced by every plan in [test-plans.md](test-plans.md).
+Where yumn is tested, with what data, and under which PII rules. Consumes the provider sandbox rules from `../10-integrations/core/testing-and-sandboxes.md` (DOC-INT-008) and the masking rules from `16-data/data-classification.md` (DOC-DTA-004). Produces the fixtures referenced by every plan in [test-plans.md](test-plans.md).
 
 ---
 

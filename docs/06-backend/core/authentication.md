@@ -14,7 +14,7 @@ related_documents: [DOC-BE-001, DOC-BE-002, DOC-BE-004, DOC-BA-005]
 
 # Authentication — Implementation Placement
 
-**Security design** (threats, controls, token architecture rationale) lives in `09-security/authentication.md`. This file states *where FR-001 / SEC-REQ-001…003 are coded* inside the monolith (`DOC-BE-002` §1). Rules referenced: `BR-AUTH-01…08`, `BR-NTF-02/03`.
+**Security design** (threats, controls, token architecture rationale) lives in `../../09-security/core/authentication.md`. This file states *where FR-001 / SEC-REQ-001…003 are coded* inside the monolith (`DOC-BE-002` §1). Rules referenced: `BR-AUTH-01…08`, `BR-NTF-02/03`.
 
 ---
 
@@ -113,7 +113,7 @@ POST /auth/otp/verify   → otp.service
 
 ## 8. What the Client May Do (boundary)
 
-Clients request OTP, submit credentials, hold tokens and render guards (`../05-frontend/core/authentication-handling.md`). Clients **cannot**: set their own roles, extend token lifetimes, bypass attempt counters, or read another session. Frontend behavior is UX parity only (`SEC-REQ-004`).
+Clients request OTP, submit credentials, hold tokens and render guards (`../../05-frontend/core/authentication-handling.md`). Clients **cannot**: set their own roles, extend token lifetimes, bypass attempt counters, or read another session. Frontend behavior is UX parity only (`SEC-REQ-004`).
 
 ## 9. Verification
 
@@ -124,7 +124,7 @@ Clients request OTP, submit credentials, hold tokens and render guards (`../05-f
 | Security | reused refresh revokes family (`AC-FR001-03`); 5-failure lockout (`AC-FR001-02`); no plaintext password anywhere; rate limits return 429 |
 | Constraint | `TST-CON-*` for `C-06` (no email/social login path exists) and `C-08` (token TTLs) |
 
-Related design doc (must stay consistent): `09-security/authentication.md`.
+Related design doc (must stay consistent): `../../09-security/core/authentication.md`.
 
 ## Change History
 

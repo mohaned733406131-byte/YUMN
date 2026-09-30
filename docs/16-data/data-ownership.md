@@ -110,7 +110,7 @@ Consequences if the assumption fails: cross-border processing must be assessed u
 
 - Cross-tenant suite green for every entity; coverage gate fails CI on new entities (`AC-DR008-04`).
 - Field-level assertion for the courier visibility windows (pre-accept masked / active full / post-delivery last-4).
-- Role-scope matrix diff-tested against `09-security/rbac.md` (definitive RBAC) whenever either document changes — divergence logged in `20-validation/consistency-audit.md`.
+- Role-scope matrix diff-tested against `../09-security/core/rbac.md` (definitive RBAC) whenever either document changes — divergence logged in `20-validation/consistency-audit.md`.
 - Storage-location assumption reviewed at each launch gate (`AC-S-24` legal sign-offs).
 
 ## Change History

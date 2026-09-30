@@ -48,7 +48,7 @@ React Native 0.73 apps (`CNT-02` customer, `CNT-03` courier) are native artifact
 
 | Dimension | Scheme | Example | Rule |
 |---|---|---|---|
-| API contract | URL path major version | `/api/v1` → `/api/v2` on breaking change | Additive changes = no bump; breaking change = new path, old one served until sunset (`07-api/api-conventions.md`) |
+| API contract | URL path major version | `/api/v1` → `/api/v2` on breaking change | Additive changes = no bump; breaking change = new path, old one served until sunset (`../07-api/core/api-conventions.md`) |
 | Application SemVer | `MAJOR.MINOR.PATCH` release tags | `v1.4.0` | **MAJOR** = breaking API or destructive-but-contracted schema phase; **MINOR** = new features, backward compatible; **PATCH** = fixes only |
 | Image tag (every build) | `ghcr.io/yumn/<svc>:<git-sha>` | `ghcr.io/yumn/api:9f3c1ab` | Immutable; the SHA is the primary key of any build |
 | Image tag (release) | adds `:<semver>` and `:latest` on the tag | `:v1.4.0`, `:latest` | `latest` is convenience only — deploys always pin a SHA or a release tag |
@@ -119,7 +119,7 @@ Before a tag is cut, the following must be complete and linked from the release 
 | Staging smoke + nightly E2E green | `DOC-DPL-003` §5 |
 | k6 load gate at `C-25` for release candidates | `AC-S-05`, `13-testing/test-plans.md` §b |
 | DAST baseline clean for release candidates | `SEC-C-23`, `AC-SR012-02` |
-| Migration lint + expand/contract classification | `08-database/migrations-and-evolution.md` §5 |
+| Migration lint + expand/contract classification | `../08-database/core/migrations-and-evolution.md` §5 |
 | Fresh backup taken and verified | `14-devops-infrastructure/backup-recovery.md` §5 |
 | Rollback target identified (N-2) and rehearsed | `DOC-DPL-004` §6 |
 | **Full go-live checklist** (first release and any launch milestone) | [`production-readiness.md`](production-readiness.md) |
