@@ -3,9 +3,9 @@ document_id: DOC-OVR-001
 title: 00 Project Overview — README
 category: 00-project-overview
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-29
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -34,6 +34,7 @@ This directory is the identity layer of the knowledge base. Every other director
 | [assumptions.md](assumptions.md) | `ASM-01…ASM-15` with evidence status and verification |
 | [dependencies.md](dependencies.md) | `DEP-01…DEP-12` internal/external dependencies |
 | [success-criteria.md](success-criteria.md) | Measurable acceptance-level success criteria |
+| [system-expansion-proposal.md](system-expansion-proposal.md) | Session-011 owner directive: 210 proposed UCs (`UC-211…420`), requirement/BR deltas, portal-partition placement + evaluation (`DOC-OVR-012`) |
 
 ## Source of Truth For
 
@@ -63,3 +64,4 @@ All quantitative targets (scale, availability, performance) originate here and i
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial publication | Analysis-phase authoring (root README §7) |
 | 1.1 | 2026-09-29 | `## Change History` section added | Session 009 `CHK-05` re-run — consistency finding 2; root README §9.2 requires the section on every document |
+| 1.2 | 2026-09-30 | Contents row added for `system-expansion-proposal.md` (`DOC-OVR-012`) | Session 011 owner directive — proposal + evaluation artifact registered per root README §7 |
