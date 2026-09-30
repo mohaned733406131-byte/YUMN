@@ -3,9 +3,9 @@ document_id: DOC-VAL-008
 title: AUD-06 — Final Quality Assessment (whole corpus)
 category: 20-validation
 status: approved
-version: 1.13
+version: 1.14
 created: 2026-09-27
-updated: 2026-09-29
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013, NFR-019]
@@ -45,8 +45,8 @@ File counts recomputed 2026-09-27 (domains `19-traceability/` and `20-validation
 |---|---|---|---|---|---|
 | — | root `README.md` | 1 | OK | Domain map, §5 ID series, §10 file register, §11 quality gate | ~~HAL-03 (provenance)~~ `RESOLVED` 2026-09-28, HAL-13 (status line) |
 | 00 | `00-project-overview` | 11 | OK | Charter, scope, constraints (26), assumptions (ASM), dependencies (DEP), success criteria (24 `AC-S-*`) | CRIT-01 (Gate 0 prereqs), CRIT-09 (launch deps), HAL-10 |
-| 01 | `01-business-analysis` | 231 | OK | 104 business rules, 210 use cases, 12 workflows, stakeholder needs | ~~HAL-04 (`BR-INV-*` absent — with `13-testing/`)~~ `RESOLVED` 2026-09-28 (`BR-INV-01…05` registered) |
-| 02 | `02-requirements` | 76 | OK | 68 requirements, 253-AC registry | HAL-05…HAL-08, RVF-01…RVF-07, CRIT-05 |
+| 01 | `01-business-analysis` | 446 | OK | 111 business rules, 420 use cases, 12 workflows, stakeholder needs | ~~HAL-04 (`BR-INV-*` absent — with `13-testing/`)~~ `RESOLVED` 2026-09-28 (`BR-INV-01…05` registered) |
+| 02 | `02-requirements` | 86 | OK | 73 requirements, 273-AC registry | HAL-05…HAL-08, RVF-01…RVF-07, CRIT-05 |
 | 03 | `03-system-analysis` | 10 | OK | Boundary, context, state transitions, edge cases | HAL-09 (stale "not yet authored") |
 | 04 | `04-architecture` | 10 | OK | C4 views, data flow (17-queue table), ADR index | HAL-02 (ADR index), HAL-09, CRIT-04 (queue drift — with `06-backend/`) |
 | 05 | `05-frontend` | 9 | OK | Frontend architecture, RTL/i18n, state | — |
@@ -83,7 +83,7 @@ Roll-ups only — every row is owned by a named audit; nothing is minted here.
 | AVF-04 | Requirement/registry acceptance divergence (16 of 24 rewritten ACs; 14 orphaned `AC-FR*-05`) | HIGH | `AUD-04` HAL-05/HAL-07; `AUD-05` CRIT-05; `AUD-07` RVF-04 | `VERIFIED` | OPEN (partial 2026-09-27 — `-05` orphans cited, `HAL-07` `RESOLVED`; HAL-05 text drift remains) |
 | AVF-05 | Undefined test-rule IDs `BR-INV-01…05` (fails gate check D-3) | HIGH | `AUD-04` HAL-04; `AUD-05` CRIT-06 | `VERIFIED` | `RESOLVED` 2026-09-28 (`business-rules.md` v1.1 registers `BR-INV-01…05` under the new `INV` domain — owner-approved; `HAL-04` + `CRIT-06` `RESOLVED` same set, session 008) |
 | AVF-06 | Push device-token API resource has no DB model | HIGH | `AUD-05` CRIT-07 | `INFERENCE` (absence-based) | OPEN |
-| AVF-07 | Requirement field contract (`requirements-overview.md` §6) unmet outside the functional category; `source` 0/68, `priority` 32/68 | HIGH | `AUD-07` RVF-01…RVF-03 | `VERIFIED` | OPEN |
+| AVF-07 | Requirement field contract (`requirements-overview.md` §6) unmet outside the functional category; `source` 0/73, `priority` 36/73 | HIGH | `AUD-07` RVF-01…RVF-03 | `VERIFIED` (re-counted 2026-09-30) | OPEN |
 | AVF-08 | Provenance/decision-record drift: `archdoc.md` 0 bytes, `archive/` absent, ADR index says "empty" while 10 ADRs exist | MEDIUM | `AUD-04` HAL-02/HAL-03; `AUD-05` CRIT-08 | `INSUFFICIENT EVIDENCE` (sources absent) / `VERIFIED` | `RESOLVED` 2026-09-28 (ADR index re-synced v1.1 session 007; `archdoc.md` v1.0 restored + `docs/README.md` v1.4 §1 corrected session 008 — `HAL-02`/`HAL-03`/`CRIT-08` all `RESOLVED`) |
 | AVF-09 | Three `AC-S-*` success criteria missing from the "registry of every AC" | MEDIUM | `AUD-04` HAL-06; `AUD-07` RVF-05 | `VERIFIED` | OPEN |
 | AVF-10 | Sibling audits' open inventory: `CT-06`…`CT-30` contradictions (21), `GAP-01`…`GAP-14` gaps (11 open), consistency sweep 9/31 checks failed (session-010 re-run on 654 files 2026-09-29: 20 PASS · 2 PASS WITH FINDINGS · 9 FAIL — identical to the session-009 re-run on 485 files; post-session-008 `CHK-21` flip 10/31, 11/31 at the session-006 re-run 2026-09-28) | MEDIUM | `AUD-02`, `AUD-03`, `AUD-01` | `VERIFIED` (their own registers) | OPEN |
@@ -97,7 +97,7 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 4 · MEDIUM 3 · LOW 1 = 1
 
 - **Files examined:** 444 of 444 `docs/**/*.md` (structural + link pass); registry re-counts on 12 owning documents; deep reads distributed across `AUD-04`/`AUD-05`/`AUD-07`; corpus grown to 479 at the session-006 re-run 2026-09-28 and to **485** at the session-009 re-run 2026-09-29 (sibling registers re-read, not this file's link pass)
 - **Checks run:** 444 frontmatter checks — **passed 444, failed 0** (485/485 frontmatter + `## Change History` re-verified session 009); 1 final link pass over **1,728 path citations → 30 broken** (12 = evidence strings quoted verbatim in HAL-12, 5 = sibling `20-validation/` files still in parallel edit, 13 elsewhere: 11 = HAL-12's original locations, 2 = `19-traceability/README.md:50,148`) *(superseded 2026-09-28: `REC-15` citation CI green over the full corpus — 497 files, 18,790 ID citations, 0 dangling as re-run 2026-09-29)*; 12 registry re-counts; 6 sibling audits consumed
-- **ID references verified:** `DOC-*` 444 unique (1 per file) · `FR` 20 · `NFR` 20 · `SEC-REQ` 12 · `DATA-REQ` 8 · `INT-REQ` 8 · `AC` 253 registry + 24 `AC-S-*` · `BR` 104 · `TC` 114 · `UC` 40 · `workflow` 12 · `ADR` 10 · `C` 26 · `RISK` 24 · `SEC` 15 · `GAP` 12 · `CT` 20 · `AUD` 7 · `API-*` 221 · DB entity files 18 + index — **missing/nonexistent inside requirement files: none**; missing elsewhere: ~~`BR-INV-01…05` (HAL-04)~~ **none since 2026-09-28** (`business-rules.md` v1.1) *(original-pass figures; session-009 re-counts: `DOC-*` 490 cited / 485 defined, `UC` 42, `GAP` 14, `CT` 30 issued; session-010 re-counts: `DOC-*` 659 cited / 654 defined, `UC` **210** — `AUD-01` §7)*
+- **ID references verified:** `DOC-*` 444 unique (1 per file) · `FR` 20 · `NFR` 20 · `SEC-REQ` 16 · `DATA-REQ` 9 · `INT-REQ` 8 · `AC` 273 registry + 24 `AC-S-*` · `BR` 111 · `TC` 114 · `UC` 40 · `workflow` 12 · `ADR` 10 · `C` 26 · `RISK` 24 · `SEC` 15 · `GAP` 12 · `CT` 20 · `AUD` 7 · `API-*` 221 · DB entity files 18 + index — **missing/nonexistent inside requirement files: none**; missing elsewhere: ~~`BR-INV-01…05` (HAL-04)~~ **none since 2026-09-28** (`business-rules.md` v1.1) *(original-pass figures; session-009 re-counts: `DOC-*` 490 cited / 485 defined, `UC` 42, `GAP` 14, `CT` 30 issued; session-010 re-counts: `DOC-*` 659 cited / 654 defined, `UC` **210** — `AUD-01` §7; session-011 re-counts: `UC` **420** (`UC-001…420`), requirements 73, `SEC-REQ` 16, `DATA-REQ` 9, `AC` 273, `BR` 111 — direct file/register re-runs 2026-09-30)*
 - **Terms/IDs in scope:** all 24 domains; 5 requirement categories; 14 gate checklists (`quality-gates.md` §3–§6)
 
 ---
@@ -142,3 +142,4 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 4 · MEDIUM 3 · LOW 1 = 1
 | 1.11 | 2026-09-29 | Session-009 pre-gate hygiene propagation: `AUD-01` row → **v1.17 / 9 of 31 checks failed** (485-file re-run 2026-09-29, `CHK-05` → `PASS`); `AVF-10` consistency count 10 → 9; verdict 66 → **65 open** (13 consistency) with snapshot date 2026-09-29; unresolved list drops finding 2; coverage lines record the 485-file corpus and the current citation-CI figures (497 files, 18,790 ID citations) | Root README §9.4 consumer re-sync — owning document `consistency-audit.md` v1.17 changed in the same session-009 change set |
 | 1.12 | 2026-09-29 | Session-010 UC expansion propagation: domain-01 row re-counted — 63 → **231 files**, 42 → **210 use cases** (session 010 minted `UC-043`…`UC-210`, 168 files; `UC-001…210` verified contiguous 210/210); roll-up untouched (**65 open** — no register status/count edited by this row) | Owner directive session 010 (`prompt-010.md` §1) — root README §9.4 consumer re-sync; direct file count re-run |
 | 1.13 | 2026-09-29 | Session-010 full 31-check re-run propagation: `AUD-01` row → **v1.20 / 9 of 31 (654-file re-run, 20·2·9 unchanged)**; `AVF-10` consistency count annotated with the session-010 re-run; §Statistics `UC`/`DOC-*` session-010 re-counts (**`UC` 210**, `DOC-*` 659/654); frontmatter-statistics line gains **654/654**; roll-up unchanged (**65 open** — same 9 `FAIL` findings) | Owner directive session 010 (`prompt-010.md` §4.4) — full sweep required after counts moved; consumer statistics re-synced per `consistency-audit.md` v1.20 |
+| 1.14 | 2026-09-30 | Session-011 requirements/UC propagation: domain rows re-counted — `01` **231 → 446 files** (111 business rules, 420 use cases; 12 workflows + stakeholder needs verified), `02` **76 → 86 files** (73 requirements, 273-AC registry — +5 requirement files +5 portal READMEs from phase 5); `AVF-07` evidence re-based `0/68`→`0/73`, `32/68`→`36/73` (no status change); §Statistics `ID references` line re-synced (`SEC-REQ` 16, `DATA-REQ` 9, `AC` 273, `BR` 111, session-011 `UC` 420 re-count); roll-up untouched (**65 open** — no register status edited) | Owner directive session 011 (`prompt-011.md` §4.8) — root README §9.4 consumer re-sync; direct file count + register re-runs 2026-09-30 |

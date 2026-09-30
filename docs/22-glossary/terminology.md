@@ -3,7 +3,7 @@ document_id: DOC-GL-002
 title: Terminology — Canonical A–Z Term Register
 category: 22-glossary
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -127,7 +127,7 @@ related_documents: [DOC-GL-001, DOC-GL-003, DOC-ROOT-001, DOC-OVR-002, DOC-OVR-0
 | System (actor) | الفاعل النظامي | Non-human actor ACT-07: background jobs, schedulers, webhooks and automated engines (escrow release, TTL sweeps, escalations); it has no interactive login and is not a login role — its actions write `audit_log.actor_type='SYSTEM'`. | Business | ACT-07, DOC-DB-001 §Invariants | Workflow (WF), Domain event |
 | Test case (TC) | حالة اختبار | A single executable verification document `TC-NNN.md` (`TC-001…TC-114`, allocation locked per domain) with objective, level, priority, automation flag, preconditions, data, steps and expected result. | Process | `13-testing/core/`, DOC-TST-006 | Acceptance criterion (AC), Constraint test |
 | Top-up | تعبئة الرصيد | Adding money to the wallet: m-Floos/OneCash credited only on verified provider callback or reconciled poll, bank transfer only after admin verification; bounds 1,000–5,000,000 YER per transaction; no other instruments exist. | Business | C-05, BR-PAY-02…04, FR-013 | Wallet, Reconciliation |
-| Use case (UC) | حالة استخدام | A structured scenario document `UC-NNN.md` (`UC-001…UC-420` — 210 minted through session 010, `UC-211…UC-420` allocated for session 011) with one primary actor from the canonical 7, trigger, main/alternative/exception flows and `AC-UCnnn-nn` criteria; API touchpoints inside are conceptual. | Process | `01-business-analysis/<portal>/` (DOC-UC-000) | Workflow (WF), Acceptance criterion |
+| Use case (UC) | حالة استخدام | A structured scenario document `UC-NNN.md` (`UC-001…UC-420` — all 420 issued (210 through session 010, `UC-211…UC-420` minted in session 011)) with one primary actor from the canonical 7, trigger, main/alternative/exception flows and `AC-UCnnn-nn` criteria; API touchpoints inside are conceptual. | Process | `01-business-analysis/<portal>/` (DOC-UC-000) | Workflow (WF), Acceptance criterion |
 | VAT (15%) | ضريبة القيمة المضافة | Value-added tax at 15% applied to (cart subtotal − coupon discount), added on top, never charged on shipping, shown as its own localized line in every order breakdown. | Business | BR-FIN-01, project-context §Compliance | Subtotal, Discount |
 | Vendor | بائع | The canonical name for actor ACT-02 — the selling party who owns a store, passes KYC, manages catalog/inventory/orders and receives escrow releases and payouts. | Business | ACT-02, `00-project-overview/actors-and-roles.md` | Store, Seller (disallowed), KYC |
 | Verified purchase | شراء موثّق | The badge/eligibility proving a review comes from a real delivered order of that customer — the precondition for writing a review (only the purchasing customer, only after `DELIVERED`). | Business | BR-REV-01, DB-015 | Review, Rating |
@@ -162,3 +162,4 @@ related_documents: [DOC-GL-001, DOC-GL-003, DOC-ROOT-001, DOC-OVR-002, DOC-OVR-0
 | 1.3 | 2026-09-29 | Use-case term row wording: `42 issued at session-010 start` → **fully issued through session 010** (210 files) | Owner directive session 010 (`prompt-010.md` §1) — minting completed; wording synced after `naming-conventions.md` v1.6 §3 |
 | 1.4 | 2026-09-30 | New **Portal (documentation partition)** term row; Use-case row range → **`UC-001…UC-420`** (210 minted + `UC-211…420` allocated); path cells realigned to the portal scheme (UC/WF → `01-business-analysis/<portal>/`, TC → `13-testing/core/`, entity → `08-database/core/`, ADR → `18-decisions/core/`, API → `07-api/<portal>/`) | Owner directive session 011 (`prompt-011.md` §1): portal-partitioned `01…23` + 400+ UCs — change control before minting/moving (`naming-conventions.md` v1.7, `DOC-OVR-012`) |
 | 1.5 | 2026-09-30 | Business-rule term row count sync: 104 → **111 rules total** (domains unchanged at 15) | Owner directive session 011 (`prompt-011.md` §4.7) — consumer of `business-rules.md` v1.2; count re-synced in same change set |
+| 1.6 | 2026-09-30 | Use-case term row issuance: 210 minted + allocated → **all 420 issued** (`UC-211…UC-420` minted session 011) | Owner directive session 011 (`prompt-011.md` §4.8) — term row follows `naming-conventions.md` v1.9 §3 (root README §9.4) |

@@ -3,7 +3,7 @@ document_id: DOC-TRC-001
 title: Traceability — Domain Overview, Chain Rules & Coverage Dashboard
 category: 19-traceability
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-27
 updated: 2026-09-30
 author: analysis-agent
@@ -62,8 +62,8 @@ The five-hop form used by `TC-031` — `FR-013 → BR-PAY-04 → API-WAL-002 →
 | File | Document ID | Owns | Rows |
 |---|---|---|---|
 | `README.md` | `DOC-TRC-001` | Domain index, chain rules, vocabulary, coverage dashboard, findings | — |
-| `requirements-to-features.md` | `DOC-TRC-002` | Objective → requirement matrix; requirement → feature/asset matrix | 12 objectives, 68 requirements |
-| `requirements-to-tests.md` | `DOC-TRC-003` | Requirement → AC → test-artifact matrix; constraint → `TST-CON-NN` matrix | 277 ACs, 26 constraints |
+| `requirements-to-features.md` | `DOC-TRC-002` | Objective → requirement matrix; requirement → feature/asset matrix | 12 objectives, 73 requirements |
+| `requirements-to-tests.md` | `DOC-TRC-003` | Requirement → AC → test-artifact matrix; constraint → `TST-CON-NN` matrix | 297 ACs, 26 constraints |
 | [`core/`](core/README.md) | DOC-TRC-004 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
 | [`admin/`](admin/README.md) | DOC-TRC-005 | Admin portal folder — admin-console-specific material (platform operators) |
 | [`vendor/`](vendor/README.md) | DOC-TRC-006 | Vendor portal folder — vendor-portal-specific material (sellers) |
@@ -89,18 +89,18 @@ An empty matrix cell always means `INSUFFICIENT EVIDENCE` — never an implied l
 
 ---
 
-## 5. Coverage Dashboard (as of 2026-09-28; UC row re-counted 2026-09-29 — session 010)
+## 5. Coverage Dashboard (as of 2026-09-30 — session 011 re-count: requirements, BR, AC registry and UC corpus)
 
 **Corpus under trace (all `VERIFIED` by direct count):**
 
 | Object | Count | Source |
 |---|---|---|
 | Objectives `OBJ-01…OBJ-12` | 12 | `00-project-overview/project-objectives.md` |
-| Requirements | 68 (20 `FR`, 20 `NFR`, 12 `SEC-REQ`, 8 `DATA-REQ`, 8 `INT-REQ`) | `02-requirements/requirements-overview.md` |
-| Business rules | 104 | `01-business-analysis/business-rules.md` |
+| Requirements | 73 (20 `FR`, 20 `NFR`, 16 `SEC-REQ`, 9 `DATA-REQ`, 8 `INT-REQ`) | `02-requirements/requirements-overview.md` |
+| Business rules | 111 | `01-business-analysis/business-rules.md` |
 | Constraints `C-01…C-26` | 26 | `00-project-overview/project-constraints.md` |
-| Acceptance criteria | 253 in `02-requirements/acceptance-criteria.md` (94 FR + 40 NFR + 50 SR + 32 DR + 33 IR + 4 XCUT) + 24 `AC-S-NN` in `00-project-overview/success-criteria.md` = **277 traceable AC rows** | both files |
-| Use cases / workflows / blocks | 210 `UC` (`UC-001…UC-210`) / 12 `WF` / 13 blocks | `01-business-analysis/` , `00-project-overview/project-context.md` |
+| Acceptance criteria | 273 in `02-requirements/acceptance-criteria.md` (94 FR + 40 NFR + 66 SR + 36 DR + 33 IR + 4 XCUT) + 24 `AC-S-NN` in `00-project-overview/success-criteria.md` = **297 traceable AC rows** | both files |
+| Use cases / workflows / blocks | 420 `UC` (`UC-001…UC-420`) / 12 `WF` / 13 blocks | `01-business-analysis/` , `00-project-overview/project-context.md` |
 | API groups / endpoints | 14 / 221 | `07-api/README.md` §4 |
 | Database entities | 18 (`DB-001…DB-018`) | `08-database/` |
 | Test artifacts | 114 `TC` files present (114 declared), 18 `PLAN`, 7 `PERF`, 9 `SEC-P`, 8 `CHAOS`, 8 plan sections `§a…§h`, 26 `TST-CON` | `13-testing/` |
@@ -109,15 +109,15 @@ An empty matrix cell always means `INSUFFICIENT EVIDENCE` — never an implied l
 
 | Link status | ACs | Share |
 |---|---|---|
-| `EXPLICIT` | 203 | 73.3% |
-| `DECLARED` (allocation/scope only) | 42 | 15.2% |
-| `GAP` | 27 | 9.7% |
-| `OPERATIONAL EVIDENCE` | 5 | 1.8% |
-| **Total** | **277** | 100% |
+| `EXPLICIT` | 203 | 68.4% |
+| `DECLARED` (allocation/scope only) | 42 | 14.1% |
+| `GAP` | 47 | 15.8% |
+| `OPERATIONAL EVIDENCE` | 5 | 1.7% |
+| **Total** | **297** | 100% |
 
-By family: FR 86/94 `EXPLICIT` + 8 `DECLARED`; NFR 29/40 `EXPLICIT` + 5 `DECLARED`; SEC 31/50 `EXPLICIT` + 19 `DECLARED`; DATA 10/32 `EXPLICIT` + 6 `DECLARED`; INT 27/33 `EXPLICIT` + 1 `DECLARED`; XCUT 4/4 `EXPLICIT`; `AC-S` 16/24 `EXPLICIT` + 3 `DECLARED` (+5 `OPERATIONAL`).
+By family: FR 86/94 `EXPLICIT` + 8 `DECLARED`; NFR 29/40 `EXPLICIT` + 5 `DECLARED` + 6 `GAP`; SEC 31/66 `EXPLICIT` + 19 `DECLARED` + 16 `GAP`; DATA 10/36 `EXPLICIT` + 6 `DECLARED` + 20 `GAP`; INT 27/33 `EXPLICIT` + 1 `DECLARED` + 5 `GAP`; XCUT 4/4 `EXPLICIT`; `AC-S` 16/24 `EXPLICIT` + 3 `DECLARED` (+5 `OPERATIONAL`).
 
-**Verdict for `requirements-to-tests.md`: `PASS WITH FINDINGS`** — every requirement and every AC has a row, and all 20 FRs have ≥1 `TC`, but 27 ACs have no test-artifact link (F-01; the 11 formerly absent `TC` files were authored in session 003, F-02 `RESOLVED`). Nothing is executed yet: all 26 `TST-CON-NN` are `DESIGNED`, and no test result is claimed anywhere in this domain.
+**Verdict for `requirements-to-tests.md`: `PASS WITH FINDINGS`** — every requirement and every AC has a row, and all 20 FRs have ≥1 `TC`, but 47 ACs have no test-artifact link (F-01; the 11 formerly absent `TC` files were authored in session 003, F-02 `RESOLVED`). Nothing is executed yet: all 26 `TST-CON-NN` are `DESIGNED`, and no test result is claimed anywhere in this domain.
 
 ---
 
@@ -138,19 +138,19 @@ Severity uses `docs/README.md` §8 classes; confidence noted where it matters.
 
 | # | Finding | Severity | Evidence |
 |---|---|---|---|
-| F-01 | **27 ACs have no test-artifact link at all**: `AC-DR002-01…04`, `AC-DR003-01…04`, `AC-DR006-01/04`, `AC-DR007-03/04`, `AC-DR008-01…04`, `AC-IR002-02/03/04`, `AC-IR005-02/03`, `AC-NFR-008-02`, `AC-NFR-012-01/02`, `AC-NFR-014-02`, `AC-NFR-016-02`, `AC-NFR-019-02` | HIGH | `requirements-to-tests.md` rows with status `GAP` |
+| F-01 | **47 ACs have no test-artifact link at all**: `AC-DR002-01…04`, `AC-DR003-01…04`, `AC-DR006-01/04`, `AC-DR007-03/04`, `AC-DR008-01…04`, `AC-DR009-01…04`, `AC-IR002-02/03/04`, `AC-IR005-02/03`, `AC-NFR-008-02`, `AC-NFR-012-01/02`, `AC-NFR-014-02`, `AC-NFR-016-02`, `AC-NFR-019-02`, `AC-SR013-01…04`, `AC-SR014-01…04`, `AC-SR015-01…04`, `AC-SR016-01…04` | HIGH | `requirements-to-tests.md` rows with status `GAP` |
 | F-02 | **11 declared TC files are absent**: `../13-testing/test-cases-index.md` §2 locks an allocation of **114** cases, only **103** files exist — `TC-104` (tail of the `FR-019` block) and `TC-105…TC-114` (the whole `FR-020` block) have no file — **`RESOLVED` 2026-09-27** (session 003 authored all 11; `TC-*.md` count now **114/114**, `REC-03`/`TD-04` `PAID`, matrix `G-02` closed) | HIGH | count of `13-testing/test-cases/TC-*.md` = 103 → 114 |
 | F-03 | **FR files understate their own ACs**: every `02-requirements/functional/FR-nnn.md` lists exactly `AC-FRnnn-01…04`, but `02-requirements/acceptance-criteria.md` defines `AC-FRnnn-05` for 14 FRs (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`) — **`RESOLVED` 2026-09-27** (session 004 `REC-04`: all 94 registry `AC-FR*` now cited, `TD-05` `PAID`, `HAL-07` `RESOLVED`) | MEDIUM | 20 files × 4 IDs vs 94 registry IDs → 94/94 cited |
-| F-04 | **`AC-S-03` zero-gap claim not yet demonstrable**: `02-requirements/acceptance-criteria.md` §7 states this domain "records requirement → AC → TC with zero gaps"; measured state is 27 `GAP` + 42 `DECLARED`-only rows | HIGH | §5 dashboard |
+| F-04 | **`AC-S-03` zero-gap claim not yet demonstrable**: `02-requirements/acceptance-criteria.md` §7 states this domain "records requirement → AC → TC with zero gaps"; measured state is 47 `GAP` + 42 `DECLARED`-only rows | HIGH | §5 dashboard |
 | F-05 | **Broken chain hops in the repository's own example**: `docs/README.md` §5 chain uses `BR-PAY-04 → UC-021 → API-WAL-002`; corpus shows `BR-PAY-04 → UC-034` and `UC-021 → API-RET-*`/`API-WAL-014` | MEDIUM | §2 hop table |
 | F-06 | **Unknown API group cited**: `../03-system-analysis/core/functional-analysis.md` cites `API-TOP-*` for the top-up group; `07-api/` registers 14 groups and top-ups live in `API-WAL` — no `API-TOP` group exists — **`RESOLVED` 2026-09-28** (all three consumer sites now cite `API-WAL-003/004`; `HAL-15` `RESOLVED`) | MEDIUM | `07-api/README.md` §4 |
-| F-07 | **Parallel AC ID space**: 779 `AC-UCnnn-nn` criteria are defined in `01-business-analysis/*.md`, while `02-requirements/acceptance-criteria.md` declares itself the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings in `use-cases/` — 779 re-counted 2026-09-29 after session 010 grew the corpus to 210 UCs (the 42 session-007-era UCs alone hold 127; finding severity unchanged) |
-| F-08 | **No priority on 36 requirements**: only `FR-*` (registry §1) and `SEC-REQ-*` (file header) carry a priority; all `NFR`, `DATA-REQ`, `INT-REQ` files define none → `INSUFFICIENT EVIDENCE` in Matrix B | LOW | `02-requirements/*.md` et al. |
+| F-07 | **Parallel AC ID space**: 1591 `AC-UCnnn-nn` criteria are defined in the portal folders of `01-business-analysis/`, while `02-requirements/acceptance-criteria.md` declares itself the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings across the portal-folder UC files (glob `*/UC-*.md` under `../01-business-analysis/`) — 1591 re-counted 2026-09-30 after session 011 grew the corpus to 420 UCs (was 779 after session 010, 121 at v1.2; the 42 session-007-era UCs alone hold 127; finding severity unchanged) |
+| F-08 | **No priority on 37 requirements**: only `FR-*` (registry §1) and `SEC-REQ-*` (file header) carry a priority; all `NFR`, `DATA-REQ`, `INT-REQ` files define none → `INSUFFICIENT EVIDENCE` in Matrix B | LOW | `02-requirements/*.md` et al. |
 | F-09 | **Two objectives have no functional or verification trace**: `OBJ-09` (quality velocity) and `OBJ-10` (maintainability) are named only by `NFR-009`/`NFR-010` — no `FR-*`, use case, workflow or test case cites them; `OBJ-11`'s measurable is itself `INSUFFICIENT EVIDENCE` (`ASM-14`) | LOW | `requirements-to-features.md` Matrix A; search of `13-testing/` for `OBJ-09`/`OBJ-10` returns nothing |
 | F-10 | **No stakeholder → objective/requirement mapping exists**: `00-project-overview/stakeholders.md` contains no `STK-* → OBJ-*`/`FR-*` table, so no stakeholder trace can be built without inventing links | LOW | file read, no such table |
 | F-11 | **Design-time only**: all 26 `TST-CON-NN` are `DESIGNED`; no test result, report or dashboard exists anywhere in the corpus | INFORMATIONAL (expected at v1.0) | `../13-testing/core/constraint-tests.md` status column |
 
-**Documents that need updating (not edited by this domain):** ~~`../13-testing/test-cases-index.md` (F-02)~~ done 2026-09-27, ~~`02-requirements/functional/FR-001…FR-020.md` for the 14 IDs in F-03~~ done 2026-09-27, `02-requirements/acceptance-criteria.md` §7 (F-04), ~~`../03-system-analysis/core/functional-analysis.md` (F-06)~~ done 2026-09-28, `01-business-analysis/*.md` or the registry wording (F-07), `00-project-overview/stakeholders.md` (F-10).
+**Documents that need updating (not edited by this domain):** ~~`../13-testing/test-cases-index.md` (F-02)~~ done 2026-09-27, ~~`02-requirements/functional/FR-001…FR-020.md` for the 14 IDs in F-03~~ done 2026-09-27, `02-requirements/acceptance-criteria.md` §7 (F-04), ~~`../03-system-analysis/core/functional-analysis.md` (F-06)~~ done 2026-09-28, the portal folders of `../01-business-analysis/` or the registry wording (F-07), `00-project-overview/stakeholders.md` (F-10).
 
 **Documents that become valid by this domain existing:** `docs/README.md` §2 already links `19-traceability/README.md`; that link resolves as of 2026-09-27.
 
@@ -165,3 +165,4 @@ Severity uses `docs/README.md` §8 classes; confidence noted where it matters.
 | 1.2 | 2026-09-28 | §5 dashboard re-run by direct count (BR 99 → **104**, UC 40 → **42** → **210** (session 010 re-count, 2026-09-29), TC 103 → **114 present**, linkage 197/48 → **203/42** per `requirements-to-tests.md` §2, family line re-synced, verdict clause dropped); §7 `F-02`/`F-03` → `RESOLVED` (sessions 003/004 — never flipped here), `F-04` evidence 48 → 42 `DECLARED`, "needs updating" list struck for F-02/F-03 | Count/dashboard propagation catch-up (session 008 close) — the dashboard claimed `VERIFIED` by direct count but predated sessions 003/004/007/008 |
 | 1.3 | 2026-09-29 | §5 UC count 42 → **210** (`UC-001…UC-210`, direct count of `use-cases/UC-*.md`; WF 12 / blocks 13 re-checked, unchanged); §7 `F-07` evidence 121 → **779** `AC-UC*` IDs (severity/status unchanged); §5 header dated for the re-count | `prompt-010.md` §1 session-010 UC-coverage directive — corpus grown 42 → 210 use cases, dashboard re-synced in the same change set (root README §9 rule 4) |
 | 1.4 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TRC-004…DOC-TRC-008) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.5 | 2026-09-30 | §3 register rows: requirements 68 → **73**, ACs 277 → **297**; §5 dashboard re-run by direct count (requirements **73** = 20 FR/20 NFR/16 SEC-REQ/9 DATA-REQ/8 INT-REQ, BR 104 → **111**, AC registry 253 → **273** + 24 `AC-S` = **297**, UC 210 → **420** (`UC-001…UC-420`), WF 12 / blocks 13 / constraints 26 / TC 114 / API 14/221 / DB 18 re-checked unchanged), linkage 203/42/27/5 → **203/42/47/5** with re-based shares (68.4/14.1/15.8/1.7 %) and a family line that now shows `GAP` per family, verdict clause 27 → **47**; §7 `F-01` 27 → **47 ACs** (list extended), `F-04` 27 → 47 `GAP`, `F-07` evidence 779 → **1591** `AC-UC*` (severity/status unchanged), `F-08` 36 → **37** (finding severities/statuses unchanged); stale `use-cases/`/`01-business-analysis/*.md` wording → portal folders | `prompt-011.md` §4.8 owner directive session 011 — requirements 68 → 73, AC registry 253 → 273, BR 104 → 111 and UC corpus 210 → 420, dashboards re-synced in the same change set (root README §9 rule 4) |

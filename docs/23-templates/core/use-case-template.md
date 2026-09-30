@@ -3,7 +3,7 @@ document_id: DOC-TPL-003
 title: Use Case Template (UC-NNN.md)
 category: 23-templates
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-26
 updated: 2026-09-30
 author: analysis-agent
@@ -18,7 +18,7 @@ related_documents: [DOC-TPL-001, DOC-UC-000, DOC-BA-005, DOC-REQ-001, DOC-GL-003
 
 ## Rules
 
-- Allocation is `UC-001…UC-420` (`UC-001…UC-210` fully issued in session 010 per owner directive `prompt-010.md` §1; `UC-211…UC-420` allocated for session 011 minting per owner directive `prompt-011.md` §1); a genuinely new use case beyond the allocation takes **UC-421+**, must be added to the DOC-UC-000 §2 index and §3 actor totals in the same change.
+- Allocation is `UC-001…UC-420` (**all 420 issued**: `UC-001…UC-210` through session 010 per owner directive `prompt-010.md` §1; `UC-211…UC-420` minted in session 011 per owner directive `prompt-011.md` §1); a genuinely new use case beyond the allocation takes **UC-421+**, must be added to the DOC-UC-000 §2 index and §3 actor totals in the same change.
 - Filename `UC-NNN.md`; frontmatter `document_id: DOC-UC-NNN` where the number **matches** the UC number (`UC-041` → `DOC-UC-041`), `category: 01-business-analysis`, `source_of_truth: true`.
 - **Exactly one primary actor** from the canonical 7 (`DOC-OVR-007`); supporting actors appear inside steps.
 - Reference only **existing** `BR-*` (DOC-BA-005) and `FR-*` (DOC-REQ-001) IDs — never invent. API touchpoints are conceptual (`POST /orders`); `07-api/` owns the contract.
@@ -38,7 +38,7 @@ updated: <date>
 author: analysis-agent
 source_of_truth: true
 related_requirements: [<fr-ids>]
-related_documents: [DOC-UC-000, DOC-BA-005, DOC-OVR-007]
+related_documents: [DOC-UC-000, DOC-BA-005, DOC-REQ-001]
 ---
 
 # UC-<nnn> — <action-oriented title>
@@ -101,3 +101,4 @@ related_documents: [DOC-UC-000, DOC-BA-005, DOC-OVR-007]
 | 1.1 | 2026-09-29 | Allocation rule: `UC-001…UC-040` → **`UC-001…UC-210`** (42 issued + session-010 minting band; next free ID `UC-211+`) | Owner directive session 010 (`prompt-010.md` §1) — allocation synced in `naming-conventions.md` v1.5 §3 (SPE-05) |
 | 1.2 | 2026-09-29 | Allocation wording: `42 issued … UC-043+ minting` → **fully issued in session 010** | Owner directive session 010 (`prompt-010.md` §1) — `UC-043…UC-210` minted; index `DOC-UC-000` v1.2 + §3 totals synced |
 | 1.3 | 2026-09-30 | File location → **`01-business-analysis/<portal>/UC-NNN.md`** (portal partition); allocation → **`UC-001…UC-420`** (210 minted + `UC-211…420` allocated, next free `UC-421+`) | Owner directive session 011 (`prompt-011.md` §1) — allocation + path scheme registered first in `naming-conventions.md` v1.7 (SPE-05) |
+| 1.4 | 2026-09-30 | Allocation rule → **all 420 issued** (`UC-211…UC-420` minted session 011; a genuinely new use case takes `UC-421+`); skeleton `related_documents` corrected `DOC-OVR-007` → **`DOC-REQ-001`** (every minted exemplar carries `DOC-REQ-001`; `DOC-OVR-007` stays correctly cited in the §2 actor rule) | Owner directive session 011 (`prompt-011.md` §4.8) — post-mint allocation sync + template-vs-exemplar consistency defect found by the minting agents (root README §9) |

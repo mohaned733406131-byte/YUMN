@@ -3,9 +3,9 @@ document_id: DOC-TRC-003
 title: Requirements to Tests — Requirement → Acceptance Criterion → Test Artifact Matrix
 category: 19-traceability
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-27
-updated: 2026-09-29
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-019, FR-020, NFR-009, SEC-REQ-012, DATA-REQ-002, INT-REQ-002]
@@ -14,7 +14,7 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 
 # 19 — Requirements to Tests
 
-**The requirement → acceptance criterion → test-artifact matrix.** One row per acceptance criterion (277), one row per constraint (26), and the history of the test cases the corpus once declared but did not contain (§5 — all present since 2026-09-27). This is the document `02-requirements/acceptance-criteria.md` §7 and `00-project-overview/success-criteria.md` `AC-S-03` point at when they claim "requirement → AC → TC with zero gaps".
+**The requirement → acceptance criterion → test-artifact matrix.** One row per acceptance criterion (297), one row per constraint (26), and the history of the test cases the corpus once declared but did not contain (§5 — all present since 2026-09-27). This is the document `02-requirements/acceptance-criteria.md` §7 and `00-project-overview/success-criteria.md` `AC-S-03` point at when they claim "requirement → AC → TC with zero gaps".
 
 **It does not claim zero gaps.** It reports what is linked, what is merely declared, and what is missing.
 
@@ -22,14 +22,14 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 
 ## 1. Scope & Method
 
-**AC universe — 277 rows:**
+**AC universe — 297 rows:**
 
 | Family | IDs | Count | Defined in |
 |---|---|---|---|
 | Functional | `AC-FR001-01 … AC-FR020-04` | 94 | `02-requirements/acceptance-criteria.md` §1 |
 | Non-functional | `AC-NFR-001-01 … AC-NFR-020-02` | 40 | §2 |
-| Security | `AC-SR001-01 … AC-SR012-04` | 50 | §3 |
-| Data | `AC-DR001-01 … AC-DR008-04` | 32 | §4 |
+| Security | `AC-SR001-01 … AC-SR016-04` | 66 | §3 |
+| Data | `AC-DR001-01 … AC-DR009-04` | 36 | §4 |
 | Integration | `AC-IR001-01 … AC-IR008-04` | 33 | §5 |
 | Cross-cutting scenarios | `AC-XCUT-01 … AC-XCUT-04` | 4 | §6 |
 | Success criteria | `AC-S-01 … AC-S-24` | 24 | `00-project-overview/success-criteria.md` |
@@ -64,18 +64,18 @@ Rules obeyed: shorthand citations are expanded conservatively (`AC-SR011-01/02` 
 |---|---|---|---|---|---|
 | FR | 94 | 86 | 8 | 0 | 0 |
 | NFR | 40 | 29 | 5 | 6 | 0 |
-| SEC | 50 | 31 | 19 | 0 | 0 |
-| DATA | 32 | 10 | 6 | 16 | 0 |
+| SEC | 66 | 31 | 19 | 16 | 0 |
+| DATA | 36 | 10 | 6 | 20 | 0 |
 | INT | 33 | 27 | 1 | 5 | 0 |
 | XCUT | 4 | 4 | 0 | 0 | 0 |
 | SUCCESS | 24 | 16 | 3 | 0 | 5 |
-| **Total** | **277** | **203** | **42** | **27** | **5** |
+| **Total** | **297** | **203** | **42** | **47** | **5** |
 
 **Verdict: `PASS WITH FINDINGS`.**
 
-- Every one of the 68 requirements and all 277 ACs has a row; nothing is omitted.
+- Every one of the 73 requirements and all 297 ACs has a row; nothing is omitted.
 - All 20 FRs have ≥1 test case of their own (the `FR-003` family rides the `TC-001–010` block, as `../../13-testing/test-cases-index.md` §2 states), so `AC-S-03`'s "≥1 test case per FR" half holds at design level.
-- The **"0 gaps" half of `AC-S-03` does not hold**: 27 ACs have no artifact link and 42 more are covered only by a declaration.
+- The **"0 gaps" half of `AC-S-03` does not hold**: 47 ACs have no artifact link and 42 more are covered only by a declaration.
 - **Nothing has been executed**: 114/114 test-case files exist, all constraint tests are `DESIGNED`, and no report, dashboard or drill record exists in the corpus.
 
 ---
@@ -118,6 +118,10 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-DR008-02 | DATA-REQ-008 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-DR008-03 | DATA-REQ-008 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-DR008-04 | DATA-REQ-008 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-DR009-01 | DATA-REQ-009 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-DR009-02 | DATA-REQ-009 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-DR009-03 | DATA-REQ-009 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-DR009-04 | DATA-REQ-009 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-FR001-01 | FR-001 | TC-001, TST-CON-06 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR001-02 | FR-001 | TC-004, TC-005 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR001-03 | FR-001 | TC-006 | TC file — Related requirements & rules | EXPLICIT |
@@ -206,8 +210,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR018-04 | FR-018 | TC-095 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR019-01 | FR-019 | DOC-TST-005, TC-101 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-FR019-02 | FR-019 | DOC-TST-005, TC-100 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-FR019-03 | FR-019 | DOC-TST-005, TC-100, TC-102, TC-104 | TC file — 
-Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR019-03 | FR-019 | DOC-TST-005, TC-100, TC-102, TC-104 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-FR019-04 | FR-019 | TC-096, TC-097, TC-098, TC-099, TC-103 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR020-01 | FR-020 | TC-060, TC-077, TC-082, TC-083, TC-096, TC-097, TC-098, TC-102, TC-109, TC-110 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR020-02 | FR-020 | TC-071, TC-111 | TC file — Related requirements & rules | EXPLICIT |
@@ -336,6 +339,22 @@ Related requirements & rules; test document citation — 13-testing/test-data-an
 | AC-SR012-02 | SEC-REQ-012 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
 | AC-SR012-03 | SEC-REQ-012 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
 | AC-SR012-04 | SEC-REQ-012 | §c | plan section — test-plans.md §c | EXPLICIT |
+| AC-SR013-01 | SEC-REQ-013 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR013-02 | SEC-REQ-013 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR013-03 | SEC-REQ-013 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR013-04 | SEC-REQ-013 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR014-01 | SEC-REQ-014 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR014-02 | SEC-REQ-014 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR014-03 | SEC-REQ-014 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR014-04 | SEC-REQ-014 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR015-01 | SEC-REQ-015 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR015-02 | SEC-REQ-015 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR015-03 | SEC-REQ-015 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR015-04 | SEC-REQ-015 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR016-01 | SEC-REQ-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR016-02 | SEC-REQ-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR016-03 | SEC-REQ-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
+| AC-SR016-04 | SEC-REQ-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-XCUT-01 | cross-cutting | DOC-TST-005 | test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-XCUT-02 | cross-cutting | DOC-TST-002, TST-CON-01, TST-CON-26 | constraint register — constraint-tests.md; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
 | AC-XCUT-03 | cross-cutting | §e, §f, DOC-TST-002 | plan section — test-plans.md §e; plan section — test-plans.md §f; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
@@ -423,11 +442,11 @@ All 26 rows are `DESIGNED` at v1.0 — status vocabulary `DESIGNED → READY →
 | `TC-114` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
 | **11 declared, 11 present in this range** | | | |
 
-Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-block claim in `../../13-testing/test-cases-index.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — is now checkable for `FR-019` (`TC-104`) and `FR-020` (`TC-105`…`TC-114`); the four rows that rested on the block alone (`AC-SR010-01…04`) are `EXPLICIT` against `TC-105`…`TC-108`; and the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") are satisfiable from disk (114 files, every cited `TC-` ID resolves). Remaining open findings are tracked in §7 — chiefly `G-01` (27 ACs with no artifact), not file absence.
+Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-block claim in `../../13-testing/test-cases-index.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — is now checkable for `FR-019` (`TC-104`) and `FR-020` (`TC-105`…`TC-114`); the four rows that rested on the block alone (`AC-SR010-01…04`) are `EXPLICIT` against `TC-105`…`TC-108`; and the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") are satisfiable from disk (114 files, every cited `TC-` ID resolves). Remaining open findings are tracked in §7 — chiefly `G-01` (47 ACs with no artifact), not file absence.
 
 ---
 
-## 6. Gaps — 27 Acceptance Criteria With No Test Artifact
+## 6. Gaps — 47 Acceptance Criteria With No Test Artifact
 
 | Parent requirement | ACs with no test artifact | Note |
 |---|---|---|
@@ -436,6 +455,7 @@ Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-bl
 | `DATA-REQ-006` | `AC-DR006-01, AC-DR006-04` | referential integrity — partial family (only `AC-DR006-02/03` linked) |
 | `DATA-REQ-007` | `AC-DR007-03, AC-DR007-04` | append-only financial data — partial family (only `AC-DR007-01/02` linked) |
 | `DATA-REQ-008` | `AC-DR008-01, AC-DR008-02, AC-DR008-03, AC-DR008-04` | query performance & pagination constraints — whole family unlinked |
+| `DATA-REQ-009` | `AC-DR009-01, AC-DR009-02, AC-DR009-03, AC-DR009-04` | search-index data protection — registered session 011; whole family unlinked |
 | `INT-REQ-002` | `AC-IR002-02, AC-IR002-03, AC-IR002-04` | bank-transfer verification — only `AC-IR002-01` is linked (`TST-CON-05`) |
 | `INT-REQ-005` | `AC-IR005-02, AC-IR005-03` | delivery-provider integration — partial family |
 | `NFR-008` | `AC-NFR-008-02` | idempotency & transactions — only `AC-NFR-008-01` linked (`TC-064`) |
@@ -443,7 +463,11 @@ Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-bl
 | `NFR-014` | `AC-NFR-014-02` | observability & alert quality — only `AC-NFR-014-01` linked |
 | `NFR-016` | `AC-NFR-016-02` | environment parity — only `AC-NFR-016-01` linked |
 | `NFR-019` | `AC-NFR-019-02` | audit retention & reporting — only `AC-NFR-019-01` linked |
-| **12 requirements** | **27 ACs** | see §3 for per-row status |
+| `SEC-REQ-013` | `AC-SR013-01, AC-SR013-02, AC-SR013-03, AC-SR013-04` | anti-enumeration uniform responses — registered session 011; whole family unlinked |
+| `SEC-REQ-014` | `AC-SR014-01, AC-SR014-02, AC-SR014-03, AC-SR014-04` | per-surface CORS policy — registered session 011; whole family unlinked |
+| `SEC-REQ-015` | `AC-SR015-01, AC-SR015-02, AC-SR015-03, AC-SR015-04` | object-storage access control — registered session 011; whole family unlinked |
+| `SEC-REQ-016` | `AC-SR016-01, AC-SR016-02, AC-SR016-03, AC-SR016-04` | per-destination OTP resend limits — registered session 011; whole family unlinked |
+| **17 requirements** | **47 ACs** | see §3 for per-row status |
 
 Reading: each group lists ACs whose parent requirement is covered by **no** `TC`, plan row, plan section, constraint-register entry or test document citation anywhere in the scanned set. `DATA-REQ-002` (data minimisation), `DATA-REQ-003` (retention), `DATA-REQ-008` (query/performance constraints), `INT-REQ-002` (bank-transfer verification), `NFR-012` (maintainability), `NFR-019` (audit/reporting retention) and `NFR-014` (observability alert quality) are the most exposed families.
 
@@ -453,17 +477,17 @@ Reading: each group lists ACs whose parent requirement is covered by **no** `TC`
 
 | # | Finding | Severity | Evidence |
 |---|---|---|---|
-| G-01 | 27 ACs have no test-artifact link (`GAP` rows in §3, listed in §6) | HIGH | §3, §6 |
+| G-01 | 47 ACs have no test-artifact link (`GAP` rows in §3, listed in §6) | HIGH | §3, §6 |
 | G-02 | ~~11 declared test-case files are missing — `TC-104…TC-114` (103 files exist against a locked allocation of 114)~~ **RESOLVED 2026-09-27** — all 11 files authored; 114/114 present, every cited `TC-` ID resolves (`REC-03` pay-down) | HIGH (was) → **RESOLVED** | §5 |
-| G-03 | 48 ACs are covered only by an allocation/scope declaration, not by an artifact naming them | MEDIUM | §3 rows with status `DECLARED` |
-| G-04 | `AC-S-03` ("zero gaps") and `13-testing/README.md` `G-TEST-1` cannot be demonstrated from the corpus as it stands — file-absence cause cleared 2026-09-27, but `G-01`/`G-03` (27 unlinked + 42 declared-only ACs) and zero execution evidence still block the claim | HIGH | §2 verdict; `02-requirements/acceptance-criteria.md` §7 |
+| G-03 | 42 ACs are covered only by an allocation/scope declaration, not by an artifact naming them | MEDIUM | §3 rows with status `DECLARED` |
+| G-04 | `AC-S-03` ("zero gaps") and `13-testing/README.md` `G-TEST-1` cannot be demonstrated from the corpus as it stands — file-absence cause cleared 2026-09-27, but `G-01`/`G-03` (47 unlinked + 42 declared-only ACs) and zero execution evidence still block the claim | HIGH | §2 verdict; `02-requirements/acceptance-criteria.md` §7 |
 | G-05 | ~~14 FR files list only `AC-FRnnn-01…04` while the registry defines `AC-FRnnn-05` (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`)~~ **RESOLVED 2026-09-27** — all 14 references added; 94/94 registry `AC-FR*` IDs present (`REC-04`/`TD-05` paid) | MEDIUM (was) → **RESOLVED** | `02-requirements/*.md` vs `acceptance-criteria.md` |
 | G-06 | 5 success criteria (`AC-S-19`, `AC-S-21`…`AC-S-24`) are operational/pilot/sign-off records — no test artifact can ever satisfy them here | INFORMATIONAL | §3 rows marked `OPERATIONAL EVIDENCE` |
-| G-07 | 779 `AC-UCnnn-nn` criteria exist in `01-business-analysis/*.md` outside the registry that claims to be the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings — 779 re-counted 2026-09-29 after session 010 grew the corpus to 210 UCs (was 121 at v1.2; finding unchanged, MEDIUM `OPEN`) |
+| G-07 | 1591 `AC-UCnnn-nn` criteria exist in the portal folders of `01-business-analysis/` outside the registry that claims to be the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings — 1591 re-counted 2026-09-30 after session 011 grew the corpus to 420 UCs (was 779 after session 010, 121 at v1.2; finding unchanged, MEDIUM `OPEN`) |
 | G-08 | 8 constraint-register details cite no AC | LOW | §4 |
 | G-09 | Execution status: 0 tests executed, 0 reports; all `TST-CON-NN` `DESIGNED` | INFORMATIONAL (expected at v1.0) | `../../13-testing/core/constraint-tests.md` |
 
-**Documents needing update (reported, not edited):** `02-requirements/acceptance-criteria.md` §7 (G-04 — qualify the zero-gap claim until the gaps close); `01-business-analysis/*.md` or the registry wording (G-07); `00-project-overview/success-criteria.md` (G-06 — mark the five operational criteria as non-test evidence). *(G-02 clause retired 2026-09-27 — `TC-104`…`TC-114` now exist; G-05 clause retired 2026-09-27 — the 14 `-05` references now exist.)*
+**Documents needing update (reported, not edited):** `02-requirements/acceptance-criteria.md` §7 (G-04 — qualify the zero-gap claim until the gaps close); the portal folders of `01-business-analysis/` or the registry wording (G-07); `00-project-overview/success-criteria.md` (G-06 — mark the five operational criteria as non-test evidence). *(G-02 clause retired 2026-09-27 — `TC-104`…`TC-114` now exist; G-05 clause retired 2026-09-27 — the 14 `-05` references now exist.)*
 
 ---
 
@@ -483,3 +507,4 @@ Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-do
 | 1.3 | 2026-09-27 | `REC-04` pay-down: `G-05` → `RESOLVED` (14 `AC-FRnnn-05` references added, 94/94 cited); "documents needing update" re-scoped | Root README §9.4 same-change-set propagation for an `02-requirements/functional/` change (`REC-04`) |
 | 1.4 | 2026-09-28 | §1 Functional range end corrected `AC-FR020-05` → `AC-FR020-04` (registry tops at `-04`; FR-020 defines four ACs — count 94 unchanged) | `REC-15` citation-CI enforcement (session 008) — `tools/check_citations.py` caught the dangling range end |
 | 1.5 | 2026-09-29 | `G-07` evidence re-counted: 121 → **779** unique `AC-UC*` IDs across the now-210 `use-cases/UC-*.md` (finding severity/status unchanged, MEDIUM `OPEN`) | `prompt-010.md` §1 session-010 UC-coverage directive — UC corpus grown 42 → 210, UC-derived evidence re-synced in the same change set (root README §9 rule 4) |
+| 1.6 | 2026-09-30 | AC universe 277 → **297** (`AC-SR001-01 … AC-SR016-04` 50 → **66**, `AC-DR001-01 … AC-DR009-04` 32 → **36**); §3 gains 20 rows in ID order for the session-011 ACs (all `GAP` — no `TC`, plan, register or test document cites them, verified by scan); §2 re-run **297 / 203 `EXPLICIT` / 42 `DECLARED` / 47 `GAP` / 5 `OPERATIONAL`** (SEC 66, DATA 36 rows); verdict block, `G-01` 27 → 47, `G-04` re-scoped, `G-03` 48 → **42** (stale `DECLARED` count, severity/status unchanged); §6 gaps 27 → **47 ACs** across 12 → **17 requirements**; `G-07` evidence 779 → **1591** unique `AC-UC*` (MEDIUM `OPEN` unchanged); stale `01-business-analysis/*.md` wording → portal folders; wrapped `AC-FR019-03` row rejoined | `prompt-011.md` §4.8 owner directive session 011 — requirements 68 → 73 and AC registry 253 → 273 (UC corpus 210 → 420), test traceability re-synced in the same change set (root README §9 rule 4) |

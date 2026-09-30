@@ -3,9 +3,9 @@ document_id: DOC-PHA-010
 title: QA File (quality attributes met) — analysis phase
 category: phases
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: false
 related_documents: [DOC-TST-001, DOC-TST-002, DOC-PHA-014]
@@ -24,7 +24,7 @@ The seven QA attributes for phase 0 deliverables (knowledge base + rule system),
 
 | # | Attribute | Metric (target) | Result at phase 0 | Verification vehicle |
 |---|---|---|---|---|
-| 1 | **Correctness** | 0 broken links; every ID resolves; registries reconcile (68 req / 104 BR / 253 AC / 114 TC / 26 constraint tests) | **MET** — validator `markdown links (0 broken)`; sweeps in `20-validation/` | `validate.py`, consistency audit `CHK` series |
+| 1 | **Correctness** | 0 broken links; every ID resolves; registries reconcile (73 req / 111 BR / 273 AC / 114 TC / 26 constraint tests) | **MET** — validator `markdown links (0 broken)`; sweeps in `20-validation/` | `validate.py`, consistency audit `CHK` series |
 | 2 | **Reliability** | Reproducible resume from `session_track.md` + session files (SES-05); 0 flakes (later) | **MET for docs** — sessions 001–004 now reconstructible from `docs/sessions/` | SES-01/02/05 |
 | 3 | **Usability** | WCAG 2.1 AA, ≥95% automated pass, 0 serious axe findings | **DESIGNED only** — spec in `11-ui-ux/`, `../../12-non-functional/core/accessibility.md`; BLOCKED until UI exists | axe-core + Lighthouse CI |
 | 4 | **Performance** | p95 read <200 ms / write <500 ms; LCP <2.5 s; 10k concurrent | **BLOCKED** — k6 invocation not yet bound (bootstrap item) | k6 `PERF-01…07` on staging |
@@ -47,3 +47,4 @@ Phase closes with attribute rows 1, 2, 6 MET; 3, 4, 5, 7 explicitly BLOCKED/NOT 
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 8 / TST-04, session 005) | analysis-agent |
 | 2026-09-28 | 1.1 | QA-1 registry-reconciliation metric: 99 BR → **104 BR** | BR-count propagation catch-up (session 008 close) — consumer of `business-rules.md` v1.1 (`BR-INV-01…05` registered) |
+| 2026-09-30 | 1.2 | QA-1 registry-reconciliation metric: 68 req / 104 BR / 253 AC → **73 req / 111 BR / 273 AC** (TC and constraint-test counts unchanged — 114 `TC-*.md` + 26 `TST-CON-*` re-verified 2026-09-30) | Owner directive session 011 (`prompt-011.md` §4.8) — consumer of `requirements-overview.md` v1.2, `business-rules.md` v1.2, `acceptance-criteria.md` v1.2 |
