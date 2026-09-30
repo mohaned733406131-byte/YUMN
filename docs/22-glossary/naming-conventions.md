@@ -3,9 +3,9 @@ document_id: DOC-GL-003
 title: Naming Conventions
 category: 22-glossary
 status: approved
-version: 1.6
+version: 1.7
 created: 2026-09-26
-updated: 2026-09-29
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -31,11 +31,12 @@ Two global rules override everything below (root README §5):
 |---|---|---|
 | Directories | Two-digit numeric prefix + kebab-case topic: `NN-topic/` | `07-api/`, `22-glossary/`, `13-testing/` |
 | Domain index | Every domain directory carries a `README.md` that is its index + register of internal IDs | `17-risk-management/README.md` lists its DOC IDs and file table |
+| **Portal partition (path scheme)** | Every domain `NN-topic/` holds **five portal subfolders** — `core/`, `admin/`, `vendor/`, `customer/`, `delivery/` — plus gateway files at folder root: the section `README.md`, registries, and cross-portal indexes. Path shape: `docs/<NN-topic>/<portal>/<file>.md`; shared/platform-wide material → `core/`; portal-specific material → its portal folder. **Not applied** to `00-project-overview/`, `phases/`, `sessions/` | `docs/01-business-analysis/<portal>/UC-040.md`, `docs/09-security/<portal>/rbac.md` (owner directive `prompt-011.md` §1; placement + evaluation: `DOC-OVR-012`; phase-5 migration) |
 | Ordinary documents | `lowercase-kebab-case.md`, descriptive singular noun phrase | `state-transitions.md`, `security-findings.md`, `risk-register.md` |
 | **Exception — ID-named files** | When the file's primary identifier *is* the content, the filename is that ID | `FR-013.md`, `UC-007.md`, `TC-021.md` (root README §5, filename exception) |
-| Use cases / workflows | ID-named (`UC-NNN.md`) vs prefixed sequence (`workflow-NNN.md`) | `use-cases/UC-040.md`; `workflows/workflow-012.md` (DOC-WF-001 reserves `WF-NNN` for the concept, `README.md` for the index) |
-| Entity documents | `entities/<table>.md` — file name **is** the table name (singular `snake_case`, not kebab) | `entities/wallet_transaction.md` → `DB-011` (`08-database/README.md` §1) |
-| Endpoint documents | One file per group, plural resource noun | `endpoints/orders.md`, `endpoints/wallet.md` |
+| Use cases / workflows | ID-named (`UC-NNN.md`) vs prefixed sequence (`workflow-NNN.md`), each in its portal folder; dissolved folder indexes are renamed `*-index.md` at domain root | `01-business-analysis/<portal>/UC-040.md`; `01-business-analysis/<portal>/workflow-012.md` (DOC-WF-001 reserves `WF-NNN` for the concept; UC index = use-case-index.md, workflow index = workflow-index.md at domain root) |
+| Entity documents | `<portal>/<table>.md` — file name **is** the table name (singular `snake_case`, not kebab) | `08-database/core/<table>.md` (e.g. wallet_transaction.md) → `DB-011` (`08-database/README.md` §1) |
+| Endpoint documents | One file per group, plural resource noun, in its portal folder (platform groups → `core/`) | `07-api/<portal>/orders.md`, `07-api/<portal>/cart.md` |
 | Filled vs template files | Templates live only in `23-templates/` and contain `<angle-bracket placeholders>`; no other file may contain them | `23-templates/test-case-template.md` vs `13-testing/test-cases/TC-001.md` |
 | Cross-links | Relative Markdown links from the linking file; reference by **ID** in prose, never by copied definition | `[terminology.md](terminology.md)`, "see `BR-ESC-02`" |
 | Banned names | version/position words instead of meaning | `final.md`, `latest.md`, `draft2.md`, `Untitled.md`, `copy-of-*.md` |
@@ -71,22 +72,22 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | Business objectives | `BO-NN` | `BO-12` | 2 | `01-business-analysis/business-objectives.md` | `BO-01…BO-12` |
 | Actors | `ACT-NN` | `ACT-03` | 2 | `00-project-overview/actors-and-roles.md` | `ACT-01…ACT-07` |
 | Business processes | `BP-NN` | `BP-08` | 2 | `01-business-analysis/business-processes.md` | `BP-01…BP-15` |
-| Functional requirements | `FR-NNN` | `FR-013` | 3 | `02-requirements/functional/` | `FR-001…FR-020` |
-| Non-functional requirements | `NFR-NNN` | `NFR-020` | 3 | `02-requirements/non-functional/` | `NFR-001…NFR-020` |
-| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-007` | 3 | `02-requirements/security/` | `SEC-REQ-001…012` |
-| Data requirements | `DATA-REQ-NNN` | `DATA-REQ-008` | 3 | `02-requirements/data/` | `DATA-REQ-001…008` |
-| Integration requirements | `INT-REQ-NNN` | `INT-REQ-005` | 3 | `02-requirements/integration/` | `INT-REQ-001…008` |
+| Functional requirements | `FR-NNN` | `FR-013` | 3 | `02-requirements/core/` | `FR-001…FR-020` |
+| Non-functional requirements | `NFR-NNN` | `NFR-020` | 3 | `02-requirements/core/` | `NFR-001…NFR-020` |
+| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-007` | 3 | `02-requirements/core/` | `SEC-REQ-001…012` |
+| Data requirements | `DATA-REQ-NNN` | `DATA-REQ-008` | 3 | `02-requirements/core/` | `DATA-REQ-001…008` |
+| Integration requirements | `INT-REQ-NNN` | `INT-REQ-005` | 3 | `02-requirements/core/` | `INT-REQ-001…008` |
 | Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-02` | 2 | `01-business-analysis/business-rules.md` | 15 domains (`AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`), 104 rules |
-| Use cases | `UC-NNN` | `UC-026` | 3 | `01-business-analysis/use-cases/` | `UC-001…UC-210` (210 issued — `UC-043…UC-210` minted in session 010; next free `UC-211+`) |
-| Workflows | `WF-NNN` | `WF-003` | 3 | `01-business-analysis/workflows/` | `WF-001…WF-012` |
+| Use cases | `UC-NNN` | `UC-026` | 3 | `01-business-analysis/<portal>/` (gateway index `*-index.md` at domain root) | `UC-001…UC-420` (`UC-001…UC-210` minted through session 010; `UC-211…UC-420` allocated for session 011 minting; next free `UC-421+`) |
+| Workflows | `WF-NNN` | `WF-003` | 3 | `01-business-analysis/<portal>/` (gateway index `*-index.md` at domain root) | `WF-001…WF-012` |
 | Blocks | `B01…B13` | `B07` | 2 (no dash) | `00-project-overview/project-context.md` | 13 blocks |
-| API endpoints | `API-<GROUP>-NNN` | `API-WAL-002` | 3 | `07-api/endpoints/` | 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints |
-| Database entities | `DB-NNN` (+ table name) | `DB-011` | 3 | `08-database/entities/` | `DB-001…DB-018` |
-| Test cases | `TC-NNN` | `TC-031` | 3 | `13-testing/test-cases/` | allocation locked `TC-001…TC-114` (`13-testing/README.md` §5); files added incrementally — count live in `13-testing/test-cases/` |
+| API endpoints | `API-<GROUP>-NNN` | `API-WAL-002` | 3 | `07-api/<portal>/` (gateway index `*-index.md` at domain root) | 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints |
+| Database entities | `DB-NNN` (+ table name) | `DB-011` | 3 | `08-database/core/` (gateway index `*-index.md` at domain root) | `DB-001…DB-018` |
+| Test cases | `TC-NNN` | `TC-031` | 3 | `13-testing/core/` (gateway index `*-index.md` at domain root) | allocation locked `TC-001…TC-114` (`13-testing/README.md` §5); files added incrementally — count live in `13-testing/core/` |
 | Constraint tests | `TST-CON-NN` | `TST-CON-09` | 2 | `13-testing/constraint-tests.md` | `TST-CON-01…26` (one per constraint) |
 | Acceptance criteria | `AC-<REQID>-NN`, `AC-S-NN`, `AC-XCUT-NN` | `AC-FR013-01`, `AC-S-14` | 2 | `02-requirements/acceptance-criteria.md` | see §3.1 |
 | Risks | `RISK-NNN` | `RISK-006` | 3 | `17-risk-management/risk-register.md` (DOC-RSK-002) | `RISK-001…RISK-024` |
-| Decisions / ADRs | `ADR-NNN` | `ADR-011` | 3 | `18-decisions/ADR/` (index: `04-architecture/architecture-decisions-reference.md`) | `ADR-001…ADR-010` reserved; new from `ADR-011` |
+| Decisions / ADRs | `ADR-NNN` | `ADR-011` | 3 | `18-decisions/core/` (index: `04-architecture/architecture-decisions-reference.md`) | `ADR-001…ADR-010` reserved; new from `ADR-011` |
 | Security findings | `SEC-NNN` | `SEC-011` | 3 | `09-security/security-findings.md` | `SEC-001…SEC-015` |
 | Gaps | `GAP-NN` (issued) / `GAP-NNN` (root README §5) | `GAP-03` | 2 | `20-validation/missing-information.md` | `GAP-01…GAP-12` — see §3.2 |
 | Validation audits | `AUD-NN` | `AUD-01` | 2 | `20-validation/README.md` §2 | `AUD-01…AUD-07` — `VERIFIED`: series minted when `20-validation/` was authored (2026-09-27), per DOC-TPL-011 |
@@ -218,7 +219,7 @@ Author rule: pick the term from the left column, keep it identical across `ar`/`
 
 Before adding a file, ID, table, endpoint or queue:
 
-1. Filename `lowercase-kebab-case.md` — unless it is an ID-named file (`FR/UC/TC`) or `entities/<table>.md`.
+1. Filename `lowercase-kebab-case.md` — unless it is an ID-named file (`FR/UC/TC`) or an entity file named after its table; place it in the right portal folder per §1 *Portal partition*.
 2. Frontmatter complete, `document_id` fresh from the domain's register, `category` = directory name.
 3. New ID? Mint it **only** in its *Defined in* registry, next number, same width.
 4. New term? Add the row to `terminology.md` first (DOC-GL-001 §2.2).
@@ -240,5 +241,6 @@ Enforcement points in canon: CI lint for RTL/logical CSS (`05-frontend/rtl-and-s
 | 1.4 | 2026-09-28 | §3 `BR` row: 14 → **15 domains** (+`INV`), 99 → **104 rules** | `CRIT-06`/`HAL-04` pay-down (session 008) — `business-rules.md` v1.1 registered `BR-INV-01…05`; ID-series allocation row kept in sync (SPE-05) |
 | 1.5 | 2026-09-29 | §3 `UC` row: allocation `UC-001…UC-040` → **`UC-001…UC-210`** (42 issued + `UC-043…UC-210` allocated; also fixes the stale `…UC-040` range) | Owner directive session 010 (`prompt-010.md` §1): full portal use-case coverage — change control before minting (SPE-05, GEN-03) |
 | 1.6 | 2026-09-29 | §3 `UC` row wording finalized: band minted — `UC-043…UC-210` allocated for minting → **210 issued**, next free `UC-211+` | Owner directive session 010 (`prompt-010.md` §1) — 168 UCs minted + index `DOC-UC-000` v1.2 registered; allocation fully issued |
+| 1.7 | 2026-09-30 | §1 new **Portal partition** path-scheme row (+ UC/workflow/entity/endpoint examples → portal folders); §3 `UC` row allocation `UC-001…UC-210` → **`UC-001…UC-420`** (`UC-211…UC-420` allocated, next free `UC-421+`); `Defined in` paths realigned to the portal scheme (FR/NFR/SEC-REQ/DATA-REQ/INT-REQ → `02-requirements/core/`, WF/UC → `01-business-analysis/<portal>/`, API → `07-api/<portal>/`, DB → `08-database/core/`, TC → `13-testing/core/`, ADR → `18-decisions/core/`); §12 checklist item 1 | Owner directive session 011 (`prompt-011.md` §1): 400+ UCs + portal-partitioned `01…23` — change control **before** minting/moving (SPE-05, GEN-03; proposal/evaluation `DOC-OVR-012`) |
 
 
