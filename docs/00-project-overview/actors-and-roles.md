@@ -78,7 +78,7 @@ Conceptual authorization tests (see `13-testing/test-cases/TC-011…TC-014`):
 
 ## Consistency Rule
 
-Changing an actor here propagates to: `01-business-analysis` (use cases) → `02-requirements` (FR-002) → `../09-security/core/rbac.md` → `../06-backend/core/authorization.md` → `08-database` (roles tables) → `05-frontend` (route guards) → `13-testing` → `19-traceability` → `20-validation/consistency-audit.md`.
+Changing an actor here propagates to: `01-business-analysis` (use cases) → `02-requirements` (FR-002) → `../09-security/core/rbac.md` → `../06-backend/core/authorization.md` → `08-database` (roles tables) → `05-frontend` (route guards) → `13-testing` → `19-traceability` → `../20-validation/core/consistency-audit.md`.
 
 ## Change History
 

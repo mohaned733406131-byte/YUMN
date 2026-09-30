@@ -56,7 +56,7 @@ None (root of the analysis).
 
 ## Important Note
 
-All quantitative targets (scale, availability, performance) originate here and in `02-requirements/`. Changing a value here requires propagation to NFRs, architecture, and tests (consistency rule → `20-validation/consistency-audit.md`).
+All quantitative targets (scale, availability, performance) originate here and in `02-requirements/`. Changing a value here requires propagation to NFRs, architecture, and tests (consistency rule → `../20-validation/core/consistency-audit.md`).
 
 ## Change History
 

@@ -67,7 +67,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Action | Owner | Phase |
 |---|---|---|
 | Append-only DB privileges: application role has no UPDATE/DELETE on ledger tables (`DATA-REQ-007`, `SEC-002`) | DevOps + Technical lead | Phase 0 |
-| Nightly reconciliation jobs `J1` (balance vs ledger) and `J2` (global invariant) with 0-tolerance alerts (`16-data/data-quality.md` §5) | Technical lead | Phase 1 |
+| Nightly reconciliation jobs `J1` (balance vs ledger) and `J2` (global invariant) with 0-tolerance alerts (`../16-data/core/data-quality.md` §5) | Technical lead | Phase 1 |
 | Property-based and invariant tests: every operation sequence leaves Σ debits = Σ credits; fuzz refunds/commissions | QA lead | Phase 1 |
 | Idempotency keys mandatory on payment/order/reservation/coupon/refund (`BR-PLT-03`); saga compensation (`BR-PLT-04`) | Technical lead | Phase 1 |
 | Architecture test "only `LedgerService` writes ledger" (F7 in `module-boundaries.md`) as CI gate | Technical lead | Phase 1 |
@@ -144,7 +144,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 
 - **Contingency plan:** if opinion contradicts `ASM-10`, sponsor approves a decision record adjusting calculation/remittance, `BR-FIN-01` is superseded through change management (root README §9), and back-calculation tooling is built for the affected window.
 - **Residual risk:** tax law can change after launch; retroactive application windows remain possible.
-- **Linked IDs:** DEP-09, ASM-10, BR-FIN-01/02/04, NFR-019, FR-014, FR-018, GAP registry (`20-validation/missing-information.md`).
+- **Linked IDs:** DEP-09, ASM-10, BR-FIN-01/02/04, NFR-019, FR-014, FR-018, GAP registry (`../20-validation/core/missing-information.md`).
 
 ### RISK-005 — Infrastructure/operational complexity vs. small team
 
@@ -290,13 +290,13 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 |---|---|---|
 | Enforce `project-scope.md` scope-creep control (check document first; reject with constraint ID) | Product owner | Phase 0 |
 | Resolve `GAP-01…GAP-06` decisions before Gate 0 (owners listed in scope register) | Product owner + Sponsor | Phase 0 |
-| Every change follows root README §9: version bump, change history, impacted IDs into `20-validation/consistency-audit.md` | Technical lead | Continuous |
+| Every change follows root README §9: version bump, change history, impacted IDs into `../20-validation/core/consistency-audit.md` | Technical lead | Continuous |
 | Future-scope items parked, never promoted silently; ADR required for architectural change | Architecture | Continuous |
 | Phase-gate scope audit in `21-completion/quality-gates.md` | Sponsor | Each gate |
 
 - **Contingency plan:** if creep has already consumed float, sponsor re-baselines schedule or cuts launch scope; never reduce test/observability coverage to absorb creep.
 - **Residual risk:** sponsor-level deadline pressure (STK-01) can override process; the mitigation is transparency of register/gate status, not authority.
-- **Linked IDs:** GAP-01…GAP-07, OBJ set, `project-scope.md`, root README §9, `20-validation/consistency-audit.md`, `21-completion/quality-gates.md`.
+- **Linked IDs:** GAP-01…GAP-07, OBJ set, `project-scope.md`, root README §9, `../20-validation/core/consistency-audit.md`, `21-completion/quality-gates.md`.
 
 ### RISK-012 — Central Bank position on closed-loop wallets (existential for wallet-only model)
 
@@ -479,7 +479,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 |---|---|---|
 | Legal gap assessment before launch (`DEP-09`), mapped to `SEC-REQ-006` + `16-data/` controls | Legal liaison | Phase 0 |
 | Data minimization + classification already specified (`DATA-REQ-002`, `data-classification.md`) implemented as designed | Security officer | Phase 1 |
-| Retention/deletion workflows with audit evidence (`DATA-REQ-003`, `16-data/data-deletion-and-privacy.md`) | Technical lead | Phase 1 |
+| Retention/deletion workflows with audit evidence (`DATA-REQ-003`, `../16-data/core/data-deletion-and-privacy.md`) | Technical lead | Phase 1 |
 | Provider data-processing terms reviewed (SMS/WhatsApp/CDN) for lawful transfer | Legal liaison | Phase 1 |
 | Breach-notification playbook using available channels (SMS/WhatsApp/in-app) | Security officer | Phase 2 |
 
@@ -577,7 +577,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 1. New risks continue the sequence `RISK-025`…; IDs are **never reused**, even after closure.
 2. Score/severity changes require a rationale note and a version bump (no silent changes — root README §9).
 3. Closing a risk requires evidence (test, drill, contract, sign-off) linked from the detail section; the entry stays visible with status `CLOSED` (never deleted).
-4. The charter's Summary of Major Risks mirrors RISK-001/002/003; if those rows change, `00-project-overview/project-charter.md` must be updated in the same change set (consistency rule, `20-validation/consistency-audit.md`).
+4. The charter's Summary of Major Risks mirrors RISK-001/002/003; if those rows change, `00-project-overview/project-charter.md` must be updated in the same change set (consistency rule, `../20-validation/core/consistency-audit.md`).
 
 ## Change History
 

@@ -36,8 +36,8 @@ No legal claim in this file may be repeated as fact downstream; unresolved rows 
 
 | Control | Implementation | Canon |
 |---|---|---|
-| **Data minimisation** | never collect: card PAN (`C-02`), GPS/coordinates (`C-16`), biometrics (`C-07`), email as identity (`BR-AUTH-08`); national ID only if legally compelled — currently not collected | `DATA-REQ-002` R3, `16-data/data-classification.md` |
-| **Purpose limitation** | each data category mapped to a purpose/owner in the data inventory; secondary use requires inventory update | `16-data/data-ownership.md` |
+| **Data minimisation** | never collect: card PAN (`C-02`), GPS/coordinates (`C-16`), biometrics (`C-07`), email as identity (`BR-AUTH-08`); national ID only if legally compelled — currently not collected | `DATA-REQ-002` R3, `../../16-data/core/data-classification.md` |
+| **Purpose limitation** | each data category mapped to a purpose/owner in the data inventory; secondary use requires inventory update | `../../16-data/core/data-ownership.md` |
 | **Retention & deletion** | retention classes `RC-01…RC-09`; customer deletion run leaves financial/audit records intact (legal-hold exemption) | `DATA-REQ-003`, `FR-003` privacy tests |
 | **User rights** | export of personal data (audited admin export, `UC-036`); erasure where no legal hold applies | `FR-003`, `BR-PLT-06` |
 | **Security of processing** | encryption at rest for PII columns (`SEC-REQ-006`), TLS in transit, RBAC least privilege, append-only audit (`SEC-REQ-010`) | `DOC-SEC-*` |
@@ -85,7 +85,7 @@ No legal claim in this file may be repeated as fact downstream; unresolved rows 
 | 9 | Accessibility statement (WCAG 2.1 AA claim scope) | product | `NFR-011`, `DOC-UX-006` | draft |
 | 10 | Evidence pack: VAT tests, retention guard test, audit-trail sample, checklist sign-off | STK-11 | `AC-NFR-019-01/02` | assembled at gate |
 
-All ten recorded as sign-off evidence for `AC-S-24`; unresolved blocking items (esp. 2) stop implementation — recorded in `20-validation/missing-information.md` when that register is authored (no new gap IDs minted outside the canonical GAP register, per `DOC-DTA-005` convention).
+All ten recorded as sign-off evidence for `AC-S-24`; unresolved blocking items (esp. 2) stop implementation — recorded in `../../20-validation/core/missing-information.md` when that register is authored (no new gap IDs minted outside the canonical GAP register, per `DOC-DTA-005` convention).
 
 ## 6. Accessibility, Localization & Ethics Overlap
 

@@ -43,7 +43,7 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 - **End-to-end workflows** (`WF-001…WF-012`) — `workflows/`.
 - **Business/user/stakeholder needs** — `stakeholder-needs.md`, `user-needs.md`.
 
-> **Authoritative-rule rule:** if any document in this repository conflicts with `business-rules.md`, `business-rules.md` wins and the conflict is logged in `20-validation/contradiction-audit.md` — never silently patched.
+> **Authoritative-rule rule:** if any document in this repository conflicts with `business-rules.md`, `business-rules.md` wins and the conflict is logged in `../20-validation/core/contradiction-audit.md` — never silently patched.
 
 ## Dependencies
 

@@ -48,7 +48,7 @@ This directory holds the **detailed specification of the 20 functional requireme
 1. **`02-requirements/requirements-overview.md` (`DOC-REQ-001`) is the single registry of all requirement IDs.** It fixes every FR ID, title, block and priority. No file in this directory may add, rename, re-prioritize, merge or split an FR ID.
 2. Each `FR-nnn.md` file is the source of truth for the **detail** of its requirement: requirements detail, preconditions, expected result, acceptance criteria (`AC-FRnnn-nn`), applied business rules, honored constraints, dependencies and verification method.
 3. Business rules are defined only in `01-business-analysis/business-rules.md` (`DOC-BA-005`); constraints only in `00-project-overview/project-constraints.md` (`DOC-OVR-008`); order states only in `../03-system-analysis/core/state-transitions.md` (`DOC-SA-010`). This directory **references those IDs — it never redefines them.**
-4. If an FR file and the registry disagree, the registry wins and the discrepancy is logged in `20-validation/contradiction-audit.md` — never silently patched.
+4. If an FR file and the registry disagree, the registry wins and the discrepancy is logged in `../20-validation/core/contradiction-audit.md` — never silently patched.
 
 ## Dependency on the Registry
 
@@ -66,7 +66,7 @@ This directory holds the **detailed specification of the 20 functional requireme
 1. **Acceptance criteria are mandatory.** Every FR carries at least four objectively testable `AC-FRnnn-nn` entries written as given/when/then one-liners; an FR without measurable ACs is incomplete and blocks the quality gate (`DOC-REQ-001` §6, root README §11).
 2. Every requirement carries: description, rationale (tracing to `OBJ-*` and/or `C-*`), requirements detail, preconditions, expected result, ACs, business rules applied (`BR-*`), constraints honored (`C-*`), dependencies (`FR/NFR/SEC-REQ/DATA-REQ/INT-REQ/DEP-*`), verification method and out-of-scope notes.
 3. Only canon IDs may be referenced — never invent `BR-*`, `C-*`, `OBJ-*`, `NFR-*`, `SEC-REQ-*`, `DEP-*` or `FR-*` identifiers outside the registries.
-4. Contradictions with rules/architecture go to `20-validation/contradiction-audit.md`; missing facts go to `20-validation/missing-information.md` as `GAP-*`.
+4. Contradictions with rules/architecture go to `../20-validation/core/contradiction-audit.md`; missing facts go to `../20-validation/core/missing-information.md` as `GAP-*`.
 5. A requirement is `approved` only when it passes the 7-question quality test (clarity, completeness, consistency, feasibility, testability, necessity, traceability).
 
 ## Related Directories

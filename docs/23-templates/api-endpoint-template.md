@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-API-002, DOC-API-003, DOC-API-004, DOC-API-
 
 # API Endpoint Group Template (DOC-TPL-006)
 
-**When to use:** a new group file in `07-api/<group>.md`. **Authority: DOC-API-005 (group index + allocation), `../07-api/core/api-conventions.md` (naming, roles, headers), `../07-api/core/error-model.md` (closed error catalog), `../07-api/core/pagination.md`** — mirror them exactly; disagreements are logged in `20-validation/contradiction-audit.md`. Exemplar: `../07-api/core/wallet.md` (API-WAL).
+**When to use:** a new group file in `07-api/<group>.md`. **Authority: DOC-API-005 (group index + allocation), `../07-api/core/api-conventions.md` (naming, roles, headers), `../07-api/core/error-model.md` (closed error catalog), `../07-api/core/pagination.md`** — mirror them exactly; disagreements are logged in `../20-validation/core/contradiction-audit.md`. Exemplar: `../07-api/core/wallet.md` (API-WAL).
 
 ## Rules
 

@@ -63,7 +63,7 @@ Operational rules:
 | Rule | Detail |
 |---|---|
 | This documentation set (`00…21`) is the primary artifact | every module owns entries in `00-project-overview/project-context.md` (B01–B13, S1–S5 decomposition) and `01-business-analysis/` domain docs |
-| ADRs for structural decisions | `18-decisions/ADR/` — adoption of sharding, multi-host HA, service split all require ADRs (referenced from `DOC-NFD-003` §5.3, `DOC-NFD-004` §3) |
+| ADRs for structural decisions | `18-decisions/core/` — adoption of sharding, multi-host HA, service split all require ADRs (referenced from `DOC-NFD-003` §5.3, `DOC-NFD-004` §3) |
 | Runbooks accompany features | anything alerting (`DOC-NFD-006`) ships with a runbook section; top-10 incidents per `NFR-020` |
 | Freshness audit | quarterly scan flags docs untouched > 90 days that reference changed code paths; owner updates or marks `draft`; **0 broken relative links** at audit end (`AC-NFR-009-02`) |
 | In-code docs | README per package (purpose, run, test, env vars); OpenAPI generated from Nest decorators and diffed in CI |

@@ -133,7 +133,7 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 |---|---|
 | AC-S-01 (20 FRs VERIFIED) | TC evidence per FR block + requirement status audit |
 | AC-S-02 (26/26 constraints) | [constraint-tests.md](core/constraint-tests.md) register, executed per plan |
-| AC-S-03 (0 traceability gaps) | `19-traceability/requirements-to-tests.md` — AC → TC / plan / TST-CON |
+| AC-S-03 (0 traceability gaps) | `../19-traceability/core/requirements-to-tests.md` — AC → TC / plan / TST-CON |
 | AC-S-04 (4 surfaces deliver UC set) | Per-surface E2E + UAT sign-off (test-plans §a) |
 | AC-S-05 (p95 under 10k concurrent) | k6 steady-state plan (test-plans §b), 30-minute window |
 | AC-S-06 (99.99% availability) | `TST-CON-26` + post-launch probes (`AC-NFR-005-01`) |

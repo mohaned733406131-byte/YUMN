@@ -106,7 +106,7 @@ Expands to `02-requirements/data/DATA-REQ-nnn.md`; detail in `16-data/`.
 | ID | Title | Summary |
 |---|---|---|
 | DATA-REQ-001 | Integrity constraints | FKs, unique/check constraints, NOT NULL where required; referential integrity enforced in DB not just app |
-| DATA-REQ-002 | Personal data minimization | Collect only needed PII; classify per `16-data/data-classification.md` |
+| DATA-REQ-002 | Personal data minimization | Collect only needed PII; classify per `../16-data/core/data-classification.md` |
 | DATA-REQ-003 | Retention & deletion | Configurable retention; account deletion workflow; financial records ≥ 5 years (NFR-019) |
 | DATA-REQ-004 | Backup & restore | Continuous WAL + daily snapshots; quarterly restore drills (NFR-006) |
 | DATA-REQ-005 | Schema evolution | Expand-contract migrations; backward-compatible deploys (NFR-020) |
@@ -135,7 +135,7 @@ Expands to `02-requirements/integration/INT-REQ-nnn.md`; contracts in `10-integr
 
 ## 6. Requirement Quality Statement
 
-Every requirement file must pass the 7-question quality test (clarity, completeness, consistency, feasibility, testability, necessity, traceability) and carry: description, source, priority, rationale, dependencies, preconditions, expected result, acceptance criteria, verification method. Weak entries are flagged in `20-validation/requirements-validation.md`.
+Every requirement file must pass the 7-question quality test (clarity, completeness, consistency, feasibility, testability, necessity, traceability) and carry: description, source, priority, rationale, dependencies, preconditions, expected result, acceptance criteria, verification method. Weak entries are flagged in `../20-validation/core/requirements-validation.md`.
 
 ## 7. Approved Backlog (pointer — not yet `FR-*`)
 

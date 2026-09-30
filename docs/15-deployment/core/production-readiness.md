@@ -40,7 +40,7 @@ Status vocabulary: `NOT DONE` · `DONE` · `WAIVED` (waiver requires sponsor + s
 | D-2 | Category tree seeded (5 levels) and reference data loaded | Backend lead | Seed script report; row counts vs expected | NOT DONE | `../../14-devops-infrastructure/core/environments.md` §1 (reference data only) |
 | D-3 | Commission tiers configured (5–20%, default 10%) in platform settings | Admin / business owner | Admin console `GET /admin/settings` inspection | NOT DONE | `FR-019`, `FR-020`, `BR-ESC-03` |
 | D-4 | VAT settings configured and validated against order totals | Finance owner | VAT boundary tests green on production config | NOT DONE | `NFR-019`, `BR-FIN-01`, `AC-NFR-019-01` |
-| D-5 | Retention periods configured per schedule; purge job scheduled | Backend lead | Config review vs `16-data/` schedule | NOT DONE | `16-data/retention-and-archival.md` §4, `DATA-REQ-003` R1 |
+| D-5 | Retention periods configured per schedule; purge job scheduled | Backend lead | Config review vs `16-data/` schedule | NOT DONE | `../../16-data/core/retention-and-archival.md` §4, `DATA-REQ-003` R1 |
 | D-6 | Search index built from PostgreSQL; Arabic analyzer active | Backend lead | Full reindex completes; sample Arabic queries return results | NOT DONE | `FR-009`, `10-integrations/` |
 | D-7 | Append-only privileges applied to ledger/audit tables (`REVOKE UPDATE, DELETE`) | Backend lead | Privilege audit query | NOT DONE | `DATA-REQ-007`, `AC-DR007-01` |
 

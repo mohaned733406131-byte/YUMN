@@ -127,7 +127,7 @@ Proof is enforced, not assumed: architecture lint (`AC-IR008-01`), substitution 
 | `SEC-011` | `DEP-06` uncontracted — the whole SMS/WhatsApp test plan is blocked until it opens |
 | `SEC-005` | replay-window parameters must be pinned before webhook drills are meaningful |
 | `RISK-003` / `RISK-006` | provider commercial risks tracked in `17-risk-management/risk-register.md` |
-| `GAP` registry | provider API specifics pending `DEP-05` documentation access (`20-validation/missing-information.md`) |
+| `GAP` registry | provider API specifics pending `DEP-05` documentation access (`../../20-validation/core/missing-information.md`) |
 
 ## Change History
 

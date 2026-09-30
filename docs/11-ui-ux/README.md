@@ -105,7 +105,7 @@ Keyboard order, focus visibility, contrast and screen-reader semantics are speci
 
 1. Cross-reference by ID (`FR-*`, `NFR-*`, `BR-*`, `C-*`, `UC-*`, `WF-*`, `AC-*`) — never restate a definition owned elsewhere.
 2. No placeholders: every statement is a concrete, testable design decision or an explicitly tagged `INFERENCE`/`INSUFFICIENT EVIDENCE` item.
-3. Never contradict canon. If canon and a design wish conflict, canon wins and the wish is recorded as a gap in `20-validation/missing-information.md`.
+3. Never contradict canon. If canon and a design wish conflict, canon wins and the wish is recorded as a gap in `../20-validation/core/missing-information.md`.
 4. Arabic-first: any example string shows the `ar` wording with its `en` counterpart.
 5. New screens must appear in `information-architecture.md` and their states in `screen-states.md` in the same change (consistency rule, root README §9).
 

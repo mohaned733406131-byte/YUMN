@@ -62,7 +62,7 @@ Open questions (if any → GAP-*)
 
 1. IDs are assigned **only** in `requirements-overview.md`.
 2. A requirement without measurable acceptance criteria is incomplete.
-3. Contradictions between requirements and rules/architecture go to `20-validation/contradiction-audit.md` — never silently patched.
+3. Contradictions between requirements and rules/architecture go to `../20-validation/core/contradiction-audit.md` — never silently patched.
 4. Deprecated requirements keep their ID with status `SUPERSEDED`; IDs are never reused.
 
 ## Naming Conventions

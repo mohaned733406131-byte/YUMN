@@ -124,7 +124,7 @@ Entry: admin console (S3) queues.
 2. **Bank top-up verification (`UC-034`)**: submitted reference + proof → **D2 — verified?** credit wallet (`BR-PAY-04`) or reject with reason. Credits are idempotent (`BR-PAY-08`).
 3. **Dispute (`WF-008`, `UC-033`)**: customer/vendor raises dispute → `DISPUTED` → escrow frozen for affected sub-orders (`BR-ORD-05`). Evidence panels: order timeline, messages, delivery proof, photos.
 4. **D3 — resolution?** resolve for vendor → `COMPLETED`; resolve for buyer → refund flow executes (wallet credit ≤ 3 business days, `BR-RET-04`). Refund approval posts proportional commission reversal (`BR-ESC-04`, `BR-RET-07`) — admin sees a preview of ledger effects before confirming.
-5. **Delivery-code lockout escalations**: auto-created tickets (`BR-SHP-03`) land in the support queue with full timeline; support can verify identity and unlock per `GAP-02` policy (admin override currently `INSUFFICIENT EVIDENCE` — see `20-validation/missing-information.md`).
+5. **Delivery-code lockout escalations**: auto-created tickets (`BR-SHP-03`) land in the support queue with full timeline; support can verify identity and unlock per `GAP-02` policy (admin override currently `INSUFFICIENT EVIDENCE` — see `../../20-validation/core/missing-information.md`).
 6. All privileged actions are confirmed via explicit dialogs with before/after preview and are audited (`AC-FR020-01`).
 
 Mapped: `UC-031`, `UC-033`, `UC-034`, `WF-008`, `FR-007`, `FR-013`, `FR-016`, `FR-020`, `AC-S-23`.

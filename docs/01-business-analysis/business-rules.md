@@ -203,7 +203,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 
 ## Rule Consistency Statement
 
-Every rule above is traceable to at least one `FR-*` and is compatible with `C-01…C-26` (`VERIFIED` by pairwise review; see `20-validation/consistency-audit.md`). No rule permits COD, cards, GPS, microservices, or any excluded capability.
+Every rule above is traceable to at least one `FR-*` and is compatible with `C-01…C-26` (`VERIFIED` by pairwise review; see `../20-validation/core/consistency-audit.md`). No rule permits COD, cards, GPS, microservices, or any excluded capability.
 
 ## Change History
 

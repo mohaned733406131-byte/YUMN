@@ -86,7 +86,7 @@ Evidence lands in `13-testing/` locale suites and the pre-release QA checklist; 
 | Auto-created escalation tickets | 24 h CONFIRMED SLA breach (`BR-ORD-10`), 3rd failed delivery-code attempt (`BR-SHP-03` → 24 h lock), 3 failed delivery attempts (`BR-SHP-06`) — each carries the **full order timeline** | `FR-020`, `AC-FR020-04` |
 | Audit | every support/admin decision writes an append-only audit entry (actor, action, before/after, IP, timestamp) | `BR-PLT-06`, `SEC-REQ-010` |
 | Escalation ladder | agent → senior agent → admin (dispute arbiter, `BR-RET-06`) → sponsor for policy gaps | `INFERENCE` |
-| Privacy in tickets | agents see masked PII consistent with classification; no full wallet numbers in free text | `16-data/data-classification.md`, `SEC-REQ-007` |
+| Privacy in tickets | agents see masked PII consistent with classification; no full wallet numbers in free text | `../../16-data/core/data-classification.md`, `SEC-REQ-007` |
 
 ### Support SLAs
 

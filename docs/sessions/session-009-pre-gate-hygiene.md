@@ -34,7 +34,7 @@ related_documents: [DOC-SES-000, DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-
 ## Files touched (grouped)
 
 **Authored this session:** `.gitleaks.toml` (secret-scan allowlist with written justifications), `docs/sessions/session-009-pre-gate-hygiene.md` (this file).
-**Modified this session:** 40 × `docs/01-business-analysis/use-cases/UC-001…UC-040.md` **v1.1** (CH added) · 6 × `docs/02-requirements/functional/FR-{005,007,016,018,019,020}.md` **v1.1** · `docs/02-requirements/README.md` **v1.1** · `docs/00-project-overview/README.md` **v1.1** · `docs/20-validation/consistency-audit.md` **v1.17** (re-run + finding 2 `RESOLVED`) · `docs/20-validation/analysis-validation.md` **v1.11** (roll-up 66 → **65**) · `docs/phases/analysis/phase-audit.md` **v1.6** · `docs/phases/analysis/implementation-plan.md` **v1.3** · `docs/sessions/session-005-rules-compliance-audit.md` **v1.6** · `all_in_one_track.md` · `session_track.md` · `memory.md` · `prompt-next.md` · `docs/sessions/README.md` **v1.6**.
+**Modified this session:** 40 × `docs/01-business-analysis/use-cases/UC-001…UC-040.md` **v1.1** (CH added) · 6 × `docs/02-requirements/functional/FR-{005,007,016,018,019,020}.md` **v1.1** · `docs/02-requirements/README.md` **v1.1** · `docs/00-project-overview/README.md` **v1.1** · `docs/20-validation/core/consistency-audit.md` **v1.17** (re-run + finding 2 `RESOLVED`) · `docs/20-validation/core/analysis-validation.md` **v1.11** (roll-up 66 → **65**) · `docs/phases/analysis/phase-audit.md` **v1.6** · `docs/phases/analysis/implementation-plan.md` **v1.3** · `docs/sessions/session-005-rules-compliance-audit.md` **v1.6** · `all_in_one_track.md` · `session_track.md` · `memory.md` · `prompt-next.md` · `docs/sessions/README.md` **v1.6**.
 
 ## Evidence
 

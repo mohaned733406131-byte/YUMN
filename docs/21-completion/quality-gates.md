@@ -28,17 +28,17 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 | `PASS WITH FINDINGS` | Gate proceeds, but each finding has an owner, a severity (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`), and a written disposition recorded before the next gate |
 | `FAIL` | **Block.** The transition guarded by this gate does not happen; work stays in the current phase. Re-presentation requires new evidence, not argument |
 
-**What `FAIL` means operationally:** Phase 1 does not start on a Gate 0 `FAIL`; Phase 2 does not start on a Gate 1 `FAIL`; go-live does not occur on a Gate 2 `FAIL`; closure/acceptance does not occur on a Gate 3 `FAIL`. The sponsor may accept a gate-blocking risk **only explicitly, in writing**, with the acceptance recorded as a register status change (`17-risk-management/risk-review-process.md` §4) — never by silence, never by schedule pressure.
+**What `FAIL` means operationally:** Phase 1 does not start on a Gate 0 `FAIL`; Phase 2 does not start on a Gate 1 `FAIL`; go-live does not occur on a Gate 2 `FAIL`; closure/acceptance does not occur on a Gate 3 `FAIL`. The sponsor may accept a gate-blocking risk **only explicitly, in writing**, with the acceptance recorded as a register status change (`../17-risk-management/core/risk-review-process.md` §4) — never by silence, never by schedule pressure.
 
-**Conflict rule (non-negotiable):** where schedule pressure meets quality, **quality gates in money paths win** — recorded in `00-project-overview/stakeholders.md` ("Speed-to-market vs quality gates | `21-completion/quality-gates.md` — gates are non-negotiable for money paths") and `../01-business-analysis/core/stakeholder-needs.md` STK-01 (sponsor "may trade quality for schedule — quality gates in money paths are non-negotiable"). If scope must give, scope gives: tests, monitoring, backups, and money-path gates are never traded (RISK-005 decision rule, `17-risk-management/mitigation-plans.md`).
+**Conflict rule (non-negotiable):** where schedule pressure meets quality, **quality gates in money paths win** — recorded in `00-project-overview/stakeholders.md` ("Speed-to-market vs quality gates | `21-completion/quality-gates.md` — gates are non-negotiable for money paths") and `../01-business-analysis/core/stakeholder-needs.md` STK-01 (sponsor "may trade quality for schedule — quality gates in money paths are non-negotiable"). If scope must give, scope gives: tests, monitoring, backups, and money-path gates are never traded (RISK-005 decision rule, `../17-risk-management/core/mitigation-plans.md`).
 
-**Standing input to every gate:** `20-validation/critical-findings.md` (open critical items must be dispositioned), plus `20-validation/missing-information.md` (GAP register), `20-validation/contradiction-audit.md`, and `20-validation/consistency-audit.md`. Evidence status: `INSUFFICIENT EVIDENCE` — `20-validation/` is declared in root README §2 but not yet authored in `docs/`; gates consume it by path, and its authoring is tracked as `TD-10` in `21-completion/technical-debt.md`.
+**Standing input to every gate:** `../20-validation/core/critical-findings.md` (open critical items must be dispositioned), plus `../20-validation/core/missing-information.md` (GAP register), `../20-validation/core/contradiction-audit.md`, and `../20-validation/core/consistency-audit.md`. Evidence status: `INSUFFICIENT EVIDENCE` — `20-validation/` is declared in root README §2 but not yet authored in `docs/`; gates consume it by path, and its authoring is tracked as `TD-10` in `21-completion/technical-debt.md`.
 
 ---
 
 ## 2. Checks Embedded at Every Gate
 
-**Phase-gate risk check** — mandated at every gate by `17-risk-management/risk-review-process.md` §1 and §7; run and recorded as part of the gate (this file embeds it, per §10 of that process):
+**Phase-gate risk check** — mandated at every gate by `../17-risk-management/core/risk-review-process.md` §1 and §7; run and recorded as part of the gate (this file embeds it, per §10 of that process):
 
 | # | Check | Pass criterion |
 |---|---|---|
@@ -47,8 +47,8 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 | G-R3 | Gate-critical dependencies | `DEP-06` signed before Gate 0; `DEP-10` before payment build; `DEP-09` before launch |
 | G-R4 | Assumption verification | `ASM-03`, `ASM-04`, `ASM-12`, `ASM-14` re-scored with evidence |
 | G-R5 | Constraint verification plan | `AC-S-02`-facing constraint tests exist for constraints touched by mitigations |
-| G-R6 | Register hygiene | No silent changes (`20-validation/consistency-audit.md` clean); ID sequences intact |
-| G-R7 | Contingency readiness | Kill criteria of the top-8 plans (`17-risk-management/mitigation-plans.md`) known to gate participants |
+| G-R6 | Register hygiene | No silent changes (`../20-validation/core/consistency-audit.md` clean); ID sequences intact |
+| G-R7 | Contingency readiness | Kill criteria of the top-8 plans (`../17-risk-management/core/mitigation-plans.md`) known to gate participants |
 
 **Documentation checks at every gate:**
 
@@ -77,7 +77,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 | 0.2 | Dangerous assumptions resolved | `ASM-03` (provider merchant APIs), `ASM-04` (SMS/WhatsApp reachability), `ASM-12` (Central Bank permits closed-loop wallets — `DANGEROUS`) resolved or explicitly accepted in writing | `assumptions.md` escalation rule; G-R4 | `UNSUPPORTED` ×2, `DANGEROUS` ×1 |
 | 0.3 | Gate-critical dependencies opened or mitigated | `DEP-06` signed (registration has no fallback); `DEP-05` sandbox granted from **both** m-Floos and OneCash, or an explicit sponsor decision to launch bank-transfer-only | `dependencies.md`; G-R3; `mitigation-plans.md` RISK-006/003 kill criteria | both **NOT STARTED** |
 | 0.4 | Regulatory position before money build | `DEP-10` written Central Bank position on file before any B07 money-flow implementation | `dependencies.md`; RISK-012 kill criteria | Not started |
-| 0.5 | GAP register triaged | `GAP-01…GAP-07` dispositioned with owners; Gate-0 blockers flagged in `20-validation/missing-information.md` | `00-project-overview/project-scope.md`; RISK-011 action ("Resolve `GAP-01…GAP-06` decisions before Gate 0") | register authored; decisions pending |
+| 0.5 | GAP register triaged | `GAP-01…GAP-07` dispositioned with owners; Gate-0 blockers flagged in `../20-validation/core/missing-information.md` | `00-project-overview/project-scope.md`; RISK-011 action ("Resolve `GAP-01…GAP-06` decisions before Gate 0") | register authored; decisions pending |
 | 0.6 | Analysis sign-off | Charter sign-off path opened → `21-completion/final-acceptance.md` (all `AC-S-*` remain `PENDING` until evidence exists) | charter L87 | PENDING |
 | 0.7 | Documentation link validation | Link pass across `docs/` with findings triaged (root README §11) | root README §11 | to be run at the gate |
 | 0.8 | Risk check | G-R1…G-R7 run; Gate 0 is **the strictest** — `RISK-006` (`DEP-06`) and `RISK-012` (`DEP-10`) are blocking by canon | `risk-review-process.md` §7 | — |
@@ -130,7 +130,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 | 2.2 | Drills | `CHAOS-01…CHAOS-08` all PASS conditions met and recorded; `CHAOS-06` proves RTO ≤ 1 h / RPO ≤ 15 min with zero lost money; rollback drill ≤ 15 min; zero silent data loss proven by post-drill reconciliation | `test-plans.md` §d, §h; `AC-S-17`, `AC-S-20`; G-TEST-7 |
 | 2.3 | Production readiness | All 52 rows `DONE` or explicitly `WAIVED`, with sponsor, QA lead, security owner, and ops owner signatures | `../15-deployment/core/production-readiness.md` §8, §9 |
 | 2.4 | Compliance checklist | `AC-S-24` sign-off evidence assembled: the ten deliverables of `../12-non-functional/core/compliance-and-legal.md` §5 on file (data-protection opinion, Central Bank position, VAT opinion, retention opinion, processor/DPA set, bilingual terms + privacy notice, return/refund policy confirmation, messaging-consent wording, accessibility statement, evidence pack) | `compliance-and-legal.md` §5; `AC-S-24` |
-| 2.5 | GAP closure for launch blockers | Every `GAP-*` that blocks a launch claim is closed or waived in writing with an owner (e.g. `GAP-01` targets, `GAP-05` commission tiers before tiered plans ship, `GAP-06` payout mode) | `20-validation/missing-information.md`; RISK-002/RISK-011 actions |
+| 2.5 | GAP closure for launch blockers | Every `GAP-*` that blocks a launch claim is closed or waived in writing with an owner (e.g. `GAP-01` targets, `GAP-05` commission tiers before tiered plans ship, `GAP-06` payout mode) | `../20-validation/core/missing-information.md`; RISK-002/RISK-011 actions |
 | 2.6 | Pilot evidence | ≥ 10 pilot vendors completed KYC → listing → sale → payout; end-to-end money cycle proven (top-up → order → escrow → commission → payout → refund); support process live | `AC-S-21`, `AC-S-22`, `AC-S-23` |
 | 2.7 | Accessibility / localization / mobile | §e, §f, §g plan exits green (0 critical a11y violations, 0 RTL defects on core journeys, 0 blocking device-matrix defects) | `test-plans.md` §e–§g; `AC-S-10`, `AC-S-11` |
 | 2.8 | Security release posture | DAST clean of exploitable high/critical; dependency/secret scans clean; threat-model coverage 100% | `test-plans.md` §c; `AC-S-12`, `AC-S-13`, `AC-S-16`; G-TEST-5 |
@@ -166,7 +166,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 
 **Participants:** project sponsor, product owner (chairs the standing risk review), technical lead, DevOps lead, security officer, Finance (Admin), business development, legal liaison.
 
-**Gate 3 → acceptance:** Gate 3 `PASS` or `PASS WITH FINDINGS` is a precondition for moving `21-completion/final-acceptance.md` from `PENDING` to `ACCEPTED`, together with a `PASS`/`PASS WITH FINDINGS` final quality assessment in `20-validation/analysis-validation.md` (root README §10 item 48) and signed gate history for Gates 0–3.
+**Gate 3 → acceptance:** Gate 3 `PASS` or `PASS WITH FINDINGS` is a precondition for moving `21-completion/final-acceptance.md` from `PENDING` to `ACCEPTED`, together with a `PASS`/`PASS WITH FINDINGS` final quality assessment in `../20-validation/core/analysis-validation.md` (root README §10 item 48) and signed gate history for Gates 0–3.
 
 ---
 
@@ -174,10 +174,10 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 
 | Gate | Guards | Owner / chair | Outcome (recorded 2026-09-28) | Findings / severity behind the outcome | Outcome recorded in |
 |---|---|---|---|---|---|
-| Gate 0 | Start of implementation | **Project sponsor** | **`FAIL`** | `CRIT-01` (**CRITICAL**) — `ASM-14` baselines `INSUFFICIENT EVIDENCE`; `DEP-05`/`DEP-06` `NOT STARTED` (G-R3), `DEP-10` not started; charter sign-off `PENDING` (0.6); `AVF-02` (`VERIFIED`, roll-up `CRITICAL`) | This file + `20-validation/analysis-validation.md` (`AVF-02`) |
+| Gate 0 | Start of implementation | **Project sponsor** | **`FAIL`** | `CRIT-01` (**CRITICAL**) — `ASM-14` baselines `INSUFFICIENT EVIDENCE`; `DEP-05`/`DEP-06` `NOT STARTED` (G-R3), `DEP-10` not started; charter sign-off `PENDING` (0.6); `AVF-02` (`VERIFIED`, roll-up `CRITICAL`) | This file + `../20-validation/core/analysis-validation.md` (`AVF-02`) |
 | Gate 1 | Phase 1 → Phase 2 | Technical lead (sponsor for CRITICAL acceptances) | **`FAIL`** — not presented; entry criterion (Gate 0 `PASS`) unmet | Gate 0 block stands; no implementation exists (`SPE-03`) — zero evidence for checks 1.1–1.9 | This file |
 | Gate 2 | Phase 2 → Launch | Project sponsor | **`FAIL`** — not presented; entry criterion unmet | Gate 0/1 blocks stand; production-readiness 0/52 rows `DONE` | This file + `../15-deployment/core/production-readiness.md` §9 |
-| Gate 3 | Post-launch closure → acceptance | Project sponsor + product owner | **`FAIL`** — not presented; entry criterion unmet | Gate 0–2 blocks stand; platform not launched; all `AC-S-*` `PENDING` | This file + `20-validation/analysis-validation.md` |
+| Gate 3 | Post-launch closure → acceptance | Project sponsor + product owner | **`FAIL`** — not presented; entry criterion unmet | Gate 0–2 blocks stand; platform not launched; all `AC-S-*` `PENDING` | This file + `../20-validation/core/analysis-validation.md` |
 
 Honesty rule: **no gate review has been convened, and none can pass today** — no implementation exists (root README §6: no document is `VERIFIED`). The outcomes above are the §1 **`FAIL` = block** state read from current evidence: Gate 0 fails its own criteria today (`AVF-02`, `VERIFIED`), and Gates 1–3 are blocked behind it, so none of the guarded transitions happens. Re-presentation requires new evidence, not argument (§1); a future `PASS` / `PASS WITH FINDINGS` is recorded here only when its evidence artifacts exist — this file defines what will be judged, not what has passed.
 

@@ -14,15 +14,15 @@ related_documents: [DOC-REQ-001, DOC-BA-005, DOC-OVR-008]
 
 # DATA-REQ-002 — Personal data minimization
 
-> Registry summary (`requirements-overview.md` §4): collect only needed PII; classify per `16-data/data-classification.md`.
+> Registry summary (`requirements-overview.md` §4): collect only needed PII; classify per `../../16-data/core/data-classification.md`.
 
 ## Description
 
-Only personal data with a documented, active purpose is collected or exposed. Every PII field is classified under `16-data/data-classification.md`, every API response exposes only the fields its surface needs, and categories excluded by constraints (cards, GPS, email-primary identity) are never collected at all.
+Only personal data with a documented, active purpose is collected or exposed. Every PII field is classified under `../../16-data/core/data-classification.md`, every API response exposes only the fields its surface needs, and categories excluded by constraints (cards, GPS, email-primary identity) are never collected at all.
 
 ## Requirement statements
 
-- R1: Each stored PII field maps to an explicit purpose documented in `16-data/data-classification.md`; a field without a purpose may not be added to the schema.
+- R1: Each stored PII field maps to an explicit purpose documented in `../../16-data/core/data-classification.md`; a field without a purpose may not be added to the schema.
 - R2: Registration collects phone, password, and display name only; email is optional and stored solely when the user provides it (BR-AUTH-08); addresses are collected only when the user creates them, ≤10 per user (FR-003).
 - R3: No card data (C-02) and no location/GPS data (C-16, BR-SHP-05) may exist in any table, API field, log, or third-party call.
 - R4: API responses expose only purposeful fields per surface — e.g. vendors receive buyer contact data only for fulfillment, never full profile histories (cross FR-002, DATA-REQ-008).

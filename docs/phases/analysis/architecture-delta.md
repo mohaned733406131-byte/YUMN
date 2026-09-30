@@ -29,7 +29,7 @@ Architecture authority: tech lead (PENDING sign-off) · Author of record: analys
 
 ## Main flow
 1. Analysis derives candidate architecture from requirements + constraints.
-2. Decisions recorded as ADRs ([`18-decisions/ADR/`](../../18-decisions/ADR/)).
+2. Decisions recorded as ADRs ([`18-decisions/core/`](../../18-decisions/core)).
 3. Views published: [container](../../04-architecture/core/container-view.md), [component](../../04-architecture/core/component-view.md), [deployment](../../04-architecture/core/deployment-view.md), [data-flow](../../04-architecture/core/data-flow.md), [module boundaries](../../04-architecture/core/module-boundaries.md).
 
 ## Alternate / exception flows

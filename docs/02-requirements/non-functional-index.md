@@ -51,7 +51,7 @@ Each `NFR-nnn.md` file carries its own **Metric / Target**, **Measurement Method
 
 ## Source-of-Truth Statement
 
-- **IDs, titles and target summaries are fixed in `requirements-overview.md` §2** (`DOC-REQ-001`). If this index or any `NFR-nnn.md` file appears to contradict the registry, the registry wins and the discrepancy goes to `20-validation/contradiction-audit.md`.
+- **IDs, titles and target summaries are fixed in `requirements-overview.md` §2** (`DOC-REQ-001`). If this index or any `NFR-nnn.md` file appears to contradict the registry, the registry wins and the discrepancy goes to `../20-validation/core/contradiction-audit.md`.
 - These files are the authoritative expansion of each NFR (description, rationale, method, consequences). Other documents **reference the NFR ID — never copy its definition.**
 - Constraints (`C-01…C-26`), objectives (`OBJ-*`) and success criteria (`AC-S-*`) referenced here are owned by `00-project-overview/`; business rules by `01-business-analysis/business-rules.md`.
 

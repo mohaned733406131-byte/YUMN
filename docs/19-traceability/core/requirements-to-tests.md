@@ -39,11 +39,11 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 | Artifact class | IDs found | Source |
 |---|---|---|
 | Test cases | 114 files `TC-001 … TC-114` (locked allocation fully present) | `13-testing/test-cases/TC-*.md` §*Related requirements & rules* |
-| Executable feature plans | `PLAN-01 … PLAN-18` | `../13-testing/core/test-plans.md` §a |
-| Performance / security / chaos activities | `PERF-01…07`, `SEC-P-01…09`, `CHAOS-01…08` | `../13-testing/core/test-plans.md` §b–§d |
-| Plan sections | `§b … §h` (scope + canon columns) | `../13-testing/core/test-plans.md` |
-| Constraint tests | `TST-CON-01 … TST-CON-26` | `../13-testing/core/constraint-tests.md` |
-| Test documents | `DOC-TST-001`, `DOC-TST-002`, `DOC-TST-005`, `DOC-INT-008` | `13-testing/README.md`, `testing-strategy.md`, `test-data-and-environments.md`, `../10-integrations/core/testing-and-sandboxes.md` |
+| Executable feature plans | `PLAN-01 … PLAN-18` | `../../13-testing/core/test-plans.md` §a |
+| Performance / security / chaos activities | `PERF-01…07`, `SEC-P-01…09`, `CHAOS-01…08` | `../../13-testing/core/test-plans.md` §b–§d |
+| Plan sections | `§b … §h` (scope + canon columns) | `../../13-testing/core/test-plans.md` |
+| Constraint tests | `TST-CON-01 … TST-CON-26` | `../../13-testing/core/constraint-tests.md` |
+| Test documents | `DOC-TST-001`, `DOC-TST-002`, `DOC-TST-005`, `DOC-INT-008` | `13-testing/README.md`, `testing-strategy.md`, `test-data-and-environments.md`, `../../10-integrations/core/testing-and-sandboxes.md` |
 
 **Link status per row:**
 
@@ -74,7 +74,7 @@ Rules obeyed: shorthand citations are expanded conservatively (`AC-SR011-01/02` 
 **Verdict: `PASS WITH FINDINGS`.**
 
 - Every one of the 68 requirements and all 277 ACs has a row; nothing is omitted.
-- All 20 FRs have ≥1 test case of their own (the `FR-003` family rides the `TC-001–010` block, as `../13-testing/test-cases-index.md` §2 states), so `AC-S-03`'s "≥1 test case per FR" half holds at design level.
+- All 20 FRs have ≥1 test case of their own (the `FR-003` family rides the `TC-001–010` block, as `../../13-testing/test-cases-index.md` §2 states), so `AC-S-03`'s "≥1 test case per FR" half holds at design level.
 - The **"0 gaps" half of `AC-S-03` does not hold**: 27 ACs have no artifact link and 42 more are covered only by a declaration.
 - **Nothing has been executed**: 114/114 test-case files exist, all constraint tests are `DESIGNED`, and no report, dashboard or drill record exists in the corpus.
 
@@ -369,7 +369,7 @@ Related requirements & rules; test document citation — 13-testing/test-data-an
 
 ## 4. Constraint → Constraint Test Matrix
 
-Every constraint `C-01…C-26` has exactly one register entry with the same number (one-to-one, `../13-testing/core/constraint-tests.md` §1); the AC column shows which acceptance criteria the register detail itself cites.
+Every constraint `C-01…C-26` has exactly one register entry with the same number (one-to-one, `../../13-testing/core/constraint-tests.md` §1); the AC column shows which acceptance criteria the register detail itself cites.
 
 | Constraint | Constraint test | Status | ACs cited in the register detail | Related plan activity |
 |---|---|---|---|---|
@@ -406,24 +406,24 @@ All 26 rows are `DESIGNED` at v1.0 — status vocabulary `DESIGNED → READY →
 
 ## 5. Declared-but-Absent Test Cases
 
-`../13-testing/test-cases-index.md` §2 locks an allocation of **114** cases. All **114** files exist (the 11 cases `TC-104`…`TC-114` were authored 2026-09-27 under `REC-03`). Historical status rows are kept and flipped, never deleted (DOC-TPL-011 #3):
+`../../13-testing/test-cases-index.md` §2 locks an allocation of **114** cases. All **114** files exist (the 11 cases `TC-104`…`TC-114` were authored 2026-09-27 under `REC-03`). Historical status rows are kept and flipped, never deleted (DOC-TPL-011 #3):
 
 | TC ID | Declared in | FR block | Status |
 |---|---|---|---|
-| `TC-104` | `../13-testing/test-cases-index.md` §2 (range `TC-097–104`) | `FR-019` content & coupons | `declared but file absent` → `present (2026-09-27)` |
-| `TC-105` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-106` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-107` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-108` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-109` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-110` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-111` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-112` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-113` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-114` | `../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-104` | `../../13-testing/test-cases-index.md` §2 (range `TC-097–104`) | `FR-019` content & coupons | `declared but file absent` → `present (2026-09-27)` |
+| `TC-105` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-106` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-107` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-108` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-109` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-110` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-111` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-112` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-113` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-114` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
 | **11 declared, 11 present in this range** | | | |
 
-Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-block claim in `../13-testing/test-cases-index.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — is now checkable for `FR-019` (`TC-104`) and `FR-020` (`TC-105`…`TC-114`); the four rows that rested on the block alone (`AC-SR010-01…04`) are `EXPLICIT` against `TC-105`…`TC-108`; and the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") are satisfiable from disk (114 files, every cited `TC-` ID resolves). Remaining open findings are tracked in §7 — chiefly `G-01` (27 ACs with no artifact), not file absence.
+Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-block claim in `../../13-testing/test-cases-index.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — is now checkable for `FR-019` (`TC-104`) and `FR-020` (`TC-105`…`TC-114`); the four rows that rested on the block alone (`AC-SR010-01…04`) are `EXPLICIT` against `TC-105`…`TC-108`; and the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") are satisfiable from disk (114 files, every cited `TC-` ID resolves). Remaining open findings are tracked in §7 — chiefly `G-01` (27 ACs with no artifact), not file absence.
 
 ---
 
@@ -461,7 +461,7 @@ Reading: each group lists ACs whose parent requirement is covered by **no** `TC`
 | G-06 | 5 success criteria (`AC-S-19`, `AC-S-21`…`AC-S-24`) are operational/pilot/sign-off records — no test artifact can ever satisfy them here | INFORMATIONAL | §3 rows marked `OPERATIONAL EVIDENCE` |
 | G-07 | 779 `AC-UCnnn-nn` criteria exist in `01-business-analysis/*.md` outside the registry that claims to be the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings — 779 re-counted 2026-09-29 after session 010 grew the corpus to 210 UCs (was 121 at v1.2; finding unchanged, MEDIUM `OPEN`) |
 | G-08 | 8 constraint-register details cite no AC | LOW | §4 |
-| G-09 | Execution status: 0 tests executed, 0 reports; all `TST-CON-NN` `DESIGNED` | INFORMATIONAL (expected at v1.0) | `../13-testing/core/constraint-tests.md` |
+| G-09 | Execution status: 0 tests executed, 0 reports; all `TST-CON-NN` `DESIGNED` | INFORMATIONAL (expected at v1.0) | `../../13-testing/core/constraint-tests.md` |
 
 **Documents needing update (reported, not edited):** `02-requirements/acceptance-criteria.md` §7 (G-04 — qualify the zero-gap claim until the gaps close); `01-business-analysis/*.md` or the registry wording (G-07); `00-project-overview/success-criteria.md` (G-06 — mark the five operational criteria as non-test evidence). *(G-02 clause retired 2026-09-27 — `TC-104`…`TC-114` now exist; G-05 clause retired 2026-09-27 — the 14 `-05` references now exist.)*
 
@@ -469,7 +469,7 @@ Reading: each group lists ACs whose parent requirement is covered by **no** `TC`
 
 ## 8. Maintenance
 
-Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-document change is reflected here in the **same change set**; sweep results go to `20-validation/consistency-audit.md`; anything contradictory (missing files, competing AC ID spaces, broken gate claims) goes to `20-validation/contradiction-audit.md`.
+Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-document change is reflected here in the **same change set**; sweep results go to `../../20-validation/core/consistency-audit.md`; anything contradictory (missing files, competing AC ID spaces, broken gate claims) goes to `../../20-validation/core/contradiction-audit.md`.
 
 ---
 
@@ -478,7 +478,7 @@ Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-do
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 item 40 |
-| 1.1 | 2026-09-27 | 29 citations of undefined `DOC-INT-010` corrected to `DOC-INT-008` (`../10-integrations/core/testing-and-sandboxes.md`) | `20-validation/consistency-audit.md` finding 23 — no cited ID absent from its owning register (root README §11 `D-3`) |
+| 1.1 | 2026-09-27 | 29 citations of undefined `DOC-INT-010` corrected to `DOC-INT-008` (`../../10-integrations/core/testing-and-sandboxes.md`) | `../../20-validation/core/consistency-audit.md` finding 23 — no cited ID absent from its owning register (root README §11 `D-3`) |
 | 1.2 | 2026-09-27 | `REC-03` pay-down: `TC-104`…`TC-114` authored — §1 artifact count 114, §2 NFR/SEC counts re-run (203/42), 6 rows `DECLARED`→`EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`), 10 rows gain new TC links, §5 statuses flipped to present, `G-02` → `RESOLVED`, `G-04` re-scoped | Root README §9.4 same-change-set propagation for a `13-testing/` change (`21-completion/recommendations.md` `REC-03`) |
 | 1.3 | 2026-09-27 | `REC-04` pay-down: `G-05` → `RESOLVED` (14 `AC-FRnnn-05` references added, 94/94 cited); "documents needing update" re-scoped | Root README §9.4 same-change-set propagation for an `02-requirements/functional/` change (`REC-04`) |
 | 1.4 | 2026-09-28 | §1 Functional range end corrected `AC-FR020-05` → `AC-FR020-04` (registry tops at `-04`; FR-020 defines four ACs — count 94 unchanged) | `REC-15` citation-CI enforcement (session 008) — `tools/check_citations.py` caught the dangling range end |

@@ -16,7 +16,7 @@ related_documents: [DOC-INT-000, DOC-INT-001, DOC-INT-003, DOC-INT-007, DOC-IR-0
 
 Contract for the two mobile-money top-up rails allowed by `C-05`. Provider-specific facts are confined to this file and the `mFloosAdapter` / `OneCashAdapter` folders (`INT-REQ-008`).
 
-> **Evidence note:** exact provider API specifications (endpoint paths, signature header names, field names) are **not available yet** because `DEP-05` (merchant API access) is `NOT STARTED`. Everything below marked `INFERENCE` is a design assumption that must be confirmed against the providers' actual sandbox documentation when `DEP-05` opens; the *behavioral* requirements (callback-only credit, idempotency, limits, reconciliation) are `VERIFIED` from `BR-PAY-*` and `INT-REQ-001`. The open API-knowledge gap is recorded in the GAP registry (`20-validation/missing-information.md`).
+> **Evidence note:** exact provider API specifications (endpoint paths, signature header names, field names) are **not available yet** because `DEP-05` (merchant API access) is `NOT STARTED`. Everything below marked `INFERENCE` is a design assumption that must be confirmed against the providers' actual sandbox documentation when `DEP-05` opens; the *behavioral* requirements (callback-only credit, idempotency, limits, reconciliation) are `VERIFIED` from `BR-PAY-*` and `INT-REQ-001`. The open API-knowledge gap is recorded in the GAP registry (`../../20-validation/core/missing-information.md`).
 
 ## 1. End-to-End Flow
 

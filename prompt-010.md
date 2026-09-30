@@ -91,7 +91,7 @@
 4. **Registration / propagation (no omissions):** README index rows for every new UC;
    `requirements-to-features.md` UC column; `requirements-to-tests.md`/test coverage pointers;
    `phases/analysis/use-cases.md` roll-up; `19-traceability/README.md` §5 dashboard;
-   `analysis-validation.md` domain row + roll-up; `20-validation/consistency-audit.md` §4
+   `analysis-validation.md` domain row + roll-up; `docs/20-validation/core/consistency-audit.md` §4
    propagation row + re-run the affected checks (`CHK-01`, `CHK-05`, `CHK-06`, `CHK-08`,
    `CHK-11`, `CHK-15`, `CHK-27`) — full 31-check sweep if counts/registries moved.
 5. **Coverage proof:** publish the matrix (portal × area → UC IDs, gaps explicitly listed as

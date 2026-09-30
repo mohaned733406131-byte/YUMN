@@ -40,7 +40,7 @@ A fifth document, `data-quality.md`, defines how the platform proves its data is
 | **03-system-analysis / 04-architecture** | Data flows and movement views | Ownership, classification, retention of the flowing data | Flow diagrams consume the categories defined here |
 | **12-non-functional / 14-devops** | Measurable performance, observability, backup tooling | Which classes are backed up, for how long, and when purge evidence is required | Ops executes the schedule defined in `retention-and-archival.md` |
 
-**Consistency rule:** `DATA-REQ-002` R1 requires every PII column to map to a purpose entry in `16-data/data-classification.md`; `DATA-REQ-003` R4/R5 and `DATA-REQ-004` R5 require retention and backup periods to be defined in `16-data/`. This domain is therefore the implementation target of four of the eight data requirements.
+**Consistency rule:** `DATA-REQ-002` R1 requires every PII column to map to a purpose entry in `core/data-classification.md`; `DATA-REQ-003` R4/R5 and `DATA-REQ-004` R5 require retention and backup periods to be defined in `16-data/`. This domain is therefore the implementation target of four of the eight data requirements.
 
 ## 3. System-of-Record Map
 
@@ -74,12 +74,12 @@ A fifth document, `data-quality.md`, defines how the platform proves its data is
 | # | File | Document ID | Content | Source of truth |
 |---|---|---|---|---|
 | 1 | [README.md](README.md) | `DOC-DTA-001` | Domain charter, boundaries, store map, requirement coverage, index | Yes |
-| 2 | [data-lifecycle.md](data-lifecycle.md) | `DOC-DTA-002` | CREATE → STORE → USE → SHARE → ARCHIVE → DELETE per data category; derived-data invalidation | No (supporting) |
-| 3 | [data-ownership.md](data-ownership.md) | `DOC-DTA-003` | Ownership matrix: owner actor, platform custody, per-role access, write scope; storage-location assumption | Yes |
-| 4 | [data-classification.md](data-classification.md) | `DOC-DTA-004` | 4-level scheme + full element inventory with encryption, retention class, masking, access | Yes |
-| 5 | [retention-and-archival.md](retention-and-archival.md) | `DOC-DTA-005` | Retention classes `RC-01…RC-09`, retention schedule, purge & archive mechanics, legal-evidence gap | Yes |
-| 6 | [data-deletion-and-privacy.md](data-deletion-and-privacy.md) | `DOC-DTA-006` | Deletion/anonymization procedures, cascade, verification, export, non-production masking | No (supporting) |
-| 7 | [data-quality.md](data-quality.md) | `DOC-DTA-007` | Quality dimensions, rule register `DQ-01…DQ-18`, reconciliation jobs, quarantine, SLOs | No (supporting) |
+| 2 | [data-lifecycle.md](core/data-lifecycle.md) | `DOC-DTA-002` | CREATE → STORE → USE → SHARE → ARCHIVE → DELETE per data category; derived-data invalidation | No (supporting) |
+| 3 | [data-ownership.md](core/data-ownership.md) | `DOC-DTA-003` | Ownership matrix: owner actor, platform custody, per-role access, write scope; storage-location assumption | Yes |
+| 4 | [data-classification.md](core/data-classification.md) | `DOC-DTA-004` | 4-level scheme + full element inventory with encryption, retention class, masking, access | Yes |
+| 5 | [retention-and-archival.md](core/retention-and-archival.md) | `DOC-DTA-005` | Retention classes `RC-01…RC-09`, retention schedule, purge & archive mechanics, legal-evidence gap | Yes |
+| 6 | [data-deletion-and-privacy.md](core/data-deletion-and-privacy.md) | `DOC-DTA-006` | Deletion/anonymization procedures, cascade, verification, export, non-production masking | No (supporting) |
+| 7 | [data-quality.md](core/data-quality.md) | `DOC-DTA-007` | Quality dimensions, rule register `DQ-01…DQ-18`, reconciliation jobs, quarantine, SLOs | No (supporting) |
 
 ## 6. Governing Principles
 
@@ -112,7 +112,7 @@ A fifth document, `data-quality.md`, defines how the platform proves its data is
 
 **Reading order:** this README → `data-classification.md` (the inventory everything references) → `data-ownership.md` → `data-lifecycle.md` → `retention-and-archival.md` → `data-deletion-and-privacy.md` → `data-quality.md`.
 
-**Verification:** this domain is verified through the acceptance criteria of `DATA-REQ-002…008` (`AC-DRnnn-nn` in `02-requirements/`), the cross-tenant suite of `DATA-REQ-008`, purge/evidence tests of `DATA-REQ-003`, and reconciliation tests of `DATA-REQ-006`; test design lands in `13-testing/`, traceability in `19-traceability/`. Policy changes here trigger the change-management rules of root README §9 and an entry in `20-validation/consistency-audit.md`.
+**Verification:** this domain is verified through the acceptance criteria of `DATA-REQ-002…008` (`AC-DRnnn-nn` in `02-requirements/`), the cross-tenant suite of `DATA-REQ-008`, purge/evidence tests of `DATA-REQ-003`, and reconciliation tests of `DATA-REQ-006`; test design lands in `13-testing/`, traceability in `19-traceability/`. Policy changes here trigger the change-management rules of root README §9 and an entry in `../20-validation/core/consistency-audit.md`.
 
 ## Change History
 

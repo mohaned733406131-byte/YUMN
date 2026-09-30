@@ -102,7 +102,7 @@ RESULT: PASS — structure healthy
 **Work performed**
 - Startup: read `senior-rules/ENTRY.md`, `RULES_HINTS.md`, `VERSION` (= `2.0.0`, GEN-08 reconciliation recorded — `memory.md` D-13 → RESOLVED); root `ENTRY.md` absent, followed `development_phases_entry.md`.
 - Validator run first → `RESULT: PASS — structure healthy` (0 broken links, 77 rules).
-- **REC-05 → PAID (health-path canon `/healthz` + `/readyz`):** `docs/07-api/admin/admin.md` v1.1 (`API-ADM-042/043`), `docs/15-deployment/core/health-checks.md` v1.1 §1.1, `TC-001`/`TC-031`/`TC-057`/`TC-065` v1.1, `20-validation/contradiction-audit.md` v1.2 (`CT-02`/`CT-03` → RESOLVED), `21-completion/technical-debt.md` v1.2 (`TD-06` → PAID), `21-completion/recommendations.md` v1.2 (`REC-05` PAID, acceptance amended to enumerate allowed residual hits).
+- **REC-05 → PAID (health-path canon `/healthz` + `/readyz`):** `docs/07-api/admin/admin.md` v1.1 (`API-ADM-042/043`), `docs/15-deployment/core/health-checks.md` v1.1 §1.1, `TC-001`/`TC-031`/`TC-057`/`TC-065` v1.1, `docs/20-validation/core/contradiction-audit.md` v1.2 (`CT-02`/`CT-03` → RESOLVED), `21-completion/technical-debt.md` v1.2 (`TD-06` → PAID), `21-completion/recommendations.md` v1.2 (`REC-05` PAID, acceptance amended to enumerate allowed residual hits).
 - **REC-03 → PAID (11 missing test cases authored):** `docs/13-testing/core/TC-104.md`…`TC-114.md` written in the corpus block style (frontmatter `DOC-TC-NNN`, Objective/Preconditions/Test Data/Steps/Expected Result/Related IDs/Change History; all IDs canon-verified — API rows, error codes, ACs, fixtures, audit actions, retention/health/precedence rules):
   - `TC-104` coupon redemption at order creation (per-type math, limits, idempotent confirm, P0 integration).
   - `TC-105`–`TC-108` = `AC-SR010-01…04` (append-only DB/API denial → 42501/405; tamper detection J10 + alert; zero-gap audit coverage of six in-scope actions incl. dispute-open-then-resolve + SYSTEM payout row; ≥5y retention queryable/exportable + export audited).
@@ -114,9 +114,9 @@ RESULT: PASS — structure healthy
   - `TC-114` deny-by-default admin matrix (7 authenticated 403s + 1×401, `DENIED` audit rows == 7, nothing persisted, Moderator control read 200).
 - Acceptance verified: `TC-*.md` count = **114** = locked total; all 114 cited `TC-` IDs across `docs/` resolve (0 missing).
 - Same-change-set propagation (root README §9.4), all with version bump + Change History row:
-  - `19-traceability/requirements-to-tests.md` v1.2 — §1 artifact count 114; §2 re-run (EXPLICIT 203 / DECLARED 42); 6 rows `DECLARED→EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`); 10 rows gain TC links (`AC-FR002-04/05`, `AC-FR011-02`, `AC-FR019-03`, `AC-FR020-01…04`, `AC-SR004-03/04`); §5 statuses flipped to present; `G-02` → RESOLVED; `G-04` re-scoped.
+  - `docs/19-traceability/core/requirements-to-tests.md` v1.2 — §1 artifact count 114; §2 re-run (EXPLICIT 203 / DECLARED 42); 6 rows `DECLARED→EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`); 10 rows gain TC links (`AC-FR002-04/05`, `AC-FR011-02`, `AC-FR019-03`, `AC-FR020-01…04`, `AC-SR004-03/04`); §5 statuses flipped to present; `G-02` → RESOLVED; `G-04` re-scoped.
   - `21-completion/recommendations.md` v1.3 (`REC-03` PAID + acceptance evidence), `21-completion/technical-debt.md` v1.3 (`TD-04` → PAID).
-  - `20-validation/hallucination-audit.md` v1.1 (`HAL-01` → RESOLVED; totals 12 open), `20-validation/critical-findings.md` v1.1 (`CRIT-02` → RESOLVED; 9 remain), `20-validation/analysis-validation.md` v1.2 (`AVF-01` → RESOLVED; 13-testing row 120 files/114 TCs; open findings 81 → 78), `20-validation/consistency-audit.md` v1.5 (finding 5 → RESOLVED; `CHK-09` → PASS → 12/2/17; propagation row added), `21-completion/final-acceptance.md` v1.1 (readiness snapshot: Layer A authored; 7 TD open / 12 REC unaccepted).
+  - `docs/20-validation/core/hallucination-audit.md` v1.1 (`HAL-01` → RESOLVED; totals 12 open), `docs/20-validation/core/critical-findings.md` v1.1 (`CRIT-02` → RESOLVED; 9 remain), `docs/20-validation/core/analysis-validation.md` v1.2 (`AVF-01` → RESOLVED; 13-testing row 120 files/114 TCs; open findings 81 → 78), `docs/20-validation/core/consistency-audit.md` v1.5 (finding 5 → RESOLVED; `CHK-09` → PASS → 12/2/17; propagation row added), `21-completion/final-acceptance.md` v1.1 (readiness snapshot: Layer A authored; 7 TD open / 12 REC unaccepted).
 
 **Evidence**
 ```text
@@ -140,7 +140,7 @@ RESULT: PASS — structure healthy
 
 ### Session 004 — 2026-09-27 — REC-04 / REC-08 / REC-07 / REC-06 pay-down (queue register, stub rows, role mapping, FR AC refs)
 
-**Work performed** (each pay-down = same-change-set propagation: version bump + `## Change History` row everywhere touched + propagation row in `20-validation/consistency-audit.md` §4)
+**Work performed** (each pay-down = same-change-set propagation: version bump + `## Change History` row everywhere touched + propagation row in `docs/20-validation/core/consistency-audit.md` §4)
 
 - **`REC-04` → PAID (FR ↔ AC `-05` drift):** 14 FR files + `docs/02-requirements/functional-index.md` v1.1; scripted check `registry AC-FR IDs: 94 → ALL 94 CITED`. Flips: `TD-05` → PAID (technical-debt v1.4), `HAL-07` → RESOLVED (hallucination-audit v1.2, 11 open), matrix `G-05` → RESOLVED (requirements-to-tests v1.3), `CRIT-05` OPEN-partial (critical-findings v1.2), `AVF-04` partial (analysis-validation v1.3, total 78 → 77), `RVF-04` partial + 14 rows re-graded (requirements-validation v1.1), consistency evidence 64 → 49 files / `CHK-05` FAIL 49 files + finding count note (consistency v1.6). Text-divergence half (`HAL-05`/`RVF-04`) deliberately left open.
 - **`REC-08` → PAID (stale registry stubs):** 6 stub rows rewritten in `03-system-analysis/README.md` v1.1 + `04-architecture/README.md` v1.1 — zero "not yet authored" rows remain; rows cite real registries (`docs/07-api/endpoints-index.md` 14 groups/221 endpoints, `docs/08-database/entities-index.md` `DB-001…018`, `docs/13-testing/test-cases-index.md` `TC-001…114`, examples `API-WAL-003`/`TC-104`). Flips: `TD-09` → PAID (technical-debt v1.5), `REC-08` paid (recommendations v1.5), propagation row (consistency v1.7).
@@ -211,7 +211,7 @@ Intermediate honest run: `FAIL link — docs\sessions\README.md -> session-005-r
 
 ### Session 006 — 2026-09-28 — change-control sweep + F-07 validator amendment
 
-**Work performed** (each change set = version bump + `## Change History` row + propagation row in `20-validation/consistency-audit.md` §4)
+**Work performed** (each change set = version bump + `## Change History` row + propagation row in `docs/20-validation/core/consistency-audit.md` §4)
 
 - **31-check scripted re-run** (deferred at v1.10) on the **479**-file corpus → **18 PASS · 2 PASS WITH FINDINGS · 11 FAIL**. Flips: `CHK-01` (all 479 files carry the 11 frontmatter keys), `CHK-06` (24/24 root-README targets resolve), `CHK-15` (12 cited `GAP-*` = 12 registered). `CHK-05` 49 → **48** files missing `## Change History` (finding 2, still `OPEN`); `CHK-07` 486 cited / 479 defined — 7 undefined, all meta or same-set-fixed (**0 real orphans**); `CHK-17` 17/17 order states; `CHK-20` legacy hits are CH rows documenting the rename (meta).
 - **Sweep fixes:** `related_requirements: []` + `## Change History` added to the 5 session files, `sessions/README.md`, root `docs/README.md` (v1.3) → **finding 1 `RESOLVED`**; `project-scope.md` v1.1 uncertain-scope table extended with `GAP-07`…`GAP-12` pointer rows → **finding 9 `RESOLVED`**; `phases/analysis/non-functional-requirements.md` v1.1 `DOC-REQ-010` → `DOC-NFD-001` (**finding 28**, `RESOLVED`); `phases/analysis/sequence-diagrams.md` v1.1 `b07.order.confirmation.enqueue` → `b10.notification.delivery` (**finding 27**, `RESOLVED`).
@@ -251,7 +251,7 @@ open findings total: 71 = 15 consistency + 17 contradiction + 12 gap + 12 halluc
 
 ### Session 007 — 2026-09-28 — describ reconciliation, plan-develop approval, analysis-layer implementation
 
-**Work performed** (each change set = version bump + `## Change History` row + propagation row in `20-validation/consistency-audit.md` §4)
+**Work performed** (each change set = version bump + `## Change History` row + propagation row in `docs/20-validation/core/consistency-audit.md` §4)
 
 - **`describ.md` reconciliation** (sponsor input delivered session 007): each §1–§8 rule checked against canon → agreements, contradictions `CT-23`…`CT-30`, gaps `GAP-13`/`GAP-14` registered; `describ.md` authored at repo root (0-byte placeholder restored → `D-16` `RESOLVED`); `UC-041` (wallet top-up reconciliation) + `UC-042` authored and registered (use-cases README v1.1, phases/analysis/use-cases.md v1.1, requirements-to-features v1.1).
 - **REC pay-downs:** `REC-02` PAID (ADR index re-sync → architecture-decisions-reference v1.1), `REC-10` PAID (flag lifecycle sweep → configuration.md v1.1), `REC-14` PAID (gate outcomes honest → quality-gates.md v1.1); technical-debt v1.8, recommendations v1.8.
@@ -289,7 +289,7 @@ open findings roll-up: 72 = 15 consistency + 21 contradiction + 11 gap + 10 hall
 
 ### Session 008 — 2026-09-28 — archdoc restore (REC-01), BR-INV registration, REC-15 citation CI
 
-**Work performed** (each change set = version bump + `## Change History` row + propagation row in `20-validation/consistency-audit.md` §4)
+**Work performed** (each change set = version bump + `## Change History` row + propagation row in `docs/20-validation/core/consistency-audit.md` §4)
 
 - **`REC-01` → PAID (archdoc restore):** `archdoc.md` **v1.0** authored at repo root as an explicitly **RECONSTRUCTED** structure specification (24-domain list, per-file metadata contract, navigation rules, authority split with `docs/README.md`) — the header discloses that the 0-byte placeholder's content never existed in git history and that `archive/` does not exist (`SPE-03`); root `docs/README.md` **v1.4** §1 bullet restored, `mind_map.md:52` synced. Register dispositions in the same set: `TD-03` → `PAID` (`technical-debt.md` v1.9 — the last OPEN TD paired to an assistant-side `REC`), `REC-01` → `PAID` (`recommendations.md` v1.9), `HAL-03` → `RESOLVED` (v1.6), `CRIT-08` → `RESOLVED` (v1.4), `AVF-08` → `RESOLVED` (`analysis-validation.md` v1.7), consistency **v1.13** (finding 13 → `RESOLVED` — the missed session-007 `REC-02` propagation; `CHK-21` → `PASS` → results **18/2/10**), `F-05` → `FIXED` (`phase-audit.md` v1.4), `D-10` → `RESOLVED` → roll-up **69 open**.
 - **`BR-INV-01…05` registered (owner-approved):** `business-rules.md` **v1.1** adds `## INV — Inventory & Stock Reservations (5)` — **104 rules / 15 domains**; count consumers re-synced (`01`/`03`/`06`/`07`/`13` READMEs, `naming-conventions.md` v1.4 §3 allocation, `terminology.md` v1.1, `mind_map.md:31`). `CRIT-06` → `RESOLVED` (v1.5, 6 open — also removed an erroneous duplicate `1.3` CH row), `HAL-04` → `RESOLVED` (v1.7, 8 open), `AVF-05` → `RESOLVED` (v1.8), consistency **v1.14** (`CHK-08` re-counted **104/104 across 15 domains**, §7 scope `BR-* 104`), roll-up consumers `phase-audit` v1.4 / `implementation-plan` v1.1 / `session-005` v1.4 → roll-up **67 open**.
@@ -338,7 +338,7 @@ git log: e28a9f1 · 81da89d · 38961c9 · 506c740 · 55ecd83 (+ closing evidence
 
 ### Session 009 — 2026-09-29 — pre-gate hygiene: 31-check re-run, CHK-05 remediation, gitleaks secret scan
 
-**Work performed** (each change set = version bump + `## Change History` row + propagation row in `20-validation/consistency-audit.md` §4)
+**Work performed** (each change set = version bump + `## Change History` row + propagation row in `docs/20-validation/core/consistency-audit.md` §4)
 
 - **Fresh 31-check re-run** (the explicit session-008 deferral) on the **485**-file corpus with a session-local scripted sweep (same method as session 006; the script is a session tool, **not** committed) → **19 `PASS` / 2 `PASS WITH FINDINGS` / 10 `FAIL`** pre-fix. Correlation: session 006 recorded "18/2/10" while its own tally was 18/2/**11** — with the session-008 `CHK-21` flip the balanced pre-session-009 figure is **19/2/10**. No check regressed; the 9 `FAIL`s that survive the fix are the findings already open (`CHK-12`/`13`/`14`/`19`/`22`/`23`/`24`/`29`/`31`). Probe bugs fixed while building it (AC-row regex → 253 rows, order-state cell parse → 17, last-standalone-`## Change History` cut, HTML-tag split, four-way role mapping, `/minio/health/live` exclusion).
 - **`CHK-05` remediated (finding 2 → `RESOLVED`):** all **48** residual files — 40 `01-business-analysis/use-cases/UC-001…UC-040.md`, 6 `02-requirements/functional/FR-{005,007,016,018,019,020}.md`, `02-requirements/README.md`, `00-project-overview/README.md` — given a `## Change History` table (two rows: initial publication + this fix) with frontmatter `version` `1.0` → **`1.1`** and `updated` → `2026-09-29`; encoding verified UTF-8/LF/no-BOM before and after. Re-run: `CHK-05` **`PASS` 485/485**, corpus tally **20 `PASS` / 2 `PWF` / 9 `FAIL`** — the only state change.
@@ -374,7 +374,7 @@ git log: ae2ae01 (CHK-05 + registers) · d492ae3 (gitleaks allowlist) · f303c54
 
 ### Session 010 — 2026-09-29 — full use-case coverage expansion: 42 → 210 UCs (owner directive, parallel subagents)
 
-**Work performed** (each change set = version bump + `## Change History` row + propagation row in `20-validation/consistency-audit.md` §4)
+**Work performed** (each change set = version bump + `## Change History` row + propagation row in `docs/20-validation/core/consistency-audit.md` §4)
 
 - **Owner directive** (`prompt-010.md` §1): expand UC coverage to every scenario across the four portals (owner: "over 350 … only 40 documented"). Recorded honestly — **derived total 210** (`UC-001…UC-210`, countable from the files) published beside the **owner target "over 350" = `INSUFFICIENT EVIDENCE`** — and executed **in parallel with multiple subagents** (owner: "work parrel by malty agent"), each agent on a strictly disjoint file set inside its own dedicated domain folder (owner's folder rule: every section/portal keeps its artifacts in its own folder; UCs live only in `01-business-analysis/`).
 - **Change control before minting** (session-008 `BR` precedent, SPE-05): `naming-conventions.md` v1.5 → **v1.6** (§3 `UC` row `UC-001…UC-040` → `UC-001…UC-210`, finalized "210 issued"), `terminology.md` v1.2 → **v1.3**, `use-case-template.md` v1.1 → **v1.2** (next free `UC-211+`) — commit **`c1f280d`**.

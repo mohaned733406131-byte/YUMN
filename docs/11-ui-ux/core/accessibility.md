@@ -145,7 +145,7 @@ Hit areas must not shrink or shift under icon mirroring (`DOC-FE-007` §7).
 ## 7. Explicitly Out of Scope / Known Limits
 
 - WCAG 2.1 AAA is **not** targeted (`NFR-011` = AA) — cited AAA contrast above is incidental, not required.
-- Pre-recorded captions (SC 1.2) — v1 ships no video/audio content; if added, captions become required (record in `20-validation/missing-information.md` before adoption).
+- Pre-recorded captions (SC 1.2) — v1 ships no video/audio content; if added, captions become required (record in `../../20-validation/core/missing-information.md` before adoption).
 
 ## 8. Design-Side Accessibility Rules (for authors in this domain)
 

@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-DEC-001, DOC-DEC-002, DOC-ARCH-010, DOC-GL-
 
 # ADR Template (DOC-TPL-008)
 
-**When to use:** a new file `18-decisions/ADR/ADR-NNN.md`. **Authority: DOC-DEC-001 §6 (required sections — an ADR missing any section fails review), §2 (lifecycle), §3 (numbering); DOC-ARCH-010 (decision index and cross-references)**. Exemplar: `18-decisions/ADR/ADR-001.md`.
+**When to use:** a new file `18-decisions/ADR/ADR-NNN.md`. **Authority: DOC-DEC-001 §6 (required sections — an ADR missing any section fails review), §2 (lifecycle), §3 (numbering); DOC-ARCH-010 (decision index and cross-references)**. Exemplar: `../18-decisions/core/ADR-001.md`.
 
 ## Rules
 

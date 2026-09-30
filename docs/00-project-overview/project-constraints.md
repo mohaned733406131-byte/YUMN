@@ -86,7 +86,7 @@ C-24 (Arabic)      ──drives────► NFR-012, frontend RTL design, ES 
 
 ## Conflict Check
 
-No constraint conflicts with another (`VERIFIED` by pairwise review — recorded in `20-validation/contradiction-audit.md`, entry CT-01: PASS). Apparent legacy conflicts (COD allowed, Kubernetes, microservices) do not exist in this analysis — they are OUT OF SCOPE.
+No constraint conflicts with another (`VERIFIED` by pairwise review — recorded in `../20-validation/core/contradiction-audit.md`, entry CT-01: PASS). Apparent legacy conflicts (COD allowed, Kubernetes, microservices) do not exist in this analysis — they are OUT OF SCOPE.
 
 ## Change History
 

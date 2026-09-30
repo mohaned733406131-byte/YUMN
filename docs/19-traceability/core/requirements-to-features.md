@@ -56,7 +56,7 @@ This file answers methodology item 40 (`docs/README.md` §10) for the *feature* 
 | OBJ-09 | High | NFR-009, NFR-010 — requirement file | Automated test suites gate every release; regression suite < 30 min; defect escape rate to production < 5% of found defects |
 | OBJ-10 | Medium | NFR-009 — requirement file | A new developer ships a validated change within 5 working days using this knowledge base alone |
 | OBJ-11 | Medium | FR-004, FR-006, FR-007, FR-008, FR-009, FR-018, FR-019, NFR-012 +2 more — requirement file | Growth targets (vendors, listings, orders, GMV) defined and tracked from launch — baseline targets `INSUFFICIENT EVIDENCE` until sponsor sets them (`ASM-14`) |
-| OBJ-12 | Critical | FR-001, FR-002, FR-004, FR-005, FR-010, FR-011, FR-012, FR-013 +3 more — requirement file | Zero violations of `C-01…C-26` verified by constraint tests (`../13-testing/core/testing-strategy.md` §Constraint Tests) |
+| OBJ-12 | Critical | FR-001, FR-002, FR-004, FR-005, FR-010, FR-011, FR-012, FR-013 +3 more — requirement file | Zero violations of `C-01…C-26` verified by constraint tests (`../../13-testing/core/testing-strategy.md` §Constraint Tests) |
 
 Notes on Matrix A:
 

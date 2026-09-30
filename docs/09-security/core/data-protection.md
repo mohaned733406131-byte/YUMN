@@ -14,7 +14,7 @@ related_documents: [DOC-SEC-001, DOC-SEC-005, DOC-SEC-007, DOC-SR-006, DOC-BA-00
 
 # Data Protection — Encryption Design (`SEC-REQ-006`)
 
-How yumn protects data in transit, at rest, and in derived stores; what is hashed instead of stored; what is deliberately *not* encrypted. Requirement statements/ACs: `../../02-requirements/core/SEC-REQ-006.md`; classification detail belongs to `16-data/data-classification.md`.
+How yumn protects data in transit, at rest, and in derived stores; what is hashed instead of stored; what is deliberately *not* encrypted. Requirement statements/ACs: `../../02-requirements/core/SEC-REQ-006.md`; classification detail belongs to `../../16-data/core/data-classification.md`.
 
 ## 1. In Transit — TLS
 

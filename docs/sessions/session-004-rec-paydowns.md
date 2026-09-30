@@ -15,7 +15,7 @@ related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-005]
 # Session 004 — REC-04 / REC-08 / REC-07 / REC-06 pay-down
 
 - Date: 2026-09-27 · Rules version: ADMR `2.0.0` · Status: CLOSED
-- Goal: close four P1 recommendations, each with same-change-set propagation (version bump + `## Change History` row + propagation row in `20-validation/consistency-audit.md` §4).
+- Goal: close four P1 recommendations, each with same-change-set propagation (version bump + `## Change History` row + propagation row in `../20-validation/core/consistency-audit.md` §4).
 - Terminal sessions: none named (primary interactive shell).
 - **Provenance:** reconstructed on 2026-09-28 (session 005) from the `session_track.md` session-004 ledger block per SES-01; evidence reproduced verbatim from that ledger.
 

@@ -14,7 +14,7 @@ related_documents: [DOC-ARCH-002, DOC-ARCH-010, DOC-OVR-008, DOC-OVR-010, DOC-RE
 
 # Technology Stack Register
 
-The authoritative register of every technology in yumn, with version, rationale, governing constraint/driver, and the alternatives that were considered and rejected. Constraint references are IDs, never restated text. Decisions are indexed in `architecture-decisions-reference.md` (DOC-ARCH-010) and written as full ADRs in `18-decisions/ADR/`.
+The authoritative register of every technology in yumn, with version, rationale, governing constraint/driver, and the alternatives that were considered and rejected. Constraint references are IDs, never restated text. Decisions are indexed in `architecture-decisions-reference.md` (DOC-ARCH-010) and written as full ADRs in `18-decisions/core/`.
 
 ## 1. Runtime & Language
 
@@ -94,7 +94,7 @@ The authoritative register of every technology in yumn, with version, rationale,
 
 ## 8. Register Maintenance
 
-Changes to this register require: (1) an ADR in `18-decisions/ADR/` (new or superseding), (2) an update here with rationale + constraint check, (3) an update to DOC-ARCH-010, (4) impact check recorded via `20-validation/consistency-audit.md`. Versions drift with lockfile updates within the same major line without an ADR; a **major** or product change always requires one.
+Changes to this register require: (1) an ADR in `18-decisions/core/` (new or superseding), (2) an update here with rationale + constraint check, (3) an update to DOC-ARCH-010, (4) impact check recorded via `../../20-validation/core/consistency-audit.md`. Versions drift with lockfile updates within the same major line without an ADR; a **major** or product change always requires one.
 
 ## Change History
 

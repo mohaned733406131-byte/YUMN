@@ -96,7 +96,7 @@ Service identities: indexers, reconcilers, purge jobs, webhooks, state-machine a
 
 **`INFERENCE` (assumption — flagged):** production data (Postgres, Redis, ES, MinIO, backups) is hosted **inside the region** (Yemen/MENA data center or an in-country facility operated under yumn's control), so no routine cross-border transfer of PII occurs. **Evidence status: `INSUFFICIENT EVIDENCE`** — hosting location is not fixed by any constraint (`C-01…C-26`) or dependency (`DEP-01…DEP-12`); the stack is deliberately cloud-vendor-agnostic and Docker-host portable (`NFR-016`, `C-22`).
 
-Consequences if the assumption fails: cross-border processing must be assessed under Yemeni Law No. (11) of 2012 on Personal Data Protection (`project-context.md` §Compliance), which remains detail-`INSUFFICIENT EVIDENCE` pending the legal opinion in `DEP-09` / `ASM-13`. The hosting decision must be confirmed by the sponsor before launch and recorded in `20-validation/missing-information.md` and, if it changes the design, in an ADR (`18-decisions/ADR/`). Processor list (SMS, WhatsApp, wallet providers, MinIO host) must be re-checked against the same question at `DEP-06`/`DEP-05` contract signing.
+Consequences if the assumption fails: cross-border processing must be assessed under Yemeni Law No. (11) of 2012 on Personal Data Protection (`project-context.md` §Compliance), which remains detail-`INSUFFICIENT EVIDENCE` pending the legal opinion in `DEP-09` / `ASM-13`. The hosting decision must be confirmed by the sponsor before launch and recorded in `../../20-validation/core/missing-information.md` and, if it changes the design, in an ADR (`18-decisions/core/`). Processor list (SMS, WhatsApp, wallet providers, MinIO host) must be re-checked against the same question at `DEP-06`/`DEP-05` contract signing.
 
 ## 6. Conflict Rules
 
@@ -110,7 +110,7 @@ Consequences if the assumption fails: cross-border processing must be assessed u
 
 - Cross-tenant suite green for every entity; coverage gate fails CI on new entities (`AC-DR008-04`).
 - Field-level assertion for the courier visibility windows (pre-accept masked / active full / post-delivery last-4).
-- Role-scope matrix diff-tested against `../09-security/core/rbac.md` (definitive RBAC) whenever either document changes — divergence logged in `20-validation/consistency-audit.md`.
+- Role-scope matrix diff-tested against `../../09-security/core/rbac.md` (definitive RBAC) whenever either document changes — divergence logged in `../../20-validation/core/consistency-audit.md`.
 - Storage-location assumption reviewed at each launch gate (`AC-S-24` legal sign-offs).
 
 ## Change History

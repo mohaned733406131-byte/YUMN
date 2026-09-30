@@ -23,7 +23,7 @@ Expands the 8 data requirement IDs registered in [`requirements-overview.md` §4
 | ID | File | Title | Core obligation |
 |---|---|---|---|
 | DATA-REQ-001 | [DATA-REQ-001.md](core/DATA-REQ-001.md) | Integrity constraints | FK/UNIQUE/CHECK/NOT NULL enforced by PostgreSQL, not just the app |
-| DATA-REQ-002 | [DATA-REQ-002.md](core/DATA-REQ-002.md) | Personal data minimization | Collect only purposeful PII; classify per `16-data/data-classification.md` |
+| DATA-REQ-002 | [DATA-REQ-002.md](core/DATA-REQ-002.md) | Personal data minimization | Collect only purposeful PII; classify per `../16-data/core/data-classification.md` |
 | DATA-REQ-003 | [DATA-REQ-003.md](core/DATA-REQ-003.md) | Retention & deletion | Configurable retention + deletion workflow; financial records ≥ 5 years |
 | DATA-REQ-004 | [DATA-REQ-004.md](core/DATA-REQ-004.md) | Backup & restore | Continuous WAL + daily snapshots; quarterly restore drills (NFR-006) |
 | DATA-REQ-005 | [DATA-REQ-005.md](core/DATA-REQ-005.md) | Schema evolution | Expand–contract migrations; backward-compatible, zero-downtime deploys |

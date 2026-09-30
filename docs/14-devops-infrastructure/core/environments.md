@@ -50,7 +50,7 @@ Four environments — **local · dev · staging · production** — all running 
 | PAR-2 | **Same images.** `staging` and `production` run byte-identical image digests for a given release; only env vars differ. | Image digest recorded in the release log; `AC-NFR-016-01` |
 | PAR-3 | **Layered configuration only.** Differences live in `.env.<environment>` + Compose overlay, never in code branches, `if (env === 'production')` literals, or per-env commits. | Config review; grep gate for environment-name literals in `apps/` |
 | PAR-4 | **Disjoint credentials.** dev / staging / production share **no** secret value; sandbox keys are never valid in production and vice versa. | `../../09-security/core/secrets-management.md` §3 access matrix |
-| PAR-5 | **Non-prod never holds unmasked production PII.** Restored backups are masked before use (`DATA-REQ-002`). | `16-data/data-classification.md` masking rules; seed script assertion |
+| PAR-5 | **Non-prod never holds unmasked production PII.** Restored backups are masked before use (`DATA-REQ-002`). | `../../16-data/core/data-classification.md` masking rules; seed script assertion |
 | PAR-6 | **Topology changes ship as code first.** A new service/volume/network is merged to `main` before any environment adopts it — dev proves it, staging verifies it, production inherits it. | PR review + `docker compose config` in CI |
 | PAR-7 | **Parity is a test asset.** Image digests and service sets must match across envs or the release is blocked. | `AC-NFR-016-01` |
 

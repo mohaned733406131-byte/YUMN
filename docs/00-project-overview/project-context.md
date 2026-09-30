@@ -100,7 +100,7 @@ The system is decomposed into 13 blocks (`B01…B13`). This is the **canonical**
 
 ## Analysis Evidence Basis
 
-This analysis was produced from the approved project brief (charter-level requirements supplied by the project sponsor). Statements are tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` throughout; unresolved items are registered in `20-validation/missing-information.md`.
+This analysis was produced from the approved project brief (charter-level requirements supplied by the project sponsor). Statements are tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` throughout; unresolved items are registered in `../20-validation/core/missing-information.md`.
 
 ## Change History
 

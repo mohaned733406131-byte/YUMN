@@ -16,7 +16,7 @@ related_documents: [DOC-ROOT-001, DOC-GL-001, DOC-GL-002, DOC-OVR-002, DOC-DB-00
 
 The author-facing authority for **how things are named** across all 24 documentation domains: files, identifiers, code, database objects, API surface, queues/events, git branches, locales, dates and numerals.
 
-**Precedence.** `root README §5 (DOC-ROOT-001)` issues the canonical ID patterns; the domain that owns a registry owns its IDs (e.g. `08-database/README.md` §1 for tables). This document is the single navigable index of those rules plus the rules that span domains. It must never contradict its cited sources; if it appears to, the cited source wins and the clash is logged in `20-validation/contradiction-audit.md`. Rules with no canonical source are tagged `INFERENCE` and flagged for the owning domain to confirm.
+**Precedence.** `root README §5 (DOC-ROOT-001)` issues the canonical ID patterns; the domain that owns a registry owns its IDs (e.g. `08-database/README.md` §1 for tables). This document is the single navigable index of those rules plus the rules that span domains. It must never contradict its cited sources; if it appears to, the cited source wins and the clash is logged in `../20-validation/core/contradiction-audit.md`. Rules with no canonical source are tagged `INFERENCE` and flagged for the owning domain to confirm.
 
 Two global rules override everything below (root README §5):
 
@@ -89,11 +89,11 @@ Allocation is **append-only and sequential with fixed width**; the *Defined in* 
 | Risks | `RISK-NNN` | `RISK-006` | 3 | `17-risk-management/risk-register.md` (DOC-RSK-002) | `RISK-001…RISK-024` |
 | Decisions / ADRs | `ADR-NNN` | `ADR-011` | 3 | `18-decisions/core/` (index: `04-architecture/architecture-decisions-reference.md`) | `ADR-001…ADR-010` reserved; new from `ADR-011` |
 | Security findings | `SEC-NNN` | `SEC-011` | 3 | `../09-security/core/security-findings.md` | `SEC-001…SEC-015` |
-| Gaps | `GAP-NN` (issued) / `GAP-NNN` (root README §5) | `GAP-03` | 2 | `20-validation/missing-information.md` | `GAP-01…GAP-12` — see §3.2 |
+| Gaps | `GAP-NN` (issued) / `GAP-NNN` (root README §5) | `GAP-03` | 2 | `../20-validation/core/missing-information.md` | `GAP-01…GAP-12` — see §3.2 |
 | Validation audits | `AUD-NN` | `AUD-01` | 2 | `20-validation/README.md` §2 | `AUD-01…AUD-07` — `VERIFIED`: series minted when `20-validation/` was authored (2026-09-27), per DOC-TPL-011 |
-| Data-quality rules | `DQ-NN` | `DQ-12` | 2 | `16-data/data-quality.md` | append-only |
+| Data-quality rules | `DQ-NN` | `DQ-12` | 2 | `../16-data/core/data-quality.md` | append-only |
 | Threat-model entries | `TM-NN` | `TM-04` | 2 | `../09-security/core/threat-model.md` | append-only |
-| Reconciliation jobs | `J<N>` | `J1`, `J2` | 1 | `../06-backend/core/background-processing.md`, `16-data/data-quality.md` | `J1…J12` |
+| Reconciliation jobs | `J<N>` | `J1`, `J2` | 1 | `../06-backend/core/background-processing.md`, `../16-data/core/data-quality.md` | `J1…J12` |
 | Queues | `{block}.{entity}.{action}` | `b07.escrow.release` | — | `../06-backend/core/background-processing.md` (`BR-PLT-01`, `C-20`) | CI enforces the pattern |
 | Domain events | PascalCase past tense | `OrderConfirmed` | — | `../06-backend/core/background-processing.md` | payload = IDs only |
 | API roles | `SCREAMING_SNAKE` | `SUPER_ADMIN` | — | `../07-api/core/api-conventions.md` §4 | `CUSTOMER VENDOR COURIER ADMIN SUPER_ADMIN MODERATOR` (+ `SYSTEM`, non-interactive) |
@@ -119,7 +119,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 |---|---|---|
 | `GAP-NNN` pattern vs two-digit issuance (`GAP-03`) | root README §5 vs `20-validation/`, `17-risk-management/` | Use the issued form `GAP-03`; pattern width is a documentation defect logged for root README |
 | `AC-SR-nnn` (retired) vs `AC-SRnnn-nn` | pre-v1.1 registry vs requirement files | Resolved by `DOC-AC-001` v1.1 (2026-09-26) — cite only the sub-numbered `AC-SRnnn-nn`/`AC-DRnnn-nn`/`AC-IRnnn-nn` shapes; the flat `AC-SR-nnn` spelling is retired and must not be reintroduced |
-| Stray flat AC IDs (`AC-SR-16`; `AC-DR-004-03`, since corrected) | `../15-deployment/core/production-readiness.md`; historic `02-requirements/` drafts | Not present in the `DOC-AC-001` v1.1 registry — cite the registered `AC-SRnnn-nn`/`AC-DRnnn-nn` form or log the clash in `20-validation/contradiction-audit.md` |
+| Stray flat AC IDs (`AC-SR-16`; `AC-DR-004-03`, since corrected) | `../15-deployment/core/production-readiness.md`; historic `02-requirements/` drafts | Not present in the `DOC-AC-001` v1.1 registry — cite the registered `AC-SRnnn-nn`/`AC-DRnnn-nn` form or log the clash in `../20-validation/core/contradiction-audit.md` |
 | Security finding cited as `A-07` | `../09-security/core/security-findings.md` (SEC-008) | The register uses `ASM-*`/`SEC-*`; `A-07` is undefined — cite `ASM-07` intent or log in `contradiction-audit.md` |
 | "four surfaces" vs "five surfaces" | `C-09`/`FR-001` vs `13-testing/`/`ADR-008` | Terminology *Surface* row resolves wording; don't mint a new count |
 
@@ -128,7 +128,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 | Kind | Convention | Example | Source |
 |---|---|---|---|
 | Service/deployable names | kebab-case | `api`, `worker`, `postgres` | `04-architecture/README.md` (✓) |
-| Module directories (B-blocks) | kebab-case mirroring block slug | `b07-wallet/` | ⚠ observed pattern, confirm in `18-decisions/ADR/` |
+| Module directories (B-blocks) | kebab-case mirroring block slug | `b07-wallet/` | ⚠ observed pattern, confirm in `18-decisions/core/` |
 | Classes / services / Nest modules | PascalCase | `EscrowService`, `OtpModule` | ⚠ `INFERENCE` (event names `OrderConfirmed` are canon PascalCase) |
 | Functions / variables / DTO fields | camelCase; API DTO fields exactly as `error-model`/`api-conventions` name them | `idempotencyKey`, `subOrderIds` | ⚠ `INFERENCE` |
 | Constants / env vars | SCREAMING_SNAKE | `YUMN_JWT_SECRET` — read at runtime only, `${VAR}` in Compose, no literals | env discipline ✓ (`SEC-REQ-007` R1, `C-22`); the casing itself ⚠ |
@@ -168,7 +168,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 
 - Queue: **`{block}.{entity}.{action}`** — `b02.inventory.expire`, `b07.escrow.release`, `b13.platform.webhook.send` (lowercase, dot-separated; CI check per `BR-PLT-01`).
 - Domain event type: **PascalCase past tense** — `OrderConfirmed`, `OtpRequested`, `WalletCredited`; payload carries **IDs only**, never amounts or PII.
-- Job/reconciliation identifiers: `J1` … `J12` (allocation: `../06-backend/core/background-processing.md`, `16-data/data-quality.md`).
+- Job/reconciliation identifiers: `J1` … `J12` (allocation: `../06-backend/core/background-processing.md`, `../16-data/core/data-quality.md`).
 - Retries: 3× exponential backoff → **DLQ** + alert; job names never encode secrets.
 
 ## 8. Frontend, Routing & i18n (`05-frontend/`, `11-ui-ux/`)
@@ -187,7 +187,7 @@ Canonical family (root README §5): `AC-<REQID>-NN` — e.g. `AC-SR004-01` — a
 |---|---|---|---|
 | Schema/PR branches | `feat/<ticket>` — one schema change set per PR | `feat/FR-013-topup-limits` | `../08-database/core/migrations-and-evolution.md` (✓ for migrations) |
 | Other branches | `feat/<ID>-short-desc`, `fix/<ID>-short-desc`, `docs/<topic>` | `feat/UC-017-checkout-idempotency`, `fix/RISK-006-otp-fallback` | ⚠ `INFERENCE` — no canon repo standard exists yet; proposed so IDs stay greppable in history |
-| Commits | imperative subject referencing the governing ID where relevant | `feat(WAL): enforce top-up cap (BR-PAY-04)` | ⚠ `INFERENCE` — no canon commit standard; register the final rule in `18-decisions/ADR/` when the implementation repo starts |
+| Commits | imperative subject referencing the governing ID where relevant | `feat(WAL): enforce top-up cap (BR-PAY-04)` | ⚠ `INFERENCE` — no canon commit standard; register the final rule in `18-decisions/core/` when the implementation repo starts |
 | Never | force-push to main, commit secrets, `.env` literals | — | `SEC-REQ-007`, `C-22` (✓) |
 
 ## 10. Dates, Numbers & Money
@@ -226,7 +226,7 @@ Before adding a file, ID, table, endpoint or queue:
 5. References cite IDs, not copies of definitions (root README §4).
 6. Every claim tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE`; silence ⇒ gap, not invention.
 7. Changed an approved doc ⇒ bump `version` + Change History row + propagate (root README §9).
-8. Suspected canon clash ⇒ `20-validation/contradiction-audit.md`, never a silent local fix.
+8. Suspected canon clash ⇒ `../20-validation/core/contradiction-audit.md`, never a silent local fix.
 
 Enforcement points in canon: CI lint for RTL/logical CSS (`../05-frontend/core/rtl-and-styling.md`), CI check that every queue matches `BR-PLT-01` (`../06-backend/core/background-processing.md` §Test checklist), validation audits in `20-validation/`.
 

@@ -42,21 +42,21 @@ A term is introduced **before** it appears in any new or edited document:
 
 1. Check [terminology.md](terminology.md) — if the concept exists under another name, adopt that name instead of minting a synonym (e.g. "buyer", "shopper", "purchaser" are all rejected; the register fixes **Customer** for `ACT-01`).
 2. If the concept is genuinely new, add a row to `terminology.md` in A–Z position with: Arabic equivalent (or `—` for loanwords), one-sentence definition, category (`Business` / `Technical` / `Process`), the domain/IDs where the term binds, and see-also pointers.
-3. Bump the `version` of `terminology.md`, add a Change History row, and record the change in `20-validation/consistency-audit.md` (root README §9).
-4. Only then may the term be used in domain documents. A term that appears anywhere in `docs/` without a register row is a **missing-information finding** for `20-validation/missing-information.md`.
+3. Bump the `version` of `terminology.md`, add a Change History row, and record the change in `../20-validation/core/consistency-audit.md` (root README §9).
+4. Only then may the term be used in domain documents. A term that appears anywhere in `docs/` without a register row is a **missing-information finding** for `../20-validation/core/missing-information.md`.
 
 ### 2.3 Conflict resolution
 
 | Situation | Resolution |
 |---|---|
 | Two documents use different words for one concept | The register's canonical term wins; the losing document is edited (consistency rule, root README §9.4) |
-| A document's usage contradicts the register's *definition* | Logged in `20-validation/contradiction-audit.md` until resolved; constraints (`C-01…C-26`) and rules (`BR-*`) outrank the glossary if a true collision occurs |
+| A document's usage contradicts the register's *definition* | Logged in `../20-validation/core/contradiction-audit.md` until resolved; constraints (`C-01…C-26`) and rules (`BR-*`) outrank the glossary if a true collision occurs |
 | A term is ambiguous across languages (e.g. Arabic "مشرف" for both moderator and admin) | The register's disambiguation note governs; UI catalogs follow `../11-ui-ux/core/design-system.md` §8 voice rules |
 | A term is proposed for deprecation | Row status moves to "deprecated" with a replacement pointer; the ID/term is never reused |
 
 ### 2.4 Evidence and status
 
-Definitions are statements about canon. Where a definition goes beyond cited canon it is tagged `INFERENCE`; where canon is silent the row says so and feeds `20-validation/missing-information.md` rather than inventing facts (root README §8). Register and naming documents carry `status: approved`, `source_of_truth: true`.
+Definitions are statements about canon. Where a definition goes beyond cited canon it is tagged `INFERENCE`; where canon is silent the row says so and feeds `../20-validation/core/missing-information.md` rather than inventing facts (root README §8). Register and naming documents carry `status: approved`, `source_of_truth: true`.
 
 ### 2.5 Relationship to templates
 
@@ -81,7 +81,7 @@ Definitions are statements about canon. Where a definition goes beyond cited can
 
 ## 5. Consistency Rule
 
-Changing a canonical term propagates to: `00-project-overview` (actor names) → `01-business-analysis` (UC/WF wording) → `02-requirements` (statement vocabulary) → `07-api` (path/resource nouns, error messages) → `08-database` (column/table vocabulary) → `11-ui-ux` / `05-frontend` (UI copy, catalogs) → `13-testing` (expected results) → `19-traceability` → `20-validation/consistency-audit.md`. Changing a *naming rule* additionally propagates to `06-backend`, `14-devops-infrastructure`, and the CI lint configuration that enforces it.
+Changing a canonical term propagates to: `00-project-overview` (actor names) → `01-business-analysis` (UC/WF wording) → `02-requirements` (statement vocabulary) → `07-api` (path/resource nouns, error messages) → `08-database` (column/table vocabulary) → `11-ui-ux` / `05-frontend` (UI copy, catalogs) → `13-testing` (expected results) → `19-traceability` → `../20-validation/core/consistency-audit.md`. Changing a *naming rule* additionally propagates to `06-backend`, `14-devops-infrastructure`, and the CI lint configuration that enforces it.
 
 ## Change History
 

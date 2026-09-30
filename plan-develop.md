@@ -50,7 +50,7 @@
 
 | # | Feature (spec ref) | Modification / enhancement required | Justification |
 |---|---|---|---|
-| `M-01` | **Wallet & account model** — `FR-013`, `DB-010 wallet`, `DB-011 wallet_transaction` | Add **multi-currency sub-accounts + platform-managed FX rate** *only if* the sponsor amends `C-04`; includes rate table, cross-currency posting type, FX gain/loss leg, statement rendering | Sponsor spec [`describ.md`](describ.md) §1/§3/§6 vs `C-04` "YER only, no USD/SAR wallets in v1" → `CT-23` (`HIGH`, `OPEN`), `GAP-13` + `GAP-14`. `VERIFIED` in [`contradiction-audit.md`](docs/20-validation/contradiction-audit.md). Money-path change ⇒ ADR + ledger design review (`RISK-001`) |
+| `M-01` | **Wallet & account model** — `FR-013`, `DB-010 wallet`, `DB-011 wallet_transaction` | Add **multi-currency sub-accounts + platform-managed FX rate** *only if* the sponsor amends `C-04`; includes rate table, cross-currency posting type, FX gain/loss leg, statement rendering | Sponsor spec [`describ.md`](describ.md) §1/§3/§6 vs `C-04` "YER only, no USD/SAR wallets in v1" → `CT-23` (`HIGH`, `OPEN`), `GAP-13` + `GAP-14`. `VERIFIED` in [`contradiction-audit.md`](docs/20-validation/core/contradiction-audit.md). Money-path change ⇒ ADR + ledger design review (`RISK-001`) |
 | `M-02` | **Top-up rails** — `FR-013`, `C-05`, `INT-REQ-001` | Register **Al-Kuraimi** and **Jeeb** as additional wallet providers behind the existing `PaymentProviderPort`; provider PIN verification callback, webhook signature, degradation matrix update | Sponsor spec §2.1 vs `C-05` fixed set (m-Floos, OneCash, bank transfer) → `CT-24` (`HIGH`, `OPEN`); also enlarges `DEP-05` (NOT STARTED, Gate-0 blocker) and needs `GAP-10` API specs. Bank-transfer half already agrees (`BR-PAY-04`, `UC-034`) |
 | `M-03` | **Authentication** — `FR-001`, `C-06`, `SEC-REQ-001` | Make **email an optional, verified secondary identifier** (login + password reset), phone stays mandatory and remains the OTP factor; never an email-primary path | Sponsor spec §7 vs `C-06` "Phone + OTP only, no email-primary auth" → `CT-25` (`HIGH`, `OPEN`, `GAP-13`). Reduces account-takeover recovery dead-ends (`GAP-12` also touches recovery). Security impact (enumeration, reset flows) ⇒ threat-model delta required |
 | `M-04` | **Escrow release rule** — `FR-014`, `C-12`, `BR-ESC-01…08`, `DB-012 escrow` | Replace/augment the fixed `release_at = DELIVERED + 7d` timer with **merchant-defined return-period hold + partial release of non-returned items** (per-line maturity, split release postings) | Sponsor spec §5 vs `C-12` (7-day hold) → `CT-26` (`HIGH`, `OPEN`). Merchant return policy itself already exists (`C-11`, `BR-RET-01`) — only the *escrow maturity* rule conflicts. Money-critical ⇒ ADR before any `b07` build (`ORD-08`-style gate) |
@@ -240,7 +240,7 @@
 - *Functionality:* account deletion request flow (promised by API per `D-07`), data export request,
   retention-policy admin view, consent/version log, DSAR audit trail.
 - *Implementation:* `b01`/`b13` jobs + admin queue; retention schedules driven by
-  [`16-data/retention-and-archival.md`](docs/16-data/retention-and-archival.md); gated on `GAP-08`
+  [`docs/16-data/core/retention-and-archival.md`](docs/16-data/core/retention-and-archival.md); gated on `GAP-08`
   (Yemen retention obligations, `OPEN`).
 - *Importance:* `AC-S-24` compliance pack and `GAP-08`/`GAP-11` are launch-gate items.
 
@@ -654,10 +654,10 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 [`docs/08-database/entities-index.md`](docs/08-database/entities-index.md) ·
 [`integration-overview.md`](docs/10-integrations/core/integration-overview.md) ·
 [`configuration.md`](docs/14-devops-infrastructure/core/configuration.md) ·
-[`data-quality.md`](docs/16-data/data-quality.md) ·
-[`missing-information.md`](docs/20-validation/missing-information.md) ·
-[`contradiction-audit.md`](docs/20-validation/contradiction-audit.md) ·
-[`critical-findings.md`](docs/20-validation/critical-findings.md) ·
+[`data-quality.md`](docs/16-data/core/data-quality.md) ·
+[`missing-information.md`](docs/20-validation/core/missing-information.md) ·
+[`contradiction-audit.md`](docs/20-validation/core/contradiction-audit.md) ·
+[`critical-findings.md`](docs/20-validation/core/critical-findings.md) ·
 [`recommendations.md`](docs/21-completion/recommendations.md) ·
 [`implementation-roadmap.md`](docs/21-completion/implementation-roadmap.md) ·
 [`quality-gates.md`](docs/21-completion/quality-gates.md) ·

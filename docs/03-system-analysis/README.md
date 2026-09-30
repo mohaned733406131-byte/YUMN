@@ -48,7 +48,7 @@ It sits between `02-requirements/` (what the system *must* do — static stateme
 | Diagram style | Context, DFD-level flows, sequence flows | C4 context/containers, deployment, module dependency rules |
 | Stays valid if… | The tech stack changes | Stack choice changes invalidate it |
 
-Rule of thumb: **03 says what happens and why; 04 says which component does it and with what.** A statement about a `BR-*` rule belongs in 03; a statement about a Prisma transaction belongs in 04. When both could describe an event (e.g. order placement), 03 defines the behavior contract and 04 documents its realization — they must never disagree, and any conflict is logged in `20-validation/contradiction-audit.md`.
+Rule of thumb: **03 says what happens and why; 04 says which component does it and with what.** A statement about a `BR-*` rule belongs in 03; a statement about a Prisma transaction belongs in 04. When both could describe an event (e.g. order placement), 03 defines the behavior contract and 04 documents its realization — they must never disagree, and any conflict is logged in `../20-validation/core/contradiction-audit.md`.
 
 ## Source of Truth For
 

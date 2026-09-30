@@ -31,7 +31,7 @@ related_documents: []
 This repository is the **single, self-contained analysis knowledge base** for the yumn platform. It was produced from scratch using:
 
 - **Methodology:** `command.md` — *Comprehensive Software Project Analysis & Validation Agent* (56 analysis areas, 48-part final structure, evidence rules, absolute rules).
-- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules). ✅ **Restored 2026-09-28** (session 008, `REC-01`/`TD-03`): the file had been a 0-byte placeholder whose content never existed in git history (defect `D-10`); its content was reconstructed from the structure as implemented by this README (§2–§5) and validated by `20-validation/consistency-audit.md`, with that provenance stated inside the file (`SPE-03`, finding `HAL-03`).
+- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules). ✅ **Restored 2026-09-28** (session 008, `REC-01`/`TD-03`): the file had been a 0-byte placeholder whose content never existed in git history (defect `D-10`); its content was reconstructed from the structure as implemented by this README (§2–§5) and validated by `20-validation/core/consistency-audit.md`, with that provenance stated inside the file (`SPE-03`, finding `HAL-03`).
 
 `command.md` is the governing methodology document (28.7 KB, present). The claim that both governing documents are "archived under `archive/`" is **not verifiable — `archive/` does not exist** in this repository; treat it as an unproven statement (`SPE-03`) until evidence appears. Nothing inside `docs/` references archived content: this analysis is independent, evidence-tagged, and internally consistent.
 
@@ -161,7 +161,7 @@ Filenames: `lowercase-kebab-case.md`. Identifiers: `UPPERCASE-WITH-DASHES`. Neve
 | Risks | `RISK-NNN` | `RISK-007` | `17-risk-management/risk-register.md` |
 | Decisions / ADRs | `ADR-NNN` | `ADR-003` | `18-decisions/core/` |
 | Security findings | `SEC-NNN` | `SEC-011` | `09-security/core/` |
-| Gaps | `GAP-NNN` | `GAP-03` | `20-validation/missing-information.md` |
+| Gaps | `GAP-NNN` | `GAP-03` | `20-validation/core/missing-information.md` |
 | Constraint tests | `TST-CON-NN` | `TST-CON-09` | `13-testing/core/` |
 | Acceptance criteria | `AC-<REQID>-NN` / `AC-S-NN` | `AC-FR013-01`, `AC-S-05` | `02-requirements/acceptance-criteria.md` |
 | Validation audits | `AUD-NN` | `AUD-01` | `20-validation/README.md` |
@@ -229,8 +229,8 @@ Conclusions carry confidence: `HIGH` · `MEDIUM` · `LOW`.
 1. Never silently change an approved document.
 2. Update the document, bump its `version`, add a `## Change History` row.
 3. If a decision is superseded, write a **new ADR** in `18-decisions/core/` and mark the old one `SUPERSEDED`.
-4. Propagate changes to every impacted document (consistency rule) and record affected IDs in `20-validation/consistency-audit.md`.
-5. Contradictions are never ignored — they are recorded in `20-validation/contradiction-audit.md` until resolved.
+4. Propagate changes to every impacted document (consistency rule) and record affected IDs in `20-validation/core/consistency-audit.md`.
+5. Contradictions are never ignored — they are recorded in `20-validation/core/contradiction-audit.md` until resolved.
 6. **Structure changes** (e.g. the session-011 portal partition of `01…23`): register the path scheme + ID allocation in `22-glossary/naming-conventions.md` first, move files only via a scripted migration that rewrites every citing path in the same change set, and keep both gates green after every change set (`validate.py` + `tools/check_citations.py` → 0 problems). Authority: owner directive `prompt-011.md` §1, proposal/evaluation `DOC-OVR-012`.
 
 ---
@@ -281,14 +281,14 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 38. Assumptions | `00-project-overview/assumptions.md` |
 | 39. Dependencies | `00-project-overview/dependencies.md` |
 | 40. Traceability Matrix | `19-traceability/` |
-| 41. Missing Information | `20-validation/missing-information.md` |
-| 42. Contradictions | `20-validation/contradiction-audit.md` |
-| 43. Incorrect/Unsupported Claims | `20-validation/hallucination-audit.md` |
+| 41. Missing Information | `20-validation/core/missing-information.md` |
+| 42. Contradictions | `20-validation/core/contradiction-audit.md` |
+| 43. Incorrect/Unsupported Claims | `20-validation/core/hallucination-audit.md` |
 | 44. Technical Debt | `21-completion/technical-debt.md` |
-| 45. Critical Findings | `20-validation/critical-findings.md` |
+| 45. Critical Findings | `20-validation/core/critical-findings.md` |
 | 46. Recommendations | `21-completion/recommendations.md` |
 | 47. Verification Strategy | `13-testing/core/testing-strategy.md` |
-| 48. Final Quality Assessment | `20-validation/analysis-validation.md` + `21-completion/final-acceptance.md` |
+| 48. Final Quality Assessment | `20-validation/core/analysis-validation.md` + `21-completion/final-acceptance.md` |
 
 ---
 

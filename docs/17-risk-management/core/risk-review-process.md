@@ -25,7 +25,7 @@ Governance for how risks enter the register, how they change, who reviews them, 
 | Trigger-based review | Within **5 working days** of the trigger (§3) | Whoever detects the trigger | Affected risk owner(s) | Ad-hoc register update or explicit "no change" note |
 | Post-incident review | Within 48 h of any incident touching money, auth, or availability | Technical lead | Owner of the impacted risk + Security officer | Re-scored risk + corrective actions |
 
-Cadence is a floor, not a ceiling: any participant may request an ad-hoc review; refusing to review a raised concern must itself be recorded in `20-validation/contradiction-audit.md`.
+Cadence is a floor, not a ceiling: any participant may request an ad-hoc review; refusing to review a raised concern must itself be recorded in `../../20-validation/core/contradiction-audit.md`.
 
 ## 2. Roles & Responsibilities
 
@@ -45,12 +45,12 @@ Ownership transfer (e.g., staffing change) is a register update: owner column ch
 
 ## 3. Triggers for Out-of-Cycle Review
 
-1. Any new `CRITICAL` finding (`SEC-NNN`) in `../09-security/core/security-findings.md`.
+1. Any new `CRITICAL` finding (`SEC-NNN`) in `../../09-security/core/security-findings.md`.
 2. Any change to a `DEP-*` status (especially `DEP-05`, `DEP-06`, `DEP-08`, `DEP-09`, `DEP-10`), or a dependency newly marked NOT STARTED/failed.
 3. Any assumption changing status (`ASM-*`) — particularly toward `UNSUPPORTED`/`DANGEROUS`.
 4. Any new `GAP-NNN` or a gap resolved (may create or close a risk).
 5. Provider contract, pricing, or outage events; any P1/P2 incident; any reconciliation mismatch (`J1`/`J2`) in production.
-6. Scope changes propagated from `00-project-overview/project-scope.md` or a new/superseding ADR in `18-decisions/ADR/`.
+6. Scope changes propagated from `00-project-overview/project-scope.md` or a new/superseding ADR in `18-decisions/core/`.
 7. Regulatory communication (tax or Central Bank) touching `DEP-09`/`DEP-10`.
 
 ## 4. Escalation Thresholds
@@ -62,7 +62,7 @@ Ownership transfer (e.g., staffing change) is a register update: owner column ch
 | CRITICAL risk whose mitigation misses its plan date | Sponsor decision: re-plan, accept with conditions, or block the gate | At the missed date (no waiting for monthly review) |
 | New HIGH risk (12–19) | Notify risk owner + product owner; scheduled into next monthly review | 5 working days |
 | Mitigation evidence failing (e.g., drill miss, contract slip) | Owner reports at monthly review with corrective action | Next monthly review |
-| Constraint conflict surfaced by a mitigation (`C-01…C-26`) | Log in `20-validation/contradiction-audit.md`; constraints win (DOC-ARCH-010 §6, root README §9) | Immediately |
+| Constraint conflict surfaced by a mitigation (`C-01…C-26`) | Log in `../../20-validation/core/contradiction-audit.md`; constraints win (DOC-ARCH-010 §6, root README §9) | Immediately |
 | Gate-blocking risk unresolved | Gate is **not passed**; sponsor may only accept explicitly, in writing, with the acceptance recorded as a register status change | At the gate |
 
 Escalation never happens by implication: the escalation is a written record (register note, review minutes, or validation-audit entry).
@@ -73,7 +73,7 @@ Escalation never happens by implication: the escalation is a written record (reg
 2. Every score change records: old score → new score, driver (evidence or event), date, and reviewer.
 3. Status values: `OPEN` → `MITIGATING` (plan started, evidence partial) → `MONITORING` (mitigation complete, evidence linked) → `CLOSED` (target state achieved *and* verified). `ACCEPTED` is a response decision recorded on an open risk, not a terminal status. **Nothing may be set to `MITIGATING`/`MONITORING`/`CLOSED` without a linked evidence artifact** (test report, signed contract, drill record, audit sign-off) — at v1.0 all 24 risks are `OPEN` because no implementation exists.
 4. Severity follows score mechanically (DOC-RSK-001 §3.3); manual severity overrides are prohibited — if the band feels wrong, the probability/impact rationale must be re-argued instead.
-5. Impacted documents are updated in the same change set (consistency rule) and the change set is recorded in `20-validation/consistency-audit.md`.
+5. Impacted documents are updated in the same change set (consistency rule) and the change set is recorded in `../../20-validation/core/consistency-audit.md`.
 6. Risks are never deleted; `CLOSED` entries remain with their full history.
 
 ## 6. Relationship to Findings (`SEC-NNN`) and Gaps (`GAP-NNN`)
@@ -85,7 +85,7 @@ Escalation never happens by implication: the escalation is a written record (reg
 | Question | What design defect exists today? | What future event could harm an objective, and how bad? |
 | Severity meaning | Exploitability/impact *if the gap is exploited as designed today* | Probability × Impact on project objectives |
 | Scope | Security only | All eight categories (DOC-RSK-001 §2) |
-| Lives in | `../09-security/core/security-findings.md` | `17-risk-management/risk-register.md` |
+| Lives in | `../../09-security/core/security-findings.md` | `17-risk-management/risk-register.md` |
 
 **Screening rule (finding → risk):** every finding is screened at the monthly review; it *feeds* (mirrors into) a register entry **when it threatens a project objective or critical path**, not merely when it is severe. Worked examples from canon: `SEC-011` (uncontracted sole auth channel) ↔ `RISK-006`; `SEC-002`/`SEC-015` (immutability, escrow TOCTOU) feed `RISK-001`. A HIGH finding may feed a risk that is already registered — the finding adds a *trigger*, not a duplicate. Closure of a finding does not auto-close a risk (and vice versa); each is closed on its own evidence.
 
@@ -95,7 +95,7 @@ Escalation never happens by implication: the escalation is a written record (reg
 
 ## 7. Phase-Gate Checks
 
-At each gate in `21-completion/quality-gates.md`, the gate review runs this checklist and records the result (gate document + `20-validation/analysis-validation.md` where applicable):
+At each gate in `21-completion/quality-gates.md`, the gate review runs this checklist and records the result (gate document + `../../20-validation/core/analysis-validation.md` where applicable):
 
 | # | Check | Pass criterion |
 |---|---|---|
@@ -130,9 +130,9 @@ Gate 0 is the strictest: RISK-006 (`DEP-06`) and RISK-012 (`DEP-10`) are blockin
 
 ## 10. Relationship to Validation & Completion Domains
 
-- `20-validation/consistency-audit.md` — records every risk-document impact set from §5.
-- `20-validation/contradiction-audit.md` — receives constraint conflicts, severity disputes, and unreconciled citations.
-- `20-validation/missing-information.md` — owns `GAP-NNN`; §6 links gaps to the risks they feed.
+- `../../20-validation/core/consistency-audit.md` — records every risk-document impact set from §5.
+- `../../20-validation/core/contradiction-audit.md` — receives constraint conflicts, severity disputes, and unreconciled citations.
+- `../../20-validation/core/missing-information.md` — owns `GAP-NNN`; §6 links gaps to the risks they feed.
 - `21-completion/quality-gates.md` — embeds §7 checks; `21-completion/final-acceptance.md` verifies that no CRITICAL risk was closed without evidence and that gate acceptances are signed.
 
 ## Change History

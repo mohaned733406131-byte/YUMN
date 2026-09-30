@@ -27,7 +27,7 @@ Yemeni mobile networks and public Wi-Fi are untrusted; unencrypted transit expos
 ## Requirement statements
 
 - R1: TLS 1.3 is enforced on all external endpoints; plain HTTP is redirected to HTTPS; HSTS is returned on every response (control detail in `09-security/`).
-- R2: PII and financial fields (phone numbers, names, addresses, KYC references, ledger and wallet records) are encrypted at rest with AES-256 per `16-data/data-classification.md`.
+- R2: PII and financial fields (phone numbers, names, addresses, KYC references, ledger and wallet records) are encrypted at rest with AES-256 per `../../16-data/core/data-classification.md`.
 - R3: Database, Redis, and internal service connections require encrypted transport (`sslmode=require` / TLS); plaintext connections are refused.
 - R4: Encryption keys, TLS private keys, and certificates live in the environment/secrets manager (SEC-REQ-007), are never committed, and certificate expiry is monitored with alerts before expiry (supports C-26).
 - R5: No PII, secrets, or tokens appear in logs, metrics labels, or error payloads (cross SEC-REQ-002 / SEC-REQ-007).

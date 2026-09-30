@@ -45,7 +45,7 @@ Design-level findings raised while analyzing the yumn architecture against its o
 
 - **Description:** There is no email channel in v1 (`BR-NTF-01`, `GAP-03`, `C-06`), so password reset and every OTP-delivered verification flow ride on SMS with WhatsApp failover only (`BR-NTF-03`). If both providers are degraded, there is **no third recovery path** — users are locked out until carriers recover.
 - **Impact:** Availability of authentication equals availability of `DEP-06`; mass lockout support load; reputational damage; pressure to weaken controls (e.g., disabling lockouts) during outages.
-- **Recommendation:** Treat SMS/WhatsApp health as an authentication SLO (alert on send-failure rate); publish honest user messaging for outage windows; pre-build support tooling that assists lockouts without bypassing rules (`SEC-REQ-005` R5); track a formal gap entry in `20-validation/missing-information.md` for a v2 recovery channel.
+- **Recommendation:** Treat SMS/WhatsApp health as an authentication SLO (alert on send-failure rate); publish honest user messaging for outage windows; pre-build support tooling that assists lockouts without bypassing rules (`SEC-REQ-005` R5); track a formal gap entry in `../../20-validation/core/missing-information.md` for a v2 recovery channel.
 - **Related:** `SEC-REQ-001`, `SEC-REQ-005`, `FR-001`, `FR-017`, `BR-NTF-01`, `BR-NTF-03`, `C-06`, `DEP-06`.
 
 ## SEC-002 — Ledger/audit immutability rests solely on database privileges

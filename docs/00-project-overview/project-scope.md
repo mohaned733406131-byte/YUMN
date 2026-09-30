@@ -77,7 +77,7 @@ related_documents: [DOC-OVR-001, DOC-OVR-008]
 
 | ID | Item | Needed From | Registered In |
 |---|---|---|---|
-| GAP-01 | Growth/commercial targets for launch (vendor/order/GMV) | Sponsor | `20-validation/missing-information.md` |
+| GAP-01 | Growth/commercial targets for launch (vendor/order/GMV) | Sponsor | `../20-validation/core/missing-information.md` |
 | GAP-02 | Whether admin can override a delivery code in exceptional cases | Operations | same — **RESOLVED `NEVER` 2026-09-28 (`D7`)** |
 | GAP-03 | Email notification channel: include or exclude? | Product owner | same — **RESOLVED `OUT OF v1` 2026-09-28 (`D6`)** |
 | GAP-04 | Loyalty program depth (tiers only vs points accrual/redemption) | Product owner | same — **deferred** 2026-09-28 (`D8`), still OPEN |

@@ -14,7 +14,7 @@ related_documents: [DOC-ROOT-001, DOC-REQ-001, DOC-AC-001, DOC-OVR-004, DOC-OVR-
 
 # 19 — Traceability
 
-**Owns the requirement → artifact matrices of the yumn knowledge base.** This domain answers, for every requirement, objective, acceptance criterion and constraint: *where is it realised, and where is it proven?* It is the deliverable of methodology item **40. Traceability Matrix** (`docs/README.md` §10) and it is what gate `AC-S-03` ("every FR has ≥1 passing test case and satisfied acceptance criteria — `19-traceability/requirements-to-tests.md`, 0 gaps") is measured against.
+**Owns the requirement → artifact matrices of the yumn knowledge base.** This domain answers, for every requirement, objective, acceptance criterion and constraint: *where is it realised, and where is it proven?* It is the deliverable of methodology item **40. Traceability Matrix** (`docs/README.md` §10) and it is what gate `AC-S-03` ("every FR has ≥1 passing test case and satisfied acceptance criteria — `core/requirements-to-tests.md`, 0 gaps") is measured against.
 
 This domain **records links, never creates canon**. Requirement text, AC text, rules, endpoints, entities and test cases are owned by `02-requirements/`, `01-business-analysis/`, `07-api/`, `08-database/` and `13-testing/`; this domain only reads them and reports what the corpus actually supports.
 
@@ -53,7 +53,7 @@ Each hop was re-verified against the corpus while authoring this domain (`VERIFI
 | `wallet → TC-031` | `../13-testing/core/TC-031.md` §Related IDs (`API-WAL-001/002/007/009`, `FR-013`) | Holds |
 | `TC-031 → AC-FR013-01` | `TC-031.md` §Related IDs | Holds |
 
-The five-hop form used by `TC-031` — `FR-013 → BR-PAY-04 → API-WAL-002 → TC-031 → AC-FR013-01` — holds at every hop. The two failing hops above are recorded as findings (§7, F-05) for `20-validation/contradiction-audit.md`; they are not silently corrected here because `docs/README.md` is not mine to edit.
+The five-hop form used by `TC-031` — `FR-013 → BR-PAY-04 → API-WAL-002 → TC-031 → AC-FR013-01` — holds at every hop. The two failing hops above are recorded as findings (§7, F-05) for `../20-validation/core/contradiction-audit.md`; they are not silently corrected here because `docs/README.md` is not mine to edit.
 
 ---
 
@@ -120,8 +120,8 @@ By family: FR 86/94 `EXPLICIT` + 8 `DECLARED`; NFR 29/40 `EXPLICIT` + 5 `DECLARE
 
 1. **Same change set.** If an `FR`, `NFR`, `SEC-REQ`, `DATA-REQ`, `INT-REQ`, `AC`, `BR`, `C-NN`, endpoint, entity, `UC`, `WF`, `OBJ` or `TC` is added, renamed or removed, the matrices in `requirements-to-features.md` and `requirements-to-tests.md` are updated in the **same change set** — never in a later commit (`docs/README.md` §9 rule 4).
 2. **Canon wins.** This domain never invents IDs, never redefines AC text, never renumbers a `TC`. If a matrix row and a source file disagree, the source file is right and the disagreement becomes a finding.
-3. **Sweep.** After any structural change to requirements or testing, re-run the sweep that produces the counts in §5 and record affected IDs in `20-validation/consistency-audit.md`.
-4. **Contradictions.** Anything that cannot be resolved inside a matrix (duplicate ID spaces, broken chain hops, allocation mismatches) is recorded in `20-validation/contradiction-audit.md` — never ignored (`docs/README.md` §9 rule 5).
+3. **Sweep.** After any structural change to requirements or testing, re-run the sweep that produces the counts in §5 and record affected IDs in `../20-validation/core/consistency-audit.md`.
+4. **Contradictions.** Anything that cannot be resolved inside a matrix (duplicate ID spaces, broken chain hops, allocation mismatches) is recorded in `../20-validation/core/contradiction-audit.md` — never ignored (`docs/README.md` §9 rule 5).
 5. **Versioning.** Any row change bumps `version` and adds a `## Change History` row (`docs/README.md` §9 rules 1–3).
 6. **No execution claims.** Status such as `PASS`/`FAIL`/`VERIFIED-by-test` may not appear in this domain; execution evidence belongs to `13-testing/` artifacts and `21-completion/quality-gates.md`.
 

@@ -48,7 +48,7 @@ Eight files are authored in this domain. The document-ID series `DOC-CMP-NNN` is
 
 ## 2. Phases & Gates (overview)
 
-Phase vocabulary is owned by `17-risk-management/mitigation-plans.md` (§Phase vocabulary); gates themselves are defined in `21-completion/quality-gates.md`.
+Phase vocabulary is owned by `../17-risk-management/core/mitigation-plans.md` (§Phase vocabulary); gates themselves are defined in `21-completion/quality-gates.md`.
 
 ```text
  PHASE 0              PHASE 1             PHASE 2              LAUNCH          POST-LAUNCH
@@ -74,7 +74,7 @@ Phase vocabulary is owned by `17-risk-management/mitigation-plans.md` (§Phase v
 Feeds into the gates:
 
 - **Test evidence** — `../13-testing/core/test-plans.md` (PLAN-01…PLAN-18, performance, security, chaos, accessibility, localization, device-lab, migration plans) → gate evidence.
-- **Risk checks** — `17-risk-management/risk-review-process.md` §7 checklist runs at every gate.
+- **Risk checks** — `../17-risk-management/core/risk-review-process.md` §7 checklist runs at every gate.
 - **Design completeness** — `11-ui-ux/README.md` §7 design gate "feeds `21-completion/quality-gates.md`".
 - **Operational readiness** — `../15-deployment/core/production-readiness.md` (52 checklist rows) → Gate 2.
 - **Compliance evidence** — `../12-non-functional/core/compliance-and-legal.md` §5 sign-off checklist → `AC-S-24` → Gate 2.
@@ -104,9 +104,9 @@ Neither file contains calendar dates, effort estimates, or sprint counts: schedu
 
 | Direction | What moves |
 |---|---|
-| `20-validation/` → gates | Audit findings are **standing input** to every gate: `20-validation/critical-findings.md` (open critical items must be dispositioned), `20-validation/missing-information.md` (owns `GAP-NNN` — triaged at Gate 0, launch blockers closed at Gate 2), `20-validation/contradiction-audit.md` (unreconciled citations block the gate that owns them), `20-validation/consistency-audit.md` (register hygiene check G-R6) |
-| gates → `20-validation/` | Gate outcomes are recorded in the gate document and mirrored to `20-validation/analysis-validation.md` where applicable (`17-risk-management/risk-review-process.md` §7) |
-| `21-completion/final-acceptance.md` ↔ `20-validation/analysis-validation.md` | Root README §10 item 48 pairs them: the final quality assessment must read **PASS** or **PASS WITH FINDINGS** before acceptance can move from `PENDING` to `ACCEPTED` |
+| `20-validation/` → gates | Audit findings are **standing input** to every gate: `../20-validation/core/critical-findings.md` (open critical items must be dispositioned), `../20-validation/core/missing-information.md` (owns `GAP-NNN` — triaged at Gate 0, launch blockers closed at Gate 2), `../20-validation/core/contradiction-audit.md` (unreconciled citations block the gate that owns them), `../20-validation/core/consistency-audit.md` (register hygiene check G-R6) |
+| gates → `20-validation/` | Gate outcomes are recorded in the gate document and mirrored to `../20-validation/core/analysis-validation.md` where applicable (`../17-risk-management/core/risk-review-process.md` §7) |
+| `21-completion/final-acceptance.md` ↔ `../20-validation/core/analysis-validation.md` | Root README §10 item 48 pairs them: the final quality assessment must read **PASS** or **PASS WITH FINDINGS** before acceptance can move from `PENDING` to `ACCEPTED` |
 | `21-completion/quality-gates.md` ↔ `17-risk-management/` | The phase-gate risk check (`risk-review-process.md` §7) is embedded in every gate; a gate-blocking risk unresolved means the gate does not pass |
 
 > **Evidence status (`INSUFFICIENT EVIDENCE`):** the directories `19-traceability/` and `20-validation/` are declared in root README §2 and referenced throughout the corpus, but they are **not present in `docs/` as authored**. Every reference to them in this domain is a path reference to the canonical home, not a citation to content. Authoring them is recorded as `TD-10` in `21-completion/technical-debt.md` and as a recommendation in `21-completion/recommendations.md`; the gap is also reported for external editing.

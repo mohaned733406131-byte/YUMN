@@ -35,7 +35,7 @@ related_documents: [DOC-SES-000, DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-
 | Group | Files (version) |
 |---|---|
 | Sweep fixes | `docs/README.md` (v1.3) · `docs/sessions/README.md` (v1.1 → v1.2) · `docs/sessions/session-001…005` (v1.1, +annotations v1.2 on 003/004/005) · `docs/00-project-overview/project-scope.md` (v1.1) · `docs/phases/analysis/non-functional-requirements.md` (v1.1) · `docs/phases/analysis/sequence-diagrams.md` (v1.1) |
-| Registers | `docs/20-validation/consistency-audit.md` (**v1.11**) · `contradiction-audit.md` (**v1.4**) · `hallucination-audit.md` (**v1.3**) · `analysis-validation.md` (**v1.5**) |
+| Registers | `docs/20-validation/core/consistency-audit.md` (**v1.11**) · `contradiction-audit.md` (**v1.4**) · `hallucination-audit.md` (**v1.3**) · `analysis-validation.md` (**v1.5**) |
 | F-07 | `senior-rules/validators/validate.py` · `senior-rules/VERSION` (2.2.0) · `senior-rules/CHANGELOG.md` (`[2.2.0]`) · `senior-rules/RULES_HINTS.md` §1 (pin) · `docs/phases/analysis/phase-audit.md` (v1.2) |
 | Close-out | `session_track.md` · `memory.md` · `prompt-next.md` · `all_in_one_track.md` · this file |
 

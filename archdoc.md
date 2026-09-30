@@ -4,7 +4,7 @@
 |---|---|
 | Document | `archdoc.md` (repository root) |
 | Status | **RECONSTRUCTED** — content authored 2026-09-28 (session 008, `REC-01`/`TD-03`) |
-| Provenance (honest) | The file existed as a **0-byte placeholder whose content never existed in git history** (defect `D-10`, finding `HAL-03`). This specification was **reconstructed from the structure as actually implemented and validated** by [`docs/README.md`](docs/README.md) §2–§5 and `docs/20-validation/consistency-audit.md`. It did **not** precede the knowledge base — it records it. The earlier claim that an original copy was archived under `archive/` is unverifiable: `archive/` does not exist in this repository (`SPE-03`). |
+| Provenance (honest) | The file existed as a **0-byte placeholder whose content never existed in git history** (defect `D-10`, finding `HAL-03`). This specification was **reconstructed from the structure as actually implemented and validated** by [`docs/README.md`](docs/README.md) §2–§5 and `docs/20-validation/core/consistency-audit.md`. It did **not** precede the knowledge base — it records it. The earlier claim that an original copy was archived under `archive/` is unverifiable: `archive/` does not exist in this repository (`SPE-03`). |
 | Authority split | This file owns the **structure contract**: the domain list, the per-file metadata contract, and the navigation rules. [`docs/README.md`](docs/README.md) remains the operational index: domain map with per-domain source-of-truth columns (§2), reading order (§3), source-of-truth table (§4), ID series (§5), change control (§9), quality gate (§11). **Where the two disagree, `docs/README.md` wins** until reconciled here under root README §9 change control. |
 
 ---
@@ -44,7 +44,7 @@ Every document under `docs/` carries:
 
 1. **YAML frontmatter with exactly the 11 keys** — `document_id`, `title`, `category`, `status`,
    `version`, `created`, `updated`, `author`, `source_of_truth`, `related_requirements`,
-   `related_documents` (enforced by `validate.py` + `20-validation/consistency-audit.md` `CHK-01`;
+   `related_documents` (enforced by `validate.py` + `docs/20-validation/core/consistency-audit.md` `CHK-01`;
    the literal `^related_requirements:` example inside code fences in root README §9.2 must not be
    counted as a key occurrence).
 2. **`status` vocabulary** as defined in `22-glossary/naming-conventions.md` (never invent ad-hoc

@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-UC-000, DOC-BA-005, DOC-REQ-001, DOC-GL-003
 
 # Use Case Template (DOC-TPL-003)
 
-**When to use:** `01-business-analysis/<portal>/UC-NNN.md` — the portal folder (`core` / `admin` / `vendor` / `customer` / `delivery`) the UC's actor belongs to, per `naming-conventions.md` §1 *Portal partition* (files authored before session 011 live in `use-cases/` and are migrated by the phase-5 script). **Authority: DOC-UC-000 §1** — this template is a convenience mirror; if the two differ, DOC-UC-000 wins (flag it in `20-validation/contradiction-audit.md`). Exemplar: `../01-business-analysis/customer/UC-001.md`.
+**When to use:** `01-business-analysis/<portal>/UC-NNN.md` — the portal folder (`core` / `admin` / `vendor` / `customer` / `delivery`) the UC's actor belongs to, per `naming-conventions.md` §1 *Portal partition* (files authored before session 011 live in `use-cases/` and are migrated by the phase-5 script). **Authority: DOC-UC-000 §1** — this template is a convenience mirror; if the two differ, DOC-UC-000 wins (flag it in `../20-validation/core/contradiction-audit.md`). Exemplar: `../01-business-analysis/customer/UC-001.md`.
 
 ## Rules
 

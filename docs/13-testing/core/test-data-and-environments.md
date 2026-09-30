@@ -14,7 +14,7 @@ related_documents: [DOC-TST-001, DOC-TST-002, DOC-TST-003, DOC-TST-004, DOC-DTA-
 
 # Test Data & Environments
 
-Where yumn is tested, with what data, and under which PII rules. Consumes the provider sandbox rules from `../../10-integrations/core/testing-and-sandboxes.md` (DOC-INT-008) and the masking rules from `16-data/data-classification.md` (DOC-DTA-004). Produces the fixtures referenced by every plan in [test-plans.md](test-plans.md).
+Where yumn is tested, with what data, and under which PII rules. Consumes the provider sandbox rules from `../../10-integrations/core/testing-and-sandboxes.md` (DOC-INT-008) and the masking rules from `../../16-data/core/data-classification.md` (DOC-DTA-004). Produces the fixtures referenced by every plan in [test-plans.md](test-plans.md).
 
 ---
 
@@ -110,7 +110,7 @@ Refresh is a **versioned event**: seed script bump → CI re-seed → invariant 
 | Rule | Detail |
 |---|---|
 | No production PII by default | Non-prod is built from synthetic fixtures (§4); production rows never enter CI/local |
-| Masked restores | Any restore of prod-shaped data into prod-like is masked first, per `16-data/data-classification.md`: phone/email → **MASK-02**, names/addresses/free text → **MASK-04**, OTP/document bytes/secrets → **MASK-03**, financial identifiers → **MASK-05** (amounts kept only where a test needs them), provider/JWT keys → **MASK-06** (never copied) |
+| Masked restores | Any restore of prod-shaped data into prod-like is masked first, per `../../16-data/core/data-classification.md`: phone/email → **MASK-02**, names/addresses/free text → **MASK-04**, OTP/document bytes/secrets → **MASK-03**, financial identifiers → **MASK-05** (amounts kept only where a test needs them), provider/JWT keys → **MASK-06** (never copied) |
 | Logs & reports | Test runs assert no secrets/PII in logs (`AC-NFR-014-01`); test reports and defect attachments use masked screenshots/values |
 | Secrets | Sandbox credentials only; production secrets exist only in production (`SEC-REQ-007`) |
 | Deletion | Non-prod PII-like data is ephemeral; environments are reset rather than archived; retention class RC-01/RC-03 applies (`retention-and-archival.md`) |

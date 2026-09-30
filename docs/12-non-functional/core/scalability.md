@@ -34,7 +34,7 @@ All rates below are derived from **stated assumptions** (`INFERENCE`), not canon
 
 ## 2. Growth Projections (formulas — no fabricated numbers)
 
-Actual commercial forecasts are `GAP-01` (`20-validation/missing-information.md` — pending). Until resolved, growth is expressed as formulas:
+Actual commercial forecasts are `GAP-01` (`../../20-validation/core/missing-information.md` — pending). Until resolved, growth is expressed as formulas:
 
 | Quantity | Formula | Inputs to fill |
 |---|---|---|
@@ -104,7 +104,7 @@ Products (10M) and users are **not** partitioned in v1 — indexed B-trees suffi
 
 1. Precondition: L2/L6/L9 exhausted and write p95 still in breach for 2 consecutive load runs.
 2. Candidate key: `store_id`-preserving **hash sharding of orders/ledger** by order-id range, keeping wallets global (single-ledger invariant `BR-ESC-08` requires global reconciliation).
-3. Requires: ADR (`18-decisions/ADR/`), dual-write-free expand-contract migration (`DATA-REQ-005`), reconciliation job re-design, and re-run of `AC-NFR-008-*`.
+3. Requires: ADR (`18-decisions/core/`), dual-write-free expand-contract migration (`DATA-REQ-005`), reconciliation job re-design, and re-run of `AC-NFR-008-*`.
 4. Explicitly **out of v1 scope**; recorded so growth is never improvised (`NFR-018` "documented path").
 
 ## 6. Load-Test Acceptance (k6)

@@ -7,8 +7,8 @@
 > (`C-01…C-26`) until the change-control process amends those constraints (root `docs/README.md` §9).
 > **Reconciliation status:** each rule below was checked against the approved canon (session 007);
 > agreements, contradictions, and gaps are registered in
-> [`docs/20-validation/contradiction-audit.md`](docs/20-validation/contradiction-audit.md) (`CT-23`…`CT-30`),
-> [`docs/20-validation/missing-information.md`](docs/20-validation/missing-information.md) (`GAP-13`, `GAP-14`),
+> [`docs/20-validation/core/contradiction-audit.md`](docs/20-validation/core/contradiction-audit.md) (`CT-23`…`CT-30`),
+> [`docs/20-validation/core/missing-information.md`](docs/20-validation/core/missing-information.md) (`GAP-13`, `GAP-14`),
 > and the session work file [`docs/sessions/session-007-describ-reconciliation.md`](docs/sessions/session-007-describ-reconciliation.md).
 
 ---

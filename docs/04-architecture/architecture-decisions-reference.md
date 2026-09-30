@@ -14,24 +14,24 @@ related_documents: [DOC-ARCH-002, DOC-ARCH-009, DOC-OVR-008, DOC-ROOT-001, DOC-R
 
 # Architecture Decisions Reference (ADR Index)
 
-Index of the architectural decisions that shape yumn, each with a rationale summary and a pointer to its full ADR in `18-decisions/ADR/`. **This file does not contain decision texts** — it reserves the numbering, records the status, and states which constraint or quality attribute drives each choice. ADRs are authored, approved and superseded only in `18-decisions/` (root README §9).
+Index of the architectural decisions that shape yumn, each with a rationale summary and a pointer to its full ADR in `18-decisions/core/`. **This file does not contain decision texts** — it reserves the numbering, records the status, and states which constraint or quality attribute drives each choice. ADRs are authored, approved and superseded only in `18-decisions/` (root README §9).
 
-> **Status note (re-synced 2026-09-28, `REC-02`):** all ten ADR files exist in `18-decisions/ADR/` and are authored, approved, and binding on implementation. Every status below equals the `status: approved` frontmatter of the corresponding file (`approved` ≡ `ACCEPTED` in the §7 lifecycle vocabulary). Two numbers are canon-locked and must be honored: `C-21` references **`ADR-002`** (modular monolith) and `C-22` references **`ADR-004`** (Docker Compose / no K8s).
+> **Status note (re-synced 2026-09-28, `REC-02`):** all ten ADR files exist in `18-decisions/core/` and are authored, approved, and binding on implementation. Every status below equals the `status: approved` frontmatter of the corresponding file (`approved` ≡ `ACCEPTED` in the §7 lifecycle vocabulary). Two numbers are canon-locked and must be honored: `C-21` references **`ADR-002`** (modular monolith) and `C-22` references **`ADR-004`** (Docker Compose / no K8s).
 
 ## 1. ADR Register (ADR-001 … ADR-010)
 
 | ADR | Title | Status | Rationale summary | Driving IDs | Detailed in |
 |---|---|---|---|---|---|
-| `ADR-001` | PostgreSQL 16 as the sole relational database | `ACCEPTED` | One ACID store keeps money, stock and order state in a single consistency boundary; JSON flexibility for metadata; mature backup/WAL story meets RPO | `C-19`, `DEP-02`, `NFR-008`, `NFR-006` | `18-decisions/ADR/ADR-001.md` |
-| `ADR-002` | Modular monolith instead of microservices | `ACCEPTED` — canon-locked by `C-21` | Team size and operability: one deployable, module boundaries enforced by tooling, no distributed transactions; keeps money flows simple | `C-21`, `NFR-009`, `DEP-*` team | `18-decisions/ADR/ADR-002.md` |
-| `ADR-003` | NestJS 10 as the backend framework | `ACCEPTED` | Module/DI structure mirrors blocks `B01…B13`; guards/pipes support RBAC and validation; full TypeScript fit with web/mobile | `DEP-01`, `C-21`, `NFR-009` | `18-decisions/ADR/ADR-003.md` |
-| `ADR-004` | Docker Compose deployment; no Kubernetes in v1 | `ACCEPTED` — canon-locked by `C-22` | Single-host topology is sufficient for `C-25`; Compose gives environment parity and low operational burden; containers remain orchestrator-portable | `C-22`, `NFR-016`, `NFR-018` | `18-decisions/ADR/ADR-004.md` |
-| `ADR-005` | Redis 7 + BullMQ as the only queue/cache substrate | `ACCEPTED` | One dependency covers cache, counters, TTL keys and durable jobs with retries/backoff/DLQ; delayed jobs power all business timers | `C-20`, `DEP-03`, `BR-PLT-01/02`, `NFR-004` | `18-decisions/ADR/ADR-005.md` |
-| `ADR-006` | Elasticsearch 8 for search & discovery | `ACCEPTED` | Arabic-aware analysis plus facets/aggregations deliver `FR-009` quality that relational FTS cannot at target scale; index is rebuildable so failure degrades gracefully | `DEP-04`, `FR-009`, `NFR-007` | `18-decisions/ADR/ADR-006.md` |
-| `ADR-007` | MinIO for object storage | `ACCEPTED` | Self-hosted S3-compatible storage avoids cloud lock-in while keeping the S3 API portable; fits Docker Compose deployment | `DEP-07`, `NFR-016`, `C-22` | `18-decisions/ADR/ADR-007.md` |
-| `ADR-008` | React Native 0.73 + Next.js 14 for all client surfaces | `ACCEPTED` | One language across five surfaces; RN covers customer + courier apps with shared domain vocabulary; Next.js SSR meets `NFR-002` and carries RTL structure | `NFR-002`, `NFR-013`, `NFR-015`, `DEP-12` | `18-decisions/ADR/ADR-008.md` |
-| `ADR-009` | Wallet-only payments with provider adapters | `ACCEPTED` | Escrow trust model requires pre-funding; excludes cards/BNPL/crypto to avoid regulatory scope; adapters keep providers out of domain code | `C-01…C-05`, `INT-REQ-001/008`, `FR-013` | `18-decisions/ADR/ADR-009.md` |
-| `ADR-010` | Phone + OTP authentication with short-lived JWTs | `ACCEPTED` | Phone is universal in the market; SMS/WhatsApp OTP covers verification; 15-min/7-day rotating JWTs give stateless scale-out with strong session control | `C-06…C-08`, `SEC-REQ-001/003`, `FR-001` | `18-decisions/ADR/ADR-010.md` |
+| `ADR-001` | PostgreSQL 16 as the sole relational database | `ACCEPTED` | One ACID store keeps money, stock and order state in a single consistency boundary; JSON flexibility for metadata; mature backup/WAL story meets RPO | `C-19`, `DEP-02`, `NFR-008`, `NFR-006` | `../18-decisions/core/ADR-001.md` |
+| `ADR-002` | Modular monolith instead of microservices | `ACCEPTED` — canon-locked by `C-21` | Team size and operability: one deployable, module boundaries enforced by tooling, no distributed transactions; keeps money flows simple | `C-21`, `NFR-009`, `DEP-*` team | `../18-decisions/core/ADR-002.md` |
+| `ADR-003` | NestJS 10 as the backend framework | `ACCEPTED` | Module/DI structure mirrors blocks `B01…B13`; guards/pipes support RBAC and validation; full TypeScript fit with web/mobile | `DEP-01`, `C-21`, `NFR-009` | `../18-decisions/core/ADR-003.md` |
+| `ADR-004` | Docker Compose deployment; no Kubernetes in v1 | `ACCEPTED` — canon-locked by `C-22` | Single-host topology is sufficient for `C-25`; Compose gives environment parity and low operational burden; containers remain orchestrator-portable | `C-22`, `NFR-016`, `NFR-018` | `../18-decisions/core/ADR-004.md` |
+| `ADR-005` | Redis 7 + BullMQ as the only queue/cache substrate | `ACCEPTED` | One dependency covers cache, counters, TTL keys and durable jobs with retries/backoff/DLQ; delayed jobs power all business timers | `C-20`, `DEP-03`, `BR-PLT-01/02`, `NFR-004` | `../18-decisions/core/ADR-005.md` |
+| `ADR-006` | Elasticsearch 8 for search & discovery | `ACCEPTED` | Arabic-aware analysis plus facets/aggregations deliver `FR-009` quality that relational FTS cannot at target scale; index is rebuildable so failure degrades gracefully | `DEP-04`, `FR-009`, `NFR-007` | `../18-decisions/core/ADR-006.md` |
+| `ADR-007` | MinIO for object storage | `ACCEPTED` | Self-hosted S3-compatible storage avoids cloud lock-in while keeping the S3 API portable; fits Docker Compose deployment | `DEP-07`, `NFR-016`, `C-22` | `../18-decisions/core/ADR-007.md` |
+| `ADR-008` | React Native 0.73 + Next.js 14 for all client surfaces | `ACCEPTED` | One language across five surfaces; RN covers customer + courier apps with shared domain vocabulary; Next.js SSR meets `NFR-002` and carries RTL structure | `NFR-002`, `NFR-013`, `NFR-015`, `DEP-12` | `../18-decisions/core/ADR-008.md` |
+| `ADR-009` | Wallet-only payments with provider adapters | `ACCEPTED` | Escrow trust model requires pre-funding; excludes cards/BNPL/crypto to avoid regulatory scope; adapters keep providers out of domain code | `C-01…C-05`, `INT-REQ-001/008`, `FR-013` | `../18-decisions/core/ADR-009.md` |
+| `ADR-010` | Phone + OTP authentication with short-lived JWTs | `ACCEPTED` | Phone is universal in the market; SMS/WhatsApp OTP covers verification; 15-min/7-day rotating JWTs give stateless scale-out with strong session control | `C-06…C-08`, `SEC-REQ-001/003`, `FR-001` | `../18-decisions/core/ADR-010.md` |
 
 ## 2. Numbering Rules
 
@@ -75,7 +75,7 @@ Full ADR format (context, decision, alternatives, consequences, compliance with 
 
 ## 6. Consistency Rule
 
-If any document in `04-architecture/` conflicts with an approved ADR, the ADR wins and the conflict is logged in `20-validation/contradiction-audit.md`; if an ADR conflicts with a constraint (`C-01…C-26`), the constraint wins and the ADR must be superseded.
+If any document in `04-architecture/` conflicts with an approved ADR, the ADR wins and the conflict is logged in `../20-validation/core/contradiction-audit.md`; if an ADR conflicts with a constraint (`C-01…C-26`), the constraint wins and the ADR must be superseded.
 
 ## 7. ADR Status Vocabulary & Lifecycle
 
@@ -87,7 +87,7 @@ If any document in `04-architecture/` conflicts with an approved ADR, the ADR wi
 | `SUPERSEDED` | Replaced; kept for history with pointer to the replacement | terminal |
 | `REJECTED` | Considered and declined; kept so the option is not re-litigated | terminal |
 
-Lifecycle rules: (1) an ADR is drafted in `18-decisions/ADR/ADR-NNN.md` using the reserved number from §1; (2) review checks constraint compliance (`C-01…C-26`), alternatives and consequences; (3) acceptance flips the status in both the ADR and this index; (4) any document updated as a consequence is listed inside the ADR's "Documents to update" section; (5) consistency is re-audited in `20-validation/consistency-audit.md`.
+Lifecycle rules: (1) an ADR is drafted in `18-decisions/ADR/ADR-NNN.md` using the reserved number from §1; (2) review checks constraint compliance (`C-01…C-26`), alternatives and consequences; (3) acceptance flips the status in both the ADR and this index; (4) any document updated as a consequence is listed inside the ADR's "Documents to update" section; (5) consistency is re-audited in `../20-validation/core/consistency-audit.md`.
 
 ## 8. Required Sections of Every ADR (checklist)
 

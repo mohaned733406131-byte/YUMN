@@ -38,7 +38,7 @@ Methodology item 36 (root README §10): *Feasibility* — assessed across six di
 **Assessment: Feasible.**
 
 - The stack is fixed and self-consistent: modular monolith (`C-21`, `ADR-002`), PostgreSQL 16 as sole relational store (`C-19`, `ADR-001`), Redis 7 + BullMQ as the only queue/cache (`C-20`, `ADR-005`), Elasticsearch 8 for search (`ADR-006`), Docker + Docker Compose deployment with no Kubernetes (`C-22`, `ADR-004`), 100% custom build (`C-18`), MinIO object storage (`ADR-007`), Next.js 14 + React Native 0.73 across the five surfaces (`ADR-008`).
-- Every technology choice carries an accepted ADR in `18-decisions/ADR/` with a constraint-compliance section; the index is `04-architecture/architecture-decisions-reference.md`.
+- Every technology choice carries an accepted ADR in `18-decisions/core/` with a constraint-compliance section; the index is `04-architecture/architecture-decisions-reference.md`.
 - The constraint envelope is testable: `../13-testing/core/constraint-tests.md` defines one test per constraint (`TST-CON-01…TST-CON-26`), and `AC-S-02` requires 26/26 PASS.
 - Scale and availability targets (`C-25` 10,000 concurrent, `C-26` 99.99%) are demanding but bounded: stateless replicas, caching, cursor pagination, and single-host-plus-replica growth stages are specified (`NFR-018`, `../04-architecture/core/scalability.md`).
 
@@ -52,7 +52,7 @@ Methodology item 36 (root README §10): *Feasibility* — assessed across six di
 
 - The product operationally depends on a small ops footprint by design: wallet-only payments (no card/BNPL/crypto rails to operate — `C-01…C-04`), 6-digit code delivery confirmation with no GPS tracking burden (`C-16`), four notification channels only (SMS, WhatsApp, in-app, push — `BR-NTF-01`), single-host Docker Compose topology (`C-22`).
 - The marketplace operations themselves are defined end-to-end: KYC decisions with ≤ 48 h rule (`BR-VND-03`), admin-verified bank-transfer top-ups (`BR-PAY-04`), escrow release and payout batches, dispute/return arbitration, moderation, audit logging (`FR-020`), support tooling (`../12-non-functional/core/usability-and-support.md`).
-- The recognised operational risk is capacity, not design: `RISK-005` (infrastructure/operational complexity vs small team, HIGH) with its Phase 0–Post-launch plan in `17-risk-management/mitigation-plans.md`.
+- The recognised operational risk is capacity, not design: `RISK-005` (infrastructure/operational complexity vs small team, HIGH) with its Phase 0–Post-launch plan in `../17-risk-management/core/mitigation-plans.md`.
 
 **Evidence tag:** `INFERENCE` — designs, runbook plans, and drill definitions exist (`../15-deployment/core/production-readiness.md`, `../13-testing/core/test-plans.md` §d/§h), but no drill has run and no team capacity figure exists.
 
@@ -88,7 +88,7 @@ Methodology item 36 (root README §10): *Feasibility* — assessed across six di
 
 - `00-project-overview/project-context.md` §Compliance: Yemeni **Law No. (11) of 2012 on Personal Data Protection** is applicable but full regulation detail is `INSUFFICIENT EVIDENCE` (legal counsel required); VAT 15% applies to digital sales; PCI-DSS is not applicable (`C-02` — no card data); Central Bank mobile-payment rules govern the wallet (`INFERENCE`, requires confirmation — `ASM-12`).
 - `../12-non-functional/core/compliance-and-legal.md` breaks this into a legal register (`L1…L9`) and a ten-item sign-off checklist for `AC-S-24`; unresolved rows are launch blockers by rule.
-- Data-handling obligations are at least designed: custody/ownership/access boundaries in `16-data/data-ownership.md` (platform as custodian, owner-key scoping, append-only money postings), retention/deletion in `16-data/`, ≥ 5-year financial record retention (`NFR-019`).
+- Data-handling obligations are at least designed: custody/ownership/access boundaries in `../16-data/core/data-ownership.md` (platform as custodian, owner-key scoping, append-only money postings), retention/deletion in `16-data/`, ≥ 5-year financial record retention (`NFR-019`).
 - The three blocking unknowns are `ASM-10` (VAT treatment — `UNSUPPORTED`), `ASM-12` (Central Bank permits closed-loop wallets — **`DANGEROUS`**, existential for `C-01`), `ASM-13` (PDPL obligations implementable — `UNSUPPORTED`), delivered through `DEP-09` (legal opinions — Not started) and `DEP-10` (Central Bank position — Not started).
 
 **Evidence tag:** `INFERENCE` for the compliance design (controls exist as documented intent); `INSUFFICIENT EVIDENCE` for every legal position.
@@ -106,7 +106,7 @@ Dependency register status (`00-project-overview/dependencies.md`, `VERIFIED` as
 - `DEP-10` is existential for the wallet-only model (`RISK-012`).
 - Organisational readiness is partly unproven: design assets partial (`DEP-11`), device lab not started (`DEP-12`), and the knowledge-base domain `20-validation/` that gates consume is not yet authored (`TD-10`).
 
-**Evidence tag:** `VERIFIED` for register statuses; `INFERENCE` for recoverability (the plans to close each dependency exist in `17-risk-management/mitigation-plans.md`).
+**Evidence tag:** `VERIFIED` for register statuses; `INFERENCE` for recoverability (the plans to close each dependency exist in `../17-risk-management/core/mitigation-plans.md`).
 
 **Conditions:** `DEP-05` opened (sandbox from both providers) and `DEP-06` opened or mitigated before Gate 0; `DEP-10` closed before payment build; `DEP-09` closed before launch; `DEP-08`, `DEP-11`, `DEP-12` closed before the phases that consume them; `20-validation/` authored so gate evidence has a home.
 

@@ -74,7 +74,7 @@ PHANTOM_IDS = {"AC-WF-012-01"}
 # Per-file phantom cites (historical self-references inside the change
 # rows that document the correction itself).
 PHANTOM_ID_PAIRS = {
-    ("docs/19-traceability/requirements-to-tests.md", "AC-FR020-05"),
+    ("docs/19-traceability/core/requirements-to-tests.md", "AC-FR020-05"),
 }
 
 # Illustrative filename examples / anti-patterns — never real targets.
@@ -97,9 +97,9 @@ ILLUSTRATIVE_PATHS = {
 #   Session work files quote dead paths *as evidence of the fix* — allow
 #   only the file that narrates the correction, never a new live citation.
 PHANTOM_PATHS = {
-    ("docs/20-validation/hallucination-audit.md", "07-api/authorization.md"),
+    ("docs/20-validation/core/hallucination-audit.md", "07-api/authorization.md"),
     ("docs/00-project-overview/actors-and-roles.md", "07-api/authorization.md"),
-    ("docs/20-validation/consistency-audit.md", "07-api/authorization.md"),
+    ("docs/20-validation/core/consistency-audit.md", "07-api/authorization.md"),
     ("docs/21-completion/recommendations.md", "07-api/authorization.md"),
     ("docs/sessions/session-008-archdoc-brinv-citation-ci.md", "07-api/authorization.md"),
     ("session_track.md", "07-api/authorization.md"),

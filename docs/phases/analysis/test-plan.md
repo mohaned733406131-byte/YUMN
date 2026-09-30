@@ -30,7 +30,7 @@ related_requirements: [AC-S-03, AC-S-09]
 | Admin / settings / audit (`b13`) | — | — | `TC-110` precedence | `TC-109`, `TC-114` | `AC-SR010-*` | — | `TC-107` tamper chain |
 | Health / ops | — | — | `TC-113` probes | chaos `CHAOS-01…08` | — | `PERF-05…07` | — |
 
-Full AC → test matrix (277 rows): [`19-traceability/requirements-to-tests.md`](../../19-traceability/requirements-to-tests.md) — verdict `PASS WITH FINDINGS` (203 EXPLICIT / 42 DECLARED / 27 GAP / 5 operational).
+Full AC → test matrix (277 rows): [`../../19-traceability/core/requirements-to-tests.md`](../../19-traceability/core/requirements-to-tests.md) — verdict `PASS WITH FINDINGS` (203 EXPLICIT / 42 DECLARED / 27 GAP / 5 operational).
 
 ## 2. Test cases
 

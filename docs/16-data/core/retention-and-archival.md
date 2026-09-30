@@ -36,7 +36,7 @@ Authoritative retention schedule for every data class: **how long it is kept, wh
 | **Exact Yemeni statutory retention periods** (tax, commerce, data protection) beyond the 5-year floor | **`INSUFFICIENT EVIDENCE`** — no legal opinion on file; `DEP-09` not started | — |
 | Chosen policy: **10 years** for financial + audit classes | `INFERENCE` — conservative margin above the verified 5-year floor; adjustable by config when `DEP-09` delivers | §4, §5.1 |
 
-> **GAP-STYLE NOTE (open evidence gap):** the precise statutory retention obligations applicable to yumn in Yemen are `INSUFFICIENT EVIDENCE` and must be confirmed through `DEP-09` (legal opinions) / `ASM-13`. This item is to be recorded in `20-validation/missing-information.md` when that register is authored. No new `GAP-NNN` ID is minted here — gap IDs are assigned only in the canonical GAP register (`00-project-overview/project-scope.md` §Open items). All periods below marked `INFERENCE` are provisional until that legal opinion lands; the ≥5-year financial/audit floor is `VERIFIED` and never lowered.
+> **GAP-STYLE NOTE (open evidence gap):** the precise statutory retention obligations applicable to yumn in Yemen are `INSUFFICIENT EVIDENCE` and must be confirmed through `DEP-09` (legal opinions) / `ASM-13`. This item is to be recorded in `../../20-validation/core/missing-information.md` when that register is authored. No new `GAP-NNN` ID is minted here — gap IDs are assigned only in the canonical GAP register (`00-project-overview/project-scope.md` §Open items). All periods below marked `INFERENCE` are provisional until that legal opinion lands; the ≥5-year financial/audit floor is `VERIFIED` and never lowered.
 
 ## 3. Retention Classes (canonical definitions)
 
@@ -118,7 +118,7 @@ Purged data can persist in backups until the backup window rolls over (max **35 
 | 5. Delete | Class-specific method (§4): TTL, anonymize, hard delete, object lifecycle | `DOC-DTA-006` |
 | 6. Cascade | ES, Redis keys, MinIO orphans updated in the same run | `DOC-DTA-002` §4 |
 | 7. Evidence | Audit entry: actor (`System`), class, scope, row/object counts, duration, timestamp; emitted as metric for Grafana | `DATA-REQ-003` R5, `NFR-014` |
-| 8. Report | Weekly retention report: rows per class purged, skipped-by-guard, backlog age | `14-devops-infrastructure/`, `../12-non-functional/core/observability.md` |
+| 8. Report | Weekly retention report: rows per class purged, skipped-by-guard, backlog age | `14-devops-infrastructure/`, `../../12-non-functional/core/observability.md` |
 
 **Archive mechanics:** monthly-range partitions on order/ledger/audit tables sized for 10-year storage (`NFR-017` forecasts 100M order-line records, 5-year horizon — partition plan accommodates 10); MinIO object lifecycle rules for images/KYC; Prometheus TSDB retention 13 months. Schema-evolution constraint: cold partitions must stay readable across expand–contract migrations (`DATA-REQ-005`, `DOC-DTA-002` §5).
 

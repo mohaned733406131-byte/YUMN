@@ -35,7 +35,7 @@ Lifecycle rules (mirrors DOC-ARCH-010 §7):
 1. Draft `ADR/ADR-NNN.md` using a **reserved** number from DOC-ARCH-010 §1 (or the next free number ≥ 011 for new decisions).
 2. Review checks: constraint compliance (`C-01…C-26`), at least three alternatives with rejection reasons, consequences incl. linked `RISK-*`, and the list of documents to update.
 3. Acceptance flips the status **in both** the ADR and DOC-ARCH-010 §1; both records bump version with a Change History row (root README §9 — no silent changes).
-4. Every document impacted by the decision is listed in the ADR's compliance/related sections and propagated; the change set is recorded in `20-validation/consistency-audit.md`.
+4. Every document impacted by the decision is listed in the ADR's compliance/related sections and propagated; the change set is recorded in `../20-validation/core/consistency-audit.md`.
 5. Consistency is re-audited afterwards: **an ADR loses to a constraint** — if they conflict, the constraint wins and the ADR must be superseded (DOC-ARCH-010 §6).
 
 ## 3. Numbering Rules
@@ -58,16 +58,16 @@ Not every decision warrants a full record. Small, domain-level decisions are cap
 |---|---|---|---|
 | 1 | `README.md` | DOC-DEC-001 | This overview: lifecycle, numbering, index |
 | 2 | `decision-log.md` | DOC-DEC-002 | Chronological log of ADR-001…ADR-010, inline decisions `D-01…D-10`, future ADR candidates |
-| 3 | `ADR/ADR-001.md` | DOC-ADR-001 | PostgreSQL 16 as the sole relational database |
-| 4 | `ADR/ADR-002.md` | DOC-ADR-002 | Modular monolith instead of microservices |
-| 5 | `ADR/ADR-003.md` | DOC-ADR-003 | NestJS 10 as the backend framework |
-| 6 | `ADR/ADR-004.md` | DOC-ADR-004 | Docker Compose deployment; no Kubernetes in v1 |
-| 7 | `ADR/ADR-005.md` | DOC-ADR-005 | Redis 7 + BullMQ as the only queue/cache substrate |
-| 8 | `ADR/ADR-006.md` | DOC-ADR-006 | Elasticsearch 8 for search & discovery |
-| 9 | `ADR/ADR-007.md` | DOC-ADR-007 | MinIO for object storage |
-| 10 | `ADR/ADR-008.md` | DOC-ADR-008 | React Native 0.73 + Next.js 14 for all client surfaces |
-| 11 | `ADR/ADR-009.md` | DOC-ADR-009 | Wallet-only payments with provider adapters |
-| 12 | `ADR/ADR-010.md` | DOC-ADR-010 | Phone + OTP authentication with short-lived JWTs |
+| 3 | `core/ADR-001.md` | DOC-ADR-001 | PostgreSQL 16 as the sole relational database |
+| 4 | `core/ADR-002.md` | DOC-ADR-002 | Modular monolith instead of microservices |
+| 5 | `core/ADR-003.md` | DOC-ADR-003 | NestJS 10 as the backend framework |
+| 6 | `core/ADR-004.md` | DOC-ADR-004 | Docker Compose deployment; no Kubernetes in v1 |
+| 7 | `core/ADR-005.md` | DOC-ADR-005 | Redis 7 + BullMQ as the only queue/cache substrate |
+| 8 | `core/ADR-006.md` | DOC-ADR-006 | Elasticsearch 8 for search & discovery |
+| 9 | `core/ADR-007.md` | DOC-ADR-007 | MinIO for object storage |
+| 10 | `core/ADR-008.md` | DOC-ADR-008 | React Native 0.73 + Next.js 14 for all client surfaces |
+| 11 | `core/ADR-009.md` | DOC-ADR-009 | Wallet-only payments with provider adapters |
+| 12 | `core/ADR-010.md` | DOC-ADR-010 | Phone + OTP authentication with short-lived JWTs |
 
 ## 6. Required Sections of Every ADR (enforced checklist)
 

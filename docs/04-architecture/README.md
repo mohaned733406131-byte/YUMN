@@ -33,7 +33,7 @@ It is the entry point for architects and developers (root README §3) and the so
 | [data-flow.md](core/data-flow.md) | DOC-ARCH-007 | TECHNICAL data flow: request path, BullMQ async paths, caching layers, event flow, storage — counterpart to `../03-system-analysis/core/data-flow.md` |
 | [scalability.md](core/scalability.md) | DOC-ARCH-008 | How the architecture meets `C-25` (10,000 concurrent) and `NFR-003`/`NFR-018`: read scaling, caching, pooling, statelessness, ES offload, scale-out path without K8s |
 | [technology-stack.md](core/technology-stack.md) | DOC-ARCH-009 | Full stack register: layer, technology, version, rationale, constraint reference, alternatives considered |
-| [architecture-decisions-reference.md](architecture-decisions-reference.md) | DOC-ARCH-010 | Index of architectural decisions (`ADR-001…ADR-010`) with rationale summaries, each pointing to its ADR in `18-decisions/ADR/` |
+| [architecture-decisions-reference.md](architecture-decisions-reference.md) | DOC-ARCH-010 | Index of architectural decisions (`ADR-001…ADR-010`) with rationale summaries, each pointing to its ADR in `18-decisions/core/` |
 
 ## Source of Truth For
 
@@ -41,7 +41,7 @@ It is the entry point for architects and developers (root README §3) and the so
 - **Container inventory and communication** — `container-view.md` (DOC-ARCH-003).
 - **Deployment topology** — `deployment-view.md` (DOC-ARCH-005).
 - **Stack register** — `technology-stack.md` (DOC-ARCH-009).
-- **ADR index** — `architecture-decisions-reference.md` (DOC-ARCH-010); individual ADR texts live only in `18-decisions/ADR/`.
+- **ADR index** — `architecture-decisions-reference.md` (DOC-ARCH-010); individual ADR texts live only in `18-decisions/core/`.
 
 Behavior, rules and requirement definitions are **not** redefined here — they are referenced by ID from `03-system-analysis/`, `01-business-analysis/business-rules.md` (DOC-BA-005) and `02-requirements/requirements-overview.md` (DOC-REQ-001).
 
@@ -62,7 +62,7 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 | Kind | Pattern | Example | Defined in |
 |---|---|---|---|
 | Documents | `DOC-ARCH-NNN` | DOC-ARCH-007 | frontmatter of each file |
-| Decisions | `ADR-NNN` | ADR-004 | `architecture-decisions-reference.md`, authored in `18-decisions/ADR/` |
+| Decisions | `ADR-NNN` | ADR-004 | `architecture-decisions-reference.md`, authored in `18-decisions/core/` |
 | Containers | `CNT-NN` | CNT-03 | `container-view.md` |
 | Modules | module name = block (`B01…B13`) | `OrderModule` = B06 | `component-view.md` |
 | Compose services | kebab-case service names | `api`, `worker`, `postgres` | `deployment-view.md` |
@@ -77,7 +77,7 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 2. Every technology choice cites its constraint or `NFR-*` driver and an alternative considered (`technology-stack.md`).
 3. Container/module/queue names introduced here are used consistently by `06-backend/`, `07-api/`, `14-devops-infrastructure/`.
 4. Where an architecture detail is not fixed by canon, it is tagged `INFERENCE`.
-5. Any conflict with `03-system-analysis/` (behavior contract) is logged in `20-validation/contradiction-audit.md` — behavior wins over structure.
+5. Any conflict with `03-system-analysis/` (behavior contract) is logged in `../20-validation/core/contradiction-audit.md` — behavior wins over structure.
 6. Decisions are changed only by writing/ superseding an ADR in `18-decisions/` (root README §9) and updating DOC-ARCH-010.
 
 ## Reading Order by Role
@@ -88,7 +88,7 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 | Backend developer | DOC-ARCH-004 → DOC-ARCH-006 | DOC-ARCH-007, then `06-backend/`, `07-api/` |
 | Frontend / mobile developer | DOC-ARCH-003 (client containers) | `05-frontend/`, `07-api/` |
 | DevOps / SRE | DOC-ARCH-005 → DOC-ARCH-008 | `14-devops-infrastructure/`, `15-deployment/` |
-| Tech lead / decision maker | DOC-ARCH-010 → DOC-ARCH-009 | `18-decisions/ADR/`, `17-risk-management/` |
+| Tech lead / decision maker | DOC-ARCH-010 → DOC-ARCH-009 | `18-decisions/core/`, `17-risk-management/` |
 | QA architect | DOC-ARCH-007 → DOC-ARCH-008 | `13-testing/`, `19-traceability/` |
 
 ## Cross-Document Contracts (what 04 owes to other directories)

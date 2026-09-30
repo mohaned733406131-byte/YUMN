@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-003, DOC-OVR-011]
 
 # Project Objectives
 
-Objectives are `OBJ-NN`. Each is measurable and testable; each traces to requirements (`19-traceability/requirements-to-features.md`).
+Objectives are `OBJ-NN`. Each is measurable and testable; each traces to requirements (`../19-traceability/core/requirements-to-features.md`).
 
 | ID | Objective | Measure | Priority |
 |---|---|---|---|

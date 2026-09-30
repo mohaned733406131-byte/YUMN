@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-011, DOC-OVR-003, DOC-TST-003, DOC-TST-004, DOC-CMP-
 
 # Final Acceptance — Sign-off & Evidence Requirements
 
-The terminal document of the knowledge base: `00-project-overview/success-criteria.md` forward-references it ("Final acceptance is tracked in `21-completion/final-acceptance.md`"), and `00-project-overview/project-charter.md` (L87) routes sign-off here ("validity… `VOID`" until conditions are met). It defines **what** must be true, **who** signs, and **what evidence** each signature rests on — it does not run the gates (that is `21-completion/quality-gates.md`) nor decide acceptance (that is `20-validation/analysis-validation.md`, methodology item 48).
+The terminal document of the knowledge base: `00-project-overview/success-criteria.md` forward-references it ("Final acceptance is tracked in `21-completion/final-acceptance.md`"), and `00-project-overview/project-charter.md` (L87) routes sign-off here ("validity… `VOID`" until conditions are met). It defines **what** must be true, **who** signs, and **what evidence** each signature rests on — it does not run the gates (that is `21-completion/quality-gates.md`) nor decide acceptance (that is `../20-validation/core/analysis-validation.md`, methodology item 48).
 
 **Status as of 2026-09-27: `PENDING`.** No implementation exists; every `AC-S-*` remains `PENDING` until evidence exists (root README §6 — nothing is `VERIFIED`). Acceptance cannot be signed today, and nothing in this file may be pre-filled with outcomes.
 
@@ -26,15 +26,15 @@ Final acceptance is a **two-layer judgment**, each layer with its own recorded o
 
 | Layer | Question answered | Decided by | Outcome vocabulary |
 |---|---|---|---|
-| **A — Knowledge base** | Is the analysis internally consistent, complete against its own promises, and approved? | Final quality assessment in `20-validation/analysis-validation.md` | `PASS · PASS WITH FINDINGS · FAIL` |
+| **A — Knowledge base** | Is the analysis internally consistent, complete against its own promises, and approved? | Final quality assessment in `../20-validation/core/analysis-validation.md` | `PASS · PASS WITH FINDINGS · FAIL` |
 | **B — Product / platform** | Do the success criteria, gates, risk posture, and compliance obligations hold with real evidence? | Success-criteria evidence + gate history (Gates 0–3) | Per-gate outcomes + per-`AC-S-*` `PASS`/`FAIL` |
 
 A `FAIL` on either layer blocks acceptance. `PASS WITH FINDINGS` on either layer requires every finding to carry severity (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`), an owner, and a written disposition — acceptance signs **with** the findings, never over them.
 
 **Layer A minimum conditions** (root README §10 items 40–43, 45, 48):
 
-1. Final quality assessment `PASS` or `PASS WITH FINDINGS` in `20-validation/analysis-validation.md`.
-2. `20-validation/contradiction-audit.md` and `20-validation/consistency-audit.md` clean or findings dispositioned (documentation check D-4 at Gate 3).
+1. Final quality assessment `PASS` or `PASS WITH FINDINGS` in `../20-validation/core/analysis-validation.md`.
+2. `../20-validation/core/contradiction-audit.md` and `../20-validation/core/consistency-audit.md` clean or findings dispositioned (documentation check D-4 at Gate 3).
 3. Link validation run across `docs/` with every broken path fixed or explicitly accepted (root README §11; D-1).
 4. `21-completion/technical-debt.md` reviewed at Gate 3 — no open `CRITICAL`/`HIGH` `TD-NN` without written disposition (D-2).
 5. Every `REC-NN` (P0/P1) either accepted by its criterion or explicitly deferred with rationale (`21-completion/recommendations.md` §2 rule 4).
@@ -56,9 +56,9 @@ Assembled before the sign-off meeting; each artifact names its source path. Miss
 
 | # | Artifact | Source path | Serves |
 |---|---|---|---|
-| E-01 | Final quality assessment (layer A outcome) | `20-validation/analysis-validation.md` | Layer A |
-| E-02 | Contradiction + consistency audit reports | `20-validation/contradiction-audit.md`, `20-validation/consistency-audit.md` | Layer A |
-| E-03 | Requirements-to-tests traceability matrix (all `AC-S-*` → TCs → passing runs) | `19-traceability/requirements-to-tests.md` | Layer B (`AC-S-01`, `AC-S-03`) |
+| E-01 | Final quality assessment (layer A outcome) | `../20-validation/core/analysis-validation.md` | Layer A |
+| E-02 | Contradiction + consistency audit reports | `../20-validation/core/contradiction-audit.md`, `../20-validation/core/consistency-audit.md` | Layer A |
+| E-03 | Requirements-to-tests traceability matrix (all `AC-S-*` → TCs → passing runs) | `../19-traceability/core/requirements-to-tests.md` | Layer B (`AC-S-01`, `AC-S-03`) |
 | E-04 | Success-criteria evidence table (24 rows, each with link + date + executor) | `00-project-overview/success-criteria.md` | Layer B |
 | E-05 | Gate history (Gates 0–3 outcomes, findings, acceptances) | `21-completion/quality-gates.md` §7 | Both layers |
 | E-06 | Executed test-plan results + coverage report (P0/P1 100% PASS, 0 CRITICAL/HIGH open) | `../13-testing/core/test-plans.md` §a–§h; CI artifacts | Layer B |
@@ -67,9 +67,9 @@ Assembled before the sign-off meeting; each artifact names its source path. Miss
 | E-09 | Security posture pack (SAST/DAST/secret/dependency, threat-model coverage, findings triage) | `../09-security/core/security-findings.md`; CI artifacts | `AC-S-12`, `AC-S-13`, `AC-S-16` |
 | E-10 | Compliance evidence pack (ten items incl. Central Bank position, legal opinions, bilingual notices, a11y statement) | `../12-non-functional/core/compliance-and-legal.md` §5 | `AC-S-24` |
 | E-11 | Production-readiness rollup with sponsor/QA/security/ops signatures | `../15-deployment/core/production-readiness.md` §8/§9 | Gate 2 / launch |
-| E-12 | Risk burndown + open-risk register with written acceptances | `17-risk-management/risk-review-process.md` §8; `17-risk-management/risk-register.md` | Layer B |
+| E-12 | Risk burndown + open-risk register with written acceptances | `../17-risk-management/core/risk-review-process.md` §8; `17-risk-management/risk-register.md` | Layer B |
 | E-13 | Debt + recommendation disposition reports | `21-completion/technical-debt.md`; `21-completion/recommendations.md` | Layer A |
-| E-14 | GAP closure log + assumption re-score record (`ASM-01…ASM-14` with evidence) | `20-validation/missing-information.md`; `00-project-overview/assumptions.md` | Both layers |
+| E-14 | GAP closure log + assumption re-score record (`ASM-01…ASM-14` with evidence) | `../20-validation/core/missing-information.md`; `00-project-overview/assumptions.md` | Both layers |
 | E-15 | Pilot + UAT evidence (≥ 10 vendors; four-surface UAT sign-offs) | `../13-testing/core/test-plans.md` §g; `AC-S-04`, `AC-S-21` | Layer B |
 | E-16 | Accessibility, localization, mobile device-lab reports | `../13-testing/core/test-plans.md` §e/§f/§g | `AC-S-10`, `AC-S-11` |
 

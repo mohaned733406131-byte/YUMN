@@ -108,7 +108,7 @@ Coverage is a **floor, not a goal**: a covered line that asserts nothing is repo
 
 Owned by [test-data-and-environments.md](test-data-and-environments.md) (DOC-TST-005): reserved phone block, Arabic/English fixtures, boundary fixtures (money, cart, coupons, 17 states, OTP timing), ledger fixtures with zero-imbalance invariant, and PII masking (`MASK-01…MASK-06`) for non-prod. Summary of the hard rules:
 
-- No production data in non-prod; restored backups are masked before use (`16-data/data-classification.md`).
+- No production data in non-prod; restored backups are masked before use (`../../16-data/core/data-classification.md`).
 - Fixtures are code (seed scripts), versioned in the repo — never hand-inserted rows on shared environments.
 - Every fixture asserts the invariant it exists to protect (e.g., Σ ledger = 0) on load.
 

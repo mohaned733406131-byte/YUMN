@@ -111,11 +111,11 @@ Z5  Provider zone             E1–E7 outside yumn's control; reachable only via
 | Z3 → Z5 (egress) | Provider abstraction, secrets in environment, idempotent callbacks | `INT-REQ-008`, `SEC-REQ-007`, `BR-PLT-03` |
 | Z5 → Z3 (ingress) | Webhook signature verification, idempotent handlers, retry/DLQ policy | `INT-REQ-006`, `BR-PLT-02` |
 
-**Cross-zone data classification:** PII (phone, name, address) and financial values are encrypted at rest (`SEC-REQ-006`) and classified per `16-data/data-classification.md`; OTP codes and delivery codes never persist in logs (`BR-AUTH-02`, `SEC-REQ-002`).
+**Cross-zone data classification:** PII (phone, name, address) and financial values are encrypted at rest (`SEC-REQ-006`) and classified per `../../16-data/core/data-classification.md`; OTP codes and delivery codes never persist in logs (`BR-AUTH-02`, `SEC-REQ-002`).
 
 ## 6. Boundary Change Control
 
-The boundary is fixed for v1 by scope and constraints. Any proposed addition (new payment method, email channel, external fleet API, second currency) must first change `00-project-overview/` scope/constraints through change management (root README §9), then this document, then `04-architecture/`. Silent boundary creep is recorded as a contradiction in `20-validation/contradiction-audit.md`.
+The boundary is fixed for v1 by scope and constraints. Any proposed addition (new payment method, email channel, external fleet API, second currency) must first change `00-project-overview/` scope/constraints through change management (root README §9), then this document, then `04-architecture/`. Silent boundary creep is recorded as a contradiction in `../../20-validation/core/contradiction-audit.md`.
 
 ## Change History
 

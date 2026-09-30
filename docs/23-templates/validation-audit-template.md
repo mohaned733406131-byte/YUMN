@@ -22,12 +22,12 @@ related_documents: [DOC-TPL-001, DOC-ROOT-001, DOC-GL-001, DOC-GL-003]
 
 | Audit type | File | Methodology section |
 |---|---|---|
-| Consistency sweep | `20-validation/consistency-audit.md` | root README §9.4 |
-| Contradictions | `20-validation/contradiction-audit.md` | §10 / 42 |
-| Missing information | `20-validation/missing-information.md` | §10 / 41 |
-| Incorrect / unsupported claims | `20-validation/hallucination-audit.md` | §10 / 43 |
-| Critical findings | `20-validation/critical-findings.md` | §10 / 45 |
-| Final quality assessment | `20-validation/analysis-validation.md` | §10 / 48 |
+| Consistency sweep | `../20-validation/core/consistency-audit.md` | root README §9.4 |
+| Contradictions | `../20-validation/core/contradiction-audit.md` | §10 / 42 |
+| Missing information | `../20-validation/core/missing-information.md` | §10 / 41 |
+| Incorrect / unsupported claims | `../20-validation/core/hallucination-audit.md` | §10 / 43 |
+| Critical findings | `../20-validation/core/critical-findings.md` | §10 / 45 |
+| Final quality assessment | `../20-validation/core/analysis-validation.md` | §10 / 48 |
 
 - **Audit IDs:** `AUD-NN` (e.g. `AUD-01`) — `VERIFIED`: the series mandated by this template was minted in `20-validation/README.md` §2 (`AUD-01…AUD-07`) and registered in root README §5 when `20-validation/` was authored (2026-09-27); same width/zero-padding rule as every series.
 - Audits **record**, they never fix: contradictions and gaps stay open in the audit until the owning document changes (root README §9.5) — no silent local fixes, no deletions of findings.

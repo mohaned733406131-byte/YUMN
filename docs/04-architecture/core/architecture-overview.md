@@ -122,7 +122,7 @@ A **single NestJS modular monolith** exposes a REST API consumed by three web su
 
 ## 7. What This Document Does Not Cover
 
-Behavioral specification (states, rules, sequences, edge cases) — `03-system-analysis/`. Endpoint contracts — `07-api/`. Schema DDL — `08-database/`. Security control catalog — `09-security/`. Environment/pipeline mechanics — `14-devops-infrastructure/`. Decision texts — `18-decisions/ADR/`.
+Behavioral specification (states, rules, sequences, edge cases) — `03-system-analysis/`. Endpoint contracts — `07-api/`. Schema DDL — `08-database/`. Security control catalog — `09-security/`. Environment/pipeline mechanics — `14-devops-infrastructure/`. Decision texts — `18-decisions/core/`.
 
 ## Change History
 

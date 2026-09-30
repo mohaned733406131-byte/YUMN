@@ -106,12 +106,12 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 4 · MEDIUM 3 · LOW 1 = 1
 
 | Audit | File | Verdict of record | Findings |
 |---|---|---|---|
-| `AUD-01` | `20-validation/consistency-audit.md` | `PASS WITH FINDINGS` | **9 of 31 checks failed** (v1.20 session-010 re-run on 654 files 2026-09-29: 20·2·9 unchanged; v1.17 session-009 re-run on 485 files 2026-09-29: 20 PASS · 2 PASS WITH FINDINGS · 9 FAIL — `CHK-05` flipped `PASS` and finding 2 closed the same set; v1.11 session-006 re-run on 479 files was 18·2·11 = 19·2·10 after the v1.13 `CHK-21` flip; findings **13 `OPEN`, 15 `RESOLVED`**) |
-| `AUD-02` | `20-validation/contradiction-audit.md` | `PASS WITH FINDINGS` | `CT-01` `PASS`; `CT-02`…`CT-05`, `CT-14` `RESOLVED` 2026-09-27/28; `CT-24`, `CT-25` `RESOLVED`, `CT-29` `RESOLVED`-NO 2026-09-28; **21 `OPEN`** (`CT-06`…`CT-30` minus resolved; v1.6) |
-| `AUD-03` | `20-validation/missing-information.md` | `PASS WITH FINDINGS` | **11 `OPEN`** of 14 issued — `GAP-02`, `GAP-03`, `GAP-13` `RESOLVED` 2026-09-28 (v1.3) |
-| `AUD-04` | `20-validation/hallucination-audit.md` | `PASS WITH FINDINGS` | **7 open** (1 HIGH, 4 MEDIUM, 2 LOW — `HAL-01`, `HAL-07` `RESOLVED` 2026-09-27; `HAL-02`, `HAL-14`, `HAL-15`, `HAL-03`, `HAL-04`, `HAL-12` `RESOLVED` 2026-09-28; v1.8) |
-| `AUD-05` | `20-validation/critical-findings.md` | `PASS WITH FINDINGS` (register) / Gate 0 `FAIL` stance | 6 open (1 CRITICAL, 3 HIGH, 2 MEDIUM — `CRIT-02`, `CRIT-04` `RESOLVED` 2026-09-27, `CRIT-08`, `CRIT-06` `RESOLVED` 2026-09-28; v1.5) |
-| `AUD-07` | `20-validation/requirements-validation.md` | `PASS WITH FINDINGS` | 7 open (3 HIGH, 3 MEDIUM, 1 LOW) |
+| `AUD-01` | `consistency-audit.md` | `PASS WITH FINDINGS` | **9 of 31 checks failed** (v1.20 session-010 re-run on 654 files 2026-09-29: 20·2·9 unchanged; v1.17 session-009 re-run on 485 files 2026-09-29: 20 PASS · 2 PASS WITH FINDINGS · 9 FAIL — `CHK-05` flipped `PASS` and finding 2 closed the same set; v1.11 session-006 re-run on 479 files was 18·2·11 = 19·2·10 after the v1.13 `CHK-21` flip; findings **13 `OPEN`, 15 `RESOLVED`**) |
+| `AUD-02` | `contradiction-audit.md` | `PASS WITH FINDINGS` | `CT-01` `PASS`; `CT-02`…`CT-05`, `CT-14` `RESOLVED` 2026-09-27/28; `CT-24`, `CT-25` `RESOLVED`, `CT-29` `RESOLVED`-NO 2026-09-28; **21 `OPEN`** (`CT-06`…`CT-30` minus resolved; v1.6) |
+| `AUD-03` | `missing-information.md` | `PASS WITH FINDINGS` | **11 `OPEN`** of 14 issued — `GAP-02`, `GAP-03`, `GAP-13` `RESOLVED` 2026-09-28 (v1.3) |
+| `AUD-04` | `hallucination-audit.md` | `PASS WITH FINDINGS` | **7 open** (1 HIGH, 4 MEDIUM, 2 LOW — `HAL-01`, `HAL-07` `RESOLVED` 2026-09-27; `HAL-02`, `HAL-14`, `HAL-15`, `HAL-03`, `HAL-04`, `HAL-12` `RESOLVED` 2026-09-28; v1.8) |
+| `AUD-05` | `critical-findings.md` | `PASS WITH FINDINGS` (register) / Gate 0 `FAIL` stance | 6 open (1 CRITICAL, 3 HIGH, 2 MEDIUM — `CRIT-02`, `CRIT-04` `RESOLVED` 2026-09-27, `CRIT-08`, `CRIT-06` `RESOLVED` 2026-09-28; v1.5) |
+| `AUD-07` | `requirements-validation.md` | `PASS WITH FINDINGS` | 7 open (3 HIGH, 3 MEDIUM, 1 LOW) |
 | **`AUD-06`** | **this file** | **`PASS WITH FINDINGS`** | 11 roll-up rows above |
 
 ---
@@ -129,7 +129,7 @@ Severity totals in this roll-up: **CRITICAL 2 · HIGH 4 · MEDIUM 3 · LOW 1 = 1
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 43,45,48 + DOC-REQ-001 |
-| 1.1 | 2026-09-27 | Sibling statistics re-synced: `CT` range → `CT-02…CT-20`, `AUD-01` row → 18 of 31 failed (11/2/18), open-findings total → 81 with per-audit breakdown | `20-validation/consistency-audit.md` finding 25 — consumer statistics superseded by the v1.1/v1.2 re-runs and the 2026-09-27 registration change set |
+| 1.1 | 2026-09-27 | Sibling statistics re-synced: `CT` range → `CT-02…CT-20`, `AUD-01` row → 18 of 31 failed (11/2/18), open-findings total → 81 with per-audit breakdown | `consistency-audit.md` finding 25 — consumer statistics superseded by the v1.1/v1.2 re-runs and the 2026-09-27 registration change set |
 | 1.2 | 2026-09-27 | `REC-03` propagation: `13-testing` domain row 109→120 files / 103→114 test cases; `AVF-01` → `RESOLVED`; open-findings total 81 → 78; verdict/follow-up re-scoped (`HAL-01`, `CRIT-02` closed) | `REC-03` pay-down change set — root README §9.4 consumer re-sync (finding 25 pattern) |
 | 1.3 | 2026-09-27 | `REC-04` propagation: `AVF-04` annotated partial (`-05` orphans closed); open-findings total 78 → 77 (`HAL-07` closed) | `REC-04` pay-down change set — root README §9.4 consumer re-sync |
 | 1.4 | 2026-09-27 | `REC-06` propagation: sibling roll-up re-synced (`AUD-01` 14/31 v1.9, `AUD-02` `CT-06`…`CT-20`, `AUD-04` 11 open, `AUD-05` 8 open); open-findings total 77 → 69; `AVF-10` + verdict/follow-up/`TC` count re-scoped | `REC-06` pay-down change set — root README §9.4 consumer re-sync (finding 25 pattern) |

@@ -101,7 +101,7 @@ All four are **P0, automated, and merge-blocking**; they run under security plan
 | FR-019 content/coupons | TC-097–104 | 8 | AC-FR019-01…04 |
 | FR-020 administration/audit | TC-105–114 | 10 | AC-FR020-01…04, AC-SR010-* |
 
-**Non-FR ACs.** `AC-NFR-*`, `AC-SRnnn-*`, `AC-DRnnn-*`, `AC-IRnnn-*` and `AC-XCUT-*` are executed through the executable plans ([test-plans.md](core/test-plans.md) §b–§h) and the constraint register ([constraint-tests.md](core/constraint-tests.md)); where a TC also exercises one, the TC cites it in *Related requirements & rules*. `19-traceability/requirements-to-tests.md` records the full AC → artifact matrix with zero gaps (`AC-S-03`); total TC count remains **114**.
+**Non-FR ACs.** `AC-NFR-*`, `AC-SRnnn-*`, `AC-DRnnn-*`, `AC-IRnnn-*` and `AC-XCUT-*` are executed through the executable plans ([test-plans.md](core/test-plans.md) §b–§h) and the constraint register ([constraint-tests.md](core/constraint-tests.md)); where a TC also exercises one, the TC cites it in *Related requirements & rules*. `../19-traceability/core/requirements-to-tests.md` records the full AC → artifact matrix with zero gaps (`AC-S-03`); total TC count remains **114**.
 
 ## 5. Writing Workflow
 
