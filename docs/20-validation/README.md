@@ -3,9 +3,9 @@ document_id: DOC-VAL-001
 title: 20-Validation — Domain Index & Audit Register
 category: 20-validation
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-019]
@@ -34,6 +34,11 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 | 6 | [critical-findings.md](core/critical-findings.md) | `DOC-VAL-006` | 45. Critical Findings | `AUD-05` | authored 2026-09-27 (parallel authoring pass) |
 | 7 | [requirements-validation.md](core/requirements-validation.md) | `DOC-VAL-007` | §7 quality test (via `02-requirements/requirements-overview.md`) | `AUD-07` | authored 2026-09-27 (parallel authoring pass) |
 | 8 | [analysis-validation.md](core/analysis-validation.md) | `DOC-VAL-008` | 48. Final Quality Assessment | `AUD-06` | authored 2026-09-27 (parallel authoring pass) |
+| [`core/`](core/README.md) | DOC-VAL-009 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-VAL-010 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-VAL-011 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-VAL-012 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-VAL-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 `document_id` short code `VAL` and the `DOC-VAL-NNN` allocation are minted **here**, per `22-glossary/naming-conventions.md:36` ("pending — see `DOC-VAL-*` gap"). Files 5–8 were declared in this register as a forward allocation; all four have since been authored by their own authoring passes and are now `authored` above — nothing in this file asserts their content or sign-off.
 
@@ -114,3 +119,4 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 | 1.0 | 2026-09-27 | Initial authoring; `DOC-VAL-001…008` allocated; `AUD-01…AUD-07` registered; series-home table established | Root README §10 items 41/42/43/45/48; `DOC-TPL-011` §Rules; `naming-conventions.md:91` |
 | 1.1 | 2026-09-27 | Parallel authoring pass absorbed: file index rows 5–7 → authored, row 8 still forward-allocated; audit verdicts filled for `AUD-04`/`AUD-05`/`AUD-07`; series table now records `CT-01…CT-20`, `HAL-01…HAL-13`, `CRIT-01…CRIT-10`; §5 note 4 closed with a new open item | Sibling files landed after this register was authored; DOC-TPL-011 #3 (findings never deleted) |
 | 1.2 | 2026-09-27 | `analysis-validation.md` (`DOC-VAL-008`) authored → index row 8 and `AUD-06` verdict (`PASS WITH FINDINGS`, 444 files) recorded; all 8 declared files now present | Sibling authoring pass completed the domain |
+| 1.3 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-VAL-009…DOC-VAL-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

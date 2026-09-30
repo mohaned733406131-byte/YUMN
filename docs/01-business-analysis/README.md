@@ -3,9 +3,9 @@ document_id: DOC-BA-001
 title: 01 Business Analysis — README
 category: 01-business-analysis
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-011, FR-012, FR-020]
@@ -34,6 +34,11 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 | `use-cases/` | — | Use case specifications `UC-NNN` (one file per use case), derived from the processes here and consumed by `13-testing/` |
 | [workflows/README.md](workflow-index.md) | DOC-WF-001 | Index and format specification for the 12 end-to-end workflows `WF-001…WF-012` |
 | [workflows/](customer/workflow-001.md) | DOC-WF-002…DOC-WF-013 | One file per workflow: ASCII flow + step table (actor, action, system, rules, data changes, failure handling) |
+| [`core/`](core/README.md) | DOC-BA-008 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-BA-009 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-BA-010 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-BA-011 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-BA-012 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## Source of Truth For
 
@@ -89,3 +94,4 @@ Files use `lowercase-kebab-case.md`; workflow files are `workflow-NNN.md` where 
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Registry count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
 | 1.2 | 2026-09-28 | §Source-of-Truth catch-up: the "single authoritative registry" bullet still said **99** rules and listed only **14** domains — synced to **104** + `INV` (the v1.1 sync had covered only the Contents row) | BR-count propagation catch-up (session 008 close) — root README §9.4; missed consumer of `business-rules.md` v1.1 |
+| 1.3 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-BA-008…DOC-BA-012) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

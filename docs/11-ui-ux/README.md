@@ -3,9 +3,9 @@ document_id: DOC-UX-001
 title: UI/UX Domain — Overview, Design Principles & File Index
 category: 11-ui-ux
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-011, NFR-012, NFR-013, FR-001, FR-010, FR-011, FR-013, FR-015, FR-017, FR-019, FR-020]
@@ -88,6 +88,11 @@ Keyboard order, focus visibility, contrast and screen-reader semantics are speci
 | 5 | `accessibility.md` | DOC-UX-006 | UX accessibility patterns for WCAG 2.1 AA (`NFR-011`), touch targets, contrast table, testing checklist | false |
 | 6 | `localization.md` | DOC-UX-007 | Content & translation rules: what is translated, numerals, dates, currency, plurals, tone | false |
 | 7 | `feedback-and-engagement.md` | DOC-UX-008 | Notification preference UX, notification center, promotions, review solicitation, trust signals, support entry points | false |
+| [`core/`](core/README.md) | DOC-UX-009 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-UX-010 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-UX-011 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-UX-012 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-UX-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 5. How This Domain Connects
 
@@ -118,3 +123,4 @@ A screen is design-complete only when it has: (a) an IA location and URL (`DOC-U
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-UX-009…DOC-UX-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

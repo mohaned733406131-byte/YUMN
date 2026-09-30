@@ -3,9 +3,9 @@ document_id: DOC-SEC-001
 title: Security Domain — Overview, Posture & File Index
 category: 09-security
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [SEC-REQ-001, SEC-REQ-002, SEC-REQ-003, SEC-REQ-004, SEC-REQ-005, SEC-REQ-006, SEC-REQ-007, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, SEC-REQ-012]
@@ -64,6 +64,11 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | 6 | `data-protection.md` | DOC-SEC-006 | TLS, at-rest and field-level encryption, hashing, OTP/delivery-code storage, log masking, backup encryption | No |
 | 7 | `security-controls.md` | DOC-SEC-007 | Control catalog `SEC-C-01…SEC-C-24` × SEC-REQ × layer × status × verification; rate-limit budgets | Yes |
 | 8 | `security-findings.md` | DOC-SEC-008 | Findings register `SEC-001…SEC-015`, all status OPEN | Yes |
+| [`core/`](core/README.md) | DOC-SEC-009 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-SEC-010 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-SEC-011 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-SEC-012 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-SEC-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ---
 
@@ -127,3 +132,4 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-SEC-009…DOC-SEC-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

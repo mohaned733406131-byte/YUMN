@@ -33,9 +33,9 @@ This file answers methodology item 40 (`docs/README.md` §10) for the *feature* 
 | API group(s) | `07-api/README.md` §4 Group → Requirement Mapping (FR column and Key SEC/DATA/INT column) | `VERIFIED` |
 | Representative endpoints | `07-api/*.md` endpoint-table *Related IDs* column, reversed to the requirement; capped at 3 shown + remainder counted | `VERIFIED` |
 | DB entities | `08-database/*.md` frontmatter `related_requirements`, reversed | `VERIFIED` |
-| UC / WF | `01-business-analysis/use-cases/UC-nnn.md` and `01-business-analysis/workflows/workflow-nnn.md` frontmatter `related_requirements`, reversed; shown as `UC-… / WF-…` | `VERIFIED`, FR only |
-| Business rules | `02-requirements/functional/FR-nnn.md` §Business Rules Applied | `VERIFIED`, FR only |
-| Priority | `02-requirements/requirements-overview.md` §1 (FR); `02-requirements/security/SEC-REQ-nnn.md` header (SEC) | `VERIFIED` where present |
+| UC / WF | `01-business-analysis/<portal>/UC-nnn.md` and `01-business-analysis/<portal>/workflow-nnn.md` frontmatter `related_requirements`, reversed; shown as `UC-… / WF-…` | `VERIFIED`, FR only |
+| Business rules | `02-requirements/core/FR-nnn.md` §Business Rules Applied | `VERIFIED`, FR only |
+| Priority | `02-requirements/requirements-overview.md` §1 (FR); `02-requirements/core/SEC-REQ-nnn.md` header (SEC) | `VERIFIED` where present |
 
 **Empty cell = `INSUFFICIENT EVIDENCE`** — the column has no supporting link for that requirement. A blank is never a silently implied link (`docs/README.md` §8).
 

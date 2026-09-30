@@ -3,9 +3,9 @@ document_id: DOC-DEC-001
 title: Decisions Domain Overview (ADR Governance)
 category: 18-decisions
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-016, NFR-018]
@@ -68,6 +68,11 @@ Not every decision warrants a full record. Small, domain-level decisions are cap
 | 10 | `core/ADR-008.md` | DOC-ADR-008 | React Native 0.73 + Next.js 14 for all client surfaces |
 | 11 | `core/ADR-009.md` | DOC-ADR-009 | Wallet-only payments with provider adapters |
 | 12 | `core/ADR-010.md` | DOC-ADR-010 | Phone + OTP authentication with short-lived JWTs |
+| [`core/`](core/README.md) | DOC-DEC-003 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-DEC-004 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-DEC-005 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-DEC-006 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-DEC-007 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 6. Required Sections of Every ADR (enforced checklist)
 
@@ -78,3 +83,4 @@ Header (`# ADR-NNN: <reserved title>`) → **Status table** (Status, Date, Decid
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-DEC-003…DOC-DEC-007) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

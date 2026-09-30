@@ -3,9 +3,9 @@ document_id: DOC-DB-001
 title: Database Domain — Overview and File Index
 category: 08-database
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [DATA-REQ-001, DATA-REQ-002, DATA-REQ-005, DATA-REQ-007, DATA-REQ-008, NFR-017]
@@ -85,6 +85,11 @@ related_documents: [DOC-OVR-002, DOC-OVR-008, DOC-REQ-001, DOC-BA-005, DOC-SA-01
 | DOC-DB-005 | [constraints-and-integrity.md](core/constraints-and-integrity.md) | FK rules, CHECK/UNIQUE/exclusion constraints, allowed triggers, append-only enforcement, app vs DB split |
 | DOC-DB-006 | [migrations-and-evolution.md](core/migrations-and-evolution.md) | Prisma Migrate workflow (DATA-REQ-005): branching, expand/contract, seeds, rollback, CI gates |
 | DOC-DB-007 | [entities/README.md](entities-index.md) | Entity index: DB-NNN → file → purpose → owning block |
+| [`core/`](core/README.md) | DOC-DB-008 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-DB-009 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-DB-010 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-DB-011 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-DB-012 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ### 4.2 Entities (18 registered entities)
 
@@ -127,3 +132,4 @@ Cross-domain references: requirements `02-requirements/` (esp. DATA-REQ-001…00
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-DB-008…DOC-DB-012) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

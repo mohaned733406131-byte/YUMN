@@ -38,7 +38,7 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 
 | Artifact class | IDs found | Source |
 |---|---|---|
-| Test cases | 114 files `TC-001 … TC-114` (locked allocation fully present) | `13-testing/test-cases/TC-*.md` §*Related requirements & rules* |
+| Test cases | 114 files `TC-001 … TC-114` (locked allocation fully present) | `13-testing/core/TC-*.md` §*Related requirements & rules* |
 | Executable feature plans | `PLAN-01 … PLAN-18` | `../../13-testing/core/test-plans.md` §a |
 | Performance / security / chaos activities | `PERF-01…07`, `SEC-P-01…09`, `CHAOS-01…08` | `../../13-testing/core/test-plans.md` §b–§d |
 | Plan sections | `§b … §h` (scope + canon columns) | `../../13-testing/core/test-plans.md` |
@@ -128,11 +128,11 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR002-03 | FR-002 | §c, PLAN-02, SEC-P-05, TC-013 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-04 | FR-002 | §c, PLAN-02, SEC-P-05, TC-107, TC-109, TC-110 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-05 | FR-002 | §c, PLAN-02, SEC-P-05, TC-014, TC-114 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
-| AC-FR003-01 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases/README.md §4; TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
+| AC-FR003-01 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR003-02 | FR-003 | TC-008, TC-009 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR003-03 | FR-003 | TC-010 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR003-04 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases/README.md §4; TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
-| AC-FR003-05 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases/README.md §4; TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
+| AC-FR003-04 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR003-05 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR004-01 | FR-004 | TC-015 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR004-02 | FR-004 | TC-015 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR004-03 | FR-004 | TC-016 | TC file — Related requirements & rules | EXPLICIT |
@@ -141,7 +141,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR005-01 | FR-005 | §b, PERF-04, TC-019, TST-CON-13 | constraint register — constraint-tests.md; plan activity — test-plans.md §b; plan section — test-plans.md §b; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR005-02 | FR-005 | TC-020, TST-CON-13 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR005-03 | FR-005 | TST-CON-13 | constraint register — constraint-tests.md | EXPLICIT |
-| AC-FR005-04 | FR-005 | TC-018–020 | TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
+| AC-FR005-04 | FR-005 | TC-018–020 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR006-01 | FR-006 | TC-021 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR006-02 | FR-006 | TC-021 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR006-03 | FR-006 | TC-021 | TC file — Related requirements & rules | EXPLICIT |
@@ -149,9 +149,9 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR006-05 | FR-006 | TC-022 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR007-01 | FR-007 | TC-024 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR007-02 | FR-007 | TC-023 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR007-03 | FR-007 | TC-023–024 | TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
+| AC-FR007-03 | FR-007 | TC-023–024 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR007-04 | FR-007 | TC-024 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR008-01 | FR-008 | TC-025–026 | TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
+| AC-FR008-01 | FR-008 | TC-025–026 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR008-02 | FR-008 | TC-026 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR008-03 | FR-008 | TC-025 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR008-04 | FR-008 | TC-025, TST-CON-17 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
@@ -160,7 +160,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR009-02 | FR-009 | DOC-TST-005, PLAN-08, TC-027 | executable plan row — test-plans.md §a; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-FR009-03 | FR-009 | §b, §d, CHAOS-05, PERF-03, PLAN-08, TC-028 | executable plan row — test-plans.md §a; plan activity — test-plans.md §b; plan activity — test-plans.md §d; plan section — test-plans.md §b; plan section — test-plans.md §d; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR009-04 | FR-009 | PLAN-08, TC-028 | executable plan row — test-plans.md §a; TC file — Related requirements & rules | EXPLICIT |
-| AC-FR009-05 | FR-009 | TC-027–028 | TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
+| AC-FR009-05 | FR-009 | TC-027–028 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR010-01 | FR-010 | DOC-TST-005, TC-029, TST-CON-15 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-FR010-02 | FR-010 | DOC-TST-005, TC-029, TST-CON-15 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
 | AC-FR010-03 | FR-010 | TC-030 | TC file — Related requirements & rules | EXPLICIT |
@@ -184,7 +184,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR014-01 | FR-014 | TC-058, TST-CON-12 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR014-02 | FR-014 | TC-061, TST-CON-12 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR014-03 | FR-014 | TC-059, TC-060 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR014-04 | FR-014 | DOC-TST-006 §4; TC-057–064 | allocation declaration — 13-testing/test-cases/README.md §4; TC block declaration — 13-testing/test-cases/README.md §2/§4 | DECLARED |
+| AC-FR014-04 | FR-014 | DOC-TST-006 §4; TC-057–064 | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR014-05 | FR-014 | TC-063 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR015-01 | FR-015 | TC-065 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR015-02 | FR-015 | TC-068, TC-069, TC-070, TC-072, TST-CON-16 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
@@ -287,10 +287,10 @@ Related requirements & rules; test document citation — 13-testing/test-data-an
 | AC-NFR-020-01 | NFR-020 | scope: test-plans.md §h, TC-113 | plan scope declaration — test-plans.md §h; TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-020-02 | NFR-020 | §h | plan section — test-plans.md §h | EXPLICIT |
 | AC-SR001-01 | SEC-REQ-001 | §c | plan section — test-plans.md §c | EXPLICIT |
-| AC-SR001-02 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
-| AC-SR001-03 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
-| AC-SR001-04 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
-| AC-SR001-05 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
+| AC-SR001-02 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
+| AC-SR001-03 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
+| AC-SR001-04 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
+| AC-SR001-05 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
 | AC-SR002-01 | SEC-REQ-002 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
 | AC-SR002-02 | SEC-REQ-002 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
 | AC-SR002-03 | SEC-REQ-002 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
@@ -298,8 +298,8 @@ Related requirements & rules; test document citation — 13-testing/test-data-an
 | AC-SR003-01 | SEC-REQ-003 | TST-CON-08 | constraint register — constraint-tests.md | EXPLICIT |
 | AC-SR003-02 | SEC-REQ-003 | TST-CON-08 | constraint register — constraint-tests.md | EXPLICIT |
 | AC-SR003-03 | SEC-REQ-003 | TST-CON-08 | constraint register — constraint-tests.md | EXPLICIT |
-| AC-SR003-04 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
-| AC-SR003-05 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
+| AC-SR003-04 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
+| AC-SR003-05 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
 | AC-SR004-01 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR004-02 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR004-03 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05, TC-014, TC-114 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
@@ -307,7 +307,7 @@ Related requirements & rules; test document citation — 13-testing/test-data-an
 | AC-SR005-01 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR005-02 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR005-03 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
-| AC-SR005-04 | SEC-REQ-005 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases/README.md §4 | DECLARED |
+| AC-SR005-04 | SEC-REQ-005 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
 | AC-SR006-01 | SEC-REQ-006 | §c | plan section — test-plans.md §c | EXPLICIT |
 | AC-SR006-02 | SEC-REQ-006 | §c | plan section — test-plans.md §c | EXPLICIT |
 | AC-SR006-03 | SEC-REQ-006 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |

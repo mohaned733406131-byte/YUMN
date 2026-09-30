@@ -87,7 +87,7 @@ If any document in `04-architecture/` conflicts with an approved ADR, the ADR wi
 | `SUPERSEDED` | Replaced; kept for history with pointer to the replacement | terminal |
 | `REJECTED` | Considered and declined; kept so the option is not re-litigated | terminal |
 
-Lifecycle rules: (1) an ADR is drafted in `18-decisions/ADR/ADR-NNN.md` using the reserved number from §1; (2) review checks constraint compliance (`C-01…C-26`), alternatives and consequences; (3) acceptance flips the status in both the ADR and this index; (4) any document updated as a consequence is listed inside the ADR's "Documents to update" section; (5) consistency is re-audited in `../20-validation/core/consistency-audit.md`.
+Lifecycle rules: (1) an ADR is drafted in `18-decisions/core/ADR-NNN.md` using the reserved number from §1; (2) review checks constraint compliance (`C-01…C-26`), alternatives and consequences; (3) acceptance flips the status in both the ADR and this index; (4) any document updated as a consequence is listed inside the ADR's "Documents to update" section; (5) consistency is re-audited in `../20-validation/core/consistency-audit.md`.
 
 ## 8. Required Sections of Every ADR (checklist)
 

@@ -3,9 +3,9 @@ document_id: DOC-RSK-001
 title: Risk Management Domain Overview
 category: 17-risk-management
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-008, NFR-014, FR-020]
@@ -102,6 +102,11 @@ Participants, update rules, escalation thresholds, burndown reporting, and ID-al
 | 2 | `risk-register.md` | DOC-RSK-002 | **Canonical register `RISK-001…RISK-024`** — summary table + per-risk detail |
 | 3 | `mitigation-plans.md` | DOC-RSK-003 | Phased plans, controls, kill criteria and metrics for the top 8 risks by score |
 | 4 | `risk-review-process.md` | DOC-RSK-004 | Governance: cadence, update rules, escalation, phase gates, ID allocation, finding/gap linkage |
+| [`core/`](core/README.md) | DOC-RSK-005 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-RSK-006 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-RSK-007 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-RSK-008 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-RSK-009 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 7. Relationship to Findings, Gaps, and Constraints
 
@@ -114,3 +119,4 @@ Participants, update rules, escalation thresholds, burndown reporting, and ID-al
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-RSK-005…DOC-RSK-009) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

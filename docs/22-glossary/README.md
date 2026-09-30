@@ -3,9 +3,9 @@ document_id: DOC-GL-001
 title: Glossary Domain — Terminology Governance & File Index
 category: 22-glossary
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -78,6 +78,11 @@ Definitions are statements about canon. Where a definition goes beyond cited can
 | 1 | [README.md](README.md) | DOC-GL-001 | Domain overview, terminology governance, index |
 | 2 | [terminology.md](terminology.md) | DOC-GL-002 | Canonical A–Z term register (~110 terms, bilingual, evidence-linked) |
 | 3 | [naming-conventions.md](naming-conventions.md) | DOC-GL-003 | Cross-domain naming rules: documents, IDs, code, DB, API, queues, git, locales, dates, numerals |
+| [`core/`](core/README.md) | DOC-GL-004 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-GL-005 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-GL-006 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-GL-007 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-GL-008 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 5. Consistency Rule
 
@@ -88,3 +93,4 @@ Changing a canonical term propagates to: `00-project-overview` (actor names) →
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-GL-004…DOC-GL-008) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

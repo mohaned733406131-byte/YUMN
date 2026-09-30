@@ -3,9 +3,9 @@ document_id: DOC-API-001
 title: API Contract Domain — Overview, Versioning & File Map
 category: 07-api
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, NFR-001, NFR-013, SEC-REQ-004, SEC-REQ-009]
@@ -71,6 +71,11 @@ The contract covers all 20 functional requirements (FR-001…FR-020) across 14 e
 | 17 | [endpoints/content.md](core/content.md) | DOC-API-017 | Endpoint spec | **API-CNT** — CMS pages/banners, home, coupons, promotions |
 | 18 | [endpoints/analytics.md](core/analytics.md) | DOC-API-018 | Endpoint spec | **API-ANL** — vendor/admin dashboards, reports, statements, CSV export |
 | 19 | [endpoints/admin.md](admin/admin.md) | DOC-API-019 | Endpoint spec | **API-ADM** — moderation, KYC, categories/attributes, settings, audit, roles, tickets, health |
+| [`core/`](core/README.md) | DOC-API-020 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-API-021 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-API-022 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-API-023 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-API-024 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ---
 
@@ -123,3 +128,4 @@ Every FR is reachable through at least one endpoint group; every endpoint belong
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Checklist item 5 count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
+| 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-API-020…DOC-API-024) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

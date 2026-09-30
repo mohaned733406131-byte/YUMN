@@ -3,9 +3,9 @@ document_id: DOC-REQ-002
 title: 02 Requirements — README
 category: 02-requirements
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-29
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -34,6 +34,11 @@ All requirement IDs: `FR-*` (functional), `NFR-*` (non-functional), `SEC-REQ-*` 
 | [data/](data-index.md) | `DATA-REQ-001…DATA-REQ-008` |
 | [integration/](integration-index.md) | `INT-REQ-001…INT-REQ-008` |
 | [acceptance-criteria.md](acceptance-criteria.md) | `AC-*` acceptance criteria grouped per FR |
+| [`core/`](core/README.md) | DOC-REQ-003 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-REQ-004 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-REQ-005 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-REQ-006 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-REQ-007 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## Dependencies
 
@@ -79,3 +84,4 @@ Open questions (if any → GAP-*)
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial publication | Analysis-phase authoring (root README §7) |
 | 1.1 | 2026-09-29 | `## Change History` section added | Session 009 `CHK-05` re-run — consistency finding 2; root README §9.2 requires the section on every document |
+| 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-REQ-003…DOC-REQ-007) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

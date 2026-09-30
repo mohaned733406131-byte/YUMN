@@ -3,9 +3,9 @@ document_id: DOC-TRC-001
 title: Traceability — Domain Overview, Chain Rules & Coverage Dashboard
 category: 19-traceability
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-27
-updated: 2026-09-29
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-020, NFR-009]
@@ -64,6 +64,11 @@ The five-hop form used by `TC-031` — `FR-013 → BR-PAY-04 → API-WAL-002 →
 | `README.md` | `DOC-TRC-001` | Domain index, chain rules, vocabulary, coverage dashboard, findings | — |
 | `requirements-to-features.md` | `DOC-TRC-002` | Objective → requirement matrix; requirement → feature/asset matrix | 12 objectives, 68 requirements |
 | `requirements-to-tests.md` | `DOC-TRC-003` | Requirement → AC → test-artifact matrix; constraint → `TST-CON-NN` matrix | 277 ACs, 26 constraints |
+| [`core/`](core/README.md) | DOC-TRC-004 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-TRC-005 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-TRC-006 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-TRC-007 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-TRC-008 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 No other file may be added to this domain without a matching row in `docs/README.md` §2 and a new `DOC-TRC-*` ID.
 
@@ -159,3 +164,4 @@ Severity uses `docs/README.md` §8 classes; confidence noted where it matters.
 | 1.1 | 2026-09-28 | `F-06` → `RESOLVED` (phantom `API-TOP` citations replaced by `API-WAL-003/004` in the three consumer documents; `HAL-15` flipped in the same change set) | `plan-develop.md` §8 approval implementation (session 007) — hand-off row re-synced after the owning documents changed |
 | 1.2 | 2026-09-28 | §5 dashboard re-run by direct count (BR 99 → **104**, UC 40 → **42** → **210** (session 010 re-count, 2026-09-29), TC 103 → **114 present**, linkage 197/48 → **203/42** per `requirements-to-tests.md` §2, family line re-synced, verdict clause dropped); §7 `F-02`/`F-03` → `RESOLVED` (sessions 003/004 — never flipped here), `F-04` evidence 48 → 42 `DECLARED`, "needs updating" list struck for F-02/F-03 | Count/dashboard propagation catch-up (session 008 close) — the dashboard claimed `VERIFIED` by direct count but predated sessions 003/004/007/008 |
 | 1.3 | 2026-09-29 | §5 UC count 42 → **210** (`UC-001…UC-210`, direct count of `use-cases/UC-*.md`; WF 12 / blocks 13 re-checked, unchanged); §7 `F-07` evidence 121 → **779** `AC-UC*` IDs (severity/status unchanged); §5 header dated for the re-count | `prompt-010.md` §1 session-010 UC-coverage directive — corpus grown 42 → 210 use cases, dashboard re-synced in the same change set (root README §9 rule 4) |
+| 1.4 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TRC-004…DOC-TRC-008) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

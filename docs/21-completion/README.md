@@ -3,9 +3,9 @@ document_id: DOC-CMP-001
 title: 21 Completion — Domain Overview, Register & Precedence Rules
 category: 21-completion
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -39,6 +39,11 @@ Eight files are authored in this domain. The document-ID series `DOC-CMP-NNN` is
 | `core/technical-debt.md` | `DOC-CMP-006` | Debt register `TD-NN` (root README §10 item 44) | yes |
 | `core/recommendations.md` | `DOC-CMP-007` | Prioritized recommendations `REC-NN` (root README §10 item 46) | yes |
 | `core/final-acceptance.md` | `DOC-CMP-010` | Acceptance checklist `AC-S-01…AC-S-24`, sign-off, procedure (root README §10 item 48) | yes |
+| [`core/`](core/README.md) | DOC-CMP-011 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-CMP-012 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-CMP-013 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-CMP-014 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-CMP-015 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 **Unused IDs:** `DOC-CMP-008` and `DOC-CMP-009` are **not allocated to any file** and must never be cited — citing them is a consistency-audit defect. The gap in the series is deliberate; IDs are never reused or back-filled (root README §5 discipline). The next free ID in this domain is `DOC-CMP-011`.
 
@@ -130,3 +135,4 @@ Evidence discipline for every file here: statements carry `VERIFIED` / `INFERENC
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-CMP-011…DOC-CMP-015) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

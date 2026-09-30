@@ -3,9 +3,9 @@ document_id: DOC-TST-001
 title: 13 Testing — Domain Overview & Test Case Index
 category: 13-testing
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -84,6 +84,11 @@ The pyramid is deliberately **unit-heavy**: `NFR-010` requires all business logi
 | [test-data-and-environments.md](core/test-data-and-environments.md) | DOC-TST-005 | Environment matrix, fixtures, PII masking policy for non-prod | no |
 | [test-cases/README.md](test-cases-index.md) | DOC-TST-006 | TC layer anatomy, locked range table, coverage summary | no |
 | `test-cases/TC-NNN.md` | `DOC-TC-NNN` | 114 individual test cases (`TC-001`…`TC-114`) | no |
+| [`core/`](core/README.md) | DOC-TST-007 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-TST-008 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-TST-009 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-TST-010 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-TST-011 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 5. Locked Test-Case Allocation (TC-001 … TC-114)
 
@@ -159,3 +164,4 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Scope line count sync: 99 → **104 business rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
+| 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TST-007…DOC-TST-011) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

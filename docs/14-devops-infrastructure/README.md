@@ -3,9 +3,9 @@ document_id: DOC-OPS-001
 title: DevOps & Infrastructure — README (14-devops-infrastructure Index)
 category: 14-devops-infrastructure
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-005, NFR-006, NFR-014, NFR-016, NFR-017, NFR-020, DATA-REQ-004, INT-REQ-007, SEC-REQ-007, SEC-REQ-012]
@@ -44,6 +44,11 @@ This domain owns the **HOW of running yumn**: environments, container definition
 | 6 | [monitoring-stack.md](core/monitoring-stack.md) | `DOC-OPS-006` | Scrape jobs, Grafana provisioning, alert routing, log pipeline, uptime checks, retention, honest v1 scope | Yes |
 | 7 | [backup-recovery.md](core/backup-recovery.md) | `DOC-OPS-007` | Backup matrix per store, RTO/RPO execution, encryption, off-host copy, restore steps, quarterly drill | Yes |
 | 8 | [host-hardening.md](core/host-hardening.md) | `DOC-OPS-008` | OS patching, SSH policy, firewall/port exposure, Docker hygiene, TLS renewal, scan cadence | Yes |
+| [`core/`](core/README.md) | DOC-OPS-009 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-OPS-010 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-OPS-011 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-OPS-012 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-OPS-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 Domain numbering prefix: **`DOC-OPS-NNN`**. Nothing outside this directory may mint a `DOC-OPS` ID.
 
@@ -138,3 +143,4 @@ Totals: 13 defined services; production runs 12 (no `sms-sink`); local dev runs 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-OPS-009…DOC-OPS-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

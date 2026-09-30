@@ -22,7 +22,7 @@ Total: **20 FR + 20 NFR + 12 SEC-REQ + 8 DATA-REQ + 8 INT-REQ = 68 requirements.
 
 ## 1. Functional Requirements (`FR-001…FR-020`)
 
-Each expands to `02-requirements/functional/FR-nnn.md`.
+Each expands to `02-requirements/core/FR-nnn.md`.
 
 | ID | Title | Block | Priority | Summary |
 |---|---|---|---|---|
@@ -51,7 +51,7 @@ Each expands to `02-requirements/functional/FR-nnn.md`.
 
 ## 2. Non-Functional Requirements (`NFR-001…NFR-020`)
 
-Expands to `02-requirements/non-functional/NFR-nnn.md`; measurement detail in `12-non-functional/`.
+Expands to `02-requirements/core/NFR-nnn.md`; measurement detail in `12-non-functional/`.
 
 | ID | Category | Title | Target (summary) |
 |---|---|---|---|
@@ -80,7 +80,7 @@ Expands to `02-requirements/non-functional/NFR-nnn.md`; measurement detail in `1
 
 ## 3. Security Requirements (`SEC-REQ-001…SEC-REQ-012`)
 
-Expands to `02-requirements/security/SEC-REQ-nnn.md`; controls detailed in `09-security/`.
+Expands to `02-requirements/core/SEC-REQ-nnn.md`; controls detailed in `09-security/`.
 
 | ID | Title | Summary |
 |---|---|---|
@@ -101,7 +101,7 @@ Expands to `02-requirements/security/SEC-REQ-nnn.md`; controls detailed in `09-s
 
 ## 4. Data Requirements (`DATA-REQ-001…DATA-REQ-008`)
 
-Expands to `02-requirements/data/DATA-REQ-nnn.md`; detail in `16-data/`.
+Expands to `02-requirements/core/DATA-REQ-nnn.md`; detail in `16-data/`.
 
 | ID | Title | Summary |
 |---|---|---|
@@ -118,7 +118,7 @@ Expands to `02-requirements/data/DATA-REQ-nnn.md`; detail in `16-data/`.
 
 ## 5. Integration Requirements (`INT-REQ-001…INT-REQ-008`)
 
-Expands to `02-requirements/integration/INT-REQ-nnn.md`; contracts in `10-integrations/`.
+Expands to `02-requirements/core/INT-REQ-nnn.md`; contracts in `10-integrations/`.
 
 | ID | Title | Summary |
 |---|---|---|

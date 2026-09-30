@@ -70,7 +70,7 @@ Full permission matrices: `../09-security/core/rbac.md` (definitive) and `../06-
 | Deliveries | Courier (assigned) | Admin dispatch view only |
 | Audit logs | Platform (append-only) | Read per role scope; nobody edits |
 
-Conceptual authorization tests (see `13-testing/test-cases/TC-011…TC-014`):
+Conceptual authorization tests (see `13-testing/core/TC-011…TC-014`):
 1. Can Customer A access Customer B's order? → **Must be denied** (ownership + IDOR checks)
 2. Can Vendor X modify Vendor Y's product? → **Must be denied** (`store_id` scoping)
 3. Can Vendor Staff escalate to Owner? → **Must be denied** (self-role-change blocked)

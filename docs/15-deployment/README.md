@@ -3,9 +3,9 @@ document_id: DOC-DPL-001
 title: Deployment — README (15-deployment Index)
 category: 15-deployment
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-005, NFR-006, NFR-020, DATA-REQ-004, DATA-REQ-005, SEC-REQ-012]
@@ -40,6 +40,11 @@ This domain owns the **release lifecycle**: what artifact ships, how it is versi
 | 4 | [rollback.md](core/rollback.md) | `DOC-DPL-004` | Rollback by change type, trigger criteria, decision tree, rehearsal, post-incident review | Yes |
 | 5 | [health-checks.md](core/health-checks.md) | `DOC-DPL-005` | `/healthz` + `/readyz` semantics, probes, startup ordering, graceful shutdown, monitoring hooks | Yes |
 | 6 | [production-readiness.md](core/production-readiness.md) | `DOC-DPL-006` | Go-live checklist grouped by area with owner, verification method, status, evidence; sign-off | No (supporting) |
+| [`core/`](core/README.md) | DOC-DPL-007 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-DPL-008 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-DPL-009 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-DPL-010 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-DPL-011 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 Domain numbering prefix: **`DOC-DPL-NNN`**. Nothing outside this directory may mint a `DOC-DPL` ID.
 
@@ -149,3 +154,4 @@ merge → CI → staging auto-deploy → smoke (+ E2E) → manual production app
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-DPL-007…DOC-DPL-011) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

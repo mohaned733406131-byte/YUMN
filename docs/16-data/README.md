@@ -3,9 +3,9 @@ document_id: DOC-DTA-001
 title: Data Domain — README (16-data Index)
 category: 16-data
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [DATA-REQ-001, DATA-REQ-002, DATA-REQ-003, DATA-REQ-004, DATA-REQ-005, DATA-REQ-006, DATA-REQ-007, DATA-REQ-008]
@@ -80,6 +80,11 @@ A fifth document, `data-quality.md`, defines how the platform proves its data is
 | 5 | [retention-and-archival.md](core/retention-and-archival.md) | `DOC-DTA-005` | Retention classes `RC-01…RC-09`, retention schedule, purge & archive mechanics, legal-evidence gap | Yes |
 | 6 | [data-deletion-and-privacy.md](core/data-deletion-and-privacy.md) | `DOC-DTA-006` | Deletion/anonymization procedures, cascade, verification, export, non-production masking | No (supporting) |
 | 7 | [data-quality.md](core/data-quality.md) | `DOC-DTA-007` | Quality dimensions, rule register `DQ-01…DQ-18`, reconciliation jobs, quarantine, SLOs | No (supporting) |
+| [`core/`](core/README.md) | DOC-DTA-008 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-DTA-009 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-DTA-010 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-DTA-011 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-DTA-012 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 6. Governing Principles
 
@@ -119,3 +124,4 @@ A fifth document, `data-quality.md`, defines how the platform proves its data is
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-DTA-008…DOC-DTA-012) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

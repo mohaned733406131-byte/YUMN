@@ -3,9 +3,9 @@ document_id: DOC-SA-001
 title: 03 System Analysis — README
 category: 03-system-analysis
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-26
-updated: 2026-09-29
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-011, FR-012, FR-015]
@@ -35,6 +35,11 @@ It sits between `02-requirements/` (what the system *must* do — static stateme
 | [failure-modes.md](core/failure-modes.md) | DOC-SA-009 | Failure modes (`FM-NN`) and analysis-level handling: provider outage, idempotency, double-debit, code mismatch, webhook retries, oversell |
 | [state-transitions.md](core/state-transitions.md) | DOC-SA-010 | **The canonical 17-state order machine (`C-09`) — single source of truth for states and transitions** (pre-existing) |
 | [erp-finance-departments.md](core/erp-finance-departments.md) | DOC-SA-011 | Finance/ERP department surface: platform + per-merchant books, six departments (accounts, sales, purchases, inventory, reports, periods), dept↔staff map, period-close mechanics, phasing — approved via `plan-develop.md` §8 (`D2`/`D3`/`D11`) |
+| [`core/`](core/README.md) | DOC-SA-012 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-SA-013 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-SA-014 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-SA-015 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-SA-016 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## How 03 Differs From 04-Architecture
 
@@ -116,3 +121,4 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | 1.2 | 2026-09-28 | Contents + reading-order rows added for `erp-finance-departments.md` (`DOC-SA-011`, minted here) | `plan-develop.md` §8 approval implementation (session 007) — new analysis document registered in its domain index (SPE-05) |
 | 1.3 | 2026-09-28 | Consumes row count sync: 99 → **104 rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
 | 1.4 | 2026-09-29 | Consumes row use-case range sync: `UC-001…UC-040` → **`UC-001…UC-210`** (210 use-case files) | `prompt-010.md` §1 (session 010 owner directive — `UC-043`…`UC-210` minted) |
+| 1.5 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-SA-012…DOC-SA-016) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
