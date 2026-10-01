@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """REC-15 — CI citation check (pure stdlib).
 
-Two checks over the repository Markdown corpus (vendor `senior-rules/`,
-`.git/`, `.github/` excluded from *scanning*; their files still count as
-definition and resolution targets):
+Two checks over the repository Markdown corpus (vendor `senior-rules/`, `.git/`, `.github/`,
+vendor skill packs `delegate-skills-master/` and `pro-skills-senior-full-stack-software-engineer-master/`
+excluded from *scanning*; their files still count as definition and resolution targets):
 
 1. IDS — every cited ID from the REC-15 series set
    (FR, TC, BR, RISK, ASM, DEP, GAP, AC, SEC, SEC-REQ, REC, TD) must be
@@ -34,7 +34,11 @@ import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SCAN_SKIP_DIRS = {".git", ".github", "senior-rules", "node_modules"}
+SCAN_SKIP_DIRS = {".git", ".github", "senior-rules", "node_modules",
+                  # vendor skill packs (owner-installed reference material — never scanned as
+                  # citing files; their illustrative artifact filenames are not corpus citations.
+                  # Same vendor precedent as senior-rules/; scope correction recorded session-011)
+                  "delegate-skills-master", "pro-skills-senior-full-stack-software-engineer-master"}
 INDEX_SKIP_DIRS = {".git", "node_modules"}
 
 # --------------------------------------------------------------------------
