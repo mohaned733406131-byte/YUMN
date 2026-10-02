@@ -110,6 +110,48 @@ PHANTOM_PATHS = {
     ("docs/21-completion/core/recommendations.md", "07-api/authorization.md"),
     ("docs/sessions/session-008-archdoc-brinv-citation-ci.md", "07-api/authorization.md"),
     ("session_track.md", "07-api/authorization.md"),
+
+    # --- Session-011 phase 9c dispositions (2026-10-03, prompt-013 §4 item 2) ---
+    # The post-fix citation baseline is exactly 17 dangling pairs. All 17 are
+    # non-silent dispositions below — 14 owner-surface, 1 historical vendor-pack
+    # quote, 2 dated-evidence quotes. No path is waived without a reason here.
+    #
+    # Owner-surface (14): YUMN_Prompt.md is the owner's read-only directive file
+    #   (never edited or committed by sessions — root AGENTS.md / ENTRY.md rule).
+    #   These tokens are the owner's OWN external-workflow artifact names quoted
+    #   in the directive prose (blueprint/digest/backlog/handoff files that live
+    #   outside this repo). Sessions may not correct them, so the citations are
+    #   registered here as owner-surface rather than silently dropped.
+    ("YUMN_Prompt.md", "YUMN_SaaS_Requirements_Blueprint.md"),
+    ("YUMN_Prompt.md", "CLAUDE.md"),
+    ("YUMN_Prompt.md", ".github/copilot-instructions.md"),
+    ("YUMN_Prompt.md", "02_GAP_MATRIX.md"),
+    ("YUMN_Prompt.md", "03_TARGET_DESIGN.md"),
+    ("YUMN_Prompt.md", "03_DECISIONS.md"),
+    ("YUMN_Prompt.md", "docs/traceability/BLUEPRINT_TRACEABILITY.md"),
+    ("YUMN_Prompt.md", "docs/backlog/SAAS_BACKLOG.md"),
+    ("YUMN_Prompt.md", "00_RULES_DIGEST.md"),
+    ("YUMN_Prompt.md", "05_VERIFICATION_REPORT.md"),
+    ("YUMN_Prompt.md", "LOG.md"),
+    ("YUMN_Prompt.md", "06_HANDOFF.md"),
+    ("YUMN_Prompt.md", "docs/INDEX.md"),
+    ("YUMN_Prompt.md", "PROGRESS.md"),
+    #
+    # Historical vendor-pack quote (1): prompt-012.md (the close-out directive,
+    #   written before the pack was removed) quotes
+    #   delegate-skills-master/CONTRIBUTING.md — that vendor pack was deleted
+    #   from disk after the directive was authored; the directive is session
+    #   history and is never edited post-hoc.
+    ("prompt-012.md", "delegate-skills-master/CONTRIBUTING.md"),
+    #
+    # Dated-evidence quotes (2): consistency-audit.md §4 history rows narrate
+    #   the pre-fix paths they fixed — :144 phase-5 row quotes
+    #   test-cases/README.md (renamed to test-cases-index.md) and :147 phase-8
+    #   row quotes user-fills.md (the misnamed file later corrected to
+    #   user-flows.md). History rows are never rewritten, so the dead paths are
+    #   registered as documented evidence, not live citations.
+    ("docs/20-validation/core/consistency-audit.md", "test-cases/README.md"),
+    ("docs/20-validation/core/consistency-audit.md", "user-fills.md"),
 }
 
 # Backticked tokens that look like file paths.
