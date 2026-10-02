@@ -3,9 +3,9 @@ document_id: DOC-BE-008
 title: Error Handling — Exception Filters, Error Codes & Structured Logging
 category: 06-backend
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: false
 related_requirements: [NFR-001, NFR-007, NFR-014, SEC-REQ-008, SEC-REQ-010, FR-012, FR-013]
@@ -28,7 +28,7 @@ throw (typed exception from service/domain)
       ├─ validation errors    → 400 VALIDATION_ERROR + field map
       └─ unknown error        → 500 INTERNAL_ERROR (opaque) + full log + correlationId
   → structured log (JSON) + metric increment + alert hook (severity-based)
-  → response envelope per 07-api/error-model.md
+  → response envelope per 07-api/core/error-model.md
 ```
 
 | Rule | Detail |
@@ -138,3 +138,4 @@ Metrics emitted alongside logs: per-endpoint RED metrics, error-code counters, p
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-03 | Fence-diagram ref 07-api/error-model.md → `07-api/core/error-model.md` (portal scheme) | Session-011 section-grouping rename follow-up (prompt-013 §2 leftover sweep) — moved-file outbound links / stale pre-portal path claims |

@@ -3,9 +3,9 @@ document_id: DOC-DPL-006
 title: Production Readiness — Go-Live Checklist & Sign-Off
 category: 15-deployment
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: [NFR-005, NFR-006, NFR-014, NFR-016, NFR-019, NFR-020, SEC-REQ-012, DATA-REQ-004, INT-REQ-007, INT-REQ-001, INT-REQ-003]
@@ -18,7 +18,7 @@ The single checklist that must be complete before yumn accepts its first real cu
 
 **How to use:** each row is verified by a named method with a concrete evidence artifact. A row moves to `DONE` only when the evidence exists and is linked. Any `NOT DONE` row blocks launch; the sign-off section below is signed only when every row reads `DONE`.
 
-Status vocabulary: `NOT DONE` · `DONE` · `WAIVED` (waiver requires sponsor + security sign-off and a recorded risk entry in `17-risk-management/risk-register.md`).
+Status vocabulary: `NOT DONE` · `DONE` · `WAIVED` (waiver requires sponsor + security sign-off and a recorded risk entry in `17-risk-management/core/risk-register.md`).
 
 ## 1. Infrastructure
 
@@ -144,3 +144,4 @@ Launch is authorized only when **all 52 rows read `DONE`** (or an explicitly rec
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

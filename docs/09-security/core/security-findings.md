@@ -3,9 +3,9 @@ document_id: DOC-SEC-008
 title: Security Findings Register (SEC-001 … SEC-015)
 category: 09-security
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [SEC-REQ-001, SEC-REQ-003, SEC-REQ-004, SEC-REQ-007, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, SEC-REQ-012]
@@ -14,7 +14,7 @@ related_documents: [DOC-SEC-001, DOC-SEC-002, DOC-SEC-003, DOC-SEC-005, DOC-SEC-
 
 # Security Findings Register
 
-Design-level findings raised while analyzing the yumn architecture against its own canon. **Every finding below is `OPEN`** — none is fixed, mitigated in code, or verified; no implementation exists yet. Findings are discovered by analysis, not by scanning; they complement (and feed) the vulnerability-management process of `SEC-REQ-012` and may be linked to `17-risk-management/risk-register.md` where they threaten objectives.
+Design-level findings raised while analyzing the yumn architecture against its own canon. **Every finding below is `OPEN`** — none is fixed, mitigated in code, or verified; no implementation exists yet. Findings are discovered by analysis, not by scanning; they complement (and feed) the vulnerability-management process of `SEC-REQ-012` and may be linked to `17-risk-management/core/risk-register.md` where they threaten objectives.
 
 **Severity** = impact × likelihood *if the gap is exploited as designed today*. Reclassify only with evidence, bumping the version and adding a Change History row.
 
@@ -166,7 +166,7 @@ Design-level findings raised while analyzing the yumn architecture against its o
 
 1. New findings continue the sequence `SEC-016`…; IDs are never reused, even after closure.
 2. Closure requires: fix or accepted-risk decision, evidence link (test/audit), severity re-check, version bump, Change History row — a finding is never silently deleted.
-3. Findings that threaten objectives are mirrored as `RISK-nnn` entries in `17-risk-management/risk-register.md` (e.g., `SEC-011` ↔ `RISK-006`).
+3. Findings that threaten objectives are mirrored as `RISK-nnn` entries in `17-risk-management/core/risk-register.md` (e.g., `SEC-011` ↔ `RISK-006`).
 4. `SEC-REQ-012` R4 requires recurring reporting of this register by severity with no unjustified suppressions.
 
 ## Change History
@@ -174,3 +174,4 @@ Design-level findings raised while analyzing the yumn architecture against its o
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis (15 findings, all OPEN) |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

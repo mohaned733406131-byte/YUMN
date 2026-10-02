@@ -3,9 +3,9 @@ document_id: DOC-SEC-001
 title: Security Domain — Overview, Posture & File Index
 category: 09-security
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [SEC-REQ-001, SEC-REQ-002, SEC-REQ-003, SEC-REQ-004, SEC-REQ-005, SEC-REQ-006, SEC-REQ-007, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, SEC-REQ-012]
@@ -122,7 +122,7 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 ## 7. Domain Boundaries
 
 **Owned here:** security design, control catalog, RBAC matrix (definitive), secrets policy, encryption design, findings register.
-**Not owned here:** requirement statements and acceptance criteria (`02-requirements/`, `AC-SRnnn-nn`); code-level enforcement placement (`06-backend/`); endpoint contracts (`07-api/`); CI pipeline mechanics (`14-devops-infrastructure/`); test cases (`13-testing/`); risk linkage (`17-risk-management/risk-register.md`, `RISK-nnn`).
+**Not owned here:** requirement statements and acceptance criteria (`02-requirements/`, `AC-SRnnn-nn`); code-level enforcement placement (`06-backend/`); endpoint contracts (`07-api/`); CI pipeline mechanics (`14-devops-infrastructure/`); test cases (`13-testing/`); risk linkage (`17-risk-management/core/risk-register.md`, `RISK-nnn`).
 **Cross-domain contracts:** integration security controls are specified jointly with `10-integrations/` (webhook HMAC, provider secrets, SMS abuse limits) — requirements stay in `02-requirements/`, contracts in `10-integrations/`, security policy here.
 
 ---
@@ -133,3 +133,4 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-SEC-009…DOC-SEC-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

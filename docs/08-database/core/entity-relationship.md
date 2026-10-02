@@ -3,9 +3,9 @@ document_id: DOC-DB-003
 title: Entity-Relationship Register
 category: 08-database
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [DATA-REQ-001, DATA-REQ-008, FR-011, FR-012, NFR-017]
@@ -14,7 +14,7 @@ related_documents: [DOC-DB-001, DOC-DB-002, DOC-DB-005, DOC-BA-005, DOC-SA-010, 
 
 # Entity-Relationship Register
 
-**This document is the register of the data model.** The 18 registered entities (`DB-001…DB-018`) are expanded one-per-file in [`entities/`](../entities-index.md); supporting tables are specified here. FK names follow `fk_<table>_<column>` (DOC-DB-001 §1). Cardinality notation: `1` (exactly one), `0..1` (optional one), `N` (many).
+**This document is the register of the data model.** The 18 registered entities (`DB-001…DB-018`) are expanded one-per-file in [`entities/`](entities-index.md); supporting tables are specified here. FK names follow `fk_<table>_<column>` (DOC-DB-001 §1). Cardinality notation: `1` (exactly one), `0..1` (optional one), `N` (many).
 
 ---
 
@@ -208,10 +208,11 @@ Enforcement stack (in order): schema/column privileges (DOC-DB-005 §6) → repo
 
 ## 5. Reading Order
 
-Entity files: [`../entities-index.md`](../entities-index.md) (DOC-DB-007). Constraints on every relationship above: DOC-DB-005. Index access paths per relationship: DOC-DB-004.
+Entity files: [`entities-index.md`](entities-index.md) (DOC-DB-007). Constraints on every relationship above: DOC-DB-005. Index access paths per relationship: DOC-DB-004.
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

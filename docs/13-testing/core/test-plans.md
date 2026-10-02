@@ -3,9 +3,9 @@ document_id: DOC-TST-003
 title: Test Plans — Executable Verification Plans
 category: 13-testing
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: [NFR-001, NFR-002, NFR-004, NFR-011, NFR-013, SEC-REQ-009, SEC-REQ-011, SEC-REQ-012, DATA-REQ-004, INT-REQ-003, INT-REQ-006]
@@ -16,7 +16,7 @@ related_documents: [DOC-TST-001, DOC-TST-002, DOC-TST-004, DOC-TST-005, DOC-INT-
 
 Executable plans for the yumn verification effort. Methodology (levels, coverage, defect lifecycle) is fixed by [testing-strategy.md](testing-strategy.md); this file defines **what runs, when, and under which entry/exit conditions**. Every plan cites its canon IDs; results are evidence for the quality gates in `../../21-completion/core/quality-gates.md`.
 
-**Defects process (all plans):** failures are filed against the failing TC / `TST-CON-*` / AC ID with severity per [testing-strategy.md](testing-strategy.md) §10. CRITICAL/HIGH block the plan's exit; security defects additionally follow `SEC-REQ-012` (critical ≤ 7 days); anything deferred needs written risk acceptance in `17-risk-management/risk-register.md`.
+**Defects process (all plans):** failures are filed against the failing TC / `TST-CON-*` / AC ID with severity per [testing-strategy.md](testing-strategy.md) §10. CRITICAL/HIGH block the plan's exit; security defects additionally follow `SEC-REQ-012` (critical ≤ 7 days); anything deferred needs written risk acceptance in `17-risk-management/core/risk-register.md`.
 
 ---
 
@@ -174,3 +174,4 @@ Scope: `15-deployment/` release process, `NFR-020`, `DATA-REQ-005`, `AC-NFR-020-
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

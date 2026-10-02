@@ -3,9 +3,9 @@ document_id: DOC-DB-001
 title: Database Domain — Overview and File Index
 category: 08-database
 status: approved
-version: 1.1
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: [DATA-REQ-001, DATA-REQ-002, DATA-REQ-005, DATA-REQ-007, DATA-REQ-008, NFR-017]
@@ -35,7 +35,7 @@ related_documents: [DOC-OVR-002, DOC-OVR-008, DOC-REQ-001, DOC-BA-005, DOC-SA-01
 | Check constraints | `ck_<table>_<rule>` | `ck_order_total_range` |
 | Foreign keys | `fk_<table>_<column>` (applied through Prisma `@relation(map: …)` so `schema.prisma` and the database cannot drift) | `fk_sub_order_order_id` |
 | Enum types | snake_case type name, `SCREAMING_SNAKE_CASE` values | `order_state = 'OUT_FOR_DELIVERY'` |
-| Entity documents | `entities/<table>.md`, frontmatter `entity_id: DB-NNN` | `core/wallet_transaction.md` → `DB-011` |
+| Entity documents | `core/<table>.md`, frontmatter `entity_id: DB-NNN` | `core/wallet_transaction.md` → `DB-011` |
 | Soft delete | `deleted_at timestamptz NULL` where deletion is soft (BR-CAT-06); account deletion is anonymization, not row drop (DATA-REQ-003) | `product.deleted_at` |
 | Append-only tables | `created_at` only — no `updated_at`, `UPDATE`/`DELETE` revoked (§4) | `wallet_transaction`, `order_status_history`, `audit_log` |
 
@@ -84,7 +84,7 @@ related_documents: [DOC-OVR-002, DOC-OVR-008, DOC-REQ-001, DOC-BA-005, DOC-SA-01
 | DOC-DB-004 | [indexes-and-performance.md](core/indexes-and-performance.md) | Table-by-table index list, hot-path justification, N+1 avoidance, partitioning (NFR-017), vacuum, EXPLAIN policy |
 | DOC-DB-005 | [constraints-and-integrity.md](core/constraints-and-integrity.md) | FK rules, CHECK/UNIQUE/exclusion constraints, allowed triggers, append-only enforcement, app vs DB split |
 | DOC-DB-006 | [migrations-and-evolution.md](core/migrations-and-evolution.md) | Prisma Migrate workflow (DATA-REQ-005): branching, expand/contract, seeds, rollback, CI gates |
-| DOC-DB-007 | [entities/README.md](entities-index.md) | Entity index: DB-NNN → file → purpose → owning block |
+| DOC-DB-007 | [core/entities-index.md](core/entities-index.md) | Entity index: DB-NNN → file → purpose → owning block |
 | [`core/`](core/README.md) | DOC-DB-008 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
 | [`admin/`](admin/README.md) | DOC-DB-009 | Admin portal folder — admin-console-specific material (platform operators) |
 | [`vendor/`](vendor/README.md) | DOC-DB-010 | Vendor portal folder — vendor-portal-specific material (sellers) |
@@ -95,24 +95,24 @@ related_documents: [DOC-OVR-002, DOC-OVR-008, DOC-REQ-001, DOC-BA-005, DOC-SA-01
 
 | entity_id | File | Doc ID | Owning schema / block | One-line purpose |
 |---|---|---|---|---|
-| DB-001 | [entities/user.md](core/user.md) | DOC-DBE-001 | `b01` / B01 | Account identity: encrypted phone, password hash, roles, status, locale, deletion markers |
-| DB-002 | [entities/address.md](core/address.md) | DOC-DBE-002 | `b01` / B01 | Customer delivery addresses (≤10), governorate/district, default flag, no GPS |
-| DB-003 | [entities/store.md](core/store.md) | DOC-DBE-003 | `b03` / B03 | Vendor storefront: owner, names, slug, status, KYC, commission tier, hub text, hours |
-| DB-004 | [entities/category.md](core/category.md) | DOC-DBE-004 | `b02` / B02 | Category tree (≤5 levels), bilingual names, per-level unique slugs, position |
-| DB-005 | [entities/product.md](core/product.md) | DOC-DBE-005 | `b02` / B02 | Sellable item: Arabic-first names, price YER, return policy, status, rating denorm, search flags |
-| DB-006 | [entities/inventory.md](core/inventory.md) | DOC-DBE-006 | `b02` / B02 | Stock row per product: on-hand/reserved/available, 15-min reservation TTL, optimistic version |
-| DB-007 | [entities/cart.md](core/cart.md) | DOC-DBE-007 | `b05` / B05 | One active cart per logged-in user; items in `b05.cart_item`; guards per C-15 |
-| DB-008 | [entities/order.md](core/order.md) | DOC-DBE-008 | `b06` / B06 | Master order: order_no, 17-state enum, money columns, wallet-only, sub-orders, state history |
-| DB-009 | [entities/payment.md](core/payment.md) | DOC-DBE-009 | `b07` / B07 | Payment/top-up intents: state machine, wallet-only for orders, idempotency key, provider refs |
-| DB-010 | [entities/wallet.md](core/wallet.md) | DOC-DBE-010 | `b07` / B07 | One wallet per user: balance ≥ 0 (cache of ledger), freeze flag, YER only |
-| DB-011 | [entities/wallet_transaction.md](core/wallet_transaction.md) | DOC-DBE-011 | `b07` / B07 | Append-only double-entry ledger: signed amounts, balance_after, references, idempotency |
-| DB-012 | [entities/escrow.md](core/escrow.md) | DOC-DBE-012 | `b07` / B07 | Per-sub-order hold: funded at PLACED, release_at = DELIVERED + 7 d, commission at release |
-| DB-013 | [entities/shipment.md](core/shipment.md) | DOC-DBE-013 | `b08` / B08 | Delivery execution: courier, delivery-state mirror, hashed 6-digit code, attempt lock, zone text |
-| DB-014 | [entities/return_request.md](core/return_request.md) | DOC-DBE-014 | `b09` / B09 | Return lifecycle: window fields, 72-h inspection due date, evidence, refund link |
-| DB-015 | [entities/review.md](core/review.md) | DOC-DBE-015 | `b02` / B02 | Verified-purchase review: rating 1–5, moderation status, one per order item |
-| DB-016 | [entities/coupon.md](core/coupon.md) | DOC-DBE-016 | `b12` / B12 | Coupon definitions: type/value, ≤90-day window, usage limits, scope, non-stackable |
-| DB-017 | [entities/notification.md](core/notification.md) | DOC-DBE-017 | `b10` / B10 | Outbound message record: 4 channels (no email v1), template, dedup, read state |
-| DB-018 | [entities/audit_log.md](core/audit_log.md) | DOC-DBE-018 | `b13` / B13 | Append-only, hash-chained audit of privileged and money actions |
+| DB-001 | [core/user.md](core/user.md) | DOC-DBE-001 | `b01` / B01 | Account identity: encrypted phone, password hash, roles, status, locale, deletion markers |
+| DB-002 | [core/address.md](core/address.md) | DOC-DBE-002 | `b01` / B01 | Customer delivery addresses (≤10), governorate/district, default flag, no GPS |
+| DB-003 | [core/store.md](core/store.md) | DOC-DBE-003 | `b03` / B03 | Vendor storefront: owner, names, slug, status, KYC, commission tier, hub text, hours |
+| DB-004 | [core/category.md](core/category.md) | DOC-DBE-004 | `b02` / B02 | Category tree (≤5 levels), bilingual names, per-level unique slugs, position |
+| DB-005 | [core/product.md](core/product.md) | DOC-DBE-005 | `b02` / B02 | Sellable item: Arabic-first names, price YER, return policy, status, rating denorm, search flags |
+| DB-006 | [core/inventory.md](core/inventory.md) | DOC-DBE-006 | `b02` / B02 | Stock row per product: on-hand/reserved/available, 15-min reservation TTL, optimistic version |
+| DB-007 | [core/cart.md](core/cart.md) | DOC-DBE-007 | `b05` / B05 | One active cart per logged-in user; items in `b05.cart_item`; guards per C-15 |
+| DB-008 | [core/order.md](core/order.md) | DOC-DBE-008 | `b06` / B06 | Master order: order_no, 17-state enum, money columns, wallet-only, sub-orders, state history |
+| DB-009 | [core/payment.md](core/payment.md) | DOC-DBE-009 | `b07` / B07 | Payment/top-up intents: state machine, wallet-only for orders, idempotency key, provider refs |
+| DB-010 | [core/wallet.md](core/wallet.md) | DOC-DBE-010 | `b07` / B07 | One wallet per user: balance ≥ 0 (cache of ledger), freeze flag, YER only |
+| DB-011 | [core/wallet_transaction.md](core/wallet_transaction.md) | DOC-DBE-011 | `b07` / B07 | Append-only double-entry ledger: signed amounts, balance_after, references, idempotency |
+| DB-012 | [core/escrow.md](core/escrow.md) | DOC-DBE-012 | `b07` / B07 | Per-sub-order hold: funded at PLACED, release_at = DELIVERED + 7 d, commission at release |
+| DB-013 | [core/shipment.md](core/shipment.md) | DOC-DBE-013 | `b08` / B08 | Delivery execution: courier, delivery-state mirror, hashed 6-digit code, attempt lock, zone text |
+| DB-014 | [core/return_request.md](core/return_request.md) | DOC-DBE-014 | `b09` / B09 | Return lifecycle: window fields, 72-h inspection due date, evidence, refund link |
+| DB-015 | [core/review.md](core/review.md) | DOC-DBE-015 | `b02` / B02 | Verified-purchase review: rating 1–5, moderation status, one per order item |
+| DB-016 | [core/coupon.md](core/coupon.md) | DOC-DBE-016 | `b12` / B12 | Coupon definitions: type/value, ≤90-day window, usage limits, scope, non-stackable |
+| DB-017 | [core/notification.md](core/notification.md) | DOC-DBE-017 | `b10` / B10 | Outbound message record: 4 channels (no email v1), template, dedup, read state |
+| DB-018 | [core/audit_log.md](core/audit_log.md) | DOC-DBE-018 | `b13` / B13 | Append-only, hash-chained audit of privileged and money actions |
 
 **Supporting tables** (sub_order, order_item, order_status_history, cart_item, stock_reservation, payout, refund, dispute, session, otp_challenge, user_role, …) have no separate entity document; they are specified inside the ER register (DOC-DB-003) and in the relationship/invariant sections of their aggregate's entity file.
 
@@ -133,3 +133,5 @@ Cross-domain references: requirements `02-requirements/` (esp. DATA-REQ-001…00
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-DB-008…DOC-DB-012) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 1.3 | 2026-10-03 | Entity-doc path claim `entities/<table>.md` → `core/<table>.md`; 19 `entities/<file>.md` contents labels → the actual `core/<file>.md` href targets (hrefs were already correct; no `entities/` folder exists) | Session-011 section-grouping rename follow-up (prompt-013 §2 leftover sweep) — moved-file outbound links / stale pre-portal path claims |

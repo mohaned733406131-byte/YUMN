@@ -3,9 +3,9 @@ document_id: DOC-SEC-002
 title: Threat Model — Assets, Trust Boundaries, STRIDE & Top Threats
 category: 09-security
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [SEC-REQ-001, SEC-REQ-003, SEC-REQ-004, SEC-REQ-005, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, FR-013, FR-015]
@@ -71,7 +71,7 @@ TB-5  External providers ──► inbound webhooks / outbound calls
 | **TM-10** | Promotion/coupon abuse: coupon stacking, over-discount, self-dealing via fake accounts | T, E | TB-1 | One coupon per order, never stack (`BR-PRM-02`); ≤90% discount bound (`BR-PRM-01`); validation before order row exists (`BR-PRM-06`); server-side recompute of totals (`BR-CRT-04`); usage limits per-user/global (`BR-PRM-04`) | `SEC-REQ-004`, `FR-019`, `BR-PRM-01…06` | **MEDIUM residual:** mass-account farming for per-user limits is only throttled by OTP rate limits (`TM-02`); monitoring metric on new-account coupon use |
 | **TM-11** | Bot scalping / automation: inventory grabbing, catalog scraping, quota abuse | D | TB-1 | Rate limits 100 req/min standard, stricter on checkout/top-up (`SEC-REQ-009`); 15-min reservation TTL (`C-13`) bounds hoarding; cart guards (`C-15`) | `SEC-REQ-009`, `C-13`, `C-15`, `FR-010` | **MEDIUM residual:** no bot management/WAF rules beyond `DEP-08` CDN in v1 — accepted for launch, revisit via `SEC-008` register |
 
-> Note: threats are cross-referenced in `security-findings.md` where the design itself leaves an open gap (`SEC-001…SEC-015`), and in `17-risk-management/risk-register.md` where a business risk exists (`RISK-003`, `RISK-006`).
+> Note: threats are cross-referenced in `security-findings.md` where the design itself leaves an open gap (`SEC-001…SEC-015`), and in `17-risk-management/core/risk-register.md` where a business risk exists (`RISK-003`, `RISK-006`).
 
 ## 5. Out-of-Scope Threats (explicitly excluded by canon)
 
@@ -100,3 +100,4 @@ TB-5  External providers ──► inbound webhooks / outbound calls
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

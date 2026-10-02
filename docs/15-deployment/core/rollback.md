@@ -3,9 +3,9 @@ document_id: DOC-DPL-004
 title: Rollback Strategy & Decision Tree
 category: 15-deployment
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-005, NFR-006, NFR-007, NFR-020, DATA-REQ-005, DATA-REQ-004]
@@ -138,7 +138,7 @@ Additional rehearsals: quarterly **restore-from-backup** drill (`DOC-OPS-007` §
 | Inputs | Deploy record, alert timeline, dashboards, log extracts by `requestId`, decision-tree path taken |
 | Questions | Why did the gate not catch it earlier? Was the trigger threshold right? Did the rollback take ≤ 15 min? Was the runbook accurate? |
 | Outputs | Action items with owners; updates to `DOC-DPL-003`/`DOC-DPL-004` if the runbook was wrong; new/adjusted alert if detection was slow; new test case if coverage was missing |
-| Records | Incident entry + release record marked `ROLLED_BACK`; risk register updated if a new exposure appeared (`17-risk-management/risk-register.md`) |
+| Records | Incident entry + release record marked `ROLLED_BACK`; risk register updated if a new exposure appeared (`17-risk-management/core/risk-register.md`) |
 | Sign-off | Incident commander closes; recurring rollback causes escalate to the error-budget freeze policy (`DOC-NFD-004` §2) |
 
 ## 8. Verification
@@ -156,3 +156,4 @@ Additional rehearsals: quarterly **restore-from-backup** drill (`DOC-OPS-007` §
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-DEC-001
 title: Decisions Domain Overview (ADR Governance)
 category: 18-decisions
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-016, NFR-018]
@@ -16,7 +16,7 @@ related_documents: [DOC-ARCH-010, DOC-ARCH-009, DOC-ROOT-001, DOC-RSK-001]
 
 ## 1. Purpose
 
-This domain is the **single home of decisions** for yumn (root README §4): the decision log, and the full Architecture Decision Records under `ADR/`. It is deliberately separate from `04-architecture/architecture-decisions-reference.md` (DOC-ARCH-010), which **reserves the numbering and states rationale summaries only** — per that document, decision *texts* live here and nowhere else. DOC-ARCH-010 §1 records that ADR-002 and ADR-004 are canon-locked (cited by `C-21` and `C-22`).
+This domain is the **single home of decisions** for yumn (root README §4): the decision log, and the full Architecture Decision Records under `core/`. It is deliberately separate from `04-architecture/core/architecture-decisions-reference.md` (DOC-ARCH-010), which **reserves the numbering and states rationale summaries only** — per that document, decision *texts* live here and nowhere else. DOC-ARCH-010 §1 records that ADR-002 and ADR-004 are canon-locked (cited by `C-21` and `C-22`).
 
 **Status at v1.0:** the ten reserved ADRs (ADR-001…ADR-010) are written, reviewed, and `ACCEPTED` (2026-09-26), all authored in the analysis phase before implementation exists. Their decisions bind implementation; their compliance sections are the checklist that `13-testing/` constraint tests and `20-validation/` audits verify against.
 
@@ -32,7 +32,7 @@ This domain is the **single home of decisions** for yumn (root README §4): the 
 
 Lifecycle rules (mirrors DOC-ARCH-010 §7):
 
-1. Draft `ADR/ADR-NNN.md` using a **reserved** number from DOC-ARCH-010 §1 (or the next free number ≥ 011 for new decisions).
+1. Draft `core/ADR-NNN.md` using a **reserved** number from DOC-ARCH-010 §1 (or the next free number ≥ 011 for new decisions).
 2. Review checks: constraint compliance (`C-01…C-26`), at least three alternatives with rejection reasons, consequences incl. linked `RISK-*`, and the list of documents to update.
 3. Acceptance flips the status **in both** the ADR and DOC-ARCH-010 §1; both records bump version with a Change History row (root README §9 — no silent changes).
 4. Every document impacted by the decision is listed in the ADR's compliance/related sections and propagated; the change set is recorded in `../20-validation/core/consistency-audit.md`.
@@ -43,12 +43,12 @@ Lifecycle rules (mirrors DOC-ARCH-010 §7):
 1. **ADR numbers are stable and never reused.** A superseded ADR keeps its file and number; the replacement takes the **next free number** and references the old one (`supersedes` in its header).
 2. **`ADR-002` and `ADR-004` are canon-locked** — their numbers are cited in `00-project-overview/project-constraints.md`; any rewrite must keep those numbers.
 3. **`ADR-001…ADR-010` are reserved titles** (DOC-ARCH-010 §1); no other decision may take them. This domain has now written all ten, matching those titles exactly.
-4. **Future decisions start at `ADR-011`** (candidates: DOC-ARCH-010 §4 and §"Reserved for future ADRs" in `decision-log.md`).
-5. Filename convention: `ADR/ADR-NNN.md`, zero-padded three digits; `document_id: DOC-ADR-NNN`; primary identifier is the content (filename exception in root README §5 does not apply — these are kebab-case-free by convention because the ID *is* the filename stem).
+4. **Future decisions start at `ADR-011`** (candidates: DOC-ARCH-010 §4 and §"Reserved for future ADRs" in `core/decision-log.md`).
+5. Filename convention: `core/ADR-NNN.md`, zero-padded three digits; `document_id: DOC-ADR-NNN`; primary identifier is the content (filename exception in root README §5 does not apply — these are kebab-case-free by convention because the ID *is* the filename stem).
 
 ## 4. Decisions Without an ADR
 
-Not every decision warrants a full record. Small, domain-level decisions are captured **inline in `decision-log.md` §2** ("Decisions Without ADR") with: ID (`D-NN`), title, rationale, and where the decision is defined (the source-of-truth document). Examples already in canon: integer YER money representation, Arabic-Indic numeral display, no email channel in v1, the 48-hour return-approval SLA, the cursor-vs-offset pagination split, the no-MFA-in-v1 stance, the single human support hub, and the UUID v7 / singular `snake_case` database conventions.
+Not every decision warrants a full record. Small, domain-level decisions are captured **inline in `core/decision-log.md` §2** ("Decisions Without ADR") with: ID (`D-NN`), title, rationale, and where the decision is defined (the source-of-truth document). Examples already in canon: integer YER money representation, Arabic-Indic numeral display, no email channel in v1, the 48-hour return-approval SLA, the cursor-vs-offset pagination split, the no-MFA-in-v1 stance, the single human support hub, and the UUID v7 / singular `snake_case` database conventions.
 
 **Promotion rule:** an inline decision that (a) shapes architecture or (b) conflicts with a future change must be promoted to a full ADR (taking the next free number ≥ 011) and its inline entry then points to the ADR. Conversely, a constraint-backed decision (`C-01…C-26`) is never re-decided here — constraints outrank ADRs.
 
@@ -57,7 +57,7 @@ Not every decision warrants a full record. Small, domain-level decisions are cap
 | # | File | Document ID | Content |
 |---|---|---|---|
 | 1 | `README.md` | DOC-DEC-001 | This overview: lifecycle, numbering, index |
-| 2 | `decision-log.md` | DOC-DEC-002 | Chronological log of ADR-001…ADR-010, inline decisions `D-01…D-10`, future ADR candidates |
+| 2 | `core/decision-log.md` | DOC-DEC-002 | Chronological log of ADR-001…ADR-010, inline decisions `D-01…D-10`, future ADR candidates |
 | 3 | `core/ADR-001.md` | DOC-ADR-001 | PostgreSQL 16 as the sole relational database |
 | 4 | `core/ADR-002.md` | DOC-ADR-002 | Modular monolith instead of microservices |
 | 5 | `core/ADR-003.md` | DOC-ADR-003 | NestJS 10 as the backend framework |
@@ -84,3 +84,4 @@ Header (`# ADR-NNN: <reserved title>`) → **Status table** (Status, Date, Decid
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-DEC-003…DOC-DEC-007) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-02 | Stale paths fix: `ADR/` → `core/`, bare `decision-log.md` → `core/decision-log.md`, ADR reference doc path → added missing `core/` segment under `04-architecture/` (all re-verified on disk) | Session-013 phase-8 fix wave (prompt-013 §3 wave A) + section-grouping migration refs |

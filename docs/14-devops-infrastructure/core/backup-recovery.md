@@ -3,9 +3,9 @@ document_id: DOC-OPS-007
 title: Backup & Recovery Execution (DATA-REQ-004)
 category: 14-devops-infrastructure
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [DATA-REQ-004, NFR-006, NFR-005, DATA-REQ-003, DATA-REQ-007, SEC-REQ-006, SEC-REQ-007]
@@ -14,7 +14,7 @@ related_documents: [DOC-DR-004, DOC-DTA-005, DOC-NFD-004, DOC-SEC-005, DOC-OPS-0
 
 # Backup & Recovery — Execution of DATA-REQ-004
 
-Requirement, acceptance criteria and RPO/RTO numbers live in [`../../02-requirements/core/DATA-REQ-004.md`](../../02-requirements/core/DATA-REQ-004.md) (`RTO ≤ 1 h`, `RPO ≤ 15 min`, `NFR-006`, `C-26`); retention windows live in `../../16-data/core/retention-and-archival.md` (`RC-09`). This document is **how** the jobs run, where copies go, how restore works, and how the drill proves it.
+Requirement, acceptance criteria and RPO/RTO numbers live in [`../../02-requirements/data/core/DATA-REQ-004.md`](../../02-requirements/data/core/DATA-REQ-004.md) (`RTO ≤ 1 h`, `RPO ≤ 15 min`, `NFR-006`, `C-26`); retention windows live in `../../16-data/core/retention-and-archival.md` (`RC-09`). This document is **how** the jobs run, where copies go, how restore works, and how the drill proves it.
 
 ## 1. Backup Matrix by Store
 
@@ -151,3 +151,4 @@ Preconditions: disaster declared, clean Docker host ready, images and env files 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-RSK-004
 title: Risk Review Process (Governance)
 category: 17-risk-management
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-014, FR-020]
@@ -85,7 +85,7 @@ Escalation never happens by implication: the escalation is a written record (reg
 | Question | What design defect exists today? | What future event could harm an objective, and how bad? |
 | Severity meaning | Exploitability/impact *if the gap is exploited as designed today* | Probability × Impact on project objectives |
 | Scope | Security only | All eight categories (DOC-RSK-001 §2) |
-| Lives in | `../../09-security/core/security-findings.md` | `17-risk-management/risk-register.md` |
+| Lives in | `../../09-security/core/security-findings.md` | `17-risk-management/core/risk-register.md` |
 
 **Screening rule (finding → risk):** every finding is screened at the monthly review; it *feeds* (mirrors into) a register entry **when it threatens a project objective or critical path**, not merely when it is severe. Worked examples from canon: `SEC-011` (uncontracted sole auth channel) ↔ `RISK-006`; `SEC-002`/`SEC-015` (immutability, escrow TOCTOU) feed `RISK-001`. A HIGH finding may feed a risk that is already registered — the finding adds a *trigger*, not a duplicate. Closure of a finding does not auto-close a risk (and vice versa); each is closed on its own evidence.
 
@@ -140,3 +140,4 @@ Gate 0 is the strictest: RISK-006 (`DEP-06`) and RISK-012 (`DEP-10`) are blockin
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-ARCH-001
 title: 04 Architecture — README
 category: 04-architecture
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-003, NFR-005, NFR-009, NFR-018]
@@ -33,7 +33,7 @@ It is the entry point for architects and developers (root README §3) and the so
 | [data-flow.md](core/data-flow.md) | DOC-ARCH-007 | TECHNICAL data flow: request path, BullMQ async paths, caching layers, event flow, storage — counterpart to `../03-system-analysis/core/data-flow.md` |
 | [scalability.md](core/scalability.md) | DOC-ARCH-008 | How the architecture meets `C-25` (10,000 concurrent) and `NFR-003`/`NFR-018`: read scaling, caching, pooling, statelessness, ES offload, scale-out path without K8s |
 | [technology-stack.md](core/technology-stack.md) | DOC-ARCH-009 | Full stack register: layer, technology, version, rationale, constraint reference, alternatives considered |
-| [architecture-decisions-reference.md](architecture-decisions-reference.md) | DOC-ARCH-010 | Index of architectural decisions (`ADR-001…ADR-010`) with rationale summaries, each pointing to its ADR in `18-decisions/core/` |
+| [architecture-decisions-reference.md](core/architecture-decisions-reference.md) | DOC-ARCH-010 | Index of architectural decisions (`ADR-001…ADR-010`) with rationale summaries, each pointing to its ADR in `18-decisions/core/` |
 | [`core/`](core/README.md) | DOC-ARCH-011 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
 | [`admin/`](admin/README.md) | DOC-ARCH-012 | Admin portal folder — admin-console-specific material (platform operators) |
 | [`vendor/`](vendor/README.md) | DOC-ARCH-013 | Vendor portal folder — vendor-portal-specific material (sellers) |
@@ -46,7 +46,7 @@ It is the entry point for architects and developers (root README §3) and the so
 - **Container inventory and communication** — `container-view.md` (DOC-ARCH-003).
 - **Deployment topology** — `deployment-view.md` (DOC-ARCH-005).
 - **Stack register** — `technology-stack.md` (DOC-ARCH-009).
-- **ADR index** — `architecture-decisions-reference.md` (DOC-ARCH-010); individual ADR texts live only in `18-decisions/core/`.
+- **ADR index** — `core/architecture-decisions-reference.md` (DOC-ARCH-010); individual ADR texts live only in `18-decisions/core/`.
 
 Behavior, rules and requirement definitions are **not** redefined here — they are referenced by ID from `03-system-analysis/`, `01-business-analysis/business-rules.md` (DOC-BA-005) and `02-requirements/requirements-overview.md` (DOC-REQ-001).
 
@@ -67,14 +67,14 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 | Kind | Pattern | Example | Defined in |
 |---|---|---|---|
 | Documents | `DOC-ARCH-NNN` | DOC-ARCH-007 | frontmatter of each file |
-| Decisions | `ADR-NNN` | ADR-004 | `architecture-decisions-reference.md`, authored in `18-decisions/core/` |
+| Decisions | `ADR-NNN` | ADR-004 | `core/architecture-decisions-reference.md`, authored in `18-decisions/core/` |
 | Containers | `CNT-NN` | CNT-03 | `container-view.md` |
 | Modules | module name = block (`B01…B13`) | `OrderModule` = B06 | `component-view.md` |
 | Compose services | kebab-case service names | `api`, `worker`, `postgres` | `deployment-view.md` |
 | Queues | `{block}.{entity}.{action}` | `b07.escrow.release` | `../06-backend/core/background-processing.md` §1 (rule `BR-PLT-01`) — single queue register |
-| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/endpoints-index.md` — 14 groups, 221 endpoints |
-| Database entities | `DB-NNN` in schemas `b01…b13` | `b06` orders schema | registry `../08-database/entities-index.md` — `DB-001…DB-018` |
-| Test cases | `TC-NNN` | `TC-104` | registry `../13-testing/test-cases-index.md` — `TC-001…TC-114`; this directory references load/resilience scenarios by `NFR-*` instead |
+| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/core/endpoints-index.md` — 14 groups, 221 endpoints |
+| Database entities | `DB-NNN` in schemas `b01…b13` | `b06` orders schema | registry `../08-database/core/entities-index.md` — `DB-001…DB-018` |
+| Test cases | `TC-NNN` | `TC-104` | registry `../13-testing/core/test-cases-index.md` — `TC-001…TC-114`; this directory references load/resilience scenarios by `NFR-*` instead |
 
 ## Quality Rules for This Directory
 
@@ -118,5 +118,6 @@ Behavior, rules and requirement definitions are **not** redefined here — they 
 | 1.1 | 2026-09-27 | Registry stub rows replaced: the three stale `07-api/`/`08-database/`/`13-testing/` registry stub rows now point at the real registries with paths, ID ranges and real examples (`API-WAL-003`, `DB-001…DB-018`, `TC-001…TC-114`) | `REC-08`/`TD-09` pay-down — stale stubs caused the stop-or-invent-ID failure mode root README §5 forbids |
 | 1.2 | 2026-09-27 | Queues row: example corrected (`b07.wallet.topup` → `b07.escrow.release`) and Defined-in repointed from `data-flow.md` to the single queue register `../06-backend/core/background-processing.md` §1 | `REC-06`/`TD-07` pay-down — register ownership per `naming-conventions.md` §3 |
 | 1.3 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-ARCH-011…DOC-ARCH-015) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.4 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
 
 

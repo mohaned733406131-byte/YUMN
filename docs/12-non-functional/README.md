@@ -3,9 +3,9 @@ document_id: DOC-NFD-001
 title: Non-Functional Detail Domain — Overview, Method & Target Dashboard
 category: 12-non-functional
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-001, NFR-002, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-008, NFR-009, NFR-010, NFR-011, NFR-012, NFR-013, NFR-014, NFR-015, NFR-016, NFR-017, NFR-018, NFR-019, NFR-020]
@@ -24,7 +24,7 @@ This domain **elaborates** the 20 non-functional requirements (`NFR-001…NFR-02
 02-requirements/core/NFR-nnn.md      "WHAT must hold"  (statement, rationale, AC refs)
         │
         ▼
-12-non-functional/<domain>.md                  "HOW it holds at scale" (thresholds, budgets,
+12-non-functional/core/<domain>.md                  "HOW it holds at scale" (thresholds, budgets,
         │                                       mechanisms, policies, tooling, degradation)
         ▼
 02-requirements/acceptance-criteria.md          "PASS/FAIL" (AC-NFR-nnn-nn, binary)
@@ -114,3 +114,4 @@ One row per NFR — headline target only (the canonical statement remains `DOC-R
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-NFD-010…DOC-NFD-014) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-03 | Fence flow-diagram ref +`core/` segment: `12-non-functional/<domain>.md` → `12-non-functional/core/<domain>.md` (all 9 NFR-domain docs live in `core/`) | Session-011 section-grouping rename follow-up (prompt-013 §2 leftover sweep) — moved-file outbound links / stale pre-portal path claims |

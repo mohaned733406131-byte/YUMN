@@ -3,9 +3,9 @@ document_id: DOC-NFD-004
 title: Reliability Detail — Availability Math, Degradation Matrix & Integrity Standards
 category: 12-non-functional
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: [NFR-005, NFR-006, NFR-007, NFR-008, NFR-020, NFR-019, INT-REQ-001, INT-REQ-003, INT-REQ-006]
@@ -55,7 +55,7 @@ Detection/recovery bounds: **MTTD ≤ 1 min** (2 consecutive failed probes → a
 | Deployment host | **Docker Compose on one host (`C-22`)** | **residual risk vs `C-26`: no HA failover for the host itself.** 99.99% then depends on host reliability + fast restore. Honest position: process-level failures meet the SLO; host-level failure is mitigated by RTO/RPO, not eliminated. Multi-host HA is a post-v1 decision requiring an ADR and a `C-22` scope amendment |
 | DNS/TLS/CDN | `DEP-08` edge in front | edge absorbs static outage; origin outage still counts |
 
-This residual risk is recorded (not hidden) — candidate for `17-risk-management/risk-register.md` if not already covered, and for sponsor discussion at Gate 0.
+This residual risk is recorded (not hidden) — candidate for `17-risk-management/core/risk-register.md` if not already covered, and for sponsor discussion at Gate 0.
 
 ## 4. Failure Domains & Graceful Degradation Matrix
 
@@ -138,3 +138,4 @@ Cadence: drills 1–6 monthly (automated where possible), 7 quarterly (`DATA-REQ
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

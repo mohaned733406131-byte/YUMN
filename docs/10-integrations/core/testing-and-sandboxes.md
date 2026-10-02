@@ -3,9 +3,9 @@ document_id: DOC-INT-008
 title: Integration Testing Strategy — Sandboxes, Contract Tests & Go-Live
 category: 10-integrations
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: [INT-REQ-001, INT-REQ-002, INT-REQ-003, INT-REQ-004, INT-REQ-005, INT-REQ-006, INT-REQ-007, INT-REQ-008]
@@ -126,7 +126,7 @@ Proof is enforced, not assumed: architecture lint (`AC-IR008-01`), substitution 
 |---|---|
 | `SEC-011` | `DEP-06` uncontracted — the whole SMS/WhatsApp test plan is blocked until it opens |
 | `SEC-005` | replay-window parameters must be pinned before webhook drills are meaningful |
-| `RISK-003` / `RISK-006` | provider commercial risks tracked in `17-risk-management/risk-register.md` |
+| `RISK-003` / `RISK-006` | provider commercial risks tracked in `17-risk-management/core/risk-register.md` |
 | `GAP` registry | provider API specifics pending `DEP-05` documentation access (`../../20-validation/core/missing-information.md`) |
 
 ## Change History
@@ -134,3 +134,4 @@ Proof is enforced, not assumed: architecture lint (`AC-IR008-01`), substitution 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

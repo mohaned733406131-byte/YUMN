@@ -3,9 +3,9 @@ document_id: DOC-OPS-008
 title: Single-Host Hardening & Vulnerability Management
 category: 14-devops-infrastructure
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [SEC-REQ-006, SEC-REQ-007, SEC-REQ-012, SEC-REQ-009, NFR-016]
@@ -151,7 +151,7 @@ This document **hardens** the host; it does not define incident process.
 |---|---|
 | Runbooks for the top-10 operational incidents (symptom → diagnosis → mitigation → escalation) | `../../12-non-functional/core/observability.md` §7 |
 | Availability math, error-budget policy, degradation matrix, game-day drills | `../../12-non-functional/core/reliability.md` §2, §4, §8 |
-| Risk register (incl. RISK-005 small-team-vs-99.99%, RISK-014 edge/DNS) | `17-risk-management/risk-register.md` |
+| Risk register (incl. RISK-005 small-team-vs-99.99%, RISK-014 edge/DNS) | `17-risk-management/core/risk-register.md` |
 | Secret-leak rotation runbook | `../../09-security/core/secrets-management.md` §7 |
 | Backup/restore under disaster | `backup-recovery.md` §6 |
 | Rollback decision tree | `../../15-deployment/core/rollback.md` |
@@ -190,3 +190,4 @@ Host-specific escalation inputs: P1 alerts from `DOC-OPS-006` §4 page the on-ca
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

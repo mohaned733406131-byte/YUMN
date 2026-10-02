@@ -3,9 +3,9 @@ document_id: DOC-OPS-004
 title: CI/CD Pipelines (GitHub Actions)
 category: 14-devops-infrastructure
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-010, SEC-REQ-007, SEC-REQ-012, DATA-REQ-005, AC-S-08, AC-S-09]
@@ -126,7 +126,7 @@ feature branch ──PR──► ci.yml (all required checks) ──approve/merg
                                                                  build+push versioned images
                                                                  → GitHub Environment "production"
                                                                  → reviewer approval (ADMIN)
-                                                                 → 15-deployment/deployment-process.md runbook
+                                                                 → 15-deployment/core/deployment-process.md runbook
 ```
 
 - **Staging deploys automatically on every merge to `main`.**
@@ -158,3 +158,4 @@ feature branch ──PR──► ci.yml (all required checks) ──approve/merg
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-03 | Fence runbook ref +`core/` segment: 15-deployment/deployment-process.md → `15-deployment/core/…` | Session-011 section-grouping rename follow-up (prompt-013 §2 leftover sweep) — moved-file outbound links / stale pre-portal path claims |

@@ -3,9 +3,9 @@ document_id: DOC-RSK-001
 title: Risk Management Domain Overview
 category: 17-risk-management
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-008, NFR-014, FR-020]
@@ -18,7 +18,7 @@ related_documents: [DOC-OVR-003, DOC-OVR-009, DOC-OVR-010, DOC-ROOT-001, DOC-SEC
 
 This domain owns the **canonical risk register (`RISK-NNN`)** for yumn: how risks are categorized, scored, responded to, reviewed, and escalated. It is the single source of truth for risk IDs (root README §5); every other document that mentions a risk must reference the ID, never restate or re-score it.
 
-**Honest status note (read first):** yumn is at `ANALYZED (pre-implementation)` status. **Nothing is implemented yet.** No mitigation below exists in code, infrastructure, or contracts — every mitigation is a *plan* with an owner and a phase. Consequently **all 24 register entries are `OPEN`**, all security findings (`SEC-001…SEC-015`) are `OPEN`, and every mitigation success metric is a *target to be proven*, not an achieved state. No risk may be shown as `MITIGATED`/`CLOSED` until evidence (test, drill, contract, sign-off) is linked from `risk-register.md` per `risk-review-process.md` §5.
+**Honest status note (read first):** yumn is at `ANALYZED (pre-implementation)` status. **Nothing is implemented yet.** No mitigation below exists in code, infrastructure, or contracts — every mitigation is a *plan* with an owner and a phase. Consequently **all 24 register entries are `OPEN`**, all security findings (`SEC-001…SEC-015`) are `OPEN`, and every mitigation success metric is a *target to be proven*, not an achieved state. No risk may be shown as `MITIGATED`/`CLOSED` until evidence (test, drill, contract, sign-off) is linked from `core/risk-register.md` per `risk-review-process.md` §5.
 
 ## 2. Risk Taxonomy
 
@@ -81,7 +81,7 @@ Ranking rule used everywhere in this domain (summary order, "top N" selections, 
 | **Transfer** | Another party bears the impact (contract, provider SLA, professional advice) | RISK-003 (provider SLAs + bank-transfer fallback `BR-PAY-04`); RISK-004/RISK-020 (legal opinions `DEP-09`) |
 | **Accept** | Cost of mitigation exceeds expected loss; monitored with a stated trigger | RISK-024 (competitive response — monitor only); residual tails of RISK-009/RISK-021 |
 
-A register row states one **primary** strategy; contingency plans (in `risk-register.md`) always exist regardless of strategy, because acceptance of a probability is not acceptance of an unmanaged impact.
+A register row states one **primary** strategy; contingency plans (in `core/risk-register.md`) always exist regardless of strategy, because acceptance of a probability is not acceptance of an unmanaged impact.
 
 ## 5. Review Cadence
 
@@ -99,7 +99,7 @@ Participants, update rules, escalation thresholds, burndown reporting, and ID-al
 | # | File | Document ID | Content |
 |---|---|---|---|
 | 1 | `README.md` | DOC-RSK-001 | This overview: taxonomy, scoring, strategies, cadence |
-| 2 | `risk-register.md` | DOC-RSK-002 | **Canonical register `RISK-001…RISK-024`** — summary table + per-risk detail |
+| 2 | `core/risk-register.md` | DOC-RSK-002 | **Canonical register `RISK-001…RISK-024`** — summary table + per-risk detail |
 | 3 | `mitigation-plans.md` | DOC-RSK-003 | Phased plans, controls, kill criteria and metrics for the top 8 risks by score |
 | 4 | `risk-review-process.md` | DOC-RSK-004 | Governance: cadence, update rules, escalation, phase gates, ID allocation, finding/gap linkage |
 | [`core/`](core/README.md) | DOC-RSK-005 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
@@ -120,3 +120,4 @@ Participants, update rules, escalation thresholds, burndown reporting, and ID-al
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-RSK-005…DOC-RSK-009) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

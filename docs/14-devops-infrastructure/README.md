@@ -3,9 +3,9 @@ document_id: DOC-OPS-001
 title: DevOps & Infrastructure — README (14-devops-infrastructure Index)
 category: 14-devops-infrastructure
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-005, NFR-006, NFR-014, NFR-016, NFR-017, NFR-020, DATA-REQ-004, INT-REQ-007, SEC-REQ-007, SEC-REQ-012]
@@ -112,12 +112,12 @@ Totals: 13 defined services; production runs 12 (no `sms-sink`); local dev runs 
 | Secrets classes, storage model, rotation cadence, access matrix | `../09-security/core/secrets-management.md` | `env_file` wiring, `.gitignore` hygiene, CI secret scan job (`configuration.md`, `ci-cd.md`) |
 | Vulnerability SLAs, scan gates | `../02-requirements/core/SEC-REQ-012.md`, `../09-security/core/security-controls.md` (`SEC-C-23/24`) | Workflow steps, image scans, Dependabot/Renovate cadence (`ci-cd.md`, `host-hardening.md`) |
 | Backup classes, retention windows `RC-01…RC-09`, residual window | `../16-data/core/retention-and-archival.md` §3–§5 | Job scripts, storage layout, restore runbook (`backup-recovery.md`) |
-| RTO ≤ 1 h / RPO ≤ 15 min, drill acceptance | `../02-requirements/core/DATA-REQ-004.md`, `NFR-006` | Execution of WAL archiving + quarterly drill (`backup-recovery.md`) |
+| RTO ≤ 1 h / RPO ≤ 15 min, drill acceptance | `../02-requirements/data/core/DATA-REQ-004.md`, `NFR-006` | Execution of WAL archiving + quarterly drill (`backup-recovery.md`) |
 | Topology contract (services, networks, volumes, restart, degraded mode) | `../04-architecture/core/deployment-view.md` | Actual Compose YAML realizing that contract (`docker-compose.md`) |
 | Stack versions and rejected alternatives | `../04-architecture/core/technology-stack.md` | Pinned tags and base-image policy (`docker-compose.md`, `build-and-release.md` in `15-deployment/`) |
 | Migration ordering, expand/contract, forward-only | `../08-database/core/migrations-and-evolution.md` | `migrate` one-shot job placement (`deployment-process.md` in `15-deployment/`) |
 | Degradation behaviour (ES down ⇒ browse works, etc.) | `../10-integrations/core/integration-overview.md` §3–§4, `../12-non-functional/core/reliability.md` §4 | Readiness policy that refuses to fail on ES (`health-checks.md` in `15-deployment/`) |
-| Risks RISK-005 (small team vs 99.99%), RISK-014 (edge/DNS) | `17-risk-management/risk-register.md` | Operational mitigations executed here |
+| Risks RISK-005 (small team vs 99.99%), RISK-014 (edge/DNS) | `17-risk-management/core/risk-register.md` | Operational mitigations executed here |
 
 ## 5. Governing Principles
 
@@ -144,3 +144,4 @@ Totals: 13 defined services; production runs 12 (no `sms-sink`); local dev runs 
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-OPS-009…DOC-OPS-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-UX-001
 title: UI/UX Domain — Overview, Design Principles & File Index
 category: 11-ui-ux
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-011, NFR-012, NFR-013, FR-001, FR-010, FR-011, FR-013, FR-015, FR-017, FR-019, FR-020]
@@ -99,8 +99,8 @@ Keyboard order, focus visibility, contrast and screen-reader semantics are speci
 ```text
 01-business-analysis (UC/WF/BR) ──► 11-ui-ux (flows, states, screens) ──► 05-frontend (code)
 02-requirements (FR/NFR)        ──► 11-ui-ux (design intent)          ──► 13-testing (UX checks)
-11-ui-ux/design-system.md       ──► DEP-11 brand tokens (feeds frontend build)
-11-ui-ux/accessibility.md       ──► checklist executed by 13-testing + NFR-011 measurement in 12-non-functional
+11-ui-ux/core/design-system.md       ──► DEP-11 brand tokens (feeds frontend build)
+11-ui-ux/core/accessibility.md       ──► checklist executed by 13-testing + NFR-011 measurement in 12-non-functional
 ```
 
 - **Upstream inputs (read, never modified here):** `DOC-REQ-001` (FR/NFR IDs), `DOC-BA-005` (BR IDs), `DOC-OVR-008` (C-01…C-26), `DOC-UC-000` / `DOC-WF-001` (flows), `DOC-SA-010` (17 states), `DOC-AC-001` (AC IDs).
@@ -124,3 +124,4 @@ A screen is design-complete only when it has: (a) an IA location and URL (`DOC-U
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-UX-009…DOC-UX-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-03 | Fence-diagram refs +`core/` segment: `11-ui-ux/{design-system,accessibility}.md` → `11-ui-ux/core/…` | Session-011 section-grouping rename follow-up (prompt-013 §2 leftover sweep) — moved-file outbound links / stale pre-portal path claims |

@@ -3,9 +3,9 @@ document_id: DOC-TST-002
 title: Testing Strategy — Verification Methodology (Methodology §47)
 category: 13-testing
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-001, NFR-009, NFR-010, NFR-011, NFR-013, SEC-REQ-012, DATA-REQ-008]
@@ -14,7 +14,7 @@ related_documents: [DOC-TST-001, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-REQ-
 
 # Testing Strategy — Verification Methodology
 
-**Source of truth for how yumn is verified.** This is the Verification Strategy of the analysis methodology (§47) expanded for this project: scope, test levels, coverage targets, automation policy, environments, Arabic/RTL testing, defect lifecycle, entry/exit criteria, regression, and explicit non-goals. Executable detail lives in [test-plans.md](test-plans.md); case detail in [`test-cases/`](../test-cases-index.md).
+**Source of truth for how yumn is verified.** This is the Verification Strategy of the analysis methodology (§47) expanded for this project: scope, test levels, coverage targets, automation policy, environments, Arabic/RTL testing, defect lifecycle, entry/exit criteria, regression, and explicit non-goals. Executable detail lives in [test-plans.md](test-plans.md); case detail in [`test-cases/`](test-cases-index.md).
 
 ---
 
@@ -149,7 +149,7 @@ Flakiness is treated as a defect class: no test depends on wall-clock time (time
 | **LOW** | Cosmetic, minor copy, non-blocking UX | label overflow in `ar` at 320 px | backlog |
 | **INFORMATIONAL** | Observation, tech-debt note, test gap | duplicate assertion in suite | backlog |
 
-- Severity scale matches the project-wide finding classes (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`, root README §8) used by `../../09-security/core/security-findings.md` (`SEC-nnn`) and the risk severity classes in `17-risk-management/risk-register.md` (`RISK-nnn`).
+- Severity scale matches the project-wide finding classes (`CRITICAL · HIGH · MEDIUM · LOW · INFORMATIONAL`, root README §8) used by `../../09-security/core/security-findings.md` (`SEC-nnn`) and the risk severity classes in `17-risk-management/core/risk-register.md` (`RISK-nnn`).
 - **States:** NEW → TRIAGED → IN_PROGRESS → FIXED → VERIFY → CLOSED / DEFERRED (with risk acceptance) / REJECTED (not a defect, with reason).
 - **Release gate:** zero open CRITICAL/HIGH (`AC-S-07`). Security defects follow `SEC-REQ-012`: critical vulnerabilities fixed ≤ 7 days.
 - Every defect references the failing TC / `TST-CON-*` / AC ID; closure requires re-run evidence.
@@ -191,3 +191,4 @@ Every TC cites its `FR/NFR/SEC-REQ/DATA-REQ/INT-REQ`, `BR-*`, `C-*` and `AC-*` I
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | §2.1 unit-scope count sync: 99 → **104 `BR-*`** | BR-count propagation catch-up (session 008 close) — consumer of `business-rules.md` v1.1 (`BR-INV-01…05` registered; root README §9.4) |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

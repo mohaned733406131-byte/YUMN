@@ -3,9 +3,9 @@ document_id: DOC-NFD-009
 title: Accessibility — Measurable Targets & Verification
 category: 12-non-functional
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: [NFR-011, NFR-012, NFR-013]
@@ -100,7 +100,7 @@ Severity mapping reuses the project scale (`DOC-TST-002` §10) and the axe→def
 | minor/cosmetic | **LOW** | backlog | non-blocking |
 
 - States, ownership and closure evidence follow `DOC-TST-002` §10 (NEW → TRIAGED → … → CLOSED; closure requires a re-run of the failing check).
-- **Waivers:** any deferred a11y defect needs written risk acceptance in `17-risk-management/risk-register.md`, naming the AC it delays, the affected surface and a remediation date; a waiver **expires** at the earlier of 90 days or the next minor release (`INFERENCE`), then either re-waived explicitly or the defect re-enters the blocking state. Silent suppressions in scan output are forbidden (pattern of `AC-SR012-04`).
+- **Waivers:** any deferred a11y defect needs written risk acceptance in `17-risk-management/core/risk-register.md`, naming the AC it delays, the affected surface and a remediation date; a waiver **expires** at the earlier of 90 days or the next minor release (`INFERENCE`), then either re-waived explicitly or the defect re-enters the blocking state. Silent suppressions in scan output are forbidden (pattern of `AC-SR012-04`).
 - Accessibility regressions are release blockers by canon (`DOC-UX-006` §8.5).
 
 ## 7. Arabic / RTL Accessibility Specifics
@@ -141,3 +141,4 @@ Design rules live in `../../11-ui-ux/core/localization.md` (`DOC-UX-007`) and `.
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

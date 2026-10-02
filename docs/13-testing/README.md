@@ -3,9 +3,9 @@ document_id: DOC-TST-001
 title: 13 Testing — Domain Overview & Test Case Index
 category: 13-testing
 status: approved
-version: 1.3
+version: 1.4
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -82,8 +82,8 @@ The pyramid is deliberately **unit-heavy**: `NFR-010` requires all business logi
 | [test-plans.md](core/test-plans.md) | DOC-TST-003 | Executable plans: per-domain, performance, security, chaos, a11y, localization, mobile, migration | no |
 | [constraint-tests.md](core/constraint-tests.md) | DOC-TST-004 | **Canonical register `TST-CON-01…TST-CON-26`** — one test per `C-01…C-26` | yes |
 | [test-data-and-environments.md](core/test-data-and-environments.md) | DOC-TST-005 | Environment matrix, fixtures, PII masking policy for non-prod | no |
-| [test-cases/README.md](test-cases-index.md) | DOC-TST-006 | TC layer anatomy, locked range table, coverage summary | no |
-| `test-cases/TC-NNN.md` | `DOC-TC-NNN` | 114 individual test cases (`TC-001`…`TC-114`) | no |
+| [test-cases-index.md](core/test-cases-index.md) | DOC-TST-006 | TC layer anatomy, locked range table, coverage summary | no |
+| `core/TC-NNN.md` | `DOC-TC-NNN` | 114 individual test cases (`TC-001`…`TC-114`) | no |
 | [`core/`](core/README.md) | DOC-TST-007 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
 | [`admin/`](admin/README.md) | DOC-TST-008 | Admin portal folder — admin-console-specific material (platform operators) |
 | [`vendor/`](vendor/README.md) | DOC-TST-009 | Vendor portal folder — vendor-portal-specific material (sellers) |
@@ -92,7 +92,7 @@ The pyramid is deliberately **unit-heavy**: `NFR-010` requires all business logi
 
 ## 5. Locked Test-Case Allocation (TC-001 … TC-114)
 
-The block allocation below is **locked**: TC IDs are never renumbered or reassigned to another domain. Individual TC files live in [`test-cases/`](test-cases-index.md).
+The block allocation below is **locked**: TC IDs are never renumbered or reassigned to another domain. Individual TC files live in [`core/`](core/test-cases-index.md).
 
 | Range | Domain | FR | Count |
 |---|---|---|---|
@@ -153,7 +153,7 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 
 ## 8. Navigation
 
-- QA engineer: this file → [testing-strategy.md](core/testing-strategy.md) → [test-plans.md](core/test-plans.md) → [test-cases/README.md](test-cases-index.md).
+- QA engineer: this file → [testing-strategy.md](core/testing-strategy.md) → [test-plans.md](core/test-plans.md) → [test-cases-index.md](core/test-cases-index.md).
 - Implementer needing a constraint's pass criteria → [constraint-tests.md](core/constraint-tests.md).
 - Anything about test data, environments, fixture phones → [test-data-and-environments.md](core/test-data-and-environments.md).
 - Upstream canon: `02-requirements/acceptance-criteria.md` (AC), `00-project-overview/project-constraints.md` (C), `01-business-analysis/business-rules.md` (BR).
@@ -166,3 +166,4 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 | 1.1 | 2026-09-28 | Scope line count sync: 99 → **104 business rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
 | 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TST-007…DOC-TST-011) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
 | 1.3 | 2026-09-30 | Scope-line count sync: 68 → **73 requirements**, 104 → **111 business rules**, 253 → **273 acceptance criteria** (`requirements-overview.md` v1.2, `business-rules.md` v1.2, `acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — three count consumers re-synced in same change set |
+| 1.4 | 2026-10-02 | Stale paths fix: `test-cases/` dir refs → live `core/` paths; bare `test-cases-index.md` links → `core/test-cases-index.md` (TC count 114 re-verified on disk) | Session-013 phase-8 fix wave (prompt-013 §3 wave A) + section-grouping migration refs |
