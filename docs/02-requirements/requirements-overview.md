@@ -3,9 +3,9 @@ document_id: DOC-REQ-001
 title: Requirements Overview (Canonical ID Registry)
 category: 02-requirements
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-004, DOC-OVR-008]
 
 # Requirements Overview — Canonical ID Registry
 
-**This document is the single registry of every requirement ID in the project.** Individual requirement files (`functional/FR-nnn.md`, etc.) expand each entry; they must never contradict this registry. Never invent a requirement ID that is not listed here.
+**This document is the single registry of every requirement ID in the project.** Individual requirement files (`functional/core/FR-nnn.md`, etc.) expand each entry; they must never contradict this registry. Never invent a requirement ID that is not listed here.
 
 Total: **20 FR + 20 NFR + 16 SEC-REQ + 9 DATA-REQ + 8 INT-REQ = 73 requirements.**
 
@@ -22,7 +22,7 @@ Total: **20 FR + 20 NFR + 16 SEC-REQ + 9 DATA-REQ + 8 INT-REQ = 73 requirements.
 
 ## 1. Functional Requirements (`FR-001…FR-020`)
 
-Each expands to `02-requirements/core/FR-nnn.md`.
+Each expands to `02-requirements/functional/core/FR-nnn.md`.
 
 | ID | Title | Block | Priority | Summary |
 |---|---|---|---|---|
@@ -105,7 +105,7 @@ Expands to `02-requirements/core/SEC-REQ-nnn.md`; controls detailed in `09-secur
 
 ## 4. Data Requirements (`DATA-REQ-001…DATA-REQ-009`)
 
-Expands to `02-requirements/core/DATA-REQ-nnn.md`; detail in `16-data/`.
+Expands to `02-requirements/data/core/DATA-REQ-nnn.md`; detail in `16-data/`.
 
 | ID | Title | Summary |
 |---|---|---|
@@ -159,3 +159,4 @@ Every requirement file must pass the 7-question quality test (clarity, completen
 | 1.0 | 2026-09-26 | Initial registry (68 requirements) | Initial analysis |
 | 1.1 | 2026-09-28 | New §7 approved-backlog pointer to `plan-develop.md` (no `FR-*` minted — wave discipline) | `plan-develop.md` v1.2 §8 approval implementation (session 007, `D9`/`D10`) |
 | 1.2 | 2026-09-30 | Session-011 delta registration — `SEC-REQ-013`…`SEC-REQ-016`, `DATA-REQ-009` (+5 requirement files under `core/`); 68 → 73 requirements | Owner directive session 011 (`prompt-011.md` §4.7) — deltas accepted in `system-expansion-proposal.md` (DOC-OVR-012) §5 from verified sources (`security-findings.md` SEC-006/007/008/010, `error-model.md` §5, `auth.md` lines 27/28/34); count consumers re-synced in same change set |
+| 1.3 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-BA-001
 title: 01 Business Analysis — README
 category: 01-business-analysis
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-011, FR-012, FR-020]
@@ -31,9 +31,9 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 | [business-rules.md](business-rules.md) | DOC-BA-005 | **The canonical business-rule registry — 111 rules `BR-<DOMAIN>-NN` (authoritative; see note below)** |
 | [stakeholder-needs.md](core/stakeholder-needs.md) | DOC-BA-006 | Needs of each `STK-*` stakeholder group, how yumn addresses them, related `FR-*`/`BR-*`, conflict notes |
 | [user-needs.md](core/user-needs.md) | DOC-BA-007 | Per-actor (`ACT-01…ACT-06`) needs: jobs-to-be-done, pains today, how addressed, success signals; guest vs registered customer |
-| `use-cases/` | — | Use case specifications `UC-NNN` (one file per use case), derived from the processes here and consumed by `13-testing/` |
-| [workflows/README.md](workflow-index.md) | DOC-WF-001 | Index and format specification for the 12 end-to-end workflows `WF-001…WF-012` |
-| [workflows/](customer/workflow-001.md) | DOC-WF-002…DOC-WF-013 | One file per workflow: ASCII flow + step table (actor, action, system, rules, data changes, failure handling) |
+| [use-case-index.md](use-case-index.md) + `core/` `admin/` `customer/` `delivery/` `vendor/` | DOC-UC-000 | Index of the **420** use case specifications `UC-NNN.md` (one file per use case, in the portal folders), derived from the processes here and consumed by `13-testing/` |
+| [workflow-index.md](workflow-index.md) | DOC-WF-001 | Index and format specification for the 12 end-to-end workflows `WF-001…WF-012` |
+| `core/` `admin/` `customer/` `delivery/` `vendor/` — `workflow-NNN.md` (e.g. [customer/workflow-001.md](customer/workflow-001.md)) | DOC-WF-002…DOC-WF-013 | One file per workflow: ASCII flow + step table (actor, action, system, rules, data changes, failure handling) |
 | [`core/`](core/README.md) | DOC-BA-008 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
 | [`admin/`](admin/README.md) | DOC-BA-009 | Admin portal folder — admin-console-specific material (platform operators) |
 | [`vendor/`](vendor/README.md) | DOC-BA-010 | Vendor portal folder — vendor-portal-specific material (sellers) |
@@ -42,10 +42,10 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 
 ## Source of Truth For
 
-- **Business rules** — `business-rules.md` (DOC-BA-005) is **the single authoritative registry of all 104 `BR-*` rules**. No other document may define, restate, or amend a rule; every other document only *references* rule IDs. Rule domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`.
+- **Business rules** — `business-rules.md` (DOC-BA-005) is **the single authoritative registry of all 111 `BR-*` rules**. No other document may define, restate, or amend a rule; every other document only *references* rule IDs. Rule domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV` (15 domains).
 - **Business processes** (`BP-01…BP-15`) — `business-processes.md`.
 - **Business objectives** (`BO-01…BO-12`) — `business-objectives.md` (project objectives `OBJ-01…OBJ-12` remain in `00-project-overview/project-objectives.md`).
-- **End-to-end workflows** (`WF-001…WF-012`) — `workflows/`.
+- **End-to-end workflows** (`WF-001…WF-012`) — `workflow-index.md` (index) with one `workflow-NNN.md` file per workflow in the portal folders (`core/` `admin/` `customer/` `delivery/` `vendor/`).
 - **Business/user/stakeholder needs** — `stakeholder-needs.md`, `user-needs.md`.
 
 > **Authoritative-rule rule:** if any document in this repository conflicts with `business-rules.md`, `business-rules.md` wins and the conflict is logged in `../20-validation/core/contradiction-audit.md` — never silently patched.
@@ -70,7 +70,7 @@ It is the bridge between `00-project-overview/` (what the project is) and `02-re
 | Kind | Pattern | Example | Defined in |
 |---|---|---|---|
 | Business rules | `BR-<DOMAIN>-NN` | `BR-ESC-05` | `business-rules.md` (authoritative) |
-| Use cases | `UC-NNN` | `UC-021` | `use-cases/` |
+| Use cases | `UC-NNN` | `UC-021` | `use-case-index.md` (420 UCs; files in the portal folders) |
 | Workflows | `WF-NNN` | `WF-006` | `workflow-index.md` |
 | Business processes | `BP-NN` | `BP-07` | `business-processes.md` |
 | Business objectives | `BO-NN` | `BO-03` | `business-objectives.md` |
@@ -96,3 +96,4 @@ Files use `lowercase-kebab-case.md`; workflow files are `workflow-NNN.md` where 
 | 1.2 | 2026-09-28 | §Source-of-Truth catch-up: the "single authoritative registry" bullet still said **99** rules and listed only **14** domains — synced to **104** + `INV` (the v1.1 sync had covered only the Contents row) | BR-count propagation catch-up (session 008 close) — root README §9.4; missed consumer of `business-rules.md` v1.1 |
 | 1.3 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-BA-008…DOC-BA-012) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
 | 1.4 | 2026-09-30 | Registry count sync: 104 → **111 rules** (`BR-AUTH-09/10`, `BR-ESC-09`, `BR-PAY-11`, `BR-RET-08`, `BR-REV-06`, `BR-PLT-08` registered in `business-rules.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — consumer of `business-rules.md`; count re-synced in same change set |
+| 1.5 | 2026-10-02 | Stale refs fix: `use-cases/` & `workflows/` → live portal-folder paths + `use-case-index.md`/`workflow-index.md`; §Source-of-Truth BR count 104 → **111** (15 domains); index-maintenance counts added (420 UCs) | Session-013 phase-8 fix wave (prompt-013 §3 wave A) + section-grouping migration refs |

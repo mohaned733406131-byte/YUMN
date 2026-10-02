@@ -3,9 +3,9 @@ document_id: DOC-OVR-012
 title: System Expansion Proposal — Session 011 (400+ use cases, portal-partitioned structure)
 category: 00-project-overview
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -65,7 +65,9 @@ related_documents: [DOC-OVR-001, DOC-OVR-005, DOC-OVR-008, DOC-UC-000, DOC-BA-00
    `README.md`: use-case-index.md, workflow-index.md, functional-index.md,
    non-functional-index.md, security-index.md, data-index.md, integration-index.md,
    endpoints-index.md, entities-index.md, test-cases-index.md (created by the phase-5
-   migration).
+   migration; **superseded in part by session-013 — see the §8 addendum**: functional-index.md / data-index.md now live as
+   `functional/index.md` / `data/index.md` in section folders, and eight
+   gateway files moved into `core/`).
 5. Existing UC→portal assignment (unchanged semantics, now physical): customer `UC-001…014`,
    `UC-041…042`, `UC-141…182`; vendor `UC-015…024`, `UC-183…204`; delivery `UC-025…030`,
    `UC-205…210`; admin `UC-031…038`, `UC-084…140`; core `UC-039…040`, `UC-043…083`.
@@ -176,8 +178,8 @@ Actor: Admin / Super Admin / Moderator (ACT-04/05/06).
 | UC-276 | Release an Unused Authorization Hold Manually | Admin | B07 | FR-013, BR-PAY-08 | P1 | `docs/07-api/core/wallet.md` |
 | UC-277 | Record the Disposition of a Reconciliation Mismatch | Admin | B07 | FR-013, FR-014, BR-ESC-08, BR-FIN-03, BR-PLT-06 | P0 | `docs/07-api/core/analytics.md` |
 | UC-278 | Approve the Vendor Payout Batch for Execution | Admin | B07 | FR-014, FR-020, BR-ESC-05, BR-PLT-06 | P0 | `docs/09-security/core/rbac.md` |
-| UC-279 | Freeze Payouts and Top-Up Crediting on a Ledger-Integrity Alarm | Admin | B07 | FR-013, FR-014, FR-020, BR-PAY-06, BR-PAY-09 | P0 | `docs/17-risk-management/risk-register.md` |
-| UC-280 | Run the Pre-Launch Money-Cycle Audit | Admin | B07 | FR-013, FR-014, BR-FIN-03, BR-PAY-06 | P0 | `docs/17-risk-management/risk-register.md` |
+| UC-279 | Freeze Payouts and Top-Up Crediting on a Ledger-Integrity Alarm | Admin | B07 | FR-013, FR-014, FR-020, BR-PAY-06, BR-PAY-09 | P0 | `docs/17-risk-management/core/risk-register.md` |
+| UC-280 | Run the Pre-Launch Money-Cycle Audit | Admin | B07 | FR-013, FR-014, BR-FIN-03, BR-PAY-06 | P0 | `docs/17-risk-management/core/risk-register.md` |
 | UC-281 | Reassign a Stalled Delivery Back to the Offer Pool | Admin | B08 | FR-015, BR-SHP-04 | P1 | `docs/07-api/delivery/delivery.md` |
 | UC-282 | Pull Delivery Proof for a Dispute Review | Admin | B08 | FR-015, FR-016, BR-SHP-07, BR-ORD-09 | P2 | `docs/07-api/delivery/delivery.md` |
 | UC-283 | Arbitrate a Dispute and Choose the Prevailing Party | Admin | B09 | FR-016, FR-020, BR-ORD-05, BR-RET-06, BR-RET-07 | P0 | `docs/07-api/core/returns.md` |
@@ -190,7 +192,7 @@ Actor: Admin / Super Admin / Moderator (ACT-04/05/06).
 | UC-290 | Monitor Queue Depths and SLA Breaches as Moderator | Moderator | B11 | FR-018, FR-020, BR-ORD-10 | P2 | `docs/07-api/core/analytics.md` |
 | UC-291 | Review a CMS Page's Publish History Before Republishing | Admin | B12 | FR-019, BR-PLT-06 | P2 | `docs/07-api/core/content.md` |
 | UC-292 | Disable a Store Coupon for Promotion Abuse | Admin | B12 | FR-019, BR-PRM-03 | P1 | `docs/07-api/core/content.md` |
-| UC-293 | Investigate Coupon-Abuse Patterns Across Orders and Refunds | Admin | B12 | FR-011, FR-019, BR-PRM-01, BR-PRM-02, BR-ESC-04 | P2 | `docs/17-risk-management/risk-register.md` |
+| UC-293 | Investigate Coupon-Abuse Patterns Across Orders and Refunds | Admin | B12 | FR-011, FR-019, BR-PRM-01, BR-PRM-02, BR-ESC-04 | P2 | `docs/17-risk-management/core/risk-register.md` |
 | UC-294 | Hide Reported Content With a Reason as Moderator | Moderator | B13 | FR-006, FR-019, BR-REV-04 | P1 | `docs/07-api/admin/admin.md` |
 | UC-295 | Isolate Auto-Created Delivery-Code Tickets in the Support Queue | Admin | B13 | FR-015, FR-020, BR-SHP-03 | P2 | `docs/07-api/admin/admin.md` |
 | UC-296 | Investigate an Audit Hash-Chain Verification Failure | Admin | B13 | FR-020, BR-PLT-06 | P0 | `docs/16-data/core/data-quality.md` |
@@ -204,7 +206,7 @@ Actor: Admin / Super Admin / Moderator (ACT-04/05/06).
 | UC-304 | Audit the Evidence Entry of a Completed Purge Run | Admin | B13 | FR-020 | P2 | `docs/16-data/core/retention-and-archival.md` |
 | UC-305 | Review the Monthly Security Severity Report | Admin | B13 | FR-020 | P2 | `docs/09-security/core/security-controls.md` |
 
-> - **sources verified:** every row cites one repo-relative path opened and skimmed this session. Primary evidence: `docs/07-api/{admin,orders,returns,wallet,delivery,analytics,content,catalog}.md` (API-ADM-002/005/011/012/013/016/023/024/027/028/039, API-ORD-011/013/014, API-RET-014/016/017, API-WAL-008/014, API-SHP-003/005, API-ANL-006/007/009, API-CNT-007/017); `docs/09-security/{rbac,secrets-management,security-controls}.md` (four-eyes `ORG-01`/L205, incident rotation runbook §7, SEC-C-24 + monthly severity report); `docs/10-integrations/{bank-transfer-topup,webhook-reliability}.md` (two-person control, statement cross-check S-10, admin-only DLQ re-drive); `docs/16-data/{data-quality,retention-and-archival,data-deletion-and-privacy}.md` (DQ-06, J10, quarantine §6 Admin disposition, weekly purge report + guard-blocked purge, monthly sampling QA); `docs/12-non-functional/core/observability.md` (dashboard #11, runbook #10); `docs/17-risk-management/risk-register.md` (RISK-001 mitigation + contingency, RISK-013 contingency); `docs/11-ui-ux/core/user-flows.md` (FL-07 evidence panels); `docs/02-requirements/requirements-overview.md` (FR-001…FR-020 only); `docs/01-business-analysis/business-rules.md` (104 BR IDs, all cited IDs confirmed present with the stated meaning).
+> - **sources verified:** every row cites one repo-relative path opened and skimmed this session. Primary evidence: `docs/07-api/{admin,orders,returns,wallet,delivery,analytics,content,catalog}.md` (API-ADM-002/005/011/012/013/016/023/024/027/028/039, API-ORD-011/013/014, API-RET-014/016/017, API-WAL-008/014, API-SHP-003/005, API-ANL-006/007/009, API-CNT-007/017); `docs/09-security/{rbac,secrets-management,security-controls}.md` (four-eyes `ORG-01`/L205, incident rotation runbook §7, SEC-C-24 + monthly severity report); `docs/10-integrations/{bank-transfer-topup,webhook-reliability}.md` (two-person control, statement cross-check S-10, admin-only DLQ re-drive); `docs/16-data/{data-quality,retention-and-archival,data-deletion-and-privacy}.md` (DQ-06, J10, quarantine §6 Admin disposition, weekly purge report + guard-blocked purge, monthly sampling QA); `docs/12-non-functional/core/observability.md` (dashboard #11, runbook #10); `docs/17-risk-management/core/risk-register.md` (RISK-001 mitigation + contingency, RISK-013 contingency); `docs/11-ui-ux/core/user-flows.md` (FL-07 evidence panels); `docs/02-requirements/requirements-overview.md` (FR-001…FR-020 only); `docs/01-business-analysis/business-rules.md` (104 BR IDs, all cited IDs confirmed present with the stated meaning).
 
 > - **actor note:** on-call / security-owner duties in `observability.md` and `security-controls.md` are mapped to Admin (ACT-04); key/secrets authority and the commission-tier write are mapped to Super Admin (ACT-05) per `stores.md` L53 (`SUPER_ADMIN` changes tiers via `PUT /admin/settings/{key}`).
 
@@ -324,7 +326,7 @@ Actor: Vendor (ACT-02).
 | UC-394 | Configure Vendor Notification Preferences for Store Events | Vendor | B10 | FR-017, BR-NTF-02, BR-NTF-05 | P2 | `docs/07-api/core/notifications.md` |
 | UC-395 | Open a Support Ticket About a Payout or Payment Issue | Vendor | B13 | FR-020, BR-PLT-03 | P2 | `docs/07-api/admin/admin.md` |
 
-> - sources verified: read the UC master index (`docs/01-business-analysis/use-case-index.md` §2 vendor rows UC-015…024 / UC-183…204, §5.1 PENDING list) and the full BR registry (`docs/01-business-analysis/business-rules.md`, 104 IDs across 15 domains) plus the FR-001…FR-020 list (`docs/02-requirements/acceptance-criteria.md`); then opened every cited source file and matched each row to a concrete endpoint, rule, edge case, or workflow step: `docs/07-api/{catalog,stores,orders,wallet,returns,analytics,content,notifications,admin}.md` (API-CAT-006/008/010/012/014/016 + §2 indexing note; API-VND-004/008/009/010/011/017/018/021; API-ORD-005/006/009/011; API-WAL-009/011/013; API-RET-004/005/008/009/013/016; API-ANL-001/003; API-CNT-019/020; API-NTF-006/007; API-ADM-035), `docs/01-business-analysis/vendor/workflow-004.md` (auto-accept alternative), `docs/01-business-analysis/admin/workflow-012.md` (coupon creation validation step 2), `docs/03-system-analysis/core/edge-cases.md` (EC-13/14/17/38), `docs/08-database/core/product.md` (price/sale-price CHECK constraints, search-sync flags). All 13 cited paths exist in the repo; every FR/BR ID used was cross-checked against the registries — no invented IDs. Deliberately dropped: bulk CSV inventory import (explicitly out of scope per `docs/02-requirements/core/FR-004.md` §out-of-scope) and monthly statements (adjacent to PENDING `M-15` Invoices); no non-physical-product-type row was kept because the create/update request schemas carry no `product_type` field (weak evidence).
+> - sources verified: read the UC master index (`docs/01-business-analysis/use-case-index.md` §2 vendor rows UC-015…024 / UC-183…204, §5.1 PENDING list) and the full BR registry (`docs/01-business-analysis/business-rules.md`, 104 IDs across 15 domains) plus the FR-001…FR-020 list (`docs/02-requirements/acceptance-criteria.md`); then opened every cited source file and matched each row to a concrete endpoint, rule, edge case, or workflow step: `docs/07-api/{catalog,stores,orders,wallet,returns,analytics,content,notifications,admin}.md` (API-CAT-006/008/010/012/014/016 + §2 indexing note; API-VND-004/008/009/010/011/017/018/021; API-ORD-005/006/009/011; API-WAL-009/011/013; API-RET-004/005/008/009/013/016; API-ANL-001/003; API-CNT-019/020; API-NTF-006/007; API-ADM-035), `docs/01-business-analysis/vendor/workflow-004.md` (auto-accept alternative), `docs/01-business-analysis/admin/workflow-012.md` (coupon creation validation step 2), `docs/03-system-analysis/core/edge-cases.md` (EC-13/14/17/38), `docs/08-database/core/product.md` (price/sale-price CHECK constraints, search-sync flags). All 13 cited paths exist in the repo; every FR/BR ID used was cross-checked against the registries — no invented IDs. Deliberately dropped: bulk CSV inventory import (explicitly out of scope per `docs/02-requirements/functional/core/FR-004.md` §out-of-scope) and monthly statements (adjacent to PENDING `M-15` Invoices); no non-physical-product-type row was kept because the create/update request schemas carry no `product_type` field (weak evidence).
 
 > - shortfall: none (35 of 35 rows produced for UC-361…UC-395; no fabricated scenarios — every row maps to an endpoint, rule, EC, or workflow step shown above)
 
@@ -409,29 +411,36 @@ Actor: Delivery Provider (ACT-03).
 | Idea | Why deferred |
 |---|---|
 | Support severity S1–S4 response/resolution SLAs (candidate NFR/BR) | `docs/12-non-functional/core/usability-and-support.md` §5 "Support SLAs" line 100 marks all targets `INFERENCE` "and must be confirmed against sponsor capacity at launch readiness"; `docs/01-business-analysis/core/business-objectives.md` BO-11 line 52 records ticket SLA as `INSUFFICIENT EVIDENCE`. Sponsor decision first — a requirement would freeze unsanctioned numbers. |
-| Webhook replay window (±5 min) + nonce/payload store (candidate INT-REQ) | `docs/09-security/core/security-findings.md` SEC-005 line 80 calls the window a "design choice" and assigns the spec to `../10-integrations/core/webhook-reliability.md`, which does not exist yet. Mint after that integration document lands; the key is also noted `INFERENCE`. |
+| Webhook replay window (±5 min) + nonce/payload store (candidate INT-REQ) | `docs/09-security/core/security-findings.md` SEC-005 line 80 calls the window a "design choice" and points at `../10-integrations/core/webhook-reliability.md` — which exists (the "does not exist yet" claim was stale; corrected and verified 2026-10-02): its §1.2 fixes the ±5-minute timestamp window and the provider-transaction-ID nonce guard, both marked `INFERENCE` while SEC-005 stays OPEN. The deferral is now an owner call — disposition SEC-005 against the live spec — not a blocked-on-missing-document case. |
 | MFA / step-up at ADMIN & SUPER_ADMIN login (candidate SEC-REQ-013+ if minted later) | `docs/09-security/core/security-findings.md` SEC-012 lines 134–136 explicitly require "a decision record (18-decisions/) before implementation". A SEC-REQ minted now would pre-empt the ADR; also conflicts with `authentication.md` §7 ("none in v1"). |
 | ERP/finance department surface (accounts, sales, purchases, inventory snapshots, period close) as FR-021+ / BR-FIN-06+ | `docs/03-system-analysis/core/erp-finance-departments.md` line 26 states the document "mints no new identifiers" by design; it is approved scope (D2/D3/D11) but plan wave discipline (SPE-03 / D-02) converts backlog rows to FR/BR only at their build wave, never earlier. |
-| New owner-locked constraint (e.g. "C-27 — no AI chatbot or automated adjudication in v1") | The constraint register `C-01…C-26` is owner-locked (`RULES_HINTS.md`); the behavior already exists as a binding scope note (`docs/03-system-analysis/core/system-boundary.md` line 56, tied to `FR-020` / UC-014). Elevation to a `C-NN` is an owner change, not an analysis output. |
+| New owner-locked constraint (e.g. "C-27 — no AI chatbot or automated adjudication in v1") | The constraint register `C-01…C-26` is owner-locked (`RULES_HINTS.md`); the behavior already exists as a binding scope note (`docs/03-system-analysis/core/system-boundary.md` line 56, tied to `FR-020` / UC-014). Elevation to a `C-NN` is an owner change, not an analysis output; **registered as `GAP-15`** (`missing-information.md` §1, session-013). |
 | Loyalty program, tiered/subscription commission, vendor cash-out behaviors (extend BR-PRM / BR-ESC-03 / BR-PAY) | Open owner gaps `GAP-04`, `GAP-05`, `GAP-06` — `docs/20-validation/core/missing-information.md` lines 37–39 (GAP-04/05 deferred per `plan-develop.md` §8 D8, GAP-06 OPEN). Rules cannot be written before the owner answers. |
 
 ## 7. Proposed constraint / process / rule changes — proposed, then deferred
 
 | Proposed change | Route required | Evaluation |
 |---|---|---|
-| New owner constraint (e.g. `C-27` — no AI chatbot / automated adjudication in v1) | Root `docs/README.md` §9 + owner lock (`RULES_HINTS.md`; `C-01…C-26` are owner-locked) | **DEFER** — already binding as scope prose (`docs/03-system-analysis/core/system-boundary.md` §…, `FR-020`/UC-014); elevation is an owner change (`AUD-04`) |
-| `YUMN_RULES.md` new/amended rule text (portal-split enforcement rule, UC-count floors) | `senior-rules/core/00` §0.5 → VERSION + CHANGELOG bump | **DEFER** — "propose, defer" per `prompt-011.md` §4.2; rule text changes are out of the assistant's unilateral reach |
+| New owner constraint (e.g. `C-27` — no AI chatbot / automated adjudication in v1) | Root `docs/README.md` §9 + owner lock (`RULES_HINTS.md`; `C-01…C-26` are owner-locked) | **DEFER** — already binding as scope prose (`docs/03-system-analysis/core/system-boundary.md` §…, `FR-020`/UC-014); elevation is an owner change (`AUD-04`); tracked as `GAP-15` |
+| `YUMN_RULES.md` new/amended rule text (portal-split enforcement rule, UC-count floors) | `senior-rules/core/00` §0.5 → VERSION + CHANGELOG bump | **DEFER** — "propose, defer" per `prompt-011.md` §4.2; rule text changes are out of the assistant's unilateral reach; tracked as `GAP-16` |
 | `YUMN_RULES.md` path references (`docs/03-system-analysis/core/state-transitions.md` etc.) realigned to the portal split | Factual prose correction (no pin move; session 005/008 precedent) | **ACCEPT** — implemented as part of the migration (phase 5), recorded in the session file |
-| Folder-path scheme (`docs/<nn-domain>/<portal>/<file>`) + UC allocation `210 → 420` | `22-glossary/naming-conventions.md` version bump + CH row **before** any move (phase 4) | **ACCEPT** — this is process registration, not a constraint amendment |
+| Folder-path scheme (`docs/<nn-domain>/<portal>/<file>`) + UC allocation `210 → 420` | `22-glossary/core/naming-conventions.md` version bump + CH row **before** any move (phase 4) | **ACCEPT** — this is process registration, not a constraint amendment |
 | New process/constraint rows in root README §9 | Owner | **NONE PROPOSED** — §2 S5 |
 
 ## 8. Target folder structure and migration cost
 
 - Scope: 23 folders; per-file placement (root / `core/` / portal) as implemented by the
   migration mapping. Gateway files that stay at folder root: section `README.md` (23),
-  plus `business-rules.md`, `requirements-overview.md`, `acceptance-criteria.md`,
-  `architecture-decisions-reference.md`, `risk-register.md`, `decision-log.md`,
-  `terminology.md`, `naming-conventions.md`.
+  plus `business-rules.md`, `use-case-index.md`, `workflow-index.md`, `requirements-overview.md`, `acceptance-criteria.md`,
+  `non-functional-index.md`, `security-index.md`, `integration-index.md`.
+
+  **Session-013 addendum (2026-10-02, owner directive "group files by section"):** eight gateway files moved from folder root into their
+  domain `core/` — `architecture-decisions-reference.md` (04), `endpoints-index.md` (07), `entities-index.md` (08),
+  `test-cases-index.md` (13), `risk-register.md` (17), `decision-log.md` (18), `terminology.md` + `naming-conventions.md` (22) — and
+  `docs/02-requirements/` gained `data/` + `functional/` sections (`DATA-REQ-001…009` → `data/core/`, `FR-001…020` →
+  `functional/core/`, data-index.md → `data/index.md`, functional-index.md → `functional/index.md`; folder root now 6 files).
+  The cost table below remains the session-011 **phase-5 baseline**; post-session-013 per-folder counts are recorded in the
+  session close report under `docs/sessions/`.
 
 | Folder | Root (stays) | core/ | admin/ | vendor/ | customer/ | delivery/ | Moved |
 |---|---:|---:|---:|---:|---:|---:|---:|
@@ -490,9 +499,9 @@ contiguous `UC-001…420`**; until the mint + matrix re-run lands, the owner fig
    wishlist, calendar, search-analytics UI, engagement stats, PWA install, analytics UI,
    cart abandonment, re-open support ticket, moderator audit-log access, vendor right-of-reply.
 2. **§6 deferred deltas (6):** support severity SLAs, webhook replay window/nonce store,
-   MFA/step-up decision, ERP/finance department surface (`FR-021+`), `C-27` elevation,
+   MFA/step-up decision, ERP/finance department surface (`FR-021+`), `C-27` elevation (`GAP-15`),
    loyalty/tiered commission/cash-out.
-3. **§7 deferred rule changes:** `YUMN_RULES.md` rule-text additions (route: `core/00` §0.5).
+3. **§7 deferred rule changes:** `YUMN_RULES.md` rule-text additions (route: `core/00` §0.5; tracked as `GAP-16`).
 4. **Unchanged open regardless:** Gate 0 `FAIL`; `SEC-001…015` open; citation-CI run
    `UNVERIFIED`; `origin/master` deletion pending; 9 FAIL checks in the 31-check sweep.
 
@@ -514,3 +523,5 @@ contiguous `UC-001…420`**; until the mint + matrix re-run lands, the owner fig
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-30 | Initial publication: proposal (S1–S8, working interpretation, 210 UC rows `UC-211…420`, 12 deltas, 6 deferred, constraint/rule proposals) + evaluation (§9) + placement/cost table (§8) authored as one versioned artifact | Session 011 owner directive (`prompt-011.md` §1), phases 2–3; `DOC-OVR-012` registered in `00-project-overview/README.md` |
+| 1.1 | 2026-10-02 | §6 webhook candidate: stale "does not exist yet" claim corrected (`webhook-reliability.md` exists, §1.2 spec live, SEC-005 still OPEN); section-grouping migration path rewrites (risk-register / FR-004 / naming-conventions → new locations); §2/§8 structural claims updated with phase-5 baseline note | Session-013 phase-8 wave D + owner section-grouping directive (`prompt-013.md`) |
+| 1.2 | 2026-10-02 | §6/§7 deferral rows + §9.7 PENDING items 2–3 cross-linked to the register rows minted this session — `GAP-15` (C-27 elevation) + `GAP-16` (`YUMN_RULES` rule-text additions) — bidirectional traceability with `missing-information.md` v1.5 (loyalty-row `GAP-04/05/06` precedent) | Session-013 phase-8 wave D follow-up (`prompt-013.md` §2.5 walk items 1–2; citation-gate fix: rename-source names functional-index.md / data-index.md un-backticked in the structure inventory + §8 mapping — historical names, not live paths) |

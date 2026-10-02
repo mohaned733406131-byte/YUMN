@@ -3,9 +3,9 @@ document_id: DOC-AC-001
 title: Acceptance Criteria (Authoritative AC Registry)
 category: 02-requirements
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, NFR-001, NFR-002, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-008, NFR-009, NFR-010, NFR-011, NFR-012, NFR-013, NFR-014, NFR-015, NFR-016, NFR-017, NFR-018, NFR-019, NFR-020, SEC-REQ-001, SEC-REQ-002, SEC-REQ-003, SEC-REQ-004, SEC-REQ-005, SEC-REQ-006, SEC-REQ-007, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, SEC-REQ-012, SEC-REQ-013, SEC-REQ-014, SEC-REQ-015, SEC-REQ-016, DATA-REQ-001, DATA-REQ-002, DATA-REQ-003, DATA-REQ-004, DATA-REQ-005, DATA-REQ-006, DATA-REQ-007, DATA-REQ-008, DATA-REQ-009, INT-REQ-001, INT-REQ-002, INT-REQ-003, INT-REQ-004, INT-REQ-005, INT-REQ-006, INT-REQ-007, INT-REQ-008]
@@ -14,7 +14,7 @@ related_documents: [DOC-REQ-001, DOC-REQ-002, DOC-NFR-000, DOC-OVR-008, DOC-OVR-
 
 # Acceptance Criteria — Authoritative AC Registry
 
-**This document is the single, authoritative registry of every acceptance criterion (`AC-*`) in the yumn project.** It is referenced by the functional requirement files (`functional/FR-nnn.md`), by the non-functional files (`non-functional/NFR-nnn.md` via their Verification sections), and by `13-testing/` (which converts ACs into test cases `TC-nnn`) and `19-traceability/` (AC → test mapping). No other document may invent, redefine or contradict an AC listed here; requirement files reference their AC IDs and quote them only in condensed form. The registry defines **273 ACs**: 94 FR + 40 NFR + 66 SR + 36 DR + 33 IR + 4 cross-cutting scenarios.
+**This document is the single, authoritative registry of every acceptance criterion (`AC-*`) in the yumn project.** It is referenced by the functional requirement files (`functional/core/FR-nnn.md`), by the non-functional files (`non-functional/NFR-nnn.md` via their Verification sections), and by `13-testing/` (which converts ACs into test cases `TC-nnn`) and `19-traceability/` (AC → test mapping). No other document may invent, redefine or contradict an AC listed here; requirement files reference their AC IDs and quote them only in condensed form. The registry defines **273 ACs**: 94 FR + 40 NFR + 66 SR + 36 DR + 33 IR + 4 cross-cutting scenarios.
 
 Requirement IDs themselves remain assigned exclusively in `requirements-overview.md` (`DOC-REQ-001`).
 
@@ -530,3 +530,4 @@ Each failure is injected in staging; core journeys must behave as specified (sup
 | 1.0 | 2026-09-26 | Initial AC registry (94 FR + 40 NFR + 12 SR + 8 DR + 8 IR + 4 cross-cutting scenarios) | Initial analysis |
 | 1.1 | 2026-09-26 | Expanded Security/Data/Integration ACs to sub-numbered IDs | Repo-wide reference consistency |
 | 1.2 | 2026-09-30 | Session-011 delta registration — +16 `AC-SR013-01`…`AC-SR016-04`, +4 `AC-DR009-01`…`AC-DR009-04`; 253 → 273 ACs (50 → 66 SR, 32 → 36 DR) | Owner directive session 011 (`prompt-011.md` §4.7) — ACs of the five requirements registered in `requirements-overview.md` v1.2 (`SEC-REQ-013`…`016`, `DATA-REQ-009`); count consumers re-synced in same change set |
+| 1.3 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-REQ-003
 title: 02 Requirements — core/ portal folder
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -16,7 +16,7 @@ related_documents: [DOC-REQ-002]
 
 ## Purpose
 
-One of the five portal subfolders of `02-requirements/` (portal partition — `22-glossary/naming-conventions.md` §1):
+One of the five portal subfolders of `02-requirements/` (portal partition — `22-glossary/core/naming-conventions.md` §1):
 holds **shared, platform-wide material for this domain (not specific to a single portal)** for this domain. Cross-portal registries, gateways and index
 files stay at the domain root; shared material lives in `core/`.
 
@@ -25,34 +25,8 @@ files stay at the domain root; shared material lives in `core/`.
 | File | document_id | Title |
 |---|---|---|
 | [README.md](README.md) | DOC-REQ-003 | This portal index — purpose, file table |
-| [DATA-REQ-001.md](DATA-REQ-001.md) | DOC-DR-001 | DATA-REQ-001 — Integrity constraints |
-| [DATA-REQ-002.md](DATA-REQ-002.md) | DOC-DR-002 | DATA-REQ-002 — Personal data minimization |
-| [DATA-REQ-003.md](DATA-REQ-003.md) | DOC-DR-003 | DATA-REQ-003 — Retention & deletion |
-| [DATA-REQ-004.md](DATA-REQ-004.md) | DOC-DR-004 | DATA-REQ-004 — Backup & restore |
-| [DATA-REQ-005.md](DATA-REQ-005.md) | DOC-DR-005 | DATA-REQ-005 — Schema evolution |
-| [DATA-REQ-006.md](DATA-REQ-006.md) | DOC-DR-006 | DATA-REQ-006 — Data quality validation |
-| [DATA-REQ-007.md](DATA-REQ-007.md) | DOC-DR-007 | DATA-REQ-007 — Financial immutability |
-| [DATA-REQ-008.md](DATA-REQ-008.md) | DOC-DR-008 | DATA-REQ-008 — Ownership boundaries |
-| [FR-001.md](FR-001.md) | DOC-FR-001 | FR-001 — Identity, Authentication & Session Management |
-| [FR-002.md](FR-002.md) | DOC-FR-002 | FR-002 — Roles, Permissions & Access Control |
-| [FR-003.md](FR-003.md) | DOC-FR-003 | FR-003 — User & Profile Management |
-| [FR-004.md](FR-004.md) | DOC-FR-004 | FR-004 — Product Catalog Management |
-| [FR-005.md](FR-005.md) | DOC-FR-005 | FR-005 — Inventory Management |
-| [FR-006.md](FR-006.md) | DOC-FR-006 | FR-006 — Reviews & Ratings |
-| [FR-007.md](FR-007.md) | DOC-FR-007 | FR-007 — Vendor Onboarding & KYC |
-| [FR-008.md](FR-008.md) | DOC-FR-008 | FR-008 — Store Management & Storefront Configuration |
-| [FR-009.md](FR-009.md) | DOC-FR-009 | FR-009 — Search & Discovery |
-| [FR-010.md](FR-010.md) | DOC-FR-010 | FR-010 — Shopping Cart |
-| [FR-011.md](FR-011.md) | DOC-FR-011 | FR-011 — Checkout & Order Placement |
-| [FR-012.md](FR-012.md) | DOC-FR-012 | FR-012 — Order Lifecycle Management |
-| [FR-013.md](FR-013.md) | DOC-FR-013 | FR-013 — Wallet & Payment Processing |
-| [FR-014.md](FR-014.md) | DOC-FR-014 | FR-014 — Escrow, Commission & Vendor Payouts |
-| [FR-015.md](FR-015.md) | DOC-FR-015 | FR-015 — Shipping & Delivery |
-| [FR-016.md](FR-016.md) | DOC-FR-016 | FR-016 — Returns & Refunds |
-| [FR-017.md](FR-017.md) | DOC-FR-017 | FR-017 — Notifications & Messaging |
-| [FR-018.md](FR-018.md) | DOC-FR-018 | FR-018 — Analytics & Reporting |
-| [FR-019.md](FR-019.md) | DOC-FR-019 | FR-019 — Content & Promotions (CMS + Coupons) |
-| [FR-020.md](FR-020.md) | DOC-FR-020 | FR-020 — Platform Administration, Settings & Audit |
+| [../data/core/](../data/core/) | — | DATA-REQ files — now in the `data/` section (index: `../data/index.md`) |
+| [../functional/core/](../functional/core/) | — | FR files — now in the `functional/` section (index: `../functional/index.md`) |
 | [INT-REQ-001.md](INT-REQ-001.md) | DOC-IR-001 | INT-REQ-001 — Wallet top-up providers |
 | [INT-REQ-002.md](INT-REQ-002.md) | DOC-IR-002 | INT-REQ-002 — Bank transfer top-up |
 | [INT-REQ-003.md](INT-REQ-003.md) | DOC-IR-003 | INT-REQ-003 — SMS provider failover |
@@ -93,9 +67,15 @@ files stay at the domain root; shared material lives in `core/`.
 | [SEC-REQ-010.md](SEC-REQ-010.md) | DOC-SR-010 | SEC-REQ-010 — Audit trail integrity |
 | [SEC-REQ-011.md](SEC-REQ-011.md) | DOC-SR-011 | SEC-REQ-011 — File upload security |
 | [SEC-REQ-012.md](SEC-REQ-012.md) | DOC-SR-012 | SEC-REQ-012 — Vulnerability management |
+| [SEC-REQ-013.md](SEC-REQ-013.md) | DOC-SR-013 | SEC-REQ-013 — Anti-enumeration uniform responses |
+| [SEC-REQ-014.md](SEC-REQ-014.md) | DOC-SR-014 | SEC-REQ-014 — Per-surface CORS policy |
+| [SEC-REQ-015.md](SEC-REQ-015.md) | DOC-SR-015 | SEC-REQ-015 — Object-storage access control |
+| [SEC-REQ-016.md](SEC-REQ-016.md) | DOC-SR-016 | SEC-REQ-016 — Per-destination OTP resend limits |
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-30 | Initial portal-folder index (68 file(s)) | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 1.2 | 2026-10-02 | Phase-7 propagation catch-up: Contents rows added for `SEC-REQ-013`…`SEC-REQ-016` (`DOC-SR-013`…`016`) | Session-013 wave-E leftover sweep — four phase-7 files exist in `core/` but were absent from the file table (verified on disk) |

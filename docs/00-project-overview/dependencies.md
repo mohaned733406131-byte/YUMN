@@ -3,9 +3,9 @@ document_id: DOC-OVR-010
 title: Dependencies (DEP-01 … DEP-12)
 category: 00-project-overview
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [INT-REQ-001, INT-REQ-002, INT-REQ-003]
@@ -41,10 +41,11 @@ DEP-11 (design)       ──► 05-frontend build
 
 ## Risk Linkage
 
-DEP-05 → `RISK-003` · DEP-06 → `RISK-006` · DEP-10 → `RISK-012` · DEP-08 → `RISK-014` (see `17-risk-management/risk-register.md`).
+DEP-05 → `RISK-003` · DEP-06 → `RISK-006` · DEP-10 → `RISK-012` · DEP-08 → `RISK-014` (see `17-risk-management/core/risk-register.md`).
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-OVR-007
 title: Actors and Roles
 category: 00-project-overview
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003]
@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-006, DOC-OVR-008]
 
 # Actors and Roles
 
-**Canonical actor list — exactly 7 actors.** Every use case, permission matrix, API authorization rule, and test must use these names (see `22-glossary/terminology.md`).
+**Canonical actor list — exactly 7 actors.** Every use case, permission matrix, API authorization rule, and test must use these names (see `22-glossary/core/terminology.md`).
 
 ## Actor Register
 
@@ -28,7 +28,7 @@ related_documents: [DOC-OVR-006, DOC-OVR-008]
 | ACT-06 | **Moderator** | Human | Content moderation, review flags, support escalation |
 | ACT-07 | **System** | Non-human | Background jobs, schedulers, webhooks, automated engines |
 
-> Canonical naming rule: never use "Customer / Buyer / Shopper / User" interchangeably — **Customer** is the only term for ACT-01 (`22-glossary/terminology.md`).
+> Canonical naming rule: never use "Customer / Buyer / Shopper / User" interchangeably — **Customer** is the only term for ACT-01 (`22-glossary/core/terminology.md`).
 
 ## Role Hierarchy
 
@@ -86,3 +86,4 @@ Changing an actor here propagates to: `01-business-analysis` (use cases) → `02
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-28 | Consistency-rule cite corrected: `07-api/authorization.md` (no such file) → `../06-backend/core/authorization.md` (the actual authorization document) | `REC-15` citation-CI enforcement (session 008) — the one genuinely dangling path; `HAL-12` evidence, first clause fixed here |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

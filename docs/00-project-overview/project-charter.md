@@ -3,9 +3,9 @@ document_id: DOC-OVR-003
 title: Project Charter (Executive Summary)
 category: 00-project-overview
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -68,7 +68,7 @@ The project succeeds when: production is live at 99.99% availability, 10K concur
 
 ## Summary of Major Risks
 
-Full register: `17-risk-management/risk-register.md`. Top three:
+Full register: `17-risk-management/core/risk-register.md`. Top three:
 
 | ID | Risk | Severity |
 |---|---|---|
@@ -91,3 +91,4 @@ Full register: `17-risk-management/risk-register.md`. Top three:
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

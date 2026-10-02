@@ -3,9 +3,9 @@ document_id: DOC-SR-012
 title: SEC-REQ-012 — Vulnerability management
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [SEC-REQ-007, SEC-REQ-008, FR-020, NFR-009]
@@ -29,7 +29,7 @@ The stack (Node 20, NestJS, Prisma — DEP-01) and third-party dependencies chan
 - R1: CI executes SAST and dependency vulnerability scanning on every pull request; a build with a policy-violating finding (new critical/high exposure) fails and cannot merge.
 - R2: DAST runs against the staging environment as part of the release pipeline; open critical findings block promotion to production.
 - R3: Critical vulnerabilities are fixed and verified within **7 days** of confirmation (registry); non-critical severities follow a documented severity-SLA table in `09-security/` (`INFERENCE` for HIGH ≤ 30 days — exact thresholds beyond CRITICAL are a control-level policy decision).
-- R4: Findings are recorded as `SEC-nnn` in `09-security/` and, where they threaten objectives, linked to `17-risk-management/risk-register.md` entries; remediation status is visible in a recurring report.
+- R4: Findings are recorded as `SEC-nnn` in `09-security/` and, where they threaten objectives, linked to `17-risk-management/core/risk-register.md` entries; remediation status is visible in a recurring report.
 - R5: Base images and direct dependencies (DEP-01…DEP-04, DEP-07) receive a periodic upgrade review so scanning debt does not grow monotonically (`INFERENCE`).
 
 ## Acceptance criteria
@@ -56,3 +56,4 @@ CI pipeline evidence (SAST/SCA gate runs and failure behavior), DAST scan report
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial requirement | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

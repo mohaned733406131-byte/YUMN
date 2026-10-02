@@ -3,9 +3,9 @@ document_id: DOC-SA-001
 title: 03 System Analysis — README
 category: 03-system-analysis
 status: approved
-version: 1.6
+version: 1.7
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-011, FR-012, FR-015]
@@ -85,9 +85,9 @@ Behavioral documents in this directory **reference** `BR-*` IDs (DOC-BA-005) and
 | Logical data flows | `DF-NN` | `DF-12` | `data-flow.md` |
 | Logical components | `LC-NN` | `LC-04` | `logical-components.md` |
 | Sequence flows | `SQ-NN` | `SQ-03` | `sequence-flows.md` |
-| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/endpoints-index.md` — 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints; never cite an endpoint ID that is not in that registry |
-| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `../08-database/entities-index.md` — `DB-001…DB-018`, one file per entity; here stores are conceptual (`DS1…DS16`) |
-| Test cases | `TC-NNN` | `TC-104` | registry `../13-testing/test-cases-index.md` — `TC-001…TC-114`; here verification is described by scenario and cited by `TC-` ID |
+| API endpoint groups | `API-<GROUP>-NNN` | `API-WAL-003` (top-up) | registry `../07-api/core/endpoints-index.md` — 14 groups (`ATH USR VND CAT SRC CRT ORD WAL SHP RET NTF CNT ANL ADM`), 221 endpoints; never cite an endpoint ID that is not in that registry |
+| Database entities | `DB-NNN` in schema `b01…b13` | wallet schema `b07` | registry `../08-database/core/entities-index.md` — `DB-001…DB-018`, one file per entity; here stores are conceptual (`DS1…DS16`) |
+| Test cases | `TC-NNN` | `TC-104` | registry `../13-testing/core/test-cases-index.md` — `TC-001…TC-114`; here verification is described by scenario and cited by `TC-` ID |
 
 Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged `VERIFIED` / `INFERENCE` / `INSUFFICIENT EVIDENCE` per root README §8.
 
@@ -123,3 +123,4 @@ Files use `lowercase-kebab-case.md`. Statements beyond canon are evidence-tagged
 | 1.4 | 2026-09-29 | Consumes row use-case range sync: `UC-001…UC-040` → **`UC-001…UC-210`** (210 use-case files) | `prompt-010.md` §1 (session 010 owner directive — `UC-043`…`UC-210` minted) |
 | 1.5 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-SA-012…DOC-SA-016) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
 | 1.6 | 2026-09-30 | Consumes-row count sync: 104 → **111 rules** (`business-rules.md` v1.2); use-case range `UC-001…UC-210` → **`UC-001…UC-420`** (phase 6 minting complete) | Owner directive session 011 (`prompt-011.md` §4.6–4.7) — consumer of `business-rules.md` + UC index; counts re-synced in same change set |
+| 1.7 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

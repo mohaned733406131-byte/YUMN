@@ -3,9 +3,9 @@ document_id: DOC-REQ-002
 title: 02 Requirements — README
 category: 02-requirements
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -28,10 +28,10 @@ All requirement IDs: `FR-*` (functional), `NFR-*` (non-functional), `SEC-REQ-*` 
 |---|---|
 | [requirements-overview.md](requirements-overview.md) | **Canonical registry of all 68 requirement IDs** — read this first |
 | [requirements-overview.md §1](requirements-overview.md) | Functional requirements index |
-| [functional/](functional-index.md) | `FR-001…FR-020` — one file per requirement |
+| [functional/](functional/index.md) | `FR-001…FR-020` — one file per requirement |
 | [non-functional/](non-functional-index.md) | `NFR-001…NFR-020` — measurable quality requirements |
 | [security/](security-index.md) | `SEC-REQ-001…SEC-REQ-012` |
-| [data/](data-index.md) | `DATA-REQ-001…DATA-REQ-008` |
+| [data/](data/index.md) | `DATA-REQ-001…DATA-REQ-008` |
 | [integration/](integration-index.md) | `INT-REQ-001…INT-REQ-008` |
 | [acceptance-criteria.md](acceptance-criteria.md) | `AC-*` acceptance criteria grouped per FR |
 | [`core/`](core/README.md) | DOC-REQ-003 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
@@ -85,3 +85,4 @@ Open questions (if any → GAP-*)
 | 1.0 | 2026-09-26 | Initial publication | Analysis-phase authoring (root README §7) |
 | 1.1 | 2026-09-29 | `## Change History` section added | Session 009 `CHK-05` re-run — consistency finding 2; root README §9.2 requires the section on every document |
 | 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-REQ-003…DOC-REQ-007) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.3 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
