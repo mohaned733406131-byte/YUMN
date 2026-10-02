@@ -3,9 +3,9 @@ document_id: DOC-FR-000
 title: Functional Requirements — README (FR-001 … FR-020)
 category: 02-requirements
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-27
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020]
@@ -16,7 +16,7 @@ related_documents: [DOC-REQ-001, DOC-REQ-002, DOC-BA-005, DOC-OVR-008]
 
 ## Purpose
 
-This directory holds the **detailed specification of the 20 functional requirements** of the yumn marketplace (`FR-001…FR-020`), one file per requirement. Each file expands — and must never contradict — its entry in the canonical registry [requirements-overview.md](requirements-overview.md) (`DOC-REQ-001`).
+This directory holds the **detailed specification of the 20 functional requirements** of the yumn marketplace (`FR-001…FR-020`), one file per requirement. Each file expands — and must never contradict — its entry in the canonical registry [requirements-overview.md](../requirements-overview.md) (`DOC-REQ-001`).
 
 ## Contents
 
@@ -47,12 +47,12 @@ This directory holds the **detailed specification of the 20 functional requireme
 
 1. **`02-requirements/requirements-overview.md` (`DOC-REQ-001`) is the single registry of all requirement IDs.** It fixes every FR ID, title, block and priority. No file in this directory may add, rename, re-prioritize, merge or split an FR ID.
 2. Each `FR-nnn.md` file is the source of truth for the **detail** of its requirement: requirements detail, preconditions, expected result, acceptance criteria (`AC-FRnnn-nn`), applied business rules, honored constraints, dependencies and verification method.
-3. Business rules are defined only in `01-business-analysis/business-rules.md` (`DOC-BA-005`); constraints only in `00-project-overview/project-constraints.md` (`DOC-OVR-008`); order states only in `../03-system-analysis/core/state-transitions.md` (`DOC-SA-010`). This directory **references those IDs — it never redefines them.**
-4. If an FR file and the registry disagree, the registry wins and the discrepancy is logged in `../20-validation/core/contradiction-audit.md` — never silently patched.
+3. Business rules are defined only in `01-business-analysis/business-rules.md` (`DOC-BA-005`); constraints only in `00-project-overview/project-constraints.md` (`DOC-OVR-008`); order states only in `../../03-system-analysis/core/state-transitions.md` (`DOC-SA-010`). This directory **references those IDs — it never redefines them.**
+4. If an FR file and the registry disagree, the registry wins and the discrepancy is logged in `../../20-validation/core/contradiction-audit.md` — never silently patched.
 
 ## Dependency on the Registry
 
-`requirements-overview.md` is the **table of contents** of this directory: reading order is registry §1 → the individual `FR-nnn.md` file. Every FR file carries `related_documents: [DOC-REQ-001, …]` so traceability to the registry is explicit and machine-checkable.
+`../requirements-overview.md` is the **table of contents** of this directory: reading order is registry §1 → the individual `FR-nnn.md` file. Every FR file carries `related_documents: [DOC-REQ-001, …]` so traceability to the registry is explicit and machine-checkable.
 
 ## Naming Rule
 
@@ -66,15 +66,16 @@ This directory holds the **detailed specification of the 20 functional requireme
 1. **Acceptance criteria are mandatory.** Every FR carries at least four objectively testable `AC-FRnnn-nn` entries written as given/when/then one-liners; an FR without measurable ACs is incomplete and blocks the quality gate (`DOC-REQ-001` §6, root README §11).
 2. Every requirement carries: description, rationale (tracing to `OBJ-*` and/or `C-*`), requirements detail, preconditions, expected result, ACs, business rules applied (`BR-*`), constraints honored (`C-*`), dependencies (`FR/NFR/SEC-REQ/DATA-REQ/INT-REQ/DEP-*`), verification method and out-of-scope notes.
 3. Only canon IDs may be referenced — never invent `BR-*`, `C-*`, `OBJ-*`, `NFR-*`, `SEC-REQ-*`, `DEP-*` or `FR-*` identifiers outside the registries.
-4. Contradictions with rules/architecture go to `../20-validation/core/contradiction-audit.md`; missing facts go to `../20-validation/core/missing-information.md` as `GAP-*`.
+4. Contradictions with rules/architecture go to `../../20-validation/core/contradiction-audit.md`; missing facts go to `../../20-validation/core/missing-information.md` as `GAP-*`.
 5. A requirement is `approved` only when it passes the 7-question quality test (clarity, completeness, consistency, feasibility, testability, necessity, traceability).
 
 ## Related Directories
 
-`requirements-overview.md` (registry) · `../non-functional/` (NFR-001…020) · `../security/` (SEC-REQ-001…012) · `../data/` · `../integration/` · `../../01-business-analysis/` (rules) · `../../03-system-analysis/` (behavior) · `../../13-testing/` (verification)
+`../requirements-overview.md` (registry) · `../non-functional/` (NFR-001…020) · `../security/` (SEC-REQ-001…012) · `../data/` · `../integration/` · `../../01-business-analysis/` (rules) · `../../03-system-analysis/` (behavior) · `../../13-testing/` (verification)
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.1 | 2026-09-27 | -01 … -04 naming rule extended to the registry's fifth `AC-FRnnn-05` rows | `REC-04` pay-down (`TD-05`) — same change set as the 14 FR files |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

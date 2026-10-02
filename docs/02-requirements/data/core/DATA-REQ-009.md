@@ -3,9 +3,9 @@ document_id: DOC-DR-009
 title: DATA-REQ-009 — Search-index data protection
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [DATA-REQ-002, DATA-REQ-003, SEC-REQ-006, FR-009]
@@ -17,7 +17,7 @@ related_documents: [DOC-REQ-001, DOC-OVR-012]
 > Registry summary (`requirements-overview.md` §4): index field allowlist (public catalog fields only), restricted/encrypted index snapshots, index deletion wired into the account-deletion workflow, with a "PII in index" test.
 
 ## Description
-The search index (Arabic-aware full-text search under `FR-009`) is a second copy of data whose protection nobody specified: `../../09-security/core/security-findings.md` `SEC-007` (lines 91–97, severity MEDIUM) records that what is indexed, snapshot protection, and "how deletion propagates (index vs source) are all undefined" (line 94), leaving `DATA-REQ-003` "silently unmet for indexed fields" (line 95). This requirement extends data-minimization, retention and deletion guarantees to the index itself. Registration recorded in `DOC-OVR-012` §5.
+The search index (Arabic-aware full-text search under `FR-009`) is a second copy of data whose protection nobody specified: `../../../09-security/core/security-findings.md` `SEC-007` (lines 91–97, severity MEDIUM) records that what is indexed, snapshot protection, and "how deletion propagates (index vs source) are all undefined" (line 94), leaving `DATA-REQ-003` "silently unmet for indexed fields" (line 95). This requirement extends data-minimization, retention and deletion guarantees to the index itself. Registration recorded in `DOC-OVR-012` §5.
 
 ## Requirement statements
 
@@ -39,10 +39,11 @@ The search index (Arabic-aware full-text search under `FR-009`) is a second copy
 
 ## Verification method
 
-Index-content probe tests (allowlist + PII scan) in CI; snapshot storage policy inspection; account-deletion end-to-end test asserting index propagation; findings tracked in `../../09-security/core/security-findings.md` (`SEC-007`).
+Index-content probe tests (allowlist + PII scan) in CI; snapshot storage policy inspection; account-deletion end-to-end test asserting index propagation; findings tracked in `../../../09-security/core/security-findings.md` (`SEC-007`).
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-30 | Initial requirement | Session-011 owner directive (`prompt-011.md` §4.7) — delta accepted in `DOC-OVR-012` §5 (source: `security-findings.md` `SEC-007` lines 91–97) |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

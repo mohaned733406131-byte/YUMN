@@ -3,9 +3,9 @@ document_id: DOC-RSK-002
 title: Risk Register (RISK-001 … RISK-024)
 category: 17-risk-management
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-008, NFR-005, FR-013, FR-001, SEC-REQ-012, INT-REQ-001, INT-REQ-003, DATA-REQ-007]
@@ -14,7 +14,7 @@ related_documents: [DOC-RSK-001, DOC-RSK-003, DOC-RSK-004, DOC-OVR-003, DOC-OVR-
 
 # Risk Register — RISK-001 … RISK-024 (DOC-RSK-002)
 
-Canonical register for yumn. Scoring model, categories, ranking rule and response strategies are defined in `README.md` (DOC-RSK-001) and are not repeated here. **All 24 risks are `OPEN`** — no implementation exists yet, so no mitigation has produced evidence. Rows are listed in ID order; ranking for "top N" purposes uses score ↓ → impact ↓ → ID ↑ (DOC-RSK-001 §3.3).
+Canonical register for yumn. Scoring model, categories, ranking rule and response strategies are defined in `../README.md` (DOC-RSK-001) and are not repeated here. **All 24 risks are `OPEN`** — no implementation exists yet, so no mitigation has produced evidence. Rows are listed in ID order; ranking for "top N" purposes uses score ↓ → impact ↓ → ID ↑ (DOC-RSK-001 §3.3).
 
 The first three rows are the entries mirrored in `00-project-overview/project-charter.md` §Summary of Major Risks (titles and severities identical by design).
 
@@ -67,7 +67,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Action | Owner | Phase |
 |---|---|---|
 | Append-only DB privileges: application role has no UPDATE/DELETE on ledger tables (`DATA-REQ-007`, `SEC-002`) | DevOps + Technical lead | Phase 0 |
-| Nightly reconciliation jobs `J1` (balance vs ledger) and `J2` (global invariant) with 0-tolerance alerts (`../16-data/core/data-quality.md` §5) | Technical lead | Phase 1 |
+| Nightly reconciliation jobs `J1` (balance vs ledger) and `J2` (global invariant) with 0-tolerance alerts (`../../16-data/core/data-quality.md` §5) | Technical lead | Phase 1 |
 | Property-based and invariant tests: every operation sequence leaves Σ debits = Σ credits; fuzz refunds/commissions | QA lead | Phase 1 |
 | Idempotency keys mandatory on payment/order/reservation/coupon/refund (`BR-PLT-03`); saga compensation (`BR-PLT-04`) | Technical lead | Phase 1 |
 | Architecture test "only `LedgerService` writes ledger" (F7 in `module-boundaries.md`) as CI gate | Technical lead | Phase 1 |
@@ -144,7 +144,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 
 - **Contingency plan:** if opinion contradicts `ASM-10`, sponsor approves a decision record adjusting calculation/remittance, `BR-FIN-01` is superseded through change management (root README §9), and back-calculation tooling is built for the affected window.
 - **Residual risk:** tax law can change after launch; retroactive application windows remain possible.
-- **Linked IDs:** DEP-09, ASM-10, BR-FIN-01/02/04, NFR-019, FR-014, FR-018, GAP registry (`../20-validation/core/missing-information.md`).
+- **Linked IDs:** DEP-09, ASM-10, BR-FIN-01/02/04, NFR-019, FR-014, FR-018, GAP registry (`../../20-validation/core/missing-information.md`).
 
 ### RISK-005 — Infrastructure/operational complexity vs. small team
 
@@ -162,7 +162,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Observability from day one: RED metrics, dashboards, alert routes (`INT-REQ-007`, `NFR-014`) | DevOps lead | Phase 1 |
 | Runbooks for top 10 incidents + DR drill within RTO 1 h / RPO 15 min (`AC-S-17`, `AC-S-19`) | DevOps lead | Phase 2 |
 | Health/readiness gates and graceful degradation (`BR-PLT-07`, `NFR-007`) verified in staging | QA lead | Phase 2 |
-| On-call rotation sized to team; alert severity definitions per `../12-non-functional/core/observability.md` | DevOps lead | Launch |
+| On-call rotation sized to team; alert severity definitions per `../../12-non-functional/core/observability.md` | DevOps lead | Launch |
 
 - **Contingency plan:** if ops load exceeds capacity, reduce *scope* (features) rather than controls — cut launch scope via product owner, never monitoring/backups; sponsor may add ops capacity (`ASM-14` decision).
 - **Residual risk:** single-host topology concentrates failure (see RISK-019); 99.99% on one host is inherently harder than on redundant fleets.
@@ -224,14 +224,14 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Action | Owner | Phase |
 |---|---|---|
 | Performance budgets in CI: bundle < 200 KB gzipped, query-shape review per endpoint | Technical lead | Phase 1 |
-| Redis read cache for catalog with ≥ 80% hit target (`NFR-004`, ADR-005); cursor pagination for deep lists (`../07-api/core/pagination.md`) | Technical lead | Phase 1 |
+| Redis read cache for catalog with ≥ 80% hit target (`NFR-004`, ADR-005); cursor pagination for deep lists (`../../07-api/core/pagination.md`) | Technical lead | Phase 1 |
 | Connection pooling + statement/index review against `10M products / 100M rows` capacity plan (`NFR-017`) | Technical lead | Phase 1 |
 | k6 suites at 2× target concurrency before launch; fix regressions, not budgets | QA lead | Phase 2 |
 | Documented scale-out path (API replicas, read replicas) per `NFR-018`/`scalability.md` ready if single host tops out | DevOps lead | Phase 2 |
 
 - **Contingency plan:** activate `NFR-018` stage S2 (stateless API replicas behind LB, PG read replica) — all within Compose (`C-22` preserved); reduce non-essential background work; cache more aggressively.
 - **Residual risk:** headroom on one host is finite; sustained growth beyond target eventually needs the multi-host decision (candidate ADR, requires `C-22` change).
-- **Linked IDs:** C-25, NFR-001/003/004/017/018, AC-S-05, ADR-004, ADR-005, ADR-006, SEC-013, `../12-non-functional/core/performance.md`.
+- **Linked IDs:** C-25, NFR-001/003/004/017/018, AC-S-05, ADR-004, ADR-005, ADR-006, SEC-013, `../../12-non-functional/core/performance.md`.
 
 ### RISK-009 — Data breach / PII leak (KYC documents, phone data)
 
@@ -290,13 +290,13 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 |---|---|---|
 | Enforce `project-scope.md` scope-creep control (check document first; reject with constraint ID) | Product owner | Phase 0 |
 | Resolve `GAP-01…GAP-06` decisions before Gate 0 (owners listed in scope register) | Product owner + Sponsor | Phase 0 |
-| Every change follows root README §9: version bump, change history, impacted IDs into `../20-validation/core/consistency-audit.md` | Technical lead | Continuous |
+| Every change follows root README §9: version bump, change history, impacted IDs into `../../20-validation/core/consistency-audit.md` | Technical lead | Continuous |
 | Future-scope items parked, never promoted silently; ADR required for architectural change | Architecture | Continuous |
-| Phase-gate scope audit in `../21-completion/core/quality-gates.md` | Sponsor | Each gate |
+| Phase-gate scope audit in `../../21-completion/core/quality-gates.md` | Sponsor | Each gate |
 
 - **Contingency plan:** if creep has already consumed float, sponsor re-baselines schedule or cuts launch scope; never reduce test/observability coverage to absorb creep.
 - **Residual risk:** sponsor-level deadline pressure (STK-01) can override process; the mitigation is transparency of register/gate status, not authority.
-- **Linked IDs:** GAP-01…GAP-07, OBJ set, `project-scope.md`, root README §9, `../20-validation/core/consistency-audit.md`, `../21-completion/core/quality-gates.md`.
+- **Linked IDs:** GAP-01…GAP-07, OBJ set, `project-scope.md`, root README §9, `../../20-validation/core/consistency-audit.md`, `../../21-completion/core/quality-gates.md`.
 
 ### RISK-012 — Central Bank position on closed-loop wallets (existential for wallet-only model)
 
@@ -422,7 +422,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 
 - **Contingency plan:** sponsor re-baselines timeline or adds contract capacity; freeze non-critical feature work to protect money-path delivery; sequence work so no single person blocks a gate.
 - **Residual risk:** Yemen's constrained tech talent market limits replacement options.
-- **Linked IDs:** ASM-14, DEP-11, NFR-009/010, OBJ set, `../21-completion/core/quality-gates.md` Gate 0, STK-09.
+- **Linked IDs:** ASM-14, DEP-11, NFR-009/010, OBJ set, `../../21-completion/core/quality-gates.md` Gate 0, STK-09.
 
 ### RISK-018 — Courier supply shortage in launch zones
 
@@ -479,7 +479,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 |---|---|---|
 | Legal gap assessment before launch (`DEP-09`), mapped to `SEC-REQ-006` + `16-data/` controls | Legal liaison | Phase 0 |
 | Data minimization + classification already specified (`DATA-REQ-002`, `data-classification.md`) implemented as designed | Security officer | Phase 1 |
-| Retention/deletion workflows with audit evidence (`DATA-REQ-003`, `../16-data/core/data-deletion-and-privacy.md`) | Technical lead | Phase 1 |
+| Retention/deletion workflows with audit evidence (`DATA-REQ-003`, `../../16-data/core/data-deletion-and-privacy.md`) | Technical lead | Phase 1 |
 | Provider data-processing terms reviewed (SMS/WhatsApp/CDN) for lawful transfer | Legal liaison | Phase 1 |
 | Breach-notification playbook using available channels (SMS/WhatsApp/in-app) | Security officer | Phase 2 |
 
@@ -544,7 +544,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 | Jobs idempotent + retry 3× + DLQ with depth alerts (`BR-PLT-01/02`) so replays are safe | Technical lead | Phase 1 |
 | Postgres as durable session record so cache loss cannot strand revocations (`authentication.md` §4) | Technical lead | Phase 1 |
 | Critical invariants owned by Postgres + nightly jobs, not by Redis state (`DQ-08`, `J1–J6`) | Technical lead | Phase 1 |
-| Memory limits, queue monitoring panels, stuck-job alerts per `../12-non-functional/core/observability.md` | DevOps lead | Phase 1 |
+| Memory limits, queue monitoring panels, stuck-job alerts per `../../12-non-functional/core/observability.md` | DevOps lead | Phase 1 |
 
 - **Contingency plan:** flush cache (safe by design — it is disposable); replay/re-run jobs idempotently; if queue data lost, trigger reconciliation and manual re-enqueue of escrow/payout batches; OTP codes simply re-requested (60 s cooldown).
 - **Residual risk:** in-flight non-idempotent external sends (SMS) may duplicate or be lost — bounded by provider DLR logs.
@@ -568,7 +568,7 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 
 - **Contingency plan:** deliberate pricing review by sponsor using tiered commission capability; prioritize retention of active vendors over price matching; accept short-term share loss if fee war threatens unit economics.
 - **Residual risk:** market pricing dynamics are uncontrollable; `GAP-01` (growth targets) remains unresolved, so impact measurement is approximate.
-- **Linked IDs:** OBJ-01, BR-ESC-03, GAP-01, `../01-business-analysis/core/business-model.md`, BO-01…BO-06, STK-03/STK-04.
+- **Linked IDs:** OBJ-01, BR-ESC-03, GAP-01, `../../01-business-analysis/core/business-model.md`, BO-01…BO-06, STK-03/STK-04.
 
 ---
 
@@ -577,10 +577,11 @@ The first three rows are the entries mirrored in `00-project-overview/project-ch
 1. New risks continue the sequence `RISK-025`…; IDs are **never reused**, even after closure.
 2. Score/severity changes require a rationale note and a version bump (no silent changes — root README §9).
 3. Closing a risk requires evidence (test, drill, contract, sign-off) linked from the detail section; the entry stays visible with status `CLOSED` (never deleted).
-4. The charter's Summary of Major Risks mirrors RISK-001/002/003; if those rows change, `00-project-overview/project-charter.md` must be updated in the same change set (consistency rule, `../20-validation/core/consistency-audit.md`).
+4. The charter's Summary of Major Risks mirrors RISK-001/002/003; if those rows change, `00-project-overview/project-charter.md` must be updated in the same change set (consistency rule, `../../20-validation/core/consistency-audit.md`).
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

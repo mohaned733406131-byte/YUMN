@@ -3,9 +3,9 @@ document_id: DOC-DR-004
 title: DATA-REQ-004 — Backup & restore
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [DATA-REQ-003, DATA-REQ-007, FR-013, NFR-006]
@@ -31,7 +31,7 @@ PostgreSQL data is protected by continuous WAL archiving plus daily full snapsho
 ## Acceptance criteria
 
 - AC-DR004-01: Continuity test — monitoring confirms the maximum gap between archived WAL segments stays ≤ 15 minutes (RPO evidence).
-- AC-DR004-02: Failure-injection test — a forced snapshot failure alerts operations within the alerting window defined in `../../12-non-functional/core/observability.md`.
+- AC-DR004-02: Failure-injection test — a forced snapshot failure alerts operations within the alerting window defined in `../../../12-non-functional/core/observability.md`.
 - AC-DR004-03: Drill record — the latest quarterly restore completes within 1 hour, passes integrity checks including zero ledger imbalance, and is documented with elapsed time and scope.
 - AC-DR004-04: Protection review — backup storage requires encryption at rest and authorized (role-restricted) access; unauthenticated restore attempts fail.
 
@@ -48,3 +48,4 @@ Backup monitoring evidence, quarterly restore drill (scheduled operational test 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial requirement | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration (data/ + functional/ sections) | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
