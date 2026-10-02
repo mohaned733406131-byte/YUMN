@@ -47,13 +47,13 @@ Every document under `docs/` carries:
    `related_documents` (enforced by `validate.py` + `docs/20-validation/core/consistency-audit.md` `CHK-01`;
    the literal `^related_requirements:` example inside code fences in root README §9.2 must not be
    counted as a key occurrence).
-2. **`status` vocabulary** as defined in `22-glossary/naming-conventions.md` (never invent ad-hoc
+2. **`status` vocabulary** as defined in `22-glossary/core/naming-conventions.md` (never invent ad-hoc
    status words; `VERIFIED` is reserved for implementation evidence — analysis documents are
    `draft`/`approved` only, see `SPE-03`).
 3. **A `## Change History` section** with a `| Version | Date | Change | Reason |` table; every edit
    bumps `version:` and appends a row in the same change (root README §9.2; `CHK-05`).
 4. **One `document_id` per file**, unique across the corpus, minted by the owning domain's register
-   (`DOC-<CAT>-NNN`; codes in `22-glossary/naming-conventions.md`).
+   (`DOC-<CAT>-NNN`; codes in `22-glossary/core/naming-conventions.md`).
 
 Root-level entry files (`session_track.md`, `memory.md`, `mind_map.md`, `architecture.md`,
 `development_phases_entry.md`, `all_in_one_track.md`, this file) are exempt from frontmatter and are

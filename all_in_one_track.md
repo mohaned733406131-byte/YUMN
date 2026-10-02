@@ -19,7 +19,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 | File | Purpose |
 |---|---|
 | [session_track.md](session_track.md) | Session ledger, resume points, resume prompts (SES-02/04) |
-| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…010` with evidence (SES-01) |
+| [docs/sessions/](docs/sessions/README.md) | Session work files `session-001…011` with evidence (SES-01) |
 | [development_phases_entry.md](development_phases_entry.md) | Phase status, Gate 0 state (DOC-01/02) |
 | [memory.md](memory.md) | Durable facts + known-defect register (DOC-01) |
 | [mind_map.md](mind_map.md) | Repository navigation (DOC-01) |
@@ -41,7 +41,7 @@ dies, fix it in the same commit (DOC-04/DOC-05).
 ## Open items that gate the next phase
 
 Tracked in [memory.md](memory.md) §Known defects and — canonically — in
-[docs/20-validation/](docs/20-validation/README.md) (`CRIT-NN`, `CT-NN`, `HAL-NN`, `GAP-01…GAP-14`)
+[docs/20-validation/](docs/20-validation/README.md) (`CRIT-NN`, `CT-NN`, `HAL-NN`, `GAP-01…GAP-16`)
 plus [docs/21-completion/core/recommendations.md](docs/21-completion/core/recommendations.md) (`REC-NN`).
 Domains `19/20/21` were authored 2026-09-27 (resolved); `TC-104…114` authored (resolved, session 003);
 FR↔AC `-05` references added (resolved, session 004 — AC *text-drift* half still open under `HAL-05`/`RVF-04`).
@@ -62,7 +62,7 @@ finding 2 → roll-up **65 open**. UC coverage expanded (session 010, owner dire
 omissions), full 31-check re-run on the **654**-file corpus **20/2/9 unchanged**; **derived 210** vs
 **owner "over 350" = `INSUFFICIENT EVIDENCE`** recorded side by side — roll-up still **65 open**.
 Still open: money-path enum drift (`D-06`/`SPE-04`), API-promised storage (`D-07`), the `ORD-08` race (`D-12`),
-65 audit findings, plan items `M-01`/`M-04`/`M-05`/`M-06` (`CT-23`/`CT-26`/`CT-27`/`CT-28`, `GAP-14`),
+67 audit findings (`GAP-15`/`GAP-16` minted session 013), plan items `M-01`/`M-04`/`M-05`/`M-06` (`CT-23`/`CT-26`/`CT-27`/`CT-28`, `GAP-14`),
 sponsor baselines (`ASM-14`), `DEP-05`/`DEP-06`, Gate 0 (`CRIT-01`) — all remaining `REC`/`TD` rows are
 `PAID`; the rest is sponsor-owned.
 Rule `SPE-03` forbids claiming any of these as done.

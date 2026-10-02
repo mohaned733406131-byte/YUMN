@@ -646,12 +646,12 @@ provider adapters wait for `DEP-05` + `GAP-10`; tax outputs wait for `DEP-09`/`A
 [`business-processes.md`](docs/01-business-analysis/core/business-processes.md) ·
 [`business-rules.md`](docs/01-business-analysis/business-rules.md) ·
 [`requirements-overview.md`](docs/02-requirements/requirements-overview.md) ·
-[`docs/02-requirements/functional-index.md`](docs/02-requirements/functional-index.md) ·
+[`docs/02-requirements/functional/index.md`](docs/02-requirements/functional/index.md) ·
 [`admin.md`](docs/07-api/admin/admin.md) · [`analytics.md`](docs/07-api/core/analytics.md) ·
 [`rbac.md`](docs/09-security/core/rbac.md) ·
 [`module-boundaries.md`](docs/04-architecture/core/module-boundaries.md) ·
 [`backend-architecture.md`](docs/06-backend/core/backend-architecture.md) ·
-[`docs/08-database/entities-index.md`](docs/08-database/entities-index.md) ·
+[`docs/08-database/core/entities-index.md`](docs/08-database/core/entities-index.md) ·
 [`integration-overview.md`](docs/10-integrations/core/integration-overview.md) ·
 [`configuration.md`](docs/14-devops-infrastructure/core/configuration.md) ·
 [`data-quality.md`](docs/16-data/core/data-quality.md) ·

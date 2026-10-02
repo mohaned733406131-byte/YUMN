@@ -60,7 +60,7 @@
   portal, two clients), **S2 Vendor panel**, **S3 Admin console** (Admin/Super Admin/Moderator),
   **S5 Courier app**. Actors: 7 (`DOC-OVR-007`), portals map to ACT-01/02/04-06/03; ACT-07 System
   UCs (jobs/engines) belong to the system, not a portal.
-- **Requirement registry:** 68 IDs — `FR` 20 (files `02-requirements/functional/FR-001…020.md`),
+- **Requirement registry:** 68 IDs — `FR` 20 (files `02-requirements/functional/core/FR-001…020.md`),
   `NFR` 20, `SEC-REQ` 12, `DATA-REQ` 8, `INT-REQ` 8 (`02-requirements/requirements-overview.md`).
 - Other source inventory: `BR-*` 104/15 domains, `API-*` 221 (14 endpoint groups),
   `DB-*` 18 entities, `TC-*` 114, workflows `WF-*` 12, plan `M-01…M-25`/`P-01…P-20`
@@ -80,7 +80,7 @@
    machines, `plan-develop.md`, `describ.md`, `13-testing` coverage. Output: the target UC list
    (ID, title, primary actor, portal, block `B01…B06`, FR refs, priority, source document).
 2. **Change control before minting IDs:** UC-series allocation grows 42 → target (root README §5
-   ID-series row, `22-glossary/naming-conventions.md` §3 allocation, index header/§2 count) —
+   ID-series row, `22-glossary/core/naming-conventions.md` §3 allocation, index header/§2 count) —
    follow the session-008 `BR` 99→104 precedent exactly (version bump + CH row + repo-wide grep
    for the old number). New UCs start at **UC-043**; never touch UC-001…042 content except where
    a real inconsistency is found (then its own CH row).

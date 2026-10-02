@@ -63,7 +63,7 @@ License: GPL-3.0
 - Branch prefix: `main` only long-lived; short-lived `feat/<ID>-<slug>`, `fix/<ID>-<slug>`, `chore/…`, `docs/<topic>`; PR-only; linear history (squash/rebase); force-push blocked on `main`
 - Commits: conventional `type(scope): subject` carrying the governing ID — e.g. `feat(WAL): enforce top-up cap (BR-PAY-04)` (adopted here; the corpus records no canon commit standard)
 - Module boundaries: blocks `B01…B13` ↔ DB schemas `b01…b13`; cross-schema **reads/FKs allowed, writes forbidden**; in-module layering `Controller → Service → Domain → Repository` — **`BR-*` rule ⇒ Domain, coordination ⇒ Service, HTTP ⇒ Controller**
-- Naming: `docs/22-glossary/naming-conventions.md` is source of truth (kebab-case files, `UPPERCASE-DASH` IDs, singular snake_case tables, `<col>_yer` money, UUIDv7 PKs, `/api/v1` + plural kebab resources, queue pattern `{block}.{entity}.{action}`)
+- Naming: `docs/22-glossary/core/naming-conventions.md` is source of truth (kebab-case files, `UPPERCASE-DASH` IDs, singular snake_case tables, `<col>_yer` money, UUIDv7 PKs, `/api/v1` + plural kebab resources, queue pattern `{block}.{entity}.{action}`)
 - Env/config: `SCREAMING_SNAKE_CASE`; hierarchy compiled defaults → `.env.<environment>` → runtime → feature flags → platform settings; secrets host-only, mode `0600`, fail-fast `CONFIG_MISSING: <name>` (name never value); no secrets under `NEXT_PUBLIC_`; no `if (env === 'production')` literals in app code
 
 ## 6. Overrides (may tighten, may NOT loosen without user approval)

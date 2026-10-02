@@ -11,7 +11,7 @@
 | Technology stack (versions) | [docs/04-architecture/core/technology-stack.md](docs/04-architecture/core/technology-stack.md) |
 | Data flow | [docs/04-architecture/core/data-flow.md](docs/04-architecture/core/data-flow.md) |
 | Scalability path | [docs/04-architecture/core/scalability.md](docs/04-architecture/core/scalability.md) |
-| Decisions (ADRs 001–010) | [docs/18-decisions/README.md](docs/18-decisions/README.md) · [decision log](docs/18-decisions/decision-log.md) |
+| Decisions (ADRs 001–010) | [docs/18-decisions/README.md](docs/18-decisions/README.md) · [decision log](docs/18-decisions/core/decision-log.md) |
 | System behavior / state machines | [docs/03-system-analysis/core/state-transitions.md](docs/03-system-analysis/core/state-transitions.md) |
 | Backend internals | [docs/06-backend/core/backend-architecture.md](docs/06-backend/core/backend-architecture.md) |
 | Frontend internals | [docs/05-frontend/core/frontend-architecture.md](docs/05-frontend/core/frontend-architecture.md) |

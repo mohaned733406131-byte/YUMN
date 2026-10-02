@@ -58,7 +58,7 @@
     subfolders — `use-cases/` (210 files) and `workflows/` (13 files) are partitioned into the
     portal folders, the UC index (`DOC-UC-000`) and `business-rules.md` are shared/gateway
     structures placed per the proposal.
-  - **Change control FIRST** (path scheme registered in `22-glossary/naming-conventions.md` +
+  - **Change control FIRST** (path scheme registered in `22-glossary/core/naming-conventions.md` +
     version bump + CH row before any file moves), then scripted migration, then the citation
     gate (`tools/check_citations.py`) proves every rewritten path resolves — 0 problems is the
     acceptance bar. Never move a file without updating every citing path in the same change set.

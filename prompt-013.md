@@ -135,10 +135,10 @@ report-don't-commit**; the orchestrator re-verifies every claim, edits `consiste
 
 ### Wave C — decisions housekeeping (agent C)
 
-- `docs/18-decisions/decision-log.md` :17 — bare `ADR/` prose → concrete ADR paths (ADRs live in
+- `docs/18-decisions/core/decision-log.md` :17 — bare `ADR/` prose → concrete ADR paths (ADRs live in
   `docs/18-decisions/` — verify actual filenames first).
 - `decision-log.md:78` stale RESERVED note — re-sync proven against
-  `docs/04-architecture/architecture-decisions-reference.md:110`.
+  `docs/04-architecture/core/architecture-decisions-reference.md:110`.
 
 ### Wave D — orchestrator-only (cross-file decisions, do NOT delegate)
 
@@ -151,7 +151,7 @@ report-don't-commit**; the orchestrator re-verifies every claim, edits `consiste
 
 ### Cross-cutting count/range fixes (after waves A–C, orchestrator)
 
-- `docs/22-glossary/naming-conventions.md:92` — stale GAP-01…GAP-12 range → current register range;
+- `docs/22-glossary/core/naming-conventions.md:92` — stale GAP-01…GAP-12 range → current register range;
   `:150` entities path.
 - `docs/phases/analysis/test-plan.md:33` — "277 rows" claim vs **114 TC** truth — verify what it
   actually counts before editing.
@@ -197,7 +197,7 @@ report-don't-commit**; the orchestrator re-verifies every claim, edits `consiste
   `Select-String -Path` throws — locate with `Get-ChildItem docs -Recurse -Filter <name>` first.
 - Portal layout traps: `business-rules.md`, `acceptance-criteria.md`, `requirements-overview.md`
   live at **domain root, not `core/`**; `architecture-decisions-reference.md` is at
-  `docs/04-architecture/`, not `18-decisions/`.
+  `docs/04-architecture/core/`, not `18-decisions/`.
 - Temp dir for scratch: `C:\Users\Mohanned\AppData\Local\Temp\opencode` (approved).
 - CRLF/here-string/backtick traps in PowerShell; alias-named function hazard.
 - Same-change-set discipline and gates-after-every-change-set are non-negotiable (§1).
