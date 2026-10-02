@@ -1,11 +1,11 @@
 ---
 document_id: DOC-TPL-006
-title: API Endpoint Group Template (endpoints/<group>.md)
+title: API Endpoint Group Template (07-api/<portal>/<group>.md)
 category: 23-templates
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-API-002, DOC-API-003, DOC-API-004, DOC-API-
 
 # API Endpoint Group Template (DOC-TPL-006)
 
-**When to use:** a new group file in `07-api/<group>.md`. **Authority: DOC-API-005 (group index + allocation), `../../07-api/core/api-conventions.md` (naming, roles, headers), `../../07-api/core/error-model.md` (closed error catalog), `../../07-api/core/pagination.md`** — mirror them exactly; disagreements are logged in `../../20-validation/core/contradiction-audit.md`. Exemplar: `../../07-api/core/wallet.md` (API-WAL).
+**When to use:** a new group file in `07-api/<portal>/<group>.md` (platform groups live in `core/`). **Authority: DOC-API-005 (group index + allocation), `../../07-api/core/api-conventions.md` (naming, roles, headers), `../../07-api/core/error-model.md` (closed error catalog), `../../07-api/core/pagination.md`** — mirror them exactly; disagreements are logged in `../../20-validation/core/contradiction-audit.md`. Exemplar: `../../07-api/core/wallet.md` (API-WAL).
 
 ## Rules
 
@@ -93,3 +93,4 @@ related_documents: [DOC-API-002, DOC-API-003, DOC-API-004, DOC-API-005, DOC-BA-0
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-03 | Frontmatter title `(endpoints/<group>.md)` → `(07-api/<portal>/<group>.md)`; §When-to-use target path `07-api/<group>.md` → `07-api/<portal>/<group>.md` (endpoint group files live in a portal folder — `orders.md` in `core/`, `cart.md` in `customer/`) | Session-013 leftover sweep (prompt-013 §2) — stale pre-portal path claims (no `endpoints/` folder exists) |

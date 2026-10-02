@@ -3,9 +3,9 @@ document_id: DOC-SES-006
 title: Session 006 — change-control sweep + F-07 validator amendment
 category: sessions
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -83,7 +83,7 @@ open findings total: 71 = 15 consistency + 17 contradiction + 12 gap + 12 halluc
 - New this session: consistency **finding 26** (`HIGH` — Moderator read conflict, owner: `07-api`/`09-security`/`01-business-analysis`), `CT-21` (J10 cadence), `CT-22` (`ipHash` vs `ip`), `HAL-15` (`API-TOP`); `HAL-14` closed as a disproved claim.
 - Gate 0 stays **`FAIL`** (`CRIT-01`: `ASM-14` unset, `DEP-05`/`DEP-06` NOT STARTED — sponsor-owned `REC-11…13`). `SEC-001…015` all `OPEN`. Secret scan `BLOCKED` (gitleaks absent).
 - Still `OPEN`/sponsor: `D-10` (`archdoc.md` restore vs drop), `D-16` (`describ.md` untracked), `origin/master` deletion (needs default-branch switch on GitHub).
-- `CHK-05` residual: 48 files still lack `## Change History` (40 use cases, 6 `functional/FR-*`, `02-requirements/README.md`, `00-project-overview/README.md`) — finding 2, owner: those documents (root README §9.5: fixes propagate from the owning document).
+- `CHK-05` residual: 48 files still lack `## Change History` (40 use cases, 6 `functional/core/FR-*`, `02-requirements/README.md`, `00-project-overview/README.md`) — finding 2, owner: those documents (root README §9.5: fixes propagate from the owning document).
 
 ## Commit evidence
 
@@ -113,3 +113,4 @@ Grouped conventional commits on branch **`session-006`** (hashes below; closing 
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation — change-control sweep + F-07 amendment (session 006) | analysis-agent |
 | 2026-09-28 | 1.1 | Commit-evidence table filled with real hashes (`bc60937`, `4984e31`, `5579293`, `849aa04`) in the closing evidence commit | analysis-agent |
+| 2026-10-02 | 1.2 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

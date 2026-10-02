@@ -3,9 +3,9 @@ document_id: DOC-CMP-005
 title: Feasibility Assessment
 category: 21-completion
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-001, NFR-019, NFR-001]
@@ -38,7 +38,7 @@ Methodology item 36 (root README §10): *Feasibility* — assessed across six di
 **Assessment: Feasible.**
 
 - The stack is fixed and self-consistent: modular monolith (`C-21`, `ADR-002`), PostgreSQL 16 as sole relational store (`C-19`, `ADR-001`), Redis 7 + BullMQ as the only queue/cache (`C-20`, `ADR-005`), Elasticsearch 8 for search (`ADR-006`), Docker + Docker Compose deployment with no Kubernetes (`C-22`, `ADR-004`), 100% custom build (`C-18`), MinIO object storage (`ADR-007`), Next.js 14 + React Native 0.73 across the five surfaces (`ADR-008`).
-- Every technology choice carries an accepted ADR in `18-decisions/core/` with a constraint-compliance section; the index is `04-architecture/architecture-decisions-reference.md`.
+- Every technology choice carries an accepted ADR in `18-decisions/core/` with a constraint-compliance section; the index is `04-architecture/core/architecture-decisions-reference.md`.
 - The constraint envelope is testable: `../../13-testing/core/constraint-tests.md` defines one test per constraint (`TST-CON-01…TST-CON-26`), and `AC-S-02` requires 26/26 PASS.
 - Scale and availability targets (`C-25` 10,000 concurrent, `C-26` 99.99%) are demanding but bounded: stateless replicas, caching, cursor pagination, and single-host-plus-replica growth stages are specified (`NFR-018`, `../../04-architecture/core/scalability.md`).
 
@@ -131,3 +131,4 @@ Dependency register status (`00-project-overview/dependencies.md`, `VERIFIED` as
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

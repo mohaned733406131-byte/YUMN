@@ -3,9 +3,9 @@ document_id: DOC-TPL-003
 title: Use Case Template (UC-NNN.md)
 category: 23-templates
 status: approved
-version: 1.4
+version: 1.5
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-UC-000, DOC-BA-005, DOC-REQ-001, DOC-GL-003
 
 # Use Case Template (DOC-TPL-003)
 
-**When to use:** `01-business-analysis/<portal>/UC-NNN.md` — the portal folder (`core` / `admin` / `vendor` / `customer` / `delivery`) the UC's actor belongs to, per `naming-conventions.md` §1 *Portal partition* (files authored before session 011 live in `use-cases/` and are migrated by the phase-5 script). **Authority: DOC-UC-000 §1** — this template is a convenience mirror; if the two differ, DOC-UC-000 wins (flag it in `../../20-validation/core/contradiction-audit.md`). Exemplar: `../../01-business-analysis/customer/UC-001.md`.
+**When to use:** `01-business-analysis/<portal>/UC-NNN.md` — the portal folder (`core` / `admin` / `vendor` / `customer` / `delivery`) the UC's actor belongs to, per `naming-conventions.md` §1 *Portal partition* (files authored before session 011 were migrated from `use-cases/` into their portal folders by the session-011 phase-5 migration). **Authority: DOC-UC-000 §1** — this template is a convenience mirror; if the two differ, DOC-UC-000 wins (flag it in `../../20-validation/core/contradiction-audit.md`). Exemplar: `../../01-business-analysis/customer/UC-001.md`.
 
 ## Rules
 
@@ -102,3 +102,4 @@ related_documents: [DOC-UC-000, DOC-BA-005, DOC-REQ-001]
 | 1.2 | 2026-09-29 | Allocation wording: `42 issued … UC-043+ minting` → **fully issued in session 010** | Owner directive session 010 (`prompt-010.md` §1) — `UC-043…UC-210` minted; index `DOC-UC-000` v1.2 + §3 totals synced |
 | 1.3 | 2026-09-30 | File location → **`01-business-analysis/<portal>/UC-NNN.md`** (portal partition); allocation → **`UC-001…UC-420`** (210 minted + `UC-211…420` allocated, next free `UC-421+`) | Owner directive session 011 (`prompt-011.md` §1) — allocation + path scheme registered first in `naming-conventions.md` v1.7 (SPE-05) |
 | 1.4 | 2026-09-30 | Allocation rule → **all 420 issued** (`UC-211…UC-420` minted session 011; a genuinely new use case takes `UC-421+`); skeleton `related_documents` corrected `DOC-OVR-007` → **`DOC-REQ-001`** (every minted exemplar carries `DOC-REQ-001`; `DOC-OVR-007` stays correctly cited in the §2 actor rule) | Owner directive session 011 (`prompt-011.md` §4.8) — post-mint allocation sync + template-vs-exemplar consistency defect found by the minting agents (root README §9) |
+| 1.5 | 2026-10-02 | §When-to-use tense/state fixed: pre-session-011 UCs "live in `use-cases/` and are migrated by the phase-5 script" → "were migrated from `use-cases/` into their portal folders by the session-011 phase-5 migration" (phase 5 complete — no UC lives in `use-cases/` anymore) | Session-013 leftover sweep (prompt-013 §3) — stale present-tense migration claim |

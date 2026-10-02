@@ -3,9 +3,9 @@ document_id: DOC-CMP-001
 title: 21 Completion — Domain Overview, Register & Precedence Rules
 category: 21-completion
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-27
-updated: 2026-09-30
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -72,7 +72,7 @@ Phase vocabulary is owned by `../17-risk-management/core/mitigation-plans.md` (�
        │                   │                   │                  │                │
        └───────────────────┴───────────────────┴──────────────────┴────────────────┘
                     every gate runs the phase-gate risk checklist
-                    (17-risk-management/risk-review-process.md §7, G-R1…G-R7)
+                    (17-risk-management/core/risk-review-process.md §7, G-R1…G-R7)
                     and records the outcome: PASS · PASS WITH FINDINGS · FAIL
 ```
 
@@ -136,3 +136,4 @@ Evidence discipline for every file here: statements carry `VERIFIED` / `INFERENC
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-CMP-011…DOC-CMP-015) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-03 | Fence-diagram ref +`core/` segment: 17-risk-management/risk-review-process.md → `17-risk-management/core/…` | Session-011 section-grouping rename follow-up (prompt-013 §2 leftover sweep) — moved-file outbound links / stale pre-portal path claims |

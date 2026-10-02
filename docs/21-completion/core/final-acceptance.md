@@ -3,9 +3,9 @@ document_id: DOC-CMP-010
 title: Final Acceptance — Sign-off & Evidence Requirements
 category: 21-completion
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [AC-S-01, AC-S-02, AC-S-03, AC-S-04, AC-S-05, AC-S-06, AC-S-08, AC-S-10, AC-S-11, AC-S-12, AC-S-13, AC-S-14, AC-S-15, AC-S-16, AC-S-17, AC-S-18, AC-S-19, AC-S-20, AC-S-21, AC-S-22, AC-S-23, AC-S-24]
@@ -67,7 +67,7 @@ Assembled before the sign-off meeting; each artifact names its source path. Miss
 | E-09 | Security posture pack (SAST/DAST/secret/dependency, threat-model coverage, findings triage) | `../../09-security/core/security-findings.md`; CI artifacts | `AC-S-12`, `AC-S-13`, `AC-S-16` |
 | E-10 | Compliance evidence pack (ten items incl. Central Bank position, legal opinions, bilingual notices, a11y statement) | `../../12-non-functional/core/compliance-and-legal.md` §5 | `AC-S-24` |
 | E-11 | Production-readiness rollup with sponsor/QA/security/ops signatures | `../../15-deployment/core/production-readiness.md` §8/§9 | Gate 2 / launch |
-| E-12 | Risk burndown + open-risk register with written acceptances | `../../17-risk-management/core/risk-review-process.md` §8; `17-risk-management/risk-register.md` | Layer B |
+| E-12 | Risk burndown + open-risk register with written acceptances | `../../17-risk-management/core/risk-review-process.md` §8; `17-risk-management/core/risk-register.md` | Layer B |
 | E-13 | Debt + recommendation disposition reports | `technical-debt.md`; `recommendations.md` | Layer A |
 | E-14 | GAP closure log + assumption re-score record (`ASM-01…ASM-14` with evidence) | `../../20-validation/core/missing-information.md`; `00-project-overview/assumptions.md` | Both layers |
 | E-15 | Pilot + UAT evidence (≥ 10 vendors; four-surface UAT sign-offs) | `../../13-testing/core/test-plans.md` §g; `AC-S-04`, `AC-S-21` | Layer B |
@@ -120,3 +120,4 @@ Signatures are recorded with name, role, and date; each signer owns the evidence
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
 | 1.1 | 2026-09-27 | Readiness snapshot re-synced: Layer A row (assessment authored), debt/recommendations row (7 `TD` open / 12 `REC` unaccepted after `REC-03`/`TD-04` closure) | `REC-03` pay-down change set — root README §9.4 same-change-set propagation |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

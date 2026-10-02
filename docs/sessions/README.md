@@ -3,9 +3,9 @@ document_id: DOC-SES-000
 title: Sessions Index — session work files (SES-01)
 category: sessions
 status: approved
-version: 1.7
+version: 1.8
 created: 2026-09-28
-updated: 2026-09-29
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -34,6 +34,7 @@ from `senior-rules/templates/TEMPLATE_session_work.md`). The resume index is
 | 008 | [session-008-archdoc-brinv-citation-ci.md](session-008-archdoc-brinv-citation-ci.md) | 2026-09-28 | CLOSED | `REC-01` archdoc restore (`archdoc.md` v1.0, `TD-03`/`HAL-03`/`CRIT-08` closed) + `BR-INV-01…05` registration (`business-rules.md` v1.1 → 104 rules/15 domains, `CRIT-06`/`HAL-04` closed) + `REC-15` citation CI (`tools/check_citations.py` + Actions workflow, `HAL-12`/`AVF-11` closed — **all assistant-side `REC`/`TD` now `PAID`**) + count/dashboard catch-up → roll-up **66 open** |
 | 009 | [session-009-pre-gate-hygiene.md](session-009-pre-gate-hygiene.md) | 2026-09-29 | CLOSED | Pre-gate hygiene: fresh **31-check re-run on 485 files → 20/2/9** (session-006 tally correlation corrected to 19/2/10 pre-fix) + **`CHK-05` remediated** (48 files given `## Change History`, finding 2 `RESOLVED`, `consistency-audit` **v1.17**) + **gitleaks 8.30.1 secret scan** (raw 2/5 findings = 2 benign test fixtures → documented `.gitleaks.toml` allowlist → tree + history clean) + citation-CI run recorded **UNVERIFIED** + sponsor dispositions surfaced → roll-up **65 open** |
 | 010 | [session-010-uc-coverage-expansion.md](session-010-uc-coverage-expansion.md) | 2026-09-29 | CLOSED | **Full use-case coverage expansion (owner directive):** 42 → **210 UCs** — 168 minted `UC-043`…`UC-210` in **parallel subagent waves** (10 + 3 agents, disjoint sets; `UC-045` re-filled for contiguity; 4 cross-ref typos fixed), all template-verbatim + source-backed only; change control `naming-conventions` **v1.6** / `terminology` **v1.3** / `use-case-template` **v1.2** (allocation **210 issued**, next `UC-211+`); index `DOC-UC-000` **v1.2** (+168 rows, §5 coverage matrix 43/65/58/32/12 = 210, **18-item PENDING backlog**, **derived 210 vs owner "over 350" = `INSUFFICIENT EVIDENCE`**); propagation `19-` ×3 / `20-` / `phases` / `03-` / `11-` (no omissions); **full 31-check sweep on 654 files → 20/2/9 unchanged**; QC: 779 `AC-UCnnn-nn` **0 collisions**, flagged BRs verified in registry; gates PASS both (**669 / 21,751 / 0**) → roll-up **65 open** |
+| 011 | [session-011-portal-uc420-section-grouping.md](session-011-portal-uc420-section-grouping.md) | 2026-10-03 | CLOSED | **Phases 5–10 across sittings + session-013 owner section-grouping directive:** portal partition **583 files** → `docs/<nn>/<portal>/` (5 groups, commits `4bffdd2`…`c02ab91`) + **115 portal READMEs** (`9f2a916`); UC mint **210 → 420** (waves `bae2344`/`fddb10a`, `UC-211`…`UC-420`); accepted deltas → **73 requirements / 111 BR / 273 AC** (`851c05e`, `DOC-OVR-012` scope only); registration WIP snapshot (`c78490b`); **section-grouping rename — 39 files** flat → section `core/` folders + **7 parallel fix agents** (M3 85 files; M2 70 files/81 replacements with disclosed+recovered blob incident; orchestrator re-verified every claim) + orchestrator moved-file outbound links (12+17+20) + 15-file leftover sweep; **Wave-D `GAP-15`/`GAP-16` minted → roll-up 65 → 67 open** (`missing-information` v1.5, 16 issued / 13 open, 8 consumers propagated); phase 9: chk31 fresh **20/2/9 identical** (986 files), UC-420 contiguous, AC↔UC **1591 published**, gitleaks **triaged-clean**, CI `docs-citations` **13/13 `failure`** recorded → post-push **UNVERIFIED**; **phase 9c — 17 pairs registered in `PHANTOM_PATHS` (14 owner-surface / 1 deleted-pack / 2 dated-evidence) → both gates PASS** (**1005 files / 27453 ID citations / 0 / 0**) → roll-up **67 open** |
 
 ## Notes
 
@@ -54,3 +55,4 @@ from `senior-rules/templates/TEMPLATE_session_work.md`). The resume index is
 | 2026-09-28 | 1.5 | Registry row 008 + `DOC-SES-008` added (session 008 close, SPE-05) | analysis-agent |
 | 2026-09-29 | 1.6 | Registry row 009 + `DOC-SES-009` added (session 009 close, SPE-05) | analysis-agent |
 | 2026-09-29 | 1.7 | Registry row 010 + `DOC-SES-010` added (session 010 close, SPE-05) | analysis-agent |
+| 2026-10-03 | 1.8 | Registry row 011 + `DOC-SES-011` added (session 011 close, SPE-05) | analysis-agent |

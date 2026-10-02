@@ -3,9 +3,9 @@ document_id: DOC-TRC-001
 title: Traceability — Domain Overview, Chain Rules & Coverage Dashboard
 category: 19-traceability
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-27
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-020, NFR-009]
@@ -46,7 +46,7 @@ Each hop was re-verified against the corpus while authoring this domain (`VERIFI
 
 | Hop | Evidence checked | Result |
 |---|---|---|
-| `FR-013 → BR-PAY-04` | `../02-requirements/core/FR-013.md` §Business Rules Applied | Holds |
+| `FR-013 → BR-PAY-04` | `../02-requirements/functional/core/FR-013.md` §Business Rules Applied | Holds |
 | `BR-PAY-04 → UC-021` | `01-business-analysis/business-rules.md` row `BR-PAY-04`; `../01-business-analysis/vendor/UC-021.md` | **Fails** — `BR-PAY-04` is exercised by `UC-034` (Verify Bank-Transfer Top-Up); `UC-021` (Respond to Return Request) cites `BR-RET-*`/`BR-ORD-05`, not `BR-PAY-04` |
 | `UC-021 → API-WAL-002` | `../07-api/core/wallet.md`, `returns.md` | **Fails** — `UC-021` is cited by `API-RET-*` and `API-WAL-014`; `API-WAL-002` cites only `FR-013`, `BR-PAY-06/10`, `DATA-REQ-007/008` |
 | `API-WAL-002 → wallet` | `../07-api/core/wallet.md`, `../08-database/core/wallet.md` (`DB-010`, related `FR-013`) | Holds (ledger view over `DB-010`/`DB-011`) |
@@ -139,7 +139,7 @@ Severity uses `docs/README.md` §8 classes; confidence noted where it matters.
 | # | Finding | Severity | Evidence |
 |---|---|---|---|
 | F-01 | **47 ACs have no test-artifact link at all**: `AC-DR002-01…04`, `AC-DR003-01…04`, `AC-DR006-01/04`, `AC-DR007-03/04`, `AC-DR008-01…04`, `AC-DR009-01…04`, `AC-IR002-02/03/04`, `AC-IR005-02/03`, `AC-NFR-008-02`, `AC-NFR-012-01/02`, `AC-NFR-014-02`, `AC-NFR-016-02`, `AC-NFR-019-02`, `AC-SR013-01…04`, `AC-SR014-01…04`, `AC-SR015-01…04`, `AC-SR016-01…04` | HIGH | `requirements-to-tests.md` rows with status `GAP` |
-| F-02 | **11 declared TC files are absent**: `../13-testing/test-cases-index.md` §2 locks an allocation of **114** cases, only **103** files exist — `TC-104` (tail of the `FR-019` block) and `TC-105…TC-114` (the whole `FR-020` block) have no file — **`RESOLVED` 2026-09-27** (session 003 authored all 11; `TC-*.md` count now **114/114**, `REC-03`/`TD-04` `PAID`, matrix `G-02` closed) | HIGH | count of `13-testing/test-cases/TC-*.md` = 103 → 114 |
+| F-02 | **11 declared TC files are absent**: `../13-testing/core/test-cases-index.md` §2 locks an allocation of **114** cases, only **103** files exist — `TC-104` (tail of the `FR-019` block) and `TC-105…TC-114` (the whole `FR-020` block) have no file — **`RESOLVED` 2026-09-27** (session 003 authored all 11; `TC-*.md` count now **114/114**, `REC-03`/`TD-04` `PAID`, matrix `G-02` closed) | HIGH | count of `13-testing/test-cases/TC-*.md` = 103 → 114 |
 | F-03 | **FR files understate their own ACs**: every `02-requirements/functional/FR-nnn.md` lists exactly `AC-FRnnn-01…04`, but `02-requirements/acceptance-criteria.md` defines `AC-FRnnn-05` for 14 FRs (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`) — **`RESOLVED` 2026-09-27** (session 004 `REC-04`: all 94 registry `AC-FR*` now cited, `TD-05` `PAID`, `HAL-07` `RESOLVED`) | MEDIUM | 20 files × 4 IDs vs 94 registry IDs → 94/94 cited |
 | F-04 | **`AC-S-03` zero-gap claim not yet demonstrable**: `02-requirements/acceptance-criteria.md` §7 states this domain "records requirement → AC → TC with zero gaps"; measured state is 47 `GAP` + 42 `DECLARED`-only rows | HIGH | §5 dashboard |
 | F-05 | **Broken chain hops in the repository's own example**: `docs/README.md` §5 chain uses `BR-PAY-04 → UC-021 → API-WAL-002`; corpus shows `BR-PAY-04 → UC-034` and `UC-021 → API-RET-*`/`API-WAL-014` | MEDIUM | §2 hop table |
@@ -150,7 +150,7 @@ Severity uses `docs/README.md` §8 classes; confidence noted where it matters.
 | F-10 | **No stakeholder → objective/requirement mapping exists**: `00-project-overview/stakeholders.md` contains no `STK-* → OBJ-*`/`FR-*` table, so no stakeholder trace can be built without inventing links | LOW | file read, no such table |
 | F-11 | **Design-time only**: all 26 `TST-CON-NN` are `DESIGNED`; no test result, report or dashboard exists anywhere in the corpus | INFORMATIONAL (expected at v1.0) | `../13-testing/core/constraint-tests.md` status column |
 
-**Documents that need updating (not edited by this domain):** ~~`../13-testing/test-cases-index.md` (F-02)~~ done 2026-09-27, ~~`02-requirements/functional/FR-001…FR-020.md` for the 14 IDs in F-03~~ done 2026-09-27, `02-requirements/acceptance-criteria.md` §7 (F-04), ~~`../03-system-analysis/core/functional-analysis.md` (F-06)~~ done 2026-09-28, the portal folders of `../01-business-analysis/` or the registry wording (F-07), `00-project-overview/stakeholders.md` (F-10).
+**Documents that need updating (not edited by this domain):** ~~`../13-testing/core/test-cases-index.md` (F-02)~~ done 2026-09-27, ~~`02-requirements/functional/FR-001…FR-020.md` for the 14 IDs in F-03~~ done 2026-09-27, `02-requirements/acceptance-criteria.md` §7 (F-04), ~~`../03-system-analysis/core/functional-analysis.md` (F-06)~~ done 2026-09-28, the portal folders of `../01-business-analysis/` or the registry wording (F-07), `00-project-overview/stakeholders.md` (F-10).
 
 **Documents that become valid by this domain existing:** `docs/README.md` §2 already links `19-traceability/README.md`; that link resolves as of 2026-09-27.
 
@@ -166,3 +166,4 @@ Severity uses `docs/README.md` §8 classes; confidence noted where it matters.
 | 1.3 | 2026-09-29 | §5 UC count 42 → **210** (`UC-001…UC-210`, direct count of `use-cases/UC-*.md`; WF 12 / blocks 13 re-checked, unchanged); §7 `F-07` evidence 121 → **779** `AC-UC*` IDs (severity/status unchanged); §5 header dated for the re-count | `prompt-010.md` §1 session-010 UC-coverage directive — corpus grown 42 → 210 use cases, dashboard re-synced in the same change set (root README §9 rule 4) |
 | 1.4 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TRC-004…DOC-TRC-008) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
 | 1.5 | 2026-09-30 | §3 register rows: requirements 68 → **73**, ACs 277 → **297**; §5 dashboard re-run by direct count (requirements **73** = 20 FR/20 NFR/16 SEC-REQ/9 DATA-REQ/8 INT-REQ, BR 104 → **111**, AC registry 253 → **273** + 24 `AC-S` = **297**, UC 210 → **420** (`UC-001…UC-420`), WF 12 / blocks 13 / constraints 26 / TC 114 / API 14/221 / DB 18 re-checked unchanged), linkage 203/42/27/5 → **203/42/47/5** with re-based shares (68.4/14.1/15.8/1.7 %) and a family line that now shows `GAP` per family, verdict clause 27 → **47**; §7 `F-01` 27 → **47 ACs** (list extended), `F-04` 27 → 47 `GAP`, `F-07` evidence 779 → **1591** `AC-UC*` (severity/status unchanged), `F-08` 36 → **37** (finding severities/statuses unchanged); stale `use-cases/`/`01-business-analysis/*.md` wording → portal folders | `prompt-011.md` §4.8 owner directive session 011 — requirements 68 → 73, AC registry 253 → 273, BR 104 → 111 and UC corpus 210 → 420, dashboards re-synced in the same change set (root README §9 rule 4) |
+| 1.6 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

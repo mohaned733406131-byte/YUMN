@@ -3,9 +3,9 @@ document_id: DOC-SES-008
 title: Session 008 — archdoc restore (REC-01), BR-INV registration, REC-15 citation CI
 category: sessions
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -36,7 +36,7 @@ related_documents: [DOC-SES-000, DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-
 ## Files touched (grouped)
 
 **Authored this session:** `archdoc.md` (**v1.0** — reconstructed structure specification), `tools/check_citations.py` (REC-15 citation checker), `.github/workflows/docs-citations.yml` (citation CI), `docs/sessions/session-008-archdoc-brinv-citation-ci.md` (this file).
-**Modified this session:** `docs/README.md` **v1.4** · `docs/01-business-analysis/business-rules.md` **v1.1** (`## INV`, 104/15) · `docs/01-business-analysis/README.md` **v1.2** · `docs/00-project-overview/actors-and-roles.md` **v1.1** · `docs/03-system-analysis/README.md` **v1.3** · `docs/06-backend/README.md` **v1.1** · `docs/07-api/README.md` **v1.1** · `docs/13-testing/README.md` **v1.1** · `docs/13-testing/core/testing-strategy.md` **v1.1** · `docs/19-traceability/core/requirements-to-tests.md` **v1.4** · `docs/19-traceability/core/requirements-to-features.md` **v1.2** · `docs/19-traceability/README.md` **v1.2** · `docs/20-validation/core/analysis-validation.md` **v1.10** (roll-up 69 → 67 → 66) · `docs/20-validation/core/consistency-audit.md` **v1.16** (§4 rows + `CHK-08`/`CHK-21`) · `docs/20-validation/core/hallucination-audit.md` **v1.8** (`HAL-03`/`HAL-04`/`HAL-12` → `RESOLVED`) · `docs/20-validation/core/critical-findings.md` **v1.5** (`CRIT-08`/`CRIT-06` → `RESOLVED`) · `docs/21-completion/core/recommendations.md` **v1.10** (`REC-01`/`REC-15` → `PAID`) · `docs/21-completion/core/technical-debt.md` **v1.9** (`TD-03` → `PAID`) · `docs/22-glossary/naming-conventions.md` **v1.4** · `docs/22-glossary/terminology.md` **v1.1** · `docs/phases/analysis/phase-audit.md` **v1.5** (`F-05` → `FIXED`, roll-up 66) · `docs/phases/analysis/implementation-plan.md` **v1.2** · `docs/phases/analysis/qa-attributes.md` **v1.1** · `docs/sessions/session-005-rules-compliance-audit.md` **v1.5** · `docs/sessions/README.md` **v1.5** · `senior-rules/RULES_HINTS.md` §4 + `senior-rules/YUMN_RULES.md` preamble (factual 99 → 104) · `mind_map.md` · `memory.md` · `all_in_one_track.md` · `session_track.md` · `prompt-next.md`.
+**Modified this session:** `docs/README.md` **v1.4** · `docs/01-business-analysis/business-rules.md` **v1.1** (`## INV`, 104/15) · `docs/01-business-analysis/README.md` **v1.2** · `docs/00-project-overview/actors-and-roles.md` **v1.1** · `docs/03-system-analysis/README.md` **v1.3** · `docs/06-backend/README.md` **v1.1** · `docs/07-api/README.md` **v1.1** · `docs/13-testing/README.md` **v1.1** · `docs/13-testing/core/testing-strategy.md` **v1.1** · `docs/19-traceability/core/requirements-to-tests.md` **v1.4** · `docs/19-traceability/core/requirements-to-features.md` **v1.2** · `docs/19-traceability/README.md` **v1.2** · `docs/20-validation/core/analysis-validation.md` **v1.10** (roll-up 69 → 67 → 66) · `docs/20-validation/core/consistency-audit.md` **v1.16** (§4 rows + `CHK-08`/`CHK-21`) · `docs/20-validation/core/hallucination-audit.md` **v1.8** (`HAL-03`/`HAL-04`/`HAL-12` → `RESOLVED`) · `docs/20-validation/core/critical-findings.md` **v1.5** (`CRIT-08`/`CRIT-06` → `RESOLVED`) · `docs/21-completion/core/recommendations.md` **v1.10** (`REC-01`/`REC-15` → `PAID`) · `docs/21-completion/core/technical-debt.md` **v1.9** (`TD-03` → `PAID`) · `docs/22-glossary/core/naming-conventions.md` **v1.4** · `docs/22-glossary/core/terminology.md` **v1.1** · `docs/phases/analysis/phase-audit.md` **v1.5** (`F-05` → `FIXED`, roll-up 66) · `docs/phases/analysis/implementation-plan.md` **v1.2** · `docs/phases/analysis/qa-attributes.md` **v1.1** · `docs/sessions/session-005-rules-compliance-audit.md` **v1.5** · `docs/sessions/README.md` **v1.5** · `senior-rules/RULES_HINTS.md` §4 + `senior-rules/YUMN_RULES.md` preamble (factual 99 → 104) · `mind_map.md` · `memory.md` · `all_in_one_track.md` · `session_track.md` · `prompt-next.md`.
 
 ## Evidence
 
@@ -99,3 +99,4 @@ e28a9f1 feat(docs): restore archdoc.md 1.0 with provenance — REC-01/TD-03 pay-
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation and close — `REC-01`/`BR-INV`/`REC-15` pay-downs, close-out count catch-up, final validator + citation-check evidence, trackers synced (session 008) | analysis-agent |
+| 2026-10-02 | 1.1 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

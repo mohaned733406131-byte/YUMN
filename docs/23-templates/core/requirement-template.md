@@ -3,9 +3,9 @@ document_id: DOC-TPL-002
 title: Requirement Template (FR / NFR / SEC-REQ / DATA-REQ / INT-REQ)
 category: 23-templates
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-REQ-001, DOC-ROOT-001, DOC-FR-013, DOC-GL-0
 
 # Requirement Template (DOC-TPL-002)
 
-**When to use:** a new file in `02-requirements/<family>/` — `FR-NNN.md`, `NFR-NNN.md`, `SEC-REQ-NNN.md`, `DATA-REQ-NNN.md`, `INT-REQ-NNN.md`. Authority: `02-requirements/` registries; exemplar: `../../02-requirements/core/FR-013.md`.
+**When to use:** a new file in `02-requirements/<family>/` — `FR-NNN.md`, `NFR-NNN.md`, `SEC-REQ-NNN.md`, `DATA-REQ-NNN.md`, `INT-REQ-NNN.md`. Authority: `02-requirements/` registries; exemplar: `../../02-requirements/functional/core/FR-013.md`.
 
 ## Rules
 
@@ -97,6 +97,7 @@ related_documents: [DOC-REQ-001, DOC-BA-005, DOC-OVR-008]
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | <date> | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
 ```
 
 ## Family Variations

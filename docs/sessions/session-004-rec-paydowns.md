@@ -3,9 +3,9 @@ document_id: DOC-SES-004
 title: Session 004 — REC-04/08/07/06 pay-down (FR AC refs, stub rows, role mapping, queue register)
 category: sessions
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -23,8 +23,8 @@ related_documents: [DOC-SES-001, DOC-SES-002, DOC-SES-003, DOC-SES-005]
 
 | # | Action | Command/output evidence | Result |
 |---|---|---|---|
-| 1 | **REC-04 → PAID** — registry-only `AC-FRnnn-05` references added to 14 FR files + `../02-requirements/functional-index.md` v1.1; scripted check `registry AC-FR IDs: 94 → ALL 94 CITED` | flips: `TD-05` PAID, `HAL-07` RESOLVED, matrix `G-05` RESOLVED, `CRIT-05` partial, `AVF-04` partial, `RVF-04` re-graded (78 → 77 open); text-divergence half left open | PASS |
-| 2 | **REC-08 → PAID** — 6 stale "not yet authored" stub rows rewritten in `03-system-analysis/README.md` v1.1 + `04-architecture/README.md` v1.1 (rows now cite `../07-api/endpoints-index.md` 14 groups/221 endpoints, `../08-database/entities-index.md` `DB-001…018`, `../13-testing/test-cases-index.md` `TC-001…114`) | flips: `TD-09` PAID, `REC-08` paid | PASS |
+| 1 | **REC-04 → PAID** — registry-only `AC-FRnnn-05` references added to 14 FR files + `../02-requirements/functional/index.md` v1.1; scripted check `registry AC-FR IDs: 94 → ALL 94 CITED` | flips: `TD-05` PAID, `HAL-07` RESOLVED, matrix `G-05` RESOLVED, `CRIT-05` partial, `AVF-04` partial, `RVF-04` re-graded (78 → 77 open); text-divergence half left open | PASS |
+| 2 | **REC-08 → PAID** — 6 stale "not yet authored" stub rows rewritten in `03-system-analysis/README.md` v1.1 + `04-architecture/README.md` v1.1 (rows now cite `../07-api/core/endpoints-index.md` 14 groups/221 endpoints, `../08-database/core/entities-index.md` `DB-001…018`, `../13-testing/core/test-cases-index.md` `TC-001…114`) | flips: `TD-09` PAID, `REC-08` paid | PASS |
 | 3 | **REC-07 → PAID** — `../09-security/core/rbac.md` v1.1 new §8 cross-layer role mapping (10 rows, cardinality invariant API 7 = enum 10 − 3 staff; DB 6 = 7 − `SYSTEM`; fail-closed); `../06-backend/core/authorization.md` v1.1 four-way conformance CI row | scripted parity check PASS (API 7 / enum 10 / DB 6+SYSTEM); flips: `TD-08` PAID, `REC-07` paid, `CHK-18` four-way | PASS |
 | 4 | **REC-06 → PAID** — single queue register: `../06-backend/core/background-processing.md` v1.1 §1 register 25 → 30 rows (added `b07.wallet.credit`, `b08.shipping.code-issue`, `b09.return.decision-escalate`, `b10.notification.delivery`, `b13.ticket.auto-close`); 20 downstream queue names renamed across 10 files | flips: `TD-07` PAID (CI half deferred to `REC-15`), `REC-06` paid, `CT-04`/`CT-05` RESOLVED, `CRIT-04` RESOLVED | PASS |
 | 5 | Delayed propagation caught and closed: consistency finding 12 + `CHK-20` re-run after `REC-05` → RESOLVED/PASS | consistency final: 15 PASS · 2 PASS WITH FINDINGS · 14 FAIL; findings 25 = 16 OPEN · 9 RESOLVED | PASS |
@@ -68,3 +68,4 @@ QUEUE-NAME SCAN: PASS - 0 violations, 439 files scanned, 124 DB-column refs skip
 | 2026-09-28 | 1.0 | Initial creation (SES-01 reconstruction, session 005) | analysis-agent |
 | 2026-09-28 | 1.1 | related_requirements: [] frontmatter key and this Change History section added (session 006 sweep: CHK-01, CHK-05) | analysis-agent |
 | 2026-09-28 | 1.2 | Deferred items (a)–(f) outcome recorded inline: finding 26, `CT-21`, `HAL-14` (disproved), `CT-22`, `HAL-15`; (f) re-verified open | Session-006 sweep (deferred-findings mandate) |
+| 2026-10-02 | 1.3 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

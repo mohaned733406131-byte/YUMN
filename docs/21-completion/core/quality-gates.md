@@ -3,9 +3,9 @@ document_id: DOC-CMP-004
 title: Quality Gates — Gate 0 to Gate 3
 category: 21-completion
 status: approved
-version: 1.2
+version: 1.3
 created: 2026-09-27
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-013, NFR-001, NFR-005, NFR-019, SEC-REQ-012, DATA-REQ-004]
@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-003, DOC-OVR-009, DOC-OVR-010, DOC-OVR-011, DOC-TST-
 
 # Quality Gates
 
-The gate system that the rest of `docs/` points at: `00-project-overview/project-charter.md` (baseline mandate), `00-project-overview/assumptions.md` (escalation rule), `00-project-overview/stakeholders.md` (conflict resolution), `../../01-business-analysis/core/stakeholder-needs.md` (STK-01), `13-testing/README.md` (§1, L25), `../../13-testing/core/test-plans.md` (L17, L46), `17-risk-management/` (phase-gate risk check), `11-ui-ux/README.md` (§7, L114), `17-risk-management/risk-register.md` (phase-gate scope audit).
+The gate system that the rest of `docs/` points at: `00-project-overview/project-charter.md` (baseline mandate), `00-project-overview/assumptions.md` (escalation rule), `00-project-overview/stakeholders.md` (conflict resolution), `../../01-business-analysis/core/stakeholder-needs.md` (STK-01), `13-testing/README.md` (§1, L25), `../../13-testing/core/test-plans.md` (L17, L46), `17-risk-management/` (phase-gate risk check), `11-ui-ux/README.md` (§7, L114), `17-risk-management/core/risk-register.md` (phase-gate scope audit).
 
 **Methodology:** a gate is not a meeting or an opinion — it is an evidence review with a recorded outcome (root README §11; `13-testing/README.md` §1: "No gate is passed by opinion").
 
@@ -63,7 +63,7 @@ The gate system that the rest of `docs/` points at: `00-project-overview/project
 
 ## 3. Gate 0 — Pre-Implementation Readiness
 
-**Mandated explicitly:** `00-project-overview/project-charter.md` L46 — "Budget, staffing, and schedule baselines are `INSUFFICIENT EVIDENCE` at this stage (see `ASM-14`) — they must be established before implementation kickoff (`quality-gates.md`, Gate 0)". Also mandated by the `00-project-overview/assumptions.md` escalation rule (blocking assumptions `ASM-03`, `ASM-04`, `ASM-12`, `ASM-14` must be resolved "before the quality gate that precedes implementation") and by `17-risk-management/risk-register.md` (`RISK-011` phase-gate scope audit; `RISK-006`/`RISK-012` blocking).
+**Mandated explicitly:** `00-project-overview/project-charter.md` L46 — "Budget, staffing, and schedule baselines are `INSUFFICIENT EVIDENCE` at this stage (see `ASM-14`) — they must be established before implementation kickoff (`quality-gates.md`, Gate 0)". Also mandated by the `00-project-overview/assumptions.md` escalation rule (blocking assumptions `ASM-03`, `ASM-04`, `ASM-12`, `ASM-14` must be resolved "before the quality gate that precedes implementation") and by `17-risk-management/core/risk-register.md` (`RISK-011` phase-gate scope audit; `RISK-006`/`RISK-012` blocking).
 
 **Purpose:** authorize the start of implementation. Nothing has been built; this gate judges readiness, not product.
 
@@ -188,3 +188,4 @@ Honesty rule: **no gate review has been convened, and none can pass today** — 
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
 | 1.1 | 2026-09-28 | §7 rewritten: every gate record now carries an explicit §1 outcome (`FAIL`) with findings/severities and evidence links; honesty note re-scoped to "no review convened, block stands" | `REC-14` pay-down — gate discipline requires recorded outcomes; never green-washed (DOD-10): Gate 0 fails its own criteria today (`AVF-02`) |
 | 1.2 | 2026-09-30 | Check 1.3 AC-registry count sync: 253 → **273 ACs** (`acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — count consumer re-synced in same change set |
+| 1.3 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

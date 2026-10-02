@@ -3,9 +3,9 @@ document_id: DOC-VAL-009
 title: 20 Validation — core/ portal folder
 category: 20-validation
 status: approved
-version: 1.1
+version: 1.3
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -16,7 +16,7 @@ related_documents: [DOC-VAL-001]
 
 ## Purpose
 
-One of the five portal subfolders of `20-validation/` (portal partition — `22-glossary/naming-conventions.md` §1):
+One of the five portal subfolders of `20-validation/` (portal partition — `22-glossary/core/naming-conventions.md` §1):
 holds **shared, platform-wide material for this domain (not specific to a single portal)** for this domain. Cross-portal registries, gateways and index
 files stay at the domain root; shared material lives in `core/`.
 
@@ -30,7 +30,7 @@ files stay at the domain root; shared material lives in `core/`.
 | [contradiction-audit.md](contradiction-audit.md) | DOC-VAL-004 | AUD-02 — Contradiction Audit (CT-01…CT-30) |
 | [critical-findings.md](critical-findings.md) | DOC-VAL-006 | AUD-05 — Critical Findings (money-path and gate-blocking) |
 | [hallucination-audit.md](hallucination-audit.md) | DOC-VAL-005 | AUD-04 — Hallucination Audit (unsupported claims across docs/) |
-| [missing-information.md](missing-information.md) | DOC-VAL-002 | AUD-03 — Missing Information (GAP register GAP-01…GAP-14) |
+| [missing-information.md](missing-information.md) | DOC-VAL-002 | AUD-03 — Missing Information (GAP register GAP-01…GAP-16) |
 | [requirements-validation.md](requirements-validation.md) | DOC-VAL-007 | AUD-07 — Requirements Validation (73 requirements, 5 categories) |
 
 ## Change History
@@ -39,3 +39,5 @@ files stay at the domain root; shared material lives in `core/`.
 |---|---|---|---|
 | 1.0 | 2026-09-30 | Initial portal-folder index (7 file(s)) | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` |
 | 1.1 | 2026-09-30 | Contents row: AUD-07 title count 68 → **73 requirements** | Owner directive session 011 (`prompt-011.md` §4.8) — consumer of `requirements-validation.md` v1.2 (requirements 68 → 73, `requirements-overview.md` v1.2) |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 1.3 | 2026-10-02 | Contents mirror of `AUD-03` title refreshed: `GAP-01…GAP-14` → `GAP-01…GAP-16` | Root README §9.4 consumer re-sync — `missing-information.md` v1.5 (session-013 wave D) |

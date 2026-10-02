@@ -3,9 +3,9 @@ document_id: DOC-PHA-016
 title: Test Plan & Cases — analysis phase
 category: phases
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_documents: [DOC-TST-001, DOC-TST-003, DOC-TRC-003]
@@ -15,7 +15,7 @@ related_requirements: [AC-S-03, AC-S-09]
 # Test Plan & Cases — analysis phase
 
 - Phase: analysis · Rules version: ADMR `2.0.0` · Suites: unit/component/integration/system/UAT/perf/security
-- Strategy (canonical): [`../../13-testing/core/testing-strategy.md`](../../13-testing/core/testing-strategy.md) · Registry: [`../../13-testing/test-cases-index.md`](../../13-testing/test-cases-index.md) (`TC-001`…`TC-114`) · Constraints: [`../../13-testing/core/constraint-tests.md`](../../13-testing/core/constraint-tests.md) (`TST-CON-01`…`26`)
+- Strategy (canonical): [`../../13-testing/core/testing-strategy.md`](../../13-testing/core/testing-strategy.md) · Registry: [`../../13-testing/core/test-cases-index.md`](../../13-testing/core/test-cases-index.md) (`TC-001`…`TC-114`) · Constraints: [`../../13-testing/core/constraint-tests.md`](../../13-testing/core/constraint-tests.md) (`TST-CON-01`…`26`)
 
 ## 1. Coverage mapping (TST-02)
 
@@ -30,7 +30,7 @@ related_requirements: [AC-S-03, AC-S-09]
 | Admin / settings / audit (`b13`) | — | — | `TC-110` precedence | `TC-109`, `TC-114` | `AC-SR010-*` | — | `TC-107` tamper chain |
 | Health / ops | — | — | `TC-113` probes | chaos `CHAOS-01…08` | — | `PERF-05…07` | — |
 
-Full AC → test matrix (277 rows): [`../../19-traceability/core/requirements-to-tests.md`](../../19-traceability/core/requirements-to-tests.md) — verdict `PASS WITH FINDINGS` (203 EXPLICIT / 42 DECLARED / 27 GAP / 5 operational).
+Full AC → test matrix (297 rows): [`../../19-traceability/core/requirements-to-tests.md`](../../19-traceability/core/requirements-to-tests.md) — verdict `PASS WITH FINDINGS` (203 EXPLICIT / 42 DECLARED / 47 GAP / 5 operational).
 
 ## 2. Test cases
 
@@ -56,3 +56,5 @@ Canonical, full-detail cases live in `../../13-testing/core/TC-001.md`…`TC-114
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 14 / TST-01, session 005) | analysis-agent |
+| 2026-10-02 | 1.1 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 2026-10-02 | 1.2 | Stale matrix claim corrected: "277 rows / 27 GAP" → **297 rows / 47 GAP** (273 registry AC + 24 `AC-S-*`; breakdown 203 `EXPLICIT` / 42 `DECLARED` / 47 `GAP` / 5 operational) | Session-013 cross-cutting count fix (prompt-013 §3) — verified against the source matrix (`requirements-to-tests.md` v1.6 CH row + §2 family table) before editing |

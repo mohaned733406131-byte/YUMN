@@ -3,9 +3,9 @@ document_id: DOC-TPL-009
 title: Risk Register Entry Template (RISK-NNN)
 category: 23-templates
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-RSK-001, DOC-RSK-002, DOC-RSK-004, DOC-GL-0
 
 # Risk Template (DOC-TPL-009)
 
-**When to use:** appending a new risk **entry** to `17-risk-management/risk-register.md` (DOC-RSK-002) — risks are rows in the register, never separate files. **Authority: DOC-RSK-001 (scoring model, categories, ranking, response strategies), DOC-RSK-002 (register format), DOC-RSK-004 (review/escalation governance)**. Exemplar entries: `RISK-001`, `RISK-003` in `risk-register.md`.
+**When to use:** appending a new risk **entry** to `17-risk-management/core/risk-register.md` (DOC-RSK-002) — risks are rows in the register, never separate files. **Authority: DOC-RSK-001 (scoring model, categories, ranking, response strategies), DOC-RSK-002 (register format), DOC-RSK-004 (review/escalation governance)**. Exemplar entries: `RISK-001`, `RISK-003` in `risk-register.md`.
 
 ## Rules
 
@@ -68,3 +68,4 @@ related_documents: [DOC-TPL-001, DOC-RSK-001, DOC-RSK-002, DOC-RSK-004, DOC-GL-0
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-TPL-008
 title: Architecture Decision Record Template (ADR-NNN.md)
 category: 23-templates
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -18,7 +18,7 @@ related_documents: [DOC-TPL-001, DOC-DEC-001, DOC-DEC-002, DOC-ARCH-010, DOC-GL-
 
 ## Rules
 
-- **Mint the number only in `18-decisions/decision-log.md` (DOC-DEC-002 §1/§3):** `ADR-001…ADR-010` are reserved; the next new ADR is **`ADR-011`**. Filename = ID = `ADR-NNN.md`; `document_id: DOC-ADR-NNN` mirrors it; `category: 18-decisions`.
+- **Mint the number only in `18-decisions/core/decision-log.md` (DOC-DEC-002 §1/§3):** `ADR-001…ADR-010` are reserved; the next new ADR is **`ADR-011`**. Filename = ID = `ADR-NNN.md`; `document_id: DOC-ADR-NNN` mirrors it; `category: 18-decisions`.
 - **Required sections in fixed order (DOC-DEC-001 §6):** header → Status table (Status, Date, Deciders, Consulted, Informed) → Context → Decision → Alternatives Considered (table: option · pros · cons · why rejected — **minimum three**) → Consequences (positive · negative · neutral · introduced risks with `RISK-*` links) → Compliance (table of every driving `C-NN` + how satisfied; **`C-18` in every ADR**) → Related IDs → Change History.
 - Status vocabulary per DOC-DEC-001 §2: `PROPOSED · ACCEPTED · DEPRECATED · SUPERSEDED` (frontmatter `status: approved` for accepted records).
 - Superseding never edits an old ADR: write a **new** ADR and mark the old one `SUPERSEDED` (root README §9.3).
@@ -105,6 +105,7 @@ related_documents: [DOC-DEC-001, DOC-DEC-002, DOC-ARCH-010, DOC-OVR-008]
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | <date> | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
 ```
 
 ## Pre-Submission Checklist

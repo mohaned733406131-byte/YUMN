@@ -3,9 +3,9 @@ document_id: DOC-ROOT-001
 title: yumn Analysis Documentation — Master Index
 category: root
 status: approved
-version: 1.5
+version: 1.6
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -131,7 +131,7 @@ One authoritative document per concept. Everywhere else, **reference the ID — 
 | Integration contracts | `10-integrations/` |
 | Test cases | `13-testing/` |
 | Decisions | `18-decisions/` |
-| Terminology | `22-glossary/terminology.md` |
+| Terminology | `22-glossary/core/terminology.md` |
 
 ---
 
@@ -146,10 +146,10 @@ Filenames: `lowercase-kebab-case.md`. Identifiers: `UPPERCASE-WITH-DASHES`. Neve
 | Objectives | `OBJ-NN` | `OBJ-03` | `00-project-overview/project-objectives.md` |
 | Assumptions | `ASM-NN` | `ASM-05` | `00-project-overview/assumptions.md` |
 | Dependencies | `DEP-NN` | `DEP-02` | `00-project-overview/dependencies.md` |
-| Functional requirements | `FR-NNN` | `FR-012` | `02-requirements/core/` |
+| Functional requirements | `FR-NNN` | `FR-012` | `02-requirements/functional/core/` |
 | Non-functional requirements | `NFR-NNN` | `NFR-005` | `02-requirements/core/` |
 | Security requirements | `SEC-REQ-NNN` | `SEC-REQ-003` | `02-requirements/core/` |
-| Data requirements | `DATA-REQ-NNN` | `DATA-REQ-004` | `02-requirements/core/` |
+| Data requirements | `DATA-REQ-NNN` | `DATA-REQ-004` | `02-requirements/data/core/` |
 | Integration requirements | `INT-REQ-NNN` | `INT-REQ-002` | `02-requirements/core/` |
 | Business rules | `BR-<DOMAIN>-NN` | `BR-PAY-04` | `01-business-analysis/business-rules.md` |
 | Use cases | `UC-NNN` | `UC-017` | `01-business-analysis/<portal>/` |
@@ -158,7 +158,7 @@ Filenames: `lowercase-kebab-case.md`. Identifiers: `UPPERCASE-WITH-DASHES`. Neve
 | API endpoints | `API-<GROUP>-NNN` | `API-WAL-002` | `07-api/<portal>/` |
 | Database entities | entity name + `DB-NNN` | `DB-006` | `08-database/core/` |
 | Test cases | `TC-NNN` | `TC-021` | `13-testing/core/` |
-| Risks | `RISK-NNN` | `RISK-007` | `17-risk-management/risk-register.md` |
+| Risks | `RISK-NNN` | `RISK-007` | `17-risk-management/core/risk-register.md` |
 | Decisions / ADRs | `ADR-NNN` | `ADR-003` | `18-decisions/core/` |
 | Security findings | `SEC-NNN` | `SEC-011` | `09-security/core/` |
 | Gaps | `GAP-NNN` | `GAP-03` | `20-validation/core/missing-information.md` |
@@ -231,7 +231,7 @@ Conclusions carry confidence: `HIGH` · `MEDIUM` · `LOW`.
 3. If a decision is superseded, write a **new ADR** in `18-decisions/core/` and mark the old one `SUPERSEDED`.
 4. Propagate changes to every impacted document (consistency rule) and record affected IDs in `20-validation/core/consistency-audit.md`.
 5. Contradictions are never ignored — they are recorded in `20-validation/core/contradiction-audit.md` until resolved.
-6. **Structure changes** (e.g. the session-011 portal partition of `01…23`): register the path scheme + ID allocation in `22-glossary/naming-conventions.md` first, move files only via a scripted migration that rewrites every citing path in the same change set, and keep both gates green after every change set (`validate.py` + `tools/check_citations.py` → 0 problems). Authority: owner directive `prompt-011.md` §1, proposal/evaluation `DOC-OVR-012`.
+6. **Structure changes** (e.g. the session-011 portal partition of `01…23`): register the path scheme + ID allocation in `22-glossary/core/naming-conventions.md` first, move files only via a scripted migration that rewrites every citing path in the same change set, and keep both gates green after every change set (`validate.py` + `tools/check_citations.py` → 0 problems). Authority: owner directive `prompt-011.md` §1, proposal/evaluation `DOC-OVR-012`.
 
 ---
 
@@ -312,3 +312,4 @@ A document is complete only if it passes the quality gate (purpose, scope, termi
 | 2026-09-28 | 1.3 | related_requirements: [] frontmatter key added (session 006 sweep: CHK-01) | analysis-agent |
 | 2026-09-28 | 1.4 | §1 structure bullet updated: `archdoc.md` **restored** (session 008 `REC-01`/`TD-03`) — reconstruction provenance stated; `HAL-03`/`CRIT-08` closure evidence | analysis-agent |
 | 2026-09-30 | 1.5 | §5 *Defined In* paths + §10 location cells realigned to the portal-partition scheme; §9 item 3 ADR path + **new §9.6** (structure-change procedure) | Owner directive session 011 (`prompt-011.md` §1) — change control before the phase-5 migration (`naming-conventions.md` v1.7, `DOC-OVR-012`) | analysis-agent |
+| 2026-10-02 | 1.6 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

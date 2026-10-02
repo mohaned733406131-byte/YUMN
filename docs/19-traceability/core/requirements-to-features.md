@@ -3,9 +3,9 @@ document_id: DOC-TRC-002
 title: Requirements to Features — Objective & Feature Traceability Matrix
 category: 19-traceability
 status: approved
-version: 1.4
+version: 1.6
 created: 2026-09-27
-updated: 2026-09-30
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-013, FR-020, NFR-001, SEC-REQ-001, DATA-REQ-007, INT-REQ-001]
@@ -28,13 +28,13 @@ This file answers methodology item 40 (`docs/README.md` §10) for the *feature* 
 
 | Column | Source | Basis |
 |---|---|---|
-| Objective(s) | `02-requirements/<family>/<ID>.md` §Rationale (`OBJ-NN` mentions; present in 20/20 `FR` and 17/20 `NFR` files, absent from every `SEC-REQ`/`DATA-REQ`/`INT-REQ` file); `00-project-overview/project-objectives.md` table (explicit `FR-*`/`NFR-*` references and the `FR-001…FR-020` range) | `VERIFIED` where present |
+| Objective(s) | `02-requirements/[<family>/]<portal>/<ID>.md` §Rationale (`OBJ-NN` mentions; present in 20/20 `FR` and 17/20 `NFR` files, absent from every `SEC-REQ`/`DATA-REQ`/`INT-REQ` file); `00-project-overview/project-objectives.md` table (explicit `FR-*`/`NFR-*` references and the `FR-001…FR-020` range) | `VERIFIED` where present |
 | Block | `02-requirements/requirements-overview.md` §1 (`B01…B13`) | `VERIFIED`, FR only |
 | API group(s) | `07-api/README.md` §4 Group → Requirement Mapping (FR column and Key SEC/DATA/INT column) | `VERIFIED` |
 | Representative endpoints | `07-api/*.md` endpoint-table *Related IDs* column, reversed to the requirement; capped at 3 shown + remainder counted | `VERIFIED` |
 | DB entities | `08-database/*.md` frontmatter `related_requirements`, reversed | `VERIFIED` |
 | UC / WF | `01-business-analysis/<portal>/UC-nnn.md` and `01-business-analysis/<portal>/workflow-nnn.md` frontmatter `related_requirements`, reversed; shown as `UC-… / WF-…` | `VERIFIED`, FR only |
-| Business rules | `02-requirements/core/FR-nnn.md` §Business Rules Applied | `VERIFIED`, FR only |
+| Business rules | `02-requirements/functional/core/FR-nnn.md` §Business Rules Applied | `VERIFIED`, FR only |
 | Priority | `02-requirements/requirements-overview.md` §1 (FR); `02-requirements/core/SEC-REQ-nnn.md` header (SEC) | `VERIFIED` where present |
 
 **Empty cell = `INSUFFICIENT EVIDENCE`** — the column has no supporting link for that requirement. A blank is never a silently implied link (`docs/README.md` §8).
@@ -210,3 +210,5 @@ Follow `README.md` §6: any change to an objective, requirement, endpoint, entit
 | 1.2 | 2026-09-28 | `T-03` evidence re-synced: 40 → **42 UC** (session-008 count) → **210 UC** (session 010 re-count, 2026-09-29) (`UC-041`/`UC-042` added session 007 — finding status unchanged, LOW `OPEN`) | Count/dashboard propagation catch-up (session 008 close) — direct count of `use-cases/UC-*.md` = 42, then 210 |
 | 1.3 | 2026-09-29 | Matrix B *UC / WF* cells rebuilt from all 210 UC frontmatters: 213 new `UC-043`…`UC-210` → `FR-*` links added across the 20 FR rows (cells keep the 4-shown + `+N more` convention; WF half untouched); reading rule added for UC/WF truncation; `T-03` count 42 → **210** (severity/status unchanged) | `prompt-010.md` §1 session-010 UC-coverage directive — 42 → 210 UCs grown under `01-business-analysis/use-cases/`, traceability re-synced same change set (root README §9 rule 4) |
 | 1.4 | 2026-09-30 | Universe 68 → **73** requirements (`SEC-REQ-013`…`SEC-REQ-016`, `DATA-REQ-009`); Matrix B gains 5 rows in ID position, cells derived from the new files only (no objective/block/API/endpoint/DB/UC/WF/rule link exists in the corpus; priority `High`/`Medium`/`Medium`/`Medium` on the four SEC rows, `INSUFFICIENT EVIDENCE` on `DATA-REQ-009`); Matrix A reading note added — the 5 new requirements declare no `OBJ-NN` and are unlinked there; *UC / WF* cells rebuilt from all 420 UC frontmatters (+269 `UC-211`…`UC-420` → `FR-*` links, 4-shown + `+N more` convention, WF half untouched); §4 re-run: 657 cells, **327 (49.8%) `INSUFFICIENT EVIDENCE`**, 54 of 73 rows; `T-01` 31 → 36, `T-02` 36 → 37, `T-03` 210 → **420 UC** (severity/status unchanged), `T-04` 26/24 → 31/29; stale `use-cases/` wording → portal folders | `prompt-011.md` §4.8 owner directive session 011 — requirements grew 68 → 73 and the UC corpus 210 → 420, traceability re-synced in the same change set (root README §9 rule 4) |
+| 1.5 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 1.6 | 2026-10-03 | §Objective(s) source path corrected: `02-requirements/<family>/<ID>.md` → `02-requirements/[<family>/]<portal>/<ID>.md` (FR/DATA-REQ files sit `<family>/core/<ID>.md`; NFR/SEC-REQ/INT-REQ sit `core/<ID>.md` — no requirement file is directly under a family folder) | Session-013 leftover sweep (prompt-013 §2) — stale pre-portal path claim |

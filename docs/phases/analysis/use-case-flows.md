@@ -3,9 +3,9 @@ document_id: DOC-PHA-007
 title: Use Case Descriptions & Flows — analysis phase
 category: phases
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_documents: [DOC-BA-005, DOC-PHA-006, DOC-SA-006]
@@ -53,7 +53,7 @@ Provider callback never arrives → reconciliation job (`BR-ESC-08`, `ESC-05`); 
 Each flow terminates in exactly one terminal state or a documented rollback with wallet credit (`MNY-10`); every state change appends `order_status_history` (`ORD-05`).
 
 ## Data entities touched
-`user`, `cart`, `order`, `sub_order`, `payment`, `wallet`, `wallet_transaction`, `escrow`, `shipment`, `return_request`, `review`, `coupon` — [`08-database/`](../../08-database/entities-index.md).
+`user`, `cart`, `order`, `sub_order`, `payment`, `wallet`, `wallet_transaction`, `escrow`, `shipment`, `return_request`, `review`, `coupon` — [`08-database/`](../../08-database/core/entities-index.md).
 
 ## Invariants
 Wallet-only payment (`C-01…C-04`) · `DELIVERED` only via 6-digit code (`ORD-04`) · zero ledger imbalance (`MNY-03`) · no GPS anywhere (`C-16`).
@@ -66,3 +66,4 @@ Wallet-only payment (`C-01…C-04`) · `DELIVERED` only via 6-digit code (`ORD-0
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 5, session 005) | analysis-agent |
+| 2026-10-02 | 1.1 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

@@ -3,9 +3,9 @@ document_id: DOC-CMP-002
 title: Implementation Roadmap — Phased Delivery Plan
 category: 21-completion
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-27
-updated: 2026-09-27
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-013, FR-017, NFR-001, NFR-005, NFR-019]
@@ -51,7 +51,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 | 1 | Budget, team-size, and schedule baselines set by sponsor (`ASM-14` re-scored with evidence) | `00-project-overview/assumptions.md` escalation rule; charter Authority |
 | 2 | Dangerous / blocking assumptions resolved: `ASM-03`, `ASM-04`, `ASM-12` (+ `ASM-14`) | `assumptions.md` L39 escalation rule |
 | 3 | Gate-critical dependencies opened **or** their mitigation accepted in writing: `DEP-05`, `DEP-06` (and `DEP-10` before any B07 money build) | `00-project-overview/dependencies.md`; `../../17-risk-management/core/risk-review-process.md` §7 G-R3 |
-| 4 | GAP register triaged: `GAP-01…GAP-07` dispositioned with owners (Gate-0 blockers flagged) | `00-project-overview/project-scope.md` UNCERTAIN SCOPE; `17-risk-management/risk-register.md` RISK-011 action |
+| 4 | GAP register triaged: `GAP-01…GAP-07` dispositioned with owners (Gate-0 blockers flagged) | `00-project-overview/project-scope.md` UNCERTAIN SCOPE; `17-risk-management/core/risk-register.md` RISK-011 action |
 | 5 | Analysis sign-off path opened — `00-project-overview/project-charter.md` sign-off flows to `final-acceptance.md` | charter L87 |
 | 6 | Documentation link validation run across `docs/` (every cited path exists) | root README §11 validation rules |
 
@@ -72,7 +72,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 
 **Dependencies consumed:** `DEP-05`, `DEP-06`, `DEP-08`, `DEP-09`, `DEP-10`, `DEP-11`, `DEP-12`; `ASM-03`, `ASM-04`, `ASM-05`, `ASM-09`, `ASM-11`, `ASM-12`, `ASM-14`; `GAP-01…GAP-07`.
 
-**Risks owned (register: `17-risk-management/risk-register.md`):** `RISK-006` (SMS/WhatsApp non-contracting — blocking at Gate 0), `RISK-012` (Central Bank position — blocking at Gate 0), `RISK-003` (wallet provider commercial failure → `DEP-05`), `RISK-004` (VAT ambiguity → `DEP-09`), `RISK-005` (ops complexity vs small team → `ASM-14` capacity), `RISK-002` (vendor adoption → `ASM-05`/`ASM-09` interviews, `GAP-05`), `RISK-011` (scope creep from unresolved gaps), `RISK-008` (performance shortfall → `ASM-11` confirmation), `RISK-001` (ledger design review signature).
+**Risks owned (register: `17-risk-management/core/risk-register.md`):** `RISK-006` (SMS/WhatsApp non-contracting — blocking at Gate 0), `RISK-012` (Central Bank position — blocking at Gate 0), `RISK-003` (wallet provider commercial failure → `DEP-05`), `RISK-004` (VAT ambiguity → `DEP-09`), `RISK-005` (ops complexity vs small team → `ASM-14` capacity), `RISK-002` (vendor adoption → `ASM-05`/`ASM-09` interviews, `GAP-05`), `RISK-011` (scope creep from unresolved gaps), `RISK-008` (performance shortfall → `ASM-11` confirmation), `RISK-001` (ledger design review signature).
 
 **Evidence produced:** no test evidence (nothing exists to test). Evidence = signed contracts and written opinions, re-scored assumption rows with evidence links, sponsor baseline record, GAP decision log, signed ledger design review, link-validation report. All of it is presented at **Gate 0**.
 
@@ -102,7 +102,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
   `UC-002` (register + OTP), `UC-003` (login), `UC-009` (add to cart), `UC-011` (checkout with wallet payment), `UC-013` (confirm receipt with delivery code), `UC-015` (vendor register + KYC), `UC-017` (product listing), `UC-019` (accept incoming order), `UC-020` (ready for pickup), `UC-026` (accept delivery assignment), `UC-027` (confirm pickup), `UC-030` (confirm delivery with 6-digit code), `UC-031` (approve/reject KYC), `UC-033` (manage orders & disputes), `UC-037` (roles & permissions), `UC-039` (auto-release escrow), `UC-040` (OTP with provider failover).
   P1 follows P0; P2 (`UC-008`, `UC-014`, `UC-023`, `UC-024`, `UC-036`) is deferrable within the phase but must exist before Gate 1 if its FR is claimed `VERIFIED`.
 - **Critical-path test plans:** `PLAN-01` Authentication, `PLAN-02` Authorization, `PLAN-09` Shopping cart, `PLAN-10` Checkout/payment/wallet, `PLAN-11` Order lifecycle are the Phase-1 critical path (`../../13-testing/core/test-plans.md` L46). Their entry criteria (OTP mock adapter + SMS sandbox, RBAC matrix, cart fixtures, money boundary fixtures + ledger invariant harness, 17-state fixtures) are themselves Phase 1 deliverables.
-- **Architecture-boundary work:** ADRs `ADR-001…ADR-010` are the accepted decision set (`18-decisions/core/`, index `04-architecture/architecture-decisions-reference.md`); ports/adapters for payment providers (`ADR-009`) keep the custody model swappable under `RISK-012`.
+- **Architecture-boundary work:** ADRs `ADR-001…ADR-010` are the accepted decision set (`18-decisions/core/`, index `04-architecture/core/architecture-decisions-reference.md`); ports/adapters for payment providers (`ADR-009`) keep the custody model swappable under `RISK-012`.
 - **Money scope is conditional:** B07 payment/wallet build proceeds only if `DEP-10` yields a favourable or conditional written position (`mitigation-plans.md` RISK-012 kill criteria — adverse position stops B07 money-flow implementation).
 
 **Dependencies consumed:** `DEP-01…DEP-04`, `DEP-07` (available), `DEP-05` (sandbox adapters + bank-transfer rail `INT-REQ-002` as guaranteed fallback), `DEP-06` (two-provider failover + WhatsApp fallback per `BR-NTF-03`), `DEP-11` (design assets for frontend), `DEP-10` (gates money scope); `ASM-15` (Arabic search spike in Phase 1); `GAP-05` must not leak into shipped commission behaviour before a decision record exists.
@@ -138,7 +138,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 - **Usability/accessibility/locale:** axe sweeps ≥ 95% automated / 0 critical (`AC-S-10`), RTL visual regression with 0 defects (`AC-S-11`), keyboard-only and screen-reader passes, six localization checks green.
 - **Mobile verification:** Maestro P0 smoke + push + carrier-real OTP on the `DEP-12` device lab (`test-plans.md` §g).
 - **Pilot:** recruit and run **≥ 10 pilot vendors** through KYC → listing → sale → payout (`AC-S-21`); end-to-end money cycle audit top-up → order → escrow → commission → payout → refund (`AC-S-22`); support/dispute/code-lockout escalation process live (`AC-S-23`).
-- **Hardening fixes:** security findings re-triaged (deferred items need written risk acceptance in `17-risk-management/risk-register.md`), performance regressions fixed, alert tuning to severity definitions.
+- **Hardening fixes:** security findings re-triaged (deferred items need written risk acceptance in `17-risk-management/core/risk-register.md`), performance regressions fixed, alert tuning to severity definitions.
 
 **Dependencies consumed:** `DEP-05` production credentials path, `DEP-06` template approval + real-carrier drill, `DEP-09` legal opinions (blocking `AC-S-24`), `DEP-12` device lab, `DEP-08` (start — domains/TLS/CDN for public launch).
 
@@ -178,7 +178,7 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 | # | Criterion | Canon |
 |---|---|---|
 | 1 | Availability evidence vs `AC-S-06` (99.99% over any rolling 30-day window) | `00-project-overview/success-criteria.md` |
-| 2 | Residual CRITICAL items dispositioned: security findings, CRITICAL risks, open `GAP-*` | `../../09-security/core/security-findings.md`; `17-risk-management/risk-register.md` |
+| 2 | Residual CRITICAL items dispositioned: security findings, CRITICAL risks, open `GAP-*` | `../../09-security/core/security-findings.md`; `17-risk-management/core/risk-register.md` |
 | 3 | Technical-debt register reviewed; every `TD-NN` has an owner and a decision | `technical-debt.md` |
 | 4 | Assumptions re-scored against real data (`ASM-01`, `ASM-05`, `ASM-06`, `ASM-08`, `ASM-09`, plus `GAP-01` targets once set) | `00-project-overview/assumptions.md` |
 | 5 | Monthly standing risk reviews and burndown produced; flat-by-construction honesty rule honored while pre-implementation | `../../17-risk-management/core/risk-review-process.md` §1, §8 |
@@ -206,3 +206,4 @@ Phase 0 ──(Gate 0)──► Phase 1 ──(Gate 1)──► Phase 2 ──(G
 |---|---|---|---|
 | 1.0 | 2026-09-27 | Initial authoring | Root README §10 items 36,44,46,48 + charter pointer |
 | 1.1 | 2026-09-30 | AC-registry count sync: 253 → **273 ACs** (`acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — count consumer re-synced in same change set |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

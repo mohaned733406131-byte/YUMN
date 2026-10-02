@@ -1,11 +1,11 @@
 ---
 document_id: DOC-TPL-007
-title: Database Entity Template (entities/<table>.md)
+title: Database Entity Template (08-database/core/<table>.md)
 category: 23-templates
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -14,7 +14,7 @@ related_documents: [DOC-TPL-001, DOC-DB-001, DOC-DB-003, DOC-DB-007, DOC-GL-003]
 
 # Database Entity Template (DOC-TPL-007)
 
-**When to use:** a new entity document in `08-database/<table>.md`. **Authority: `08-database/README.md` §1 (naming) + §2 (keys/UUID), DOC-DB-007 (entity index), DOC-DB-003 (ER overview)** — the ER overview is the register of the model; the entity file documents one table. Exemplar: `../../08-database/core/user.md` (DB-001).
+**When to use:** a new entity document in `08-database/core/<table>.md`. **Authority: `08-database/README.md` §1 (naming) + §2 (keys/UUID), DOC-DB-007 (entity index), DOC-DB-003 (ER overview)** — the ER overview is the register of the model; the entity file documents one table. Exemplar: `../../08-database/core/user.md` (DB-001).
 
 ## Rules
 
@@ -108,3 +108,4 @@ related_documents: [DOC-DB-001, DOC-DB-003, DOC-DB-007, DOC-BA-005]
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-10-02 | Entity-doc path corrected: title `(entities/<table>.md)` → `(08-database/core/<table>.md)`, §When-to-use `08-database/<table>.md` → `08-database/core/<table>.md` (portal scheme — 25 entity files live in `08-database/core/`) | Session-013 leftover sweep (prompt-013 §3 cross-cutting) — mirrors `naming-conventions.md` v1.11 |

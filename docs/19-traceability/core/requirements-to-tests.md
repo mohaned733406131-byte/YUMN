@@ -3,9 +3,9 @@ document_id: DOC-TRC-003
 title: Requirements to Tests — Requirement → Acceptance Criterion → Test Artifact Matrix
 category: 19-traceability
 status: approved
-version: 1.6
+version: 1.7
 created: 2026-09-27
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-013, FR-019, FR-020, NFR-009, SEC-REQ-012, DATA-REQ-002, INT-REQ-002]
@@ -43,7 +43,7 @@ related_documents: [DOC-TRC-001, DOC-TRC-002, DOC-AC-001, DOC-OVR-011, DOC-TST-0
 | Performance / security / chaos activities | `PERF-01…07`, `SEC-P-01…09`, `CHAOS-01…08` | `../../13-testing/core/test-plans.md` §b–§d |
 | Plan sections | `§b … §h` (scope + canon columns) | `../../13-testing/core/test-plans.md` |
 | Constraint tests | `TST-CON-01 … TST-CON-26` | `../../13-testing/core/constraint-tests.md` |
-| Test documents | `DOC-TST-001`, `DOC-TST-002`, `DOC-TST-005`, `DOC-INT-008` | `13-testing/README.md`, `testing-strategy.md`, `test-data-and-environments.md`, `../../10-integrations/core/testing-and-sandboxes.md` |
+| Test documents | `DOC-TST-001`, `DOC-TST-002`, `DOC-TST-005`, `DOC-INT-008` | `13-testing/README.md`, `13-testing/core/testing-strategy.md`, `13-testing/core/test-data-and-environments.md`, `../../10-integrations/core/testing-and-sandboxes.md` |
 
 **Link status per row:**
 
@@ -74,7 +74,7 @@ Rules obeyed: shorthand citations are expanded conservatively (`AC-SR011-01/02` 
 **Verdict: `PASS WITH FINDINGS`.**
 
 - Every one of the 73 requirements and all 297 ACs has a row; nothing is omitted.
-- All 20 FRs have ≥1 test case of their own (the `FR-003` family rides the `TC-001–010` block, as `../../13-testing/test-cases-index.md` §2 states), so `AC-S-03`'s "≥1 test case per FR" half holds at design level.
+- All 20 FRs have ≥1 test case of their own (the `FR-003` family rides the `TC-001–010` block, as `../../13-testing/core/test-cases-index.md` §2 states), so `AC-S-03`'s "≥1 test case per FR" half holds at design level.
 - The **"0 gaps" half of `AC-S-03` does not hold**: 47 ACs have no artifact link and 42 more are covered only by a declaration.
 - **Nothing has been executed**: 114/114 test-case files exist, all constraint tests are `DESIGNED`, and no report, dashboard or drill record exists in the corpus.
 
@@ -86,10 +86,10 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 
 | AC | Requirement | Test artifact(s) | Link basis | Status |
 |---|---|---|---|---|
-| AC-DR001-01 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-DR001-02 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-DR001-03 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-DR001-04 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-DR001-01 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-DR001-02 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-DR001-03 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-DR001-04 | DATA-REQ-001 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-DR002-01 | DATA-REQ-002 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-DR002-02 | DATA-REQ-002 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-DR002-03 | DATA-REQ-002 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
@@ -126,17 +126,17 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR001-02 | FR-001 | TC-004, TC-005 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR001-03 | FR-001 | TC-006 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR001-04 | FR-001 | TC-007 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR001-05 | FR-001 | DOC-TST-005, TC-002, TC-003 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR001-05 | FR-001 | DOC-TST-005, TC-002, TC-003 | TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-FR002-01 | FR-002 | §c, PLAN-02, SEC-P-05, TC-011 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-02 | FR-002 | §c, PLAN-02, SEC-P-05, TC-012 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-03 | FR-002 | §c, PLAN-02, SEC-P-05, TC-013 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-04 | FR-002 | §c, PLAN-02, SEC-P-05, TC-107, TC-109, TC-110 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR002-05 | FR-002 | §c, PLAN-02, SEC-P-05, TC-014, TC-114 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
-| AC-FR003-01 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR003-01 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/core/test-cases-index.md §4; TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR003-02 | FR-003 | TC-008, TC-009 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR003-03 | FR-003 | TC-010 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR003-04 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
-| AC-FR003-05 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR003-04 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/core/test-cases-index.md §4; TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR003-05 | FR-003 | DOC-TST-006 §4; TC-001–010 (shared) | allocation declaration — 13-testing/core/test-cases-index.md §4; TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR004-01 | FR-004 | TC-015 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR004-02 | FR-004 | TC-015 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR004-03 | FR-004 | TC-016 | TC file — Related requirements & rules | EXPLICIT |
@@ -145,7 +145,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR005-01 | FR-005 | §b, PERF-04, TC-019, TST-CON-13 | constraint register — constraint-tests.md; plan activity — test-plans.md §b; plan section — test-plans.md §b; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR005-02 | FR-005 | TC-020, TST-CON-13 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR005-03 | FR-005 | TST-CON-13 | constraint register — constraint-tests.md | EXPLICIT |
-| AC-FR005-04 | FR-005 | TC-018–020 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR005-04 | FR-005 | TC-018–020 | TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR006-01 | FR-006 | TC-021 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR006-02 | FR-006 | TC-021 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR006-03 | FR-006 | TC-021 | TC file — Related requirements & rules | EXPLICIT |
@@ -153,24 +153,24 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR006-05 | FR-006 | TC-022 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR007-01 | FR-007 | TC-024 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR007-02 | FR-007 | TC-023 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR007-03 | FR-007 | TC-023–024 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR007-03 | FR-007 | TC-023–024 | TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR007-04 | FR-007 | TC-024 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR008-01 | FR-008 | TC-025–026 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR008-01 | FR-008 | TC-025–026 | TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR008-02 | FR-008 | TC-026 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR008-03 | FR-008 | TC-025 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR008-04 | FR-008 | TC-025, TST-CON-17 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR008-05 | FR-008 | TC-026 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR009-01 | FR-009 | DOC-TST-002, DOC-TST-005, PLAN-08, TC-027 | executable plan row — test-plans.md §a; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-FR009-02 | FR-009 | DOC-TST-005, PLAN-08, TC-027 | executable plan row — test-plans.md §a; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR009-01 | FR-009 | DOC-TST-002, DOC-TST-005, PLAN-08, TC-027 | executable plan row — test-plans.md §a; TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md; test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-FR009-02 | FR-009 | DOC-TST-005, PLAN-08, TC-027 | executable plan row — test-plans.md §a; TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-FR009-03 | FR-009 | §b, §d, CHAOS-05, PERF-03, PLAN-08, TC-028 | executable plan row — test-plans.md §a; plan activity — test-plans.md §b; plan activity — test-plans.md §d; plan section — test-plans.md §b; plan section — test-plans.md §d; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR009-04 | FR-009 | PLAN-08, TC-028 | executable plan row — test-plans.md §a; TC file — Related requirements & rules | EXPLICIT |
-| AC-FR009-05 | FR-009 | TC-027–028 | TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
-| AC-FR010-01 | FR-010 | DOC-TST-005, TC-029, TST-CON-15 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-FR010-02 | FR-010 | DOC-TST-005, TC-029, TST-CON-15 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR009-05 | FR-009 | TC-027–028 | TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR010-01 | FR-010 | DOC-TST-005, TC-029, TST-CON-15 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
+| AC-FR010-02 | FR-010 | DOC-TST-005, TC-029, TST-CON-15 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-FR010-03 | FR-010 | TC-030 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR010-04 | FR-010 | TC-030 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR010-05 | FR-010 | TC-030 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR011-01 | FR-011 | DOC-TST-005, TC-033, TST-CON-14 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR011-01 | FR-011 | DOC-TST-005, TC-033, TST-CON-14 | constraint register — constraint-tests.md; TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-FR011-02 | FR-011 | §b, PERF-04, TC-039, TC-042, TC-054, TC-104 | plan activity — test-plans.md §b; plan section — test-plans.md §b; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR011-03 | FR-011 | TC-032, TC-041 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR011-04 | FR-011 | TC-034, TC-040, TC-057, TST-CON-10 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
@@ -180,7 +180,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR012-03 | FR-012 | TC-046, TC-052 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR012-04 | FR-012 | TC-043, TC-049 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR012-05 | FR-012 | TC-043, TC-044, TC-045, TC-048, TC-050, TC-051, TC-053, TC-055, TC-056 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR013-01 | FR-013 | DOC-TST-005, TC-031, TC-037 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR013-01 | FR-013 | DOC-TST-005, TC-031, TC-037 | TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-FR013-02 | FR-013 | TC-035 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR013-03 | FR-013 | TC-032 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR013-04 | FR-013 | TC-032 | TC file — Related requirements & rules | EXPLICIT |
@@ -188,7 +188,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR014-01 | FR-014 | TC-058, TST-CON-12 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR014-02 | FR-014 | TC-061, TST-CON-12 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
 | AC-FR014-03 | FR-014 | TC-059, TC-060 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR014-04 | FR-014 | DOC-TST-006 §4; TC-057–064 | allocation declaration — 13-testing/test-cases-index.md §4; TC block declaration — 13-testing/test-cases-index.md §2/§4 | DECLARED |
+| AC-FR014-04 | FR-014 | DOC-TST-006 §4; TC-057–064 | allocation declaration — 13-testing/core/test-cases-index.md §4; TC block declaration — 13-testing/core/test-cases-index.md §2/§4 | DECLARED |
 | AC-FR014-05 | FR-014 | TC-063 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR015-01 | FR-015 | TC-065 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR015-02 | FR-015 | TC-068, TC-069, TC-070, TC-072, TST-CON-16 | constraint register — constraint-tests.md; TC file — Related requirements & rules | EXPLICIT |
@@ -208,47 +208,47 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-FR018-02 | FR-018 | TC-064, TC-090, TC-091, TC-093, TC-094, TC-095 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR018-03 | FR-018 | TC-092, TC-093 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR018-04 | FR-018 | TC-095 | TC file — Related requirements & rules | EXPLICIT |
-| AC-FR019-01 | FR-019 | DOC-TST-005, TC-101 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-FR019-02 | FR-019 | DOC-TST-005, TC-100 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-FR019-03 | FR-019 | DOC-TST-005, TC-100, TC-102, TC-104 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-FR019-01 | FR-019 | DOC-TST-005, TC-101 | TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
+| AC-FR019-02 | FR-019 | DOC-TST-005, TC-100 | TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
+| AC-FR019-03 | FR-019 | DOC-TST-005, TC-100, TC-102, TC-104 | TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-FR019-04 | FR-019 | TC-096, TC-097, TC-098, TC-099, TC-103 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR020-01 | FR-020 | TC-060, TC-077, TC-082, TC-083, TC-096, TC-097, TC-098, TC-102, TC-109, TC-110 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR020-02 | FR-020 | TC-071, TC-111 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR020-03 | FR-020 | TC-061, TC-081, TC-082, TC-112 | TC file — Related requirements & rules | EXPLICIT |
 | AC-FR020-04 | FR-020 | TC-060, TC-110 | TC file — Related requirements & rules | EXPLICIT |
-| AC-IR001-01 | INT-REQ-001 | DOC-INT-008, TST-CON-05 | constraint register — constraint-tests.md; test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR001-02 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR001-03 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR001-04 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR001-05 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR001-01 | INT-REQ-001 | DOC-INT-008, TST-CON-05 | constraint register — constraint-tests.md; test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR001-02 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR001-03 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR001-04 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR001-05 | INT-REQ-001 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
 | AC-IR002-01 | INT-REQ-002 | TST-CON-05 | constraint register — constraint-tests.md | EXPLICIT |
 | AC-IR002-02 | INT-REQ-002 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-IR002-03 | INT-REQ-002 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-IR002-04 | INT-REQ-002 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
-| AC-IR003-01 | INT-REQ-003 | §d, CHAOS-01, DOC-INT-008 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR003-02 | INT-REQ-003 | §d, CHAOS-01, DOC-INT-008 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR003-03 | INT-REQ-003 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR003-04 | INT-REQ-003 | §d, CHAOS-01, DOC-INT-008 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR004-01 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR004-02 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR004-03 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR004-04 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR005-01 | INT-REQ-005 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR003-01 | INT-REQ-003 | §d, CHAOS-01, DOC-INT-008 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR003-02 | INT-REQ-003 | §d, CHAOS-01, DOC-INT-008 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR003-03 | INT-REQ-003 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR003-04 | INT-REQ-003 | §d, CHAOS-01, DOC-INT-008 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR004-01 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR004-02 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR004-03 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR004-04 | INT-REQ-004 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR005-01 | INT-REQ-005 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
 | AC-IR005-02 | INT-REQ-005 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-IR005-03 | INT-REQ-005 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
-| AC-IR005-04 | INT-REQ-005 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR006-01 | INT-REQ-006 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR006-02 | INT-REQ-006 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR006-03 | INT-REQ-006 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR005-04 | INT-REQ-005 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR006-01 | INT-REQ-006 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR006-02 | INT-REQ-006 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR006-03 | INT-REQ-006 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
 | AC-IR006-04 | INT-REQ-006 | scope: test-plans.md §d | plan scope declaration — test-plans.md §d | DECLARED |
-| AC-IR007-01 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR007-02 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR007-03 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR007-04 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR008-01 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR008-02 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR008-03 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
-| AC-IR008-04 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR007-01 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR007-02 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR007-03 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR007-04 | INT-REQ-007 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR008-01 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR008-02 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR008-03 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
+| AC-IR008-04 | INT-REQ-008 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
 | AC-NFR-001-01 | NFR-001 | scope: test-plans.md §b | plan scope declaration — test-plans.md §b | DECLARED |
 | AC-NFR-001-02 | NFR-001 | scope: test-plans.md §b | plan scope declaration — test-plans.md §b | DECLARED |
 | AC-NFR-002-01 | NFR-002 | §b, PERF-07 | plan activity — test-plans.md §b; plan section — test-plans.md §b | EXPLICIT |
@@ -266,43 +266,43 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-NFR-008-01 | NFR-008 | TC-064 | TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-008-02 | NFR-008 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-NFR-009-01 | NFR-009 | TST-CON-21 | constraint register — constraint-tests.md | EXPLICIT |
-| AC-NFR-009-02 | NFR-009 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-NFR-010-01 | NFR-010 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-NFR-010-02 | NFR-010 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-NFR-009-02 | NFR-009 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-NFR-010-01 | NFR-010 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-NFR-010-02 | NFR-010 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-NFR-011-01 | NFR-011 | §e | plan section — test-plans.md §e | EXPLICIT |
 | AC-NFR-011-02 | NFR-011 | §e | plan section — test-plans.md §e | EXPLICIT |
 | AC-NFR-012-01 | NFR-012 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-NFR-012-02 | NFR-012 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-NFR-013-01 | NFR-013 | §f, TST-CON-24 | constraint register — constraint-tests.md; plan section — test-plans.md §f | EXPLICIT |
 | AC-NFR-013-02 | NFR-013 | §f, TST-CON-24 | constraint register — constraint-tests.md; plan section — test-plans.md §f | EXPLICIT |
-| AC-NFR-014-01 | NFR-014 | DOC-TST-005 | test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-NFR-014-01 | NFR-014 | DOC-TST-005 | test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-NFR-014-02 | NFR-014 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
-| AC-NFR-015-01 | NFR-015 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-NFR-015-01 | NFR-015 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-NFR-015-02 | NFR-015 | §g | plan section — test-plans.md §g | EXPLICIT |
-| AC-NFR-016-01 | NFR-016 | §h, DOC-TST-002, DOC-TST-005, TST-CON-22 | constraint register — constraint-tests.md; plan section — test-plans.md §h; test document citation — 13-testing/test-data-and-environments.md; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-NFR-016-01 | NFR-016 | §h, DOC-TST-002, DOC-TST-005, TST-CON-22 | constraint register — constraint-tests.md; plan section — test-plans.md §h; test document citation — 13-testing/core/test-data-and-environments.md; test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-NFR-016-02 | NFR-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
-| AC-NFR-017-01 | NFR-017 | §b, DOC-TST-005 | plan section — test-plans.md §b; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-NFR-017-01 | NFR-017 | §b, DOC-TST-005 | plan section — test-plans.md §b; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-NFR-017-02 | NFR-017 | scope: test-plans.md §b | plan scope declaration — test-plans.md §b | DECLARED |
 | AC-NFR-018-01 | NFR-018 | §d, CHAOS-07 | plan activity — test-plans.md §d; plan section — test-plans.md §d | EXPLICIT |
-| AC-NFR-018-02 | NFR-018 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-NFR-018-02 | NFR-018 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-NFR-019-01 | NFR-019 | TC-059 | TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-019-02 | NFR-019 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-NFR-020-01 | NFR-020 | scope: test-plans.md §h, TC-113 | plan scope declaration — test-plans.md §h; TC file — Related requirements & rules | EXPLICIT |
 | AC-NFR-020-02 | NFR-020 | §h | plan section — test-plans.md §h | EXPLICIT |
 | AC-SR001-01 | SEC-REQ-001 | §c | plan section — test-plans.md §c | EXPLICIT |
-| AC-SR001-02 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
-| AC-SR001-03 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
-| AC-SR001-04 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
-| AC-SR001-05 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
+| AC-SR001-02 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/core/test-cases-index.md §4 | DECLARED |
+| AC-SR001-03 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/core/test-cases-index.md §4 | DECLARED |
+| AC-SR001-04 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/core/test-cases-index.md §4 | DECLARED |
+| AC-SR001-05 | SEC-REQ-001 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/core/test-cases-index.md §4 | DECLARED |
 | AC-SR002-01 | SEC-REQ-002 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
-| AC-SR002-02 | SEC-REQ-002 | DOC-INT-008 | test document citation — 10-integrations/testing-and-sandboxes.md | EXPLICIT |
+| AC-SR002-02 | SEC-REQ-002 | DOC-INT-008 | test document citation — 10-integrations/core/testing-and-sandboxes.md | EXPLICIT |
 | AC-SR002-03 | SEC-REQ-002 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
 | AC-SR002-04 | SEC-REQ-002 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
 | AC-SR003-01 | SEC-REQ-003 | TST-CON-08 | constraint register — constraint-tests.md | EXPLICIT |
 | AC-SR003-02 | SEC-REQ-003 | TST-CON-08 | constraint register — constraint-tests.md | EXPLICIT |
 | AC-SR003-03 | SEC-REQ-003 | TST-CON-08 | constraint register — constraint-tests.md | EXPLICIT |
-| AC-SR003-04 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
-| AC-SR003-05 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
+| AC-SR003-04 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/core/test-cases-index.md §4 | DECLARED |
+| AC-SR003-05 | SEC-REQ-003 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/core/test-cases-index.md §4 | DECLARED |
 | AC-SR004-01 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR004-02 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR004-03 | SEC-REQ-004 | §c, PLAN-02, SEC-P-05, TC-014, TC-114 | executable plan row — test-plans.md §a; plan activity — test-plans.md §c; plan section — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
@@ -310,7 +310,7 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-SR005-01 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR005-02 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR005-03 | SEC-REQ-005 | §c, SEC-P-08 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
-| AC-SR005-04 | SEC-REQ-005 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/test-cases-index.md §4 | DECLARED |
+| AC-SR005-04 | SEC-REQ-005 | scope: test-plans.md §c; TC block TC-001–010 | plan scope declaration — test-plans.md §c; TC block declaration — 13-testing/core/test-cases-index.md §4 | DECLARED |
 | AC-SR006-01 | SEC-REQ-006 | §c | plan section — test-plans.md §c | EXPLICIT |
 | AC-SR006-02 | SEC-REQ-006 | §c | plan section — test-plans.md §c | EXPLICIT |
 | AC-SR006-03 | SEC-REQ-006 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
@@ -331,12 +331,12 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-SR010-02 | SEC-REQ-010 | scope: test-plans.md §c, TC-106 | plan scope declaration — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-SR010-03 | SEC-REQ-010 | scope: test-plans.md §c, TC-107 | plan scope declaration — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
 | AC-SR010-04 | SEC-REQ-010 | scope: test-plans.md §c, TC-108 | plan scope declaration — test-plans.md §c; TC file — Related requirements & rules | EXPLICIT |
-| AC-SR011-01 | SEC-REQ-011 | §c, DOC-TST-005, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-SR011-02 | SEC-REQ-011 | §c, DOC-TST-005, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-SR011-01 | SEC-REQ-011 | §c, DOC-TST-005, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
+| AC-SR011-02 | SEC-REQ-011 | §c, DOC-TST-005, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-SR011-03 | SEC-REQ-011 | §c, SEC-P-07 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-SR011-04 | SEC-REQ-011 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
-| AC-SR012-01 | SEC-REQ-012 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-SR012-02 | SEC-REQ-012 | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-SR012-01 | SEC-REQ-012 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-SR012-02 | SEC-REQ-012 | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-SR012-03 | SEC-REQ-012 | scope: test-plans.md §c | plan scope declaration — test-plans.md §c | DECLARED |
 | AC-SR012-04 | SEC-REQ-012 | §c | plan section — test-plans.md §c | EXPLICIT |
 | AC-SR013-01 | SEC-REQ-013 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
@@ -355,24 +355,24 @@ Columns: `AC` · `Requirement` (parent ID) · `Test artifact(s)` · `Link basis`
 | AC-SR016-02 | SEC-REQ-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-SR016-03 | SEC-REQ-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
 | AC-SR016-04 | SEC-REQ-016 | INSUFFICIENT EVIDENCE | INSUFFICIENT EVIDENCE | GAP |
-| AC-XCUT-01 | cross-cutting | DOC-TST-005 | test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
-| AC-XCUT-02 | cross-cutting | DOC-TST-002, TST-CON-01, TST-CON-26 | constraint register — constraint-tests.md; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-XCUT-03 | cross-cutting | §e, §f, DOC-TST-002 | plan section — test-plans.md §e; plan section — test-plans.md §f; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-XCUT-04 | cross-cutting | §d, CHAOS-03, CHAOS-05, DOC-TST-002 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-XCUT-01 | cross-cutting | DOC-TST-005 | test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
+| AC-XCUT-02 | cross-cutting | DOC-TST-002, TST-CON-01, TST-CON-26 | constraint register — constraint-tests.md; test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-XCUT-03 | cross-cutting | §e, §f, DOC-TST-002 | plan section — test-plans.md §e; plan section — test-plans.md §f; test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-XCUT-04 | cross-cutting | §d, CHAOS-03, CHAOS-05, DOC-TST-002 | plan activity — test-plans.md §d; plan section — test-plans.md §d; test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-S-01 | success-criteria | DOC-TST-001 | test document citation — 13-testing/README.md | DECLARED |
 | AC-S-02 | success-criteria | DOC-TST-004 | constraint register — constraint-tests.md | EXPLICIT |
-| AC-S-03 | success-criteria | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-S-03 | success-criteria | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-S-04 | success-criteria | DOC-TST-001 | test document citation — 13-testing/README.md | DECLARED |
-| AC-S-05 | success-criteria | §b, DOC-TST-002, PERF-01, TST-CON-25 | constraint register — constraint-tests.md; plan activity — test-plans.md §b; plan section — test-plans.md §b; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-S-05 | success-criteria | §b, DOC-TST-002, PERF-01, TST-CON-25 | constraint register — constraint-tests.md; plan activity — test-plans.md §b; plan section — test-plans.md §b; test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-S-06 | success-criteria | DOC-TST-001 | test document citation — 13-testing/README.md | DECLARED |
-| AC-S-07 | success-criteria | §c, DOC-TST-002, SEC-P-03 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-S-08 | success-criteria | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
-| AC-S-09 | success-criteria | DOC-TST-002 | test document citation — 13-testing/testing-strategy.md | EXPLICIT |
+| AC-S-07 | success-criteria | §c, DOC-TST-002, SEC-P-03 | plan activity — test-plans.md §c; plan section — test-plans.md §c; test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-S-08 | success-criteria | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
+| AC-S-09 | success-criteria | DOC-TST-002 | test document citation — 13-testing/core/testing-strategy.md | EXPLICIT |
 | AC-S-10 | success-criteria | §e | plan section — test-plans.md §e | EXPLICIT |
 | AC-S-11 | success-criteria | §f | plan section — test-plans.md §f | EXPLICIT |
 | AC-S-12 | success-criteria | §c, SEC-P-09 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
 | AC-S-13 | success-criteria | §c, SEC-P-04 | plan activity — test-plans.md §c; plan section — test-plans.md §c | EXPLICIT |
-| AC-S-14 | success-criteria | DOC-TST-005, TC-038 | TC file — Related requirements & rules; test document citation — 13-testing/test-data-and-environments.md | EXPLICIT |
+| AC-S-14 | success-criteria | DOC-TST-005, TC-038 | TC file — Related requirements & rules; test document citation — 13-testing/core/test-data-and-environments.md | EXPLICIT |
 | AC-S-15 | success-criteria | TC-042, TC-054 | TC file — Related requirements & rules | EXPLICIT |
 | AC-S-16 | success-criteria | §c | plan section — test-plans.md §c | EXPLICIT |
 | AC-S-17 | success-criteria | §d, CHAOS-06, TST-CON-26 | constraint register — constraint-tests.md; plan activity — test-plans.md §d; plan section — test-plans.md §d | EXPLICIT |
@@ -425,24 +425,24 @@ All 26 rows are `DESIGNED` at v1.0 — status vocabulary `DESIGNED → READY →
 
 ## 5. Declared-but-Absent Test Cases
 
-`../../13-testing/test-cases-index.md` §2 locks an allocation of **114** cases. All **114** files exist (the 11 cases `TC-104`…`TC-114` were authored 2026-09-27 under `REC-03`). Historical status rows are kept and flipped, never deleted (DOC-TPL-011 #3):
+`../../13-testing/core/test-cases-index.md` §2 locks an allocation of **114** cases. All **114** files exist (the 11 cases `TC-104`…`TC-114` were authored 2026-09-27 under `REC-03`). Historical status rows are kept and flipped, never deleted (DOC-TPL-011 #3):
 
 | TC ID | Declared in | FR block | Status |
 |---|---|---|---|
-| `TC-104` | `../../13-testing/test-cases-index.md` §2 (range `TC-097–104`) | `FR-019` content & coupons | `declared but file absent` → `present (2026-09-27)` |
-| `TC-105` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-106` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-107` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-108` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-109` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-110` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-111` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-112` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-113` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
-| `TC-114` | `../../13-testing/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-104` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-097–104`) | `FR-019` content & coupons | `declared but file absent` → `present (2026-09-27)` |
+| `TC-105` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-106` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-107` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-108` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-109` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-110` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-111` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-112` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-113` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
+| `TC-114` | `../../13-testing/core/test-cases-index.md` §2 (range `TC-105–114`) | `FR-020` administration & audit | `declared but file absent` → `present (2026-09-27)` |
 | **11 declared, 11 present in this range** | | | |
 
-Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-block claim in `../../13-testing/test-cases-index.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — is now checkable for `FR-019` (`TC-104`) and `FR-020` (`TC-105`…`TC-114`); the four rows that rested on the block alone (`AC-SR010-01…04`) are `EXPLICIT` against `TC-105`…`TC-108`; and the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") are satisfiable from disk (114 files, every cited `TC-` ID resolves). Remaining open findings are tracked in §7 — chiefly `G-01` (47 ACs with no artifact), not file absence.
+Consequences (re-verified 2026-09-27 after the `REC-03` pay-down): the locked-block claim in `../../13-testing/core/test-cases-index.md` §2/§4 — each family has "≥1 case per AC of that FR inside the block" — is now checkable for `FR-019` (`TC-104`) and `FR-020` (`TC-105`…`TC-114`); the four rows that rested on the block alone (`AC-SR010-01…04`) are `EXPLICIT` against `TC-105`…`TC-108`; and the counts behind `13-testing/README.md` gate `G-TEST-1` ("114 TCs mapped to FR families") are satisfiable from disk (114 files, every cited `TC-` ID resolves). Remaining open findings are tracked in §7 — chiefly `G-01` (47 ACs with no artifact), not file absence.
 
 ---
 
@@ -481,7 +481,7 @@ Reading: each group lists ACs whose parent requirement is covered by **no** `TC`
 | G-02 | ~~11 declared test-case files are missing — `TC-104…TC-114` (103 files exist against a locked allocation of 114)~~ **RESOLVED 2026-09-27** — all 11 files authored; 114/114 present, every cited `TC-` ID resolves (`REC-03` pay-down) | HIGH (was) → **RESOLVED** | §5 |
 | G-03 | 42 ACs are covered only by an allocation/scope declaration, not by an artifact naming them | MEDIUM | §3 rows with status `DECLARED` |
 | G-04 | `AC-S-03` ("zero gaps") and `13-testing/README.md` `G-TEST-1` cannot be demonstrated from the corpus as it stands — file-absence cause cleared 2026-09-27, but `G-01`/`G-03` (47 unlinked + 42 declared-only ACs) and zero execution evidence still block the claim | HIGH | §2 verdict; `02-requirements/acceptance-criteria.md` §7 |
-| G-05 | ~~14 FR files list only `AC-FRnnn-01…04` while the registry defines `AC-FRnnn-05` (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`)~~ **RESOLVED 2026-09-27** — all 14 references added; 94/94 registry `AC-FR*` IDs present (`REC-04`/`TD-05` paid) | MEDIUM (was) → **RESOLVED** | `02-requirements/*.md` vs `acceptance-criteria.md` |
+| G-05 | ~~14 FR files list only `AC-FRnnn-01…04` while the registry defines `AC-FRnnn-05` (`FR-001, 002, 003, 004, 006, 008, 009, 010, 011, 012, 013, 014, 015, 017`)~~ **RESOLVED 2026-09-27** — all 14 references added; 94/94 registry `AC-FR*` IDs present (`REC-04`/`TD-05` paid) | MEDIUM (was) → **RESOLVED** | `02-requirements/functional/core/*.md` vs `acceptance-criteria.md` |
 | G-06 | 5 success criteria (`AC-S-19`, `AC-S-21`…`AC-S-24`) are operational/pilot/sign-off records — no test artifact can ever satisfy them here | INFORMATIONAL | §3 rows marked `OPERATIONAL EVIDENCE` |
 | G-07 | 1591 `AC-UCnnn-nn` criteria exist in the portal folders of `01-business-analysis/` outside the registry that claims to be the single registry of every `AC-*` | MEDIUM | count of unique `AC-UC*` strings — 1591 re-counted 2026-09-30 after session 011 grew the corpus to 420 UCs (was 779 after session 010, 121 at v1.2; finding unchanged, MEDIUM `OPEN`) |
 | G-08 | 8 constraint-register details cite no AC | LOW | §4 |
@@ -506,5 +506,6 @@ Follow `README.md` §6: any AC, `TC`, `PLAN`, `TST-CON`, plan-section or test-do
 | 1.2 | 2026-09-27 | `REC-03` pay-down: `TC-104`…`TC-114` authored — §1 artifact count 114, §2 NFR/SEC counts re-run (203/42), 6 rows `DECLARED`→`EXPLICIT` (`AC-SR010-01…04`, `AC-NFR-007-01`, `AC-NFR-020-01`), 10 rows gain new TC links, §5 statuses flipped to present, `G-02` → `RESOLVED`, `G-04` re-scoped | Root README §9.4 same-change-set propagation for a `13-testing/` change (`../../21-completion/core/recommendations.md` `REC-03`) |
 | 1.3 | 2026-09-27 | `REC-04` pay-down: `G-05` → `RESOLVED` (14 `AC-FRnnn-05` references added, 94/94 cited); "documents needing update" re-scoped | Root README §9.4 same-change-set propagation for an `02-requirements/functional/` change (`REC-04`) |
 | 1.4 | 2026-09-28 | §1 Functional range end corrected `AC-FR020-05` → `AC-FR020-04` (registry tops at `-04`; FR-020 defines four ACs — count 94 unchanged) | `REC-15` citation-CI enforcement (session 008) — `tools/check_citations.py` caught the dangling range end |
-| 1.5 | 2026-09-29 | `G-07` evidence re-counted: 121 → **779** unique `AC-UC*` IDs across the now-210 `use-cases/UC-*.md` (finding severity/status unchanged, MEDIUM `OPEN`) | `prompt-010.md` §1 session-010 UC-coverage directive — UC corpus grown 42 → 210, UC-derived evidence re-synced in the same change set (root README §9 rule 4) |
+| 1.5 | 2026-09-29 | `G-07` evidence re-counted: 121 → **779** unique `AC-UC*` IDs across the now-210 `01-business-analysis/*/UC-*.md` (finding severity/status unchanged, MEDIUM `OPEN`) | `prompt-010.md` §1 session-010 UC-coverage directive — UC corpus grown 42 → 210, UC-derived evidence re-synced in the same change set (root README §9 rule 4) |
 | 1.6 | 2026-09-30 | AC universe 277 → **297** (`AC-SR001-01 … AC-SR016-04` 50 → **66**, `AC-DR001-01 … AC-DR009-04` 32 → **36**); §3 gains 20 rows in ID order for the session-011 ACs (all `GAP` — no `TC`, plan, register or test document cites them, verified by scan); §2 re-run **297 / 203 `EXPLICIT` / 42 `DECLARED` / 47 `GAP` / 5 `OPERATIONAL`** (SEC 66, DATA 36 rows); verdict block, `G-01` 27 → 47, `G-04` re-scoped, `G-03` 48 → **42** (stale `DECLARED` count, severity/status unchanged); §6 gaps 27 → **47 ACs** across 12 → **17 requirements**; `G-07` evidence 779 → **1591** unique `AC-UC*` (MEDIUM `OPEN` unchanged); stale `01-business-analysis/*.md` wording → portal folders; wrapped `AC-FR019-03` row rejoined | `prompt-011.md` §4.8 owner directive session 011 — requirements 68 → 73 and AC registry 253 → 273 (UC corpus 210 → 420), test traceability re-synced in the same change set (root README §9 rule 4) |
+| 1.7 | 2026-10-02 | Stale path rewrites to live paths (portal + section-grouping migration) | Session-013 phase-8 fix wave (prompt-013 §3 wave B) |

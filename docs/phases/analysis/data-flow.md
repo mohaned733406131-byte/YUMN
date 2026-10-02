@@ -3,9 +3,9 @@ document_id: DOC-PHA-008
 title: Data Flow Diagram (with DB transactions) — analysis phase
 category: phases
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-28
-updated: 2026-09-28
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: false
 related_documents: [DOC-SA-005, DOC-ARCH-004, DOC-BE-005]
@@ -76,7 +76,7 @@ Any violated invariant aborts the transaction (no partial ledger) and surfaces t
 Consistent state across wallet/order/escrow/stock; every mutation auditable (`audit_log`, `LOG-01`).
 
 ## Data entities touched
-All 18 entities: [`08-database/`](../../08-database/entities-index.md) (`DB-001…DB-018`).
+All 18 entities: [`08-database/`](../../08-database/core/entities-index.md) (`DB-001…DB-018`).
 
 ## Open questions (COM-01)
 1. `D-07`: API promises storage with no entity (push devices, review reports, dispute evidence, ticket messages, vendor application, top-up proof, payout account, deletion request) — add entities or remove endpoints before implementation.
@@ -86,3 +86,4 @@ All 18 entities: [`08-database/`](../../08-database/entities-index.md) (`DB-001�
 | Date | Version | Change | Author |
 |---|---|---|---|
 | 2026-09-28 | 1.0 | Initial creation (CORE-03 item 6, session 005) | analysis-agent |
+| 2026-10-02 | 1.1 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |

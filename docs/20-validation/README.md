@@ -3,9 +3,9 @@ document_id: DOC-VAL-001
 title: 20-Validation — Domain Index & Audit Register
 category: 20-validation
 status: approved
-version: 1.3
+version: 1.5
 created: 2026-09-27
-updated: 2026-09-30
+updated: 2026-10-02
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-019]
@@ -40,19 +40,19 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 | [`customer/`](customer/README.md) | DOC-VAL-012 | Customer portal folder — customer-app-specific material (buyers) |
 | [`delivery/`](delivery/README.md) | DOC-VAL-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
-`document_id` short code `VAL` and the `DOC-VAL-NNN` allocation are minted **here**, per `22-glossary/naming-conventions.md:36` ("pending — see `DOC-VAL-*` gap"). Files 5–8 were declared in this register as a forward allocation; all four have since been authored by their own authoring passes and are now `authored` above — nothing in this file asserts their content or sign-off.
+`document_id` short code `VAL` and the `DOC-VAL-NNN` allocation are minted **here**, per `22-glossary/core/naming-conventions.md:36` ("pending — see `DOC-VAL-*` gap"). Files 5–8 were declared in this register as a forward allocation; all four have since been authored by their own authoring passes and are now `authored` above — nothing in this file asserts their content or sign-off.
 
 ---
 
 ## 2. Audit Register (`AUD-NN` — minted here)
 
-`AUD-NN` is width 2, allocated append-only in this table only (`22-glossary/naming-conventions.md:91`, `../23-templates/core/validation-audit-template.md` §Rules). The row previously carried `INFERENCE` in DOC-GL-003 §3; with this register authored, `AUD-01…AUD-07` are `VERIFIED` allocations.
+`AUD-NN` is width 2, allocated append-only in this table only (`22-glossary/core/naming-conventions.md:91`, `../23-templates/core/validation-audit-template.md` §Rules). The row previously carried `INFERENCE` in DOC-GL-003 §3; with this register authored, `AUD-01…AUD-07` are `VERIFIED` allocations.
 
 | Audit ID | Type | File | Methodology | Scope of the baseline run | Verdict (baseline) |
 |---|---|---|---|---|---|
 | `AUD-01` | consistency | `core/consistency-audit.md` | root README §9.4 | all 433 `.md` files in `docs/`, 2026-09-27 (corpus 443 at v1.1 re-run) | `PASS WITH FINDINGS` — 20 of 31 checks failed |
 | `AUD-02` | contradiction | `core/contradiction-audit.md` | root README §9.5 | cross-layer statements (API ↔ DB ↔ UI ↔ infra ↔ glossary) | `PASS WITH FINDINGS` — `CT-01` `PASS`; `CT-02…CT-20` `OPEN` |
-| `AUD-03` | missing-information | `core/missing-information.md` | root README §10/41 | every unresolved question across `docs/` | `PASS WITH FINDINGS` — `GAP-01…GAP-12` all `OPEN` |
+| `AUD-03` | missing-information | `core/missing-information.md` | root README §10/41 | every unresolved question across `docs/` | `PASS WITH FINDINGS` — `GAP-01…GAP-16` (13 `OPEN` · 3 `RESOLVED`) |
 | `AUD-04` | hallucination | `core/hallucination-audit.md` | root README §10/43 | unsupported claims presented as fact | `PASS WITH FINDINGS` — `HAL-01…HAL-13`, 1 `CRITICAL` + 4 `HIGH` |
 | `AUD-05` | critical-findings | `core/critical-findings.md` | root README §10/45 | `CRITICAL`-severity defects | `FAIL` for Gate 0 / register `PASS WITH FINDINGS` — `CRIT-01…CRIT-10` |
 | `AUD-06` | final-quality | `core/analysis-validation.md` | root README §10/48 | whole-corpus quality verdict | `PASS WITH FINDINGS` — 444 files scored |
@@ -66,14 +66,14 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 
 | Series | Pattern | Minted only in | Baseline allocation (2026-09-27) |
 |---|---|---|---|
-| Gaps | `GAP-NN` (issued) / `GAP-NNN` (root README §5 pattern) | `core/missing-information.md` | `GAP-01…GAP-07` inherited from `00-project-overview/project-scope.md`; **`GAP-08…GAP-12` minted by `AUD-03`** |
+| Gaps | `GAP-NN` (issued) / `GAP-NNN` (root README §5 pattern) | `core/missing-information.md` | `GAP-01…GAP-07` inherited from `00-project-overview/project-scope.md`; **`GAP-08…GAP-12` minted by `AUD-03`**; **`GAP-13`/`GAP-14` by session-007; `GAP-15`/`GAP-16` by session-013** (C-27 elevation + `YUMN_RULES` rule-text deferrals) |
 | Contradictions | `CT-NN` | `core/contradiction-audit.md` | `CT-01` (mandated PASS) … `CT-20` |
 | Audits | `AUD-NN` | this file (§2) | `AUD-01…AUD-07` |
 | Unsupported claims | `HAL-NN` | `core/hallucination-audit.md` | `HAL-01…HAL-13` minted by `AUD-04` |
 | Critical findings | `CRIT-NN` | `core/critical-findings.md` | `CRIT-01…CRIT-10` minted by `AUD-05` |
 | Cross-references (not minted here) | `SEC-NNN`, `RISK-NNN`, `TD-NN`, `DQ-NN`, `TST-CON-NN` | owning registers (`09-security/`, `17-risk-management/`, `21-completion/`, `16-data/`, `13-testing/`) | referenced only |
 
-**Never mint an ID outside its register** (`22-glossary/naming-conventions.md` §3 *Defined in* column). This file allocates `AUD-NN`, `DOC-VAL-NNN` and — via `missing-information.md` — `GAP-NN` / (via the other audits) `CT-NN`; everything else is citation.
+**Never mint an ID outside its register** (`22-glossary/core/naming-conventions.md` §3 *Defined in* column). This file allocates `AUD-NN`, `DOC-VAL-NNN` and — via `missing-information.md` — `GAP-NN` / (via the other audits) `CT-NN`; everything else is citation.
 
 ---
 
@@ -95,7 +95,7 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 
 | # | Question | State at 2026-09-27 | Handled in |
 |---|---|---|---|
-| 1 | Where is the canonical GAP register: `core/missing-information.md` (root README §5:161, `22-glossary/naming-conventions.md:90`) or `00-project-overview/project-scope.md` §UNCERTAIN SCOPE (`../16-data/core/retention-and-archival.md:39`, `../12-non-functional/core/compliance-and-legal.md:88`)? | Conflict recorded, not resolved here | `contradiction-audit.md` `CT-15` |
+| 1 | Where is the canonical GAP register: `core/missing-information.md` (root README §5:161, `22-glossary/core/naming-conventions.md:90`) or `00-project-overview/project-scope.md` §UNCERTAIN SCOPE (`../16-data/core/retention-and-archival.md:39`, `../12-non-functional/core/compliance-and-legal.md:88`)? | Conflict recorded, not resolved here | `contradiction-audit.md` `CT-15` |
 | 2 | Root README §5 has no `AUD-NN` row (`naming-conventions.md:91` instructs registering it here "when `20-validation/` is authored") | Register authored; root README §5 row **not yet added** | consistency-audit finding (required edit, not made here) |
 | 3 | Root README §5 pattern `GAP-NNN` vs issued width `GAP-NN` | Known defect logged against root README | `naming-conventions.md:118`, consistency-audit finding |
 | 4 | `19-traceability/` (root README §10 row 40) was cited by 33 files while absent | Directory authored 2026-09-27 17:34 (3 files); consistency-audit finding 3 flipped to `RESOLVED` — but `../19-traceability/core/requirements-to-tests.md` cites an undefined `DOC-INT-010` | consistency-audit finding 3 (`RESOLVED`) + finding 23 (`OPEN`) |
@@ -120,3 +120,5 @@ related_documents: [DOC-ROOT-001, DOC-TPL-011, DOC-GL-003, DOC-CMP-004, DOC-CMP-
 | 1.1 | 2026-09-27 | Parallel authoring pass absorbed: file index rows 5–7 → authored, row 8 still forward-allocated; audit verdicts filled for `AUD-04`/`AUD-05`/`AUD-07`; series table now records `CT-01…CT-20`, `HAL-01…HAL-13`, `CRIT-01…CRIT-10`; §5 note 4 closed with a new open item | Sibling files landed after this register was authored; DOC-TPL-011 #3 (findings never deleted) |
 | 1.2 | 2026-09-27 | `analysis-validation.md` (`DOC-VAL-008`) authored → index row 8 and `AUD-06` verdict (`PASS WITH FINDINGS`, 444 files) recorded; all 8 declared files now present | Sibling authoring pass completed the domain |
 | 1.3 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-VAL-009…DOC-VAL-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.4 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 1.5 | 2026-10-02 | `AUD-03` verdict row refreshed: range `GAP-01…GAP-12` → `GAP-01…GAP-16`, status → 13 `OPEN` · 3 `RESOLVED`; series-provenance row gains `GAP-13`/`GAP-14` (session-007) + `GAP-15`/`GAP-16` (session-013) | Root README §9.4 consumer re-sync — `missing-information.md` v1.5 title/range changed in session-013 wave D |

@@ -3,9 +3,9 @@ document_id: DOC-TPL-001
 title: Templates Domain — Index, Placeholder & Authoring Rules
 category: 23-templates
 status: approved
-version: 1.1
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-30
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-009, NFR-013]
@@ -23,14 +23,14 @@ related_documents: [DOC-ROOT-001, DOC-GL-001, DOC-GL-003, DOC-UC-000, DOC-WF-001
 | # | File | document_id | Template for | Mirror of (authority) | Canonical filled exemplar |
 |---|---|---|---|---|---|
 | 1 | [README.md](README.md) | DOC-TPL-001 | This index + placeholder/authoring rules | root README §5–§9 | — |
-| 2 | [requirement-template.md](core/requirement-template.md) | DOC-TPL-002 | FR / NFR / SEC-REQ / DATA-REQ / INT-REQ files | `02-requirements/` registry + `FR-013` | `../02-requirements/core/FR-013.md` |
+| 2 | [requirement-template.md](core/requirement-template.md) | DOC-TPL-002 | FR / NFR / SEC-REQ / DATA-REQ / INT-REQ files | `02-requirements/` registry + `FR-013` | `../02-requirements/functional/core/FR-013.md` |
 | 3 | [use-case-template.md](core/use-case-template.md) | DOC-TPL-003 | Use-case files `UC-NNN.md` | DOC-UC-000 | `../01-business-analysis/customer/UC-001.md` |
 | 4 | [workflow-template.md](core/workflow-template.md) | DOC-TPL-004 | Workflow files `workflow-NNN.md` | DOC-WF-001 | `../01-business-analysis/customer/workflow-001.md` |
 | 5 | [test-case-template.md](core/test-case-template.md) | DOC-TPL-005 | Test cases `TC-NNN.md` | DOC-TST-006 | `../13-testing/core/TC-001.md` |
-| 6 | [api-endpoint-template.md](core/api-endpoint-template.md) | DOC-TPL-006 | Endpoint group docs `endpoints/<group>.md` | DOC-API-005, `../07-api/core/api-conventions.md` | `../07-api/core/wallet.md` (API-WAL) |
-| 7 | [database-entity-template.md](core/database-entity-template.md) | DOC-TPL-007 | Entity docs `entities/<table>.md` | `08-database/README.md` §1–§2, DOC-DB-007 | `../08-database/core/user.md` (DB-001) |
+| 6 | [api-endpoint-template.md](core/api-endpoint-template.md) | DOC-TPL-006 | Endpoint group docs `07-api/<portal>/<group>.md` | DOC-API-005, `../07-api/core/api-conventions.md` | `../07-api/core/wallet.md` (API-WAL) |
+| 7 | [database-entity-template.md](core/database-entity-template.md) | DOC-TPL-007 | Entity docs `08-database/core/<table>.md` | `08-database/README.md` §1–§2, DOC-DB-007 | `../08-database/core/user.md` (DB-001) |
 | 8 | [adr-template.md](core/adr-template.md) | DOC-TPL-008 | ADR files `18-decisions/core/ADR-NNN.md` | DOC-DEC-001 §6 (required sections), §2–§3 (lifecycle, numbering) | `../18-decisions/core/ADR-001.md` |
-| 9 | [risk-template.md](core/risk-template.md) | DOC-TPL-009 | Risk register entries `RISK-NNN` | DOC-RSK-002, DOC-RSK-004 | `17-risk-management/risk-register.md` |
+| 9 | [risk-template.md](core/risk-template.md) | DOC-TPL-009 | Risk register entries `RISK-NNN` | DOC-RSK-002, DOC-RSK-004 | `17-risk-management/core/risk-register.md` |
 | 10 | [security-finding-template.md](core/security-finding-template.md) | DOC-TPL-010 | Security findings `SEC-NNN` entries | DOC-SEC-008 | `../09-security/core/security-findings.md` (SEC-001…) |
 | 11 | [validation-audit-template.md](core/validation-audit-template.md) | DOC-TPL-011 | Validation audit files / entries in `20-validation/` | root README §8–§9 | *(files in `20-validation/` pending authoring)* |
 | [`core/`](core/README.md) | DOC-TPL-012 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
@@ -46,7 +46,7 @@ related_documents: [DOC-ROOT-001, DOC-GL-001, DOC-GL-003, DOC-UC-000, DOC-WF-001
 1. The **only** placeholders in this repository are `<angle-bracket>` tokens, and they may appear **only** inside `23-templates/` (DOC-GL-003 §2).
 2. Placeholders are lowercase-with-hyphens: `<req-id>`, `<actor-name>`, `<group-code>`, `<table-name>`, `<date>` — never `<Title>` or `<ID_Here>`.
 3. A placeholder names *what goes there*, not an example value. When you fill a template, **every** placeholder must be gone; a file shipping with leftover `<…>` is a validation finding (`../20-validation/core/missing-information.md`).
-4. Placeholders are not terminology: they never enter `22-glossary/terminology.md` (DOC-GL-001 §2.5).
+4. Placeholders are not terminology: they never enter `22-glossary/core/terminology.md` (DOC-GL-001 §2.5).
 5. Template files themselves carry real frontmatter (`document_id: DOC-TPL-0NN`, `category: 23-templates`) and `source_of_truth: true` — within this domain the template is the authoritative statement of *shape*; the *content* authority for everything the document says remains the mirrored document named in §1 (a template and its owning document never disagree — §4).
 
 ## 3. How to Use a Template
@@ -67,3 +67,5 @@ Changing a template's structure propagates: update the mirrored authority (§1) 
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
 | 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TPL-012…DOC-TPL-016) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.2 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 1.3 | 2026-10-02 / 10-03 | Contents rows for DOC-TPL-006/007: entity-doc path `entities/<table>.md` → `08-database/core/<table>.md`; endpoint-doc path `endpoints/<group>.md` → `07-api/<portal>/<group>.md` | Session-013 leftover sweep — mirrors template v1.1 fix (entity) and the same sweep's endpoint-path fix; portal scheme (no `entities/` or `endpoints/` folders exist) |

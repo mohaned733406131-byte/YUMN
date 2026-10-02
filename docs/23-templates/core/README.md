@@ -3,9 +3,9 @@ document_id: DOC-TPL-012
 title: 23 Templates — core/ portal folder
 category: 23-templates
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-30
-updated: 2026-09-30
+updated: 2026-10-03
 author: analysis-agent
 source_of_truth: false
 related_requirements: []
@@ -16,7 +16,7 @@ related_documents: [DOC-TPL-001]
 
 ## Purpose
 
-One of the five portal subfolders of `23-templates/` (portal partition — `22-glossary/naming-conventions.md` §1):
+One of the five portal subfolders of `23-templates/` (portal partition — `22-glossary/core/naming-conventions.md` §1):
 holds **shared, platform-wide material for this domain (not specific to a single portal)** for this domain. Cross-portal registries, gateways and index
 files stay at the domain root; shared material lives in `core/`.
 
@@ -26,8 +26,8 @@ files stay at the domain root; shared material lives in `core/`.
 |---|---|---|
 | [README.md](README.md) | DOC-TPL-012 | This portal index — purpose, file table |
 | [adr-template.md](adr-template.md) | DOC-TPL-008 | Architecture Decision Record Template (ADR-NNN.md) |
-| [api-endpoint-template.md](api-endpoint-template.md) | DOC-TPL-006 | API Endpoint Group Template (endpoints/<group>.md) |
-| [database-entity-template.md](database-entity-template.md) | DOC-TPL-007 | Database Entity Template (entities/<table>.md) |
+| [api-endpoint-template.md](api-endpoint-template.md) | DOC-TPL-006 | API Endpoint Group Template (07-api/<portal>/<group>.md) |
+| [database-entity-template.md](database-entity-template.md) | DOC-TPL-007 | Database Entity Template (08-database/core/<table>.md) |
 | [requirement-template.md](requirement-template.md) | DOC-TPL-002 | Requirement Template (FR / NFR / SEC-REQ / DATA-REQ / INT-REQ) |
 | [risk-template.md](risk-template.md) | DOC-TPL-009 | Risk Register Entry Template (RISK-NNN) |
 | [security-finding-template.md](security-finding-template.md) | DOC-TPL-010 | Security Finding Template (SEC-NNN) |
@@ -41,3 +41,5 @@ files stay at the domain root; shared material lives in `core/`.
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-30 | Initial portal-folder index (10 file(s)) | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` |
+| 1.1 | 2026-10-02 | Reference paths updated for the section-grouping migration | Session-013 owner directive (prompt-013 clarification) — section-grouping migration |
+| 1.2 | 2026-10-02 / 10-03 | DOC-TPL-007 display title synced to `(08-database/core/<table>.md)`; DOC-TPL-006 display title synced to `(07-api/<portal>/<group>.md)` | Session-013 leftover sweep — mirrors template v1.1 fix (entity) and v1.1 endpoint-path fix |
