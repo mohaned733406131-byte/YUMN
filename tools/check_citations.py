@@ -37,8 +37,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SCAN_SKIP_DIRS = {".git", ".github", "senior-rules", "node_modules",
                   # vendor skill packs (owner-installed reference material — never scanned as
                   # citing files; their illustrative artifact filenames are not corpus citations.
-                  # Same vendor precedent as senior-rules/; scope correction recorded session-011)
-                  "delegate-skills-master", "pro-skills-senior-full-stack-software-engineer-master"}
+                  # Same vendor precedent as senior-rules/; scope correction recorded session-011;
+                  # multi_agent_skill_ecosystem_v1.0.0 added session-013 — same rationale,
+                  # owner-staged pack, 50 illustrative artifact filenames)
+                  "delegate-skills-master", "pro-skills-senior-full-stack-software-engineer-master",
+                  "multi_agent_skill_ecosystem_v1.0.0"}
 INDEX_SKIP_DIRS = {".git", "node_modules"}
 
 # --------------------------------------------------------------------------
