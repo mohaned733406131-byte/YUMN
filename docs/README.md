@@ -3,11 +3,12 @@ document_id: DOC-ROOT-001
 title: yumn Analysis Documentation — Master Index
 category: root
 status: approved
-version: 1.1
+version: 1.5
 created: 2026-09-26
-updated: 2026-09-27
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
+related_requirements: []
 related_documents: []
 ---
 
@@ -17,8 +18,8 @@ related_documents: []
 |---|---|
 | Project Name | **yumn** (Arabic: يُمن) |
 | Project Description | Multi-vendor e-commerce marketplace for Yemen — Arabic-first (RTL), wallet-only payments, custom-built |
-| Documentation Version | 1.1 |
-| Last Updated | 2026-09-27 |
+| Documentation Version | 1.3 |
+| Last Updated | 2026-09-28 |
 | Documentation Status | APPROVED — analysis complete, ready for design/implementation planning |
 | Project Status | ANALYZED (pre-implementation) |
 | Language | English (single language of record) |
@@ -30,9 +31,9 @@ related_documents: []
 This repository is the **single, self-contained analysis knowledge base** for the yumn platform. It was produced from scratch using:
 
 - **Methodology:** `command.md` — *Comprehensive Software Project Analysis & Validation Agent* (56 analysis areas, 48-part final structure, evidence rules, absolute rules).
-- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules).
+- **Structure:** `archdoc.md` — *Analysis Documentation Structure Specification* (24 numbered documentation domains, metadata, status, source-of-truth, cross-referencing, AI navigation rules). ✅ **Restored 2026-09-28** (session 008, `REC-01`/`TD-03`): the file had been a 0-byte placeholder whose content never existed in git history (defect `D-10`); its content was reconstructed from the structure as implemented by this README (§2–§5) and validated by `20-validation/core/consistency-audit.md`, with that provenance stated inside the file (`SPE-03`, finding `HAL-03`).
 
-Both governing documents are archived with all prior material under `archive/` at the repository root. Nothing inside `docs/` references archived content: this analysis is independent, evidence-tagged, and internally consistent.
+`command.md` is the governing methodology document (28.7 KB, present). The claim that both governing documents are "archived under `archive/`" is **not verifiable — `archive/` does not exist** in this repository; treat it as an unproven statement (`SPE-03`) until evidence appears. Nothing inside `docs/` references archived content: this analysis is independent, evidence-tagged, and internally consistent.
 
 ---
 
@@ -65,11 +66,13 @@ Both governing documents are archived with all prior material under `archive/` a
 | 22 | [glossary](22-glossary/README.md) | Terminology | Canonical term names, business/technical terms, naming conventions |
 | 23 | [templates](23-templates/README.md) | Templates | Reusable templates for every document type |
 
+**Process folders (not analysis domains):** [`phases/`](phases/README.md) — per-phase artifact sets (CORE-03/DOC-02, phase 0 created 2026-09-28) · [`sessions/`](sessions/README.md) — session work files with evidence (SES-01, created 2026-09-28). They carry `DOC-PHA-*` / `DOC-SES-*` IDs and are registered here so no document is an orphan (SPE-05).
+
 ---
 
 ## 3. How to Navigate
 
-**Human readers** — follow the reading order below (matches `archdoc.md` §38):
+**Human readers** — follow the reading order below:
 
 ```text
 1.  docs/README.md                      (this file)
@@ -143,23 +146,23 @@ Filenames: `lowercase-kebab-case.md`. Identifiers: `UPPERCASE-WITH-DASHES`. Neve
 | Objectives | `OBJ-NN` | `OBJ-03` | `00-project-overview/project-objectives.md` |
 | Assumptions | `ASM-NN` | `ASM-05` | `00-project-overview/assumptions.md` |
 | Dependencies | `DEP-NN` | `DEP-02` | `00-project-overview/dependencies.md` |
-| Functional requirements | `FR-NNN` | `FR-012` | `02-requirements/functional/` |
-| Non-functional requirements | `NFR-NNN` | `NFR-005` | `02-requirements/non-functional/` |
-| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-003` | `02-requirements/security/` |
-| Data requirements | `DATA-REQ-NNN` | `DATA-REQ-004` | `02-requirements/data/` |
-| Integration requirements | `INT-REQ-NNN` | `INT-REQ-002` | `02-requirements/integration/` |
+| Functional requirements | `FR-NNN` | `FR-012` | `02-requirements/core/` |
+| Non-functional requirements | `NFR-NNN` | `NFR-005` | `02-requirements/core/` |
+| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-003` | `02-requirements/core/` |
+| Data requirements | `DATA-REQ-NNN` | `DATA-REQ-004` | `02-requirements/core/` |
+| Integration requirements | `INT-REQ-NNN` | `INT-REQ-002` | `02-requirements/core/` |
 | Business rules | `BR-<DOMAIN>-NN` | `BR-PAY-04` | `01-business-analysis/business-rules.md` |
-| Use cases | `UC-NNN` | `UC-017` | `01-business-analysis/use-cases/` |
-| Workflows | `WF-NNN` | `WF-003` | `01-business-analysis/workflows/` |
+| Use cases | `UC-NNN` | `UC-017` | `01-business-analysis/<portal>/` |
+| Workflows | `WF-NNN` | `WF-003` | `01-business-analysis/<portal>/` |
 | Blocks | `B01…B13` | `B07` | `00-project-overview/project-context.md` |
-| API endpoints | `API-<GROUP>-NNN` | `API-WAL-002` | `07-api/endpoints/` |
-| Database entities | entity name + `DB-NNN` | `DB-006` | `08-database/entities/` |
-| Test cases | `TC-NNN` | `TC-021` | `13-testing/test-cases/` |
+| API endpoints | `API-<GROUP>-NNN` | `API-WAL-002` | `07-api/<portal>/` |
+| Database entities | entity name + `DB-NNN` | `DB-006` | `08-database/core/` |
+| Test cases | `TC-NNN` | `TC-021` | `13-testing/core/` |
 | Risks | `RISK-NNN` | `RISK-007` | `17-risk-management/risk-register.md` |
-| Decisions / ADRs | `ADR-NNN` | `ADR-003` | `18-decisions/ADR/` |
-| Security findings | `SEC-NNN` | `SEC-011` | `09-security/` |
-| Gaps | `GAP-NNN` | `GAP-03` | `20-validation/missing-information.md` |
-| Constraint tests | `TST-CON-NN` | `TST-CON-09` | `13-testing/` |
+| Decisions / ADRs | `ADR-NNN` | `ADR-003` | `18-decisions/core/` |
+| Security findings | `SEC-NNN` | `SEC-011` | `09-security/core/` |
+| Gaps | `GAP-NNN` | `GAP-03` | `20-validation/core/missing-information.md` |
+| Constraint tests | `TST-CON-NN` | `TST-CON-09` | `13-testing/core/` |
 | Acceptance criteria | `AC-<REQID>-NN` / `AC-S-NN` | `AC-FR013-01`, `AC-S-05` | `02-requirements/acceptance-criteria.md` |
 | Validation audits | `AUD-NN` | `AUD-01` | `20-validation/README.md` |
 
@@ -225,9 +228,10 @@ Conclusions carry confidence: `HIGH` · `MEDIUM` · `LOW`.
 
 1. Never silently change an approved document.
 2. Update the document, bump its `version`, add a `## Change History` row.
-3. If a decision is superseded, write a **new ADR** in `18-decisions/ADR/` and mark the old one `SUPERSEDED`.
-4. Propagate changes to every impacted document (consistency rule) and record affected IDs in `20-validation/consistency-audit.md`.
-5. Contradictions are never ignored — they are recorded in `20-validation/contradiction-audit.md` until resolved.
+3. If a decision is superseded, write a **new ADR** in `18-decisions/core/` and mark the old one `SUPERSEDED`.
+4. Propagate changes to every impacted document (consistency rule) and record affected IDs in `20-validation/core/consistency-audit.md`.
+5. Contradictions are never ignored — they are recorded in `20-validation/core/contradiction-audit.md` until resolved.
+6. **Structure changes** (e.g. the session-011 portal partition of `01…23`): register the path scheme + ID allocation in `22-glossary/naming-conventions.md` first, move files only via a scripted migration that rewrites every citing path in the same change set, and keep both gates green after every change set (`validate.py` + `tools/check_citations.py` → 0 problems). Authority: owner directive `prompt-011.md` §1, proposal/evaluation `DOC-OVR-012`.
 
 ---
 
@@ -245,46 +249,46 @@ Each section of the analysis methodology (`command.md` §53 — 48-part final st
 | 6. Business Objectives | `00-project-overview/project-objectives.md` |
 | 7. Requirements | `02-requirements/` |
 | 8. Business Rules | `01-business-analysis/business-rules.md` |
-| 9. Use Cases | `01-business-analysis/use-cases/` |
-| 10. End-to-End Workflows | `01-business-analysis/workflows/` |
-| 11. Functional Analysis | `03-system-analysis/functional-analysis.md` |
-| 12. Non-Functional Requirements | `02-requirements/non-functional/` + `12-non-functional/` |
-| 13. System Architecture | `04-architecture/architecture-overview.md` |
+| 9. Use Cases | `01-business-analysis/<portal>/` (gateway index `*-index.md` at folder root) |
+| 10. End-to-End Workflows | `01-business-analysis/<portal>/` (gateway index `*-index.md` at folder root) |
+| 11. Functional Analysis | `03-system-analysis/core/functional-analysis.md` |
+| 12. Non-Functional Requirements | `02-requirements/core/` + `12-non-functional/` |
+| 13. System Architecture | `04-architecture/core/architecture-overview.md` |
 | 14. Frontend Architecture | `05-frontend/` |
 | 15. Backend Architecture | `06-backend/` |
 | 16. API Architecture | `07-api/` |
 | 17. Database Architecture | `08-database/` |
-| 18. Data Flow | `03-system-analysis/data-flow.md` + `04-architecture/data-flow.md` |
-| 19. Authentication | `09-security/authentication.md` + `06-backend/authentication.md` |
-| 20. Authorization | `09-security/rbac.md` + `06-backend/authorization.md` |
+| 18. Data Flow | `03-system-analysis/core/data-flow.md` + `04-architecture/core/data-flow.md` |
+| 19. Authentication | `09-security/core/authentication.md` + `06-backend/core/authentication.md` |
+| 20. Authorization | `09-security/core/rbac.md` + `06-backend/core/authorization.md` |
 | 21. Security | `09-security/` |
 | 22. Integrations | `10-integrations/` |
-| 23. Performance | `12-non-functional/performance.md` |
-| 24. Scalability | `12-non-functional/scalability.md` + `04-architecture/scalability.md` |
-| 25. Reliability | `12-non-functional/reliability.md` |
+| 23. Performance | `12-non-functional/core/performance.md` |
+| 24. Scalability | `12-non-functional/core/scalability.md` + `04-architecture/core/scalability.md` |
+| 25. Reliability | `12-non-functional/core/reliability.md` |
 | 26. Infrastructure | `14-devops-infrastructure/` |
 | 27. Deployment | `15-deployment/` |
-| 28. DevOps | `14-devops-infrastructure/ci-cd.md` |
+| 28. DevOps | `14-devops-infrastructure/core/ci-cd.md` |
 | 29. Testing | `13-testing/` |
 | 30. UX/UI | `11-ui-ux/` + `05-frontend/` |
-| 31. Accessibility | `11-ui-ux/accessibility.md` + `12-non-functional/accessibility.md` |
-| 32. Internationalization | `11-ui-ux/localization.md` + `05-frontend/internationalization.md` |
-| 33. Maintainability | `12-non-functional/maintainability.md` |
-| 34. Technology Decisions | `18-decisions/ADR/` |
+| 31. Accessibility | `11-ui-ux/core/accessibility.md` + `12-non-functional/core/accessibility.md` |
+| 32. Internationalization | `11-ui-ux/core/localization.md` + `05-frontend/core/internationalization.md` |
+| 33. Maintainability | `12-non-functional/core/maintainability.md` |
+| 34. Technology Decisions | `18-decisions/core/` |
 | 35. Legal/Compliance | `00-project-overview/project-context.md` §Compliance + `12-non-functional/` |
-| 36. Feasibility | `21-completion/feasibility-assessment.md` |
+| 36. Feasibility | `21-completion/core/feasibility-assessment.md` |
 | 37. Risks | `17-risk-management/` |
 | 38. Assumptions | `00-project-overview/assumptions.md` |
 | 39. Dependencies | `00-project-overview/dependencies.md` |
 | 40. Traceability Matrix | `19-traceability/` |
-| 41. Missing Information | `20-validation/missing-information.md` |
-| 42. Contradictions | `20-validation/contradiction-audit.md` |
-| 43. Incorrect/Unsupported Claims | `20-validation/hallucination-audit.md` |
-| 44. Technical Debt | `21-completion/technical-debt.md` |
-| 45. Critical Findings | `20-validation/critical-findings.md` |
-| 46. Recommendations | `21-completion/recommendations.md` |
-| 47. Verification Strategy | `13-testing/testing-strategy.md` |
-| 48. Final Quality Assessment | `20-validation/analysis-validation.md` + `21-completion/final-acceptance.md` |
+| 41. Missing Information | `20-validation/core/missing-information.md` |
+| 42. Contradictions | `20-validation/core/contradiction-audit.md` |
+| 43. Incorrect/Unsupported Claims | `20-validation/core/hallucination-audit.md` |
+| 44. Technical Debt | `21-completion/core/technical-debt.md` |
+| 45. Critical Findings | `20-validation/core/critical-findings.md` |
+| 46. Recommendations | `21-completion/core/recommendations.md` |
+| 47. Verification Strategy | `13-testing/core/testing-strategy.md` |
+| 48. Final Quality Assessment | `20-validation/core/analysis-validation.md` + `21-completion/core/final-acceptance.md` |
 
 ---
 
@@ -295,3 +299,16 @@ A document is complete only if it passes the quality gate (purpose, scope, termi
 ---
 
 *End of root index. Next: [00-project-overview/README.md](00-project-overview/README.md)*
+
+---
+
+## Change History
+
+| Date | Version | Change | Author |
+|---|---|---|---|
+| 2026-09-26 | 1.0 | Initial publication of the master index | analysis-agent |
+| 2026-09-27 | 1.1 | §5 AUD-NN validation-audit ID row (registration for domain 20) | analysis-agent |
+| 2026-09-28 | 1.2 | §1 `archdoc.md`/`archive/` claims corrected to honest state (defect `D-10`, SPE-03); §2 process-folder note (`phases/`, `sessions/`); §3 unverifiable `archdoc.md §38` reference removed | analysis-agent |
+| 2026-09-28 | 1.3 | related_requirements: [] frontmatter key added (session 006 sweep: CHK-01) | analysis-agent |
+| 2026-09-28 | 1.4 | §1 structure bullet updated: `archdoc.md` **restored** (session 008 `REC-01`/`TD-03`) — reconstruction provenance stated; `HAL-03`/`CRIT-08` closure evidence | analysis-agent |
+| 2026-09-30 | 1.5 | §5 *Defined In* paths + §10 location cells realigned to the portal-partition scheme; §9 item 3 ADR path + **new §9.6** (structure-change procedure) | Owner directive session 011 (`prompt-011.md` §1) — change control before the phase-5 migration (`naming-conventions.md` v1.7, `DOC-OVR-012`) | analysis-agent |

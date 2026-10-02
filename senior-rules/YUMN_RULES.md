@@ -7,7 +7,7 @@ Every rule: stable ID · severity · requirement · mechanical verification.
 Severity: **CRITICAL** = blocks completion · **HIGH** = pass or justify in writing · **MEDIUM** = expected · **LOW** = guidance.
 
 These rules bind the stack-agnostic master catalog (`RULES.md`) to the yumn domain, derived from the
-approved knowledge base in `docs/` (`C-01…C-26`, 99 `BR-*`, 68 requirements, `SEC-REQ-*`, `NFR-*`).
+approved knowledge base in `docs/` (`C-01…C-26`, 111 `BR-*`, 73 requirements, `SEC-REQ-*`, `NFR-*`).
 IDs are stable: never renumbered, never reused. Precedence: see `RULES_HINTS.md` §7.
 Verification commands are listed in `RULES_HINTS.md` §3.
 
@@ -28,7 +28,7 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 | MNY-09 | HIGH | VAT **15% × (subtotal − coupon discount)**, shipping untaxed, half-up rounding to whole YER **per sub-order**, remainder to `ROUNDING_ACCOUNT` (`BR-FIN-01/02/05`). | Golden-number tests (e.g. 100,000 → 15,000 VAT, total 117,000 with 2,000 shipping). |
 | MNY-10 | HIGH | Refunds credit the **wallet only** (no external cash-out except vendor payouts) within **3 business days** of `REFUNDED` (`BR-PAY-07`, `BR-RET-04`). | Return-flow test asserts wallet credit + timestamp; no payout created for buyer refunds. |
 | MNY-11 | HIGH | A **frozen** wallet can neither pay nor top up, but **does** receive refunds (`BR-PAY-09`). | Test matrix: frozen ⇒ pay/top-up denied, refund credited. |
-| MNY-12 | HIGH | Money, order, ledger, escrow and session responses are never cached or SSR'd: `Cache-Control: no-store`, deny-list enforced (`docs/06-backend/caching.md`). | Response-header test + deny-list CI check (a cache decorator on a denied route fails CI). |
+| MNY-12 | HIGH | Money, order, ledger, escrow and session responses are never cached or SSR'd: `Cache-Control: no-store`, deny-list enforced (`docs/06-backend/core/caching.md`). | Response-header test + deny-list CI check (a cache decorator on a denied route fails CI). |
 | MNY-13 | HIGH | Provider secrets, callback HMACs and card-like data never touch logs; webhook verification uses constant-time compare + IP allowlist + replay window (`INT-REQ-006`). | Log-sampling test (0 secrets/PII in 1,000-line extract); webhook negative tests. |
 
 ## ESC — Escrow, Commission & Payouts
@@ -47,13 +47,13 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 
 | ID | Sev | Rule | Verification |
 |---|---|---|---|
-| ORD-01 | CRITICAL | **Exactly 17 order states**; transitions only per `docs/03-system-analysis/state-transitions.md`; any other transition ⇒ `409 STATE_CONFLICT` — never 500 (`C-09`, `BR-ORD-01`). | `TST-CON-09` (17/17), enum-count test, full transition-matrix test. |
+| ORD-01 | CRITICAL | **Exactly 17 order states**; transitions only per `docs/03-system-analysis/core/state-transitions.md`; any other transition ⇒ `409 STATE_CONFLICT` — never 500 (`C-09`, `BR-ORD-01`). | `TST-CON-09` (17/17), enum-count test, full transition-matrix test. |
 | ORD-02 | CRITICAL | One **master order** per checkout, one **sub-order per vendor**; master total = Σ sub-totals; payment and escrow are master-level, allocated per sub-order (`C-10`, `BR-ORD-02`). | Deferred constraint `ct_order_totals_match_suborders` + service tests. |
 | ORD-03 | CRITICAL | Order creation requires an **idempotency key**; duplicates return the original order (`BR-ORD-06`). | Duplicate-POST test returns same `order_no`. |
 | ORD-04 | CRITICAL | `DELIVERED` is reachable **only** through successful 6-digit code verification (`C-16`, `BR-ORD-08`). | `TST-CON-16`; no admin/courier shortcut test. |
 | ORD-05 | HIGH | Every state change appends to `order_status_history` with actor, timestamp, reason (`BR-ORD-03`). | Timeline endpoint test; backstop trigger test. |
 | ORD-06 | HIGH | Cancellation windows: customer at `PLACED`/`CONFIRMED`; vendor/admin until `READY_FOR_PICKUP`; any cancellation triggers the wallet refund flow (`BR-ORD-04`). | Window tests per role; refund asserted on every cancel path. |
-| ORD-07 | HIGH | Concurrent transitions use optimistic `version` locking: first valid wins, loser gets `409` (`docs/03-system-analysis/state-transitions.md` §5). | Race test (two simultaneous transitions) ⇒ one 200, one 409. |
+| ORD-07 | HIGH | Concurrent transitions use optimistic `version` locking: first valid wins, loser gets `409` (`docs/03-system-analysis/core/state-transitions.md` §5). | Race test (two simultaneous transitions) ⇒ one 200, one 409. |
 | ORD-08 | HIGH | ⚠ **Unspecified today:** semantic precedence when `COMPLETED → RETURN_REQUESTED` races `COMPLETED → DISPUTED` (funds outcome undefined). Decide and record it (ADR + state table) **before** implementing that path — do not invent a rule in code. | ADR exists; transition row added; race test added. |
 | ORD-09 | MEDIUM | Still `CONFIRMED` 24 h after confirmation escalates to admin review with notification — never a silent auto-cancel (`BR-ORD-10`). | SLA job test. |
 
@@ -106,10 +106,10 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 |---|---|---|---|
 | RTL-01 | CRITICAL | **Arabic is the default locale, full RTL**; exactly `ar` + `en`, no third locale, no machine translation (`C-24`, `NFR-013`). | i18n key scan: 0 missing keys in either locale; locale-config test. |
 | RTL-02 | HIGH | **No hardcoded strings** in components — every string comes from the shared catalogs (`BR-PLT-05`). | i18n lint rule fails CI on literals. |
-| RTL-03 | HIGH | **No physical CSS properties** — `ml-*/mr-*/pl-*/pr-*/left-*/right-*/text-left/text-right/float` fail CI; logical properties only (`docs/05-frontend/rtl-and-styling.md`). | ESLint `no-physical-properties` rule in CI. |
+| RTL-03 | HIGH | **No physical CSS properties** — `ml-*/mr-*/pl-*/pr-*/left-*/right-*/text-left/text-right/float` fail CI; logical properties only (`docs/05-frontend/core/rtl-and-styling.md`). | ESLint `no-physical-properties` rule in CI. |
 | RTL-04 | HIGH | Money displays as integer **YER** (`ر.ي`) with **Arabic-Indic numerals** in `ar` (`BR-PAY-10`). | Formatter unit tests per locale. |
 | RTL-05 | HIGH | Every notification template exists in **2/2 locales**, language follows user locale, Arabic default (`BR-NTF-04`). | Template-completeness check. |
-| RTL-06 | HIGH | Wallet balance, order state and personalized pages are **never SSR/ISR/optimized-cached**; forbidden in client state: computed money totals, authoritative order status, permission decisions (`docs/05-frontend/state-management.md`). | Route-class test; client-state lint/review checklist. |
+| RTL-06 | HIGH | Wallet balance, order state and personalized pages are **never SSR/ISR/optimized-cached**; forbidden in client state: computed money totals, authoritative order status, permission decisions (`docs/05-frontend/core/state-management.md`). | Route-class test; client-state lint/review checklist. |
 | RTL-07 | MEDIUM | Optimistic updates are forbidden for: wallet balance/top-up, order placement/cancellation, order state changes, refund/return status, stock availability. | Component review + state-machine test. |
 
 ## API — Contract Conformance
@@ -133,8 +133,8 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 | DAT-03 | CRITICAL | PKs are **UUIDv7** app-generated; money columns `<name>_yer` bigint; timestamps `*_at` timestamptz; soft delete via `deleted_at`; append-only tables have `created_at` only. | Constraint-presence snapshot tests. |
 | DAT-04 | HIGH | Every schema change ships **migration + updated docs in the same commit** (`IMP-06`, `DOC-05`); rollback is rehearsed via restore drill (RTO ≤1 h, RPO ≤15 min). | PR diff contains migration + doc; quarterly drill evidence. |
 | DAT-05 | HIGH | Partitioning maintained on `order_item`, `wallet_transaction`, `order_status_history`, `audit_log`; **never `VACUUM FULL`** on financial tables; partition jobs run dry-run first. | Partition maintenance job test; ops runbook check. |
-| DAT-06 | HIGH | FK policy: **RESTRICT** for financial/history, CASCADE for owned children, SET NULL for optional lookbacks (`docs/08-database/entity-relationship.md` §2). | FK-register snapshot test (48 relations). |
-| DAT-07 | HIGH | App-layer guards that the DB deliberately does not enforce must have tests: return window, 17-state matrix, cart/session/SLA limits, KYC 48-h SLA (`docs/08-database/constraints-and-integrity.md` §5). | Named test IDs mapped in `docs/13-testing/`. |
+| DAT-06 | HIGH | FK policy: **RESTRICT** for financial/history, CASCADE for owned children, SET NULL for optional lookbacks (`docs/08-database/core/entity-relationship.md` §2). | FK-register snapshot test (48 relations). |
+| DAT-07 | HIGH | App-layer guards that the DB deliberately does not enforce must have tests: return window, 17-state matrix, cart/session/SLA limits, KYC 48-h SLA (`docs/08-database/core/constraints-and-integrity.md` §5). | Named test IDs mapped in `docs/13-testing/`. |
 
 ## OPS — Infrastructure & Deployment
 
@@ -144,10 +144,10 @@ Verification commands are listed in `RULES_HINTS.md` §3.
 | OPS-02 | CRITICAL | **No secrets in repo, images, or logs**: `.env*` gitignored, secrets host-only mode `0600`, fail-fast on missing var (name only), gitleaks pre-commit + CI = 0 findings (`SEC-REQ-007`). | Secret scan output; image-layer scan; `CONFIG_MISSING` test. |
 | OPS-03 | HIGH | Production publishes **exactly ports 80 and 443**; any new published port is a review-blocking change. | Compose diff gate in release checklist. |
 | OPS-04 | HIGH | No container gets the Docker socket, `privileged`, or `host` network mode — asserted in CI. | Compose policy assertion test. |
-| OPS-05 | HIGH | Deploys are readiness-gated (one replica at a time, `/readyz` green before the next); images digest-pinned in staging/prod; rollback = pull previous tag ≤15 min (`docs/15-deployment/rollback.md`). | Deploy pipeline gate + rollback rehearsal evidence. |
-| OPS-06 | HIGH | **E2E never runs against production**; no seeded users in prod; no load tests in prod; staging uses sandbox/fake providers only — no real money (`docs/14-devops-infrastructure/environments.md`). | Workflow permissions review; env-credential separation check. |
+| OPS-05 | HIGH | Deploys are readiness-gated (one replica at a time, `/readyz` green before the next); images digest-pinned in staging/prod; rollback = pull previous tag ≤15 min (`docs/15-deployment/core/rollback.md`). | Deploy pipeline gate + rollback rehearsal evidence. |
+| OPS-06 | HIGH | **E2E never runs against production**; no seeded users in prod; no load tests in prod; staging uses sandbox/fake providers only — no real money (`docs/14-devops-infrastructure/core/environments.md`). | Workflow permissions review; env-credential separation check. |
 | OPS-07 | HIGH | Health: `/healthz` liveness + `/readyz` readiness gate traffic; unhealthy instances removed ≤30 s (`BR-PLT-07`, `NFR-020`). | Health-endpoint test; failure-injection drill. |
-| OPS-08 | MEDIUM | Feature flags default **fail-closed (off)**; platform settings can never alter infra topology or constraints `C-01…C-26` (`docs/14-devops-infrastructure/configuration.md`). | Flag-default test; settings-guard test. |
+| OPS-08 | MEDIUM | Feature flags default **fail-closed (off)**; platform settings can never alter infra topology or constraints `C-01…C-26` (`docs/14-devops-infrastructure/core/configuration.md`). | Flag-default test; settings-guard test. |
 
 ## PRF — Performance & Non-Functional Budgets
 

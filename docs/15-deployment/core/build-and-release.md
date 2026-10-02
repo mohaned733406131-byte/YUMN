@@ -1,0 +1,141 @@
+---
+document_id: DOC-DPL-002
+title: Build & Release Artifacts
+category: 15-deployment
+status: approved
+version: 1.0
+created: 2026-09-26
+updated: 2026-09-26
+author: analysis-agent
+source_of_truth: false
+related_requirements: [NFR-016, NFR-020, SEC-REQ-007, SEC-REQ-012]
+related_documents: [DOC-OPS-003, DOC-OPS-004, DOC-ARCH-009, DOC-API-001, DOC-DPL-003, DOC-DPL-006]
+---
+
+# Build & Release Artifacts
+
+What ships, what it is called, where it is stored, and how a build is proven reproducible. Versioning of the **API contract** (`/api/v1`, breaking vs additive) is canon in [`07-api/`](../../07-api/README.md) — this document covers **artifact** versioning only.
+
+## 1. What Ships
+
+| Artifact | Build output | Built by | Stored in | Ships to |
+|---|---|---|---|---|
+| `ghcr.io/yumn/api` | Docker image (multi-stage, `node:20-alpine` runner) | `ci.yml` / `release.yml` | GitHub Container Registry (GHCR) | Compose service `api` |
+| `ghcr.io/yumn/worker` | **Identical to `api`** — same digest, different entrypoint | same job | GHCR | Compose service `worker` |
+| `ghcr.io/yumn/web` | Docker image (Next.js standalone output) | same job | GHCR | Compose service `web` |
+| Infra/config bundle | `compose*.yaml`, `infra/edge/`, `infra/monitoring/`, `infra/host/` | Git itself | Repository (tagged) | Every environment |
+| Prisma migrations | `prisma/migrations/**` committed with the code | Git | Repository | `migrate` one-shot job |
+| Release notes | Markdown changelog | `release.yml` (generated) | GitHub Release | Humans |
+| Mobile binaries (customer + courier) | `.aab`/`.ipa` via EAS / Gradle / Xcode | `mobile-build.yml` + store pipelines | EAS artifacts / store consoles | **App stores — outside Compose** |
+| k6 / Playwright / DAST reports | HTML/JSON reports | `nightly-e2e.yml`, release jobs | Actions artifacts (90 days) | Release evidence |
+
+**Not artifacts:** dashboards, alert rules, nginx config — these live in the repo and are applied by the environment, not versioned as images (`DOC-OPS-003` §4).
+
+## 2. Mobile Binaries — Deliberately Outside Compose
+
+React Native 0.73 apps (`CNT-02` customer, `CNT-03` courier) are native artifacts:
+
+| Aspect | Design |
+|---|---|
+| Build toolchain | EAS Build (or Gradle/Xcode locally) — **never** containerized by `compose.yaml` |
+| CI job | `mobile-build.yml` triggers on changes to `apps/mobile/**`; produces a build, does not deploy |
+| Distribution | Internal track → `DEP-12` device lab QA → store review → public release |
+| Cadence | **Decoupled from web deploys**: mobile ships on its own store-review schedule (`DOC-DPL-003` §7) |
+| Backend coupling | Mobile clients pin the API major version (`/api/v1`); additive API changes never require a simultaneous app release (`07-api/README.md` versioning rules) |
+| Device lab | `DEP-12` (Android versions, iOS, real carrier SIMs) is the release-QA environment (`DOC-OPS-002` §5) |
+
+## 3. Versioning Scheme
+
+| Dimension | Scheme | Example | Rule |
+|---|---|---|---|
+| API contract | URL path major version | `/api/v1` → `/api/v2` on breaking change | Additive changes = no bump; breaking change = new path, old one served until sunset (`../../07-api/core/api-conventions.md`) |
+| Application SemVer | `MAJOR.MINOR.PATCH` release tags | `v1.4.0` | **MAJOR** = breaking API or destructive-but-contracted schema phase; **MINOR** = new features, backward compatible; **PATCH** = fixes only |
+| Image tag (every build) | `ghcr.io/yumn/<svc>:<git-sha>` | `ghcr.io/yumn/api:9f3c1ab` | Immutable; the SHA is the primary key of any build |
+| Image tag (release) | adds `:<semver>` and `:latest` on the tag | `:v1.4.0`, `:latest` | `latest` is convenience only — deploys always pin a SHA or a release tag |
+| Git history | `main` continuous + annotated release tags | `v1.4.0` | Signed tags required (branch protection) |
+| Migration numbering | Prisma timestamped folders | `20260926000000_init` | Forward-only, ordered (`DOC-DB-006`) |
+| Configuration | `.env.<environment>` + Compose overlay, unversioned values | `.env.production` | Values never in git (`SEC-REQ-007`) |
+| Mobile build numbers | EAS `version` + `buildNumber`/`versionCode` monotonic | `1.4.0 (42)` | Never reused across store submissions |
+
+## 4. Release Branches & Tags
+
+| Item | Policy |
+|---|---|
+| Long-lived branches | **`main` only** — no `develop`, no release branches for a single-team flow |
+| Feature branches | `feat/*`, `fix/*`, `chore/*`; short-lived, PR-only, rebased regularly |
+| Hotfix | Branch from `main`, normal PR with expedited review (2 approvals), normal CI — **no bypassed gates** |
+| Release tag | Annotated, signed, `vMAJOR.MINOR.PATCH`, created after staging is green |
+| Tag immutability | Tags are never moved or deleted; a bad release is fixed by a new tag |
+| Migration/code colocation | Migration files live on the same branch as the code that needs them (`DOC-DB-006` §2) |
+
+## 5. Release Notes Content
+
+Generated by `release.yml` from merged PR titles plus a manually curated **Risk & Rollback** section:
+
+| Section | Content |
+|---|---|
+| Summary | One-paragraph intent of the release |
+| Changed | Feature/fix list with PR links and block IDs (`B01…B13`) |
+| Schema | New/changed migrations, their phase (`expand` / `data-fix` / `contract`) and backward-compatibility statement |
+| Config | New or changed environment variables (names only — **never values**) |
+| Flags | Feature flags added/changed with defaults (`DOC-OPS-005` §4.1) |
+| Risk & Rollback | Risk level, rollback method per `DOC-DPL-004`, previous release tag to roll back to |
+| Evidence | CI run URL, staging smoke + E2E result, k6/DAST status for release candidates |
+| Known issues | Anything consciously deferred, with the tracking item |
+
+Release record fields retained per release: tag, image digests for `api`/`web`, migration list, approver, deploy timestamps, smoke result, rollback readiness confirmation.
+
+## 6. Build Reproducibility
+
+| Control | Mechanism | Why |
+|---|---|---|
+| Locked dependencies | `package-lock.json` committed; `npm ci` everywhere (never `npm install` in CI) | Same tree on every machine |
+| Pinned base images | `node:20-alpine@sha256:…`, `nginx:1.27-alpine@sha256:…` etc. in Dockerfiles | No silent upstream drift |
+| Pinned action versions | GitHub Actions referenced by commit SHA, not floating tags | Supply-chain integrity (`SEC-REQ-012`) |
+| Deterministic Prisma client | `prisma generate` during build stage from committed schema | Types match the schema exactly |
+| No build-time secrets | Images contain no `.env`, no keys (`SEC-REQ-007`) | Same image works in every environment |
+| Non-root runtime user | Fixed UID in the runner stage | Behaviour does not depend on the host |
+| Build provenance | Image labels carry `org.opencontainers.image.revision` (SHA), `source`, `created` | Trace any running container back to a commit |
+| Digest recording | Release record stores digests deployed to staging **and** production | Proves parity (`AC-NFR-016-01`, `DOC-OPS-002` PAR-2) |
+
+## 7. Artifact Registry — GHCR
+
+| Aspect | Setting |
+|---|---|
+| Registry | `ghcr.io/yumn/*`, private packages tied to the repository |
+| Access | Read token for deploy jobs (rotated 90 days, class `S-13`); write via `GITHUB_TOKEN` with `packages: write` only in build jobs |
+| Retention | Untagged/pruned images removed after 90 days; **all release-tagged images retained indefinitely** (they are rollback targets) |
+| Scanning | GHCR native scan + Trivy in `dependency-audit.yml`; CRITICAL blocks promotion (`DOC-OPS-008` §8) |
+| Signing | Image digest signatures/attestations enabled where the registry supports it (`INFERENCE`) |
+| Portability | Images are standard OCI images — no registry-specific runtime features used (`NFR-016`) |
+
+## 8. Pre-Release Checklist Pointer
+
+Before a tag is cut, the following must be complete and linked from the release record:
+
+| Gate | Where defined |
+|---|---|
+| CI green on the exact commit to be tagged | `../../14-devops-infrastructure/core/ci-cd.md` |
+| Staging smoke + nightly E2E green | `DOC-DPL-003` §5 |
+| k6 load gate at `C-25` for release candidates | `AC-S-05`, `../../13-testing/core/test-plans.md` §b |
+| DAST baseline clean for release candidates | `SEC-C-23`, `AC-SR012-02` |
+| Migration lint + expand/contract classification | `../../08-database/core/migrations-and-evolution.md` §5 |
+| Fresh backup taken and verified | `../../14-devops-infrastructure/core/backup-recovery.md` §5 |
+| Rollback target identified (N-2) and rehearsed | `DOC-DPL-004` §6 |
+| **Full go-live checklist** (first release and any launch milestone) | [`production-readiness.md`](production-readiness.md) |
+
+## 9. Verification
+
+| Check | Method |
+|---|---|
+| Digest parity staging↔prod | Compare release-record digests (`AC-NFR-016-01`) |
+| Rebuild reproducibility | Rebuild a tag on a clean runner and compare build inputs (lockfile, base digests) |
+| No secrets in images | Image scan + `gitleaks` over build context |
+| Version scheme honoured | Tag pattern check in `release.yml`; unsigned/unmoved tags enforced by rules |
+| Mobile decoupled | `mobile-build.yml` is not a dependency of `release.yml` |
+
+## Change History
+
+| Version | Date | Change | Reason |
+|---|---|---|---|
+| 1.0 | 2026-09-26 | Initial version | Initial analysis |

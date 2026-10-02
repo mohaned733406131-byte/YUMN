@@ -3,9 +3,9 @@ document_id: DOC-SEC-001
 title: Security Domain — Overview, Posture & File Index
 category: 09-security
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [SEC-REQ-001, SEC-REQ-002, SEC-REQ-003, SEC-REQ-004, SEC-REQ-005, SEC-REQ-006, SEC-REQ-007, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, SEC-REQ-012]
@@ -64,6 +64,11 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | 6 | `data-protection.md` | DOC-SEC-006 | TLS, at-rest and field-level encryption, hashing, OTP/delivery-code storage, log masking, backup encryption | No |
 | 7 | `security-controls.md` | DOC-SEC-007 | Control catalog `SEC-C-01…SEC-C-24` × SEC-REQ × layer × status × verification; rate-limit budgets | Yes |
 | 8 | `security-findings.md` | DOC-SEC-008 | Findings register `SEC-001…SEC-015`, all status OPEN | Yes |
+| [`core/`](core/README.md) | DOC-SEC-009 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-SEC-010 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-SEC-011 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-SEC-012 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-SEC-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ---
 
@@ -81,7 +86,7 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | SEC-REQ-008 Injection/XSS/CSRF | `security-controls.md` | `threat-model.md` TM-09 |
 | SEC-REQ-009 Rate limiting & abuse | `security-controls.md` | `authentication.md`, `10-integrations/` |
 | SEC-REQ-010 Audit trail integrity | `security-controls.md` | `rbac.md`, `threat-model.md` TM-04 |
-| SEC-REQ-011 File upload security | `security-controls.md` | `data-protection.md`, `10-integrations/bank-transfer-topup.md` |
+| SEC-REQ-011 File upload security | `security-controls.md` | `data-protection.md`, `../10-integrations/core/bank-transfer-topup.md` |
 | SEC-REQ-012 Vulnerability management | `security-controls.md` | this register, `17-risk-management/` |
 
 ---
@@ -90,7 +95,7 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 
 | Kind | Pattern | Example | Meaning |
 |---|---|---|---|
-| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-005` | Owned by `02-requirements/security/` — never redefined here |
+| Security requirements | `SEC-REQ-NNN` | `SEC-REQ-005` | Owned by `02-requirements/` — never redefined here |
 | Security controls | `SEC-C-NN` | `SEC-C-07` | Design controls catalogued in `security-controls.md` |
 | Security findings | `SEC-NNN` | `SEC-004` | Register entries in `security-findings.md` — status `OPEN` until verified closed |
 | Threats | `TM-NN` | `TM-03` | Threat-model entries in `threat-model.md` |
@@ -107,8 +112,8 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | Audience | Read |
 |---|---|
 | Security engineer | DOC-SEC-001 → `threat-model.md` → `rbac.md` → `security-controls.md` → `security-findings.md` |
-| Backend developer | `authentication.md` → `06-backend/authentication.md` (`DOC-BE-003`) → `rbac.md` → `06-backend/authorization.md` (`DOC-BE-004`) |
-| Payments engineer | `threat-model.md` TM-03/TM-04 → `data-protection.md` → `10-integrations/webhook-reliability.md` |
+| Backend developer | `authentication.md` → `../06-backend/core/authentication.md` (`DOC-BE-003`) → `rbac.md` → `../06-backend/core/authorization.md` (`DOC-BE-004`) |
+| Payments engineer | `threat-model.md` TM-03/TM-04 → `data-protection.md` → `../10-integrations/core/webhook-reliability.md` |
 | Ops / DevOps | `secrets-management.md` → `data-protection.md` (keys, backups) → `14-devops-infrastructure/` |
 | Auditor / reviewer | `security-controls.md` (coverage vs all 12 SEC-REQs) → `security-findings.md` → `13-testing/` |
 
@@ -117,7 +122,7 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 ## 7. Domain Boundaries
 
 **Owned here:** security design, control catalog, RBAC matrix (definitive), secrets policy, encryption design, findings register.
-**Not owned here:** requirement statements and acceptance criteria (`02-requirements/security/`, `AC-SRnnn-nn`); code-level enforcement placement (`06-backend/`); endpoint contracts (`07-api/`); CI pipeline mechanics (`14-devops-infrastructure/`); test cases (`13-testing/`); risk linkage (`17-risk-management/risk-register.md`, `RISK-nnn`).
+**Not owned here:** requirement statements and acceptance criteria (`02-requirements/`, `AC-SRnnn-nn`); code-level enforcement placement (`06-backend/`); endpoint contracts (`07-api/`); CI pipeline mechanics (`14-devops-infrastructure/`); test cases (`13-testing/`); risk linkage (`17-risk-management/risk-register.md`, `RISK-nnn`).
 **Cross-domain contracts:** integration security controls are specified jointly with `10-integrations/` (webhook HMAC, provider secrets, SMS abuse limits) — requirements stay in `02-requirements/`, contracts in `10-integrations/`, security policy here.
 
 ---
@@ -127,3 +132,4 @@ yumn is a **custodial wallet platform for real money** (YER) inside a modular mo
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-SEC-009…DOC-SEC-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

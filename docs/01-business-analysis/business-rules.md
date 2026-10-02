@@ -3,9 +3,9 @@ document_id: DOC-BA-005
 title: Business Rules (BR Registry)
 category: 01-business-analysis
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016]
@@ -14,13 +14,13 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 
 # Business Rules — Canonical Registry
 
-**Single source of truth for all business rules.** Rule IDs: `BR-<DOMAIN>-NN`. Domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN`. Rules are enforced by backend services and verified by test cases (`13-testing/`); rules never contradict constraints (`C-01…C-26`).
+**Single source of truth for all business rules.** Rule IDs: `BR-<DOMAIN>-NN`. Domains: `AUTH CAT VND CRT ORD PAY ESC SHP RET NTF PRM REV PLT FIN INV`. Rules are enforced by backend services and verified by test cases (`13-testing/`); rules never contradict constraints (`C-01…C-26`).
 
-**99 rules.**
+**111 rules.**
 
 ---
 
-## AUTH — Authentication & Identity (8)
+## AUTH — Authentication & Identity (10)
 
 | ID | Rule |
 |---|---|
@@ -32,6 +32,8 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-AUTH-06 | Maximum 5 active device sessions per user; new login beyond the limit removes the oldest session. |
 | BR-AUTH-07 | Password reset (via OTP) invalidates all existing sessions. |
 | BR-AUTH-08 | Email is optional and must be verified if provided; it is never used for login or OTP delivery. |
+| BR-AUTH-09 | The OTP verification-attempt counter is consumed only by wrong-code entry: provider/channel failures inside the OTP validity window never consume an attempt, leave the counter untouched, and offer retry. |
+| BR-AUTH-10 | Account deletion is blocked while open orders, active returns/disputes, a non-zero wallet balance, pending vendor payouts, or an active store exist; the refusal enumerates every blocking reason so the user can settle them first. |
 
 ## CAT — Catalog, Products & Inventory (8)
 
@@ -73,7 +75,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 
 | ID | Rule |
 |---|---|
-| BR-ORD-01 | The lifecycle has exactly 17 states — enumeration and transitions defined in `03-system-analysis/state-transitions.md` (C-09). |
+| BR-ORD-01 | The lifecycle has exactly 17 states — enumeration and transitions defined in `../03-system-analysis/core/state-transitions.md` (C-09). |
 | BR-ORD-02 | One master order per checkout; one sub-order per vendor; master total = Σ sub-order totals; payment & escrow at master level (C-10). |
 | BR-ORD-03 | State changes are append-only in `order_status_history` with actor, timestamp, and reason; states are never overwritten. |
 | BR-ORD-04 | Customer may cancel only while PLACED or CONFIRMED; vendor/admin cancellation allowed until READY_FOR_PICKUP; cancellation always triggers wallet refund flow. |
@@ -84,7 +86,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-ORD-09 | Order timeline is visible to: buyer (own), vendor (own sub-orders), assigned courier (own delivery), admin/moderator (scoped). |
 | BR-ORD-10 | An order still at CONFIRMED 24 h after confirmation is escalated to admin review (notification sent); it is never silently auto-cancelled without notification. |
 
-## PAY — Wallet & Payments (10)
+## PAY — Wallet & Payments (11)
 
 | ID | Rule |
 |---|---|
@@ -98,8 +100,9 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-PAY-08 | Payments, top-ups, and refunds are idempotent via idempotency keys (BR-PLT-03). |
 | BR-PAY-09 | Admin can freeze a wallet (legal/security); frozen wallets cannot pay or top up, but receive refunds. |
 | BR-PAY-10 | Amounts are stored as integer YER (no floats); display via `ar-YE` locale formatting with Arabic-Indic numerals. |
+| BR-PAY-11 | Wallet authorization-hold lifecycle: a hold never exceeds available balance and expires with the 15-minute checkout session, capture happens only inside the order saga (SYSTEM), and every uncaptured hold is released exactly once — capture XOR release, idempotent under replay and concurrency. |
 
-## ESC — Escrow, Commission & Payouts (8)
+## ESC — Escrow, Commission & Payouts (9)
 
 | ID | Rule |
 |---|---|
@@ -111,6 +114,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-ESC-06 | Payouts require KYC = APPROVED and a non-suspended store. |
 | BR-ESC-07 | Refunds draw from escrow-held funds first, then from vendor payable if escrow is insufficient (vendor liability). |
 | BR-ESC-08 | Daily reconciliation: Σ ledger entries must balance; wallet + escrow + payable totals must equal provider statements; mismatch alerts finance. |
+| BR-ESC-09 | Escrow release and dispute freeze are serialized: the release job evaluates the `BR-ESC-02` gate inside one transaction under the same row/aggregate lock that a concurrent freeze takes, the release is idempotent/reconcilable, and a concurrency test is required before launch. |
 
 ## SHP — Shipping & Delivery (7)
 
@@ -124,7 +128,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-SHP-06 | After 3 failed delivery attempts the order escalates to admin review with full timeline. |
 | BR-SHP-07 | Delivery proof = code + timestamp + courier identity; optional photo is stored but never required. |
 
-## RET — Returns & Refunds (7)
+## RET — Returns & Refunds (8)
 
 | ID | Rule |
 |---|---|
@@ -135,6 +139,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-RET-05 | Vendor inspection after RETURN_RECEIVED must conclude within 72 hours; otherwise the return auto-approves. |
 | BR-RET-06 | Where policy and dispute conflict, the admin is final arbiter; decision is written to audit log. |
 | BR-RET-07 | Refund triggers proportional commission reversal (BR-ESC-04) and escrow adjustment (BR-ESC-07). |
+| BR-RET-08 | The return approval decision must be made within 48 h of `RETURN_REQUESTED`; if no decision lands within 48 h the case auto-escalates to admin review with notification — never silently pending. |
 
 ## NTF — Notifications (5)
 
@@ -157,7 +162,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-PRM-05 | Types: percentage, fixed amount, free shipping, buy-X-get-Y. |
 | BR-PRM-06 | Invalid coupon → validation error; no order row is created. |
 
-## REV — Reviews & Ratings (5)
+## REV — Reviews & Ratings (6)
 
 | ID | Rule |
 |---|---|
@@ -166,8 +171,9 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-REV-03 | Rating is an integer 1–5; ≤5 images, ≤5 MB each. |
 | BR-REV-04 | Vendor may respond once per review; Moderator/Admin may hide a review with audit entry (abuse/inappropriate). |
 | BR-REV-05 | Store rating = average of visible product ratings with review count shown; recomputation is incremental via job. |
+| BR-REV-06 | A user is auto-flagged for moderation on 5 confirmed spam/abuse reports, and the confirmed-report count drives auto-flagging of content in the moderation queue (the canon currently asserts the threshold while citing the wrong rule — this row is the rule of record). |
 
-## PLT — Platform & Technical Business Rules (7)
+## PLT — Platform & Technical Business Rules (8)
 
 | ID | Rule |
 |---|---|
@@ -178,6 +184,7 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-PLT-05 | Arabic-first: all user-facing text localized (ar default, en parity); no hardcoded strings (C-24). |
 | BR-PLT-06 | Privileged and money actions write append-only audit entries (actor, action, entity, before/after, IP, timestamp). |
 | BR-PLT-07 | Liveness/readiness health endpoints gate traffic; availability target 99.99% (C-26). |
+| BR-PLT-08 | Support-ticket lifecycle `OPEN → IN_PROGRESS → RESOLVED → CLOSED`: a staff reply moves an OPEN ticket to IN_PROGRESS, the customer may reopen a RESOLVED ticket exactly once before it is CLOSED, later replies are rejected with `TICKET_STATE_CONFLICT`, and auto-created tickets follow the same states. |
 
 ## FIN — Finance & Tax (5)
 
@@ -189,14 +196,26 @@ related_documents: [DOC-OVR-008, DOC-BA-001]
 | BR-FIN-04 | Vendors receive a monthly statement: sales, commission, refunds, payouts, adjustments. |
 | BR-FIN-05 | All monetary rounding is half-up to whole YER at each sub-order level; rounding differences are posted to a platform rounding account. |
 
+## INV — Inventory & Stock Reservations (5)
+
+| ID | Rule |
+|---|---|
+| BR-INV-01 | A successful reservation holds stock atomically: on-hand stock is never oversold, one `stock_reservation` row is created per reserved cart line, and the reservation either commits (payment success → permanent deduction) or releases (expiry or cancellation) — reserve → commit/release (`FR-005`, `C-13`, `../08-database/core/inventory.md`). |
+| BR-INV-02 | Stock invariant at all times: `stock ≥ reservedQuantity ≥ 0` (`qty_on_hand ≥ qty_reserved ≥ 0`, `qty_available` generated) — reserved quantity never exceeds on-hand stock and never goes negative (`BR-CAT-07`, `DATA-REQ-001`, `ck_inventory_no_negative`). |
+| BR-INV-03 | Live reservations are protected: a manual stock adjustment that would set stock below active reservations is rejected with `409 STOCK_BELOW_RESERVATIONS`; the DB row stays unchanged (no partial writes) (`../07-api/core/error-model.md`, `UC-018`). |
+| BR-INV-04 | Unpaid reservations expire after 15 minutes: the TTL sweeper releases held quantity exactly once (status-guarded — a re-run never double-releases), the reservation moves to `RELEASED`, and a `RELEASE_TTL` ledger row records actor `SYSTEM` with a timestamp (`C-13`, `BR-CRT-02`, `FR-005`). |
+| BR-INV-05 | Every inventory mutation (reserve, consume, release, manual adjustment, cancellation restoration) appends an append-only ledger row carrying actor, reason, delta and timestamp; corrections are new rows, never edits — the events the reconciliation job compares `qty_on_hand` against (`BR-PLT-06`, `FR-005`, `API-CAT-016`). |
+
 ---
 
 ## Rule Consistency Statement
 
-Every rule above is traceable to at least one `FR-*` and is compatible with `C-01…C-26` (`VERIFIED` by pairwise review; see `20-validation/consistency-audit.md`). No rule permits COD, cards, GPS, microservices, or any excluded capability.
+Every rule above is traceable to at least one `FR-*` and is compatible with `C-01…C-26` (`VERIFIED` by pairwise review; see `../20-validation/core/consistency-audit.md`). No rule permits COD, cards, GPS, microservices, or any excluded capability.
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial registry (99 rules) | Initial analysis |
+| 1.1 | 2026-09-28 | `INV` domain added — `BR-INV-01`…`BR-INV-05` (stock reservation lifecycle, `stock ≥ reserved ≥ 0` invariant, reservation-protected adjustment, 15-min TTL release, append-only mutation ledger); 99 → 104 rules, 14 → 15 domains | `CRIT-06`/`HAL-04` pay-down (session 008, owner-approved registration): the five IDs were cited by `TC-018`/`TC-019`/`TC-020` and undefined; wording derived from approved sources (`../08-database/core/inventory.md`, `C-13`, `BR-CAT-07`, `BR-CRT-02`, `error-model.md`, `API-CAT-016`) — never invented behavior |
+| 1.2 | 2026-09-30 | Session-011 delta registration — `BR-AUTH-09`, `BR-AUTH-10`, `BR-ESC-09`, `BR-PAY-11`, `BR-RET-08`, `BR-REV-06`, `BR-PLT-08` (existing domains); 104 → 111 rules, domains unchanged (15) | Owner directive session 011 (`prompt-011.md` §4.7) — deltas accepted in `system-expansion-proposal.md` (DOC-OVR-012) §5 from verified sources (`failure-modes.md` line 48, `error-model.md` §4.3 line 141, `wallet.md` lines 32/34/49, `state-transitions.md` line 66, `security-findings.md` SEC-015, `admin.md` lines 31/104/106/109); count consumers re-synced in same change set |

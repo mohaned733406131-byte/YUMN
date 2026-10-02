@@ -3,9 +3,9 @@ document_id: DOC-UX-001
 title: UI/UX Domain — Overview, Design Principles & File Index
 category: 11-ui-ux
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-011, NFR-012, NFR-013, FR-001, FR-010, FR-011, FR-013, FR-015, FR-017, FR-019, FR-020]
@@ -25,10 +25,10 @@ This domain captures the **design intent** for all yumn surfaces: what the user 
 | Concern | Owner |
 |---|---|
 | Component code, CSS mechanics (Tailwind, logical properties), routing implementation | `05-frontend/` (`DOC-FE-001`…`DOC-FE-009`) |
-| i18n libraries, catalogs, locale routing mechanics | `05-frontend/internationalization.md` (`DOC-FE-008`) |
+| i18n libraries, catalogs, locale routing mechanics | `../05-frontend/core/internationalization.md` (`DOC-FE-008`) |
 | Measurable accessibility targets & metrics | `12-non-functional/` (NFR-011 elaboration) |
 | Requirement statements & acceptance criteria | `02-requirements/` (`DOC-REQ-001`, `DOC-AC-001`) |
-| Order state machine semantics (17 states) | `03-system-analysis/state-transitions.md` (`DOC-SA-010`) |
+| Order state machine semantics (17 states) | `../03-system-analysis/core/state-transitions.md` (`DOC-SA-010`) |
 
 > Evidence rule applied throughout: statements are `VERIFIED` (traceable to canon), `INFERENCE` (derived design judgment), or `INSUFFICIENT EVIDENCE` (registered as a gap). Design choices not fixed by canon are tagged `INFERENCE`.
 
@@ -46,7 +46,7 @@ yumn holds real money: prepaid wallet balances, 7-day escrow, refunds. The custo
 
 ### P3 — Low-bandwidth empathy (Yemen network conditions) — `INFERENCE`
 
-The dominant access profile is a mid-tier Android on variable mobile data (`ASM-01`, NFR-002 target device class). Design consequences: skeleton-first loading (never blank screens), progressive disclosure of heavy media, images with intrinsic dimensions and lightweight placeholders, offline/degraded states that preserve user work, and copy that does not punish slow networks (no "something went wrong" for a merely slow request). Performance budgets are enforced in `12-non-functional/performance.md`; the *UX treatment* of slowness is defined here (`screen-states.md`).
+The dominant access profile is a mid-tier Android on variable mobile data (`ASM-01`, NFR-002 target device class). Design consequences: skeleton-first loading (never blank screens), progressive disclosure of heavy media, images with intrinsic dimensions and lightweight placeholders, offline/degraded states that preserve user work, and copy that does not punish slow networks (no "something went wrong" for a merely slow request). Performance budgets are enforced in `../12-non-functional/core/performance.md`; the *UX treatment* of slowness is defined here (`screen-states.md`).
 
 ### P4 — Progressive disclosure over density
 
@@ -88,6 +88,11 @@ Keyboard order, focus visibility, contrast and screen-reader semantics are speci
 | 5 | `accessibility.md` | DOC-UX-006 | UX accessibility patterns for WCAG 2.1 AA (`NFR-011`), touch targets, contrast table, testing checklist | false |
 | 6 | `localization.md` | DOC-UX-007 | Content & translation rules: what is translated, numerals, dates, currency, plurals, tone | false |
 | 7 | `feedback-and-engagement.md` | DOC-UX-008 | Notification preference UX, notification center, promotions, review solicitation, trust signals, support entry points | false |
+| [`core/`](core/README.md) | DOC-UX-009 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-UX-010 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-UX-011 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-UX-012 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-UX-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 5. How This Domain Connects
 
@@ -105,16 +110,17 @@ Keyboard order, focus visibility, contrast and screen-reader semantics are speci
 
 1. Cross-reference by ID (`FR-*`, `NFR-*`, `BR-*`, `C-*`, `UC-*`, `WF-*`, `AC-*`) — never restate a definition owned elsewhere.
 2. No placeholders: every statement is a concrete, testable design decision or an explicitly tagged `INFERENCE`/`INSUFFICIENT EVIDENCE` item.
-3. Never contradict canon. If canon and a design wish conflict, canon wins and the wish is recorded as a gap in `20-validation/missing-information.md`.
+3. Never contradict canon. If canon and a design wish conflict, canon wins and the wish is recorded as a gap in `../20-validation/core/missing-information.md`.
 4. Arabic-first: any example string shows the `ar` wording with its `en` counterpart.
 5. New screens must appear in `information-architecture.md` and their states in `screen-states.md` in the same change (consistency rule, root README §9).
 
 ## 7. Design Completeness Gate
 
-A screen is design-complete only when it has: (a) an IA location and URL (`DOC-UX-003`), (b) a flow entry (`DOC-UX-002`), (c) all states specified (`DOC-UX-005`), (d) component/token usage only (`DOC-UX-004`), (e) accessibility attributes (`DOC-UX-006`), (f) `ar` and `en` copy (`DOC-UX-007`). This gate feeds `21-completion/quality-gates.md`.
+A screen is design-complete only when it has: (a) an IA location and URL (`DOC-UX-003`), (b) a flow entry (`DOC-UX-002`), (c) all states specified (`DOC-UX-005`), (d) component/token usage only (`DOC-UX-004`), (e) accessibility attributes (`DOC-UX-006`), (f) `ar` and `en` copy (`DOC-UX-007`). This gate feeds `../21-completion/core/quality-gates.md`.
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-UX-009…DOC-UX-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

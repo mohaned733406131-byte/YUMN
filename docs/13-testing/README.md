@@ -3,9 +3,9 @@ document_id: DOC-TST-001
 title: 13 Testing — Domain Overview & Test Case Index
 category: 13-testing
 status: approved
-version: 1.0
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -14,15 +14,15 @@ related_documents: [DOC-TST-002, DOC-TST-003, DOC-TST-004, DOC-TST-005, DOC-TST-
 
 # 13 — Testing
 
-**Verification domain for the yumn platform.** Testing answers one question for every claim made elsewhere in `docs/`: *how do we know it works?* This README is the domain index; the methodology's Verification Strategy (§47) is expanded in [testing-strategy.md](testing-strategy.md).
+**Verification domain for the yumn platform.** Testing answers one question for every claim made elsewhere in `docs/`: *how do we know it works?* This README is the domain index; the methodology's Verification Strategy (§47) is expanded in [testing-strategy.md](core/testing-strategy.md).
 
-Scope: all five surfaces (customer web, vendor panel, admin console, customer mobile, courier mobile), the NestJS modular monolith (C-21), background workers, and the eight external integrations — against 68 requirements, 99 business rules, 26 constraints, and 253 acceptance criteria.
+Scope: all five surfaces (customer web, vendor panel, admin console, customer mobile, courier mobile), the NestJS modular monolith (C-21), background workers, and the eight external integrations — against 73 requirements, 111 business rules, 26 constraints, and 273 acceptance criteria.
 
 ---
 
 ## 1. Goals & Quality Gates
 
-Testing exists to move requirements from `IMPLEMENTED` to `VERIFIED` with evidence, never with assertion. Every test activity in this domain feeds one of the gates defined in `21-completion/quality-gates.md`:
+Testing exists to move requirements from `IMPLEMENTED` to `VERIFIED` with evidence, never with assertion. Every test activity in this domain feeds one of the gates defined in `../21-completion/core/quality-gates.md`:
 
 | Gate | Question | Evidence this domain produces | Canon |
 |---|---|---|---|
@@ -58,13 +58,13 @@ No gate is passed by opinion; each requires a report, dashboard export, or drill
 | E2E | ~10% | Cross-surface journeys (register → order → delivery → refund) | Playwright (3 web surfaces), Maestro (2 RN apps) |
 | Non-functional | ~5% | Load, security, a11y, localization | k6, ZAP-style DAST, axe-core, Lighthouse CI |
 
-The pyramid is deliberately **unit-heavy**: `NFR-010` requires all business logic to be unit-testable without network, and `AC-S-08` sets measurable coverage floors (see [testing-strategy.md](testing-strategy.md) §4).
+The pyramid is deliberately **unit-heavy**: `NFR-010` requires all business logic to be unit-testable without network, and `AC-S-08` sets measurable coverage floors (see [testing-strategy.md](core/testing-strategy.md) §4).
 
 ## 3. Toolchain
 
 | Concern | Tool | Notes |
 |---|---|---|
-| Unit / integration | **Jest 29** | Also runs contract tests against mock adapters (`10-integrations/testing-and-sandboxes.md`) |
+| Unit / integration | **Jest 29** | Also runs contract tests against mock adapters (`../10-integrations/core/testing-and-sandboxes.md`) |
 | HTTP assertion layer | **Supertest-style** in-process API tests | Hits the NestJS app without a live socket |
 | Web E2E | **Playwright** | Chromium/Firefox/WebKit — covers customer web, vendor panel, admin console; also serves cross-browser checks (`AC-NFR-015-01`) |
 | Mobile E2E | **Maestro** flows on RN 0.73 | Runs on the `DEP-12` device lab; see strategy §2.3 justification |
@@ -78,16 +78,21 @@ The pyramid is deliberately **unit-heavy**: `NFR-010` requires all business logi
 | File | ID | Purpose | Source of truth |
 |---|---|---|---|
 | [README.md](README.md) | DOC-TST-001 | This overview, TC allocation index | yes |
-| [testing-strategy.md](testing-strategy.md) | DOC-TST-002 | Methodology §47 verification strategy — levels, coverage, environments, defect lifecycle | yes |
-| [test-plans.md](test-plans.md) | DOC-TST-003 | Executable plans: per-domain, performance, security, chaos, a11y, localization, mobile, migration | no |
-| [constraint-tests.md](constraint-tests.md) | DOC-TST-004 | **Canonical register `TST-CON-01…TST-CON-26`** — one test per `C-01…C-26` | yes |
-| [test-data-and-environments.md](test-data-and-environments.md) | DOC-TST-005 | Environment matrix, fixtures, PII masking policy for non-prod | no |
-| [test-cases/README.md](test-cases/README.md) | DOC-TST-006 | TC layer anatomy, locked range table, coverage summary | no |
+| [testing-strategy.md](core/testing-strategy.md) | DOC-TST-002 | Methodology §47 verification strategy — levels, coverage, environments, defect lifecycle | yes |
+| [test-plans.md](core/test-plans.md) | DOC-TST-003 | Executable plans: per-domain, performance, security, chaos, a11y, localization, mobile, migration | no |
+| [constraint-tests.md](core/constraint-tests.md) | DOC-TST-004 | **Canonical register `TST-CON-01…TST-CON-26`** — one test per `C-01…C-26` | yes |
+| [test-data-and-environments.md](core/test-data-and-environments.md) | DOC-TST-005 | Environment matrix, fixtures, PII masking policy for non-prod | no |
+| [test-cases/README.md](test-cases-index.md) | DOC-TST-006 | TC layer anatomy, locked range table, coverage summary | no |
 | `test-cases/TC-NNN.md` | `DOC-TC-NNN` | 114 individual test cases (`TC-001`…`TC-114`) | no |
+| [`core/`](core/README.md) | DOC-TST-007 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-TST-008 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-TST-009 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-TST-010 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-TST-011 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 5. Locked Test-Case Allocation (TC-001 … TC-114)
 
-The block allocation below is **locked**: TC IDs are never renumbered or reassigned to another domain. Individual TC files live in [`test-cases/`](test-cases/README.md).
+The block allocation below is **locked**: TC IDs are never renumbered or reassigned to another domain. Individual TC files live in [`test-cases/`](test-cases-index.md).
 
 | Range | Domain | FR | Count |
 |---|---|---|---|
@@ -115,7 +120,7 @@ FR-003 (profile/addresses) is exercised within TC-001–010 (registration/profil
 
 ## 6. Constraint Tests (TST-CON)
 
-The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per constraint `C-01 … C-26` — is defined **only** in [constraint-tests.md](constraint-tests.md). Highlights required by canon:
+The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per constraint `C-01 … C-26` — is defined **only** in [constraint-tests.md](core/constraint-tests.md). Highlights required by canon:
 
 | Test | Constraint | Assertion |
 |---|---|---|
@@ -132,8 +137,8 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 | Success criterion | Satisfied by |
 |---|---|
 | AC-S-01 (20 FRs VERIFIED) | TC evidence per FR block + requirement status audit |
-| AC-S-02 (26/26 constraints) | [constraint-tests.md](constraint-tests.md) register, executed per plan |
-| AC-S-03 (0 traceability gaps) | `19-traceability/requirements-to-tests.md` — AC → TC / plan / TST-CON |
+| AC-S-02 (26/26 constraints) | [constraint-tests.md](core/constraint-tests.md) register, executed per plan |
+| AC-S-03 (0 traceability gaps) | `../19-traceability/core/requirements-to-tests.md` — AC → TC / plan / TST-CON |
 | AC-S-04 (4 surfaces deliver UC set) | Per-surface E2E + UAT sign-off (test-plans §a) |
 | AC-S-05 (p95 under 10k concurrent) | k6 steady-state plan (test-plans §b), 30-minute window |
 | AC-S-06 (99.99% availability) | `TST-CON-26` + post-launch probes (`AC-NFR-005-01`) |
@@ -148,9 +153,9 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 
 ## 8. Navigation
 
-- QA engineer: this file → [testing-strategy.md](testing-strategy.md) → [test-plans.md](test-plans.md) → [test-cases/README.md](test-cases/README.md).
-- Implementer needing a constraint's pass criteria → [constraint-tests.md](constraint-tests.md).
-- Anything about test data, environments, fixture phones → [test-data-and-environments.md](test-data-and-environments.md).
+- QA engineer: this file → [testing-strategy.md](core/testing-strategy.md) → [test-plans.md](core/test-plans.md) → [test-cases/README.md](test-cases-index.md).
+- Implementer needing a constraint's pass criteria → [constraint-tests.md](core/constraint-tests.md).
+- Anything about test data, environments, fixture phones → [test-data-and-environments.md](core/test-data-and-environments.md).
 - Upstream canon: `02-requirements/acceptance-criteria.md` (AC), `00-project-overview/project-constraints.md` (C), `01-business-analysis/business-rules.md` (BR).
 
 ## Change History
@@ -158,3 +163,6 @@ The canonical register **`TST-CON-01 … TST-CON-26`** — exactly one test per 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Scope line count sync: 99 → **104 business rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
+| 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-TST-007…DOC-TST-011) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.3 | 2026-09-30 | Scope-line count sync: 68 → **73 requirements**, 104 → **111 business rules**, 253 → **273 acceptance criteria** (`requirements-overview.md` v1.2, `business-rules.md` v1.2, `acceptance-criteria.md` v1.2) | Owner directive session 011 (`prompt-011.md` §4.7) — three count consumers re-synced in same change set |

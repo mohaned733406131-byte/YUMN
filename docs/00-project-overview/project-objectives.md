@@ -14,7 +14,7 @@ related_documents: [DOC-OVR-003, DOC-OVR-011]
 
 # Project Objectives
 
-Objectives are `OBJ-NN`. Each is measurable and testable; each traces to requirements (`19-traceability/requirements-to-features.md`).
+Objectives are `OBJ-NN`. Each is measurable and testable; each traces to requirements (`../19-traceability/core/requirements-to-features.md`).
 
 | ID | Objective | Measure | Priority |
 |---|---|---|---|
@@ -29,7 +29,7 @@ Objectives are `OBJ-NN`. Each is measurable and testable; each traces to require
 | OBJ-09 | Maintain quality velocity | Automated test suites gate every release; regression suite < 30 min; defect escape rate to production < 5% of found defects | High |
 | OBJ-10 | Keep the system maintainable | A new developer ships a validated change within 5 working days using this knowledge base alone | Medium |
 | OBJ-11 | Achieve marketplace liquidity | Growth targets (vendors, listings, orders, GMV) defined and tracked from launch — baseline targets `INSUFFICIENT EVIDENCE` until sponsor sets them (`ASM-14`) | Medium |
-| OBJ-12 | Operate within constraint envelope | Zero violations of `C-01…C-26` verified by constraint tests (`13-testing/testing-strategy.md` §Constraint Tests) | Critical |
+| OBJ-12 | Operate within constraint envelope | Zero violations of `C-01…C-26` verified by constraint tests (`../13-testing/core/testing-strategy.md` §Constraint Tests) | Critical |
 
 ## Objective Conflict Check
 

@@ -3,9 +3,9 @@ document_id: DOC-FE-001
 title: Frontend Domain Overview & File Index
 category: 05-frontend
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-003, FR-010, FR-011, FR-012, NFR-002, NFR-011, NFR-013, NFR-015, SEC-REQ-004]
@@ -30,7 +30,7 @@ The frontend domain defines how the yumn client applications are structured, rou
 
 > Surfaces S4 and S5 form the single "mobile apps" surface counted in requirement texts (e.g. FR-001 "four surfaces"). They share one design system and one API SDK but are separate binaries with separate review pipelines.
 
-**Actors with no interactive frontend:** ACT-07 System (`00-project-overview/actors-and-roles.md`) — background jobs and automated engines interact only through the API and BullMQ queues (see `06-backend/background-processing.md`).
+**Actors with no interactive frontend:** ACT-07 System (`00-project-overview/actors-and-roles.md`) — background jobs and automated engines interact only through the API and BullMQ queues (see `../06-backend/core/background-processing.md`).
 
 ## 2. What Each Surface Covers (by requirement family)
 
@@ -74,6 +74,11 @@ The frontend domain defines how the yumn client applications are structured, rou
 | 7 | `rtl-and-styling.md` | DOC-FE-007 | CSS strategy, logical properties, icon mirroring, number/currency formatting, fonts, design tokens |
 | 8 | `internationalization.md` | DOC-FE-008 | i18n libraries, locale routing, message catalogs, dates/plurals, dynamic-content translation policy |
 | 9 | `frontend-performance.md` | DOC-FE-009 | Bundle budgets, code splitting, image pipeline, ISR/CDN caching, RN startup, Core Web Vitals, RUM |
+| [`core/`](core/README.md) | DOC-FE-010 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-FE-011 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-FE-012 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-FE-013 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-FE-014 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 5. Reading Order
 
@@ -81,7 +86,7 @@ The frontend domain defines how the yumn client applications are structured, rou
 |---|---|
 | New frontend engineer | DOC-FE-001 → DOC-FE-002 → DOC-FE-007 → DOC-FE-008 → DOC-FE-006 |
 | Feature engineer (checkout) | DOC-FE-003 → DOC-FE-004 → DOC-FE-005 → `07-api/` endpoints |
-| Security reviewer | DOC-FE-006 → `09-security/authentication.md` → `06-backend/authorization.md` |
+| Security reviewer | DOC-FE-006 → `../09-security/core/authentication.md` → `../06-backend/core/authorization.md` |
 | Perf/accessibility reviewer | DOC-FE-009 → DOC-FE-007 → `12-non-functional/` |
 
 ## 6. Upstream / Downstream Contracts
@@ -90,7 +95,7 @@ The frontend domain defines how the yumn client applications are structured, rou
 |---|---|---|
 | Upstream | `02-requirements/requirements-overview.md` | FR/NFR/SEC IDs every client must satisfy |
 | Upstream | `00-project-overview/project-constraints.md` | `C-01`, `C-06`, `C-08`, `C-15`, `C-16`, `C-24` visible behavior |
-| Upstream | `03-system-analysis/state-transitions.md` | The 17 states the UIs may render (no others) |
+| Upstream | `../03-system-analysis/core/state-transitions.md` | The 17 states the UIs may render (no others) |
 | Upstream | `11-ui-ux/` (planned) | Flows, design system, feedback states |
 | Downstream | `07-api/` (planned) | Endpoint contracts, error model consumed by DOC-FE-005 |
 | Downstream | `06-backend/` | Authoritative enforcement of every rule the UI mirrors |
@@ -106,3 +111,4 @@ The frontend domain defines how the yumn client applications are structured, rou
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-FE-010…DOC-FE-014) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

@@ -3,9 +3,9 @@ document_id: DOC-INT-000
 title: Integrations Domain — Overview & File Index
 category: 10-integrations
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [INT-REQ-001, INT-REQ-002, INT-REQ-003, INT-REQ-004, INT-REQ-005, INT-REQ-006, INT-REQ-007, INT-REQ-008]
@@ -16,7 +16,7 @@ related_documents: [DOC-ROOT-001, DOC-REQ-001, DOC-IR-000, DOC-OVR-010, DOC-SEC-
 
 ## 1. Purpose
 
-This directory owns the **integration contracts**: concrete endpoints, payload schemas, provider-specific failure matrices, sequence detail, and degradation behavior for every external system yumn talks to. The *requirements* (provider-agnostic guarantees with `AC-IRnnn-nn`) live in `02-requirements/integration/`; the *security policy* for shared controls lives in `09-security/`. Nothing here redefines a requirement — it expands it.
+This directory owns the **integration contracts**: concrete endpoints, payload schemas, provider-specific failure matrices, sequence detail, and degradation behavior for every external system yumn talks to. The *requirements* (provider-agnostic guarantees with `AC-IRnnn-nn`) live in `02-requirements/`; the *security policy* for shared controls lives in `09-security/`. Nothing here redefines a requirement — it expands it.
 
 ## 2. External-System Map
 
@@ -50,6 +50,11 @@ This directory owns the **integration contracts**: concrete endpoints, payload s
 | 7 | `push-notifications.md` | DOC-INT-006 | FCM + APNs: token lifecycle, payload contract, topics, quiet hours, fallbacks | No |
 | 8 | `webhook-reliability.md` | DOC-INT-007 | Inbound/outbound webhooks: HMAC, replay window, idempotency, retry schedule, DLQ + replay | No |
 | 9 | `testing-and-sandboxes.md` | DOC-INT-008 | Provider testing strategy: sandboxes, contract tests, chaos drills, go-live checklists | No |
+| [`core/`](core/README.md) | DOC-INT-009 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-INT-010 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-INT-011 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-INT-012 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-INT-013 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 4. Requirement Coverage Map
 
@@ -60,7 +65,7 @@ This directory owns the **integration contracts**: concrete endpoints, payload s
 | INT-REQ-003 | SMS provider failover | `sms-provider.md` | `integration-overview.md` §4, `whatsapp-business.md` §1 |
 | INT-REQ-004 | WhatsApp Business notifications | `whatsapp-business.md` | `push-notifications.md` §7 (channel fallbacks) |
 | INT-REQ-005 | Delivery orchestration | `integration-overview.md` §1 (`DeliveryProviderPort`) | `testing-and-sandboxes.md` §4 |
-| INT-REQ-006 | Webhook robustness | `webhook-reliability.md` | `integration-overview.md` §5, `09-security/security-controls.md` |
+| INT-REQ-006 | Webhook robustness | `webhook-reliability.md` | `integration-overview.md` §5, `../09-security/core/security-controls.md` |
 | INT-REQ-007 | Observability export | `integration-overview.md` §7 | `webhook-reliability.md` §4 (DLQ alerting) |
 | INT-REQ-008 | Provider abstraction | `integration-overview.md` §1 | every provider file + `testing-and-sandboxes.md` §3/§8 |
 
@@ -108,10 +113,11 @@ This directory owns the **integration contracts**: concrete endpoints, payload s
 ## 9. Domain Boundaries
 
 **Owned here:** provider contracts, degradation behavior, webhook mechanics, integration testing strategy.
-**Not owned here:** requirement statements/ACs (`02-requirements/integration/`); job/queue mechanics of the monolith (`06-backend/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`12-non-functional/observability.md`); environment wiring (`14-devops-infrastructure/`).
+**Not owned here:** requirement statements/ACs (`02-requirements/`); job/queue mechanics of the monolith (`../06-backend/core/background-processing.md`); endpoint contracts toward yumn's own clients (`07-api/`); alert routing detail (`../12-non-functional/core/observability.md`); environment wiring (`14-devops-infrastructure/`).
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-INT-009…DOC-INT-013) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

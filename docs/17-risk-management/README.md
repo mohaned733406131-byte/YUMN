@@ -3,9 +3,9 @@ document_id: DOC-RSK-001
 title: Risk Management Domain Overview
 category: 17-risk-management
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-008, NFR-014, FR-020]
@@ -88,9 +88,9 @@ A register row states one **primary** strategy; contingency plans (in `risk-regi
 | Event | Frequency / trigger | Output |
 |---|---|---|
 | Standing risk review | **Monthly** (first review 2026-10-26) | Updated register, changed scores with rationale, new/closed IDs |
-| Phase-gate check | At every gate in `21-completion/quality-gates.md` (Gate 0 before implementation, and each subsequent gate) | Gate decision: risks owning that phase must be mitigated to plan or explicitly accepted by the sponsor |
+| Phase-gate check | At every gate in `../21-completion/core/quality-gates.md` (Gate 0 before implementation, and each subsequent gate) | Gate decision: risks owning that phase must be mitigated to plan or explicitly accepted by the sponsor |
 | Trigger-based review | New CRITICAL finding (`SEC-NNN`), new/changed `DEP-*`/`ASM-*`/`GAP-*`, provider contract change, incident, scope change | Ad-hoc review within 5 working days |
-| Validation audit | After any structural change (root README §9) | Entries in `20-validation/consistency-audit.md` |
+| Validation audit | After any structural change (root README §9) | Entries in `../20-validation/core/consistency-audit.md` |
 
 Participants, update rules, escalation thresholds, burndown reporting, and ID-allocation rules: `risk-review-process.md` (DOC-RSK-004).
 
@@ -102,15 +102,21 @@ Participants, update rules, escalation thresholds, burndown reporting, and ID-al
 | 2 | `risk-register.md` | DOC-RSK-002 | **Canonical register `RISK-001…RISK-024`** — summary table + per-risk detail |
 | 3 | `mitigation-plans.md` | DOC-RSK-003 | Phased plans, controls, kill criteria and metrics for the top 8 risks by score |
 | 4 | `risk-review-process.md` | DOC-RSK-004 | Governance: cadence, update rules, escalation, phase gates, ID allocation, finding/gap linkage |
+| [`core/`](core/README.md) | DOC-RSK-005 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-RSK-006 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-RSK-007 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-RSK-008 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-RSK-009 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 7. Relationship to Findings, Gaps, and Constraints
 
-- A **security finding (`SEC-NNN`, `09-security/security-findings.md`)** is a design defect discovered by analysis; a **risk (`RISK-NNN`)** is the uncertainty that an event harms an objective. *Finding ≠ risk* — but every finding is screened: if it threatens an objective it feeds (mirrors) a register entry (e.g. `SEC-011` ↔ `RISK-006`). Rules for that screening: `risk-review-process.md` §6.
-- A **gap (`GAP-NNN`, `20-validation/missing-information.md`)** is missing information; unresolved gaps *generate* risks (e.g. `GAP-03` supports notification-channel risk exposure; `GAP-07` feeds RISK-018).
-- A **constraint (`C-01…C-26`)** is never a risk and can never be traded away to reduce one — mitigation may never violate a constraint (root README §9; conflicts go to `20-validation/contradiction-audit.md`).
+- A **security finding (`SEC-NNN`, `../09-security/core/security-findings.md`)** is a design defect discovered by analysis; a **risk (`RISK-NNN`)** is the uncertainty that an event harms an objective. *Finding ≠ risk* — but every finding is screened: if it threatens an objective it feeds (mirrors) a register entry (e.g. `SEC-011` ↔ `RISK-006`). Rules for that screening: `risk-review-process.md` §6.
+- A **gap (`GAP-NNN`, `../20-validation/core/missing-information.md`)** is missing information; unresolved gaps *generate* risks (e.g. `GAP-03` supports notification-channel risk exposure; `GAP-07` feeds RISK-018).
+- A **constraint (`C-01…C-26`)** is never a risk and can never be traded away to reduce one — mitigation may never violate a constraint (root README §9; conflicts go to `../20-validation/core/contradiction-audit.md`).
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-RSK-005…DOC-RSK-009) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

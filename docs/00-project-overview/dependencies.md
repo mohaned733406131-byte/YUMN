@@ -26,7 +26,7 @@ related_documents: [DOC-OVR-009, DOC-INT-001]
 | DEP-08 | Domains, TLS certificates, CDN (Cloudflare) | External | Production launch | No public launch | DevOps | Not started |
 | DEP-09 | Legal opinions: VAT treatment (ASM-10/ASM-12), data protection (ASM-13) | External professional | Compliance design | Compliance risk; possible redesign | Legal / sponsor | Not started |
 | DEP-10 | Central Bank position on closed-loop wallets (ASM-12) | Regulatory | Wallet architecture legitimacy | **Existential** — wallet-only model at risk | Sponsor / legal | Not started |
-| DEP-11 | Design assets: logo, brand tokens, Arabic copy | Internal input | Frontend/UI work | Design phase stalls | Design / product | Partial (brand tokens defined in `11-ui-ux/design-system.md`) |
+| DEP-11 | Design assets: logo, brand tokens, Arabic copy | Internal input | Frontend/UI work | Design phase stalls | Design / product | Partial (brand tokens defined in `../11-ui-ux/core/design-system.md`) |
 | DEP-12 | Test device lab (Android versions, iOS) + real carrier SIMs | Tooling | Mobile app testing, OTP testing | Mobile QA cannot complete | QA | Not started |
 
 ## Dependency Ordering (critical path)

@@ -3,9 +3,9 @@ document_id: DOC-NFD-001
 title: Non-Functional Detail Domain — Overview, Method & Target Dashboard
 category: 12-non-functional
 status: approved
-version: 1.0
+version: 1.1
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [NFR-001, NFR-002, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-008, NFR-009, NFR-010, NFR-011, NFR-012, NFR-013, NFR-014, NFR-015, NFR-016, NFR-017, NFR-018, NFR-019, NFR-020]
@@ -16,12 +16,12 @@ related_documents: [DOC-NFR-000, DOC-REQ-001, DOC-AC-001, DOC-OVR-008, DOC-OVR-0
 
 ## 1. Purpose
 
-This domain **elaborates** the 20 non-functional requirements (`NFR-001…NFR-020`) with the things a requirement statement alone cannot carry: numeric thresholds beyond the headline, budgets, mechanisms, operating policies, tooling, and verification hooks. It never restates requirement text — the statement of record lives in `02-requirements/non-functional/` (`DOC-NFR-000` … `DOC-NFR-020`), IDs are assigned only in `02-requirements/requirements-overview.md` (`DOC-REQ-001` §2), and acceptance outcomes are registered in `02-requirements/acceptance-criteria.md` (`DOC-AC-001`).
+This domain **elaborates** the 20 non-functional requirements (`NFR-001…NFR-020`) with the things a requirement statement alone cannot carry: numeric thresholds beyond the headline, budgets, mechanisms, operating policies, tooling, and verification hooks. It never restates requirement text — the statement of record lives in `02-requirements/` (`DOC-NFR-000` … `DOC-NFR-020`), IDs are assigned only in `02-requirements/requirements-overview.md` (`DOC-REQ-001` §2), and acceptance outcomes are registered in `02-requirements/acceptance-criteria.md` (`DOC-AC-001`).
 
 ## 2. Method — Statement → Elaboration → Verification
 
 ```text
-02-requirements/non-functional/NFR-nnn.md      "WHAT must hold"  (statement, rationale, AC refs)
+02-requirements/core/NFR-nnn.md      "WHAT must hold"  (statement, rationale, AC refs)
         │
         ▼
 12-non-functional/<domain>.md                  "HOW it holds at scale" (thresholds, budgets,
@@ -54,8 +54,13 @@ Rules binding every file here:
 | 6 | `compliance-and-legal.md` | DOC-NFD-007 | methodology §35 (legal/compliance), feeds NFR-019 | Yemen data-protection, wallet regulation, consumer rights, VAT, legal deliverables, KYC, messaging opt-in, audit retention, accessibility statement, sanctions |
 | 7 | `usability-and-support.md` | DOC-NFD-008 | NFR-012, NFR-013 + support ops | task-efficiency targets, learnability, low-bandwidth mode, localization gates, human-only support model, SLAs, tooling, CSAT, feedback loop |
 | 8 | `accessibility.md` | DOC-NFD-009 | NFR-011 (+ NFR-012, NFR-013) | measurable conformance targets per surface, assistive-technology matrix, CI automation thresholds, defect SLAs, Arabic/RTL accessibility specifics, verification & evidence |
+| [`core/`](core/README.md) | DOC-NFD-010 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-NFD-011 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-NFD-012 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-NFD-013 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-NFD-014 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
-> Note: root README §10 maps "Accessibility → `11-ui-ux/accessibility.md` + `12-non-functional/accessibility.md`". The UX patterns live in `11-ui-ux/accessibility.md` (DOC-UX-006); the measurable NFR-011 elaboration lives in `accessibility.md` (DOC-NFD-009).
+> Note: root README §10 maps "Accessibility → `../11-ui-ux/core/accessibility.md` + `core/accessibility.md`". The UX patterns live in `../11-ui-ux/core/accessibility.md` (DOC-UX-006); the measurable NFR-011 elaboration lives in `accessibility.md` (DOC-NFD-009).
 
 ## 4. Consolidated Target Dashboard
 
@@ -73,7 +78,7 @@ One row per NFR — headline target only (the canonical statement remains `DOC-R
 | NFR-008 | ACID + idempotency; zero ledger imbalance | `reliability.md` | idempotency key standard, reconciliation cadence, integrity invariants |
 | NFR-009 | module boundaries enforced; CI gates; docs current | `maintainability.md` | dependency-cruiser rules, gate inventory, doc-freshness audit |
 | NFR-010 | business logic unit-testable offline; coverage thresholds | `maintainability.md` | pyramid targets (80/95/90), suite budgets, flake policy |
-| NFR-011 | WCAG 2.1 AA; ≥95% automated pass; 0 critical | `accessibility.md` + `11-ui-ux/accessibility.md` | per-surface conformance matrix, AT support, CI thresholds, defect SLAs, RTL a11y (see DOC-NFD-009) |
+| NFR-011 | WCAG 2.1 AA; ≥95% automated pass; 0 critical | `accessibility.md` + `../11-ui-ux/core/accessibility.md` | per-surface conformance matrix, AT support, CI thresholds, defect SLAs, RTL a11y (see DOC-NFD-009) |
 | NFR-012 | registration→first order < 5 min; vendor listing < 10 min | `usability-and-support.md` | task matrix, SUS ≥ 78, dead-end rule, error-path audits |
 | NFR-013 | Arabic default, English parity, locale-aware formats | `usability-and-support.md` | locale quality gates, template inventory, RTL regression set |
 | NFR-014 | structured logs, RED metrics, correlation IDs, alerting | `observability.md` | field schema, sampling policy, dashboard list, alert severities, retention |
@@ -101,10 +106,11 @@ One row per NFR — headline target only (the canonical statement remains `DOC-R
 
 ## 6. Reading Order
 
-`performance` → `scalability` → `reliability` → `observability` → `maintainability` → `compliance-and-legal` → `usability-and-support`. Upstream: `02-requirements/non-functional/` (statements), `00-project-overview/project-constraints.md` (`C-25`, `C-26`), `00-project-overview/success-criteria.md` (`AC-S-05…AC-S-10`, `AC-S-17…AC-S-20`). Downstream: `13-testing/` (execution), `14-devops-infrastructure/` + `15-deployment/` (wiring), `19-traceability/` (NFR → AC → TC).
+`performance` → `scalability` → `reliability` → `observability` → `maintainability` → `compliance-and-legal` → `usability-and-support`. Upstream: `02-requirements/` (statements), `00-project-overview/project-constraints.md` (`C-25`, `C-26`), `00-project-overview/success-criteria.md` (`AC-S-05…AC-S-10`, `AC-S-17…AC-S-20`). Downstream: `13-testing/` (execution), `14-devops-infrastructure/` + `15-deployment/` (wiring), `19-traceability/` (NFR → AC → TC).
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-NFD-010…DOC-NFD-014) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |

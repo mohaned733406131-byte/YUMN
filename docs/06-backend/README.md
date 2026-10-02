@@ -3,9 +3,9 @@ document_id: DOC-BE-001
 title: Backend Domain Overview & File Index
 category: 06-backend
 status: approved
-version: 1.0
+version: 1.3
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: [FR-001, FR-002, FR-011, FR-012, FR-013, NFR-001, NFR-007, NFR-008, NFR-009, NFR-014]
@@ -28,7 +28,7 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | What runs asynchronously? | BullMQ workers in the same binary process pool, queues named `{block}.{entity}.{action}` (`BR-PLT-01`, `background-processing.md`) |
 | What talks to externals? | Adapter modules behind interfaces (payments, SMS, WhatsApp, webhooks) — no vendor types in domain code (`INT-REQ-008`) |
 | What is the API surface? | REST under `/api/v1`, contract in `07-api/` |
-| How are errors surfaced? | Global filters producing the shared error model (`error-handling.md` ← `07-api/error-model.md`) |
+| How are errors surfaced? | Global filters producing the shared error model (`error-handling.md` ← `../07-api/core/error-model.md`) |
 
 ## 2. Requirement → Backend Ownership (summary)
 
@@ -59,8 +59,13 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | 5 | `business-logic-placement.md` | DOC-BE-005 | Rule ID → module → service → enforcement point for the critical rules (payments, escrow, stock, states, returns) |
 | 6 | `background-processing.md` | DOC-BE-006 | BullMQ queues/jobs, retries + DLQ, idempotency, scheduling, fan-out |
 | 7 | `caching.md` | DOC-BE-007 | Redis cache strategy, TTLs, invalidation, stampede control, non-cacheable list, ES vs Redis |
-| 8 | `error-handling.md` | DOC-BE-008 | Exception filters, error codes aligned with `07-api/error-model.md`, structured logging, domain errors |
+| 8 | `error-handling.md` | DOC-BE-008 | Exception filters, error codes aligned with `../07-api/core/error-model.md`, structured logging, domain errors |
 | 9 | `validation.md` | DOC-BE-009 | DTO/schema validation, business vs schema validation, idempotency keys, payload/upload limits, integer money |
+| [`core/`](core/README.md) | DOC-BE-010 | Core portal folder — shared, platform-wide material for this domain (not specific to a single portal) |
+| [`admin/`](admin/README.md) | DOC-BE-011 | Admin portal folder — admin-console-specific material (platform operators) |
+| [`vendor/`](vendor/README.md) | DOC-BE-012 | Vendor portal folder — vendor-portal-specific material (sellers) |
+| [`customer/`](customer/README.md) | DOC-BE-013 | Customer portal folder — customer-app-specific material (buyers) |
+| [`delivery/`](delivery/README.md) | DOC-BE-014 | Delivery portal folder — delivery/courier-app-specific material (couriers) |
 
 ## 4. Architectural Guarantees (what this domain promises)
 
@@ -81,8 +86,8 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | Direction | Document | Dictates |
 |---|---|---|
 | Upstream | `02-requirements/requirements-overview.md` | FR/NFR/SEC/INT IDs implemented here |
-| Upstream | `01-business-analysis/business-rules.md` | all 99 BR rules — enforced, never redefined |
-| Upstream | `03-system-analysis/state-transitions.md` | authoritative transition table |
+| Upstream | `01-business-analysis/business-rules.md` | all 111 BR rules — enforced, never redefined |
+| Upstream | `../03-system-analysis/core/state-transitions.md` | authoritative transition table |
 | Upstream | `00-project-overview/project-constraints.md` | `C-01…C-26` hard boundaries |
 | Peer | `07-api/` | endpoint contracts + error model this code exposes |
 | Peer | `08-database/` | schema, entities, indexes backing Prisma models |
@@ -103,3 +108,6 @@ The backend is a **single NestJS 10 modular monolith** (`C-21`) on Node 20 / Typ
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial version | Initial analysis |
+| 1.1 | 2026-09-28 | Upstream row count sync: 99 → **104 BR rules** (`BR-INV-01…05` registered) | `CRIT-06`/`HAL-04` pay-down (session 008) — consumer of `business-rules.md` v1.1 (root README §9.4) |
+| 1.2 | 2026-09-30 | Portal partition: registered five portal-folder READMEs (`core/` `admin/` `vendor/` `customer/` `delivery/`, DOC-BE-010…DOC-BE-014) in Contents | Owner directive session 011 (`prompt-011.md` §4 phase 5): five portal subfolders in every `01…23` (naming-conventions §1 portal partition) |
+| 1.3 | 2026-09-30 | Upstream row count sync: 104 → **111 BR rules** (`BR-AUTH-09/10`, `BR-PAY-11`, `BR-ESC-09`, `BR-RET-08`, `BR-REV-06`, `BR-PLT-08` registered) | Owner directive session 011 (`prompt-011.md` §4.7) — consumer of `business-rules.md` v1.2 re-synced in the propagation change set (root README §9.4; this file was missed by the phase-7 set) |

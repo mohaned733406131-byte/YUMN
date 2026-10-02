@@ -31,7 +31,7 @@ The platform is **Arabic-first (RTL)** with full English support, **wallet-only*
 | Constraint baseline | 26 constraints `C-01…C-26` |
 | Scale target | 10,000 concurrent users (`C-25`) |
 | Availability target | 99.99% (`C-26`) |
-| Delivery model | Phased (see `21-completion/implementation-roadmap.md`) |
+| Delivery model | Phased (see `../21-completion/core/implementation-roadmap.md`) |
 
 ## Vision
 
@@ -43,7 +43,7 @@ Give every Yemeni merchant professional selling tooling and every customer prote
 
 ## Authority
 
-This charter authorizes the analysis, design, and implementation of the yumn platform within the scope and constraints defined in `project-scope.md` and `project-constraints.md`. Budget, staffing, and schedule baselines are `INSUFFICIENT EVIDENCE` at this stage (see `ASM-14`) — they must be established before implementation kickoff (`21-completion/quality-gates.md`, Gate 0).
+This charter authorizes the analysis, design, and implementation of the yumn platform within the scope and constraints defined in `project-scope.md` and `project-constraints.md`. Budget, staffing, and schedule baselines are `INSUFFICIENT EVIDENCE` at this stage (see `ASM-14`) — they must be established before implementation kickoff (`../21-completion/core/quality-gates.md`, Gate 0).
 
 ## High-Level Deliverables
 
@@ -84,7 +84,7 @@ Full register: `17-risk-management/risk-register.md`. Top three:
 | Product owner | PENDING | — |
 | Technical lead | PENDING | — |
 
-> Sign-off status: analysis produced; formal sponsor sign-off pending (`21-completion/final-acceptance.md`).
+> Sign-off status: analysis produced; formal sponsor sign-off pending (`../21-completion/core/final-acceptance.md`).
 
 ## Change History
 

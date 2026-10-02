@@ -3,9 +3,9 @@ document_id: DOC-REQ-001
 title: Requirements Overview (Canonical ID Registry)
 category: 02-requirements
 status: approved
-version: 1.0
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
 related_requirements: []
@@ -16,13 +16,13 @@ related_documents: [DOC-OVR-004, DOC-OVR-008]
 
 **This document is the single registry of every requirement ID in the project.** Individual requirement files (`functional/FR-nnn.md`, etc.) expand each entry; they must never contradict this registry. Never invent a requirement ID that is not listed here.
 
-Total: **20 FR + 20 NFR + 12 SEC-REQ + 8 DATA-REQ + 8 INT-REQ = 68 requirements.**
+Total: **20 FR + 20 NFR + 16 SEC-REQ + 9 DATA-REQ + 8 INT-REQ = 73 requirements.**
 
 ---
 
 ## 1. Functional Requirements (`FR-001…FR-020`)
 
-Each expands to `02-requirements/functional/FR-nnn.md`.
+Each expands to `02-requirements/core/FR-nnn.md`.
 
 | ID | Title | Block | Priority | Summary |
 |---|---|---|---|---|
@@ -51,7 +51,7 @@ Each expands to `02-requirements/functional/FR-nnn.md`.
 
 ## 2. Non-Functional Requirements (`NFR-001…NFR-020`)
 
-Expands to `02-requirements/non-functional/NFR-nnn.md`; measurement detail in `12-non-functional/`.
+Expands to `02-requirements/core/NFR-nnn.md`; measurement detail in `12-non-functional/`.
 
 | ID | Category | Title | Target (summary) |
 |---|---|---|---|
@@ -68,7 +68,7 @@ Expands to `02-requirements/non-functional/NFR-nnn.md`; measurement detail in `1
 | NFR-011 | Accessibility | WCAG 2.1 AA | ≥95% automated pass; zero critical violations; keyboard + screen-reader support |
 | NFR-012 | Usability | Core-task efficiency | New customer completes registration→first order < 5 min; vendor lists product < 10 min |
 | NFR-013 | Localization | Bilingual RTL/LTR | Arabic default, English parity; locale-aware dates/numbers/currency (C-24) |
-| NFR-014 | Observability | Logging/metrics/tracing | Structured logs, RED metrics per endpoint, correlation IDs, alerting (see `12-non-functional/observability.md`) |
+| NFR-014 | Observability | Logging/metrics/tracing | Structured logs, RED metrics per endpoint, correlation IDs, alerting (see `../12-non-functional/core/observability.md`) |
 | NFR-015 | Compatibility | Browsers/devices | Last 2 versions Chrome/Safari/Firefox/Edge; Android 10+, iOS 15+ |
 | NFR-016 | Portability | Deployment | Runs on any Docker host; no cloud-vendor lock-in in v1 |
 | NFR-017 | Capacity | Storage growth | Design for 10M products, 100M order-line records, 5-year retention (partitioning plan) |
@@ -78,9 +78,9 @@ Expands to `02-requirements/non-functional/NFR-nnn.md`; measurement detail in `1
 
 ---
 
-## 3. Security Requirements (`SEC-REQ-001…SEC-REQ-012`)
+## 3. Security Requirements (`SEC-REQ-001…SEC-REQ-016`)
 
-Expands to `02-requirements/security/SEC-REQ-nnn.md`; controls detailed in `09-security/`.
+Expands to `02-requirements/core/SEC-REQ-nnn.md`; controls detailed in `09-security/`.
 
 | ID | Title | Summary |
 |---|---|---|
@@ -96,29 +96,34 @@ Expands to `02-requirements/security/SEC-REQ-nnn.md`; controls detailed in `09-s
 | SEC-REQ-010 | Audit trail integrity | Append-only audit log for privileged & money actions; tamper-evident chain |
 | SEC-REQ-011 | File upload security | Type/size validation, EXIF strip, malware scan, no SVG execution; ≤5 MB images |
 | SEC-REQ-012 | Vulnerability management | SAST/DAST/dependency scanning in CI; critical vulns fixed ≤ 7 days |
+| SEC-REQ-013 | Anti-enumeration uniform responses | Auth/verification entry points answer with a uniform success-shaped response; never confirm or deny account existence (resolves `error-model.md` §5 vs `API-ATH-001` `PHONE_ALREADY_REGISTERED`) |
+| SEC-REQ-014 | Per-surface CORS policy | Exact origin allowlist (web/vendor/admin); credentialed CORS only for known origins; methods/headers allowlist; deny-by-default preflight in a single middleware; CORS test case |
+| SEC-REQ-015 | Object-storage access control | Deny anonymous access/listing on all MinIO buckets; short presigned-URL TTLs; separate media origin; server-generated object keys; quarterly bucket-policy review verified in tests |
+| SEC-REQ-016 | Per-destination OTP resend limits | Resend cooldown/caps also enforced globally per hashed destination phone (not only session/IP); per-destination metric + alert against OTP bombing of a victim number |
 
 ---
 
-## 4. Data Requirements (`DATA-REQ-001…DATA-REQ-008`)
+## 4. Data Requirements (`DATA-REQ-001…DATA-REQ-009`)
 
-Expands to `02-requirements/data/DATA-REQ-nnn.md`; detail in `16-data/`.
+Expands to `02-requirements/core/DATA-REQ-nnn.md`; detail in `16-data/`.
 
 | ID | Title | Summary |
 |---|---|---|
 | DATA-REQ-001 | Integrity constraints | FKs, unique/check constraints, NOT NULL where required; referential integrity enforced in DB not just app |
-| DATA-REQ-002 | Personal data minimization | Collect only needed PII; classify per `16-data/data-classification.md` |
+| DATA-REQ-002 | Personal data minimization | Collect only needed PII; classify per `../16-data/core/data-classification.md` |
 | DATA-REQ-003 | Retention & deletion | Configurable retention; account deletion workflow; financial records ≥ 5 years (NFR-019) |
 | DATA-REQ-004 | Backup & restore | Continuous WAL + daily snapshots; quarterly restore drills (NFR-006) |
 | DATA-REQ-005 | Schema evolution | Expand-contract migrations; backward-compatible deploys (NFR-020) |
 | DATA-REQ-006 | Data quality validation | Validation at write time + reconciliation jobs (stock, wallet, escrow) |
 | DATA-REQ-007 | Financial immutability | Ledger append-only: corrections via compensating entries, never UPDATE/DELETE of postings |
 | DATA-REQ-008 | Ownership boundaries | Every tenant-scoped row carries owner keys (user_id/store_id) enforced by queries + tests |
+| DATA-REQ-009 | Search-index data protection | Index field allowlist (public catalog fields only); restricted/encrypted index snapshots; index deletion wired into account-deletion workflow; "PII in index" test |
 
 ---
 
 ## 5. Integration Requirements (`INT-REQ-001…INT-REQ-008`)
 
-Expands to `02-requirements/integration/INT-REQ-nnn.md`; contracts in `10-integrations/`.
+Expands to `02-requirements/core/INT-REQ-nnn.md`; contracts in `10-integrations/`.
 
 | ID | Title | Summary |
 |---|---|---|
@@ -135,10 +140,22 @@ Expands to `02-requirements/integration/INT-REQ-nnn.md`; contracts in `10-integr
 
 ## 6. Requirement Quality Statement
 
-Every requirement file must pass the 7-question quality test (clarity, completeness, consistency, feasibility, testability, necessity, traceability) and carry: description, source, priority, rationale, dependencies, preconditions, expected result, acceptance criteria, verification method. Weak entries are flagged in `20-validation/requirements-validation.md`.
+Every requirement file must pass the 7-question quality test (clarity, completeness, consistency, feasibility, testability, necessity, traceability) and carry: description, source, priority, rationale, dependencies, preconditions, expected result, acceptance criteria, verification method. Weak entries are flagged in `../20-validation/core/requirements-validation.md`.
+
+## 7. Approved Backlog (pointer — not yet `FR-*`)
+
+> Approved 2026-09-28 by the administrator (`plan-develop.md` v1.2 §8 `D9`/`D10`). The canonical
+> rows live in [`plan-develop.md`](../../plan-develop.md): modifications `M-01…M-25` (§1),
+> proposed features `P-01…P-20` (§2), the 59-row completeness checklist (§3), and the
+> admin/role/ERP decisions (§4–§6). **Nothing in this backlog is a requirement yet** — each row
+> converts to an `FR-*` (or `NFR-*`/`INT-REQ-*`) with acceptance criteria **at its build wave**,
+> never earlier (`SPE-03` / `D-02` / `plan-develop.md` §0.4). Coverage mapping after conversion
+> belongs in `19-traceability/`.
 
 ## Change History
 
 | Version | Date | Change | Reason |
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial registry (68 requirements) | Initial analysis |
+| 1.1 | 2026-09-28 | New §7 approved-backlog pointer to `plan-develop.md` (no `FR-*` minted — wave discipline) | `plan-develop.md` v1.2 §8 approval implementation (session 007, `D9`/`D10`) |
+| 1.2 | 2026-09-30 | Session-011 delta registration — `SEC-REQ-013`…`SEC-REQ-016`, `DATA-REQ-009` (+5 requirement files under `core/`); 68 → 73 requirements | Owner directive session 011 (`prompt-011.md` §4.7) — deltas accepted in `system-expansion-proposal.md` (DOC-OVR-012) §5 from verified sources (`security-findings.md` SEC-006/007/008/010, `error-model.md` §5, `auth.md` lines 27/28/34); count consumers re-synced in same change set |

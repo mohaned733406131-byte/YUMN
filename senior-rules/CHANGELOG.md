@@ -5,6 +5,18 @@ License: GPL-3.0
 
 Follows SemVer per core/00_meta_rules.md §0.5.
 
+## [2.2.0] — 2026-09-28
+- **Amendment F-07 (MINOR)**: `validators/validate.py` check 5 extended — rule-ID
+  uniqueness is now enforced in **both** `RULES.md` (master catalog, 77 IDs) **and**
+  `YUMN_RULES.md` (project catalog, 94 IDs across MNY/ESC/ORD/IDT/STK/SHP/RET/RTL/
+  API/DAT/OPS/PRF/SPE). The check now also fails if zero IDs parse (silent-0 guard).
+  Rationale: session-005 audit finding F-07 ("Validator checks ID uniqueness only in
+  RULES.md") — proposed in the session-005 log, applied via this amendment, never a
+  mid-task hot-patch. No rule text changed; `RULES.md` untouched.
+- **Note (pre-existing drift, recorded not silently reconciled)**: `VERSION` read
+  `2.0.0` while this changelog's latest entry was `[2.1.0]` — bumped straight to
+  `2.2.0` above `[2.1.0]` rather than renumbering either record.
+
 ## [2.1.0] — 2026-09-24
 - **Renamed**: all `.ai-rules` references replaced with `senior-rules` across all files (docs, validators, scripts, templates, package.json).
 - **Added**: npm package `@salahalssayani/ai-development-master-rules` with automated installer (`npx admr-install`) — works with any AI model (Claude, GPT, Cursor, Gemini, Copilot, Windsurf, etc.).

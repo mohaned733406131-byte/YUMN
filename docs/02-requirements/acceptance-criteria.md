@@ -3,18 +3,18 @@ document_id: DOC-AC-001
 title: Acceptance Criteria (Authoritative AC Registry)
 category: 02-requirements
 status: approved
-version: 1.1
+version: 1.2
 created: 2026-09-26
-updated: 2026-09-26
+updated: 2026-09-30
 author: analysis-agent
 source_of_truth: true
-related_requirements: [FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, NFR-001, NFR-002, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-008, NFR-009, NFR-010, NFR-011, NFR-012, NFR-013, NFR-014, NFR-015, NFR-016, NFR-017, NFR-018, NFR-019, NFR-020, SEC-REQ-001, SEC-REQ-002, SEC-REQ-003, SEC-REQ-004, SEC-REQ-005, SEC-REQ-006, SEC-REQ-007, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, SEC-REQ-012, DATA-REQ-001, DATA-REQ-002, DATA-REQ-003, DATA-REQ-004, DATA-REQ-005, DATA-REQ-006, DATA-REQ-007, DATA-REQ-008, INT-REQ-001, INT-REQ-002, INT-REQ-003, INT-REQ-004, INT-REQ-005, INT-REQ-006, INT-REQ-007, INT-REQ-008]
+related_requirements: [FR-001, FR-002, FR-003, FR-004, FR-005, FR-006, FR-007, FR-008, FR-009, FR-010, FR-011, FR-012, FR-013, FR-014, FR-015, FR-016, FR-017, FR-018, FR-019, FR-020, NFR-001, NFR-002, NFR-003, NFR-004, NFR-005, NFR-006, NFR-007, NFR-008, NFR-009, NFR-010, NFR-011, NFR-012, NFR-013, NFR-014, NFR-015, NFR-016, NFR-017, NFR-018, NFR-019, NFR-020, SEC-REQ-001, SEC-REQ-002, SEC-REQ-003, SEC-REQ-004, SEC-REQ-005, SEC-REQ-006, SEC-REQ-007, SEC-REQ-008, SEC-REQ-009, SEC-REQ-010, SEC-REQ-011, SEC-REQ-012, SEC-REQ-013, SEC-REQ-014, SEC-REQ-015, SEC-REQ-016, DATA-REQ-001, DATA-REQ-002, DATA-REQ-003, DATA-REQ-004, DATA-REQ-005, DATA-REQ-006, DATA-REQ-007, DATA-REQ-008, DATA-REQ-009, INT-REQ-001, INT-REQ-002, INT-REQ-003, INT-REQ-004, INT-REQ-005, INT-REQ-006, INT-REQ-007, INT-REQ-008]
 related_documents: [DOC-REQ-001, DOC-REQ-002, DOC-NFR-000, DOC-OVR-008, DOC-OVR-011, DOC-BA-005]
 ---
 
 # Acceptance Criteria — Authoritative AC Registry
 
-**This document is the single, authoritative registry of every acceptance criterion (`AC-*`) in the yumn project.** It is referenced by the functional requirement files (`functional/FR-nnn.md`), by the non-functional files (`non-functional/NFR-nnn.md` via their Verification sections), and by `13-testing/` (which converts ACs into test cases `TC-nnn`) and `19-traceability/` (AC → test mapping). No other document may invent, redefine or contradict an AC listed here; requirement files reference their AC IDs and quote them only in condensed form. The registry defines **253 ACs**: 94 FR + 40 NFR + 50 SR + 32 DR + 33 IR + 4 cross-cutting scenarios.
+**This document is the single, authoritative registry of every acceptance criterion (`AC-*`) in the yumn project.** It is referenced by the functional requirement files (`functional/FR-nnn.md`), by the non-functional files (`non-functional/NFR-nnn.md` via their Verification sections), and by `13-testing/` (which converts ACs into test cases `TC-nnn`) and `19-traceability/` (AC → test mapping). No other document may invent, redefine or contradict an AC listed here; requirement files reference their AC IDs and quote them only in condensed form. The registry defines **273 ACs**: 94 FR + 40 NFR + 66 SR + 36 DR + 33 IR + 4 cross-cutting scenarios.
 
 Requirement IDs themselves remain assigned exclusively in `requirements-overview.md` (`DOC-REQ-001`).
 
@@ -24,8 +24,8 @@ Requirement IDs themselves remain assigned exclusively in `requirements-overview
 |---|---|---|---|
 | Functional | `AC-FRnnn-nn` | `AC-FR013-02` | 94 (FR-001…FR-020, 4–5 per FR) |
 | Non-functional | `AC-NFR-nnn-nn` | `AC-NFR-005-01` | 40 |
-| Security | `AC-SR001-nn` | `AC-SR004-01` | 50 (SEC-REQ-001…012, 4–5 per SEC-REQ) |
-| Data | `AC-DR001-nn` | `AC-DR004-01` | 32 (DATA-REQ-001…008, 4 each) |
+| Security | `AC-SR001-nn` | `AC-SR004-01` | 66 (SEC-REQ-001…016, 4–5 per SEC-REQ) |
+| Data | `AC-DR001-nn` | `AC-DR004-01` | 36 (DATA-REQ-001…009, 4 each) |
 | Integration | `AC-IR001-nn` | `AC-IR003-01` | 33 (INT-REQ-001…008, 4–5 per INT-REQ) |
 | Cross-cutting scenarios | `AC-XCUT-nn` | `AC-XCUT-02` | 4 |
 
@@ -334,6 +334,22 @@ Verification conditions for `non-functional/NFR-nnn.md`; measurement procedures 
 | AC-SR012-02 | SEC-REQ-012 | A seeded critical DAST finding in staging | Release promotion is attempted | Production promotion is blocked until the finding is resolved |
 | AC-SR012-03 | SEC-REQ-012 | A tracked critical vulnerability | The fix lifecycle runs | Confirmed date, fix date and verification evidence all fall within 7 days (AC-S-13) |
 | AC-SR012-04 | SEC-REQ-012 | Scan output for the reporting month | The vulnerability report is generated | The report lists findings by severity with zero silent suppressions lacking justification |
+| AC-SR013-01 | SEC-REQ-013 | A registered phone and an unregistered phone | Each submits an OTP/registration request | Both receive identical status code, body shape and message — no existence signal |
+| AC-SR013-02 | SEC-REQ-013 | The auth endpoint contracts | They are scanned for codes like `PHONE_ALREADY_REGISTERED` | No existence-revealing code appears in any anonymous auth entry-point response |
+| AC-SR013-03 | SEC-REQ-013 | An existing account targeted by re-registration | The flow completes | The submitter learns nothing while the legitimate owner receives the out-of-band notification |
+| AC-SR013-04 | SEC-REQ-013 | The anti-enumeration contract test in CI | Any auth entry point diverges in response shape between the exists/does-not-exist cases | The test fails and blocks the merge |
+| AC-SR014-01 | SEC-REQ-014 | The configured allowlist origins | Each preflights and sends a credentialed request | The correct `Access-Control-Allow-*` headers are returned |
+| AC-SR014-02 | SEC-REQ-014 | An origin not on the allowlist | It sends a preflight or credentialed request | No CORS headers are returned and the browser blocks the read — deny-by-default holds |
+| AC-SR014-03 | SEC-REQ-014 | The CORS configuration | It is inspected | No wildcard origin combined with credentialed access exists anywhere, and methods/headers are explicit allowlists |
+| AC-SR014-04 | SEC-REQ-014 | The CORS test case in CI | A route bypasses the shared middleware or widens the policy | The test fails and blocks the merge |
+| AC-SR015-01 | SEC-REQ-015 | Every bucket | An unauthenticated client attempts object read and bucket list | Both are denied — zero objects are disclosed |
+| AC-SR015-02 | SEC-REQ-015 | A presigned URL past its TTL, and one still valid | Each is requested | The expired URL is rejected while the valid one grants only that single object — nothing else in the bucket |
+| AC-SR015-03 | SEC-REQ-015 | User-supplied upload input containing an object key | The upload is processed | The stored key is the server-generated, owner-scoped one — a cross-owner key is never honored |
+| AC-SR015-04 | SEC-REQ-015 | The quarterly review record | The policy test runs each cycle | Anonymous access/listing remain denied and the review entry exists with date and reviewer |
+| AC-SR016-01 | SEC-REQ-016 | OTP resend requests for one phone arriving from many distinct IPs/sessions | The global per-destination resend cap is exceeded | Further requests are rejected even though each requester individually stays under its per-IP/per-user limits |
+| AC-SR016-02 | SEC-REQ-016 | The per-destination counter | It is inspected | The key is a hashed phone value — the raw phone number appears in no metric label or log line (`DATA-REQ-002`) |
+| AC-SR016-03 | SEC-REQ-016 | A destination approaching the global cap | The metric threshold is crossed | The alert fires to the security/on-call route within the alerting window (`INT-REQ-007`) |
+| AC-SR016-04 | SEC-REQ-016 | A rejected request at the cap | Its response is compared to a generic rate-limit rejection | No per-destination reason or victim-state detail is disclosed |
 
 ---
 
@@ -345,7 +361,7 @@ Verification conditions for `non-functional/NFR-nnn.md`; measurement procedures 
 | AC-DR001-02 | DATA-REQ-001 | Duplicate phone, duplicate SKU within one store, or duplicate coupon code | The inserts are attempted | Each fails with a unique violation mapped to a stable API error |
 | AC-DR001-03 | DATA-REQ-001 | Order totals of 499 and 5,000,001 YER and an order state outside the 17-value enum | The writes are attempted | The out-of-range values are rejected by CHECK constraints; 500 and 5,000,000 YER are accepted |
 | AC-DR001-04 | DATA-REQ-001 | Negative price, negative stock, and a rating of 0 or 6 | The inserts are attempted | The database rejects them — NOT NULL/domain checks hold below the application layer |
-| AC-DR002-01 | DATA-REQ-002 | The data inventory with every PII column mapped to a documented purpose | The schema-to-purpose audit runs | The unmapped-field report is empty and each field is classified per `16-data/data-classification.md` |
+| AC-DR002-01 | DATA-REQ-002 | The data inventory with every PII column mapped to a documented purpose | The schema-to-purpose audit runs | The unmapped-field report is empty and each field is classified per `../16-data/core/data-classification.md` |
 | AC-DR002-02 | DATA-REQ-002 | The data model and API contract | They are scanned for card-number and GPS/location fields | No table, column or endpoint contains them — only necessary PII is collected |
 | AC-DR002-03 | DATA-REQ-002 | A registration request without an email (and one with an optional email) | The registration is processed | The request succeeds and stores no email value; an optional email is stored without becoming an identity (BR-AUTH-08) |
 | AC-DR002-04 | DATA-REQ-002 | Representative list/detail endpoint responses | They are asserted against a per-endpoint PII allowlist | No unexpected PII fields are returned — the test fails otherwise |
@@ -354,7 +370,7 @@ Verification conditions for `non-functional/NFR-nnn.md`; measurement procedures 
 | AC-DR003-03 | DATA-REQ-003 | A financial record younger than 5 years | A purge is attempted | The purge is blocked and an alert is raised rather than deleting the record — financial records persist ≥ 5 years (NFR-019) |
 | AC-DR003-04 | DATA-REQ-003 | Each purge/deletion run | It completes | An audit entry with actor, scope, counts and timestamp is produced |
 | AC-DR004-01 | DATA-REQ-004 | WAL archiving in operation | The maximum gap between archived WAL segments is measured | The gap stays ≤ 15 minutes — RPO evidence |
-| AC-DR004-02 | DATA-REQ-004 | A forced snapshot failure | Backup monitoring runs | Operations are alerted within the alerting window defined in `12-non-functional/observability.md` |
+| AC-DR004-02 | DATA-REQ-004 | A forced snapshot failure | Backup monitoring runs | Operations are alerted within the alerting window defined in `../12-non-functional/core/observability.md` |
 | AC-DR004-03 | DATA-REQ-004 | A quarterly restore drill (latest snapshot + WAL) executed on a clean host | Restore is timed end-to-end | It completes within RTO 1 h, passes integrity checks including zero ledger imbalance, and is documented with elapsed time and scope (NFR-006, AC-S-17) |
 | AC-DR004-04 | DATA-REQ-004 | Backup storage and restore access | Protection is reviewed and an unauthenticated restore is attempted | Backups are encrypted at rest with role-restricted access; the unauthenticated attempt fails |
 | AC-DR005-01 | DATA-REQ-005 | An expand-phase schema | App version N runs critical-path tests against the expanded schema and N+1 against the pre-contract schema | Both pass and both results are recorded in CI |
@@ -373,6 +389,10 @@ Verification conditions for `non-functional/NFR-nnn.md`; measurement procedures 
 | AC-DR008-02 | DATA-REQ-008 | User A/store X fixtures addressing user B/store Y resources | Every read/write endpoint is called | Each returns zero rows or 403/404 — `user_id`/`store_id` filter results and cross-tenant isolation is proven (BR-VND-07) |
 | AC-DR008-03 | DATA-REQ-008 | A worker processing store X's jobs | It runs against shared partitions | Zero rows change in store Y partitions (row-level before/after assertion) |
 | AC-DR008-04 | DATA-REQ-008 | A new tenant-scoped entity added without cross-tenant test cases | The CI gate runs | CI fails — cross-tenant test coverage is mandatory |
+| AC-DR009-01 | DATA-REQ-009 | The index field allowlist | A document is indexed | Only allowlisted public catalog fields appear — a probe for phone/address/wallet fields in the index returns zero hits |
+| AC-DR009-02 | DATA-REQ-009 | An index snapshot | Its storage is inspected | Access is role-restricted and contents are encrypted at rest — parity with the source-data posture (`SEC-REQ-006`) |
+| AC-DR009-03 | DATA-REQ-009 | A completed account-deletion run | The index is queried for the deleted user's content | It is gone — deletion propagated source → index inside the same workflow (`DATA-REQ-003`) |
+| AC-DR009-04 | DATA-REQ-009 | The "PII in index" CI test | A new indexed field is added without an allowlist entry | The test fails and the build is blocked |
 
 ---
 
@@ -406,7 +426,7 @@ Verification conditions for `non-functional/NFR-nnn.md`; measurement procedures 
 | AC-IR006-03 | INT-REQ-006 | A handler that always fails | Delivery handling occurs | It is retried 3 times with exponential backoff, lands in DLQ, and fires an alert; DLQ depth alerts follow (BR-PLT-02) |
 | AC-IR006-04 | INT-REQ-006 | The webhook endpoint under load with slow business logic | Provider callbacks arrive | The endpoint persists and acknowledges within 10 s; slow logic never blocks the callback path |
 | AC-IR007-01 | INT-REQ-007 | The observability stack deployed and traffic run | Targets and RED metrics are queried in Prometheus | All defined targets are up (`up == 1`) and RED metrics per endpoint are queryable |
-| AC-IR007-02 | INT-REQ-007 | A simulated error spike and a simulated DLQ-depth increase | Alerting evaluates them | An alert fires and reaches the on-call destination within the window defined in `12-non-functional/observability.md` (AC-S-18) |
+| AC-IR007-02 | INT-REQ-007 | A simulated error spike and a simulated DLQ-depth increase | Alerting evaluates them | An alert fires and reaches the on-call destination within the window defined in `../12-non-functional/core/observability.md` (AC-S-18) |
 | AC-IR007-03 | INT-REQ-007 | A sampled metrics export and log stream | An automated PII scan runs | Zero phone numbers, tokens or secret values are found |
 | AC-IR007-04 | INT-REQ-007 | Grafana with the deployed dashboards | The dashboards are opened | Dashboards for RED per endpoint, queue/DLQ depth, database health and reconciliation status exist and render from live data |
 | AC-IR008-01 | INT-REQ-008 | A vendor SDK or vendor-specific type referenced outside its adapter folder | The import/lint rule runs | The build fails — domain code depends only on interfaces |
@@ -509,3 +529,4 @@ Each failure is injected in staging; core journeys must behave as specified (sup
 |---|---|---|---|
 | 1.0 | 2026-09-26 | Initial AC registry (94 FR + 40 NFR + 12 SR + 8 DR + 8 IR + 4 cross-cutting scenarios) | Initial analysis |
 | 1.1 | 2026-09-26 | Expanded Security/Data/Integration ACs to sub-numbered IDs | Repo-wide reference consistency |
+| 1.2 | 2026-09-30 | Session-011 delta registration — +16 `AC-SR013-01`…`AC-SR016-04`, +4 `AC-DR009-01`…`AC-DR009-04`; 253 → 273 ACs (50 → 66 SR, 32 → 36 DR) | Owner directive session 011 (`prompt-011.md` §4.7) — ACs of the five requirements registered in `requirements-overview.md` v1.2 (`SEC-REQ-013`…`016`, `DATA-REQ-009`); count consumers re-synced in same change set |
